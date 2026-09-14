@@ -27,4 +27,4 @@ Organizar informações sobre cidades, linhas de ônibus, trechos viários, faix
 
 ## Projeto Integrador
 
-Projeto desenvolvido pela equipe de Desenvolvimento de Sistemas.
+Projeto desenvolvido pela equipe de Desenvolvimento de Sistemas, junto com a equipe de IA.
