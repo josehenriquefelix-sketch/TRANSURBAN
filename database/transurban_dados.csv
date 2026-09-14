@@ -1,0 +1,45 @@
+﻿Cidade,Código da Linha,Nome da Linha,Regiões Atendidas,Horários de Referência,Informações sobre Atrasos
+Maringá,007,Interbairros Zona Norte,"Morangueira, Alvorada, Zona Norte e Terminal",aproximadamente entre 5h e 23h30,Pode apresentar atrasos principalmente nos horários de pico.
+Maringá,010,Universidade,"UEM, Zona 7, Centro e Terminal",aproximadamente das 5h às 23h,Pode apresentar atrasos principalmente por causa do trânsito.
+Maringá,021,Av. Tuiuti,"Av. Tuiuti, Jardim Alvorada e Centro",aproximadamente das 5h às 23h,Atrasos ocasionais podem ocorrer nos horários de maior movimento.
+Maringá,022,Conjunto Guaiapó,"Guaiapó, Centro e Terminal",primeiras viagens por volta das 5h,Pode apresentar lotação nos horários de pico.
+Maringá,201,Maringá–Iguatemi,"Centro, Terminal e Distrito de Iguatemi","intervalos maiores, principalmente aos fins de semana",Pode apresentar atrasos especialmente aos sábados e domingos.
+Maringá,242,Jardim América,"Jardim América, Shopping Catuaí e Centro",aproximadamente das 5h às 23h,"A alta demanda pode provocar atrasos, principalmente pela manhã."
+Maringá,023,Jardim Olímpico,"Jardim Olímpico, Vila Esperança, Centro e Terminal Urbano",aproximadamente das 5h20 às 22h50,Pode apresentar atrasos de 5 a 10 minutos nos horários de pico.
+Maringá,024,Parque Itaipu,"Parque Itaipu, Jardim Novo Horizonte, Centro e Terminal Urbano",aproximadamente das 5h10 às 23h,Pode apresentar lotação e pequenos atrasos no início da manhã e fim da tarde.
+Maringá,031,Conjunto Requião,"Conjunto Requião, Jardim Paris, Centro e Terminal Urbano",aproximadamente das 5h30 às 22h40,Atrasos podem ocorrer em dias de chuva ou trânsito intenso.
+Maringá,034,Jardim São Silvestre,"Jardim São Silvestre, Vila Morangueira, Centro e Terminal Urbano",aproximadamente das 5h15 às 22h30,Pode apresentar atrasos ocasionais durante a tarde.
+Maringá,324,UEM / Unicesumar,"UEM, Unicesumar, Zona 7, Centro e Terminal Urbano",aproximadamente das 5h às 23h10,É comum ocorrer lotação e atrasos de até 10 minutos nos horários de entrada e saída das universidades.
+Maringá,011,Jardim Internorte,"Jardim Internorte, Jardim Império do Sol, Centro e Terminal Urbano",aproximadamente das 5h10 às 22h50,Pode apresentar atrasos de 5 a 10 minutos nos horários de maior movimento.
+Maringá,013,Jardim Montreal,"Jardim Montreal, Jardim Liberdade, Centro e Terminal Urbano",aproximadamente das 5h20 às 23h,Pode apresentar lotação e atrasos ocasionais no início da manhã.
+Maringá,026,Jardim Paulista,"Jardim Paulista, Vila Santo Antônio, Centro e Terminal Urbano",aproximadamente das 5h às 22h45,Atrasos podem ocorrer em dias chuvosos e no pico da tarde.
+Maringá,032,Parque Avenida,"Parque Avenida, Zona 8, Centro e Terminal Urbano",aproximadamente das 5h30 às 22h30,Pode sofrer atrasos devido ao trânsito nas avenidas centrais.
+Maringá,035,Jardim Pinheiros,"Jardim Pinheiros, Jardim Alamar, Centro e Terminal Urbano",aproximadamente das 5h15 às 22h40,Pode apresentar ônibus cheios e pequenos atrasos nos horários de trabalho.
+Maringá,041,Jardim Alvorada II,"Jardim Alvorada II, Jardim Paris, Centro e Terminal Urbano",aproximadamente das 5h20 às 22h50,Pode apresentar pequenos atrasos no pico da manhã.
+Maringá,043,Jardim Santa Felicidade,"Jardim Santa Felicidade, Vila Morangueira, Centro e Terminal",aproximadamente das 5h15 às 22h40,Pode operar com veículos cheios no fim da tarde e apresentar atrasos.
+Maringá,051,Parque das Grevíleas,"Parque das Grevíleas, Jardim Novo Horizonte, Centro e Terminal",aproximadamente das 5h30 às 23h,Os principais atrasos ocorrem em dias de chuva e congestionamentos.
+Maringá,414,Jardim São Jorge,"Jardim São Jorge, Zona Norte, Centro e Terminal Urbano",aproximadamente das 5h10 às 22h45,Pode apresentar intervalos maiores fora dos horários de pico.
+Maringá,611,Distrito Industrial,"Distrito Industrial, Centro e Terminal Urbano",aproximadamente das 6h às 20h em dias úteis,Possui baixa frequência e poucos horários disponíveis.
+Maringá,052,Jardim Bertioga,"Jardim Bertioga, Jardim Universo, Centro e Terminal Urbano",aproximadamente das 5h20 às 22h40,Pequenos atrasos podem ocorrer nos horários de pico.
+Maringá,053,Parque Hortência,"Parque Hortência, Jardim Imperial, Centro e Terminal Urbano",aproximadamente das 5h30 às 23h,Pode apresentar maior tempo de espera aos sábados e no período noturno.
+Maringá,054,Jardim Dias I,"Jardim Dias I, Jardim Dias II, Centro e Terminal Urbano",aproximadamente das 5h10 às 22h50,Pode apresentar lotação e atrasos entre 17h e 19h.
+Londrina,101,Jardim do Sol,"Terminal Central, Jardim do Sol e região Oeste",aproximadamente das 5h às 23h10,Pode apresentar atrasos de 5 a 10 minutos nos horários de pico.
+Londrina,111,Pioneiros,"Terminal Central, Jardim Pioneiros e região Leste",aproximadamente das 5h10 às 22h50,"Geralmente possui boa pontualidade, mas pode sofrer pequenos atrasos."
+Londrina,112,Alexandre Urbanas,"Terminal Central, Alexandre Urbanas e Zona Leste",aproximadamente das 5h20 às 22h45,Pode apresentar atrasos em horários escolares e comerciais.
+Londrina,113,Jardim dos Pioneiros,Terminal Central e Jardim dos Pioneiros,aproximadamente das 5h15 às 22h50,Pode sofrer variações em dias de chuva.
+Londrina,114,Jardim Maíra,"Terminal Central, Jardim Maíra e Zona Leste",aproximadamente das 5h20 às 22h40,Atrasos podem ocorrer devido ao trânsito em vias de grande circulação.
+Londrina,121,Três Figueiras,"Terminal Central, Três Figueiras e Parque Industrial Buena Vista",aproximadamente das 5h às 23h,Atrasos costumam ser inferiores a 10 minutos na maior parte do dia.
+Londrina,203,Ouro Branco,"Terminal Acapulco, Ouro Branco e Zona Sul",aproximadamente das 5h20 às 22h40,Pode apresentar atrasos nos horários de entrada e saída do trabalho.
+Londrina,210,União da Vitória,"Terminal Central, União da Vitória e Zona Sul",aproximadamente das 5h10 às 22h50,O tempo de viagem pode variar conforme o trânsito e obras.
+Londrina,303,Jardim Tókyo,"Terminal Central, Terminal Oeste e Jardim Tókyo",aproximadamente das 5h às 23h,Nos horários de menor movimento normalmente cumpre a programação.
+Londrina,423,São Jorge,"Terminal Vivi Xavier, São Jorge e Residencial Jequitibá",aproximadamente das 5h20 às 22h40,Chuva intensa ou acidentes podem causar atrasos maiores.
+Sarandi,001,Parque Alvamar / Conjunto Floresta,"Parque Alvamar, Jardim Panorama, Centro e Conjunto Floresta",aproximadamente das 5h20 às 22h40,Pode apresentar atrasos de 5 a 10 minutos no trânsito entre Sarandi e Maringá.
+Sarandi,254A,Alvamar,"Parque Alvamar, Jardim Panorama e região Norte",aproximadamente das 5h30 às 23h,Pode apresentar pequenas variações no início da manhã e fim da tarde.
+Sarandi,254C,Jardim Cometa,"Jardim Cometa, Centro e região Oeste",aproximadamente das 5h10 às 22h45,Pode sofrer atrasos em períodos de maior movimento.
+Sarandi,254E,Jardim Esperança,"Jardim Esperança, Centro e bairros próximos",aproximadamente das 5h20 às 22h30,Atrasos podem ocorrer em dias de chuva ou aumento do fluxo de passageiros.
+Sarandi,254I,Jardim Independência,"Jardim Independência, Jardim Monte Rey e região Norte/Leste",aproximadamente das 5h15 às 22h50,Pode apresentar demora nos horários de entrada e saída de trabalhadores e estudantes.
+Sarandi,254J,Conjunto José Richa,"Conjunto José Richa, Jardim Panorama e região Central",aproximadamente das 5h30 às 22h40,Pode apresentar atrasos pontuais durante o dia.
+Sarandi,254L,Jardim Leblon,Jardim Leblon e Centro,aproximadamente das 5h20 às 23h,O tempo de viagem pode variar conforme as condições das vias.
+Sarandi,254M,Monte Rey,Jardim Monte Rey e Jardim Independência,aproximadamente das 5h10 às 22h45,Pode apresentar atrasos eventuais nos horários de pico.
+Sarandi,254N,Nova Aliança,Jardim Nova Aliança e região Central,aproximadamente das 5h20 às 22h35,Pode ocorrer atraso devido ao trânsito entre bairros e região central.
+Sarandi,254O,Ouro Verde,Jardim Ouro Verde e região Sul/Leste,aproximadamente das 5h30 às 22h50,"Obras, acidentes ou chuvas fortes podem provocar atrasos maiores."
