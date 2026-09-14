@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trans Urban - Assistente de Ônibus</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <div class="logo-icon">🚌</div>
+
+            <div>
+                <h1>Trans Urban</h1>
+                <span>Assistente de transporte urbano</span>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            Online
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <section class="hero">
+
+            <div class="hero-text">
+                <span class="tag">TRANSPORTE URBANO</span>
+
+                <h2>
+                    Tire suas dúvidas sobre
+                    <strong>ônibus e linhas</strong>
+                </h2>
+
+                <p>
+                    Consulte informações sobre linhas, regiões atendidas,
+                    horários e possíveis atrasos em Maringá, Londrina e Sarandi.
+                </p>
+            </div>
+
+            <div class="bus-image">
+                🚌
+            </div>
+
+        </section>
+
+
+        <section class="chat-container">
+
+            <div class="chat-header">
+                <div class="chat-avatar">TU</div>
+
+                <div>
+                    <h3>Trans Urban Chat</h3>
+                    <p>Assistente de ônibus e linhas</p>
+                </div>
+            </div>
+
+
+            <div id="chatMessages" class="chat-messages">
+
+                <div class="message bot">
+                    <div class="avatar">TU</div>
+
+                    <div class="bubble">
+                        Olá! 👋 Eu sou o assistente do <strong>Trans Urban</strong>.
+
+                        <br><br>
+
+                        Posso ajudar você com dúvidas sobre ônibus,
+                        linhas, horários, regiões atendidas e atrasos.
+
+                        <br><br>
+
+                        Experimente perguntar:
+                        <br>
+                        <button class="suggestion"
+                            onclick="sendSuggestion('A linha 324 atrasou, o que eu faço?')">
+                            "A linha 324 atrasou, o que eu faço?"
+                        </button>
+
+                        <button class="suggestion"
+                            onclick="sendSuggestion('Quais linhas atendem a UEM?')">
+                            "Quais linhas atendem a UEM?"
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+                <button onclick="sendSuggestion('Quais linhas existem em Maringá?')">
+                    🚌 Linhas de Maringá
+                </button>
+
+                <button onclick="sendSuggestion('Quais linhas existem em Londrina?')">
+                    🚌 Linhas de Londrina
+                </button>
+
+                <button onclick="sendSuggestion('Quais linhas existem em Sarandi?')">
+                    🚌 Linhas de Sarandi
+                </button>
+
+            </div>
+
+
+            <div class="input-area">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Digite sua dúvida sobre ônibus..."
+                    autocomplete="off"
+                >
+
+                <button id="sendButton" onclick="sendMessage()">
+                    ➤
+                </button>
+
+            </div>
+
+            <div class="disclaimer">
+                As informações apresentadas são baseadas nos dados cadastrados
+                no Trans Urban e não representam rastreamento em tempo real.
+            </div>
+
+        </section>
+
+
+        <section class="cities">
+
+            <h2>Áreas atendidas</h2>
+
+            <div class="city-grid">
+
+                <div class="city-card">
+                    <div>📍</div>
+                    <h3>Maringá</h3>
+                    <p>Linhas urbanas e informações de atendimento.</p>
+                </div>
+
+                <div class="city-card">
+                    <div>📍</div>
+                    <h3>Londrina</h3>
+                    <p>Consulte linhas e regiões atendidas.</p>
+                </div>
+
+                <div class="city-card">
+                    <div>📍</div>
+                    <h3>Sarandi</h3>
+                    <p>Informações sobre linhas e possíveis atrasos.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <strong>Trans Urban</strong>
+        <span> | Informação para um transporte mais inteligente.</span>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
