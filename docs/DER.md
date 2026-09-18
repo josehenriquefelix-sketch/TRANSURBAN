@@ -1,4 +1,4 @@
-# DER — TRANSURBAN
+# DER — TransUrban
 
 ## Diagrama Entidade-Relacionamento
 
@@ -12,6 +12,7 @@ erDiagram
 
     LINHA_ONIBUS {
         INTEGER id_linha PK
+        INTEGER id_cidade FK
         VARCHAR codigo
         VARCHAR nome
     }
@@ -46,8 +47,10 @@ erDiagram
         VARCHAR observacao
     }
 
-    CIDADE ||--o{ TRECHO : "origem"
-    CIDADE ||--o{ TRECHO : "destino"
+    CIDADE ||--o{ LINHA_ONIBUS : possui
+
+    CIDADE ||--o{ TRECHO : origem
+    CIDADE ||--o{ TRECHO : destino
 
     LINHA_ONIBUS ||--o{ LINHA_TRECHO : utiliza
     TRECHO ||--o{ LINHA_TRECHO : possui
