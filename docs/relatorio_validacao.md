@@ -244,3 +244,85 @@ Dessa forma, somente o ambiente criado para o teste foi removido, sem necessidad
 ### Conclusão
 
 A validação demonstrou que a estrutura representada pelo DDL e a massa correspondente ao Seed são compatíveis entre si e conseguem reproduzir o banco acadêmico utilizado nesta etapa do TransUrban.
+
+## Validação das consultas DQL
+
+Para comprovar que o banco consegue responder a perguntas relacionadas ao problema do TransUrban, foi criado e testado o arquivo `database/script_dql.sql`.
+
+As consultas foram executadas no Supabase utilizando a massa de teste acadêmica do banco.
+
+### Consulta 1 — Registros de atraso
+
+A consulta relacionou `registro_atraso`, `linha_onibus` e `trecho` e ordenou os registros do maior para o menor atraso.
+
+Resultado dos atrasos:
+
+- 22 minutos
+- 15 minutos
+- 12 minutos
+- 8 minutos
+- 5 minutos
+
+**Resultado:** APROVADO.
+
+### Consulta 2 — Maior atraso
+
+Foi utilizada a função `MAX` para descobrir o maior atraso registrado.
+
+**Resultado:** 22 minutos.
+
+**Resultado do teste:** APROVADO.
+
+### Consulta 3 — Atraso médio por linha
+
+Foi utilizada a função `AVG` agrupada por linha.
+
+Para a linha `001 - Linha 001 - Maringá`, o resultado foi:
+
+**Atraso médio: 12,40 minutos.**
+
+**Resultado do teste:** APROVADO.
+
+### Consulta 4 — Quantidade de registros por linha
+
+Foi utilizada a função `COUNT` para verificar quantos registros de atraso estão associados a cada linha.
+
+A linha `001` apresentou:
+
+**5 registros de atraso.**
+
+**Resultado do teste:** APROVADO.
+
+### Consulta 5 — Relacionamento entre cidade, linha e trecho
+
+Foi realizada uma consulta utilizando `JOIN` entre `cidade`, `linha_onibus`, `linha_trecho` e `trecho`.
+
+Resultado:
+
+- Cidade: Maringá
+- Código da linha: 001
+- Linha: Linha 001 - Maringá
+- Trecho: Maringá → Sarandi
+- Ordem: 1
+
+**Resultado do teste:** APROVADO.
+
+### Consulta 6 — Atrasos iguais ou superiores a 10 minutos
+
+Foi utilizado `WHERE` para selecionar somente registros com atraso igual ou superior a 10 minutos.
+
+Foram encontrados três registros:
+
+- 22 minutos — 16/09/2026
+- 15 minutos — 18/09/2026
+- 12 minutos — 17/09/2026
+
+**Resultado do teste:** APROVADO.
+
+### Conclusão da validação DQL
+
+As seis consultas do arquivo `database/script_dql.sql` foram executadas no Supabase e apresentaram resultados coerentes com a massa de teste.
+
+Os testes demonstraram o uso de `JOIN`, `WHERE`, `ORDER BY`, `MAX`, `AVG`, `COUNT` e `GROUP BY`, permitindo consultar os dados e responder a perguntas relacionadas ao problema estudado pelo TransUrban.
+
+Os resultados são referentes à massa de teste acadêmica do banco e não representam dados de transporte em tempo real.
