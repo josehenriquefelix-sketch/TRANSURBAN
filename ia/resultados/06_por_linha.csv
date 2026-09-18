@@ -1,0 +1,18 @@
+index,codigo_linha,nome_linha,registros,atraso_medio,maior_atraso
+0,001,Parque Alvamar / Conjunto Floresta,9,6.67,11
+1,007,Interbairros Zona Norte,12,7.58,12
+2,010,Universidade,12,8.08,11
+3,021,Av. Tuiuti,12,6.5,10
+4,023,Jardim Olímpico,12,7.42,10
+5,024,Parque Itaipu,12,6.5,12
+6,031,Conjunto Requião,12,9.0,11
+7,034,Jardim São Silvestre,12,7.75,12
+8,041,Jardim Alvorada II,12,8.17,11
+9,051,Parque das Grevíleas,12,7.25,12
+10,254A,Alvamar,8,7.5,10
+11,254C,Jardim Cometa,9,6.78,9
+12,254E,Jardim Esperança,9,7.89,11
+13,254I,Jardim Independência,8,7.25,11
+14,254J,Conjunto José Richa,8,7.25,10
+15,254L,Jardim Leblon,9,7.44,11
+16,324,UEM / Unicesumar,12,9.0,11
