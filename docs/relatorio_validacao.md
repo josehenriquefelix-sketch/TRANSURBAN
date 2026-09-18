@@ -188,3 +188,59 @@ Também foram confirmados registros acadêmicos relacionados entre cidade, linha
 O DER, o dicionário de dados, o `script_ddl.sql` e o `script_seed.sql` foram alinhados à estrutura validada no Supabase.
 
 Os dados utilizados nesta etapa são acadêmicos e não devem ser apresentados como informações em tempo real do transporte público.
+
+## Validação de execução do DDL e Seed
+
+Foi realizada uma validação adicional dos scripts do banco de dados em um schema separado chamado `transurban_teste`, criado no Supabase exclusivamente para o teste.
+
+O objetivo foi verificar se a estrutura atual do banco poderia ser criada e receber a massa de teste sem interferir nas tabelas existentes no schema oficial.
+
+### Resultado do DDL
+
+A estrutura foi criada do zero no ambiente de teste e as seis tabelas previstas pelo modelo foram criadas sem erro:
+
+- `cidade`
+- `linha_onibus`
+- `trecho`
+- `linha_trecho`
+- `faixa_exclusiva`
+- `registro_atraso`
+
+### Resultado do Seed
+
+Após a criação das tabelas, foi executada a massa correspondente ao `script_seed.sql`.
+
+A conferência apresentou:
+
+| Tabela | Quantidade |
+|---|---:|
+| cidade | 2 |
+| linha_onibus | 1 |
+| trecho | 1 |
+| linha_trecho | 1 |
+| registro_atraso | 5 |
+| faixa_exclusiva | 0 |
+
+O resultado confirma que a massa de teste pôde ser inserida respeitando a estrutura do banco.
+
+### Validação dos relacionamentos
+
+Também foi realizada uma consulta relacionando `linha_onibus`, `cidade`, `linha_trecho` e `trecho`.
+
+O resultado obtido foi:
+
+| Código | Linha | Cidade | Trecho | Ordem |
+|---|---|---|---|---:|
+| 001 | Linha 001 - Maringá | Maringá | Maringá → Sarandi | 1 |
+
+Isso confirmou que o relacionamento entre cidade, linha e trecho está funcionando corretamente.
+
+### Limpeza do ambiente de teste
+
+Depois da validação, o schema `transurban_teste` foi removido com `DROP SCHEMA transurban_teste CASCADE`.
+
+Dessa forma, somente o ambiente criado para o teste foi removido, sem necessidade de alterar as tabelas do schema oficial.
+
+### Conclusão
+
+A validação demonstrou que a estrutura representada pelo DDL e a massa correspondente ao Seed são compatíveis entre si e conseguem reproduzir o banco acadêmico utilizado nesta etapa do TransUrban.
