@@ -2,99 +2,189 @@
 
 ## 1. Objetivo
 
-Validar a estrutura, os relacionamentos e as regras de integridade
-do banco de dados do sistema TransUrban.
+Validar a estrutura, os relacionamentos, as regras de integridade e a massa de teste do banco de dados do sistema TransUrban.
 
-## 2. Banco de dados
+O banco foi desenvolvido para organizar informações relacionadas ao transporte coletivo, com foco no registro e análise de atrasos entre Maringá e Sarandi.
+
+---
+
+## 2. Banco de Dados
 
 **SGBD:** PostgreSQL  
 **Ambiente remoto:** Supabase
 
-### Tabelas
+### Tabelas validadas
 
-- cidade
-- linha_onibus
-- trecho
-- linha_trecho
-- faixa_exclusiva
-- registro_atraso
+- `cidade`
+- `linha_onibus`
+- `trecho`
+- `linha_trecho`
+- `faixa_exclusiva`
+- `registro_atraso`
 
-## 3. Validação estrutural
+A estrutura existente no Supabase foi consultada e utilizada como referência para a atualização do DER, do dicionário de dados e do arquivo `script_ddl.sql`.
 
-Foram verificadas:
+---
+
+## 3. Validação Estrutural
+
+Foram verificadas no banco remoto:
 
 - chaves primárias;
 - chave primária composta;
 - chaves estrangeiras;
-- campos NOT NULL;
-- restrições UNIQUE;
-- restrições CHECK;
-- tipos de dados.
+- campos obrigatórios (`NOT NULL`);
+- restrições `UNIQUE`;
+- restrições `CHECK`;
+- tipos e tamanhos dos campos.
 
-O schema.sql foi comparado com a estrutura existente no banco remoto.
+### Principais regras identificadas
 
-## 4. Testes CRUD
+- O nome da cidade não pode se repetir.
+- Uma linha deve estar associada a uma cidade existente.
+- A combinação entre cidade e código da linha não pode se repetir.
+- A distância de um trecho deve ser maior que zero.
+- A cidade de origem deve ser diferente da cidade de destino.
+- A ordem de um trecho dentro de uma linha deve ser maior que zero.
+- Uma mesma linha não pode possuir duas posições com a mesma ordem.
+- Os minutos de atraso não podem ser negativos.
+- Os tipos permitidos para faixa são `EXCLUSIVA` e `PREFERENCIAL`.
+- Os status permitidos são `ATIVA`, `INATIVA` e `PLANEJADA`.
 
-Foi realizado um CRUD na tabela `faixa_exclusiva`.
+---
 
-### CREATE
+## 4. Relacionamentos Validados
 
-Registro criado com sucesso.
+As consultas realizadas no Supabase confirmaram os relacionamentos entre as tabelas.
 
-### READ
+Foram identificadas as seguintes chaves estrangeiras:
 
-Registro consultado com sucesso.
+- `linha_onibus.id_cidade` → `cidade.id_cidade`
+- `trecho.id_cidade_origem` → `cidade.id_cidade`
+- `trecho.id_cidade_destino` → `cidade.id_cidade`
+- `linha_trecho.id_linha` → `linha_onibus.id_linha`
+- `linha_trecho.id_trecho` → `trecho.id_trecho`
+- `faixa_exclusiva.id_trecho` → `trecho.id_trecho`
+- `registro_atraso.id_linha` → `linha_onibus.id_linha`
+- `registro_atraso.id_trecho` → `trecho.id_trecho`
 
-### UPDATE
+---
 
-O status foi alterado de `ATIVA` para `INATIVA`.
+## 5. Massa de Teste do Supabase
 
-### DELETE
+Durante a validação, o banco possuía:
 
-O registro foi removido com sucesso e a consulta posterior retornou zero linhas.
+| Tabela | Quantidade de registros |
+|---|---:|
+| cidade | 2 |
+| linha_onibus | 1 |
+| trecho | 1 |
+| linha_trecho | 1 |
+| registro_atraso | 5 |
+| faixa_exclusiva | 0 |
 
-## 5. Testes negativos
+As cidades cadastradas são **Maringá** e **Sarandi**.
 
-Foram realizados quatro testes de integridade.
+A linha acadêmica utilizada na validação possui:
 
-### Teste 1 — CHECK
+- Código: `001`
+- Nome: `Linha 001 - Maringá`
+- Cidade associada: `Maringá`
 
-Foi tentada a inserção de um trecho com distância `0.00`.
+O trecho validado possui:
 
-**Resultado:** registro rejeitado pela restrição `ck_trecho_distancia`.
+- Origem: `Maringá`
+- Destino: `Sarandi`
+- Nome: `Maringá → Sarandi`
+- Distância: `12,00 km`
+- Ordem na linha: `1`
 
-### Teste 2 — FOREIGN KEY
+---
 
-Foi tentada a inserção de um trecho utilizando a cidade `9999`, que não existe.
+## 6. Registros de Atraso
 
-**Resultado:** registro rejeitado pela restrição `fk_trecho_cidade_origem`.
+Foram consultados cinco registros acadêmicos de atraso associados à linha `001` e ao trecho `Maringá → Sarandi`.
 
-### Teste 3 — NOT NULL
+| Data | Minutos de atraso |
+|---|---:|
+| 15/09/2026 | 8 |
+| 16/09/2026 | 22 |
+| 17/09/2026 | 12 |
+| 18/09/2026 | 15 |
+| 18/09/2026 | 5 |
 
-Foi tentada a inserção de uma cidade sem informar o nome.
+Esses registros são utilizados exclusivamente como massa de teste acadêmica.
 
-**Resultado:** registro rejeitado pela restrição de campo obrigatório.
+O maior atraso dessa massa do **Supabase** é de **22 minutos**.
 
-### Teste 4 — UNIQUE
+---
 
-Foi tentada a inserção de uma segunda cidade chamada `Maringá`.
+## 7. Testes CRUD
 
-**Resultado:** registro rejeitado pela restrição `cidade_nome_key`.
+O projeto possui o arquivo `database/testes_crud.sql`, preparado para demonstrar as quatro operações básicas na tabela `faixa_exclusiva`:
 
-## 6. Homologação
+- `CREATE` — inserção de uma faixa.
+- `READ` — consulta do registro.
+- `UPDATE` — alteração do status.
+- `DELETE` — remoção do registro.
 
-O banco remoto foi homologado por meio de consultas,
-testes CRUD e testes negativos.
+Ao final do fluxo de teste, o registro criado é removido. Por isso, a tabela `faixa_exclusiva` pode permanecer vazia após o teste.
 
-A consulta de relacionamento confirmou que a linha **101 —
-Maringá - Sarandi** está associada ao trecho **Maringá - Sarandi**,
-com distância de **13,50 km** e ordem **1**.
+---
 
-## 7. Conclusão
+## 8. Testes de Integridade
 
-Os testes realizados demonstraram que o banco possui estrutura,
-relacionamentos e restrições de integridade funcionando conforme
-as regras definidas no projeto.
+O arquivo `database/testes_integridade.sql` contém testes negativos preparados para verificar regras do banco.
 
-O banco remoto está disponível para demonstração e os artefatos
-da Sprint estão organizados no repositório.
+Os testes contemplam:
+
+1. tentativa de inserir trecho com distância igual a zero;
+2. tentativa de utilizar uma cidade inexistente;
+3. tentativa de cadastrar cidade com nome nulo;
+4. tentativa de cadastrar uma cidade duplicada.
+
+Esses testes foram projetados para provocar rejeições quando as restrições do banco estiverem funcionando.
+
+As restrições correspondentes foram confirmadas na estrutura do Supabase durante a validação.
+
+---
+
+## 9. Scripts do Banco
+
+Foram organizados os seguintes artefatos:
+
+- `database/script_ddl.sql` — representa a estrutura relacional validada no Supabase;
+- `database/script_seed.sql` — contém a massa acadêmica utilizada para reproduzir os dados básicos validados;
+- `database/testes_crud.sql` — contém os testes CRUD;
+- `database/testes_integridade.sql` — contém testes das regras de integridade.
+
+Os arquivos antigos foram preservados para não destruir o histórico do projeto.
+
+---
+
+## 10. Banco e Massa de Dados da IA
+
+É importante diferenciar as massas utilizadas no projeto.
+
+O Supabase possui uma massa pequena voltada à validação do banco relacional.
+
+A análise de IA utiliza o arquivo `data/atrasos_analise.csv`, que contém uma massa acadêmica maior utilizada para análise e para o contexto do chatbot.
+
+Por esse motivo, os valores máximos podem ser diferentes:
+
+- Massa de validação do Supabase: maior atraso de `22 minutos`.
+- Massa de análise da IA: maior atraso de `12 minutos`.
+
+Isso não representa erro de cálculo. São duas massas acadêmicas diferentes, utilizadas para finalidades diferentes nesta etapa do projeto.
+
+---
+
+## 11. Conclusão
+
+A validação confirmou que o banco remoto possui as seis tabelas previstas no modelo e que os principais relacionamentos e restrições estão configurados.
+
+Também foram confirmados registros acadêmicos relacionados entre cidade, linha, trecho e atraso.
+
+O DER, o dicionário de dados, o `script_ddl.sql` e o `script_seed.sql` foram alinhados à estrutura validada no Supabase.
+
+Os dados utilizados nesta etapa são acadêmicos e não devem ser apresentados como informações em tempo real do transporte público.
