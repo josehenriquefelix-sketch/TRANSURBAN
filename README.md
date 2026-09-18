@@ -300,3 +300,15 @@ O TRANSURBAN integra conhecimentos de **Desenvolvimento de Sistemas** e **Inteli
 O projeto possui banco de dados relacional, documentação do modelo, scripts SQL, massa de análise, processamento de dados, backend Flask, interface web e integração com Ollama.
 
 A estrutura atual permite demonstrar o funcionamento do banco, seus relacionamentos, a análise da massa acadêmica e a interação do usuário com o chatbot.
+
+O arquivo de consultas utilizado para comprovar que o banco responde às perguntas do negócio está em:
+
+`database/script_dql.sql`
+
+O banco pode ser reproduzido e validado seguindo esta ordem:
+
+1. `script_ddl.sql` — cria a estrutura das tabelas e suas restrições;
+2. `script_seed.sql` — insere a massa de teste acadêmica;
+3. `script_dql.sql` — executa consultas para validar os dados e responder a perguntas do negócio.
+
+O `script_dql.sql` possui consultas utilizando `JOIN`, `WHERE`, `ORDER BY`, `MAX`, `AVG`, `COUNT` e `GROUP BY`. As consultas foram testadas no Supabase e seus resultados estão registrados em `docs/relatorio_validacao.md`.
