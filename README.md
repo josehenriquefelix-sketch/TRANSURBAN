@@ -1,52 +1,190 @@
 # TRANSURBAN
 
-## Sistema de apoio ao transporte coletivo de Maringá e Sarandi
+## Projeto Integrador - Módulo 6 DS + IA
 
-O **TRANSURBAN** é um projeto acadêmico desenvolvido pelas equipes de Desenvolvimento de Sistemas e Inteligência Artificial.
+O **TransUrban** é um projeto acadêmico voltado à organização e análise de dados relacionados a atrasos no transporte coletivo entre **Maringá e Sarandi**.
 
-O projeto busca organizar e analisar informações relacionadas ao transporte coletivo entre **Maringá e Sarandi**, com foco principalmente nos registros de atrasos e nos trechos utilizados pelas linhas de ônibus.
+Nesta etapa, Desenvolvimento de Sistemas e Inteligência Artificial avançam de forma complementar:
 
----
+- **DS:** banco PostgreSQL/Supabase -> FastAPI -> GET/POST -> Postman -> wireframes.
+- **IA:** CSV -> Pandas -> estatística -> agregação -> classificação -> interpretação -> visualização.
 
-## 1. Problema
-
-O trânsito entre Maringá e Sarandi pode contribuir para atrasos no transporte coletivo, prejudicando o deslocamento dos passageiros.
-
-Para estudar esse problema, é necessário organizar informações como:
-
-- cidades;
-- linhas de ônibus;
-- trechos;
-- registros de atraso;
-- faixas exclusivas ou preferenciais;
-- dados utilizados para análise.
+> Os dados utilizados são sintéticos e acadêmicos. O projeto não possui rastreamento em tempo real nesta etapa.
 
 ---
 
-## 2. Proposta
+## 1. Desenvolvimento de Sistemas
 
-O TRANSURBAN propõe uma aplicação capaz de organizar dados relacionados ao transporte coletivo e permitir consultas sobre atrasos.
+### Tabela escolhida para as primeiras rotas
 
-Nesta etapa do projeto, foram desenvolvidos:
+A tabela `cidade` foi escolhida porque possui:
 
-- banco de dados relacional no Supabase;
-- modelo DER;
-- dicionário de dados;
-- scripts SQL;
-- massa de teste;
-- análise de dados com Python;
-- backend utilizando Flask;
-- chatbot utilizando Ollama;
-- interface web para interação com o chatbot;
-- documentação e evidências de validação.
+- chave primária simples: `id_cidade`;
+- nenhuma chave estrangeira;
+- nenhuma chave composta.
+
+Isso atende ao critério do Módulo 6 para as primeiras rotas.
+
+### Tecnologias
+
+- Python
+- FastAPI
+- Uvicorn
+- SQLAlchemy
+- Psycopg
+- PostgreSQL
+- Supabase
+- Postman
+
+### Backend
+
+```text
+backend/
+├── main.py
+├── database.py
+├── models.py
+├── schemas.py
+├── analise.py
+├── requirements.txt
+├── .env.example
+└── routes/
+    ├── __init__.py
+    └── cidades.py
+```
+
+### Rotas trabalhadas
+
+| Método | Rota | Finalidade |
+|---|---|---|
+| GET | `/` | Informações básicas da API |
+| GET | `/health` | Verificar conexão com PostgreSQL/Supabase |
+| GET | `/cidades/` | Consultar cidades |
+| POST | `/cidades/` | Cadastrar cidade |
+
+O POST recebe `id_cidade` porque o DDL atual utiliza `INTEGER PRIMARY KEY` sem `IDENTITY` ou `SERIAL`.
+
+### Executar a API
+
+Windows PowerShell:
+
+```powershell
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+Copy-Item backend\.env.example backend\.env
+```
+
+Edite `backend/.env` e informe a conexão real do Supabase.
+
+Depois:
+
+```powershell
+cd backend
+uvicorn main:app --reload
+```
+
+API: `http://127.0.0.1:8000`
+
+Swagger: `http://127.0.0.1:8000/docs`
+
+### Postman
+
+Importe:
+
+`backend/TransUrban_Modulo6.postman_collection.json`
+
+Fluxo de validação:
+
+1. GET `/cidades/`;
+2. POST `/cidades/`;
+3. confirmar HTTP 201;
+4. repetir GET;
+5. conferir persistência no Supabase.
+
+A senha do Supabase não é versionada. O arquivo real `.env` está no `.gitignore`.
 
 ---
 
-## 3. Banco de Dados
+## 2. Inteligência Artificial
 
-O banco utiliza **PostgreSQL** e está hospedado no **Supabase**.
+Fonte principal:
 
-O modelo validado possui seis tabelas:
+`database/dados.csv`
+
+O arquivo é uma cópia sincronizada de `data/atrasos_analise.csv` e possui **180 registros acadêmicos**.
+
+### Código
+
+A camada analítica reutilizável está em:
+
+`backend/analise.py`
+
+Ela possui funções para:
+
+- carregar o CSV;
+- calcular estatísticas;
+- realizar agregações com `groupby`;
+- classificar atrasos por regras;
+- gerar visualização.
+
+### Executar a análise
+
+Na raiz:
+
+```powershell
+python backend/main.py
+```
+
+A execução demonstra:
+
+- primeiras linhas;
+- colunas;
+- quantidade de registros;
+- estatísticas de `minutos_atraso`;
+- atraso médio por condição de trânsito;
+- classificação;
+- geração de gráfico.
+
+### Resultados principais
+
+Para `minutos_atraso`:
+
+| Medida | Resultado |
+|---|---:|
+| Média | 7,57 min |
+| Mediana | 8 min |
+| Moda | 8 min |
+| Mínimo | 2 min |
+| Máximo | 12 min |
+| Amplitude | 10 min |
+| Desvio padrão | 2,60 min |
+
+Atraso médio por condição de trânsito:
+
+- Leve: **4,22 min**
+- Moderado: **7,11 min**
+- Muito intenso: **9,09 min**
+- Intenso: **9,84 min**
+
+Classificação acadêmica:
+
+- Baixo (até 5): **43**
+- Moderado (6 a 10): **111**
+- Alto (11 a 15): **26**
+- Muito alto (>15): **0**
+
+A interpretação completa está em:
+
+`documentacao/analise_dados.md`
+
+---
+
+## 3. Banco de dados
+
+Banco: **PostgreSQL / Supabase**
+
+Tabelas do modelo:
 
 - `cidade`
 - `linha_onibus`
@@ -55,260 +193,86 @@ O modelo validado possui seis tabelas:
 - `faixa_exclusiva`
 - `registro_atraso`
 
-Os relacionamentos utilizam chaves primárias e estrangeiras para manter os dados conectados.
+Arquivos:
 
-Também são utilizadas regras como:
-
-- `PRIMARY KEY`
-- `FOREIGN KEY`
-- `NOT NULL`
-- `UNIQUE`
-- `CHECK`
-
-O arquivo principal que representa a estrutura atual validada é:
-
-`database/script_ddl.sql`
-
-A massa pequena utilizada para reproduzir os dados acadêmicos do banco está em:
-
-`database/script_seed.sql`
+- `database/script_ddl.sql`
+- `database/script_seed.sql`
+- `database/script_dql.sql`
+- `database/testes_crud.sql`
+- `database/testes_integridade.sql`
+- `docs/DER.md`
+- `docs/dicionario_dados.md`
 
 ---
 
-## 4. Inteligência Artificial
+## 4. Interfaces / Wireframes
 
-A parte de Inteligência Artificial utiliza uma massa sintética de teste localizada em:
+A documentação dos wireframes da tabela `cidade` está em:
 
-`data/atrasos_analise.csv`
+`documentacao/wireframes_cidade.md`
 
-Essa massa possui **180 registros** e é utilizada para análises e validação do chatbot.
+Há também um mockup HTML em:
 
-Durante a análise foram verificados:
+`frontend/modulo6_cidade_wireframe.html`
 
-- quantidade de registros;
-- valores nulos;
-- registros duplicados;
-- atrasos negativos;
-- atraso médio;
-- maior atraso;
-- comportamento dos dados em diferentes categorias.
-
-Na massa de análise da IA, o atraso médio validado é de **7,57 minutos** e o maior atraso é de **12 minutos**.
-
-As linhas que atingiram o maior atraso de 12 minutos foram:
-
-- 007 — Interbairros Zona Norte
-- 024 — Parque Itaipu
-- 034 — Jardim São Silvestre
-- 051 — Parque das Grevíleas
+O cadastro representa o POST e a consulta representa o GET.
 
 ---
 
-## 5. Chatbot
-
-O TRANSURBAN possui uma interface web conectada a um backend desenvolvido com **Flask**.
-
-O backend utiliza o **Ollama** com o modelo `llama3.2` para permitir a interação com o chatbot.
-
-Fluxo simplificado:
-
-```text
-Usuário
-   ↓
-Frontend
-   ↓
-Flask
-   ↓
-Contexto do TransUrban
-   ↓
-Ollama
-   ↓
-Resposta
-```
-
-O chatbot foi testado com perguntas relacionadas à massa de dados.
-
-Também foi realizado um teste solicitando uma informação que não existia no contexto, como o nome do motorista de uma linha. Nesse caso, o sistema informou que a informação não estava disponível, em vez de apresentar um nome inexistente.
-
----
-
-## 6. Dados Acadêmicos
-
-Os dados utilizados atualmente são **dados sintéticos de teste acadêmico**.
-
-O projeto não possui rastreamento em tempo real dos ônibus nesta etapa.
-
-Existem duas massas de teste diferentes:
-
-**Supabase:** massa pequena utilizada para validar tabelas, relacionamentos e regras do banco.
-
-**IA:** massa localizada em `data/atrasos_analise.csv`, utilizada para análise de dados e validação do chatbot.
-
-Por isso, alguns resultados são diferentes entre as duas massas.
-
-Na massa do Supabase, o maior atraso registrado é de **22 minutos**.
-
-Na massa utilizada pela IA, o maior atraso é de **12 minutos**.
-
-Essa diferença não representa erro, pois são conjuntos de dados acadêmicos diferentes e utilizados para finalidades diferentes.
-
----
-
-## 7. Tecnologias Utilizadas
-
-- Python
-- Flask
-- PostgreSQL
-- Supabase
-- SQL
-- Ollama
-- modelo `llama3.2`
-- HTML
-- CSS
-- JavaScript
-- Git
-- GitHub
-- Visual Studio Code
-- Pandas
-- Matplotlib
-
----
-
-## 8. Estrutura Principal
+## 5. Estrutura principal
 
 ```text
 TRANSURBAN/
-│
 ├── backend/
-│   └── app.py
-│
+│   ├── main.py
+│   ├── database.py
+│   ├── models.py
+│   ├── schemas.py
+│   ├── analise.py
+│   ├── routes/
+│   └── legacy_flask/
 ├── database/
+│   ├── dados.csv
 │   ├── script_ddl.sql
 │   ├── script_seed.sql
-│   ├── testes_crud.sql
-│   ├── testes_integridade.sql
-│   └── ...
-│
+│   └── script_dql.sql
 ├── data/
-│   └── atrasos_analise.csv
-│
+├── documentacao/
+│   ├── modulo6_ds.md
+│   ├── analise_dados.md
+│   └── wireframes_cidade.md
 ├── docs/
-│   ├── DER.md
-│   ├── dicionario_dados.md
-│   ├── auditoria.md
-│   ├── relatorio_validacao.md
-│   └── evidencia_ia_validacao.md
-│
 ├── frontend/
-│   ├── index.html
-│   ├── script.js
-│   └── style.css
-│
 ├── ia/
-│   ├── analise_transurban.py
-│   ├── requirements.txt
-│   └── resultados/
-│
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 9. Como Executar o Chatbot
+## 6. Observação sobre o protótipo anterior
 
-### Requisitos
+O protótipo Flask/Ollama desenvolvido anteriormente foi preservado em:
 
-É necessário possuir:
+`backend/legacy_flask/`
 
-- Python;
-- dependências Python do projeto;
-- Ollama;
-- modelo `llama3.2`.
-
-Com o Ollama instalado, o modelo utilizado pelo projeto pode ser verificado com:
-
-```powershell
-ollama list
-```
-
-Na pasta principal do projeto, o backend pode ser iniciado com:
-
-```powershell
-python backend\app.py
-```
-
-Com o servidor em execução, a aplicação pode ser acessada localmente em:
-
-```text
-http://127.0.0.1:5000
-```
+Ele não é a implementação principal do Módulo 6 de DS. A implementação atual segue o padrão **FastAPI + Uvicorn + SQLAlchemy + Psycopg** solicitado para esta etapa.
 
 ---
 
-## 10. Validação
+## 7. Evidências reais
 
-A validação do projeto foi documentada na pasta `docs`.
+O código e a documentação estão preparados. Para a comprovação final em sala, ainda é necessário usar a credencial privada do Supabase no arquivo local `backend/.env` e registrar evidências reais:
 
-### Banco de dados
+- GET no Postman;
+- POST com HTTP 201;
+- GET após o POST;
+- registro persistido no Supabase.
 
-Consultar:
-
-`docs/relatorio_validacao.md`
-
-### DER
-
-Consultar:
-
-`docs/DER.md`
-
-### Dicionário de Dados
-
-Consultar:
-
-`docs/dicionario_dados.md`
-
-### Auditoria
-
-Consultar:
-
-`docs/auditoria.md`
-
-### Evidência da IA
-
-Consultar:
-
-`docs/evidencia_ia_validacao.md`
+Essas evidências não devem ser inventadas ou simuladas.
 
 ---
 
-## 11. Limitações Atuais
+## 8. Repositório
 
-Nesta etapa, o TRANSURBAN é um projeto acadêmico em desenvolvimento.
-
-O sistema ainda não utiliza dados oficiais em tempo real de ônibus ou trânsito.
-
-As análises e respostas apresentadas na demonstração são baseadas nas massas sintéticas utilizadas para validação acadêmica.
-
-Funcionalidades futuras devem ser implementadas e comprovadas antes de serem apresentadas como funcionalidades disponíveis.
-
----
-
-## 12. Conclusão
-
-O TRANSURBAN integra conhecimentos de **Desenvolvimento de Sistemas** e **Inteligência Artificial** em uma solução acadêmica relacionada ao problema de atrasos no transporte coletivo entre Maringá e Sarandi.
-
-O projeto possui banco de dados relacional, documentação do modelo, scripts SQL, massa de análise, processamento de dados, backend Flask, interface web e integração com Ollama.
-
-A estrutura atual permite demonstrar o funcionamento do banco, seus relacionamentos, a análise da massa acadêmica e a interação do usuário com o chatbot.
-
-O arquivo de consultas utilizado para comprovar que o banco responde às perguntas do negócio está em:
-
-`database/script_dql.sql`
-
-O banco pode ser reproduzido e validado seguindo esta ordem:
-
-1. `script_ddl.sql` — cria a estrutura das tabelas e suas restrições;
-2. `script_seed.sql` — insere a massa de teste acadêmica;
-3. `script_dql.sql` — executa consultas para validar os dados e responder a perguntas do negócio.
-
-O `script_dql.sql` possui consultas utilizando `JOIN`, `WHERE`, `ORDER BY`, `MAX`, `AVG`, `COUNT` e `GROUP BY`. As consultas foram testadas no Supabase e seus resultados estão registrados em `docs/relatorio_validacao.md`.
+`https://github.com/josehenriquefelix-sketch/TRANSURBAN`
