@@ -1,176 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Trans Urban - Assistente de Ônibus</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TransUrban — Gestão, Dados e Inteligência</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modulo6.css">
 </head>
-
 <body>
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">🚌</div>
+      <div><h1>TransUrban</h1><span>Maringá ↔ Sarandi</span></div>
+    </div>
+    <div class="status" id="apiStatus"><span class="status-dot"></span>Verificando backend</div>
+  </header>
 
-    <header class="header">
-        <div class="logo">
-            <div class="logo-icon">🚌</div>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-text">
+        <span class="tag">PROJETO INTEGRADOR — DS + IA</span>
+        <h2>Gestão de dados e análise de <strong>atrasos de ônibus</strong></h2>
+        <p>O TransUrban organiza dados acadêmicos de linhas, trechos e atrasos entre Maringá e Sarandi e transforma esses registros em informação.</p>
+      </div>
+      <div class="bus-image">🚌</div>
+    </section>
 
-            <div>
-                <h1>Trans Urban</h1>
-                <span>Assistente de transporte urbano</span>
-            </div>
+    <section class="data-panel">
+      <div class="section-title">
+        <div><span class="eyebrow">DESENVOLVIMENTO DE SISTEMAS</span><h2>Painel do Supabase</h2></div>
+        <button class="secondary-button" onclick="carregarDadosBanco()">Atualizar dados</button>
+      </div>
+      <p class="section-description">Esta área consome as rotas GET do backend Flask. Os valores aparecem quando <code>DATABASE_URL</code> está configurada.</p>
+
+      <div class="metric-grid">
+        <article class="metric-card"><span>Registros</span><strong id="metricTotal">—</strong></article>
+        <article class="metric-card"><span>Atraso médio</span><strong id="metricMedia">—</strong></article>
+        <article class="metric-card"><span>Maior atraso</span><strong id="metricMaior">—</strong></article>
+        <article class="metric-card"><span>Menor atraso</span><strong id="metricMenor">—</strong></article>
+      </div>
+
+      <div class="table-card">
+        <div class="table-header"><h3>Registros de atraso</h3><span id="databaseMessage">Aguardando consulta.</span></div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Data</th><th>Linha</th><th>Trecho</th><th>Atraso</th></tr></thead>
+            <tbody id="atrasosTable"><tr><td colspan="4">Carregando...</td></tr></tbody>
+          </table>
         </div>
+      </div>
 
-        <div class="status">
-            <span class="status-dot"></span>
-            Online
+      <form id="atrasoForm" class="form-card">
+        <div><span class="eyebrow">ROTA POST</span><h3>Registrar atraso de teste</h3></div>
+        <div class="form-grid">
+          <label>ID da linha<input id="idLinha" type="number" min="1" value="1" required></label>
+          <label>ID do trecho<input id="idTrecho" type="number" min="1" value="1" required></label>
+          <label>Data<input id="dataRegistro" type="date" required></label>
+          <label>Minutos de atraso<input id="minutosAtraso" type="number" min="0" required></label>
         </div>
-    </header>
+        <label>Observação<input id="observacao" type="text" maxlength="255" placeholder="DADO DE TESTE - validação do backend"></label>
+        <div class="form-actions"><button type="submit">Registrar no Supabase</button><span id="formMessage"></span></div>
+      </form>
+    </section>
 
+    <section class="chat-container">
+      <div class="chat-header"><div class="chat-avatar">TU</div><div><h3>TransUrban Chat</h3><p>IA baseada na massa acadêmica em CSV</p></div></div>
+      <div id="chatMessages" class="chat-messages">
+        <div class="message bot"><div class="avatar">TU</div><div class="bubble">
+          Olá! Eu sou o assistente do <strong>TransUrban</strong>.<br><br>
+          Respondo com base na massa acadêmica de análise.<br><br>
+          <button class="suggestion" onclick="sendSuggestion('Qual foi o maior atraso registrado na massa de análise?')">Qual foi o maior atraso?</button>
+          <button class="suggestion" onclick="sendSuggestion('Qual é o atraso médio da massa de análise?')">Qual é o atraso médio?</button>
+        </div></div>
+      </div>
+      <div class="quick-actions">
+        <button onclick="sendSuggestion('Quantos registros existem na massa de análise?')">📊 Quantidade de registros</button>
+        <button onclick="sendSuggestion('Qual linha teve o maior atraso?')">🚌 Linha com maior atraso</button>
+      </div>
+      <div class="input-area"><input type="text" id="userInput" placeholder="Pergunte sobre a massa de análise..." autocomplete="off"><button onclick="sendMessage()">➤</button></div>
+      <div class="disclaimer">Os dados são sintéticos e acadêmicos. O projeto não possui rastreamento em tempo real nesta etapa.</div>
+    </section>
 
-    <main class="container">
+    <section class="cities">
+      <h2>Escopo geográfico validado</h2>
+      <div class="city-grid two-columns">
+        <div class="city-card"><div>📍</div><h3>Maringá</h3><p>Cidade de origem utilizada na massa de validação do banco.</p></div>
+        <div class="city-card"><div>📍</div><h3>Sarandi</h3><p>Cidade de destino do trecho acadêmico Maringá → Sarandi.</p></div>
+      </div>
+    </section>
+  </main>
 
-        <section class="hero">
-
-            <div class="hero-text">
-                <span class="tag">TRANSPORTE URBANO</span>
-
-                <h2>
-                    Tire suas dúvidas sobre
-                    <strong>ônibus e linhas</strong>
-                </h2>
-
-                <p>
-                    Consulte informações sobre linhas, regiões atendidas,
-                    horários e possíveis atrasos em Maringá e Sarandi.
-                </p>
-            </div>
-
-            <div class="bus-image">
-                🚌
-            </div>
-
-        </section>
-
-
-        <section class="chat-container">
-
-            <div class="chat-header">
-                <div class="chat-avatar">TU</div>
-
-                <div>
-                    <h3>Trans Urban Chat</h3>
-                    <p>Assistente de ônibus e linhas</p>
-                </div>
-            </div>
-
-
-            <div id="chatMessages" class="chat-messages">
-
-                <div class="message bot">
-                    <div class="avatar">TU</div>
-
-                    <div class="bubble">
-                        Olá! 👋 Eu sou o assistente do <strong>Trans Urban</strong>.
-
-                        <br><br>
-
-                        Posso ajudar você com dúvidas sobre ônibus,
-                        linhas, horários, regiões atendidas e atrasos.
-
-                        <br><br>
-
-                        Experimente perguntar:
-                        <br>
-                        <button class="suggestion"
-                            onclick="sendSuggestion('A linha 324 atrasou, o que eu faço?')">
-                            "A linha 324 atrasou, o que eu faço?"
-                        </button>
-
-                        <button class="suggestion"
-                            onclick="sendSuggestion('Quais linhas atendem a UEM?')">
-                            "Quais linhas atendem a UEM?"
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="quick-actions">
-
-                <button onclick="sendSuggestion('Quais linhas existem em Maringá?')">
-                    🚌 Linhas de Maringá
-                </button>
-
-                <button onclick="sendSuggestion('Quais linhas existem em Sarandi?')">
-                    🚌 Linhas de Sarandi
-                </button>
-
-            </div>
-
-
-            <div class="input-area">
-
-                <input
-                    type="text"
-                    id="userInput"
-                    placeholder="Digite sua dúvida sobre ônibus..."
-                    autocomplete="off"
-                >
-
-                <button id="sendButton" onclick="sendMessage()">
-                    ➤
-                </button>
-
-            </div>
-
-            <div class="disclaimer">
-                As informações apresentadas são baseadas nos dados cadastrados
-                no Trans Urban e não representam rastreamento em tempo real.
-            </div>
-
-        </section>
-
-
-        <section class="cities">
-
-            <h2>Áreas atendidas</h2>
-
-            <div class="city-grid">
-
-                <div class="city-card">
-                    <div>📍</div>
-                    <h3>Maringá</h3>
-                    <p>Linhas urbanas e informações de atendimento.</p>
-                </div>
-
-                <div class="city-card">
-                    <div>📍</div>
-                    <h3>Londrina</h3>
-                    <p>Consulte linhas e regiões atendidas.</p>
-                </div>
-
-                <div class="city-card">
-                    <div>📍</div>
-                    <h3>Sarandi</h3>
-                    <p>Informações sobre linhas e possíveis atrasos.</p>
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <footer>
-        <strong>Trans Urban</strong>
-        <span> | Informação para um transporte mais inteligente.</span>
-    </footer>
-
-
-    <script src="script.js"></script>
-
+  <footer><strong>TransUrban</strong><span> | Gestão + Dados + Inteligência.</span></footer>
+  <script src="script.js"></script>
 </body>
 </html>
