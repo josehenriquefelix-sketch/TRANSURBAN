@@ -1,58 +1,31 @@
-from contextlib import contextmanager
 import os
 
 from dotenv import load_dotenv
-import psycopg2
-from psycopg2.extras import RealDictCursor
+from sqlalchemy import create_engine
+from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 load_dotenv()
 
+DATABASE_URL = os.getenv("DATABASE_URL", "").strip()
 
-def database_configurada():
-    return bool(os.getenv("DATABASE_URL", "").strip())
-
-
-def _database_url():
-    url = os.getenv("DATABASE_URL", "").strip()
-    if not url:
-        raise RuntimeError(
-            "DATABASE_URL não configurada. Copie backend/.env.example para "
-            "backend/.env e informe a URL PostgreSQL exibida pelo Supabase."
-        )
-    return url
+if not DATABASE_URL:
+    raise RuntimeError(
+        "DATABASE_URL não configurada. Copie backend/.env.example para "
+        "backend/.env e informe a conexão PostgreSQL do Supabase."
+    )
 
 
-@contextmanager
-def conexao():
-    conn = psycopg2.connect(_database_url())
+class Base(DeclarativeBase):
+    pass
+
+
+engine = create_engine(DATABASE_URL, pool_pre_ping=True)
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
+
+
+def get_db():
+    db = SessionLocal()
     try:
-        yield conn
-        conn.commit()
-    except Exception:
-        conn.rollback()
-        raise
+        yield db
     finally:
-        conn.close()
-
-
-def consultar_todos(sql, parametros=()):
-    with conexao() as conn:
-        with conn.cursor(cursor_factory=RealDictCursor) as cursor:
-            cursor.execute(sql, parametros)
-            return [dict(linha) for linha in cursor.fetchall()]
-
-
-def consultar_um(sql, parametros=()):
-    with conexao() as conn:
-        with conn.cursor(cursor_factory=RealDictCursor) as cursor:
-            cursor.execute(sql, parametros)
-            linha = cursor.fetchone()
-            return dict(linha) if linha else None
-
-
-def executar_retorno(sql, parametros=()):
-    with conexao() as conn:
-        with conn.cursor(cursor_factory=RealDictCursor) as cursor:
-            cursor.execute(sql, parametros)
-            linha = cursor.fetchone()
-            return dict(linha) if linha else None
+        db.close()
