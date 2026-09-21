@@ -1,0 +1,13 @@
+.status.offline{color:#a15b00}.status.offline .status-dot{background:#f0a22e}
+.data-panel{margin-top:30px;background:var(--white);border:1px solid var(--border);border-radius:22px;padding:28px;box-shadow:0 12px 35px rgba(22,48,80,.06)}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.eyebrow{display:block;color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.08em;margin-bottom:7px}
+.section-description{color:var(--gray);margin:12px 0 22px;line-height:1.55}.section-description code{color:var(--blue-dark)}
+.secondary-button,.form-actions button{border:0;border-radius:11px;padding:11px 16px;background:var(--blue);color:#fff;font-weight:700;cursor:pointer}
+.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.metric-card{padding:18px;border:1px solid var(--border);border-radius:14px;background:#f9fbfe}.metric-card span{display:block;color:var(--gray);font-size:12px;margin-bottom:8px}.metric-card strong{color:var(--blue-dark);font-size:22px}
+.table-card,.form-card{border:1px solid var(--border);border-radius:16px;background:#fff;overflow:hidden}.table-header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:17px 18px;border-bottom:1px solid var(--border)}.table-header span{color:var(--gray);font-size:12px}.table-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse}th,td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--border);font-size:13px}th{color:var(--gray);background:#f8fbff}
+.form-card{margin-top:18px;padding:20px}.form-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 12px}.form-card label{display:flex;flex-direction:column;gap:7px;color:var(--gray);font-size:12px;font-weight:700}.form-card input{border:1px solid #d8e2ed;border-radius:10px;padding:11px 12px;outline:0}.form-card input:focus{border-color:var(--blue)}
+.form-actions{display:flex;align-items:center;gap:14px;margin-top:14px}.form-actions span{color:var(--gray);font-size:12px}.two-columns{grid-template-columns:repeat(2,1fr)}
+@media(max-width:850px){.metric-grid,.form-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.section-title,.table-header,.form-actions{align-items:flex-start;flex-direction:column}.metric-grid,.form-grid,.two-columns{grid-template-columns:1fr}.data-panel{padding:20px}}
