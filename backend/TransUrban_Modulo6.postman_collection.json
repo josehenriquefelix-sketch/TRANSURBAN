@@ -1,40 +1,43 @@
 {
   "info": {
-    "name": "TransUrban — Módulo 6",
-    "_postman_id": "transurban-modulo6-academico",
-    "description": "Validação das rotas GET e POST do backend Flask conectado ao PostgreSQL/Supabase.",
+    "name": "TransUrban - Módulo 6 DS",
+    "_postman_id": "transurban-modulo6-fastapi",
+    "description": "GET e POST da tabela cidade usando FastAPI, SQLAlchemy, Psycopg e PostgreSQL/Supabase.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "variable": [
-    {"key": "baseUrl", "value": "http://127.0.0.1:5000"}
+    {"key": "baseUrl", "value": "http://127.0.0.1:8000"}
   ],
   "item": [
-    {"name": "1 - Health", "request": {"method": "GET", "url": "{{baseUrl}}/api/health"}},
-    {"name": "2 - Cidades", "request": {"method": "GET", "url": "{{baseUrl}}/api/cidades"}},
-    {"name": "3 - Linhas", "request": {"method": "GET", "url": "{{baseUrl}}/api/linhas"}},
-    {"name": "4 - Trechos", "request": {"method": "GET", "url": "{{baseUrl}}/api/trechos"}},
-    {"name": "5 - Atrasos", "request": {"method": "GET", "url": "{{baseUrl}}/api/atrasos?limit=20"}},
-    {"name": "6 - Resumo", "request": {"method": "GET", "url": "{{baseUrl}}/api/atrasos/resumo"}},
     {
-      "name": "7 - Criar atraso",
+      "name": "1 - API raiz",
+      "request": {"method": "GET", "url": "{{baseUrl}}/"}
+    },
+    {
+      "name": "2 - Health",
+      "request": {"method": "GET", "url": "{{baseUrl}}/health"}
+    },
+    {
+      "name": "3 - GET cidades antes do cadastro",
+      "request": {"method": "GET", "url": "{{baseUrl}}/cidades/"}
+    },
+    {
+      "name": "4 - POST cidade de teste",
       "request": {
         "method": "POST",
-        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "header": [
+          {"key": "Content-Type", "value": "application/json"}
+        ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"id_linha\": 1,\n  \"id_trecho\": 1,\n  \"data_registro\": \"2026-09-21\",\n  \"minutos_atraso\": 9,\n  \"observacao\": \"DADO DE TESTE - Modulo 6\"\n}"
+          "raw": "{\n  \"id_cidade\": 99,\n  \"nome\": \"Cidade Teste Módulo 6\"\n}"
         },
-        "url": "{{baseUrl}}/api/atrasos"
+        "url": "{{baseUrl}}/cidades/"
       }
     },
     {
-      "name": "8 - Chatbot",
-      "request": {
-        "method": "POST",
-        "header": [{"key": "Content-Type", "value": "application/json"}],
-        "body": {"mode": "raw", "raw": "{\n  \"message\": \"Qual e o atraso medio da massa de analise?\"\n}"},
-        "url": "{{baseUrl}}/api/chat"
-      }
+      "name": "5 - GET cidades após POST",
+      "request": {"method": "GET", "url": "{{baseUrl}}/cidades/"}
     }
   ]
 }
