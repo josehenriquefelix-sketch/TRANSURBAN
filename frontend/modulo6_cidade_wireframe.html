@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TransUrban — Wireframe Cidade</title>
+  <style>
+    body{font-family:Arial,sans-serif;background:#f5f7fa;color:#172033;margin:0;padding:32px}
+    main{max-width:900px;margin:auto}.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    section{background:#fff;border:2px solid #b9c2cf;border-radius:12px;padding:24px}
+    label{display:block;margin:16px 0 6px;font-weight:700}input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #9099a6;border-radius:8px}
+    button{margin-top:18px;padding:11px 18px;border:0;border-radius:8px;background:#e5e9ef;font-weight:700}
+    table{width:100%;border-collapse:collapse;margin-top:16px}th,td{border:1px solid #aab2bd;padding:10px;text-align:left}
+    .note{color:#667085;font-size:14px}@media(max-width:720px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>TransUrban — Wireframe da tabela cidade</h1>
+  <p class="note">Mockup acadêmico do Módulo 6. Cadastro representa POST; consulta representa GET.</p>
+  <div class="grid">
+    <section>
+      <h2>Cadastro de cidade</h2>
+      <label for="id">ID da cidade</label>
+      <input id="id" value="99" disabled>
+      <label for="nome">Nome</label>
+      <input id="nome" value="Cidade Teste Módulo 6" disabled>
+      <button type="button">Cadastrar</button>
+    </section>
+    <section>
+      <h2>Cidades cadastradas</h2>
+      <table>
+        <thead><tr><th>ID</th><th>Nome</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Maringá</td></tr>
+          <tr><td>2</td><td>Sarandi</td></tr>
+          <tr><td>99</td><td>Cidade Teste Módulo 6</td></tr>
+        </tbody>
+      </table>
+      <button type="button">Atualizar</button>
+    </section>
+  </div>
+</main>
+</body>
+</html>
