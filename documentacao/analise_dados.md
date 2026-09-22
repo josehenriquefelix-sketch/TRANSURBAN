@@ -74,7 +74,7 @@ As classes foram criadas para transformar os minutos em categorias fáceis de in
 
 ## Visualização
 
-A visualização principal do Módulo 6 compara o atraso médio por condição de trânsito. O gráfico é gerado pelo código em `backend/analise.py` e salvo em `ia/resultados/modulo6_atraso_medio_transito.png`.
+A visualização principal do Módulo 6 compara o atraso médio por condição de trânsito. O gráfico é gerado pelo código em `backend/analise.py` e salvo em `ia/resultados/grafico_02_transito.png`.
 
 ## Caminho do dado
 
