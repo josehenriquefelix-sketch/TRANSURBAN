@@ -1,11 +1,13 @@
 from contextlib import contextmanager
+from pathlib import Path
 import os
 
 from dotenv import load_dotenv
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
-load_dotenv()
+ENV_PATH = Path(__file__).resolve().parents[1] / ".env"
+load_dotenv(ENV_PATH)
 
 
 def database_configurada():
