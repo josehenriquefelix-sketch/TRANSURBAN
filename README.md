@@ -11,6 +11,20 @@ Nesta etapa, Desenvolvimento de Sistemas e Inteligência Artificial avançam de 
 
 > Os dados utilizados são sintéticos e acadêmicos. O projeto não possui rastreamento em tempo real nesta etapa.
 
+
+## Equipe
+
+| Estudante | Nº | Série/Turma | Curso | Função principal |
+|---|---:|---|---|---|
+| Bruno Miguel | 07 | 1º Ano B | DS | Programador Frontend |
+| Kauan Celso | 36 | 1º Ano B | DS | Programador de Banco de Dados |
+| José Henrique | 20 | 1º Ano B | DS | Programador Backend |
+| Ana Clara | 03 | 1º Ano B | DS | Documentadora |
+| Ana Carolina | 02 | 1º Ano A | DS | Programadora Frontend |
+| Jullyany | 20 | 1º Ano A | IA | Engenheira de Dados |
+| Camila | 07 | 1º Ano A | IA | Especialista em IA |
+
+
 ---
 
 ## 1. Desenvolvimento de Sistemas
@@ -250,13 +264,38 @@ TRANSURBAN/
 
 ---
 
-## 6. Observação sobre o protótipo anterior
+## 6. Chatbot web de IA
 
-O protótipo Flask/Ollama desenvolvido anteriormente foi preservado em:
+A entrega possui duas partes separadas e complementares:
 
-`backend/legacy_flask/`
+- **DS:** FastAPI + SQLAlchemy + Psycopg + PostgreSQL/Supabase, com as primeiras rotas GET/POST da tabela `cidade`;
+- **IA:** interface web + Flask + Ollama + CSV, usada para disponibilizar o agente local como chatbot acessível pelo navegador e com contexto controlado.
 
-Ele não é a implementação principal do Módulo 6 de DS. A implementação atual segue o padrão **FastAPI + Uvicorn + SQLAlchemy + Psycopg** solicitado para esta etapa.
+Arquivos principais do chatbot:
+
+- `backend/legacy_flask/app.py`
+- `backend/legacy_flask/database.py`
+- `backend/legacy_flask/requirements.txt`
+- `frontend/index.html`
+- `frontend/script.js`
+- `frontend/style.css`
+- `data/atrasos_analise.csv`
+
+A rota `POST /api/chat` recebe a pergunta do usuário. O backend consulta a massa acadêmica, responde diretamente perguntas factuais conhecidas e, quando necessário, envia ao Ollama apenas um contexto resumido dos dados. O prompt orienta o modelo a não inventar informações e a informar que os dados são acadêmicos.
+
+Para executar o chatbot no Windows PowerShell:
+
+```powershell
+python -m pip install -r backend/legacy_flask/requirements.txt
+ollama run llama3.2
+python backend/legacy_flask/app.py
+```
+
+Depois, abra `http://127.0.0.1:5000`.
+
+A implementação FastAPI continua sendo a evidência principal de **DS**. O Flask/Ollama é a evidência complementar da interface de **IA** e não substitui as rotas do Módulo 6 de DS.
+
+Documentação detalhada: `documentacao/modulo6_ia_chatbot.md`.
 
 ---
 
