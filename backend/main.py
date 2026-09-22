@@ -87,7 +87,7 @@ def demonstrar_analise():
         "Atraso médio por condição de trânsito",
         "Condição de trânsito",
         "Minutos de atraso",
-        "modulo6_atraso_medio_transito.png",
+        "grafico_02_transito.png",
     )
     print("\nGráfico salvo em:", caminho)
 
