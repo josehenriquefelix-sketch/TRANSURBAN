@@ -8,9 +8,9 @@ from ollama import chat
 
 from database import consultar_todos, consultar_um, database_configurada, executar_retorno
 
-BASE = Path(__file__).resolve().parents[1]
-FRONTEND = BASE / "frontend"
-DATA = BASE / "data" / "atrasos_analise.csv"
+ROOT = Path(__file__).resolve().parents[2]
+FRONTEND = ROOT / "frontend"
+DATA = ROOT / "data" / "atrasos_analise.csv"
 MODEL = "llama3.2"
 
 app = Flask(__name__, static_folder=str(FRONTEND), static_url_path="")
