@@ -1,0 +1,58 @@
+[
+  {
+    "data_registro": "2026-08-11",
+    "cidade": "Maringá",
+    "codigo_linha": "007",
+    "nome_linha": "Interbairros Zona Norte",
+    "trecho": "Maringá - Sarandi",
+    "minutos_atraso": 12.0
+  },
+  {
+    "data_registro": "2026-08-04",
+    "cidade": "Maringá",
+    "codigo_linha": "024",
+    "nome_linha": "Parque Itaipu",
+    "trecho": "Av. Tuiuti - Centro",
+    "minutos_atraso": 12.0
+  },
+  {
+    "data_registro": "2026-08-20",
+    "cidade": "Maringá",
+    "codigo_linha": "007",
+    "nome_linha": "Interbairros Zona Norte",
+    "trecho": "Maringá - Sarandi",
+    "minutos_atraso": 12.0
+  },
+  {
+    "data_registro": "2026-08-14",
+    "cidade": "Maringá",
+    "codigo_linha": "034",
+    "nome_linha": "Jardim São Silvestre",
+    "trecho": "Av. Tuiuti - Centro",
+    "minutos_atraso": 12.0
+  },
+  {
+    "data_registro": "2026-08-26",
+    "cidade": "Maringá",
+    "codigo_linha": "051",
+    "nome_linha": "Parque das Grevíleas",
+    "trecho": "Av. Tuiuti - Centro",
+    "minutos_atraso": 12.0
+  },
+  {
+    "data_registro": "2026-08-04",
+    "cidade": "Maringá",
+    "codigo_linha": "051",
+    "nome_linha": "Parque das Grevíleas",
+    "trecho": "Zona Norte - Terminal",
+    "minutos_atraso": 12.0
+  },
+  {
+    "data_registro": "2026-08-16",
+    "cidade": "Maringá",
+    "codigo_linha": "007",
+    "nome_linha": "Interbairros Zona Norte",
+    "trecho": "Maringá - Sarandi",
+    "minutos_atraso": 12.0
+  }
+]

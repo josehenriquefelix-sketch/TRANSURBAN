@@ -1,0 +1,18 @@
+[
+  {
+    "cidade": "Maringá",
+    "observacoes": 120,
+    "atraso_total_min": 927.0,
+    "atraso_medio_min": 7.725,
+    "atraso_mediano_min": 8.0,
+    "maior_atraso_min": 12.0
+  },
+  {
+    "cidade": "Sarandi",
+    "observacoes": 60,
+    "atraso_total_min": 435.0,
+    "atraso_medio_min": 7.25,
+    "atraso_mediano_min": 8.0,
+    "maior_atraso_min": 11.0
+  }
+]

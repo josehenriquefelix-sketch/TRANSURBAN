@@ -1,0 +1,18 @@
+[
+  {
+    "clima": "Chuva",
+    "observacoes": 45,
+    "atraso_total_min": 320.0,
+    "atraso_medio_min": 7.1111,
+    "atraso_mediano_min": 7.0,
+    "maior_atraso_min": 9.0
+  },
+  {
+    "clima": "Sem chuva",
+    "observacoes": 135,
+    "atraso_total_min": 1042.0,
+    "atraso_medio_min": 7.7185,
+    "atraso_mediano_min": 8.0,
+    "maior_atraso_min": 12.0
+  }
+]

@@ -1,0 +1,172 @@
+[
+  {
+    "cidade": "Maringá",
+    "codigo_linha": "007",
+    "observacoes": 12,
+    "atraso_total_min": 91.0,
+    "atraso_medio_min": 7.5833,
+    "atraso_mediano_min": 7.0,
+    "maior_atraso_min": 12.0,
+    "nome_linha": "Interbairros Zona Norte"
+  },
+  {
+    "cidade": "Maringá",
+    "codigo_linha": "010",
+    "observacoes": 12,
+    "atraso_total_min": 97.0,
+    "atraso_medio_min": 8.0833,
+    "atraso_mediano_min": 8.5,
+    "maior_atraso_min": 11.0,
+    "nome_linha": "Universidade"
+  },
+  {
+    "cidade": "Maringá",
+    "codigo_linha": "021",
+    "observacoes": 12,
+    "atraso_total_min": 78.0,
+    "atraso_medio_min": 6.5,
+    "atraso_mediano_min": 7.0,
+    "maior_atraso_min": 10.0,
+    "nome_linha": "Av. Tuiuti"
+  },
+  {
+    "cidade": "Maringá",
+    "codigo_linha": "023",
+    "observacoes": 12,
+    "atraso_total_min": 89.0,
+    "atraso_medio_min": 7.4167,
+    "atraso_mediano_min": 8.0,
+    "maior_atraso_min": 10.0,
+    "nome_linha": "Jardim Olímpico"
+  },
+  {
+    "cidade": "Maringá",
+    "codigo_linha": "024",
+    "observacoes": 12,
+    "atraso_total_min": 78.0,
+    "atraso_medio_min": 6.5,
+    "atraso_mediano_min": 6.5,
+    "maior_atraso_min": 12.0,
+    "nome_linha": "Parque Itaipu"
+  },
+  {
+    "cidade": "Maringá",
+    "codigo_linha": "031",
+    "observacoes": 12,
+    "atraso_total_min": 108.0,
+    "atraso_medio_min": 9.0,
+    "atraso_mediano_min": 9.0,
+    "maior_atraso_min": 11.0,
+    "nome_linha": "Conjunto Requião"
+  },
+  {
+    "cidade": "Maringá",
+    "codigo_linha": "034",
+    "observacoes": 12,
+    "atraso_total_min": 93.0,
+    "atraso_medio_min": 7.75,
+    "atraso_mediano_min": 7.0,
+    "maior_atraso_min": 12.0,
+    "nome_linha": "Jardim São Silvestre"
+  },
+  {
+    "cidade": "Maringá",
+    "codigo_linha": "041",
+    "observacoes": 12,
+    "atraso_total_min": 98.0,
+    "atraso_medio_min": 8.1667,
+    "atraso_mediano_min": 8.0,
+    "maior_atraso_min": 11.0,
+    "nome_linha": "Jardim Alvorada II"
+  },
+  {
+    "cidade": "Maringá",
+    "codigo_linha": "051",
+    "observacoes": 12,
+    "atraso_total_min": 87.0,
+    "atraso_medio_min": 7.25,
+    "atraso_mediano_min": 7.0,
+    "maior_atraso_min": 12.0,
+    "nome_linha": "Parque das Grevíleas"
+  },
+  {
+    "cidade": "Maringá",
+    "codigo_linha": "324",
+    "observacoes": 12,
+    "atraso_total_min": 108.0,
+    "atraso_medio_min": 9.0,
+    "atraso_mediano_min": 9.5,
+    "maior_atraso_min": 11.0,
+    "nome_linha": "UEM / Unicesumar"
+  },
+  {
+    "cidade": "Sarandi",
+    "codigo_linha": "001",
+    "observacoes": 9,
+    "atraso_total_min": 60.0,
+    "atraso_medio_min": 6.6667,
+    "atraso_mediano_min": 6.0,
+    "maior_atraso_min": 11.0,
+    "nome_linha": "Parque Alvamar / Conjunto Floresta"
+  },
+  {
+    "cidade": "Sarandi",
+    "codigo_linha": "254A",
+    "observacoes": 8,
+    "atraso_total_min": 60.0,
+    "atraso_medio_min": 7.5,
+    "atraso_mediano_min": 8.5,
+    "maior_atraso_min": 10.0,
+    "nome_linha": "Alvamar"
+  },
+  {
+    "cidade": "Sarandi",
+    "codigo_linha": "254C",
+    "observacoes": 9,
+    "atraso_total_min": 61.0,
+    "atraso_medio_min": 6.7778,
+    "atraso_mediano_min": 7.0,
+    "maior_atraso_min": 9.0,
+    "nome_linha": "Jardim Cometa"
+  },
+  {
+    "cidade": "Sarandi",
+    "codigo_linha": "254E",
+    "observacoes": 9,
+    "atraso_total_min": 71.0,
+    "atraso_medio_min": 7.8889,
+    "atraso_mediano_min": 8.0,
+    "maior_atraso_min": 11.0,
+    "nome_linha": "Jardim Esperança"
+  },
+  {
+    "cidade": "Sarandi",
+    "codigo_linha": "254I",
+    "observacoes": 8,
+    "atraso_total_min": 58.0,
+    "atraso_medio_min": 7.25,
+    "atraso_mediano_min": 7.5,
+    "maior_atraso_min": 11.0,
+    "nome_linha": "Jardim Independência"
+  },
+  {
+    "cidade": "Sarandi",
+    "codigo_linha": "254J",
+    "observacoes": 8,
+    "atraso_total_min": 58.0,
+    "atraso_medio_min": 7.25,
+    "atraso_mediano_min": 8.0,
+    "maior_atraso_min": 10.0,
+    "nome_linha": "Conjunto José Richa"
+  },
+  {
+    "cidade": "Sarandi",
+    "codigo_linha": "254L",
+    "observacoes": 9,
+    "atraso_total_min": 67.0,
+    "atraso_medio_min": 7.4444,
+    "atraso_mediano_min": 8.0,
+    "maior_atraso_min": 11.0,
+    "nome_linha": "Jardim Leblon"
+  }
+]

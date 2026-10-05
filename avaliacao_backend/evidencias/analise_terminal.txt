@@ -1,0 +1,35 @@
+Primeiras cinco observações:
+data_registro  cidade codigo_linha                         nome_linha                   trecho    tipo_trecho       periodo condicao_transito     clima  tempo_programado_min  tempo_real_min  minutos_atraso                                                                         observacao
+   2026-08-01 Sarandi          001 Parque Alvamar / Conjunto Floresta        Maringá - Sarandi Intermunicipal Pico da manhã              Leve Sem chuva                  29.0            34.0             5.0 Massa de teste sintética para validação acadêmica; não representa telemetria real.
+   2026-08-02 Maringá          010                       Universidade      Av. Tuiuti - Centro         Urbano   Entre picos     Muito intenso Sem chuva                  35.0            45.0            10.0 Massa de teste sintética para validação acadêmica; não representa telemetria real.
+   2026-08-03 Maringá          021                         Av. Tuiuti    Zona Norte - Terminal         Urbano Pico da tarde           Intenso Sem chuva                  40.0            49.0             9.0 Massa de teste sintética para validação acadêmica; não representa telemetria real.
+   2026-08-04 Sarandi         254E                   Jardim Esperança Centro - Jardim Panorama         Urbano         Noite          Moderado     Chuva                  35.0            43.0             8.0 Massa de teste sintética para validação acadêmica; não representa telemetria real.
+   2026-08-05 Maringá          024                      Parque Itaipu      Av. Tuiuti - Centro         Urbano Pico da manhã              Leve Sem chuva                  30.0            33.0             3.0 Massa de teste sintética para validação acadêmica; não representa telemetria real.
+Resumo:
+{
+  "fonte": "atrasos_analise.csv",
+  "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+  "registros_lidos": 180,
+  "observacoes_validas": 180,
+  "observacoes_excluidas": 0,
+  "viagens_completas": null,
+  "linhas_distintas_cidade_codigo": 17,
+  "cidades_distintas": 2,
+  "atraso_total_min_observacoes": 1362.0,
+  "atraso_medio_min": 7.5667,
+  "atraso_mediano_min": 8.0,
+  "maior_atraso_min": 12.0,
+  "observacoes_acima_10_min": 26,
+  "percentual_acima_10_min": 14.4444,
+  "periodo_inicio": "2026-08-01",
+  "periodo_fim": "2026-08-31",
+  "limitacoes": [
+    "Fonte sintética acadêmica reproduzida no pacote Módulo 6; não é telemetria real.",
+    "Cada linha é uma observação de atraso em um trecho, não uma viagem completa.",
+    "Sem id_viagem não é possível contar viagens completas, passageiros ou ônibus únicos.",
+    "A soma mede minutos por observação; não equivale ao tempo perdido por passageiros.",
+    "Duplicatas exatas são sinalizadas; a API interrompe os indicadores até revisão da fonte.",
+    "A auditoria identifica linhas inválidas; a API interrompe os indicadores até correção da fonte.",
+    "Os agrupamentos descrevem associações, não demonstram causalidade nem fazem previsão de chegada."
+  ]
+}

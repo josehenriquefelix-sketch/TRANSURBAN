@@ -1,0 +1,27 @@
+# Versões utilizadas no ensaio Linux/Python 3.12; requirements.txt mantém as faixas.
+fastapi==0.142.2
+uvicorn==0.54.0
+SQLAlchemy==2.0.54
+psycopg2-binary==2.9.13
+pydantic==2.13.5
+python-dotenv==1.2.4
+pandas==2.2.3
+numpy==2.3.5
+httpx==0.28.1
+starlette==1.7.0
+anyio==4.15.1
+h11==0.16.0
+httpcore==1.0.9
+greenlet==3.5.6
+click==8.5.0
+certifi==2026.7.22
+typing-extensions==4.16.0
+typing-inspection==0.4.4
+pydantic_core==2.46.5
+annotated-types==0.8.0
+annotated-doc==0.0.5
+opentelemetry-api==1.45.0
+python-dateutil==2.9.0.post0
+pytz==2026.3.post1
+tzdata==2026.4
+six==1.17.0

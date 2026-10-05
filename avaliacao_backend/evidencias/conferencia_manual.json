@@ -1,0 +1,64 @@
+{
+  "registro_1": {
+    "fonte": {
+      "data_registro": "2026-08-01",
+      "cidade": "Sarandi",
+      "codigo_linha": "001",
+      "nome_linha": "Parque Alvamar / Conjunto Floresta",
+      "trecho": "Maringá - Sarandi",
+      "tipo_trecho": "Intermunicipal",
+      "periodo": "Pico da manhã",
+      "condicao_transito": "Leve",
+      "clima": "Sem chuva",
+      "tempo_programado_min": "29",
+      "tempo_real_min": "34",
+      "minutos_atraso": "5",
+      "observacao": "Massa de teste sintética para validação acadêmica; não representa telemetria real."
+    },
+    "formula": "max(34 - 29, 0) = 5 min",
+    "resultado_min": 5
+  },
+  "grupo_completo": {
+    "cidade": "Maringá",
+    "codigo": "031",
+    "linhas_csv": [
+      7,
+      27,
+      37,
+      57,
+      67,
+      87,
+      97,
+      117,
+      127,
+      147,
+      157,
+      177
+    ],
+    "atrasos_min": [
+      9.0,
+      10.0,
+      7.0,
+      7.0,
+      11.0,
+      9.0,
+      8.0,
+      9.0,
+      11.0,
+      11.0,
+      8.0,
+      8.0
+    ],
+    "observacoes": 12,
+    "soma_min": 108.0,
+    "media_min": 9.0,
+    "mediana_min": 9.0
+  },
+  "mediana_global": {
+    "quantidade": 180,
+    "posicao_90": 8.0,
+    "posicao_91": 8.0,
+    "mediana": 8.0
+  },
+  "reconciliacao": "Todas as sete dimensões totalizam 180 observações e 1362 min; testes automatizados comprovam."
+}

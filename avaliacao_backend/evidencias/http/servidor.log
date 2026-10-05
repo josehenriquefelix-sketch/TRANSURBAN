@@ -1,0 +1,16 @@
+INFO:     Started server process [115]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:33409 (Press CTRL+C to quit)
+INFO:     127.0.0.1:58892 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58892 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58892 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58892 - "POST /cidades HTTP/1.1" 201 Created
+INFO:     127.0.0.1:58892 - "GET /cidades HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58892 - "POST /linhas HTTP/1.1" 201 Created
+INFO:     127.0.0.1:58892 - "GET /linhas HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58892 - "POST /linhas HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58892 - "POST /cidades HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:58892 - "POST /cidades HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:58892 - "GET /ia/resumo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58892 - "GET /ia/qualidade HTTP/1.1" 200 OK

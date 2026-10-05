@@ -1,0 +1,31 @@
+{
+  "data": "2026-10-05",
+  "python": "3.12.14",
+  "plataforma": "Linux",
+  "dependencias": {
+    "fastapi": "0.142.2",
+    "uvicorn": "0.54.0",
+    "SQLAlchemy": "2.0.54",
+    "psycopg2-binary": "2.9.13",
+    "pydantic": "2.13.5",
+    "python-dotenv": "1.2.4",
+    "pandas": "2.2.3",
+    "numpy": "2.3.5",
+    "httpx": "0.28.1",
+    "starlette": "1.7.0"
+  },
+  "testes": {
+    "executados": 18,
+    "aprovados": 18
+  },
+  "http": {
+    "executados": 20,
+    "aprovados": 20,
+    "servidor": "Uvicorn",
+    "banco": "SQLite temporário"
+  },
+  "csv_identico_ao_github": true,
+  "supabase": "Conexão e persistência remotas não verificadas; dependem de DATABASE_URL privada do projeto",
+  "fonte_csv": "Sintética acadêmica; não telemetria real",
+  "github": "Consultar versionamento/PUBLICACAO.json"
+}

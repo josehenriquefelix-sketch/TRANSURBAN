@@ -1,0 +1,42 @@
+# Copiar para .github/workflows/avaliacao-backend.yml na raiz do clone.
+# Pressupõe este pacote em avaliacao_backend/ dentro do repositório.
+name: TRANSURBAN avaliacao backend
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: transurban
+          POSTGRES_PASSWORD: transurban_ci_descartavel
+          POSTGRES_DB: transurban_ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    defaults:
+      run:
+        working-directory: avaliacao_backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/capturar_http.py
+      - run: python scripts/verificar_postgres_ci.py
+        env:
+          DATABASE_URL: postgresql+psycopg2://transurban:transurban_ci_descartavel@127.0.0.1:5432/transurban_ci
+          PGSSLMODE: disable
+      - uses: actions/upload-artifact@v4
+        with:
+          name: evidencias-backend
+          path: avaliacao_backend/evidencias

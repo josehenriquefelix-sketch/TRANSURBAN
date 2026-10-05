@@ -1,0 +1,14 @@
+test_calculos_conferidos_sem_pandas (test_analise.TestAnalise.test_calculos_conferidos_sem_pandas) ... ok
+test_campos_invalidos_excluidos_sem_imputacao (test_analise.TestAnalise.test_campos_invalidos_excluidos_sem_imputacao) ... ok
+test_codigo_preserva_zeros (test_analise.TestAnalise.test_codigo_preserva_zeros) ... ok
+test_coluna_ausente (test_analise.TestAnalise.test_coluna_ausente) ... ok
+test_csv_vazio_com_cabecalho (test_analise.TestAnalise.test_csv_vazio_com_cabecalho) ... ok
+test_duplicatas_sinalizadas_mantidas (test_analise.TestAnalise.test_duplicatas_sinalizadas_mantidas) ... ok
+test_grupos_reconciliam_contagem_e_soma (test_analise.TestAnalise.test_grupos_reconciliam_contagem_e_soma) ... ok
+test_inf_nan_e_tempo_inconsistente (test_analise.TestAnalise.test_inf_nan_e_tempo_inconsistente) ... ok
+test_todos_os_empates (test_analise.TestAnalise.test_todos_os_empates) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.445s
+
+OK

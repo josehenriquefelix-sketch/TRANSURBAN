@@ -1,0 +1,437 @@
+{
+  "info": {
+    "name": "TRANSURBAN — Avaliação Backend DS + IA",
+    "description": "Execute em banco de testes. Cadastros criam dados. Resultados não foram executados no Postman nesta sessão. Execute sequencialmente para capturar id_cidade.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "id_cidade",
+      "value": ""
+    },
+    {
+      "key": "nome_cidade",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "01 — Saúde do banco",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "02 — Cadastrar cidade de teste",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/cidades",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nome\":\"Avaliacao {{$timestamp}}\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+              "if (pm.response.code === 201) { const d=pm.response.json(); pm.collectionVariables.set(\"id_cidade\",d.id_cidade); pm.collectionVariables.set(\"nome_cidade\",d.nome); }"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "03 — Consultar cidades",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/cidades"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "04 — Cadastrar linha relacionada",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/linhas",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"id_cidade\":{{id_cidade}},\"codigo\":\"AV001\",\"nome\":\"Linha de teste academica\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 201\", function () { pm.response.to.have.status(201); });",
+              "pm.test(\"Cidade compreensível\", function () { pm.expect(pm.response.json().cidade).to.eql(pm.collectionVariables.get(\"nome_cidade\")); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "05 — Consultar linhas da cidade",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/linhas?id_cidade={{id_cidade}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "06 — Erro FK inexistente (confirmar ID no banco)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/linhas",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"id_cidade\":2147483647,\"codigo\":\"X\",\"nome\":\"Teste FK\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 404\", function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "07 — Duplicidade de linha",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/linhas",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"id_cidade\":{{id_cidade}},\"codigo\":\"AV001\",\"nome\":\"Linha duplicada\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 409\", function () { pm.response.to.have.status(409); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "08 — Nome vazio",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/cidades",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"nome\":\" \"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 422\", function () { pm.response.to.have.status(422); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "IA — /ia/resumo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/ia/resumo"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "IA — /ia/qualidade",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/ia/qualidade"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "IA — /ia/maiores-atrasos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/ia/maiores-atrasos"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "IA — /ia/agrupamentos/linha",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/ia/agrupamentos/linha"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "IA — /ia/agrupamentos/cidade",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/ia/agrupamentos/cidade"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "IA — /ia/agrupamentos/data",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/ia/agrupamentos/data"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "IA — /ia/agrupamentos/periodo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/ia/agrupamentos/periodo"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "IA — /ia/agrupamentos/transito",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/ia/agrupamentos/transito"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "IA — /ia/agrupamentos/clima",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/ia/agrupamentos/clima"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "IA — /ia/agrupamentos/trecho",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{base_url}}/ia/agrupamentos/trecho"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"HTTP 200\", function () { pm.response.to.have.status(200); });"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
