@@ -1,0 +1,15 @@
+{
+  "repositorio": "josehenriquefelix-sketch/TRANSURBAN",
+  "branch": "main",
+  "commit": "c9c4200863c9cf0a0f3a9260ee7b9a88ce4964f7",
+  "pasta": "avaliacao_backend",
+  "url": "https://github.com/josehenriquefelix-sketch/TRANSURBAN/tree/main/avaliacao_backend",
+  "publicado": true,
+  "ci": {
+    "run_id": 37364507897,
+    "status": "queued",
+    "url": "https://github.com/josehenriquefelix-sketch/TRANSURBAN/actions/runs/37364507897",
+    "aprovacao_confirmada": false
+  },
+  "supabase": "Conexão remota não verificada."
+}

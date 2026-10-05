@@ -27,5 +27,11 @@
   "csv_identico_ao_github": true,
   "supabase": "Conexão e persistência remotas não verificadas; dependem de DATABASE_URL privada do projeto",
   "fonte_csv": "Sintética acadêmica; não telemetria real",
-  "github": "Consultar versionamento/PUBLICACAO.json"
+  "github": {
+    "publicado": true,
+    "commit": "c9c4200863c9cf0a0f3a9260ee7b9a88ce4964f7",
+    "pasta": "avaliacao_backend",
+    "ci": "queued; aprovação não confirmada"
+  },
+  "capturas_swagger": "Pendentes; navegador de teste não disponível neste ambiente"
 }
