@@ -7,9 +7,10 @@
   "publicado": true,
   "ci": {
     "run_id": 37364507897,
-    "status": "queued",
+    "status": "completed",
     "url": "https://github.com/josehenriquefelix-sketch/TRANSURBAN/actions/runs/37364507897",
-    "aprovacao_confirmada": false
+    "aprovacao_confirmada": true,
+    "conclusion": "success"
   },
   "supabase": "Conexão remota não verificada."
 }

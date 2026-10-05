@@ -1,0 +1,16 @@
+{
+  "commit_testado": "c9c4200863c9cf0a0f3a9260ee7b9a88ce4964f7",
+  "run_id": 37364507897,
+  "job_id": 111946372352,
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/josehenriquefelix-sketch/TRANSURBAN/actions/runs/37364507897",
+  "etapas_aprovadas": [
+    "Instalação de dependências",
+    "18 testes automatizados",
+    "20 requisições HTTP reais",
+    "Teste PostgreSQL com cadastro, relacionamento e consulta SQL independente",
+    "Upload das evidências"
+  ],
+  "limite": "PostgreSQL descartável do CI; acesso ao projeto Supabase svgtransurban ainda pendente de login."
+}

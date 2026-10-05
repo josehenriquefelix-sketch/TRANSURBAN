@@ -31,7 +31,13 @@
     "publicado": true,
     "commit": "c9c4200863c9cf0a0f3a9260ee7b9a88ce4964f7",
     "pasta": "avaliacao_backend",
-    "ci": "queued; aprovação não confirmada"
+    "ci": "completed/success: testes, HTTP e PostgreSQL aprovados"
   },
-  "capturas_swagger": "Pendentes; navegador de teste não disponível neste ambiente"
+  "capturas_swagger": "Pendentes; navegador de teste não disponível neste ambiente",
+  "postgresql_ci": {
+    "verificado": true,
+    "banco": "PostgreSQL 16 descartável no GitHub Actions; não Supabase",
+    "job_id": 111946372352,
+    "run_id": 37364507897
+  }
 }
