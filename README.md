@@ -19,7 +19,6 @@ Nesta etapa, Desenvolvimento de Sistemas e Inteligência Artificial avançam de 
 | Bruno Miguel | 07 | 1º Ano B | DS | Programador Frontend |
 | Kauan Celso | 36 | 1º Ano B | DS | Programador de Banco de Dados |
 | José Henrique | 20 | 1º Ano B | DS | Programador Backend |
-| Ana Clara | 03 | 1º Ano B | DS | Documentadora |
 | Ana Carolina | 02 | 1º Ano A | DS | Programadora Frontend |
 | Jullyany | 20 | 1º Ano A | IA | Engenheira de Dados |
 | Camila | 07 | 1º Ano A | IA | Especialista em IA |
