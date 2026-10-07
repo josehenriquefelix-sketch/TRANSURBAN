@@ -1,10 +1,12 @@
 """Executar na raiz: python -m uvicorn backend.main:app --reload."""
 import os
+from pathlib import Path
 from contextlib import asynccontextmanager
 from typing import Annotated, Literal
 
 from fastapi import Depends, FastAPI, HTTPException, Query
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy import select, text
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session, joinedload
@@ -119,3 +121,5 @@ def maiores_atrasos():
     d, q = fonte()
     return {'fonte': q['arquivo'], 'sha256': q['sha256'], 'empates_incluidos': True,
             'resultados': analise.maiores(d)}
+
+app.mount('/painel', StaticFiles(directory=Path(__file__).resolve().parents[1] / 'frontend', html=True), name='painel')
