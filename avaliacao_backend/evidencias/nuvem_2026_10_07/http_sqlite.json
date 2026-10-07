@@ -1,0 +1,1002 @@
+{
+  "executado_em_utc": "2026-10-07T13:07:19.926873+00:00",
+  "banco": "SQLite temporário; não Supabase",
+  "resultados": [
+    {
+      "metodo": "GET",
+      "rota": "/docs",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "tipo": "text/html; charset=utf-8",
+        "bytes": 1041
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/health",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "status": "ok",
+        "banco": "sqlite_local"
+      }
+    },
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "entrada": {
+        "nome": "Maringá"
+      },
+      "status": 201,
+      "esperado": 201,
+      "resposta": {
+        "id_cidade": 1,
+        "nome": "Maringá"
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": [
+        {
+          "id_cidade": 1,
+          "nome": "Maringá"
+        }
+      ]
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "entrada": {
+        "id_cidade": 1,
+        "codigo": "001",
+        "nome": "Linha acadêmica"
+      },
+      "status": 201,
+      "esperado": 201,
+      "resposta": {
+        "id_linha": 1,
+        "id_cidade": 1,
+        "codigo": "001",
+        "nome": "Linha acadêmica",
+        "cidade": "Maringá"
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": [
+        {
+          "id_linha": 1,
+          "id_cidade": 1,
+          "codigo": "001",
+          "nome": "Linha acadêmica",
+          "cidade": "Maringá"
+        }
+      ]
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "entrada": {
+        "id_cidade": 999999,
+        "codigo": "X",
+        "nome": "Teste"
+      },
+      "status": 404,
+      "esperado": 404,
+      "resposta": {
+        "detail": "Cidade não encontrada."
+      }
+    },
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "entrada": {
+        "nome": "Maringá"
+      },
+      "status": 409,
+      "esperado": 409,
+      "resposta": {
+        "detail": "Registro duplicado ou conflito de integridade."
+      }
+    },
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "entrada": {
+        "nome": " "
+      },
+      "status": 422,
+      "esperado": 422,
+      "resposta": {
+        "detail": [
+          {
+            "type": "string_too_short",
+            "loc": [
+              "body",
+              "nome"
+            ],
+            "msg": "String should have at least 2 characters",
+            "input": " ",
+            "ctx": {
+              "min_length": 2
+            }
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/resumo",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "fonte": "atrasos_analise.csv",
+        "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+        "registros_lidos": 180,
+        "observacoes_validas": 180,
+        "observacoes_excluidas": 0,
+        "viagens_completas": null,
+        "linhas_distintas_cidade_codigo": 17,
+        "cidades_distintas": 2,
+        "atraso_total_min_observacoes": 1362.0,
+        "atraso_medio_min": 7.5667,
+        "atraso_mediano_min": 8.0,
+        "maior_atraso_min": 12.0,
+        "observacoes_acima_10_min": 26,
+        "percentual_acima_10_min": 14.4444,
+        "periodo_inicio": "2026-08-01",
+        "periodo_fim": "2026-08-31",
+        "limitacoes": [
+          "Fonte sintética acadêmica reproduzida no pacote Módulo 6; não é telemetria real.",
+          "Cada linha é uma observação de atraso em um trecho, não uma viagem completa.",
+          "Sem id_viagem não é possível contar viagens completas, passageiros ou ônibus únicos.",
+          "A soma mede minutos por observação; não equivale ao tempo perdido por passageiros.",
+          "Duplicatas exatas são sinalizadas; a API interrompe os indicadores até revisão da fonte.",
+          "A auditoria identifica linhas inválidas; a API interrompe os indicadores até correção da fonte.",
+          "Os agrupamentos descrevem associações, não demonstram causalidade nem fazem previsão de chegada."
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/qualidade",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "arquivo": "atrasos_analise.csv",
+        "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+        "origem": "massa sintética acadêmica; conferir data/ORIGEM_DADOS.txt",
+        "registros_lidos": 180,
+        "registros_validos": 180,
+        "registros_excluidos": 0,
+        "linhas_csv_excluidas": [],
+        "ausentes_por_coluna": {
+          "data_registro": 0,
+          "cidade": 0,
+          "codigo_linha": 0,
+          "nome_linha": 0,
+          "trecho": 0,
+          "tipo_trecho": 0,
+          "periodo": 0,
+          "condicao_transito": 0,
+          "clima": 0,
+          "tempo_programado_min": 0,
+          "tempo_real_min": 0,
+          "minutos_atraso": 0,
+          "observacao": 0
+        },
+        "motivos_exclusao": {
+          "ausente_cidade": 0,
+          "ausente_codigo_linha": 0,
+          "ausente_nome_linha": 0,
+          "ausente_trecho": 0,
+          "ausente_tipo_trecho": 0,
+          "ausente_periodo": 0,
+          "ausente_condicao_transito": 0,
+          "ausente_clima": 0,
+          "data_invalida": 0,
+          "numero_invalido_tempo_programado_min": 0,
+          "numero_invalido_tempo_real_min": 0,
+          "numero_invalido_minutos_atraso": 0,
+          "tempo_programado_nao_positivo": 0,
+          "tempo_real_negativo": 0,
+          "atraso_negativo": 0,
+          "atraso_incompativel_com_tempos": 0
+        },
+        "duplicatas_exatas_adicionais": 0,
+        "politica_duplicatas": "mantidas e sinalizadas",
+        "codigos_com_nomes_divergentes": 0,
+        "colunas_extras_ignoradas": [],
+        "tipos_originais": {
+          "data_registro": "string",
+          "cidade": "string",
+          "codigo_linha": "string",
+          "nome_linha": "string",
+          "trecho": "string",
+          "tipo_trecho": "string",
+          "periodo": "string",
+          "condicao_transito": "string",
+          "clima": "string",
+          "tempo_programado_min": "string",
+          "tempo_real_min": "string",
+          "minutos_atraso": "string",
+          "observacao": "string"
+        },
+        "tipos_analise": {
+          "data_registro": "object",
+          "cidade": "string",
+          "codigo_linha": "string",
+          "nome_linha": "string",
+          "trecho": "string",
+          "tipo_trecho": "string",
+          "periodo": "string",
+          "condicao_transito": "string",
+          "clima": "string",
+          "tempo_programado_min": "float64",
+          "tempo_real_min": "float64",
+          "minutos_atraso": "float64",
+          "observacao": "string"
+        },
+        "observacao_qualidade": "Motivos podem se sobrepor; não somar para obter registros excluídos."
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/maiores-atrasos",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "fonte": "atrasos_analise.csv",
+        "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+        "empates_incluidos": true,
+        "resultados": [
+          {
+            "data_registro": "2026-08-11",
+            "cidade": "Maringá",
+            "codigo_linha": "007",
+            "nome_linha": "Interbairros Zona Norte",
+            "trecho": "Maringá - Sarandi",
+            "minutos_atraso": 12.0
+          },
+          {
+            "data_registro": "2026-08-04",
+            "cidade": "Maringá",
+            "codigo_linha": "024",
+            "nome_linha": "Parque Itaipu",
+            "trecho": "Av. Tuiuti - Centro",
+            "minutos_atraso": 12.0
+          },
+          {
+            "data_registro": "2026-08-20",
+            "cidade": "Maringá",
+            "codigo_linha": "007",
+            "nome_linha": "Interbairros Zona Norte",
+            "trecho": "Maringá - Sarandi",
+            "minutos_atraso": 12.0
+          },
+          {
+            "data_registro": "2026-08-14",
+            "cidade": "Maringá",
+            "codigo_linha": "034",
+            "nome_linha": "Jardim São Silvestre",
+            "trecho": "Av. Tuiuti - Centro",
+            "minutos_atraso": 12.0
+          },
+          {
+            "data_registro": "2026-08-26",
+            "cidade": "Maringá",
+            "codigo_linha": "051",
+            "nome_linha": "Parque das Grevíleas",
+            "trecho": "Av. Tuiuti - Centro",
+            "minutos_atraso": 12.0
+          },
+          {
+            "data_registro": "2026-08-04",
+            "cidade": "Maringá",
+            "codigo_linha": "051",
+            "nome_linha": "Parque das Grevíleas",
+            "trecho": "Zona Norte - Terminal",
+            "minutos_atraso": 12.0
+          },
+          {
+            "data_registro": "2026-08-16",
+            "cidade": "Maringá",
+            "codigo_linha": "007",
+            "nome_linha": "Interbairros Zona Norte",
+            "trecho": "Maringá - Sarandi",
+            "minutos_atraso": 12.0
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/agrupamentos/linha",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "dimensao": "linha",
+        "fonte": "atrasos_analise.csv",
+        "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+        "observacoes_validas": 180,
+        "resultados": [
+          {
+            "cidade": "Maringá",
+            "codigo_linha": "007",
+            "observacoes": 12,
+            "atraso_total_min": 91.0,
+            "atraso_medio_min": 7.5833,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 12.0,
+            "nome_linha": "Interbairros Zona Norte"
+          },
+          {
+            "cidade": "Maringá",
+            "codigo_linha": "010",
+            "observacoes": 12,
+            "atraso_total_min": 97.0,
+            "atraso_medio_min": 8.0833,
+            "atraso_mediano_min": 8.5,
+            "maior_atraso_min": 11.0,
+            "nome_linha": "Universidade"
+          },
+          {
+            "cidade": "Maringá",
+            "codigo_linha": "021",
+            "observacoes": 12,
+            "atraso_total_min": 78.0,
+            "atraso_medio_min": 6.5,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 10.0,
+            "nome_linha": "Av. Tuiuti"
+          },
+          {
+            "cidade": "Maringá",
+            "codigo_linha": "023",
+            "observacoes": 12,
+            "atraso_total_min": 89.0,
+            "atraso_medio_min": 7.4167,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 10.0,
+            "nome_linha": "Jardim Olímpico"
+          },
+          {
+            "cidade": "Maringá",
+            "codigo_linha": "024",
+            "observacoes": 12,
+            "atraso_total_min": 78.0,
+            "atraso_medio_min": 6.5,
+            "atraso_mediano_min": 6.5,
+            "maior_atraso_min": 12.0,
+            "nome_linha": "Parque Itaipu"
+          },
+          {
+            "cidade": "Maringá",
+            "codigo_linha": "031",
+            "observacoes": 12,
+            "atraso_total_min": 108.0,
+            "atraso_medio_min": 9.0,
+            "atraso_mediano_min": 9.0,
+            "maior_atraso_min": 11.0,
+            "nome_linha": "Conjunto Requião"
+          },
+          {
+            "cidade": "Maringá",
+            "codigo_linha": "034",
+            "observacoes": 12,
+            "atraso_total_min": 93.0,
+            "atraso_medio_min": 7.75,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 12.0,
+            "nome_linha": "Jardim São Silvestre"
+          },
+          {
+            "cidade": "Maringá",
+            "codigo_linha": "041",
+            "observacoes": 12,
+            "atraso_total_min": 98.0,
+            "atraso_medio_min": 8.1667,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 11.0,
+            "nome_linha": "Jardim Alvorada II"
+          },
+          {
+            "cidade": "Maringá",
+            "codigo_linha": "051",
+            "observacoes": 12,
+            "atraso_total_min": 87.0,
+            "atraso_medio_min": 7.25,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 12.0,
+            "nome_linha": "Parque das Grevíleas"
+          },
+          {
+            "cidade": "Maringá",
+            "codigo_linha": "324",
+            "observacoes": 12,
+            "atraso_total_min": 108.0,
+            "atraso_medio_min": 9.0,
+            "atraso_mediano_min": 9.5,
+            "maior_atraso_min": 11.0,
+            "nome_linha": "UEM / Unicesumar"
+          },
+          {
+            "cidade": "Sarandi",
+            "codigo_linha": "001",
+            "observacoes": 9,
+            "atraso_total_min": 60.0,
+            "atraso_medio_min": 6.6667,
+            "atraso_mediano_min": 6.0,
+            "maior_atraso_min": 11.0,
+            "nome_linha": "Parque Alvamar / Conjunto Floresta"
+          },
+          {
+            "cidade": "Sarandi",
+            "codigo_linha": "254A",
+            "observacoes": 8,
+            "atraso_total_min": 60.0,
+            "atraso_medio_min": 7.5,
+            "atraso_mediano_min": 8.5,
+            "maior_atraso_min": 10.0,
+            "nome_linha": "Alvamar"
+          },
+          {
+            "cidade": "Sarandi",
+            "codigo_linha": "254C",
+            "observacoes": 9,
+            "atraso_total_min": 61.0,
+            "atraso_medio_min": 6.7778,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 9.0,
+            "nome_linha": "Jardim Cometa"
+          },
+          {
+            "cidade": "Sarandi",
+            "codigo_linha": "254E",
+            "observacoes": 9,
+            "atraso_total_min": 71.0,
+            "atraso_medio_min": 7.8889,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 11.0,
+            "nome_linha": "Jardim Esperança"
+          },
+          {
+            "cidade": "Sarandi",
+            "codigo_linha": "254I",
+            "observacoes": 8,
+            "atraso_total_min": 58.0,
+            "atraso_medio_min": 7.25,
+            "atraso_mediano_min": 7.5,
+            "maior_atraso_min": 11.0,
+            "nome_linha": "Jardim Independência"
+          },
+          {
+            "cidade": "Sarandi",
+            "codigo_linha": "254J",
+            "observacoes": 8,
+            "atraso_total_min": 58.0,
+            "atraso_medio_min": 7.25,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 10.0,
+            "nome_linha": "Conjunto José Richa"
+          },
+          {
+            "cidade": "Sarandi",
+            "codigo_linha": "254L",
+            "observacoes": 9,
+            "atraso_total_min": 67.0,
+            "atraso_medio_min": 7.4444,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 11.0,
+            "nome_linha": "Jardim Leblon"
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/agrupamentos/cidade",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "dimensao": "cidade",
+        "fonte": "atrasos_analise.csv",
+        "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+        "observacoes_validas": 180,
+        "resultados": [
+          {
+            "cidade": "Maringá",
+            "observacoes": 120,
+            "atraso_total_min": 927.0,
+            "atraso_medio_min": 7.725,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 12.0
+          },
+          {
+            "cidade": "Sarandi",
+            "observacoes": 60,
+            "atraso_total_min": 435.0,
+            "atraso_medio_min": 7.25,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 11.0
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/agrupamentos/data",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "dimensao": "data",
+        "fonte": "atrasos_analise.csv",
+        "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+        "observacoes_validas": 180,
+        "resultados": [
+          {
+            "data_registro": "2026-08-01",
+            "observacoes": 6,
+            "atraso_total_min": 41.0,
+            "atraso_medio_min": 6.8333,
+            "atraso_mediano_min": 7.5,
+            "maior_atraso_min": 9.0
+          },
+          {
+            "data_registro": "2026-08-02",
+            "observacoes": 6,
+            "atraso_total_min": 43.0,
+            "atraso_medio_min": 7.1667,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-03",
+            "observacoes": 6,
+            "atraso_total_min": 49.0,
+            "atraso_medio_min": 8.1667,
+            "atraso_mediano_min": 8.5,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-04",
+            "observacoes": 6,
+            "atraso_total_min": 57.0,
+            "atraso_medio_min": 9.5,
+            "atraso_mediano_min": 9.5,
+            "maior_atraso_min": 12.0
+          },
+          {
+            "data_registro": "2026-08-05",
+            "observacoes": 6,
+            "atraso_total_min": 37.0,
+            "atraso_medio_min": 6.1667,
+            "atraso_mediano_min": 6.5,
+            "maior_atraso_min": 9.0
+          },
+          {
+            "data_registro": "2026-08-06",
+            "observacoes": 6,
+            "atraso_total_min": 48.0,
+            "atraso_medio_min": 8.0,
+            "atraso_mediano_min": 7.5,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-07",
+            "observacoes": 6,
+            "atraso_total_min": 47.0,
+            "atraso_medio_min": 7.8333,
+            "atraso_mediano_min": 8.5,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-08",
+            "observacoes": 6,
+            "atraso_total_min": 49.0,
+            "atraso_medio_min": 8.1667,
+            "atraso_mediano_min": 8.5,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-09",
+            "observacoes": 6,
+            "atraso_total_min": 35.0,
+            "atraso_medio_min": 5.8333,
+            "atraso_mediano_min": 6.0,
+            "maior_atraso_min": 8.0
+          },
+          {
+            "data_registro": "2026-08-10",
+            "observacoes": 6,
+            "atraso_total_min": 38.0,
+            "atraso_medio_min": 6.3333,
+            "atraso_mediano_min": 7.5,
+            "maior_atraso_min": 9.0
+          },
+          {
+            "data_registro": "2026-08-11",
+            "observacoes": 6,
+            "atraso_total_min": 48.0,
+            "atraso_medio_min": 8.0,
+            "atraso_mediano_min": 7.5,
+            "maior_atraso_min": 12.0
+          },
+          {
+            "data_registro": "2026-08-12",
+            "observacoes": 6,
+            "atraso_total_min": 47.0,
+            "atraso_medio_min": 7.8333,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-13",
+            "observacoes": 6,
+            "atraso_total_min": 40.0,
+            "atraso_medio_min": 6.6667,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 10.0
+          },
+          {
+            "data_registro": "2026-08-14",
+            "observacoes": 6,
+            "atraso_total_min": 40.0,
+            "atraso_medio_min": 6.6667,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 12.0
+          },
+          {
+            "data_registro": "2026-08-15",
+            "observacoes": 6,
+            "atraso_total_min": 51.0,
+            "atraso_medio_min": 8.5,
+            "atraso_mediano_min": 9.5,
+            "maior_atraso_min": 10.0
+          },
+          {
+            "data_registro": "2026-08-16",
+            "observacoes": 6,
+            "atraso_total_min": 53.0,
+            "atraso_medio_min": 8.8333,
+            "atraso_mediano_min": 9.5,
+            "maior_atraso_min": 12.0
+          },
+          {
+            "data_registro": "2026-08-17",
+            "observacoes": 6,
+            "atraso_total_min": 40.0,
+            "atraso_medio_min": 6.6667,
+            "atraso_mediano_min": 6.0,
+            "maior_atraso_min": 10.0
+          },
+          {
+            "data_registro": "2026-08-18",
+            "observacoes": 6,
+            "atraso_total_min": 49.0,
+            "atraso_medio_min": 8.1667,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-19",
+            "observacoes": 6,
+            "atraso_total_min": 48.0,
+            "atraso_medio_min": 8.0,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-20",
+            "observacoes": 6,
+            "atraso_total_min": 48.0,
+            "atraso_medio_min": 8.0,
+            "atraso_mediano_min": 7.5,
+            "maior_atraso_min": 12.0
+          },
+          {
+            "data_registro": "2026-08-21",
+            "observacoes": 6,
+            "atraso_total_min": 40.0,
+            "atraso_medio_min": 6.6667,
+            "atraso_mediano_min": 6.5,
+            "maior_atraso_min": 10.0
+          },
+          {
+            "data_registro": "2026-08-22",
+            "observacoes": 6,
+            "atraso_total_min": 44.0,
+            "atraso_medio_min": 7.3333,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-23",
+            "observacoes": 6,
+            "atraso_total_min": 50.0,
+            "atraso_medio_min": 8.3333,
+            "atraso_mediano_min": 9.0,
+            "maior_atraso_min": 10.0
+          },
+          {
+            "data_registro": "2026-08-24",
+            "observacoes": 6,
+            "atraso_total_min": 48.0,
+            "atraso_medio_min": 8.0,
+            "atraso_mediano_min": 9.0,
+            "maior_atraso_min": 10.0
+          },
+          {
+            "data_registro": "2026-08-25",
+            "observacoes": 6,
+            "atraso_total_min": 42.0,
+            "atraso_medio_min": 7.0,
+            "atraso_mediano_min": 7.5,
+            "maior_atraso_min": 10.0
+          },
+          {
+            "data_registro": "2026-08-26",
+            "observacoes": 5,
+            "atraso_total_min": 46.0,
+            "atraso_medio_min": 9.2,
+            "atraso_mediano_min": 10.0,
+            "maior_atraso_min": 12.0
+          },
+          {
+            "data_registro": "2026-08-27",
+            "observacoes": 5,
+            "atraso_total_min": 37.0,
+            "atraso_medio_min": 7.4,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 10.0
+          },
+          {
+            "data_registro": "2026-08-28",
+            "observacoes": 5,
+            "atraso_total_min": 37.0,
+            "atraso_medio_min": 7.4,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-29",
+            "observacoes": 5,
+            "atraso_total_min": 37.0,
+            "atraso_medio_min": 7.4,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-30",
+            "observacoes": 5,
+            "atraso_total_min": 37.0,
+            "atraso_medio_min": 7.4,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "data_registro": "2026-08-31",
+            "observacoes": 5,
+            "atraso_total_min": 36.0,
+            "atraso_medio_min": 7.2,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 9.0
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/agrupamentos/periodo",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "dimensao": "periodo",
+        "fonte": "atrasos_analise.csv",
+        "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+        "observacoes_validas": 180,
+        "resultados": [
+          {
+            "periodo": "Entre picos",
+            "observacoes": 45,
+            "atraso_total_min": 409.0,
+            "atraso_medio_min": 9.0889,
+            "atraso_mediano_min": 9.0,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "periodo": "Noite",
+            "observacoes": 45,
+            "atraso_total_min": 320.0,
+            "atraso_medio_min": 7.1111,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 9.0
+          },
+          {
+            "periodo": "Pico da manhã",
+            "observacoes": 45,
+            "atraso_total_min": 190.0,
+            "atraso_medio_min": 4.2222,
+            "atraso_mediano_min": 5.0,
+            "maior_atraso_min": 6.0
+          },
+          {
+            "periodo": "Pico da tarde",
+            "observacoes": 45,
+            "atraso_total_min": 443.0,
+            "atraso_medio_min": 9.8444,
+            "atraso_mediano_min": 10.0,
+            "maior_atraso_min": 12.0
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/agrupamentos/transito",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "dimensao": "transito",
+        "fonte": "atrasos_analise.csv",
+        "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+        "observacoes_validas": 180,
+        "resultados": [
+          {
+            "condicao_transito": "Intenso",
+            "observacoes": 45,
+            "atraso_total_min": 443.0,
+            "atraso_medio_min": 9.8444,
+            "atraso_mediano_min": 10.0,
+            "maior_atraso_min": 12.0
+          },
+          {
+            "condicao_transito": "Leve",
+            "observacoes": 45,
+            "atraso_total_min": 190.0,
+            "atraso_medio_min": 4.2222,
+            "atraso_mediano_min": 5.0,
+            "maior_atraso_min": 6.0
+          },
+          {
+            "condicao_transito": "Moderado",
+            "observacoes": 45,
+            "atraso_total_min": 320.0,
+            "atraso_medio_min": 7.1111,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 9.0
+          },
+          {
+            "condicao_transito": "Muito intenso",
+            "observacoes": 45,
+            "atraso_total_min": 409.0,
+            "atraso_medio_min": 9.0889,
+            "atraso_mediano_min": 9.0,
+            "maior_atraso_min": 11.0
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/agrupamentos/clima",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "dimensao": "clima",
+        "fonte": "atrasos_analise.csv",
+        "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+        "observacoes_validas": 180,
+        "resultados": [
+          {
+            "clima": "Chuva",
+            "observacoes": 45,
+            "atraso_total_min": 320.0,
+            "atraso_medio_min": 7.1111,
+            "atraso_mediano_min": 7.0,
+            "maior_atraso_min": 9.0
+          },
+          {
+            "clima": "Sem chuva",
+            "observacoes": 135,
+            "atraso_total_min": 1042.0,
+            "atraso_medio_min": 7.7185,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 12.0
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/agrupamentos/trecho",
+      "entrada": null,
+      "status": 200,
+      "esperado": 200,
+      "resposta": {
+        "dimensao": "trecho",
+        "fonte": "atrasos_analise.csv",
+        "sha256": "adbb2b83ae59d8e5862b9ee949e3fdce215fb695e2073a3ceec05e7feed257f3",
+        "observacoes_validas": 180,
+        "resultados": [
+          {
+            "trecho": "Av. Tuiuti - Centro",
+            "observacoes": 48,
+            "atraso_total_min": 372.0,
+            "atraso_medio_min": 7.75,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 12.0
+          },
+          {
+            "trecho": "Centro - Jardim Panorama",
+            "observacoes": 30,
+            "atraso_total_min": 229.0,
+            "atraso_medio_min": 7.6333,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 11.0
+          },
+          {
+            "trecho": "Maringá - Sarandi",
+            "observacoes": 54,
+            "atraso_total_min": 405.0,
+            "atraso_medio_min": 7.5,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 12.0
+          },
+          {
+            "trecho": "Zona Norte - Terminal",
+            "observacoes": 48,
+            "atraso_total_min": 356.0,
+            "atraso_medio_min": 7.4167,
+            "atraso_mediano_min": 8.0,
+            "maior_atraso_min": 12.0
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/agrupamentos/invalido",
+      "entrada": null,
+      "status": 422,
+      "esperado": 422,
+      "resposta": {
+        "detail": [
+          {
+            "type": "literal_error",
+            "loc": [
+              "path",
+              "dimensao"
+            ],
+            "msg": "Input should be 'linha', 'cidade', 'data', 'periodo', 'transito', 'clima' or 'trecho'",
+            "input": "invalido",
+            "ctx": {
+              "expected": "'linha', 'cidade', 'data', 'periodo', 'transito', 'clima' or 'trecho'"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "concluido": true
+}
