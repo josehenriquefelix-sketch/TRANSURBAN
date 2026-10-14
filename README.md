@@ -1,6 +1,6 @@
 # TRANSURBAN
 
-## Projeto Integrador - Módulo 6 DS + IA
+
 
 O **TransUrban** é um projeto acadêmico voltado à organização e análise de dados relacionados a atrasos no transporte coletivo entre **Maringá e Sarandi**.
 
