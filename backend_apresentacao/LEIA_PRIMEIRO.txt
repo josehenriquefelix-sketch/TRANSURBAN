@@ -1,0 +1,144 @@
+TRANSURBAN — APRESENTAÇÃO DE TERÇA-FEIRA, 20/10/2026
+
+ABERTURA SIMPLES E PAINEL GUIADO
+No Windows, execute ABRIR_TRANSURBAN.cmd. Ele abre a API e o navegador.
+Com .env local, usa Supabase. Sem .env, usa SQLite.
+Para forçar SQLite sem internet, execute ABRIR_MODO_LOCAL.cmd.
+O painel tem botões Verificar API, Consultar cidades, Cadastrar cidade,
+Cadastrar linha, Consultar linhas, Mostrar duplicidade (409), Mostrar
+campo inválido (422) e Consultar indicadores do CSV.
+A cidade recém-criada fica selecionada automaticamente no cadastro da linha.
+O teste de duplicidade fica disponível após criar uma linha nesta página.
+As demais rotas continuam em Outras operações e modo técnico.
+Em 18/10/2026, o painel foi operado no navegador com SQLite: saúde e consultas
+HTTP 200, cidade e linha HTTP 201, duplicidade HTTP 409, nome vazio HTTP 422
+e indicadores HTTP 200. Evidência em evidencias/painel_validado_2026-10-18.png.
+Ainda é necessário ensaiar no equipamento da escola.
+
+ENTREGA
+API FastAPI com painel HTML/JavaScript e dois modos de banco:
+- Supabase/PostgreSQL: usa as seis tabelas existentes do projeto transurban.
+- SQLite local: alternativa para apresentar sem internet.
+Inclui cidades, linhas, trechos, percurso ordenado, faixas exclusivas,
+atrasos e indicadores calculados do CSV sintético do projeto.
+Este painel não possui login. O site React com autenticação não foi localizado.
+
+ABRIR NESTE COMPUTADOR
+1. Dê dois cliques em iniciar_supabase.cmd.
+2. Deixe a janela aberta e acesse http://127.0.0.1:8000/apresentacao
+3. Confira a faixa superior: Supabase / PostgreSQL conectado.
+4. Execute Saúde da API: HTTP 200 e banco: postgresql.
+5. Consulte cidades, linhas, trechos, faixas e atrasos.
+O .env desta pasta foi configurado localmente. Não o publique ou compartilhe.
+O projeto original em Documents/TRANSURBAN foi preservado.
+
+SEM INTERNET
+Execute iniciar_local.cmd em vez de iniciar_supabase.cmd.
+Abra o mesmo endereço e confira banco: sqlite na Saúde da API.
+Os exemplos locais estão em data/transurban.db.
+O painel e o SQLite funcionam offline após instalar as dependências.
+Use apenas um servidor por vez na porta 8000. Encerre com Ctrl+C.
+
+LEVAR PARA A ESCOLA — WINDOWS
+1. Copie TRANSURBAN_APRESENTACAO.zip para o pendrive.
+2. Extraia em uma pasta nova. Não execute dentro do ZIP.
+3. Use Python 3.11 ou mais recente (testado aqui com 3.13).
+4. No terminal dessa pasta, execute: py preparar.py
+   Se py não existir, tente: python preparar.py
+5. Aguarde Preparação concluída. A instalação precisa de internet.
+6. Execute iniciar_local.cmd para demonstrar offline.
+7. Abra http://127.0.0.1:8000/apresentacao
+8. Para usar Supabase, configure .env separadamente e use iniciar_supabase.cmd.
+
+LEVAR PARA A ESCOLA — LINUX
+1. Extraia o ZIP em pasta nova e abra o terminal nela.
+2. Execute: python3 preparar.py
+3. Execute: bash iniciar_local.sh
+4. Abra http://127.0.0.1:8000/apresentacao
+5. Para Supabase, configure .env e execute: bash iniciar_supabase.sh
+Se faltar pip ou venv, peça ao responsável para instalar os componentes
+do Python. Linux não foi executado nesta validação Windows. Ensaie antes.
+
+SUPABASE NO NOTEBOOK DA ESCOLA
+O ZIP não contém credenciais: a conexão não viaja com o código.
+Copie .env.example para .env e configure DATABASE_URL com a conexão privada
+já usada pelo projeto. Preserve caracteres especiais codificados na URL.
+Não envie senha no chat, não publique .env e não coloque a conexão no frontend.
+Depois execute iniciar_supabase.cmd ou bash iniciar_supabase.sh.
+Confira Saúde da API e a indicação PostgreSQL no painel.
+O backend exige SSL e usa as tabelas existentes; não faz migrações nesse banco.
+Se não tiver acesso à conexão na escola, use SQLite e explique esse modo.
+Não anuncie SQLite como Supabase.
+
+ENSAIO AUTOMÁTICO (API DEVE ESTAR ABERTA)
+Em outro terminal nesta pasta:
+Windows: .\.venv\Scripts\python.exe demonstrar.py
+Linux: .venv/bin/python demonstrar.py
+Esperado: ENSAIO APROVADO, com 19 requisições.
+Cada execução cria novos dados fictícios relacionados com nomes DEMO.
+Não apaga registros anteriores. Anote os IDs da linha e do trecho retornados.
+Evidências: evidencias/ensaio_supabase.json ou evidencias/ensaio_local.json.
+
+TESTES AUTOMATIZADOS
+Windows: py preparar.py --testes
+Depois: .\.venv\Scripts\python.exe -m unittest discover -s tests -v
+Linux: python3 preparar.py --testes
+Depois: .venv/bin/python -m unittest discover -s tests -v
+Esperado: 30 testes e OK. Usa SQLite temporário isolado, sem alterar Supabase.
+No Windows com py disponível, VERIFICAR_WINDOWS.cmd faz esses passos.
+
+ROTEIRO PARA APRESENTAR (5 A 8 MINUTOS)
+1. Objetivo: organizar dados de transporte e analisar atrasos.
+2. Explique: painel -> HTTP -> FastAPI -> banco -> resposta JSON.
+3. Execute Saúde da API e diga o banco indicado na resposta.
+4. Consulte cidades e linhas.
+5. Cadastre cidade de nome novo e anote o id_cidade retornado.
+6. Cadastre uma linha usando esse ID e um código novo.
+7. Consulte linhas: o nome da cidade comprova o relacionamento.
+8. No modo Supabase, confirme o registro no Table Editor do projeto transurban.
+9. Repita o cadastro da linha: HTTP 409 (duplicidade).
+10. Envie nome de cidade vazio: HTTP 422 (validação).
+11. Consulte linhas novamente: a API continua funcionando após os erros.
+12. Mostre trechos, faixas, atrasos e percurso dos exemplos do ensaio.
+    Ajuste o ID da linha na URL do percurso usando o valor real retornado.
+13. Mostre os indicadores e explique que o CSV é sintético.
+14. Encerre e reinicie a API: os registros devem continuar salvos.
+
+REGRAS DO MODELO
+Cidade: nome obrigatório, único e sem espaços nas bordas.
+Linha: cidade existente e código único dentro da cidade.
+Trecho: distância positiva e cidades diferentes, conforme o banco acadêmico.
+Percurso: ordem positiva e única por linha, sem repetir trecho na mesma linha.
+Faixa: EXCLUSIVA/PREFERENCIAL; status ATIVA/INATIVA/PLANEJADA.
+Atraso: minutos inteiros >= 0, data válida e trecho vinculado à linha.
+
+EVIDÊNCIAS E ARQUIVOS
+VALIDACAO_APROVADA.txt: 30 testes em SQLite.
+evidencias/instalacao_zip.txt: instalação limpa, testes, ensaio e reinicialização.
+evidencias/SUPABASE_VALIDADO.json: resultado do ensaio no Supabase.
+evidencias/ensaio_supabase.json: pedidos e respostas reais no Supabase.
+evidencias/supabase_estrutura.json: colunas e restrições conferidas.
+evidencias/sequencias_corrigidas.json: sincronização da sequência de cidades
+com o maior ID salvo, sem alterar ou apagar os registros existentes.
+O ZIP inclui código, exemplos locais, CSV sintético e evidências.
+Não inclui .env, senhas, .venv, node_modules ou chaves administrativas.
+Recrie o ambiente virtual em cada computador; não copie a pasta .venv.
+
+PROBLEMAS COMUNS
+Página não abre: confira o terminal do servidor e a porta 8000.
+ModuleNotFoundError: execute preparar.py novamente.
+Porta ocupada: encerre a instância conhecida ou use a já aberta.
+Supabase pausado: retome o projeto no painel e aguarde Healthy.
+Falha de conexão: confira internet e .env local; SQLite é a alternativa.
+404: consulte os registros e use IDs reais.
+409: confira nomes/códigos duplicados; não altere IDs manualmente.
+422: revise campos obrigatórios, tipos, data e valores positivos.
+Não apague data/transurban.db se quiser preservar os exemplos.
+/docs depende de CDN; prefira /apresentacao para demonstrar offline.
+
+LIMITES
+Painel acadêmico sem autenticação, exposto apenas em 127.0.0.1.
+Não é uma publicação pública ou um sistema de produção.
+A versão do site com login não foi encontrada nas pastas e ZIPs examinados.
+Não foram criados usuários nem alteradas senhas ou políticas de acesso.
+Ensaie no notebook da escola antes de terça-feira, 20/10/2026.
