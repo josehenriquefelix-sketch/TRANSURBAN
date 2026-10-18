@@ -2,6 +2,7 @@
 import os
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 TEMP = tempfile.TemporaryDirectory()
@@ -100,6 +101,34 @@ class TestAPI(unittest.TestCase):
         with self.assertRaises(IntegrityError):
             with engine.begin() as db:
                 db.execute(text("INSERT INTO linha_onibus(id_cidade,codigo,nome) VALUES (999,'X','Teste')"))
+    def test_31_ia_json(self):
+        r=self.client.get('/ia/resumo')
+        self.assertEqual(r.status_code,200,r.text)
+        self.assertEqual(r.json()['atraso_total_min_observacoes'],1362)
+        self.assertEqual(r.json()['atraso_mediano_min'],8)
+        q=self.client.get('/ia/qualidade').json()
+        self.assertEqual(q['registros_lidos'],180)
+        self.assertEqual(q['registros_excluidos'],0)
+    def test_32_ia_grupos(self):
+        for dim in ['cidade','linha','data','transito','clima','trecho','periodo']:
+            r=self.client.get('/ia/agrupamentos/'+dim)
+            self.assertEqual(r.status_code,200,r.text)
+            self.assertEqual(sum(g['observacoes'] for g in r.json()['resultados']),180)
+        self.assertEqual(self.client.get('/ia/agrupamentos/inexistente').status_code,422)
+    def test_33_csv_indisponivel(self):
+        with patch.dict(os.environ,{'CSV_PATH':str(Path(TEMP.name)/'ausente.csv')}):
+            self.assertEqual(self.client.get('/ia/resumo').status_code,503)
+            self.assertEqual(self.client.get('/indicadores').status_code,503)
+    def test_34_csv_duplicado_bloqueia(self):
+        import pandas as pd
+        import analise
+        frame=pd.read_csv(analise.DEFAULT_CSV,dtype=str).iloc[:1]
+        path=Path(TEMP.name)/'duplicado.csv'
+        pd.concat([frame,frame]).to_csv(path,index=False)
+        with patch.dict(os.environ,{'CSV_PATH':str(path)}):
+            self.assertEqual(self.client.get('/ia/qualidade').json()['duplicatas_exatas_adicionais'],1)
+            self.assertEqual(self.client.get('/ia/resumo').status_code,422)
+            self.assertEqual(self.client.get('/indicadores').status_code,422)
 
 if __name__=='__main__':
     unittest.main()

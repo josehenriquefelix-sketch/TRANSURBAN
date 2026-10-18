@@ -1,118 +1,17 @@
-"""TRANSURBAN: API local de apresentação. Dados ilustrativos, sem autenticação."""
-import csv
+"""API acadêmica DS + IA. Executar: python -m uvicorn main:app."""
 import os
 from contextlib import asynccontextmanager
-from datetime import date
-from pathlib import Path
 from typing import Annotated, Literal
-
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
-from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey, UniqueConstraint, CheckConstraint, create_engine, event, select, text, inspect
+from sqlalchemy import select, text, inspect
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import declarative_base, sessionmaker, Session
-from dotenv import load_dotenv
-
-ROOT = Path(__file__).resolve().parent
-DB_PATH = ROOT / 'data' / 'transurban.db'
-load_dotenv(ROOT / '.env', override=False)
-modo = os.environ.get('TRANSURBAN_MODO', 'auto')
-url = 'sqlite:///' + DB_PATH.as_posix() if modo == 'local' else os.environ.get('DATABASE_URL', 'sqlite:///' + DB_PATH.as_posix())
-if modo == 'supabase' and not url.startswith(('postgresql:', 'postgresql+', 'postgres:')):
-    raise RuntimeError('Configure DATABASE_URL no .env local para usar Supabase.')
-if url.startswith('postgres://'):
-    url = url.replace('postgres://', 'postgresql://', 1)
-engine = create_engine(url, connect_args={'check_same_thread': False} if url.startswith('sqlite:') else {'sslmode': 'require', 'connect_timeout': 12}, pool_pre_ping=True)
-if engine.dialect.name == 'sqlite':
-    @event.listens_for(engine, 'connect')
-    def foreign_keys(connection, _):
-        connection.execute('PRAGMA foreign_keys=ON')
-Base = declarative_base()
-SessionLocal = sessionmaker(bind=engine)
-
-class Cidade(Base):
-    __tablename__ = 'cidade'
-    id_cidade = Column(Integer, primary_key=True)
-    nome = Column(String(100), nullable=False, unique=True)
-
-class Linha(Base):
-    __tablename__ = 'linha_onibus'
-    id_linha = Column(Integer, primary_key=True)
-    id_cidade = Column(Integer, ForeignKey('cidade.id_cidade'), nullable=False)
-    codigo = Column(String(20), nullable=False)
-    nome = Column(String(120), nullable=False)
-    __table_args__ = (UniqueConstraint('id_cidade', 'codigo'),)
-
-class Trecho(Base):
-    __tablename__ = 'trecho'
-    id_trecho = Column(Integer, primary_key=True)
-    id_cidade_origem = Column(Integer, ForeignKey('cidade.id_cidade'), nullable=False)
-    id_cidade_destino = Column(Integer, ForeignKey('cidade.id_cidade'), nullable=False)
-    nome = Column(String(150), nullable=False)
-    distancia_km = Column(Float, nullable=False)
-    __table_args__ = (CheckConstraint('distancia_km > 0'), CheckConstraint('id_cidade_origem <> id_cidade_destino'))
-
-class Percurso(Base):
-    __tablename__ = 'linha_trecho'
-    id_linha = Column(Integer, ForeignKey('linha_onibus.id_linha'), primary_key=True)
-    id_trecho = Column(Integer, ForeignKey('trecho.id_trecho'), primary_key=True)
-    ordem = Column(Integer, nullable=False)
-    __table_args__ = (UniqueConstraint('id_linha', 'ordem'), CheckConstraint('ordem > 0'))
-
-class Faixa(Base):
-    __tablename__ = 'faixa_exclusiva'
-    id_faixa = Column(Integer, primary_key=True)
-    id_trecho = Column(Integer, ForeignKey('trecho.id_trecho'), nullable=False)
-    tipo = Column(String(20), nullable=False)
-    status = Column(String(20), nullable=False)
-    __table_args__ = (CheckConstraint("tipo IN ('EXCLUSIVA','PREFERENCIAL')"), CheckConstraint("status IN ('ATIVA','INATIVA','PLANEJADA')"))
-
-class Atraso(Base):
-    __tablename__ = 'registro_atraso'
-    id_atraso = Column(Integer, primary_key=True)
-    id_linha = Column(Integer, ForeignKey('linha_onibus.id_linha'), nullable=False)
-    id_trecho = Column(Integer, ForeignKey('trecho.id_trecho'), nullable=False)
-    data_registro = Column(Date, nullable=False)
-    minutos_atraso = Column(Integer, nullable=False)
-    observacao = Column(String(255), nullable=False, default='')
-    __table_args__ = (CheckConstraint('minutos_atraso >= 0'),)
-
-Nome = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)]
-Positivo = Annotated[int, Field(gt=0, strict=True)]
-class Entrada(BaseModel):
-    model_config = ConfigDict(extra='forbid')
-class CidadeIn(Entrada):
-    nome: Nome
-class LinhaIn(Entrada):
-    id_cidade: Positivo
-    codigo: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=20)]
-    nome: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=120)]
-class TrechoIn(Entrada):
-    id_cidade_origem: Positivo
-    id_cidade_destino: Positivo
-    nome: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=150)]
-    distancia_km: float = Field(gt=0, le=9999.99, allow_inf_nan=False)
-    @model_validator(mode='after')
-    def cidades_diferentes(self):
-        if self.id_cidade_origem == self.id_cidade_destino:
-            raise ValueError('O modelo acadêmico exige cidades de origem e destino diferentes.')
-        return self
-class PercursoIn(Entrada):
-    id_linha: Positivo
-    id_trecho: Positivo
-    ordem: Positivo
-class FaixaIn(Entrada):
-    id_trecho: Positivo
-    tipo: Literal['EXCLUSIVA', 'PREFERENCIAL']
-    status: Literal['ATIVA', 'INATIVA', 'PLANEJADA']
-class AtrasoIn(Entrada):
-    id_linha: Positivo
-    id_trecho: Positivo
-    data_registro: date
-    minutos_atraso: int = Field(ge=0, strict=True)
-    observacao: str = Field(default='', max_length=255)
+from sqlalchemy.orm import Session
+from database import ROOT, engine, SessionLocal, Base
+from models import Cidade, Linha, Trecho, Percurso, Faixa, Atraso
+from schemas import CidadeIn, LinhaIn, TrechoIn, PercursoIn, FaixaIn, AtrasoIn
+import analise
 
 @asynccontextmanager
 async def lifespan(app):
@@ -125,7 +24,7 @@ async def lifespan(app):
             raise RuntimeError('Tabelas ausentes no PostgreSQL: ' + ', '.join(sorted(faltam)))
     yield
 
-app = FastAPI(title='TRANSURBAN — apresentação', version='2.1.0', lifespan=lifespan, description='Demonstração acadêmica. SQLite local ou PostgreSQL/Supabase configurado no backend. Sem login. CSV sintético.')
+app = FastAPI(title='TRANSURBAN — apresentação', version='2.2.0', lifespan=lifespan, description='Demonstração acadêmica. SQLite local ou PostgreSQL/Supabase configurado no backend. Sem login. CSV sintético.')
 app.mount('/static', StaticFiles(directory=ROOT / 'static'), name='static')
 
 def get_db():
@@ -208,12 +107,56 @@ def atraso(dados: AtrasoIn, db: Db):
     if db.get(Percurso, (dados.id_linha, dados.id_trecho)) is None:
         raise HTTPException(404, 'Trecho não vinculado ao percurso desta linha.')
     return salvar(db, Atraso(**dados.model_dump()))
-@app.get('/indicadores')
+def fonte(estrita=True):
+    try:
+        dados, qualidade = analise.carregar(os.getenv('CSV_PATH', str(analise.DEFAULT_CSV)))
+    except OSError as exc:
+        # Não expor caminho local, credenciais ou conteúdo bruto em resposta.
+        raise HTTPException(503, 'CSV indisponível. Confira a fonte.') from exc
+    except (ValueError, UnicodeError) as exc:
+        raise HTTPException(422, 'CSV inválido. Confira cabeçalho, datas e números.') from exc
+    if estrita and (qualidade['registros_lidos'] == 0 or qualidade['registros_excluidos'] > 0
+                   or qualidade['duplicatas_exatas_adicionais'] > 0
+                   or qualidade['codigos_com_nomes_divergentes'] > 0):
+        raise HTTPException(422, 'Análise interrompida por problema na fonte. Consulte /ia/qualidade e corrija ou justifique os registros.')
+    return dados, qualidade
+
+@app.get('/ia/qualidade', tags=['IA'])
+def qualidade():
+    _, q = fonte(estrita=False)
+    return q
+
+@app.get('/ia/resumo', tags=['IA'])
+def resumo():
+    d, q = fonte()
+    return analise.resumo(d, q)
+
+@app.get('/ia/agrupamentos/{dimensao}', tags=['IA'])
+def agrupamentos(dimensao: Literal['linha', 'cidade', 'data', 'periodo', 'transito', 'clima', 'trecho']):
+    d, q = fonte()
+    return {'dimensao': dimensao, 'fonte': q['arquivo'], 'sha256': q['sha256'],
+            'observacoes_validas': len(d), 'resultados': analise.agrupar(d, dimensao)}
+
+@app.get('/ia/maiores-atrasos', tags=['IA'])
+def maiores_atrasos():
+    d, q = fonte()
+    return {'fonte': q['arquivo'], 'sha256': q['sha256'], 'empates_incluidos': True,
+            'resultados': analise.maiores(d)}
+
+@app.get('/indicadores', tags=['IA'])
 def indicadores():
-    with (ROOT/'data'/'atrasos_analise.csv').open(encoding='utf-8-sig', newline='') as f:
-        registros = list(csv.DictReader(f))
-    valores = [int(r['minutos_atraso']) for r in registros]
-    por_cidade = {}
-    for r in registros:
-        por_cidade.setdefault(r['cidade'], []).append(int(r['minutos_atraso']))
-    return {'fonte': 'CSV sintético do projeto; não representa telemetria real', 'total': len(valores), 'media_minutos': round(sum(valores)/len(valores),2) if valores else None, 'maior_atraso': max(valores, default=None), 'menor_atraso': min(valores, default=None), 'por_cidade': {k: round(sum(v)/len(v),2) for k,v in por_cidade.items()}}
+    d, q = fonte()
+    r = analise.resumo(d, q)
+    grupos = analise.agrupar(d, 'cidade')
+    return {
+        'fonte': 'CSV sintético do projeto; não representa telemetria real',
+        'total': r['observacoes_validas'],
+        'media_minutos': round(r['atraso_medio_min'], 2),
+        'mediana_minutos': r['atraso_mediano_min'],
+        'soma_minutos_observacoes': r['atraso_total_min_observacoes'],
+        'maior_atraso': r['maior_atraso_min'],
+        'menor_atraso': float(d['minutos_atraso'].min()),
+        'por_cidade': {g['cidade']: round(g['atraso_medio_min'], 2) for g in grupos},
+        'sha256': q['sha256'],
+        'limitacoes': r['limitacoes'],
+    }

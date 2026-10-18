@@ -1,0 +1,11 @@
+Ensaio pelo navegador em 18/10/2026 — API versão 2.2.0
+URL desta execução: http://127.0.0.1:8001/apresentacao
+Faixa do painel: Supabase / PostgreSQL.
+GET /health respondeu HTTP 200, status ok e banco postgresql.
+Os botões /ia/qualidade, /ia/resumo, /ia/agrupamentos/linha e
+/ia/agrupamentos/data responderam HTTP 200.
+Resumo: 180 observações sintéticas válidas, 1362 minutos somados,
+média 7,5667 e mediana 8. Qualidade: sem ausentes ou duplicatas na fonte.
+Nesta conferência visual não foram criados registros adicionais no Supabase.
+A porta 8001 é desta execução; o iniciador padrão usa 8000.
+O processo precisa permanecer ativo para acessar o endereço local.

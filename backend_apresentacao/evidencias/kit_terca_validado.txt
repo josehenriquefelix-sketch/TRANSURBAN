@@ -1,0 +1,6 @@
+APROVADO: pacote extraído em pasta nova, sem .env, inicializador abriu a API em SQLite e recebeu HTTP 200 na Saúde da API.
+Dependências do Python já instaladas no ambiente de validação.
+INFO:     127.0.0.1:49453 - "GET /health HTTP/1.1" 200 OK
+
+TRANSURBAN PRONTO. Banco: sqlite
+Painel: http://127.0.0.1:8015/apresentacao

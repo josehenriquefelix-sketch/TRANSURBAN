@@ -15,6 +15,13 @@ HTTP 200, cidade e linha HTTP 201, duplicidade HTTP 409, nome vazio HTTP 422
 e indicadores HTTP 200. Evidência em evidencias/painel_validado_2026-10-18.png.
 Ainda é necessário ensaiar no equipamento da escola.
 
+ATUALIZAÇÃO DS + IA DE 18/10/2026
+Leitura e auditoria com Pandas; mediana, soma e agrupamentos.
+43 testes aprovados e 13 requisições HTTP reais da integração aprovadas.
+Novos botões: qualidade do CSV, resumo, agrupamentos por linha e por data.
+Após atualizar o código, encerre o servidor antigo e reabra o iniciador.
+Consulte README.md para os arquivos database.py, models.py, schemas.py e analise.py.
+
 ENTREGA
 API FastAPI com painel HTML/JavaScript e dois modos de banco:
 - Supabase/PostgreSQL: usa as seis tabelas existentes do projeto transurban.
@@ -84,7 +91,7 @@ Windows: py preparar.py --testes
 Depois: .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 Linux: python3 preparar.py --testes
 Depois: .venv/bin/python -m unittest discover -s tests -v
-Esperado: 30 testes e OK. Usa SQLite temporário isolado, sem alterar Supabase.
+Esperado: 43 testes e OK. Usa SQLite temporário isolado, sem alterar Supabase.
 No Windows com py disponível, VERIFICAR_WINDOWS.cmd faz esses passos.
 
 ROTEIRO PARA APRESENTAR (5 A 8 MINUTOS)
@@ -113,7 +120,7 @@ Faixa: EXCLUSIVA/PREFERENCIAL; status ATIVA/INATIVA/PLANEJADA.
 Atraso: minutos inteiros >= 0, data válida e trecho vinculado à linha.
 
 EVIDÊNCIAS E ARQUIVOS
-VALIDACAO_APROVADA.txt: 30 testes em SQLite.
+VALIDACAO_APROVADA.txt: 43 testes de DS e IA em SQLite.
 evidencias/instalacao_zip.txt: instalação limpa, testes, ensaio e reinicialização.
 evidencias/SUPABASE_VALIDADO.json: resultado do ensaio no Supabase.
 evidencias/ensaio_supabase.json: pedidos e respostas reais no Supabase.

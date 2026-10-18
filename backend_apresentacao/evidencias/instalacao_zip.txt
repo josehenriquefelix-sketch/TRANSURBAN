@@ -1,0 +1,132 @@
+Collecting fastapi==0.141.1 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 1))
+  Using cached fastapi-0.141.1-py3-none-any.whl.metadata (27 kB)
+Collecting uvicorn==0.54.0 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 2))
+  Using cached uvicorn-0.54.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting SQLAlchemy==2.1.1 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 3))
+  Using cached sqlalchemy-2.1.1-cp313-cp313-win_amd64.whl.metadata (9.9 kB)
+Collecting pydantic==2.13.5 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 4))
+  Using cached pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+Collecting starlette==1.8.0 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 5))
+  Using cached starlette-1.8.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting annotated-doc==0.0.5 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 6))
+  Using cached annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+Collecting annotated-types==0.8.0 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 7))
+  Using cached annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting anyio==4.15.1 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 8))
+  Using cached anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting click==8.5.0 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 9))
+  Using cached click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11==0.16.0 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 10))
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting idna==3.20 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 11))
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting pydantic_core==2.46.5 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 12))
+  Using cached pydantic_core-2.46.5-cp313-cp313-win_amd64.whl.metadata (6.7 kB)
+Collecting typing-inspection==0.4.4 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 13))
+  Using cached typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting typing_extensions==4.16.0 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 14))
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting psycopg2-binary==2.9.13 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 15))
+  Using cached psycopg2_binary-2.9.13-cp313-cp313-win_amd64.whl.metadata (5.1 kB)
+Collecting python-dotenv==1.2.4 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 16))
+  Using cached python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+Collecting pandas==2.2.3 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 17))
+  Using cached pandas-2.2.3-cp313-cp313-win_amd64.whl.metadata (19 kB)
+Collecting numpy==2.1.3 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 18))
+  Using cached numpy-2.1.3-cp313-cp313-win_amd64.whl.metadata (60 kB)
+Collecting python-dateutil==2.9.0.post0 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 19))
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz==2026.5 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 20))
+  Using cached pytz-2026.5-py2.py3-none-any.whl.metadata (22 kB)
+Collecting six==1.17.0 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 21))
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting tzdata==2026.5 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements.txt (line 22))
+  Using cached tzdata-2026.5-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting httpx==0.28.1 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements-test.txt (line 2))
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting httpcore==1.0.9 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements-test.txt (line 3))
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting certifi==2026.7.22 (from -r C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\requirements-test.txt (line 4))
+  Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Using cached fastapi-0.141.1-py3-none-any.whl (131 kB)
+Using cached uvicorn-0.54.0-py3-none-any.whl (87 kB)
+Using cached sqlalchemy-2.1.1-cp313-cp313-win_amd64.whl (2.4 MB)
+Using cached pydantic-2.13.5-py3-none-any.whl (472 kB)
+Using cached starlette-1.8.0-py3-none-any.whl (79 kB)
+Using cached anyio-4.15.1-py3-none-any.whl (132 kB)
+Using cached annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Using cached annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Using cached click-8.5.0-py3-none-any.whl (125 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached idna-3.20-py3-none-any.whl (69 kB)
+Using cached pydantic_core-2.46.5-cp313-cp313-win_amd64.whl (2.0 MB)
+Using cached typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached psycopg2_binary-2.9.13-cp313-cp313-win_amd64.whl (2.8 MB)
+Using cached python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+Using cached pandas-2.2.3-cp313-cp313-win_amd64.whl (11.5 MB)
+Using cached numpy-2.1.3-cp313-cp313-win_amd64.whl (12.6 MB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached pytz-2026.5-py2.py3-none-any.whl (506 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached tzdata-2026.5-py2.py3-none-any.whl (347 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached certifi-2026.7.22-py3-none-any.whl (136 kB)
+Installing collected packages: pytz, tzdata, typing_extensions, six, python-dotenv, psycopg2-binary, numpy, idna, h11, click, certifi, annotated-types, annotated-doc, uvicorn, typing-inspection, SQLAlchemy, python-dateutil, pydantic_core, httpcore, anyio, starlette, pydantic, pandas, httpx, fastapi
+
+Successfully installed SQLAlchemy-2.1.1 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 certifi-2026.7.22 click-8.5.0 fastapi-0.141.1 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 numpy-2.1.3 pandas-2.2.3 psycopg2-binary-2.9.13 pydantic-2.13.5 pydantic_core-2.46.5 python-dateutil-2.9.0.post0 python-dotenv-1.2.4 pytz-2026.5 six-1.17.0 starlette-1.8.0 typing-inspection-0.4.4 typing_extensions-4.16.0 tzdata-2026.5 uvicorn-0.54.0
+Preparação concluída. Execute iniciar.cmd (Windows) ou bash iniciar.sh (Linux).
+C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_calculos_conferidos_sem_pandas (test_analise.TestAnalise.test_calculos_conferidos_sem_pandas) ... ok
+test_campos_invalidos_excluidos_sem_imputacao (test_analise.TestAnalise.test_campos_invalidos_excluidos_sem_imputacao) ... ok
+test_codigo_preserva_zeros (test_analise.TestAnalise.test_codigo_preserva_zeros) ... ok
+test_coluna_ausente (test_analise.TestAnalise.test_coluna_ausente) ... ok
+test_csv_vazio_com_cabecalho (test_analise.TestAnalise.test_csv_vazio_com_cabecalho) ... ok
+test_duplicatas_sinalizadas_mantidas (test_analise.TestAnalise.test_duplicatas_sinalizadas_mantidas) ... ok
+test_grupos_reconciliam_contagem_e_soma (test_analise.TestAnalise.test_grupos_reconciliam_contagem_e_soma) ... ok
+test_inf_nan_e_tempo_inconsistente (test_analise.TestAnalise.test_inf_nan_e_tempo_inconsistente) ... ok
+test_todos_os_empates (test_analise.TestAnalise.test_todos_os_empates) ... ok
+test_01_health (test_api.TestAPI.test_01_health) ... ok
+test_02_painel (test_api.TestAPI.test_02_painel) ... ok
+test_03_contrato (test_api.TestAPI.test_03_contrato) ... ok
+test_04_cidades (test_api.TestAPI.test_04_cidades) ... ok
+test_05_cidade_duplicada (test_api.TestAPI.test_05_cidade_duplicada) ... ok
+test_06_nome_vazio (test_api.TestAPI.test_06_nome_vazio) ... ok
+test_07_nome_longo (test_api.TestAPI.test_07_nome_longo) ... ok
+test_08_campo_ausente (test_api.TestAPI.test_08_campo_ausente) ... ok
+test_09_linha_relacionada (test_api.TestAPI.test_09_linha_relacionada) ... ok
+test_10_linha_duplicada (test_api.TestAPI.test_10_linha_duplicada) ... ok
+test_11_cidade_inexistente (test_api.TestAPI.test_11_cidade_inexistente) ... ok
+test_12_id_invalido (test_api.TestAPI.test_12_id_invalido) ... ok
+test_13_trecho (test_api.TestAPI.test_13_trecho) ... ok
+test_14_distancia (test_api.TestAPI.test_14_distancia) ... ok
+test_15_origem_destino (test_api.TestAPI.test_15_origem_destino) ... ok
+test_16_trecho_orfao (test_api.TestAPI.test_16_trecho_orfao) ... ok
+test_17_percurso (test_api.TestAPI.test_17_percurso) ... ok
+test_18_percurso_duplicado (test_api.TestAPI.test_18_percurso_duplicado) ... ok
+test_19_ordem_duplicada (test_api.TestAPI.test_19_ordem_duplicada) ... ok
+test_20_ordem_invalida (test_api.TestAPI.test_20_ordem_invalida) ... ok
+test_21_faixa (test_api.TestAPI.test_21_faixa) ... ok
+test_22_faixa_invalida (test_api.TestAPI.test_22_faixa_invalida) ... ok
+test_23_atraso (test_api.TestAPI.test_23_atraso) ... ok
+test_24_atraso_negativo (test_api.TestAPI.test_24_atraso_negativo) ... ok
+test_25_data_invalida (test_api.TestAPI.test_25_data_invalida) ... ok
+test_26_atraso_sem_percurso (test_api.TestAPI.test_26_atraso_sem_percurso) ... ok
+test_27_recupera_apos_erro (test_api.TestAPI.test_27_recupera_apos_erro) ... ok
+test_28_persistencia (test_api.TestAPI.test_28_persistencia) ... ok
+test_29_csv (test_api.TestAPI.test_29_csv) ... ok
+test_30_fk_banco (test_api.TestAPI.test_30_fk_banco) ... ok
+test_31_ia_json (test_api.TestAPI.test_31_ia_json) ... ok
+test_32_ia_grupos (test_api.TestAPI.test_32_ia_grupos) ... ok
+test_33_csv_indisponivel (test_api.TestAPI.test_33_csv_indisponivel) ... ok
+test_34_csv_duplicado_bloqueia (test_api.TestAPI.test_34_csv_duplicado_bloqueia) ... ok
+
+----------------------------------------------------------------------
+Ran 43 tests in 4.906s
+
+OK
+ENSAIO APROVADO: 19 requisições. Linha=3; trecho=2. Evidências: C:\Users\josep\Documents\Codex\2026-10-16\new-chat-3\work\teste_zip_1792350554120818000\TRANSURBAN_APRESENTACAO\evidencias
+
+APROVADO: ZIP extraÃ­do em pasta nova; ambiente recriado; dependÃªncias instaladas; 43 testes OK; 19 requisiÃ§Ãµes OK; painel servido; registros preservados apÃ³s reiniciar processo.
