@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.db
+.env
+.temp_instalacao/
+TRANSURBAN_APRESENTACAO/

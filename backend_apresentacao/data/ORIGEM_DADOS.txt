@@ -1,0 +1,5 @@
+FONTE SINTÉTICA ACADÊMICA
+
+O CSV incluído é idêntico byte a byte ao arquivo data/atrasos_analise.csv do repositório josehenriquefelix-sketch/TRANSURBAN no commit 2d3d554e4153ffc8cc3e39cbaf6b5d5385b87dee. Conferência registrada em evidencias/origem_github.json.
+
+São 180 observações didáticas. A própria coluna observacao declara que a massa é sintética e não representa telemetria real. Não use os resultados como diagnóstico operacional das empresas de transporte.

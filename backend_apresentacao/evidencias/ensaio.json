@@ -1,0 +1,237 @@
+[
+  {
+    "metodo": "GET",
+    "rota": "/health",
+    "status": 200,
+    "resposta": {
+      "status": "ok",
+      "banco": "sqlite",
+      "modo": "demonstração acadêmica",
+      "autenticacao": false
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/cidades",
+    "status": 201,
+    "resposta": {
+      "id_cidade": 1,
+      "nome": "Cidade A DEMO 1016220845802430"
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/cidades",
+    "status": 201,
+    "resposta": {
+      "id_cidade": 2,
+      "nome": "Cidade B DEMO 1016220845802430"
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/linhas",
+    "status": 201,
+    "resposta": {
+      "id_linha": 1,
+      "id_cidade": 1,
+      "codigo": "D1016220845802430",
+      "nome": "Linha fictícia de demonstração",
+      "cidade": "Cidade A DEMO 1016220845802430"
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/trechos",
+    "status": 201,
+    "resposta": {
+      "id_trecho": 1,
+      "id_cidade_origem": 1,
+      "id_cidade_destino": 2,
+      "nome": "Trecho fictício",
+      "distancia_km": 12.5
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/percursos",
+    "status": 201,
+    "resposta": {
+      "id_linha": 1,
+      "id_trecho": 1,
+      "ordem": 1
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/faixas",
+    "status": 201,
+    "resposta": {
+      "id_faixa": 1,
+      "id_trecho": 1,
+      "tipo": "EXCLUSIVA",
+      "status": "ATIVA"
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/atrasos",
+    "status": 201,
+    "resposta": {
+      "id_atraso": 1,
+      "id_linha": 1,
+      "id_trecho": 1,
+      "data_registro": "2026-10-16",
+      "minutos_atraso": 8,
+      "observacao": "Registro fictício de apresentação"
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/linhas",
+    "status": 409,
+    "resposta": {
+      "detail": "Cadastro duplicado ou incompatível com as regras do banco."
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/cidades",
+    "status": 422,
+    "resposta": {
+      "detail": [
+        {
+          "type": "string_too_short",
+          "loc": [
+            "body",
+            "nome"
+          ],
+          "msg": "String should have at least 1 character",
+          "input": "   ",
+          "ctx": {
+            "min_length": 1
+          }
+        }
+      ]
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/linhas",
+    "status": 404,
+    "resposta": {
+      "detail": "Cidade não encontrado(a)."
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/cidades",
+    "status": 200,
+    "resposta": [
+      {
+        "id_cidade": 1,
+        "nome": "Cidade A DEMO 1016220845802430"
+      },
+      {
+        "id_cidade": 2,
+        "nome": "Cidade B DEMO 1016220845802430"
+      }
+    ]
+  },
+  {
+    "metodo": "GET",
+    "rota": "/linhas",
+    "status": 200,
+    "resposta": [
+      {
+        "id_linha": 1,
+        "id_cidade": 1,
+        "codigo": "D1016220845802430",
+        "nome": "Linha fictícia de demonstração",
+        "cidade": "Cidade A DEMO 1016220845802430"
+      }
+    ]
+  },
+  {
+    "metodo": "GET",
+    "rota": "/trechos",
+    "status": 200,
+    "resposta": [
+      {
+        "id_trecho": 1,
+        "id_cidade_origem": 1,
+        "id_cidade_destino": 2,
+        "nome": "Trecho fictício",
+        "distancia_km": 12.5
+      }
+    ]
+  },
+  {
+    "metodo": "GET",
+    "rota": "/linhas/1/percurso",
+    "status": 200,
+    "resposta": [
+      {
+        "id_linha": 1,
+        "id_trecho": 1,
+        "ordem": 1,
+        "trecho": "Trecho fictício"
+      }
+    ]
+  },
+  {
+    "metodo": "GET",
+    "rota": "/faixas",
+    "status": 200,
+    "resposta": [
+      {
+        "id_faixa": 1,
+        "id_trecho": 1,
+        "tipo": "EXCLUSIVA",
+        "status": "ATIVA"
+      }
+    ]
+  },
+  {
+    "metodo": "GET",
+    "rota": "/atrasos",
+    "status": 200,
+    "resposta": [
+      {
+        "id_atraso": 1,
+        "id_linha": 1,
+        "id_trecho": 1,
+        "data_registro": "2026-10-16",
+        "minutos_atraso": 8,
+        "observacao": "Registro fictício de apresentação"
+      }
+    ]
+  },
+  {
+    "metodo": "GET",
+    "rota": "/indicadores",
+    "status": 200,
+    "resposta": {
+      "fonte": "CSV sintético do projeto; não representa telemetria real",
+      "total": 180,
+      "media_minutos": 7.57,
+      "maior_atraso": 12,
+      "menor_atraso": 2,
+      "por_cidade": {
+        "Sarandi": 7.25,
+        "Maringá": 7.72
+      }
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/health",
+    "status": 200,
+    "resposta": {
+      "status": "ok",
+      "banco": "sqlite",
+      "modo": "demonstração acadêmica",
+      "autenticacao": false
+    }
+  }
+]

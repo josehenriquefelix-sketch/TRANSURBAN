@@ -1,0 +1,314 @@
+{
+  "colunas": [
+    [
+      "cidade",
+      "id_cidade",
+      "integer",
+      "NO",
+      null,
+      "YES"
+    ],
+    [
+      "cidade",
+      "nome",
+      "character varying",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "faixa_exclusiva",
+      "id_faixa",
+      "integer",
+      "NO",
+      null,
+      "YES"
+    ],
+    [
+      "faixa_exclusiva",
+      "id_trecho",
+      "integer",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "faixa_exclusiva",
+      "tipo",
+      "character varying",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "faixa_exclusiva",
+      "status",
+      "character varying",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "linha_onibus",
+      "id_linha",
+      "integer",
+      "NO",
+      null,
+      "YES"
+    ],
+    [
+      "linha_onibus",
+      "id_cidade",
+      "integer",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "linha_onibus",
+      "codigo",
+      "character varying",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "linha_onibus",
+      "nome",
+      "character varying",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "linha_trecho",
+      "id_linha",
+      "integer",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "linha_trecho",
+      "id_trecho",
+      "integer",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "linha_trecho",
+      "ordem",
+      "integer",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "registro_atraso",
+      "id_atraso",
+      "integer",
+      "NO",
+      null,
+      "YES"
+    ],
+    [
+      "registro_atraso",
+      "id_linha",
+      "integer",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "registro_atraso",
+      "id_trecho",
+      "integer",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "registro_atraso",
+      "data_registro",
+      "date",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "registro_atraso",
+      "minutos_atraso",
+      "integer",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "registro_atraso",
+      "observacao",
+      "character varying",
+      "YES",
+      null,
+      "NO"
+    ],
+    [
+      "trecho",
+      "id_trecho",
+      "integer",
+      "NO",
+      null,
+      "YES"
+    ],
+    [
+      "trecho",
+      "id_cidade_origem",
+      "integer",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "trecho",
+      "id_cidade_destino",
+      "integer",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "trecho",
+      "nome",
+      "character varying",
+      "NO",
+      null,
+      "NO"
+    ],
+    [
+      "trecho",
+      "distancia_km",
+      "numeric",
+      "NO",
+      null,
+      "NO"
+    ]
+  ],
+  "restricoes": [
+    [
+      "cidade",
+      "cidade_nome_key",
+      "UNIQUE (nome)"
+    ],
+    [
+      "cidade",
+      "cidade_pkey",
+      "PRIMARY KEY (id_cidade)"
+    ],
+    [
+      "faixa_exclusiva",
+      "ck_faixa_status",
+      "CHECK (((status)::text = ANY ((ARRAY['ATIVA'::character varying, 'INATIVA'::character varying, 'PLANEJADA'::character varying])::text[])))"
+    ],
+    [
+      "faixa_exclusiva",
+      "ck_faixa_tipo",
+      "CHECK (((tipo)::text = ANY ((ARRAY['EXCLUSIVA'::character varying, 'PREFERENCIAL'::character varying])::text[])))"
+    ],
+    [
+      "faixa_exclusiva",
+      "faixa_exclusiva_pkey",
+      "PRIMARY KEY (id_faixa)"
+    ],
+    [
+      "faixa_exclusiva",
+      "fk_faixa_trecho",
+      "FOREIGN KEY (id_trecho) REFERENCES trecho(id_trecho)"
+    ],
+    [
+      "linha_onibus",
+      "fk_linha_cidade",
+      "FOREIGN KEY (id_cidade) REFERENCES cidade(id_cidade)"
+    ],
+    [
+      "linha_onibus",
+      "linha_onibus_pkey",
+      "PRIMARY KEY (id_linha)"
+    ],
+    [
+      "linha_onibus",
+      "uq_linha_cidade_codigo",
+      "UNIQUE (id_cidade, codigo)"
+    ],
+    [
+      "linha_trecho",
+      "ck_linha_trecho_ordem",
+      "CHECK ((ordem > 0))"
+    ],
+    [
+      "linha_trecho",
+      "fk_linha_trecho_linha",
+      "FOREIGN KEY (id_linha) REFERENCES linha_onibus(id_linha) ON DELETE CASCADE"
+    ],
+    [
+      "linha_trecho",
+      "fk_linha_trecho_trecho",
+      "FOREIGN KEY (id_trecho) REFERENCES trecho(id_trecho)"
+    ],
+    [
+      "linha_trecho",
+      "linha_trecho_pkey",
+      "PRIMARY KEY (id_linha, id_trecho)"
+    ],
+    [
+      "linha_trecho",
+      "uq_linha_trecho_ordem",
+      "UNIQUE (id_linha, ordem)"
+    ],
+    [
+      "registro_atraso",
+      "ck_atraso_minutos",
+      "CHECK ((minutos_atraso >= 0))"
+    ],
+    [
+      "registro_atraso",
+      "fk_atraso_linha",
+      "FOREIGN KEY (id_linha) REFERENCES linha_onibus(id_linha)"
+    ],
+    [
+      "registro_atraso",
+      "fk_atraso_trecho",
+      "FOREIGN KEY (id_trecho) REFERENCES trecho(id_trecho)"
+    ],
+    [
+      "registro_atraso",
+      "registro_atraso_pkey",
+      "PRIMARY KEY (id_atraso)"
+    ],
+    [
+      "trecho",
+      "ck_trecho_cidades_diferentes",
+      "CHECK ((id_cidade_origem <> id_cidade_destino))"
+    ],
+    [
+      "trecho",
+      "ck_trecho_distancia",
+      "CHECK ((distancia_km > (0)::numeric))"
+    ],
+    [
+      "trecho",
+      "fk_trecho_cidade_destino",
+      "FOREIGN KEY (id_cidade_destino) REFERENCES cidade(id_cidade)"
+    ],
+    [
+      "trecho",
+      "fk_trecho_cidade_origem",
+      "FOREIGN KEY (id_cidade_origem) REFERENCES cidade(id_cidade)"
+    ],
+    [
+      "trecho",
+      "trecho_pkey",
+      "PRIMARY KEY (id_trecho)"
+    ]
+  ],
+  "conexao": "PostgreSQL via SSL; leitura somente"
+}

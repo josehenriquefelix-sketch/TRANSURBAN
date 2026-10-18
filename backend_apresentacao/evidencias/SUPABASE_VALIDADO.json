@@ -1,0 +1,8 @@
+{
+  "conexao": "Supabase PostgreSQL via SSL",
+  "ensaio_http": "19 requisições aprovadas",
+  "persistencia": "processo encerrado e reiniciado; linhas preservadas",
+  "total_linhas": 4,
+  "schema_modificado": false,
+  "login": "não implementado neste painel"
+}

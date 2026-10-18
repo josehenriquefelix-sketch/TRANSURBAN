@@ -1,0 +1,47 @@
+TRANSURBAN — CONTEÚDO TÉCNICO PARA AS FICHAS
+Este texto segue os critérios colados no chat. Os formulários completos não
+foram acessados: o Google pediu nova confirmação de login em 18/10/2026.
+Não indica entrega feita ou nota atribuída.
+
+DS
+Python/FastAPI para HTTP; SQLAlchemy para tabelas e consultas; Supabase/PostgreSQL
+ou SQLite local conforme configuração. Banco privado configurado em .env.
+database.py: conexão e sessões. models.py: tabelas/PK/FK/restrições.
+schemas.py: validação de entrada. main.py: rotas e regras.
+Tabela cidade: PK id_cidade, nome. Linha: PK id_linha, FK id_cidade.
+GET/POST /cidades e /linhas. Consulta de linhas mostra nome da cidade.
+Respostas verificadas: 200 consulta, 201 cadastro, 404 cidade inexistente,
+409 duplicidade, 422 entrada inválida. As demais tabelas são trecho,
+linha_trecho, faixa_exclusiva e registro_atraso.
+
+IA
+CSV desnormalizado de 180 observações sintéticas, com 13 colunas.
+Uma linha representa uma observação de atraso por trecho/data/linha; sem
+id_viagem, não se pode declarar 180 viagens completas.
+Pandas lê códigos como texto para preservar zeros; normaliza espaços,
+converte datas e números e audita ausentes, duplicatas, infinidades e a
+coerência entre tempo real, programado e atraso. Não imputa zero.
+Na fonte atual: 180 observações válidas, nenhum ausente, nenhuma duplicata
+exata adicional, nenhuma exclusão e nenhum código com nome divergente.
+Soma: 1362 minutos por observação. Média: 7,5667 minutos. Mediana: 8.
+Mínimo: 2. Máximo: 12. Cada agrupamento reconcilia 180 observações e 1362 min.
+GET /ia/qualidade, /ia/resumo, /ia/agrupamentos/linha e /ia/agrupamentos/data.
+Também existem agrupamentos por cidade, período, trânsito, clima e trecho.
+Fonte inválida interrompe indicadores com 422; fonte indisponível gera 503.
+Perguntas: qual atraso típico aparece? Como variam as médias por linha ou
+data? Onde estão os maiores atrasos e empates? Os dados não permitem
+causalidade, previsão de chegada ou estimar tempo perdido por passageiros.
+No dashboard, usar cartões de contagem/média/mediana, barras por linha e
+série por data, sempre com unidade, quantidade de observações e aviso sintético.
+
+EVIDÊNCIAS
+43 testes automatizados passaram. A conferência usa também csv/statistics.
+13 requisições HTTP reais da integração de IA passaram em SQLite.
+Ensaio anterior: 19 requisições em Supabase e persistência após reiniciar.
+O painel foi operado no navegador; consulta/qualidade/resumo/agrupamentos
+responderam. O repositório original mantém seus commits anteriores.
+
+PENDÊNCIAS DE ENTREGA
+Confirmar login Google, preencher as fichas nos campos efetivamente pedidos
+e anexar/enviar no Classroom. A equipe informa a contribuição real de cada
+integrante. Não foram inventadas atividades individuais ou datas passadas.

@@ -1,0 +1,1 @@
+APROVADO: servidor Uvicorn encerrado e recriado; todos os registros de linhas preservados.

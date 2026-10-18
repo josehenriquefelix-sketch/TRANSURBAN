@@ -1,0 +1,100 @@
+TRANSURBAN — APRESENTAÇÃO ORAL, SEM SLIDES
+
+Integrantes: Bruno, Kauan, José, Gustavo, Jullyany, Camila e Ana Carolina.
+Ordem sugerida: Gustavo, Kauan, José, Bruno, Ana Carolina, Jullyany e Camila.
+Duração aproximada: 9 a 12 minutos, dependendo das pausas e de uma eventual demonstração.
+As falas apresentam a entrega que foi verificada. O grupo pode adaptar a linguagem durante o ensaio.
+
+1. GUSTAVO — ABERTURA E OBJETIVO
+
+Olá, pessoal. Nós somos a equipe do TRANSURBAN, um projeto integrador das áreas de Desenvolvimento de Sistemas e Inteligência Artificial. Nosso projeto trabalha com a organização de informações do transporte coletivo no contexto acadêmico de Maringá e Sarandi.
+
+Para estudar o transporte, precisamos saber quais linhas pertencem a cada cidade, quais trechos fazem parte de seus percursos e onde os atrasos foram registrados. Essas informações precisam ficar relacionadas para permitir consultas e análises.
+
+O objetivo da entrega que vamos apresentar é organizar esses dados em um banco e disponibilizar operações por meio de uma API. Também preparamos um painel para realizar consultas e cadastros e acompanhar as respostas do sistema.
+
+Vamos explicar a estrutura do banco, o funcionamento da API e os resultados que verificamos. Os exemplos de demonstração são fictícios, e a base utilizada na análise de atrasos é sintética, preparada para estudo acadêmico.
+
+Agora o Kauan vai explicar como organizamos o banco de dados.
+
+2. KAUAN — BANCO DE DADOS E RELACIONAMENTOS
+
+Nosso banco utiliza PostgreSQL, hospedado no Supabase. Ele reúne seis tabelas principais. A tabela cidade guarda os municípios. Linha de ônibus registra o código, o nome e a cidade da linha. Trecho guarda as cidades de origem e destino, o nome da ligação e sua distância.
+
+A tabela linha trecho associa os trechos a uma linha e informa a ordem do percurso. Faixa exclusiva registra o tipo e o status da faixa vinculada a um trecho. Registro de atraso guarda a linha, o trecho, a data, os minutos de atraso e uma observação opcional.
+
+Cada registro possui uma identificação. A chave primária identifica o registro, enquanto a chave estrangeira relaciona informações entre tabelas. Por exemplo, uma linha informa o identificador de uma cidade existente.
+
+Esses relacionamentos ajudam a manter os dados consistentes. Também existem regras que impedem repetir um código de linha dentro da mesma cidade e repetir uma ordem de percurso na mesma linha.
+
+O José vai explicar como a API utiliza essa estrutura.
+
+3. JOSÉ — FUNCIONAMENTO DA API
+
+A API é a parte do sistema que recebe os pedidos da interface e executa as operações necessárias no banco. No nosso projeto, ela foi desenvolvida em Python com FastAPI. Usamos SQLAlchemy para representar e consultar os dados e um driver PostgreSQL para realizar a conexão com o banco.
+
+Quando uma pessoa solicita a lista de cidades, a interface envia uma requisição HTTP para a API. A API consulta o banco e devolve uma resposta em JSON, um formato que organiza informações em campos e valores.
+
+Usamos GET para consultar e POST para cadastrar. A API possui rotas para cidades, linhas, trechos, percurso, faixas e atrasos, além de uma rota para indicadores do CSV.
+
+Antes de salvar, ela verifica os campos enviados e os relacionamentos. Por exemplo, uma linha precisa apontar para uma cidade existente. A configuração privada de conexão fica no backend, sem expor a senha do banco ao navegador.
+
+Agora o Bruno vai explicar um exemplo de consulta e cadastro.
+
+4. BRUNO — CONSULTAS, CADASTROS E RESPOSTAS
+
+O painel permite escolher uma operação e visualizar a resposta real da API. Por exemplo, uma consulta à rota cidades retorna os municípios cadastrados, com seus identificadores e nomes.
+
+Para cadastrar uma linha, enviamos seu código, seu nome e o identificador da cidade. A API verifica os dados, grava o registro e devolve uma resposta. No ensaio, cadastramos uma linha fictícia e confirmamos que ela apareceu na tabela linha de ônibus do Supabase.
+
+Uma consulta bem-sucedida recebe o código HTTP 200. Um cadastro criado recebe 201. Se repetirmos o mesmo código de linha na mesma cidade, a API responde com 409, indicando conflito de cadastro. Se enviarmos um campo obrigatório inválido, como nome vazio, ela responde com 422.
+
+Essas respostas ajudam a entender o resultado de cada pedido e mostram que as validações estão funcionando.
+
+A Ana Carolina vai explicar como o percurso e os atrasos se relacionam com a linha.
+
+5. ANA CAROLINA — PERCURSO E REGISTROS DE ATRASO
+
+O percurso informa quais trechos pertencem a uma linha e em qual ordem eles aparecem. A API permite cadastrar essa associação e consultar o percurso de uma linha específica.
+
+Para registrar um atraso, informamos a linha, o trecho, a data e os minutos de atraso. Podemos acrescentar uma observação. No ensaio, criamos um exemplo fictício de oito minutos de atraso em um trecho vinculado à linha de demonstração.
+
+A API verifica se a linha e o trecho existem, se estão associados no percurso, se a data é válida e se os minutos são inteiros e não negativos. Depois de salvar, uma consulta permite recuperar o registro.
+
+Esse fluxo mostra como os relacionamentos do banco aparecem nas operações do sistema. Também permite organizar os registros para consultas e análises posteriores. A versão demonstrada trabalha com cadastros e consultas, sem rastreamento de ônibus em tempo real.
+
+Agora a Jullyany vai apresentar a base utilizada na análise.
+
+6. JULLYANY — DADOS E INDICADORES
+
+A análise utiliza um arquivo CSV com 180 registros sintéticos de Maringá e Sarandi. Sintético significa que esses dados foram preparados para estudo e validação acadêmica. Eles não representam medições reais de ônibus.
+
+O arquivo reúne informações como cidade, linha, trecho, condição de trânsito, clima e minutos de atraso. Calculando os valores desse arquivo, encontramos uma média geral de 7,57 minutos, um mínimo de 2 e um máximo de 12 minutos. A mediana é de 8 minutos e a soma é de 1.362 minutos por observação, sem equivaler a tempo perdido por passageiros. A leitura e os cálculos são feitos com Pandas; também verificamos ausentes, duplicações e inconsistências.
+
+Também comparamos as médias por condição de trânsito. No arquivo, elas são de 4,22 minutos para leve, 7,11 para moderado, 9,84 para intenso e 9,09 para muito intenso. Cada categoria tem 45 registros.
+
+Esses números descrevem somente a base sintética. Eles não comprovam uma relação de causa e não representam uma previsão de atrasos. A contribuição desta etapa é organizar os dados e demonstrar como produzir indicadores por meio da API.
+
+A Camila vai apresentar as verificações realizadas e concluir.
+
+7. CAMILA — TESTES E CONCLUSÃO
+
+Para verificar o funcionamento da entrega, executamos 43 testes automatizados em um banco SQLite temporário e isolado. Eles verificaram campos obrigatórios, valores inválidos, relacionamentos, duplicidades e persistência dos dados.
+
+Também verificamos 13 requisições HTTP reais da integração de IA em SQLite. Em um ensaio anterior, realizamos 19 requisições reais no Supabase, incluindo cadastros, consultas e erros esperados de validação. Encerramos e reiniciamos a API e confirmamos que os registros continuavam salvos.
+
+Com isso, o TRANSURBAN demonstra a integração entre uma interface, uma API e um banco de dados. Conseguimos consultar e cadastrar informações relacionadas do transporte e calcular indicadores a partir de uma base sintética.
+
+O painel apresentado nesta entrega não possui login. A análise é descritiva e não inclui um modelo de previsão validado. Esses limites ajudam a separar o que demonstramos das possibilidades de evolução do projeto.
+
+Agradecemos pela atenção e estamos disponíveis para perguntas.
+
+ORIENTAÇÕES PARA O ENSAIO — NÃO PRECISAM SER LIDAS À PLATEIA
+
+Cada integrante deve entender sua parte e ensaiar a passagem para a próxima pessoa.
+Se houver microfone, combinar a troca para evitar interrupções.
+Explicar os termos técnicos na primeira vez em que aparecerem.
+Os números apresentados descrevem o CSV sintético e os testes desta entrega.
+Se o professor pedir uma demonstração, José e Bruno podem mostrar uma consulta e um cadastro no painel.
+Não projetar senhas, configurações privadas ou o arquivo .env.
+Não afirmar que login, rastreamento em tempo real ou previsão por IA estão concluídos.

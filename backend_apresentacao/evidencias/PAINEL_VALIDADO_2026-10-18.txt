@@ -1,0 +1,13 @@
+Ensaio real pelo painel no navegador — 18/10/2026
+URL: http://127.0.0.1:8000/apresentacao
+Banco: SQLite local. Sem autenticação.
+GET /health: HTTP 200; status ok; banco sqlite.
+GET /cidades: HTTP 200.
+POST /cidades: HTTP 201; cidade fictícia criada com ID 3.
+POST /linhas: HTTP 201; linha fictícia criada com ID 2, vinculada à cidade 3.
+POST /linhas repetido: HTTP 409 esperado.
+POST /cidades com nome vazio: HTTP 422 esperado.
+GET /indicadores: HTTP 200; 180 registros sintéticos; média 7,57 minutos.
+GET /linhas: HTTP 200; a linha criada apareceu na consulta.
+Não foi necessário alterar o código para estas operações.
+Este ensaio não verifica o equipamento da escola ou a execução atual em Supabase.

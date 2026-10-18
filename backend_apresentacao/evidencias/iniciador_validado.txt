@@ -1,0 +1,10 @@
+Failed to find real location of C:\Users\josep\AppData\Local\Programs\Python\Python313\python.exe
+Failed to find real location of C:\Users\josep\AppData\Local\Programs\Python\Python313\python.exe
+INFO:     Started server process [8964]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8014 (Press CTRL+C to quit)
+INFO:     127.0.0.1:49655 - "GET /health HTTP/1.1" 200 OK
+
+TRANSURBAN PRONTO. Banco: sqlite
+Painel: http://127.0.0.1:8014/apresentacao
