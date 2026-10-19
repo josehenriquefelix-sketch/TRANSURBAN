@@ -4,7 +4,7 @@
 
 ## API Python — comece aqui
 
-A API escolar está em **[backend_escola/](backend_escola/)**. A versão 1.2.0 reúne cadastros de cidades e linhas, relacionamento PK/FK, análise de snapshot público comunitário de Curitiba em `/ia/dados-publicos`, com fonte e limites explícitos. A análise sintética anterior e seu painel permanecem identificados para testes, sem representar atrasos reais.
+A API escolar está em **[backend_escola/](backend_escola/)**. A versão 1.3.0 reúne cadastros de cidades e linhas, relacionamento PK/FK, análise de snapshot público comunitário de Curitiba em `/ia/dados-publicos`, com fonte e limites explícitos. A análise sintética anterior e seu painel permanecem identificados para testes, sem representar atrasos reais.
 
 **[Leia o guia completo da API: arquivos, conexão, rotas, exemplos, testes e apresentação](backend_escola/API_EXPLICADA.md).**
 

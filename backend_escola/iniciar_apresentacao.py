@@ -39,13 +39,15 @@ def main():
     env = os.environ.copy()
     env["DATABASE_URL"] = "sqlite:///" + (ROOT / "apresentacao_local.db").as_posix()
     env["CSV_PATH"] = str(ROOT / "data" / "atrasos_analise.csv")
+    # Preserva a suíte completa; na demonstração, Swagger destaca somente DS e dados públicos.
+    env["TRANSURBAN_APRESENTACAO"] = "0" if args.testar or args.evidencias else "1"
     if args.testar:
         command = [str(python), "-m", "pytest", "-q"]
     elif args.evidencias:
         command = [str(python), "gerar_evidencias.py"]
     else:
         print("Apresentação com SQLite LOCAL. IA pública: snapshot histórico de Curitiba em /ia/dados-publicos. Não usa Supabase.", flush=True)
-        print("A base sintética anterior continua separada em /ia; não representa atrasos reais.", flush=True)
+        print("Swagger em modo apresentação: testes sintéticos anteriores não são listados. Comece por GET /apresentacao.", flush=True)
         print("O .env existente é preservado. Deixe este terminal aberto; Ctrl+C encerra.", flush=True)
         print(f"No navegador deste notebook: http://127.0.0.1:{args.port}/docs", flush=True)
         command = [str(python), "-m", "uvicorn", "main:app", "--host", "127.0.0.1", "--port", str(args.port)]

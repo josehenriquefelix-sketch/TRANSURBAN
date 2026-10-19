@@ -49,6 +49,7 @@ def executar(destino):
                         assert r.status_code == expected, (path, r.status_code)
                         return payload
                     request("GET", "/docs", 200)
+                    request("GET", "/apresentacao", 200)
                     request("GET", "/painel/", 200)
                     assert request("GET", "/health", 200)["banco"] == "sqlite_local"
                     city = request("POST", "/cidades", 201, {"nome": "Sarandi"})

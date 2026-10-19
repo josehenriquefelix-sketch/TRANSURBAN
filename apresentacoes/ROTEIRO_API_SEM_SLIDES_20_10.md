@@ -23,13 +23,17 @@ py -3.12 iniciar_apresentacao.py --evidencias
 py -3.12 iniciar_apresentacao.py
 ```
 
-A preparação requer internet e Python 3.12. Os testes devem passar sem falhas; o número de referência nesta revisão é 27 testes. O aviso de depreciação de Starlette/httpx, se aparecer, não é falha. O gerador deve indicar 21 requisições verificadas. A contagem deve ser confirmada no notebook: a validação na nuvem não substitui a execução nele.
+Atalhos opcionais no Windows: na pasta backend_escola, PREPARAR-WINDOWS.cmd executa instalação, testes e evidências e para se houver falha. APRESENTAR-WINDOWS.cmd inicia a API já preparada. Os atalhos foram fornecidos para conveniência; a execução Windows precisa ser ensaiada nesse notebook.
+
+A preparação requer internet e Python 3.12. Os testes devem passar sem falhas; o número de referência nesta revisão é 29 testes. O aviso de depreciação de Starlette/httpx, se aparecer, não é falha. O gerador deve indicar 22 requisições verificadas. A contagem deve ser confirmada no notebook: a validação na nuvem não substitui a execução nele.
 
 Aguarde `Application startup complete`, deixe o terminal aberto e digite no navegador DO MESMO NOTEBOOK:
 
 - `http://127.0.0.1:8000/health`: deve mostrar status ok e banco sqlite_local.
 - `http://127.0.0.1:8000/docs`: Swagger para os testes.
 - `/painel/`: painel opcional; não é necessário na apresentação.
+
+O inicializador ativa o modo de apresentação: a documentação /docs mostra o roteiro, DS e os dados públicos; não lista as rotas sintéticas anteriores. Elas continuam disponíveis para os testes, sem serem apagadas. GET /apresentacao mostra a sequência e os resultados esperados.
 
 A partir desta revisão, `/docs` carrega JS e CSS locais de `swagger_static`, em vez de CDN. Depois da instalação, faça um ensaio com o Wi-Fi desligado: abra uma nova aba, carregue `/docs` e execute `/health` e `/ia/dados-publicos/resumo`. O banco e o CSV devem funcionar sem internet. Ligue a rede novamente se precisar baixar ou enviar arquivos; não execute instalação durante a apresentação.
 
@@ -74,7 +78,7 @@ Confira antes que `python3 --version` indica 3.12; não execute esses comandos �
 
 ## Abertura — José Henrique, líder (cerca de 1 minuto e meio)
 
-“Bom dia, professores, equipe pedagógica, direção e colegas. Eu sou José Henrique e vou iniciar a apresentação da nossa equipe, formada por Bruno, Kauan, Gustavo, Jullyany, Camila, Ana Carolina e por mim.
+“Bom dia, pessoal! Eu sou o José Henrique e hoje nossa equipe vai apresentar o TRANSURBAN. Estou aqui com Bruno, Kauan, Gustavo, Jullyany, Camila e Ana Carolina.
 
 Nosso projeto se chama TRANSURBAN e tem como tema a mobilidade e o transporte coletivo entre Maringá e Sarandi. A proposta do projeto é organizar informações que possam apoiar quem utiliza ou estuda esse transporte.
 
@@ -100,6 +104,8 @@ Kauan pode ler. Não precisa operar o computador nem explicar os arquivos.
 
 ## Parte 3 — José Henrique: estrutura e cadastro (cerca de 3 minutos)
 
+Antes de começar os testes, abra GET `/apresentacao` para conferir a sequência; depois recolha essa operação para dar espaço à demonstração.
+
 ### Passo 1: mostrar os arquivos no VS Code
 
 “Usamos Python com FastAPI para disponibilizar as rotas. O SQLAlchemy permite trabalhar com as tabelas por meio de objetos Python, e o Pydantic valida os dados recebidos.
@@ -113,6 +119,8 @@ Cidade possui `id_cidade` como chave primária. Linha possui `id_linha` como cha
 Abra GET `/health`, clique em Try it out e depois Execute. Aguarde a resposta.
 
 “O status ok confirma a consulta de verificação ao banco. O campo sqlite_local identifica o banco usado nesta demonstração.”
+
+Os POSTs também têm um seletor de exemplos: cadastro válido e teste inválido. Selecione o exemplo correspondente, ajuste o ID quando necessário e só então execute.
 
 ### Passo 3: cadastrar a cidade
 
@@ -220,13 +228,15 @@ Essas medidas são quantidades de registros, não minutos. Elas somam as categor
 
 ### Passo 2: executar GET /ia/dados-publicos/agrupamentos/linha
 
-No Swagger, abra GET `/ia/dados-publicos/agrupamentos/{dimensao}`, clique Try it out, selecione linha e Execute.
+No Swagger, abra GET `/ia/dados-publicos/agrupamentos/{dimensao}`, clique Try it out, selecione linha, preencha limite com 5 e clique Execute. A resposta mostra cinco grupos, total_grupos 309 e o total completo separado da soma dos grupos exibidos. O limite é só de exibição; não muda o cálculo do resumo.
 
-“A segunda pergunta é como esses registros se distribuem pelas linhas. O agrupamento conserva o código e o nome publicados no snapshot e informa a quantidade de registros e categorias de serviço presentes.”
+“A segunda pergunta é como esses registros se distribuem pelas linhas. Para facilitar a leitura no telão, exibimos cinco grupos de um total de 309. O agrupamento conserva o código e o nome publicados e informa a quantidade de registros e categorias de serviço presentes. A soma dos cinco grupos exibidos aparece separada do total completo.”
 
 Não chamar o máximo de “linha mais movimentada”: não temos passageiros, veículos ou demanda observada.
 
 ### Passo 3: repetir com dimensao servico
+
+Deixe limite vazio ou mantenha 5: só existem três categorias.
 
 “A terceira pergunta é como os registros se distribuem por categoria de serviço. Temos 33.425 para dias úteis, 20.754 para sábado e 16.907 para domingo. A soma dessas categorias também é 71.086.
 
@@ -238,11 +248,11 @@ Não há previsão de chegada nem IA preditiva nesta etapa. Agora a Ana Carolina
 
 “Demonstramos cadastro, consulta, relacionamento entre tabelas e validação de dados. Na parte de Ciência de Dados, mostramos a origem pública do CSV de Curitiba, a qualidade e os indicadores que ele permite calcular.
 
-O projeto inclui testes automatizados e um gerador que confere 21 requisições HTTP e salva suas respostas. O código e as evidências estão versionados no GitHub na branch da entrega. A execução ao vivo de hoje usa o banco local.
+O projeto inclui testes automatizados e um gerador que confere 22 requisições HTTP e salva suas respostas. O código e as evidências estão versionados no GitHub na branch da entrega. A execução ao vivo de hoje usa o banco local.
 
 A conexão da API com o Supabase continua como pendência. Não apresentamos login, GPS ou pagamentos reais nesta API. Obrigada pela atenção. Estamos disponíveis para perguntas.”
 
-Só diga que os testes passaram no notebook da apresentação depois de executá-los nele. Nesta revisão são 27 testes e 21 requisições do gerador; evidências mais antigas registram versões anteriores. As medidas de transporte vêm do arquivo público, não dos testes da API.
+Só diga que os testes passaram no notebook da apresentação depois de executá-los nele. Nesta revisão são 29 testes e 22 requisições do gerador; evidências mais antigas registram versões anteriores. As medidas de transporte vêm do arquivo público, não dos testes da API.
 
 ## 5. O que demonstramos de DS e de IA
 

@@ -17,7 +17,11 @@ No Supabase, as capturas escolares confirmaram tabelas com PK, FK, IDs automáti
 3. No terminal, entre em `backend_escola`. Os comandos abaixo partem dessa pasta. Não copie ambientes virtuais de outro computador.
 4. Prepare com internet. Depois dessa preparação, a apresentação local não precisa da internet. Nesta revisão, o Swagger também usa arquivos locais da pasta `swagger_static`. Ensaiem com o Wi-Fi desligado antes de apresentar. Não deixe a instalação para o auditório.
 
-### Windows (PowerShell)
+### Windows: atalhos ou PowerShell
+
+Na pasta backend_escola, você pode abrir PREPARAR-WINDOWS.cmd antes da apresentação, com internet. Ele instala, testa e gera evidências, interrompendo em falha. Depois use APRESENTAR-WINDOWS.cmd e mantenha a janela aberta. Confira o resultado no seu Windows; a validação automatizada foi Linux.
+
+Ou use os comandos:
 
 ```powershell
 cd backend_escola
@@ -39,13 +43,15 @@ python3.12 iniciar_apresentacao.py
 
 Se `python3.12` não existir, confira `python3 --version`; use `python3` somente se indicar 3.12. Em Linux pode ser necessário instalar o pacote de venv correspondente com o responsável pelo notebook.
 
-O teste automático deve terminar com 27 testes aprovados; o gerador confere 21 requisições HTTP em banco temporário e guarda os resultados em `backend_escola/evidencias/execucao-*`. Confirme os resultados NO NOVO NOTEBOOK. A validação na nuvem não comprova a instalação em outra máquina. Windows tem instruções fornecidas, mas não foi executado no ambiente Linux de preparação.
+O teste automático deve terminar com 29 testes aprovados; o gerador confere 22 requisições HTTP em banco temporário e guarda os resultados em `backend_escola/evidencias/execucao-*`. Confirme os resultados NO NOVO NOTEBOOK. A validação na nuvem não comprova a instalação em outra máquina. Windows tem instruções fornecidas, mas não foi executado no ambiente Linux de preparação.
 
 Depois de `Application startup complete`, abra no navegador DO MESMO NOTEBOOK:
 
 - Swagger: `http://127.0.0.1:8000/docs`
 - Saúde: `http://127.0.0.1:8000/health` → `status: ok`, `banco: sqlite_local`.
 - Painel opcional: `http://127.0.0.1:8000/painel/`.
+
+O inicializador ativa o modo de apresentação e não lista a base sintética no Swagger. Comece por GET /apresentacao.
 
 O inicializador usa `apresentacao_local.db`, preserva `.env` e substitui DATABASE_URL e CSV_PATH apenas no processo filho. O banco começa vazio no pacote. Nenhum login, GPS, pagamento ou modelo preditivo faz parte desta demonstração. Não é necessário executar npm nem abrir o site React.
 

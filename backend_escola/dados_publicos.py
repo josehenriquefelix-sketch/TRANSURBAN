@@ -2,8 +2,8 @@
 import hashlib
 import json
 from pathlib import Path
-from typing import Literal
-from fastapi import APIRouter, HTTPException
+from typing import Annotated, Literal
+from fastapi import APIRouter, HTTPException, Query
 import pandas as pd
 
 PASTA = Path(__file__).resolve().parent / 'data' / 'dados_publicos'
@@ -57,17 +57,17 @@ def fonte_validada(estrita=True):
     return dados,meta,qualidade
 
 
-@router.get('/fonte')
+@router.get('/fonte', summary='1. Conferir origem, período e limitações da fonte')
 def fonte() -> dict:
     return fonte_validada(False)[1]
 
 
-@router.get('/qualidade')
+@router.get('/qualidade', summary='2. Verificar qualidade e integridade do CSV')
 def qualidade() -> dict:
     return fonte_validada(False)[2]
 
 
-@router.get('/resumo')
+@router.get('/resumo', summary='3. Contagens, soma, média e mediana — não são atrasos')
 def resumo() -> dict:
     dados,meta,auditoria = fonte_validada()
     contagens = dados.groupby('codigo_linha').size()
@@ -86,8 +86,10 @@ def resumo() -> dict:
             'limitacoes':meta['limitacoes']}
 
 
-@router.get('/agrupamentos/{dimensao}')
-def agrupamentos(dimensao:Literal['linha','servico']) -> dict:
+@router.get('/agrupamentos/{dimensao}', summary='4. Comparar por linha ou categoria de serviço',
+            responses={422:{'description':'Parâmetro ou snapshot inválido'},503:{'description':'Arquivos indisponíveis'}})
+def agrupamentos(dimensao:Literal['linha','servico'],
+                 limite:Annotated[int | None, Query(ge=1,le=100,description='Opcional: mostrar até 100 grupos; os totais completos continuam identificados. Use 5 no telão.')] = None) -> dict:
     dados,meta,auditoria = fonte_validada()
     resultados=[]
     if dimensao=='linha':
@@ -102,8 +104,12 @@ def agrupamentos(dimensao:Literal['linha','servico']) -> dict:
                                'linhas_com_registros':int(len(contagens)),
                                'media_registros_por_linha_com_registros':round(float(contagens.mean()),4),
                                'mediana_registros_por_linha_com_registros':float(contagens.median())})
+    exibidos = resultados if limite is None else resultados[:limite]
     return {'dimensao':dimensao,'cidade_fonte':meta['cidade'],
             'periodo_declarado_feed':meta['periodo_declarado_feed'],
             'registros_programacao':len(dados),'sha256':auditoria['sha256'],
             'soma_registros_nos_grupos':sum(r['registros_programacao'] for r in resultados),
-            'resultados':resultados}
+            'total_grupos':len(resultados), 'grupos_exibidos':len(exibidos),
+            'limite_apenas_de_exibicao':limite,
+            'soma_registros_dos_grupos_exibidos':sum(r['registros_programacao'] for r in exibidos),
+            'resultados':exibidos}

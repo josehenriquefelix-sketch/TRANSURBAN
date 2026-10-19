@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
+import os
 from pathlib import Path
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Body, Depends, FastAPI, HTTPException
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -23,11 +24,19 @@ async def lifespan(app: FastAPI):
     finally:
         engine.dispose()
 
-app = FastAPI(title="API TRANSURBAN", version="1.2.0", lifespan=lifespan,
+APRESENTACAO = os.getenv("TRANSURBAN_APRESENTACAO") == "1"
+app = FastAPI(title="API TRANSURBAN", version="1.3.0", lifespan=lifespan,
               docs_url=None, redoc_url=None,
-              description="DS: cidades/linhas. IA: snapshot público comunitário de Curitiba em /ia/dados-publicos; não mede atrasos. Base sintética anterior identificada separadamente.")
+              openapi_tags=[
+                  {"name":"Apresentação", "description":"Comece pelo roteiro dos testes. Cadastros DS são exemplos; IA usa programação pública histórica de Curitiba."},
+                  {"name":"Sistema", "description":"Verifique o banco em /health antes dos testes."},
+                  {"name":"DS — Cidades", "description":"Primeiro cadastre uma cidade e anote o ID devolvido."},
+                  {"name":"DS — Linhas", "description":"Use o ID real da cidade. A linha DEMO-20 é um exemplo de cadastro, não uma linha operacional verificada."},
+                  {"name":"IA — Dados públicos: Curitiba (histórico)", "description":"Snapshot comunitário, não oficial, de 28/09–05/10/2026. Não é dado de Maringá/Sarandi, atraso medido ou viagem realizada."},
+              ],
+              description="DS: cadastro e consulta em banco SQL. IA: programação publicada de Curitiba, com fonte, período e limitações. Para apresentar, abra GET /apresentacao. Não há GPS, atraso medido ou previsão de chegada.")
 app.include_router(dados_publicos_router)
-app.include_router(ia_router)
+app.include_router(ia_router, include_in_schema=not APRESENTACAO)
 
 app.mount("/documentacao-static", StaticFiles(directory=Path(__file__).resolve().parent / "swagger_static"), name="swagger-static")
 
@@ -39,7 +48,9 @@ def documentacao():
         swagger_js_url="/documentacao-static/swagger-ui-bundle.js",
         swagger_css_url="/documentacao-static/swagger-ui.css",
         swagger_favicon_url="/documentacao-static/favicon-32x32.png",
-        swagger_ui_parameters={"validatorUrl": None},
+        swagger_ui_parameters={"validatorUrl": None, "displayRequestDuration": True,
+                               "docExpansion": "list", "defaultModelsExpandDepth": -1,
+                               "filter": True},
     )
 
 @app.exception_handler(SQLAlchemyError)
@@ -68,7 +79,33 @@ def resposta_linha(linha):
 
 @app.get("/", tags=["Sistema"])
 def inicio():
-    return {"mensagem": "API TRANSURBAN funcionando", "painel": "/painel/", "documentacao": "/docs"}
+    return {"mensagem": "API TRANSURBAN funcionando", "documentacao": "/docs",
+            "roteiro": "/apresentacao", "dados_publicos": "/ia/dados-publicos/resumo",
+            "modo_apresentacao": APRESENTACAO}
+
+@app.get("/apresentacao", tags=["Apresentação"], summary="Comece aqui: sequência e resultados esperados")
+def roteiro() -> dict:
+    return {
+        "projeto":"TRANSURBAN", "modo_apresentacao": APRESENTACAO,
+        "contexto":"Projeto para Maringá/Sarandi; estudo externo com programação pública de Curitiba.",
+        "fonte":"GTFS comunitário histórico; não oficial da URBS. Consulte /ia/dados-publicos/fonte.",
+        "periodo_fonte":"28/09 a 05/10/2026",
+        "nao_disponivel":["atrasos medidos", "viagens realizadas", "passageiros", "GPS", "previsão de chegada"],
+        "orientacao":"Abra cada operação, clique Try it out e Execute. Confira Server response, não Example Value.",
+        "sequencia":[
+            {"passo":1,"rota":"GET /health","esperado":"200; status ok; banco sqlite_local no inicializador de apresentação."},
+            {"passo":2,"rota":"POST /cidades","entrada":{"nome":"Sarandi"},"esperado":"201; anote id_cidade realmente devolvido."},
+            {"passo":3,"rota":"POST /linhas","esperado":"Use o exemplo válido e substitua id_cidade pelo ID devolvido; 201 com cidade Sarandi."},
+            {"passo":4,"rota":"GET /linhas","esperado":"200; o cadastro DEMO-20 aparece na lista."},
+            {"passo":5,"rota":"POST /linhas","esperado":"Exemplo cidade inexistente: confirme antes que 999999 não existe; 404. GET seguinte não contém a tentativa."},
+            {"passo":6,"rota":"POST /cidades","entrada":{"nome":"   "},"esperado":"422 por nome vazio; erro intencional do teste."},
+            {"passo":7,"rota":"GET /ia/dados-publicos/fonte","esperado":"200; fonte, período, hashes e limites."},
+            {"passo":8,"rota":"GET /ia/dados-publicos/qualidade","esperado":"200; integridade e consistência do snapshot verificadas."},
+            {"passo":9,"rota":"GET /ia/dados-publicos/resumo","esperado":"200; 71086 registros; 309 códigos; média de contagens 230,0518; mediana 162; não são minutos."},
+            {"passo":10,"rota":"GET /ia/dados-publicos/agrupamentos/linha?limite=5","esperado":"200; cinco grupos para leitura; total completo identificado separadamente."},
+            {"passo":11,"rota":"GET /ia/dados-publicos/agrupamentos/servico","esperado":"200; categorias somam 71086 registros, não viagens realizadas por dia."},
+        ],
+    }
 
 @app.get("/health", tags=["Sistema"])
 def health(db: Session = Depends(get_db)):
@@ -76,8 +113,12 @@ def health(db: Session = Depends(get_db)):
     return {"status": "ok", "banco": "sqlite_local" if is_sqlite else "postgresql"}
 
 @app.post("/cidades", response_model=schemas.CidadeResponse, status_code=201, tags=["DS — Cidades"],
+          summary="Cadastrar cidade — 201; nome vazio — 422",
           responses={409: {"description": "Restrição de integridade no banco"}, 503: {"description": "Banco indisponível"}})
-def criar_cidade(cidade: schemas.CidadeCreate, db: Session = Depends(get_db)):
+def criar_cidade(cidade: schemas.CidadeCreate = Body(openapi_examples={
+    "cadastro_valido":{"summary":"Cadastro válido (201)","value":{"nome":"Sarandi"}},
+    "nome_vazio":{"summary":"Teste: somente espaços (422)","value":{"nome":"   "}},
+}), db: Session = Depends(get_db)):
     nova = models.Cidade(nome=cidade.nome)
     salvar(db, nova)
     return nova
@@ -87,8 +128,13 @@ def listar_cidades(db: Session = Depends(get_db)):
     return db.scalars(select(models.Cidade).order_by(models.Cidade.id_cidade)).all()
 
 @app.post("/linhas", response_model=schemas.LinhaResponse, status_code=201, tags=["DS — Linhas"],
+          summary="Cadastrar linha vinculada a uma cidade",
+          description="Use o id_cidade devolvido pelo POST da cidade. O número 1 no exemplo não é garantido. Para testar 404, confira primeiro que o ID 999999 não existe.",
           responses={404: {"description": "Cidade não encontrada"}, 409: {"description": "Restrição de integridade no banco"}, 503: {"description": "Banco indisponível"}})
-def criar_linha(linha: schemas.LinhaCreate, db: Session = Depends(get_db)):
+def criar_linha(linha: schemas.LinhaCreate = Body(openapi_examples={
+    "cadastro_valido":{"summary":"Cadastro de demonstração (201): ajuste o ID", "value":{"codigo":"DEMO-20","nome":"Linha da apresentação","id_cidade":1}},
+    "cidade_inexistente":{"summary":"Teste: cidade inexistente (404)", "value":{"codigo":"TESTE-ERRO","nome":"Tentativa inválida","id_cidade":999999}},
+}), db: Session = Depends(get_db)):
     cidade = db.get(models.Cidade, linha.id_cidade)
     if cidade is None:
         raise HTTPException(status_code=404, detail="Cidade não encontrada")

@@ -38,6 +38,45 @@ def test_resumo_e_agrupamentos_reconciliam_sem_inferir_atrasos():
     assert services=={'dias_uteis':33425,'sabado':20754,'domingo':16907}
 
 
+def test_limite_para_projear_nao_altera_totais_da_fonte():
+    from fastapi.testclient import TestClient
+    from main import app
+    with TestClient(app) as client:
+        response=client.get('/ia/dados-publicos/agrupamentos/linha?limite=5')
+        assert response.status_code==200
+        data=response.json()
+        assert len(data['resultados'])==data['grupos_exibidos']==5
+        assert data['total_grupos']==309
+        assert data['soma_registros_nos_grupos']==data['registros_programacao']==71086
+        assert data['soma_registros_dos_grupos_exibidos']==sum(r['registros_programacao'] for r in data['resultados'])
+        assert data['soma_registros_dos_grupos_exibidos']<data['soma_registros_nos_grupos']
+        assert client.get('/ia/dados-publicos/agrupamentos/linha?limite=0').status_code==422
+
+
+def test_modo_apresentacao_documenta_exemplos_e_separa_base_sintetica(tmp_path):
+    import os
+    import subprocess
+    import sys
+    from pathlib import Path
+    env=os.environ.copy()
+    env['DATABASE_URL']='sqlite:///'+(tmp_path/'sem_cadastro.db').as_posix()
+    env['TRANSURBAN_APRESENTACAO']='1'
+    code='''from main import app, roteiro
+s=app.openapi()
+assert '/ia/resumo' not in s['paths']
+assert '/ia/dados-publicos/resumo' in s['paths']
+assert '/apresentacao' in s['paths']
+assert roteiro()['modo_apresentacao'] is True
+c=s['paths']['/cidades']['post']['requestBody']['content']['application/json']['examples']
+assert c['cadastro_valido']['value']=={'nome':'Sarandi'}
+assert c['nome_vazio']['value']=={'nome':'   '}
+l=s['paths']['/linhas']['post']['requestBody']['content']['application/json']['examples']
+assert l['cidade_inexistente']['value']['id_cidade']==999999
+assert '/ia/resumo' not in str(roteiro()['sequencia'])
+print('Modo de apresentação e exemplos documentados conferidos.')'''
+    subprocess.run([sys.executable,'-c',code],env=env,cwd=Path(__file__).resolve().parent,check=True,capture_output=True,text=True)
+
+
 @pytest.mark.parametrize('tipo',['duplicata','arquivo_alterado'])
 def test_fonte_alterada_nao_e_aceita(tmp_path,tipo):
     pasta=tmp_path/'snapshot'

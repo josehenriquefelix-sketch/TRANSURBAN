@@ -12,13 +12,15 @@ Essas medidas são quantidades de registros, não minutos. Elas somam as categor
 
 ### Passo 2: executar GET /ia/dados-publicos/agrupamentos/linha
 
-No Swagger, abra GET `/ia/dados-publicos/agrupamentos/{dimensao}`, clique Try it out, selecione linha e Execute.
+No Swagger, abra GET `/ia/dados-publicos/agrupamentos/{dimensao}`, clique Try it out, selecione linha, preencha limite com 5 e clique Execute. A resposta mostra cinco grupos, total_grupos 309 e o total completo separado da soma dos grupos exibidos. O limite é só de exibição; não muda o cálculo do resumo.
 
-“A segunda pergunta é como esses registros se distribuem pelas linhas. O agrupamento conserva o código e o nome publicados no snapshot e informa a quantidade de registros e categorias de serviço presentes.”
+“A segunda pergunta é como esses registros se distribuem pelas linhas. Para facilitar a leitura no telão, exibimos cinco grupos de um total de 309. O agrupamento conserva o código e o nome publicados e informa a quantidade de registros e categorias de serviço presentes. A soma dos cinco grupos exibidos aparece separada do total completo.”
 
 Não chamar o máximo de “linha mais movimentada”: não temos passageiros, veículos ou demanda observada.
 
 ### Passo 3: repetir com dimensao servico
+
+Deixe limite vazio ou mantenha 5: só existem três categorias.
 
 “A terceira pergunta é como os registros se distribuem por categoria de serviço. Temos 33.425 para dias úteis, 20.754 para sábado e 16.907 para domingo. A soma dessas categorias também é 71.086.
 

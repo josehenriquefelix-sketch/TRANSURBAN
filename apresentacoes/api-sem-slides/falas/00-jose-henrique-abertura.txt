@@ -2,7 +2,7 @@ TRANSURBAN — API SEM SLIDES — 20/10/2026
 
 ## Abertura — José Henrique, líder (cerca de 1 minuto e meio)
 
-“Bom dia, professores, equipe pedagógica, direção e colegas. Eu sou José Henrique e vou iniciar a apresentação da nossa equipe, formada por Bruno, Kauan, Gustavo, Jullyany, Camila, Ana Carolina e por mim.
+“Bom dia, pessoal! Eu sou o José Henrique e hoje nossa equipe vai apresentar o TRANSURBAN. Estou aqui com Bruno, Kauan, Gustavo, Jullyany, Camila e Ana Carolina.
 
 Nosso projeto se chama TRANSURBAN e tem como tema a mobilidade e o transporte coletivo entre Maringá e Sarandi. A proposta do projeto é organizar informações que possam apoiar quem utiliza ou estuda esse transporte.
 

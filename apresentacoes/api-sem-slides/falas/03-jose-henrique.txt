@@ -2,6 +2,8 @@ TRANSURBAN — API SEM SLIDES — 20/10/2026
 
 ## Parte 3 — José Henrique: estrutura e cadastro (cerca de 3 minutos)
 
+Antes de começar os testes, abra GET `/apresentacao` para conferir a sequência; depois recolha essa operação para dar espaço à demonstração.
+
 ### Passo 1: mostrar os arquivos no VS Code
 
 “Usamos Python com FastAPI para disponibilizar as rotas. O SQLAlchemy permite trabalhar com as tabelas por meio de objetos Python, e o Pydantic valida os dados recebidos.
@@ -15,6 +17,8 @@ Cidade possui `id_cidade` como chave primária. Linha possui `id_linha` como cha
 Abra GET `/health`, clique em Try it out e depois Execute. Aguarde a resposta.
 
 “O status ok confirma a consulta de verificação ao banco. O campo sqlite_local identifica o banco usado nesta demonstração.”
+
+Os POSTs também têm um seletor de exemplos: cadastro válido e teste inválido. Selecione o exemplo correspondente, ajuste o ID quando necessário e só então execute.
 
 ### Passo 3: cadastrar a cidade
 
