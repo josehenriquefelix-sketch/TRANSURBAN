@@ -1,0 +1,10 @@
+{
+  "folders": [{ "path": "avaliacao_backend" }],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.terminal.activateEnvironment": true
+  },
+  "extensions": {
+    "recommendations": ["ms-python.python", "ms-python.vscode-pylance"]
+  }
+}
