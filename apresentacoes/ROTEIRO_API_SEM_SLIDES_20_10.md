@@ -6,7 +6,7 @@ Apresentação de 20/10/2026. Usar o Swagger e, brevemente, o VS Code. Duração
 
 A opção recomendada é levar o notebook Windows do líder, com Python 3.12, dependências instaladas, API ensaiada e a fonte de alimentação. Conectar o notebook ao cabo do projetor, se a escola permitir. Assim não é necessário instalar a API no computador do auditório. Uma saída HDMI pode conectar diretamente; USB-C exige suporte a vídeo e adaptador compatível. Peça ao responsável para conferir o cabo e a entrada disponíveis.
 
-Na apresentação: SQLite local, CSV sintético do pacote e Swagger servido pelo próprio projeto. O inicializador `iniciar_apresentacao.py` define a conexão local no processo; não precisa de `.env`. O banco local é um banco de dados SQL em arquivo, com PK e FK; não é um banco Supabase. O arquivo `.env` é configuração privada para outras formas de iniciar, não um requisito para esta demonstração.
+Na apresentação: SQLite local para os cadastros DS, CSV público histórico de Curitiba para IA e Swagger servido pelo próprio projeto. A base sintética anterior fica separada no grupo “IA — Base sintética anterior (testes)” e não é o conjunto apresentado nesta revisão. O inicializador `iniciar_apresentacao.py` define a conexão local no processo; não precisa de `.env`. O banco local é um banco de dados SQL em arquivo, com PK e FK; não é um banco Supabase. O arquivo `.env` é configuração privada para outras formas de iniciar, não um requisito para esta demonstração.
 
 A estrutura do Supabase foi conferida por capturas enviadas pelo usuário, incluindo PK/FK, geração automática de IDs e RLS. A conexão Python com o pooler foi interrompida antes da autenticação. Não há comprovação de POST/GET remoto. Não tentar resolver senhas, rede ou TLS no palco.
 
@@ -23,7 +23,7 @@ py -3.12 iniciar_apresentacao.py --evidencias
 py -3.12 iniciar_apresentacao.py
 ```
 
-A preparação requer internet e Python 3.12. Os testes devem passar sem falhas; o número de referência nesta revisão é 23 testes. O aviso de depreciação de Starlette/httpx, se aparecer, não é falha. O gerador deve indicar 16 requisições verificadas. A contagem deve ser confirmada no notebook: a validação na nuvem não substitui a execução nele.
+A preparação requer internet e Python 3.12. Os testes devem passar sem falhas; o número de referência nesta revisão é 27 testes. O aviso de depreciação de Starlette/httpx, se aparecer, não é falha. O gerador deve indicar 21 requisições verificadas. A contagem deve ser confirmada no notebook: a validação na nuvem não substitui a execução nele.
 
 Aguarde `Application startup complete`, deixe o terminal aberto e digite no navegador DO MESMO NOTEBOOK:
 
@@ -31,7 +31,7 @@ Aguarde `Application startup complete`, deixe o terminal aberto e digite no nave
 - `http://127.0.0.1:8000/docs`: Swagger para os testes.
 - `/painel/`: painel opcional; não é necessário na apresentação.
 
-A partir desta revisão, `/docs` carrega JS e CSS locais de `swagger_static`, em vez de CDN. Depois da instalação, faça um ensaio com o Wi-Fi desligado: abra uma nova aba, carregue `/docs` e execute `/health` e `/ia/resumo`. O banco e o CSV devem funcionar sem internet. Ligue a rede novamente se precisar baixar ou enviar arquivos; não execute instalação durante a apresentação.
+A partir desta revisão, `/docs` carrega JS e CSS locais de `swagger_static`, em vez de CDN. Depois da instalação, faça um ensaio com o Wi-Fi desligado: abra uma nova aba, carregue `/docs` e execute `/health` e `/ia/dados-publicos/resumo`. O banco e o CSV devem funcionar sem internet. Ligue a rede novamente se precisar baixar ou enviar arquivos; não execute instalação durante a apresentação.
 
 Pare com Ctrl+C, inicie novamente com o último comando e faça GET `/linhas`. Confira que os cadastros do ensaio permaneceram no arquivo `apresentacao_local.db`. Não apague esse arquivo sem necessidade. IDs podem mudar ao repetir cadastros; use sempre o ID realmente retornado.
 
@@ -82,7 +82,7 @@ Hoje vamos apresentar o backend, que é a parte do sistema responsável por rece
 
 A apresentação une duas partes da avaliação. Em Desenvolvimento de Sistemas, vamos cadastrar cidades e linhas de ônibus, mostrar a relação entre elas e testar dados válidos e inválidos. Em Ciência de Dados, vamos verificar um arquivo CSV e mostrar contagens, médias, mediana e agrupamentos disponibilizados pela API.
 
-Nesta demonstração usamos um banco local e uma base de dados sintética para estudo. Não estamos mostrando a localização real de ônibus, pagamentos ou previsão de chegada. Vamos mostrar o que está implementado, explicar cada resultado e também como a API trata erros de entrada.
+Nesta demonstração usamos um banco local nos cadastros e uma base pública de programação de transporte de Curitiba na análise. Esse conjunto foi publicado por um projeto comunitário, não é um feed oficial da URBS e se refere a um período histórico. Usamos como estudo externo do TRANSURBAN; não são dados de Maringá e Sarandi. Não há medição de atrasos nem comprovação de viagens realizadas. Vamos mostrar o que está implementado, a origem de cada dado e o que os resultados permitem concluir.
 
 O Bruno vai apresentar o objetivo da demonstração.”
 
@@ -188,57 +188,61 @@ Esperado: 422 com indicação do campo nome.
 
 “Agora a Jullyany vai explicar a fonte usada na parte de Ciência de Dados.”
 
-## Parte 5 — Jullyany: CSV e qualidade (cerca de 1 minuto)
+## Parte 5 — Jullyany: fonte pública e qualidade (cerca de 1 minuto e meio)
 
-Execute GET `/ia/qualidade`, indicando no JSON os campos registros_lidos, registros_validos, registros_excluidos e duplicatas_exatas_adicionais.
+### Passo 1: abrir GET /ia/dados-publicos/fonte
 
-“Usamos Pandas para ler um CSV desnormalizado. Esse arquivo repete informações como cidade e linha em diferentes observações. Cada registro representa uma observação de atraso em um trecho, associada a uma data e a uma linha de ônibus. Não corresponde necessariamente a uma viagem completa.
+“Buscamos uma fonte pública para não criar números de transporte. Selecionamos um snapshot GTFS comunitário de Curitiba, publicado pelo projeto URBS-GTFS e catalogado na Mobility Database. O publicador declara usar dados abertos URBS espelhados pelo C3SL da UFPR. Nosso grupo consultou o arquivo publicado e sua documentação; não fez a coleta original.
 
-A base contém 180 observações sintéticas para estudo. A verificação apresentada não encontrou registros inválidos ou duplicatas exatas adicionais nessa fonte. Também verificamos valores ausentes, datas, valores numéricos e coerência entre tempo programado, tempo real e atraso.
+O feed declara o período de 28 de setembro a 5 de outubro de 2026. Portanto é uma base histórica de Curitiba, não a programação atual de Maringá ou Sarandi e não um feed oficial da URBS. Aplicamos a técnica de análise do TRANSURBAN a esse estudo externo.”
 
-O cálculo considera atraso como o tempo real menos o programado, com mínimo zero. Se a fonte apresentar inconsistências relevantes, a API interrompe os indicadores para revisão em vez de ocultar o problema.
+### Passo 2: abrir GET /ia/dados-publicos/qualidade
 
-Agora a Camila vai mostrar os resultados.”
+Indique registros_lidos, ids_programacao_distintos, ausentes_por_coluna, ids_duplicados e hashes_originais_conferem.
 
-A checagem não comprova que os dados são reais ou completos sobre a cidade. Não dizer que qualidade zero erros torna a fonte uma representação da operação real.
+“O CSV foi produzido relacionando os registros de programação com os nomes das linhas e a operadora. Mantivemos os identificadores originais e a fonte. Cada linha do CSV é um registro de programação do GTFS convertido, não uma viagem comprovadamente realizada.
 
-## Parte 6 — Camila: indicadores e perguntas de análise (cerca de 1 minuto e meio)
+A verificação confere campos vazios, identificadores repetidos, referências e integridade dos arquivos. Os indicadores são bloqueados se o snapshot divergir ou tiver problemas nas regras verificadas. Não preenchemos dados ausentes com números inventados.
 
-### Passo 1: executar GET /ia/resumo
+Não usamos os horários de chegada desse conversor para calcular atrasos ou duração. Agora a Camila vai explicar os indicadores que essa fonte permite calcular.”
 
-“A primeira pergunta é: como os atrasos se distribuem nessa base de estudo? Temos 180 observações válidas, em duas cidades.
+A qualidade verifica o snapshot: não certifica a operação nem o conversor externo. Os arquivos originais incluídos e os hashes permitem conferir a derivação do CSV.
 
-A soma dos atrasos por observação é de 1.362 minutos. A média é aproximadamente 7,57 minutos, obtida dividindo 1.362 por 180. A mediana é 8 minutos e representa o centro dos valores ordenados.
+## Parte 6 — Camila: números publicados, contagens e agrupamentos (cerca de 1 minuto e meio)
 
-O maior atraso é de 12 minutos. Ele aparece em sete observações. Também temos 26 observações acima de 10 minutos, aproximadamente 14,44 por cento da base.”
+### Passo 1: executar GET /ia/dados-publicos/resumo
 
-Não interpretar null em viagens_completas como zero: não é possível contar viagens completas com essa fonte.
+“A primeira pergunta é: quantos registros de programação e códigos de linha existem nesse arquivo? Encontramos 71.086 registros e 309 códigos de linha.
 
-### Passo 2: executar o agrupamento por linha
+Contamos quantos registros pertencem a cada linha. A soma das contagens reconcilia os 71.086 registros. A média dessas contagens é aproximadamente 230,05 registros por linha: 71.086 dividido por 309. A mediana das 309 contagens é 162.
 
-Abra GET `/ia/agrupamentos/{dimensao}`, clique em Try it out, selecione linha e clique em Execute.
+Essas medidas são quantidades de registros, não minutos. Elas somam as categorias de serviço do arquivo e não representam uma média diária de ônibus ou viagens realizadas.”
 
-“A segunda pergunta é: como os atrasos se comparam entre linhas? Agrupamos por cidade e código da linha para não misturar códigos iguais de municípios diferentes. Os grupos apresentam contagem, total, média, mediana e máximo.”
+### Passo 2: executar GET /ia/dados-publicos/agrupamentos/linha
 
-Exemplo opcional, somente se estiver visível: Maringá, código 031, possui 12 observações, soma 108 e média 9 minutos. O código 324 também tem média 9; não afirmar um único vencedor quando houver empate.
+No Swagger, abra GET `/ia/dados-publicos/agrupamentos/{dimensao}`, clique Try it out, selecione linha e Execute.
 
-### Passo 3: repetir o agrupamento selecionando data
+“A segunda pergunta é como esses registros se distribuem pelas linhas. O agrupamento conserva o código e o nome publicados no snapshot e informa a quantidade de registros e categorias de serviço presentes.”
 
-“A terceira pergunta é: como os resultados variam ao longo das datas? Esse agrupamento mostra os indicadores de cada dia. Os dias têm quantidades de observações que podem ser diferentes; a média ajuda a comparar, mas ainda depende da amostra disponível.”
+Não chamar o máximo de “linha mais movimentada”: não temos passageiros, veículos ou demanda observada.
 
-“Esses resultados em JSON podem alimentar um dashboard. A análise é descritiva, com dados sintéticos. Não há modelo preditivo treinado nem previsão operacional de chegada nesta etapa.”
+### Passo 3: repetir com dimensao servico
 
-“Agora a Ana Carolina vai concluir.”
+“A terceira pergunta é como os registros se distribuem por categoria de serviço. Temos 33.425 para dias úteis, 20.754 para sábado e 16.907 para domingo. A soma dessas categorias também é 71.086.
+
+A soma é do arquivo de programação, não o total de viagens realizadas em um dia ou semana. Os campos de viagens realizadas e atraso médio aparecem como null porque essas medidas não estão disponíveis. Null não significa zero.
+
+Não há previsão de chegada nem IA preditiva nesta etapa. Agora a Ana Carolina vai concluir.”
 
 ## Parte 7 — Ana Carolina: evidências e conclusão (cerca de 40 segundos)
 
-“Demonstramos cadastro, consulta, relacionamento entre tabelas e validação de dados. Na parte de Ciência de Dados, mostramos a leitura do CSV, a qualidade e os indicadores.
+“Demonstramos cadastro, consulta, relacionamento entre tabelas e validação de dados. Na parte de Ciência de Dados, mostramos a origem pública do CSV de Curitiba, a qualidade e os indicadores que ele permite calcular.
 
-O projeto inclui testes automatizados e um gerador que confere 16 requisições HTTP e salva suas respostas. O código e as evidências estão versionados no GitHub na branch da entrega. A execução ao vivo de hoje usa o banco local.
+O projeto inclui testes automatizados e um gerador que confere 21 requisições HTTP e salva suas respostas. O código e as evidências estão versionados no GitHub na branch da entrega. A execução ao vivo de hoje usa o banco local.
 
 A conexão da API com o Supabase continua como pendência. Não apresentamos login, GPS ou pagamentos reais nesta API. Obrigada pela atenção. Estamos disponíveis para perguntas.”
 
-Só diga que os testes passaram no notebook da apresentação depois de executá-los nele. Na preparação anterior, foram aprovados 22 testes; a revisão com Swagger local acrescenta um teste, totalizando 23 quando todos forem executados.
+Só diga que os testes passaram no notebook da apresentação depois de executá-los nele. Nesta revisão são 27 testes e 21 requisições do gerador; evidências mais antigas registram versões anteriores. As medidas de transporte vêm do arquivo público, não dos testes da API.
 
 ## 5. O que demonstramos de DS e de IA
 
@@ -246,7 +250,7 @@ Só diga que os testes passaram no notebook da apresentação depois de executá
 |---|---|
 | Análise e Métodos de Sistemas | Tema de mobilidade, entidades Cidade/Linha, organização de responsabilidades e requisitos de cadastro/consulta |
 | Banco de Dados I e II | PK, FK, relacionamento um para muitos, gravação, leitura e consulta com nome relacionado |
-| Lógica Computacional | Verificação de existência, rejeição de texto vazio e regras para calcular atraso |
+| Lógica Computacional | Verificação de existência, rejeição de texto vazio e regras de validação e agrupamento |
 | Programação Backend I | FastAPI, POST/GET, Pydantic, SQLAlchemy, sessões, códigos HTTP e testes |
 | Programação Python I | Módulos, funções, dependências isoladas e processamento em Python |
 | Ciência de Dados | CSV, unidade de análise, qualidade, contagens, soma, média, mediana e agrupamentos com Pandas |
@@ -274,13 +278,21 @@ Essa tabela relaciona conteúdos demonstrados; não substitui critérios especí
 
 **O Supabase está conectado?** Ainda não foi comprovada a conexão Python. A estrutura foi conferida, mas a demonstração usa SQLite. Não confundir o editor SQL acessível pelo navegador com acesso PostgreSQL pelo Python.
 
+**A fonte é oficial e atual?** Não. É um feed comunitário público, catalogado como não oficial, com período declarado de 28/09–05/10/2026. A origem primária URBS/C3SL é declarada pelo publicador; não afirmar coleta direta ou validação da URBS.
+
+**Por que Curitiba se o projeto é Maringá/Sarandi?** Não obtivemos uma base local verificável nesta preparação. Usamos Curitiba como estudo externo para demonstrar o processamento sem fabricar registros locais. Para operar nas cidades do projeto, será necessário obter e validar uma fonte local.
+
+**De onde vieram os números de 7,57 e 8 minutos do roteiro antigo?** Eram cálculos de uma base sintética de teste. Não são atrasos medidos e não são os indicadores desta apresentação.
+
+**Qual a fonte?** O endpoint /ia/dados-publicos/fonte mostra o download, o publicador, o catálogo MDB-3225, o período, hashes e limitações. Os arquivos e o script de importação estão no repositório.
+
 **Por que usar SQLite?** É um banco relacional local adequado à demonstração sem depender de acesso ao banco remoto. Não estamos afirmando que representa a implantação final de produção.
 
-**Os 180 registros são viagens?** Não. São observações por trecho, sem identificador de viagem completa. Por isso viagens_completas é null, não zero.
+**Os 71.086 registros são viagens realizadas?** Não. São registros trip_id da programação GTFS convertida. Sem observações de operação, viagens_realizadas é null. Não contamos ônibus únicos ou passageiros.
 
-**Somamos minutos perdidos pelos passageiros?** Não. A soma é dos atrasos das observações; não há número de passageiros para calcular impacto individual.
+**Esses dados mostram atrasos reais?** Não. Não temos tempos observados para isso. A soma e a média apresentadas são de contagens de registros de programação por linha, não de minutos.
 
-**O cadastro de uma linha altera os indicadores?** Não. Os cadastros usam o banco SQL; os indicadores leem o CSV independente. Não existe sincronização automática entre essas fontes.
+**O cadastro de uma linha altera os indicadores?** Não. O cadastro DS usa SQLite; a análise lê o snapshot público externo de Curitiba. São fontes independentes e não existe sincronização automática.
 
 **Tem IA treinada?** Nesta avaliação há Ciência de Dados descritiva; não há modelo preditivo treinado.
 
@@ -303,6 +315,6 @@ Essa tabela relaciona conteúdos demonstrados; não substitui critérios especí
 
 ## 8. Conferência final do líder
 
-Antes de chamar a equipe: notebook carregando; cabo/adaptador conferidos; projeção legível; notificações silenciadas; API iniciada; /health com sqlite_local; Swagger carregado; CSV com 180 observações; ID da cidade anotado; exemplos prontos; falas distribuídas; backup no pendrive. Não mudar o código depois do ensaio sem repetir a verificação afetada.
+Antes de chamar a equipe: notebook carregando; cabo/adaptador conferidos; projeção legível; notificações silenciadas; API iniciada; /health com sqlite_local; Swagger carregado; snapshot público com 71.086 registros e origem aberta em uma aba; ID da cidade anotado; exemplos prontos; falas distribuídas; backup no pendrive. Não mudar o código depois do ensaio sem repetir a verificação afetada.
 
 Esta orientação reduz riscos; não promete ausência de falhas em equipamento que ainda não foi testado. A validação final precisa ocorrer no notebook e na ligação com o projetor que serão usados.

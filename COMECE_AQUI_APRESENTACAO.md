@@ -6,7 +6,7 @@ Apresentação em 20/10/2026, sem slides: API no Swagger e explicação dos arqu
 
 ## O que está pronto e o que está pendente
 
-A API Python permite cadastrar e consultar cidades e linhas, relacionar as tabelas e rejeitar cidade inexistente e texto vazio. A parte de Ciência de Dados lê 180 observações sintéticas em CSV e fornece qualidade, resumo e agrupamentos em JSON. O painel da própria API é opcional; não é necessário para esta apresentação.
+A API Python permite cadastrar e consultar cidades e linhas, relacionar as tabelas e rejeitar cidade inexistente e texto vazio. A parte de Ciência de Dados apresenta um snapshot público comunitário e histórico de programação de Curitiba: 71.086 registros e 309 códigos de linha. Não são atrasos medidos nem dados de Maringá/Sarandi. A fonte, os arquivos originais, os hashes e os limites são expostos em /ia/dados-publicos/fonte. O painel da própria API é opcional; não é necessário para esta apresentação.
 
 No Supabase, as capturas escolares confirmaram tabelas com PK, FK, IDs automáticos, restrições de unicidade e RLS ativo sem políticas. A alteração do nome da linha para 150 caracteres foi executada pelo usuário. A conexão Python com o pooler foi interrompida antes da autenticação durante a negociação inicial de TLS: causa ainda não determinada. Não afirmar que POST/GET foram comprovados no Supabase. Para o auditório, o inicializador deste pacote usa explicitamente SQLite local e não depende desse acesso.
 
@@ -39,7 +39,7 @@ python3.12 iniciar_apresentacao.py
 
 Se `python3.12` não existir, confira `python3 --version`; use `python3` somente se indicar 3.12. Em Linux pode ser necessário instalar o pacote de venv correspondente com o responsável pelo notebook.
 
-O teste automático deve terminar com 23 testes aprovados; o gerador confere 16 requisições HTTP em banco temporário e guarda os resultados em `backend_escola/evidencias/execucao-*`. Confirme os resultados NO NOVO NOTEBOOK. A validação na nuvem não comprova a instalação em outra máquina. Windows tem instruções fornecidas, mas não foi executado no ambiente Linux de preparação.
+O teste automático deve terminar com 27 testes aprovados; o gerador confere 21 requisições HTTP em banco temporário e guarda os resultados em `backend_escola/evidencias/execucao-*`. Confirme os resultados NO NOVO NOTEBOOK. A validação na nuvem não comprova a instalação em outra máquina. Windows tem instruções fornecidas, mas não foi executado no ambiente Linux de preparação.
 
 Depois de `Application startup complete`, abra no navegador DO MESMO NOTEBOOK:
 
@@ -76,9 +76,16 @@ Se houver falha não resolvida na hora, mostre os JSONs de `backend_escola/evide
 
 As falas individuais estão em `apresentacoes/api-sem-slides/falas/`. O PDF nessa mesma pasta é um roteiro de leitura A4, não slides. Há oito arquivos de fala: a abertura do líder e as sete partes da equipe.
 
-## Conferência dos resultados de IA
+## Conferência dos resultados de IA — dados públicos
 
-180 observações, soma de 1.362 minutos de atraso por observação, média 7,5667 minutos, mediana 8, máximo 12 em sete observações. Os dados não representam viagens completas, minutos perdidos por passageiros ou operação real. Rotas: `/ia/qualidade`, `/ia/resumo`, `/ia/agrupamentos/linha`, `/ia/agrupamentos/data`.
+Abra o grupo **IA — Dados públicos: Curitiba (histórico)**, não o grupo sintético anterior. Rotas:
+
+- `/ia/dados-publicos/fonte`: publicador, catálogo, datas, hashes e limites.
+- `/ia/dados-publicos/qualidade`: integridade e verificações da fonte.
+- `/ia/dados-publicos/resumo`: 71.086 registros de programação; 309 códigos de linha; média de contagens por linha 230,0518; mediana 162.
+- `/ia/dados-publicos/agrupamentos/linha` e `/servico`: ambas reconciliam 71.086 registros.
+
+Categorias: dias úteis 33.425, sábado 20.754 e domingo 16.907. Não são viagens realizadas nem contagens de um mesmo dia. Período do feed: 28/09–05/10/2026, Curitiba. Feed comunitário, não oficial da URBS. Não há medição de atraso nem previsão. A base sintética de 180 observações continua identificada separadamente para testes e não deve ser apresentada como real. O painel antigo /painel/ usa essa base sintética; não usá-lo para apresentar a nova análise pública.
 
 ## Conteúdo e limites do pacote
 

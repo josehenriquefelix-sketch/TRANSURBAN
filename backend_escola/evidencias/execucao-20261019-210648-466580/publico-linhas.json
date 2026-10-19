@@ -1,0 +1,2951 @@
+{
+  "dimensao": "linha",
+  "cidade_fonte": "Curitiba",
+  "periodo_declarado_feed": {
+    "inicio": "2026-09-28",
+    "fim": "2026-10-05"
+  },
+  "registros_programacao": 71086,
+  "sha256": "7f931bcf64eade974dc0eb6226fed63e546e9cef0778ef02126ab5b7c019fdd3",
+  "soma_registros_nos_grupos": 71086,
+  "resultados": [
+    {
+      "codigo_linha": "010",
+      "nome_linha": "Interbairros I (Horário)",
+      "registros_programacao": 157,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "011",
+      "nome_linha": "Interbairros I (Anti-Horário)",
+      "registros_programacao": 146,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "020",
+      "nome_linha": "Interbairros Ii (Horário)",
+      "registros_programacao": 839,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "021",
+      "nome_linha": "Interbairros Ii (Anti-Horário)",
+      "registros_programacao": 809,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "022",
+      "nome_linha": "Inter 2 (Horário)",
+      "registros_programacao": 1670,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "023",
+      "nome_linha": "Inter 2 ( Anti-Horário)",
+      "registros_programacao": 1694,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "024",
+      "nome_linha": "C. Raso / Camp. Siqueira",
+      "registros_programacao": 99,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "027",
+      "nome_linha": "C. Raso / C. Do Siqueira",
+      "registros_programacao": 20,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "030",
+      "nome_linha": "Interbairros Iii",
+      "registros_programacao": 1084,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "040",
+      "nome_linha": "Interbairros Iv",
+      "registros_programacao": 1581,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "050",
+      "nome_linha": "Interbairros V",
+      "registros_programacao": 537,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "060",
+      "nome_linha": "Interbairros Vi",
+      "registros_programacao": 241,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "150",
+      "nome_linha": "C. Música / V. Alegre",
+      "registros_programacao": 114,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "160",
+      "nome_linha": "Jd. Mercês / Guanabara",
+      "registros_programacao": 286,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "164",
+      "nome_linha": "R.Prado/C.Gomes",
+      "registros_programacao": 56,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "166",
+      "nome_linha": "V. Nori",
+      "registros_programacao": 188,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "168",
+      "nome_linha": "Raposo Tavares",
+      "registros_programacao": 154,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "169",
+      "nome_linha": "Jd. Kosmos",
+      "registros_programacao": 176,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "170",
+      "nome_linha": "Bracatinga",
+      "registros_programacao": 200,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "171",
+      "nome_linha": "Primavera",
+      "registros_programacao": 132,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "175",
+      "nome_linha": "Bom Retiro / Puc",
+      "registros_programacao": 292,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "176",
+      "nome_linha": "Parque Tanguá",
+      "registros_programacao": 128,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "177",
+      "nome_linha": "Cabral / Pq.Tanguá",
+      "registros_programacao": 36,
+      "tipos_servico_presentes": [
+        "domingo"
+      ]
+    },
+    {
+      "codigo_linha": "181",
+      "nome_linha": "Mateus Leme",
+      "registros_programacao": 86,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "182",
+      "nome_linha": "Abranches",
+      "registros_programacao": 188,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "183",
+      "nome_linha": "Jd. Chaparral",
+      "registros_programacao": 108,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "184",
+      "nome_linha": "V. Suiça",
+      "registros_programacao": 122,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "188",
+      "nome_linha": "Mad. Pilarzinho / Uberaba",
+      "registros_programacao": 48,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "189",
+      "nome_linha": "Mad. Abranches",
+      "registros_programacao": 12,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "203",
+      "nome_linha": "Sta. Cândida / C. Raso",
+      "registros_programacao": 2648,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "205",
+      "nome_linha": "Barreirinha",
+      "registros_programacao": 410,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "206",
+      "nome_linha": "Barreirinha / São José",
+      "registros_programacao": 703,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "207",
+      "nome_linha": "Cabral / Osório",
+      "registros_programacao": 255,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "209",
+      "nome_linha": "Mad. S. Cândida / C. Raso",
+      "registros_programacao": 72,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "210",
+      "nome_linha": "Cic/Cabral",
+      "registros_programacao": 302,
+      "tipos_servico_presentes": [
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "211",
+      "nome_linha": "Colina Verde",
+      "registros_programacao": 222,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "212",
+      "nome_linha": "Solar",
+      "registros_programacao": 164,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "213",
+      "nome_linha": "São João",
+      "registros_programacao": 166,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "214",
+      "nome_linha": "Tingui",
+      "registros_programacao": 155,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "216",
+      "nome_linha": "Cabral / Portão",
+      "registros_programacao": 376,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "220",
+      "nome_linha": "Cabral/Hauer",
+      "registros_programacao": 108,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "222",
+      "nome_linha": "V. Esperança",
+      "registros_programacao": 226,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "224",
+      "nome_linha": "Cassiopéia",
+      "registros_programacao": 131,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "225",
+      "nome_linha": "Boa Vista / Barreirinha",
+      "registros_programacao": 251,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "226",
+      "nome_linha": "Abaeté",
+      "registros_programacao": 202,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "229",
+      "nome_linha": "Mad. Penha / F. Noronha",
+      "registros_programacao": 27,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "231",
+      "nome_linha": "Banestado / Califórnia",
+      "registros_programacao": 382,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "232",
+      "nome_linha": "Aliança",
+      "registros_programacao": 293,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "233",
+      "nome_linha": "Olaria",
+      "registros_programacao": 174,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "236",
+      "nome_linha": "São Benedito",
+      "registros_programacao": 198,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "237",
+      "nome_linha": "Parque Atuba",
+      "registros_programacao": 110,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "238",
+      "nome_linha": "Atuba/Sta.Candida",
+      "registros_programacao": 436,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "242",
+      "nome_linha": "V. Leonice",
+      "registros_programacao": 255,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "243",
+      "nome_linha": "Sta. Terezinha",
+      "registros_programacao": 232,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "244",
+      "nome_linha": "Jd. Do Arroio",
+      "registros_programacao": 172,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "245",
+      "nome_linha": "Anita Garibaldi",
+      "registros_programacao": 52,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "247",
+      "nome_linha": "Hosp. Veterinário",
+      "registros_programacao": 56,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "250",
+      "nome_linha": "Ligeirão Norte / Sul",
+      "registros_programacao": 1076,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "260",
+      "nome_linha": "Mal. Hermes / Sta. Efigênia",
+      "registros_programacao": 102,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "265",
+      "nome_linha": "Ahú / Los Angeles",
+      "registros_programacao": 164,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "266",
+      "nome_linha": "Estribo Ahú",
+      "registros_programacao": 152,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "272",
+      "nome_linha": "Paineiras",
+      "registros_programacao": 134,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "274",
+      "nome_linha": "Sta. Gema",
+      "registros_programacao": 124,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "275",
+      "nome_linha": "F. Noronha / Laranjeiras",
+      "registros_programacao": 168,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "280",
+      "nome_linha": "Nsa.Sra.De Nazaré",
+      "registros_programacao": 136,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "302",
+      "nome_linha": "Centenário / Rui Barbosa",
+      "registros_programacao": 41,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "303",
+      "nome_linha": "Centenário / C. Comprido",
+      "registros_programacao": 1208,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "304",
+      "nome_linha": "Pinhais / C. Comprido",
+      "registros_programacao": 840,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "305",
+      "nome_linha": "Centenário",
+      "registros_programacao": 99,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "307",
+      "nome_linha": "B. Alto / Sta. Felicidade",
+      "registros_programacao": 751,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "308",
+      "nome_linha": "Mad. Centenário / Rui Barbosa",
+      "registros_programacao": 7,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "309",
+      "nome_linha": "Mad. Centenário",
+      "registros_programacao": 15,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "311",
+      "nome_linha": "Araguaia",
+      "registros_programacao": 228,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "321",
+      "nome_linha": "Trindade",
+      "registros_programacao": 196,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "322",
+      "nome_linha": "Camargo",
+      "registros_programacao": 198,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "323",
+      "nome_linha": "V. Autódromo",
+      "registros_programacao": 165,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "331",
+      "nome_linha": "Mercúrio",
+      "registros_programacao": 54,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "332",
+      "nome_linha": "Acrópole",
+      "registros_programacao": 193,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "334",
+      "nome_linha": "Agrícola",
+      "registros_programacao": 132,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "335",
+      "nome_linha": "Centenário / Boqueirão",
+      "registros_programacao": 307,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "336",
+      "nome_linha": "V. Reno",
+      "registros_programacao": 221,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "338",
+      "nome_linha": "Centenário / Hauer",
+      "registros_programacao": 340,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "342",
+      "nome_linha": "B. Alto / Boa Vista",
+      "registros_programacao": 206,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "343",
+      "nome_linha": "Paraíso",
+      "registros_programacao": 88,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "345",
+      "nome_linha": "B. Alto / Atuba",
+      "registros_programacao": 189,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "350",
+      "nome_linha": "Atuba / Pinheirinho",
+      "registros_programacao": 471,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "360",
+      "nome_linha": "Novena",
+      "registros_programacao": 31,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "361",
+      "nome_linha": "Augusto Stresser",
+      "registros_programacao": 108,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "365",
+      "nome_linha": "Jd. Social / Batel",
+      "registros_programacao": 280,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "366",
+      "nome_linha": "Itupava / Hosp. Militar",
+      "registros_programacao": 280,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "371",
+      "nome_linha": "Higienópolis",
+      "registros_programacao": 168,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "372",
+      "nome_linha": "Tarumã",
+      "registros_programacao": 233,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "373",
+      "nome_linha": "Alto Tarumã",
+      "registros_programacao": 102,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "374",
+      "nome_linha": "Hugo Lange",
+      "registros_programacao": 179,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "375",
+      "nome_linha": "Sagrado Coração",
+      "registros_programacao": 120,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "380",
+      "nome_linha": "Detran / Vic. Machado",
+      "registros_programacao": 371,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "385",
+      "nome_linha": "Cristo Rei",
+      "registros_programacao": 158,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "386",
+      "nome_linha": "Cajuru",
+      "registros_programacao": 122,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "387",
+      "nome_linha": "Palotinos",
+      "registros_programacao": 122,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "389",
+      "nome_linha": "Mad. Tarumã / Augusta",
+      "registros_programacao": 15,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "461",
+      "nome_linha": "Sta. Barbara",
+      "registros_programacao": 113,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "462",
+      "nome_linha": "Petrópolis",
+      "registros_programacao": 192,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "463",
+      "nome_linha": "Solitude",
+      "registros_programacao": 274,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "464",
+      "nome_linha": "A. Munhoz / Jd. Botânico",
+      "registros_programacao": 183,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "465",
+      "nome_linha": "Erasto  Gaertner",
+      "registros_programacao": 119,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "466",
+      "nome_linha": "Estudantes",
+      "registros_programacao": 114,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "468",
+      "nome_linha": "Jd. Centauro",
+      "registros_programacao": 185,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "469",
+      "nome_linha": "Centro Politécnico",
+      "registros_programacao": 64,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "471",
+      "nome_linha": "V. São Paulo",
+      "registros_programacao": 116,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "472",
+      "nome_linha": "Uberaba",
+      "registros_programacao": 108,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "474",
+      "nome_linha": "Jd. Itiberê",
+      "registros_programacao": 103,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "475",
+      "nome_linha": "Canal Belém",
+      "registros_programacao": 175,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "477",
+      "nome_linha": "V. Macedo Via Guabirotuba",
+      "registros_programacao": 92,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "489",
+      "nome_linha": "Mad. Petrópolis / Solitude",
+      "registros_programacao": 15,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "500",
+      "nome_linha": "Ligeirão Boqueirão",
+      "registros_programacao": 248,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "502",
+      "nome_linha": "Circular Sul (Horário)",
+      "registros_programacao": 1147,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "503",
+      "nome_linha": "Boqueirão",
+      "registros_programacao": 464,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "505",
+      "nome_linha": "Boqueirão / C. Cívico",
+      "registros_programacao": 391,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "506",
+      "nome_linha": "Bairro Novo",
+      "registros_programacao": 760,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "507",
+      "nome_linha": "Sítio Cercado (Horário)",
+      "registros_programacao": 533,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "508",
+      "nome_linha": "Sítio Cercado (Anti-Horário)",
+      "registros_programacao": 549,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "509",
+      "nome_linha": "Mad. Boqueirão",
+      "registros_programacao": 36,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "513",
+      "nome_linha": "Hauer / Boqueirão",
+      "registros_programacao": 182,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "515",
+      "nome_linha": "Iguape Ii",
+      "registros_programacao": 282,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "516",
+      "nome_linha": "C. Belem / S. Filho",
+      "registros_programacao": 78,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "519",
+      "nome_linha": "Mad. S. Francisco / Iguape",
+      "registros_programacao": 30,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "520",
+      "nome_linha": "Osternack / S. Cercado L.D.",
+      "registros_programacao": 16,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "521",
+      "nome_linha": "Nivaldo Braga",
+      "registros_programacao": 196,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "522",
+      "nome_linha": "Maringá",
+      "registros_programacao": 170,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "523",
+      "nome_linha": "Iguape I",
+      "registros_programacao": 270,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "524",
+      "nome_linha": "Bairro Novo B/C",
+      "registros_programacao": 157,
+      "tipos_servico_presentes": [
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "525",
+      "nome_linha": "Hauer / C.Raso",
+      "registros_programacao": 230,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "526",
+      "nome_linha": "Itamarati / V. São Pedro",
+      "registros_programacao": 181,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "528",
+      "nome_linha": "Boqueirão/Pinheirinho",
+      "registros_programacao": 252,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "529",
+      "nome_linha": "Parque Náutico",
+      "registros_programacao": 48,
+      "tipos_servico_presentes": [
+        "domingo"
+      ]
+    },
+    {
+      "codigo_linha": "531",
+      "nome_linha": "Sta. Inês",
+      "registros_programacao": 248,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "532",
+      "nome_linha": "Jd.Paranaense",
+      "registros_programacao": 292,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "533",
+      "nome_linha": "E. Veríssimo / Pantanal",
+      "registros_programacao": 285,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "534",
+      "nome_linha": "Parigot De Souza",
+      "registros_programacao": 265,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "535",
+      "nome_linha": "Osternack / Boqueirão",
+      "registros_programacao": 230,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "536",
+      "nome_linha": "Zoológico",
+      "registros_programacao": 107,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "541",
+      "nome_linha": "Bairro Novo A",
+      "registros_programacao": 514,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "542",
+      "nome_linha": "Bairro Novo B",
+      "registros_programacao": 246,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "545",
+      "nome_linha": "Trabalhador",
+      "registros_programacao": 506,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "547",
+      "nome_linha": "Bairro Novo C",
+      "registros_programacao": 77,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "548",
+      "nome_linha": "Osternack / S. Cercado",
+      "registros_programacao": 164,
+      "tipos_servico_presentes": [
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "549",
+      "nome_linha": "Mad. Bairro Novo",
+      "registros_programacao": 21,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "550",
+      "nome_linha": "Ligeirão Pinheirinho / C. Gomes",
+      "registros_programacao": 562,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "552",
+      "nome_linha": "Sambaqui",
+      "registros_programacao": 135,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "553",
+      "nome_linha": "Moradias Pq. Iguaçu",
+      "registros_programacao": 154,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "560",
+      "nome_linha": "Alferes Poli",
+      "registros_programacao": 162,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "561",
+      "nome_linha": "Guilhermina",
+      "registros_programacao": 202,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "600",
+      "nome_linha": "Tequaly/Quartel General",
+      "registros_programacao": 126,
+      "tipos_servico_presentes": [
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "602",
+      "nome_linha": "Circular Sul  (Anti-Horário)",
+      "registros_programacao": 1131,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "603",
+      "nome_linha": "Pinheirinho/Rui Barbosa",
+      "registros_programacao": 639,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "607",
+      "nome_linha": "Colombo / Cic",
+      "registros_programacao": 306,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "609",
+      "nome_linha": "Mad. Cic",
+      "registros_programacao": 22,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "610",
+      "nome_linha": "S. Cercado / C. Raso",
+      "registros_programacao": 23,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "611",
+      "nome_linha": "Fazendinha / Portão",
+      "registros_programacao": 334,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "612",
+      "nome_linha": "Portão / Cic",
+      "registros_programacao": 177,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "614",
+      "nome_linha": "Fazendinha / Puc",
+      "registros_programacao": 48,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "615",
+      "nome_linha": "Uberlândia",
+      "registros_programacao": 256,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "616",
+      "nome_linha": "Portao / Sta.Bernadethe",
+      "registros_programacao": 221,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "617",
+      "nome_linha": "Jd. Ludovica",
+      "registros_programacao": 107,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "619",
+      "nome_linha": "Sta. Rita / Cic",
+      "registros_programacao": 159,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "620",
+      "nome_linha": "Sta. Cruz",
+      "registros_programacao": 13,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "621",
+      "nome_linha": "Fanny",
+      "registros_programacao": 289,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "622",
+      "nome_linha": "Rondon",
+      "registros_programacao": 52,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "623",
+      "nome_linha": "Parque Industrial",
+      "registros_programacao": 290,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "625",
+      "nome_linha": "Gramados",
+      "registros_programacao": 260,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "627",
+      "nome_linha": "Bosch",
+      "registros_programacao": 263,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "628",
+      "nome_linha": "Carbomafra",
+      "registros_programacao": 408,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "629",
+      "nome_linha": "Alto Boqueirão",
+      "registros_programacao": 240,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "630",
+      "nome_linha": "Vitória Régia",
+      "registros_programacao": 194,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "631",
+      "nome_linha": "Piratini / Br-476",
+      "registros_programacao": 252,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "632",
+      "nome_linha": "Quartel General",
+      "registros_programacao": 70,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "633",
+      "nome_linha": "Maria Angélica",
+      "registros_programacao": 192,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "635",
+      "nome_linha": "Londrina",
+      "registros_programacao": 156,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "636",
+      "nome_linha": "Rio Negro",
+      "registros_programacao": 160,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "637",
+      "nome_linha": "Sta. Joana",
+      "registros_programacao": 153,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "638",
+      "nome_linha": "Pinheirinho",
+      "registros_programacao": 184,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "639",
+      "nome_linha": "Futurama",
+      "registros_programacao": 52,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "640",
+      "nome_linha": "Palmeira",
+      "registros_programacao": 187,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "641",
+      "nome_linha": "Luiz Nichele",
+      "registros_programacao": 116,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "642",
+      "nome_linha": "Ganchinho",
+      "registros_programacao": 112,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "643",
+      "nome_linha": "Umbará",
+      "registros_programacao": 201,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "644",
+      "nome_linha": "Pinheirinho / Cic",
+      "registros_programacao": 81,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "646",
+      "nome_linha": "Pompeia/Janaina",
+      "registros_programacao": 380,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "649",
+      "nome_linha": "Pirineus",
+      "registros_programacao": 189,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "650",
+      "nome_linha": "Sta. Rita / Pinheirinho",
+      "registros_programacao": 320,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "652",
+      "nome_linha": "V. Verde",
+      "registros_programacao": 322,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "653",
+      "nome_linha": "Sabará",
+      "registros_programacao": 232,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "654",
+      "nome_linha": "Campo Alegre",
+      "registros_programacao": 300,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "655",
+      "nome_linha": "Jd. Da Ordem",
+      "registros_programacao": 156,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "658",
+      "nome_linha": "C. Raso / Caiuá",
+      "registros_programacao": 298,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "659",
+      "nome_linha": "Caximba / Olaria",
+      "registros_programacao": 168,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "661",
+      "nome_linha": "Lindóia",
+      "registros_programacao": 136,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "662",
+      "nome_linha": "Dom Ático",
+      "registros_programacao": 135,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "663",
+      "nome_linha": "V. Cubas",
+      "registros_programacao": 122,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "665",
+      "nome_linha": "V. Rex",
+      "registros_programacao": 163,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "666",
+      "nome_linha": "Novo Mundo",
+      "registros_programacao": 56,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "670",
+      "nome_linha": "São Jorge",
+      "registros_programacao": 119,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "671",
+      "nome_linha": "Portão",
+      "registros_programacao": 15,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "673",
+      "nome_linha": "Formosa",
+      "registros_programacao": 135,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "674",
+      "nome_linha": "Nsa. Sra. Da Luz",
+      "registros_programacao": 127,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "679",
+      "nome_linha": "Mad. Tatuquara",
+      "registros_programacao": 12,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "680",
+      "nome_linha": "Rurbana",
+      "registros_programacao": 235,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "681",
+      "nome_linha": "Dalagassa",
+      "registros_programacao": 219,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "683",
+      "nome_linha": "Futurama / S. Cercado",
+      "registros_programacao": 134,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "684",
+      "nome_linha": "Rio Bonito",
+      "registros_programacao": 368,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "685",
+      "nome_linha": "Rio Bonito / Cic",
+      "registros_programacao": 209,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "689",
+      "nome_linha": "Mad. S. Pedro / R. Negro",
+      "registros_programacao": 15,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "690",
+      "nome_linha": "V. Juliana",
+      "registros_programacao": 14,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "700",
+      "nome_linha": "Pinheirinho/Cabral",
+      "registros_programacao": 607,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "701",
+      "nome_linha": "Fazendinha",
+      "registros_programacao": 150,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "702",
+      "nome_linha": "Caiua/Cachoeira",
+      "registros_programacao": 506,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "703",
+      "nome_linha": "Caiuá",
+      "registros_programacao": 154,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "706",
+      "nome_linha": "Caiua/Faz/Centro",
+      "registros_programacao": 577,
+      "tipos_servico_presentes": [
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "707",
+      "nome_linha": "Tatuquara / Centro",
+      "registros_programacao": 336,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "708",
+      "nome_linha": "Tatuquara / S. Cercado",
+      "registros_programacao": 143,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "709",
+      "nome_linha": "V. Tiradentes / Cic",
+      "registros_programacao": 157,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "710",
+      "nome_linha": "Sta.Amelia/P.Belo",
+      "registros_programacao": 170,
+      "tipos_servico_presentes": [
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "711",
+      "nome_linha": "Itatiaia",
+      "registros_programacao": 246,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "712",
+      "nome_linha": "Jd. Independência / Cic",
+      "registros_programacao": 267,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "713",
+      "nome_linha": "Sta. Amélia",
+      "registros_programacao": 102,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "718",
+      "nome_linha": "Porto Belo",
+      "registros_programacao": 46,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "720",
+      "nome_linha": "Fazendinha / C. Comprido",
+      "registros_programacao": 25,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "721",
+      "nome_linha": "Mário Jorge",
+      "registros_programacao": 329,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "722",
+      "nome_linha": "Complexo Industrial",
+      "registros_programacao": 215,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "723",
+      "nome_linha": "Emílio Romani",
+      "registros_programacao": 19,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "724",
+      "nome_linha": "Fazendinha/Caiuá-B.Vista",
+      "registros_programacao": 175,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "725",
+      "nome_linha": "Batel / Mossunguê",
+      "registros_programacao": 76,
+      "tipos_servico_presentes": [
+        "domingo"
+      ]
+    },
+    {
+      "codigo_linha": "760",
+      "nome_linha": "Sta. Quitéria",
+      "registros_programacao": 146,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "761",
+      "nome_linha": "V. Izabel",
+      "registros_programacao": 122,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "762",
+      "nome_linha": "V. Rosinha",
+      "registros_programacao": 120,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "772",
+      "nome_linha": "Tupy/Juliana",
+      "registros_programacao": 449,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "773",
+      "nome_linha": "Vizinhança/Sta. Rita",
+      "registros_programacao": 94,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "777",
+      "nome_linha": "V. Velha",
+      "registros_programacao": 202,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "778",
+      "nome_linha": "Cotolengo",
+      "registros_programacao": 133,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "779",
+      "nome_linha": "V. Velha/Buriti",
+      "registros_programacao": 162,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "788",
+      "nome_linha": "Mad. V. Velha",
+      "registros_programacao": 15,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "789",
+      "nome_linha": "Mad. Caiuá",
+      "registros_programacao": 12,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "794",
+      "nome_linha": "Pq. Lago Azul",
+      "registros_programacao": 24,
+      "tipos_servico_presentes": [
+        "domingo"
+      ]
+    },
+    {
+      "codigo_linha": "801",
+      "nome_linha": "Camp. Siqueira / Batel",
+      "registros_programacao": 178,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "809",
+      "nome_linha": "Mad. Campo Comprido",
+      "registros_programacao": 42,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "812",
+      "nome_linha": "Montana",
+      "registros_programacao": 217,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "814",
+      "nome_linha": "Mossunguê",
+      "registros_programacao": 139,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "815",
+      "nome_linha": "Reforço Tuiuti",
+      "registros_programacao": 30,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "816",
+      "nome_linha": "Camp. Siqueira / Sta.Felicidade",
+      "registros_programacao": 236,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "817",
+      "nome_linha": "Saturno / Veneza",
+      "registros_programacao": 204,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "820",
+      "nome_linha": "Augusta/V. Marqueto",
+      "registros_programacao": 96,
+      "tipos_servico_presentes": [
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "821",
+      "nome_linha": "Fernão Dias",
+      "registros_programacao": 186,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "822",
+      "nome_linha": "Gabineto",
+      "registros_programacao": 267,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "823",
+      "nome_linha": "Augusta",
+      "registros_programacao": 82,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "825",
+      "nome_linha": "V. Marqueto",
+      "registros_programacao": 40,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "826",
+      "nome_linha": "C. Comprido / Cic",
+      "registros_programacao": 611,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "827",
+      "nome_linha": "Riviera",
+      "registros_programacao": 154,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "828",
+      "nome_linha": "C. Comprido / C. Raso",
+      "registros_programacao": 456,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "829",
+      "nome_linha": "Univ.Positivo",
+      "registros_programacao": 147,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "831",
+      "nome_linha": "Fazendinha / C.Raso",
+      "registros_programacao": 30,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "832",
+      "nome_linha": "Posiville / Inc",
+      "registros_programacao": 270,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "860",
+      "nome_linha": "V. Sandra",
+      "registros_programacao": 182,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "861",
+      "nome_linha": "Tramontina",
+      "registros_programacao": 116,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "862",
+      "nome_linha": "Barigui",
+      "registros_programacao": 132,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "863",
+      "nome_linha": "Água Verde",
+      "registros_programacao": 176,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "864",
+      "nome_linha": "Tequaly",
+      "registros_programacao": 47,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "865",
+      "nome_linha": "Jd. Esplanada",
+      "registros_programacao": 114,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "870",
+      "nome_linha": "São Braz",
+      "registros_programacao": 229,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "875",
+      "nome_linha": "Bigorrilho",
+      "registros_programacao": 114,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "876",
+      "nome_linha": "Savóia",
+      "registros_programacao": 240,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "889",
+      "nome_linha": "Mad. São Bráz",
+      "registros_programacao": 15,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "901",
+      "nome_linha": "Sta. Felicidade",
+      "registros_programacao": 289,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "902",
+      "nome_linha": "Sta. Felicidade / Pca.Tiradentes",
+      "registros_programacao": 58,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "911",
+      "nome_linha": "Passaúna",
+      "registros_programacao": 70,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "912",
+      "nome_linha": "José Culpi",
+      "registros_programacao": 70,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "913",
+      "nome_linha": "Butiatuvinha",
+      "registros_programacao": 48,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "915",
+      "nome_linha": "Ouro Verde (Via Vl.Bádia)",
+      "registros_programacao": 56,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "916",
+      "nome_linha": "Pinheiros",
+      "registros_programacao": 90,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "917",
+      "nome_linha": "Jd. Ipê",
+      "registros_programacao": 90,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "924",
+      "nome_linha": "Sta. Felicidade / Sta. Cândida",
+      "registros_programacao": 380,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "928",
+      "nome_linha": "Passaúna / Jd.Ipê",
+      "registros_programacao": 156,
+      "tipos_servico_presentes": [
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "948",
+      "nome_linha": "Butiatuvinha/ Ouro Verde",
+      "registros_programacao": 156,
+      "tipos_servico_presentes": [
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "958",
+      "nome_linha": "Pinheiros / José Culpi",
+      "registros_programacao": 168,
+      "tipos_servico_presentes": [
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "965",
+      "nome_linha": "São Bernardo",
+      "registros_programacao": 146,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "967",
+      "nome_linha": "Júlio Graf",
+      "registros_programacao": 162,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "972",
+      "nome_linha": "Jd. Itália",
+      "registros_programacao": 184,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "979",
+      "nome_linha": "Turismo",
+      "registros_programacao": 2338,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "989",
+      "nome_linha": "Mad. Sta. Felicidade",
+      "registros_programacao": 9,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "X02",
+      "nome_linha": "Reforço Tubo Barigui",
+      "registros_programacao": 3,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X08",
+      "nome_linha": "Reforço Pinheirinho",
+      "registros_programacao": 26,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X11",
+      "nome_linha": "Sitio Cercado / C. Raso",
+      "registros_programacao": 28,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X12",
+      "nome_linha": "Especial Boqueirao",
+      "registros_programacao": 14,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X14",
+      "nome_linha": "Reforço Hauer",
+      "registros_programacao": 4,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X20",
+      "nome_linha": "Portao/Sitio Cercado",
+      "registros_programacao": 24,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X36",
+      "nome_linha": "Ref. Guadalupe / Fazendinha",
+      "registros_programacao": 38,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X37",
+      "nome_linha": "Sta. Rita / Pinh. (Semi Direto)",
+      "registros_programacao": 69,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X38",
+      "nome_linha": "Rio Bonito (Semi-Direto)",
+      "registros_programacao": 41,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X41",
+      "nome_linha": "Reforço Sabará",
+      "registros_programacao": 52,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "X43",
+      "nome_linha": "Brf / Copel",
+      "registros_programacao": 15,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X45",
+      "nome_linha": "Especial B.Alto / C.Imbuia",
+      "registros_programacao": 267,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "X47",
+      "nome_linha": "Especial Pinheirinho",
+      "registros_programacao": 5,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X48",
+      "nome_linha": "Esp. Eufrásio / Rui Barbosa",
+      "registros_programacao": 534,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "X49",
+      "nome_linha": "Reforço Portão / Cabral",
+      "registros_programacao": 85,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X55",
+      "nome_linha": "Reforço Cic / Av. J.K.",
+      "registros_programacao": 86,
+      "tipos_servico_presentes": [
+        "dias_uteis"
+      ]
+    },
+    {
+      "codigo_linha": "X90",
+      "nome_linha": "Circuito 01",
+      "registros_programacao": 45,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "X91",
+      "nome_linha": "Circuito 02",
+      "registros_programacao": 45,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "X92",
+      "nome_linha": "Circuito 03",
+      "registros_programacao": 45,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "X93",
+      "nome_linha": "Circuito 04",
+      "registros_programacao": 45,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    },
+    {
+      "codigo_linha": "X94",
+      "nome_linha": "Circuito 05",
+      "registros_programacao": 45,
+      "tipos_servico_presentes": [
+        "dias_uteis",
+        "domingo",
+        "sabado"
+      ]
+    }
+  ]
+}

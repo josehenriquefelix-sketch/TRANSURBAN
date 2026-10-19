@@ -5,7 +5,7 @@ from typing import Literal
 from fastapi import APIRouter, HTTPException
 import analise
 
-router = APIRouter(prefix="/ia", tags=["IA — Ciência de Dados"])
+router = APIRouter(prefix="/ia", tags=["IA — Base sintética anterior (testes)"])
 
 def fonte(estrita=True):
     try:

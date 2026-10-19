@@ -1,0 +1,2 @@
+# Preservar bytes dos snapshots e seus hashes em Windows/Linux.
+backend_escola/data/dados_publicos/** -text

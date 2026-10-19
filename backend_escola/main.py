@@ -11,6 +11,7 @@ import models
 import schemas
 from database import Base, SessionLocal, engine, is_sqlite
 from ia_routes import router as ia_router
+from dados_publicos import router as dados_publicos_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -22,9 +23,10 @@ async def lifespan(app: FastAPI):
     finally:
         engine.dispose()
 
-app = FastAPI(title="API TRANSURBAN", version="1.1.1", lifespan=lifespan,
+app = FastAPI(title="API TRANSURBAN", version="1.2.0", lifespan=lifespan,
               docs_url=None, redoc_url=None,
-              description="Cadastros de cidades e linhas, análise de CSV acadêmico e dashboard em /painel/.")
+              description="DS: cidades/linhas. IA: snapshot público comunitário de Curitiba em /ia/dados-publicos; não mede atrasos. Base sintética anterior identificada separadamente.")
+app.include_router(dados_publicos_router)
 app.include_router(ia_router)
 
 app.mount("/documentacao-static", StaticFiles(directory=Path(__file__).resolve().parent / "swagger_static"), name="swagger-static")

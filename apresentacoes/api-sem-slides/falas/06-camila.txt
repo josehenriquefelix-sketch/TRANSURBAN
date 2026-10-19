@@ -1,31 +1,29 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
 
-## Parte 6 — Camila: indicadores e perguntas de análise (cerca de 1 minuto e meio)
+## Parte 6 — Camila: números publicados, contagens e agrupamentos (cerca de 1 minuto e meio)
 
-### Passo 1: executar GET /ia/resumo
+### Passo 1: executar GET /ia/dados-publicos/resumo
 
-“A primeira pergunta é: como os atrasos se distribuem nessa base de estudo? Temos 180 observações válidas, em duas cidades.
+“A primeira pergunta é: quantos registros de programação e códigos de linha existem nesse arquivo? Encontramos 71.086 registros e 309 códigos de linha.
 
-A soma dos atrasos por observação é de 1.362 minutos. A média é aproximadamente 7,57 minutos, obtida dividindo 1.362 por 180. A mediana é 8 minutos e representa o centro dos valores ordenados.
+Contamos quantos registros pertencem a cada linha. A soma das contagens reconcilia os 71.086 registros. A média dessas contagens é aproximadamente 230,05 registros por linha: 71.086 dividido por 309. A mediana das 309 contagens é 162.
 
-O maior atraso é de 12 minutos. Ele aparece em sete observações. Também temos 26 observações acima de 10 minutos, aproximadamente 14,44 por cento da base.”
+Essas medidas são quantidades de registros, não minutos. Elas somam as categorias de serviço do arquivo e não representam uma média diária de ônibus ou viagens realizadas.”
 
-Não interpretar null em viagens_completas como zero: não é possível contar viagens completas com essa fonte.
+### Passo 2: executar GET /ia/dados-publicos/agrupamentos/linha
 
-### Passo 2: executar o agrupamento por linha
+No Swagger, abra GET `/ia/dados-publicos/agrupamentos/{dimensao}`, clique Try it out, selecione linha e Execute.
 
-Abra GET `/ia/agrupamentos/{dimensao}`, clique em Try it out, selecione linha e clique em Execute.
+“A segunda pergunta é como esses registros se distribuem pelas linhas. O agrupamento conserva o código e o nome publicados no snapshot e informa a quantidade de registros e categorias de serviço presentes.”
 
-“A segunda pergunta é: como os atrasos se comparam entre linhas? Agrupamos por cidade e código da linha para não misturar códigos iguais de municípios diferentes. Os grupos apresentam contagem, total, média, mediana e máximo.”
+Não chamar o máximo de “linha mais movimentada”: não temos passageiros, veículos ou demanda observada.
 
-Exemplo opcional, somente se estiver visível: Maringá, código 031, possui 12 observações, soma 108 e média 9 minutos. O código 324 também tem média 9; não afirmar um único vencedor quando houver empate.
+### Passo 3: repetir com dimensao servico
 
-### Passo 3: repetir o agrupamento selecionando data
+“A terceira pergunta é como os registros se distribuem por categoria de serviço. Temos 33.425 para dias úteis, 20.754 para sábado e 16.907 para domingo. A soma dessas categorias também é 71.086.
 
-“A terceira pergunta é: como os resultados variam ao longo das datas? Esse agrupamento mostra os indicadores de cada dia. Os dias têm quantidades de observações que podem ser diferentes; a média ajuda a comparar, mas ainda depende da amostra disponível.”
+A soma é do arquivo de programação, não o total de viagens realizadas em um dia ou semana. Os campos de viagens realizadas e atraso médio aparecem como null porque essas medidas não estão disponíveis. Null não significa zero.
 
-“Esses resultados em JSON podem alimentar um dashboard. A análise é descritiva, com dados sintéticos. Não há modelo preditivo treinado nem previsão operacional de chegada nesta etapa.”
-
-“Agora a Ana Carolina vai concluir.”
+Não há previsão de chegada nem IA preditiva nesta etapa. Agora a Ana Carolina vai concluir.”
 
 Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

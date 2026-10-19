@@ -2,12 +2,12 @@ TRANSURBAN — API SEM SLIDES — 20/10/2026
 
 ## Parte 7 — Ana Carolina: evidências e conclusão (cerca de 40 segundos)
 
-“Demonstramos cadastro, consulta, relacionamento entre tabelas e validação de dados. Na parte de Ciência de Dados, mostramos a leitura do CSV, a qualidade e os indicadores.
+“Demonstramos cadastro, consulta, relacionamento entre tabelas e validação de dados. Na parte de Ciência de Dados, mostramos a origem pública do CSV de Curitiba, a qualidade e os indicadores que ele permite calcular.
 
-O projeto inclui testes automatizados e um gerador que confere 16 requisições HTTP e salva suas respostas. O código e as evidências estão versionados no GitHub na branch da entrega. A execução ao vivo de hoje usa o banco local.
+O projeto inclui testes automatizados e um gerador que confere 21 requisições HTTP e salva suas respostas. O código e as evidências estão versionados no GitHub na branch da entrega. A execução ao vivo de hoje usa o banco local.
 
 A conexão da API com o Supabase continua como pendência. Não apresentamos login, GPS ou pagamentos reais nesta API. Obrigada pela atenção. Estamos disponíveis para perguntas.”
 
-Só diga que os testes passaram no notebook da apresentação depois de executá-los nele. Na preparação anterior, foram aprovados 22 testes; a revisão com Swagger local acrescenta um teste, totalizando 23 quando todos forem executados.
+Só diga que os testes passaram no notebook da apresentação depois de executá-los nele. Nesta revisão são 27 testes e 21 requisições do gerador; evidências mais antigas registram versões anteriores. As medidas de transporte vêm do arquivo público, não dos testes da API.
 
 Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

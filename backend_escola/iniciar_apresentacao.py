@@ -44,7 +44,8 @@ def main():
     elif args.evidencias:
         command = [str(python), "gerar_evidencias.py"]
     else:
-        print("Apresentação com SQLite LOCAL e CSV sintético. Não usa Supabase.", flush=True)
+        print("Apresentação com SQLite LOCAL. IA pública: snapshot histórico de Curitiba em /ia/dados-publicos. Não usa Supabase.", flush=True)
+        print("A base sintética anterior continua separada em /ia; não representa atrasos reais.", flush=True)
         print("O .env existente é preservado. Deixe este terminal aberto; Ctrl+C encerra.", flush=True)
         print(f"No navegador deste notebook: http://127.0.0.1:{args.port}/docs", flush=True)
         command = [str(python), "-m", "uvicorn", "main:app", "--host", "127.0.0.1", "--port", str(args.port)]

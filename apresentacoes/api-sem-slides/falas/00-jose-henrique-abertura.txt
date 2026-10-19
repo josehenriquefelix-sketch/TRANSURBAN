@@ -10,7 +10,7 @@ Hoje vamos apresentar o backend, que é a parte do sistema responsável por rece
 
 A apresentação une duas partes da avaliação. Em Desenvolvimento de Sistemas, vamos cadastrar cidades e linhas de ônibus, mostrar a relação entre elas e testar dados válidos e inválidos. Em Ciência de Dados, vamos verificar um arquivo CSV e mostrar contagens, médias, mediana e agrupamentos disponibilizados pela API.
 
-Nesta demonstração usamos um banco local e uma base de dados sintética para estudo. Não estamos mostrando a localização real de ônibus, pagamentos ou previsão de chegada. Vamos mostrar o que está implementado, explicar cada resultado e também como a API trata erros de entrada.
+Nesta demonstração usamos um banco local nos cadastros e uma base pública de programação de transporte de Curitiba na análise. Esse conjunto foi publicado por um projeto comunitário, não é um feed oficial da URBS e se refere a um período histórico. Usamos como estudo externo do TRANSURBAN; não são dados de Maringá e Sarandi. Não há medição de atrasos nem comprovação de viagens realizadas. Vamos mostrar o que está implementado, a origem de cada dado e o que os resultados permitem concluir.
 
 O Bruno vai apresentar o objetivo da demonstração.”
 

@@ -1,0 +1,34 @@
+{
+  "dimensao": "servico",
+  "cidade_fonte": "Curitiba",
+  "periodo_declarado_feed": {
+    "inicio": "2026-09-28",
+    "fim": "2026-10-05"
+  },
+  "registros_programacao": 71086,
+  "sha256": "7f931bcf64eade974dc0eb6226fed63e546e9cef0778ef02126ab5b7c019fdd3",
+  "soma_registros_nos_grupos": 71086,
+  "resultados": [
+    {
+      "tipo_servico": "dias_uteis",
+      "registros_programacao": 33425,
+      "linhas_com_registros": 295,
+      "media_registros_por_linha_com_registros": 113.3051,
+      "mediana_registros_por_linha_com_registros": 77.0
+    },
+    {
+      "tipo_servico": "domingo",
+      "registros_programacao": 16907,
+      "linhas_com_registros": 235,
+      "media_registros_por_linha_com_registros": 71.9447,
+      "mediana_registros_por_linha_com_registros": 52.0
+    },
+    {
+      "tipo_servico": "sabado",
+      "registros_programacao": 20754,
+      "linhas_com_registros": 245,
+      "media_registros_por_linha_com_registros": 84.7102,
+      "mediana_registros_por_linha_com_registros": 59.0
+    }
+  ]
+}

@@ -68,6 +68,19 @@ def executar(destino):
                         (destino / (name + ".json")).write_text(json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False))
                     request("GET", "/ia/maiores-atrasos", 200)
                     request("GET", "/ia/agrupamentos/invalido", 422)
+                    for route, name in [
+                        ("/ia/dados-publicos/fonte", "publico-fonte"),
+                        ("/ia/dados-publicos/qualidade", "publico-qualidade"),
+                        ("/ia/dados-publicos/resumo", "publico-resumo"),
+                        ("/ia/dados-publicos/agrupamentos/linha", "publico-linhas"),
+                        ("/ia/dados-publicos/agrupamentos/servico", "publico-servicos"),
+                    ]:
+                        payload = request("GET", route, 200)
+                        if name == "publico-resumo":
+                            assert payload["registros_programacao"] == 71086
+                            assert payload["linhas_distintas"] == 309
+                            assert payload["atraso_medio_min"] is None
+                        (destino / (name + ".json")).write_text(json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False))
                     report["concluido"] = True
             finally:
                 proc.terminate()
