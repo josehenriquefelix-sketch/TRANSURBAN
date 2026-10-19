@@ -54,6 +54,8 @@ bash iniciar-linux.sh --supabase
 
 Cole a URI completa na entrada oculta do terminal; não a cole na conversa nem mostre esse terminal durante a apresentação. Use senha do banco codificada, não chave anon. Preserve usuário, host, porta e banco do método informado pelo painel. O código mantém TLS e rejeita modos que o desativam; configurações verify-ca e verify-full são preservadas.
 
+Os scripts de auditoria, criação somente em banco novo e cidades essenciais estão em `sql/`. Leia `sql/LEIA_PRIMEIRO.md`; execute primeiro a auditoria de leitura e preserve as tabelas existentes.
+
 O assistente faz somente leituras para conferir conexão, campos, tipos, tamanhos, obrigatoriedade, PK, geração de IDs e FK. Não cria nem migra tabelas remotas. Se a auditoria falhar, o `.env` não é substituído e a URI não é impressa. Se passar, preserva as outras variáveis e faz backup privado do `.env` anterior em `.env-backups/` antes de salvar.
 
 DATABASE_URL exportada no terminal tem prioridade sobre `.env`; atualize essa configuração privada antes de reiniciar. Reinicie a API, confira `/health` com `postgresql`, cadastre cidade e linha em banco autorizado para testes e confira os mesmos IDs no Table Editor. Só depois registrem a persistência remota como comprovada. O esquema escolar requer capacidade de 150 caracteres para o nome da linha e geração de IDs. Incompatibilidades precisam de revisão separada, sem apagar tabelas automaticamente.

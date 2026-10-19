@@ -10,6 +10,8 @@ A API escolar está em **[backend_escola/](backend_escola/)**. A versão 1.1 re�
 
 **[Apresentação de 20/10: roteiro da API, sem slides](apresentacoes/ROTEIRO_API_SEM_SLIDES_20_10.md)** — equipe confirmada, falas, demonstração e perguntas dos professores.
 
+**[Supabase: estrutura essencial e auditoria antes de alterar](backend_escola/sql/LEIA_PRIMEIRO.md)** — scripts preparados; execução no projeto remoto ainda não realizada.
+
 No Linux, abra um terminal na pasta `backend_escola` e execute `bash iniciar-linux.sh`. Após a inicialização, abra `http://127.0.0.1:8000/docs` no mesmo computador e mantenha o terminal aberto.
 
 | API escolar | Finalidade |
