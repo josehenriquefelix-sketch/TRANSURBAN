@@ -1,31 +1,39 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
 
-## Parte 6 — Camila: números publicados, contagens e agrupamentos (cerca de 1 minuto e meio)
+## Parte 6 — Camila: explicar os números (cerca de 1 minuto e meio)
 
 ### Passo 1: executar GET /ia/dados-publicos/resumo
 
-“A primeira pergunta é: quantos registros de programação e códigos de linha existem nesse arquivo? Encontramos 71.086 registros e 309 códigos de linha.
+Aponte para um campo de cada vez. Não leia a resposta inteira.
 
-Contamos quantos registros pertencem a cada linha. A soma das contagens reconcilia os 71.086 registros. A média dessas contagens é aproximadamente 230,05 registros por linha: 71.086 dividido por 309. A mediana das 309 contagens é 162.
+“A primeira pergunta é: o que existe nesse arquivo? Encontramos 71.086 registros de programação, distribuídos por 309 códigos de linha.
 
-Essas medidas são quantidades de registros, não minutos. Elas somam as categorias de serviço do arquivo e não representam uma média diária de ônibus ou viagens realizadas.”
+Contamos quantos registros pertencem a cada linha. Dividindo o total por 309, temos uma média de aproximadamente 230 registros por linha.
 
-### Passo 2: executar GET /ia/dados-publicos/agrupamentos/linha
+A mediana é 162. Para encontrá-la, ordenamos as 309 contagens e olhamos o valor do meio. Ela ajuda a entender a distribuição junto com a média.
 
-No Swagger, abra GET `/ia/dados-publicos/agrupamentos/{dimensao}`, clique Try it out, selecione linha, preencha limite com 5 e clique Execute. A resposta mostra cinco grupos, total_grupos 309 e o total completo separado da soma dos grupos exibidos. O limite é só de exibição; não muda o cálculo do resumo.
+Esses valores são quantidades de registros do arquivo. Não são minutos de atraso nem uma quantidade diária de ônibus.”
 
-“A segunda pergunta é como esses registros se distribuem pelas linhas. Para facilitar a leitura no telão, exibimos cinco grupos de um total de 309. O agrupamento conserva o código e o nome publicados e informa a quantidade de registros e categorias de serviço presentes. A soma dos cinco grupos exibidos aparece separada do total completo.”
+O JSON mostra a média com mais precisão: 230,0518. Dizer aproximadamente 230 evita sobrecarregar a fala; se perguntarem o cálculo, mostre 71.086 / 309. Não calcular mediana dos códigos das linhas: a mediana é das contagens por código.
 
-Não chamar o máximo de “linha mais movimentada”: não temos passageiros, veículos ou demanda observada.
+### Passo 2: mostrar cinco grupos por linha
 
-### Passo 3: repetir com dimensao servico
+Em GET `/ia/dados-publicos/agrupamentos/{dimensao}`, clique Try it out, selecione linha, preencha limite 5 e Execute.
 
-Deixe limite vazio ou mantenha 5: só existem três categorias.
+“Agora separamos os registros por linha para comparar as quantidades. Para facilitar a leitura no telão, mostramos cinco grupos. O total completo continua identificado: são 309 grupos.”
 
-“A terceira pergunta é como os registros se distribuem por categoria de serviço. Temos 33.425 para dias úteis, 20.754 para sábado e 16.907 para domingo. A soma dessas categorias também é 71.086.
+Aponte total_grupos e grupos_exibidos. A soma dos cinco grupos está separada da soma de todos. Não chamar a linha com mais registros de mais movimentada: não há passageiros ou demanda observada nessa análise.
 
-A soma é do arquivo de programação, não o total de viagens realizadas em um dia ou semana. Os campos de viagens realizadas e atraso médio aparecem como null porque essas medidas não estão disponíveis. Null não significa zero.
+### Passo 3: agrupar por serviço
 
-Não há previsão de chegada nem IA preditiva nesta etapa. Agora a Ana Carolina vai concluir.”
+Na mesma operação, selecione servico e Execute. Com limite vazio ou 5, aparecem as três categorias.
+
+“Também podemos separar os registros nas categorias dias úteis, sábado e domingo. Isso mostra como o arquivo está organizado por tipo de serviço.”
+
+Volte ao GET `/ia/dados-publicos/resumo` e aponte atraso_medio_min. Esse campo não está no agrupamento.
+
+“O campo de atraso médio aparece como null, que significa informação indisponível, não atraso zero. A fonte não tem a medição necessária para esse cálculo. Agora a Ana Carolina vai concluir.”
+
+No resumo estão os campos null; no agrupamento aparecem as três categorias. Se necessário, volte ao resumo para apontar atraso_medio_min. Não espere esse campo no JSON do agrupamento. As categorias somam 71.086: dias úteis 33.425, sábado 20.754, domingo 16.907. Não é total de viagens realizadas em um dia ou semana. Não é necessário recitar esses três números: estão disponíveis para conferência na tela e nas perguntas.
 
 Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

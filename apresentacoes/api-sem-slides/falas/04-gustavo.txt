@@ -1,43 +1,37 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
 
-## Parte 4 — Gustavo: testes de erro (cerca de 1 minuto e meio)
+## Parte 4 — Gustavo: validações (cerca de 1 minuto)
 
-### Passo 1: conferir que a cidade 999999 não existe
+### Passo 1: provocar uma referência inválida
 
-Na lista de GET `/cidades`, confirme que não há id_cidade 999999. Se existir, escolha outro inteiro positivo comprovadamente ausente.
-
-“Uma API também precisa tratar dados incorretos. Vamos tentar cadastrar uma linha apontando para uma cidade inexistente.”
-
-### Passo 2: enviar o cadastro inválido
-
-POST `/linhas`:
+Confira antes por GET `/cidades` que não existe o ID 999999. Em POST `/linhas`, selecione o exemplo de cidade inexistente:
 
 ```json
 {"codigo":"TESTE-ERRO","nome":"Tentativa inválida","id_cidade":999999}
 ```
 
-Esperado: 404, detail Cidade não encontrada.
+Fale antes de clicar Execute:
 
-“O 404 é o resultado esperado deste teste. A API identificou que a cidade não existe e interrompeu o cadastro. Essa mensagem é uma validação, não uma falha inesperada da apresentação.”
+“Até aqui usamos dados válidos. Agora vamos enviar uma cidade que não está cadastrada, de propósito, para testar a proteção da API.”
 
-### Passo 3: provar que não inseriu
+Depois de aparecer 404 e Cidade não encontrada:
 
-Execute GET `/linhas`. A tentativa TESTE-ERRO não deve aparecer.
+“A API identificou que a cidade não existe e recusou o cadastro. Esse 404 é o resultado esperado do nosso teste.”
 
-“A consulta confirma que a tentativa inválida não foi salva.”
+Execute GET `/linhas` e confirme que TESTE-ERRO não aparece.
 
-### Passo 4: testar texto vazio
+“A consulta mostra que a tentativa inválida não foi salva.”
 
-POST `/cidades`:
+### Passo 2: testar nome vazio
+
+Em POST `/cidades`, selecione o exemplo de nome somente com espaços e Execute:
 
 ```json
 {"nome":"   "}
 ```
 
-Esperado: 422 com indicação do campo nome.
+Depois de aparecer 422:
 
-“A validação remove espaços das extremidades e rejeita o nome que ficou vazio. O código 422 informa que os dados recebidos não atendem às regras de entrada.”
-
-“Agora a Jullyany vai explicar a fonte usada na parte de Ciência de Dados.”
+“Agora enviamos um nome com apenas espaços. A validação rejeitou esse valor e retornou 422. Isso evita guardar uma cidade sem nome. A Jullyany vai explicar os dados usados na análise.”
 
 Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

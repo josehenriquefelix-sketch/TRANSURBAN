@@ -1,57 +1,55 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
 
-## Parte 3 — José Henrique: estrutura e cadastro (cerca de 3 minutos)
+## Parte 3 — José Henrique: cadastro e relacionamento (cerca de 2 minutos e meio)
 
-Antes de começar os testes, abra GET `/apresentacao` para conferir a sequência; depois recolha essa operação para dar espaço à demonstração.
+### Antes de falar: preparar a tela
 
-### Passo 1: mostrar os arquivos no VS Code
+Confira GET `/apresentacao` e GET `/health` antes de chamar a equipe. Na fala, basta apontar que /health retornou status ok e banco sqlite_local. Se o professor pedir, abra as respostas. Os testes da demonstração usam banco local; não há conexão Supabase comprovada.
 
-“Usamos Python com FastAPI para disponibilizar as rotas. O SQLAlchemy permite trabalhar com as tabelas por meio de objetos Python, e o Pydantic valida os dados recebidos.
+### Passo 1: explicar a organização, mostrando o VS Code brevemente
 
-O `database.py` configura a conexão e as sessões de banco. O `models.py` representa as tabelas. O `schemas.py` define a validação e o formato das respostas. O `main.py` registra as rotas e coordena as operações. A parte de Ciência de Dados está em `analise.py` e `ia_routes.py`.
+“Organizamos o código em partes: conexão com o banco, tabelas, validação dos dados e rotas. Isso facilita entender a função de cada arquivo e encontrar onde fazer uma alteração.
 
-Cidade possui `id_cidade` como chave primária. Linha possui `id_linha` como chave primária e `id_cidade` como chave estrangeira. Uma cidade pode ter várias linhas; cada linha precisa apontar para uma cidade existente. Adaptamos o exemplo didático de Categoria e Produto ao contexto do nosso projeto.”
+O projeto usa Python. O FastAPI disponibiliza as rotas, o SQLAlchemy trabalha com o banco e o Pydantic valida os dados recebidos. A análise do arquivo público usa Pandas.”
 
-### Passo 2: voltar ao Swagger e conferir /health
+Quem opera aponta, sem ler o código inteiro: database.py = conexão; models.py = tabelas e relações; schemas.py = validação; main.py = rotas. A análise pública atual está em dados_publicos.py; importar_dados_publicos.py produz o CSV. analise.py/ia_routes.py pertencem à base sintética anterior e não são os arquivos da nova análise pública.
 
-Abra GET `/health`, clique em Try it out e depois Execute. Aguarde a resposta.
+### Passo 2: cadastrar a cidade
 
-“O status ok confirma a consulta de verificação ao banco. O campo sqlite_local identifica o banco usado nesta demonstração.”
-
-Os POSTs também têm um seletor de exemplos: cadastro válido e teste inválido. Selecione o exemplo correspondente, ajuste o ID quando necessário e só então execute.
-
-### Passo 3: cadastrar a cidade
-
-Em POST `/cidades`, clique em Try it out, substitua o exemplo inteiro e clique em Execute:
+Volte ao Swagger. Em POST `/cidades`, clique Try it out, selecione o exemplo de cadastro válido e Execute:
 
 ```json
 {"nome":"Sarandi"}
 ```
 
-Esperado: Server response 201, com id_cidade e nome. Não confundir o Example Value da documentação com a resposta real do servidor.
+Espere Server response 201. Aponte para nome e id_cidade, sem assumir que o ID é 1.
 
-“POST envia os dados para cadastro. O código 201 indica que o registro foi criado. O identificador da cidade foi gerado pelo banco.”
+“Agora cadastramos Sarandi. POST é o método que usamos para enviar esse cadastro. O código 201 confirma que o registro foi criado.
 
-Anote o ID devolvido. Não assuma que é 1. Se o registro do ensaio já existir, um novo cadastro pode gerar outro ID; esta versão SQLite não impõe nome único.
+Este número é a identificação da cidade no banco. Ele é a chave primária: permite identificar cada registro sem confundir um com outro.”
 
-### Passo 4: cadastrar a linha
+### Passo 3: cadastrar a linha usando o ID retornado
 
-Em POST `/linhas`, use o ID realmente devolvido no campo id_cidade. O 1 abaixo é somente um exemplo:
+Em POST `/linhas`, selecione o exemplo válido, substitua id_cidade pelo número realmente devolvido e Execute. O 1 abaixo é só ilustrativo:
 
 ```json
 {"codigo":"DEMO-20","nome":"Linha da apresentação","id_cidade":1}
 ```
 
-Esperado: Server response 201 com cidade Sarandi e identificadores.
+Espere 201. Aponte para id_cidade e cidade.
 
-“A API verifica se a cidade existe antes de cadastrar a linha. Na resposta, retorna a referência e também o nome da cidade para facilitar a leitura.”
+“Vamos cadastrar uma linha de demonstração usando a identificação da cidade. Esse nome e esse código foram escolhidos apenas para o teste.
 
-### Passo 5: consultar
+O campo id_cidade liga a linha ao registro da cidade. Essa ligação é a chave estrangeira. Neste recorte do sistema, uma cidade pode ter várias linhas, e cada linha precisa apontar para uma cidade cadastrada.”
 
-Execute GET `/cidades` e GET `/linhas`. Esperado: 200, listas contendo os cadastros realizados.
+### Passo 4: consultar o que foi salvo
 
-“Agora fazemos uma nova requisição de consulta. Os dados cadastrados aparecem na lista. Isso demonstra gravação e leitura no banco. A resposta é JSON, um formato que pode ser consumido por outra aplicação ou interface.”
+Execute GET `/linhas`. Esperado: 200, com o cadastro e cidade Sarandi. GET `/cidades` também fica disponível se quiserem conferir a cidade.
 
-“Agora o Gustavo vai demonstrar as validações.”
+“Agora consultamos o que acabamos de salvar. O código 200 indica que a consulta foi atendida. A resposta traz o nome da cidade junto da linha, para facilitar a leitura.
+
+Esse formato de campos e valores se chama JSON. Uma interface pode usar essa resposta para mostrar as informações ao usuário. O Gustavo vai testar o que acontece quando os dados estão errados.”
+
+Repetir cadastro pode criar outro ID: use sempre o retornado nessa execução. Não apagar o banco do ensaio nem afirmar que SQLite rejeita nomes repetidos.
 
 Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

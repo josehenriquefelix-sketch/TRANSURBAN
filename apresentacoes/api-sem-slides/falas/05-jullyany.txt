@@ -1,23 +1,25 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
 
-## Parte 5 — Jullyany: fonte pública e qualidade (cerca de 1 minuto e meio)
+## Parte 5 — Jullyany: de onde vêm os dados (cerca de 1 minuto)
 
-### Passo 1: abrir GET /ia/dados-publicos/fonte
+### Passo 1: executar GET /ia/dados-publicos/fonte
 
-“Buscamos uma fonte pública para não criar números de transporte. Selecionamos um snapshot GTFS comunitário de Curitiba, publicado pelo projeto URBS-GTFS e catalogado na Mobility Database. O publicador declara usar dados abertos URBS espelhados pelo C3SL da UFPR. Nosso grupo consultou o arquivo publicado e sua documentação; não fez a coleta original.
+Aponte para publicador_gtfs, download_url e periodo_declarado_feed. Não precisa decorar todos os nomes de instituições ou ler o hash em voz alta.
 
-O feed declara o período de 28 de setembro a 5 de outubro de 2026. Portanto é uma base histórica de Curitiba, não a programação atual de Maringá ou Sarandi e não um feed oficial da URBS. Aplicamos a técnica de análise do TRANSURBAN a esse estudo externo.”
+“Para a análise, usamos um arquivo público de programação do transporte de Curitiba. Ele foi publicado pelo projeto comunitário URBS-GTFS e está catalogado na Mobility Database. A origem e o link para conferência aparecem aqui.
 
-### Passo 2: abrir GET /ia/dados-publicos/qualidade
+O período informado vai de 28 de setembro a 5 de outubro de 2026. Portanto, é uma base histórica de Curitiba. Ela não é um feed oficial da URBS e não representa a operação de Maringá e Sarandi.”
 
-Indique registros_lidos, ids_programacao_distintos, ausentes_por_coluna, ids_duplicados e hashes_originais_conferem.
+### Passo 2: executar GET /ia/dados-publicos/qualidade
 
-“O CSV foi produzido relacionando os registros de programação com os nomes das linhas e a operadora. Mantivemos os identificadores originais e a fonte. Cada linha do CSV é um registro de programação do GTFS convertido, não uma viagem comprovadamente realizada.
+Aponte para registros_lidos, ids_duplicados, ausentes_por_coluna e apta_para_calculos_do_snapshot. Só anuncie as verificações que aparecerem na resposta.
 
-A verificação confere campos vazios, identificadores repetidos, referências e integridade dos arquivos. Os indicadores são bloqueados se o snapshot divergir ou tiver problemas nas regras verificadas. Não preenchemos dados ausentes com números inventados.
+“O arquivo foi organizado como CSV, uma tabela de dados. Cada linha representa um registro de programação publicado; não uma viagem que comprovadamente aconteceu.
 
-Não usamos os horários de chegada desse conversor para calcular atrasos ou duração. Agora a Camila vai explicar os indicadores que essa fonte permite calcular.”
+Antes de calcular, conferimos campos vazios, identificadores repetidos e se os arquivos continuam iguais aos que foram importados. Se essas verificações encontrarem um problema, a API bloqueia os indicadores para revisão.
 
-A qualidade verifica o snapshot: não certifica a operação nem o conversor externo. Os arquivos originais incluídos e os hashes permitem conferir a derivação do CSV.
+Não criamos tempos de atraso para preencher o que a fonte não informa. A Camila vai mostrar o que podemos calcular com esses registros.”
+
+Se perguntarem a origem primária, use a resposta de apoio no final: o publicador declara usar URBS/C3SL-UFPR; nossa conferência direta foi do derivado publicado, do código e do catálogo. Não afirmar coleta da equipe ou certificação da URBS.
 
 Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

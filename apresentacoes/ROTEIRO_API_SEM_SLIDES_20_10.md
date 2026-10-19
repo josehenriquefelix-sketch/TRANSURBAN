@@ -1,6 +1,6 @@
 # TRANSURBAN — guia de apresentação no auditório, sem slides
 
-Apresentação de 20/10/2026. Usar o Swagger e, brevemente, o VS Code. Duração sugerida: 10 a 12 minutos, além de perguntas. Os tempos dependem do ensaio. A divisão abaixo distribui as falas; não atribui autoria individual do código.
+Apresentação de 20/10/2026. Usar o Swagger e, brevemente, o VS Code. Duração sugerida: 8 a 10 minutos, incluindo os testes, além de perguntas. Falem com calma; os cliques também fazem parte do tempo. Os tempos dependem do ensaio. A divisão abaixo distribui as falas; não atribui autoria individual do código.
 
 ## 1. Decisão para a demonstração
 
@@ -72,187 +72,193 @@ Confira antes que `python3 --version` indica 3.12; não execute esses comandos �
 | 2 | Kauan | GET, fala curta | Não opera o computador |
 | 3 | José Henrique | Arquivos, PK/FK, POST e GET | VS Code, depois Swagger |
 | 4 | Gustavo | Validações e erros esperados | 404, consulta e 422 |
-| 5 | Jullyany | CSV e qualidade | GET /ia/qualidade |
-| 6 | Camila | Indicadores e agrupamentos | Resumo, linha e data |
+| 5 | Jullyany | Fonte pública e qualidade | GET /ia/dados-publicos/fonte e /qualidade |
+| 6 | Camila | Contagem, média, mediana e comparação | Resumo público, linha e serviço |
 | 7 | Ana Carolina | Evidências, GitHub e conclusão | Roteiro ou resultados já exibidos |
 
-## Abertura — José Henrique, líder (cerca de 1 minuto e meio)
+## Como usar as falas
 
-“Bom dia, pessoal! Eu sou o José Henrique e hoje nossa equipe vai apresentar o TRANSURBAN. Estou aqui com Bruno, Kauan, Gustavo, Jullyany, Camila e Ana Carolina.
+O texto entre aspas é para falar. As instruções fora das aspas são só para quem opera o computador. José Henrique pode executar todos os cliques; cada colega explica a sua parte. Apontem para o campo explicado, esperem o resultado e só então continuem. Não leiam o JSON inteiro nem recitem endereços de rotas para o público. Se esquecerem uma frase, expliquem a ideia com suas próprias palavras.
 
-Nosso projeto se chama TRANSURBAN e tem como tema a mobilidade e o transporte coletivo entre Maringá e Sarandi. A proposta do projeto é organizar informações que possam apoiar quem utiliza ou estuda esse transporte.
+## Abertura — José Henrique, líder (cerca de 1 minuto)
 
-Hoje vamos apresentar o backend, que é a parte do sistema responsável por receber solicitações, validar informações, trabalhar com o banco de dados e devolver resultados. A tela que vocês verão é o Swagger, nossa ferramenta para demonstrar e testar a API. Ela não é a interface final dos passageiros.
+“Bom dia, pessoal! Eu sou o José Henrique e esta é a nossa equipe: Bruno, Kauan, Gustavo, Jullyany, Camila e Ana Carolina. Hoje vamos apresentar o TRANSURBAN, um projeto pensado para a mobilidade entre Maringá e Sarandi.
 
-A apresentação une duas partes da avaliação. Em Desenvolvimento de Sistemas, vamos cadastrar cidades e linhas de ônibus, mostrar a relação entre elas e testar dados válidos e inválidos. Em Ciência de Dados, vamos verificar um arquivo CSV e mostrar contagens, médias, mediana e agrupamentos disponibilizados pela API.
+Vamos mostrar a parte que trabalha por trás de uma interface: a API. Ela recebe um pedido, confere as informações e devolve uma resposta. Por exemplo: cadastrar uma cidade ou consultar uma linha de ônibus.
 
-Nesta demonstração usamos um banco local nos cadastros e uma base pública de programação de transporte de Curitiba na análise. Esse conjunto foi publicado por um projeto comunitário, não é um feed oficial da URBS e se refere a um período histórico. Usamos como estudo externo do TRANSURBAN; não são dados de Maringá e Sarandi. Não há medição de atrasos nem comprovação de viagens realizadas. Vamos mostrar o que está implementado, a origem de cada dado e o que os resultados permitem concluir.
+Nossa apresentação tem duas partes. Primeiro, vamos cadastrar e consultar informações e testar o que acontece quando alguém envia um dado inválido. Depois, vamos mostrar como o Python transforma um arquivo de dados em números que podemos analisar.
 
-O Bruno vai apresentar o objetivo da demonstração.”
+Nessa análise, usamos uma base pública histórica de Curitiba como estudo externo. A fonte não é oficial da URBS e não contém atrasos medidos. Vamos deixar claro o que os dados mostram e o que não permitem concluir.
 
-## Parte 1 — Bruno (20 a 30 segundos)
+O Bruno vai começar explicando o objetivo dos cadastros.”
 
-“Nosso objetivo é mostrar que a API consegue cadastrar e consultar cidades e linhas de ônibus. Também vamos mostrar como ela rejeita informações inválidas e fornece resultados da análise dos dados. Agora o Kauan vai explicar a consulta.”
+## Parte 1 — Bruno (15 a 20 segundos)
 
-Bruno pode ler. Não precisa explicar Python, chaves, bibliotecas ou executar comandos.
+“Nosso sistema organiza cidades e linhas de ônibus. Primeiro cadastramos a cidade. Depois, cadastramos uma linha ligada a ela. Assim conseguimos consultar a linha e saber a qual cidade ela está vinculada. Agora o Kauan vai explicar a consulta.”
 
-## Parte 2 — Kauan (20 a 30 segundos)
+Bruno só lê ou fala essas frases. Não precisa operar o computador ou explicar bibliotecas.
 
-“GET é o comando usado para consultar informações. Na nossa API, podemos consultar as cidades e as linhas cadastradas. A consulta mostra os dados e não faz um novo cadastro. Agora o José Henrique vai demonstrar.”
+## Parte 2 — Kauan (15 a 20 segundos)
 
-Kauan pode ler. Não precisa operar o computador nem explicar os arquivos.
+“Consultar é pedir para ver uma informação que já está salva. Na API, usamos GET para isso. Ele mostra os dados sem fazer um novo cadastro. O José Henrique vai mostrar como cadastramos e consultamos na prática.”
 
-## Parte 3 — José Henrique: estrutura e cadastro (cerca de 3 minutos)
+Kauan só lê ou fala essas frases. Não precisa executar comandos.
 
-Antes de começar os testes, abra GET `/apresentacao` para conferir a sequência; depois recolha essa operação para dar espaço à demonstração.
+## Parte 3 — José Henrique: cadastro e relacionamento (cerca de 2 minutos e meio)
 
-### Passo 1: mostrar os arquivos no VS Code
+### Antes de falar: preparar a tela
 
-“Usamos Python com FastAPI para disponibilizar as rotas. O SQLAlchemy permite trabalhar com as tabelas por meio de objetos Python, e o Pydantic valida os dados recebidos.
+Confira GET `/apresentacao` e GET `/health` antes de chamar a equipe. Na fala, basta apontar que /health retornou status ok e banco sqlite_local. Se o professor pedir, abra as respostas. Os testes da demonstração usam banco local; não há conexão Supabase comprovada.
 
-O `database.py` configura a conexão e as sessões de banco. O `models.py` representa as tabelas. O `schemas.py` define a validação e o formato das respostas. O `main.py` registra as rotas e coordena as operações. A parte de Ciência de Dados está em `analise.py` e `ia_routes.py`.
+### Passo 1: explicar a organização, mostrando o VS Code brevemente
 
-Cidade possui `id_cidade` como chave primária. Linha possui `id_linha` como chave primária e `id_cidade` como chave estrangeira. Uma cidade pode ter várias linhas; cada linha precisa apontar para uma cidade existente. Adaptamos o exemplo didático de Categoria e Produto ao contexto do nosso projeto.”
+“Organizamos o código em partes: conexão com o banco, tabelas, validação dos dados e rotas. Isso facilita entender a função de cada arquivo e encontrar onde fazer uma alteração.
 
-### Passo 2: voltar ao Swagger e conferir /health
+O projeto usa Python. O FastAPI disponibiliza as rotas, o SQLAlchemy trabalha com o banco e o Pydantic valida os dados recebidos. A análise do arquivo público usa Pandas.”
 
-Abra GET `/health`, clique em Try it out e depois Execute. Aguarde a resposta.
+Quem opera aponta, sem ler o código inteiro: database.py = conexão; models.py = tabelas e relações; schemas.py = validação; main.py = rotas. A análise pública atual está em dados_publicos.py; importar_dados_publicos.py produz o CSV. analise.py/ia_routes.py pertencem à base sintética anterior e não são os arquivos da nova análise pública.
 
-“O status ok confirma a consulta de verificação ao banco. O campo sqlite_local identifica o banco usado nesta demonstração.”
+### Passo 2: cadastrar a cidade
 
-Os POSTs também têm um seletor de exemplos: cadastro válido e teste inválido. Selecione o exemplo correspondente, ajuste o ID quando necessário e só então execute.
-
-### Passo 3: cadastrar a cidade
-
-Em POST `/cidades`, clique em Try it out, substitua o exemplo inteiro e clique em Execute:
+Volte ao Swagger. Em POST `/cidades`, clique Try it out, selecione o exemplo de cadastro válido e Execute:
 
 ```json
 {"nome":"Sarandi"}
 ```
 
-Esperado: Server response 201, com id_cidade e nome. Não confundir o Example Value da documentação com a resposta real do servidor.
+Espere Server response 201. Aponte para nome e id_cidade, sem assumir que o ID é 1.
 
-“POST envia os dados para cadastro. O código 201 indica que o registro foi criado. O identificador da cidade foi gerado pelo banco.”
+“Agora cadastramos Sarandi. POST é o método que usamos para enviar esse cadastro. O código 201 confirma que o registro foi criado.
 
-Anote o ID devolvido. Não assuma que é 1. Se o registro do ensaio já existir, um novo cadastro pode gerar outro ID; esta versão SQLite não impõe nome único.
+Este número é a identificação da cidade no banco. Ele é a chave primária: permite identificar cada registro sem confundir um com outro.”
 
-### Passo 4: cadastrar a linha
+### Passo 3: cadastrar a linha usando o ID retornado
 
-Em POST `/linhas`, use o ID realmente devolvido no campo id_cidade. O 1 abaixo é somente um exemplo:
+Em POST `/linhas`, selecione o exemplo válido, substitua id_cidade pelo número realmente devolvido e Execute. O 1 abaixo é só ilustrativo:
 
 ```json
 {"codigo":"DEMO-20","nome":"Linha da apresentação","id_cidade":1}
 ```
 
-Esperado: Server response 201 com cidade Sarandi e identificadores.
+Espere 201. Aponte para id_cidade e cidade.
 
-“A API verifica se a cidade existe antes de cadastrar a linha. Na resposta, retorna a referência e também o nome da cidade para facilitar a leitura.”
+“Vamos cadastrar uma linha de demonstração usando a identificação da cidade. Esse nome e esse código foram escolhidos apenas para o teste.
 
-### Passo 5: consultar
+O campo id_cidade liga a linha ao registro da cidade. Essa ligação é a chave estrangeira. Neste recorte do sistema, uma cidade pode ter várias linhas, e cada linha precisa apontar para uma cidade cadastrada.”
 
-Execute GET `/cidades` e GET `/linhas`. Esperado: 200, listas contendo os cadastros realizados.
+### Passo 4: consultar o que foi salvo
 
-“Agora fazemos uma nova requisição de consulta. Os dados cadastrados aparecem na lista. Isso demonstra gravação e leitura no banco. A resposta é JSON, um formato que pode ser consumido por outra aplicação ou interface.”
+Execute GET `/linhas`. Esperado: 200, com o cadastro e cidade Sarandi. GET `/cidades` também fica disponível se quiserem conferir a cidade.
 
-“Agora o Gustavo vai demonstrar as validações.”
+“Agora consultamos o que acabamos de salvar. O código 200 indica que a consulta foi atendida. A resposta traz o nome da cidade junto da linha, para facilitar a leitura.
 
-## Parte 4 — Gustavo: testes de erro (cerca de 1 minuto e meio)
+Esse formato de campos e valores se chama JSON. Uma interface pode usar essa resposta para mostrar as informações ao usuário. O Gustavo vai testar o que acontece quando os dados estão errados.”
 
-### Passo 1: conferir que a cidade 999999 não existe
+Repetir cadastro pode criar outro ID: use sempre o retornado nessa execução. Não apagar o banco do ensaio nem afirmar que SQLite rejeita nomes repetidos.
 
-Na lista de GET `/cidades`, confirme que não há id_cidade 999999. Se existir, escolha outro inteiro positivo comprovadamente ausente.
+## Parte 4 — Gustavo: validações (cerca de 1 minuto)
 
-“Uma API também precisa tratar dados incorretos. Vamos tentar cadastrar uma linha apontando para uma cidade inexistente.”
+### Passo 1: provocar uma referência inválida
 
-### Passo 2: enviar o cadastro inválido
-
-POST `/linhas`:
+Confira antes por GET `/cidades` que não existe o ID 999999. Em POST `/linhas`, selecione o exemplo de cidade inexistente:
 
 ```json
 {"codigo":"TESTE-ERRO","nome":"Tentativa inválida","id_cidade":999999}
 ```
 
-Esperado: 404, detail Cidade não encontrada.
+Fale antes de clicar Execute:
 
-“O 404 é o resultado esperado deste teste. A API identificou que a cidade não existe e interrompeu o cadastro. Essa mensagem é uma validação, não uma falha inesperada da apresentação.”
+“Até aqui usamos dados válidos. Agora vamos enviar uma cidade que não está cadastrada, de propósito, para testar a proteção da API.”
 
-### Passo 3: provar que não inseriu
+Depois de aparecer 404 e Cidade não encontrada:
 
-Execute GET `/linhas`. A tentativa TESTE-ERRO não deve aparecer.
+“A API identificou que a cidade não existe e recusou o cadastro. Esse 404 é o resultado esperado do nosso teste.”
 
-“A consulta confirma que a tentativa inválida não foi salva.”
+Execute GET `/linhas` e confirme que TESTE-ERRO não aparece.
 
-### Passo 4: testar texto vazio
+“A consulta mostra que a tentativa inválida não foi salva.”
 
-POST `/cidades`:
+### Passo 2: testar nome vazio
+
+Em POST `/cidades`, selecione o exemplo de nome somente com espaços e Execute:
 
 ```json
 {"nome":"   "}
 ```
 
-Esperado: 422 com indicação do campo nome.
+Depois de aparecer 422:
 
-“A validação remove espaços das extremidades e rejeita o nome que ficou vazio. O código 422 informa que os dados recebidos não atendem às regras de entrada.”
+“Agora enviamos um nome com apenas espaços. A validação rejeitou esse valor e retornou 422. Isso evita guardar uma cidade sem nome. A Jullyany vai explicar os dados usados na análise.”
 
-“Agora a Jullyany vai explicar a fonte usada na parte de Ciência de Dados.”
+## Parte 5 — Jullyany: de onde vêm os dados (cerca de 1 minuto)
 
-## Parte 5 — Jullyany: fonte pública e qualidade (cerca de 1 minuto e meio)
+### Passo 1: executar GET /ia/dados-publicos/fonte
 
-### Passo 1: abrir GET /ia/dados-publicos/fonte
+Aponte para publicador_gtfs, download_url e periodo_declarado_feed. Não precisa decorar todos os nomes de instituições ou ler o hash em voz alta.
 
-“Buscamos uma fonte pública para não criar números de transporte. Selecionamos um snapshot GTFS comunitário de Curitiba, publicado pelo projeto URBS-GTFS e catalogado na Mobility Database. O publicador declara usar dados abertos URBS espelhados pelo C3SL da UFPR. Nosso grupo consultou o arquivo publicado e sua documentação; não fez a coleta original.
+“Para a análise, usamos um arquivo público de programação do transporte de Curitiba. Ele foi publicado pelo projeto comunitário URBS-GTFS e está catalogado na Mobility Database. A origem e o link para conferência aparecem aqui.
 
-O feed declara o período de 28 de setembro a 5 de outubro de 2026. Portanto é uma base histórica de Curitiba, não a programação atual de Maringá ou Sarandi e não um feed oficial da URBS. Aplicamos a técnica de análise do TRANSURBAN a esse estudo externo.”
+O período informado vai de 28 de setembro a 5 de outubro de 2026. Portanto, é uma base histórica de Curitiba. Ela não é um feed oficial da URBS e não representa a operação de Maringá e Sarandi.”
 
-### Passo 2: abrir GET /ia/dados-publicos/qualidade
+### Passo 2: executar GET /ia/dados-publicos/qualidade
 
-Indique registros_lidos, ids_programacao_distintos, ausentes_por_coluna, ids_duplicados e hashes_originais_conferem.
+Aponte para registros_lidos, ids_duplicados, ausentes_por_coluna e apta_para_calculos_do_snapshot. Só anuncie as verificações que aparecerem na resposta.
 
-“O CSV foi produzido relacionando os registros de programação com os nomes das linhas e a operadora. Mantivemos os identificadores originais e a fonte. Cada linha do CSV é um registro de programação do GTFS convertido, não uma viagem comprovadamente realizada.
+“O arquivo foi organizado como CSV, uma tabela de dados. Cada linha representa um registro de programação publicado; não uma viagem que comprovadamente aconteceu.
 
-A verificação confere campos vazios, identificadores repetidos, referências e integridade dos arquivos. Os indicadores são bloqueados se o snapshot divergir ou tiver problemas nas regras verificadas. Não preenchemos dados ausentes com números inventados.
+Antes de calcular, conferimos campos vazios, identificadores repetidos e se os arquivos continuam iguais aos que foram importados. Se essas verificações encontrarem um problema, a API bloqueia os indicadores para revisão.
 
-Não usamos os horários de chegada desse conversor para calcular atrasos ou duração. Agora a Camila vai explicar os indicadores que essa fonte permite calcular.”
+Não criamos tempos de atraso para preencher o que a fonte não informa. A Camila vai mostrar o que podemos calcular com esses registros.”
 
-A qualidade verifica o snapshot: não certifica a operação nem o conversor externo. Os arquivos originais incluídos e os hashes permitem conferir a derivação do CSV.
+Se perguntarem a origem primária, use a resposta de apoio no final: o publicador declara usar URBS/C3SL-UFPR; nossa conferência direta foi do derivado publicado, do código e do catálogo. Não afirmar coleta da equipe ou certificação da URBS.
 
-## Parte 6 — Camila: números publicados, contagens e agrupamentos (cerca de 1 minuto e meio)
+## Parte 6 — Camila: explicar os números (cerca de 1 minuto e meio)
 
 ### Passo 1: executar GET /ia/dados-publicos/resumo
 
-“A primeira pergunta é: quantos registros de programação e códigos de linha existem nesse arquivo? Encontramos 71.086 registros e 309 códigos de linha.
+Aponte para um campo de cada vez. Não leia a resposta inteira.
 
-Contamos quantos registros pertencem a cada linha. A soma das contagens reconcilia os 71.086 registros. A média dessas contagens é aproximadamente 230,05 registros por linha: 71.086 dividido por 309. A mediana das 309 contagens é 162.
+“A primeira pergunta é: o que existe nesse arquivo? Encontramos 71.086 registros de programação, distribuídos por 309 códigos de linha.
 
-Essas medidas são quantidades de registros, não minutos. Elas somam as categorias de serviço do arquivo e não representam uma média diária de ônibus ou viagens realizadas.”
+Contamos quantos registros pertencem a cada linha. Dividindo o total por 309, temos uma média de aproximadamente 230 registros por linha.
 
-### Passo 2: executar GET /ia/dados-publicos/agrupamentos/linha
+A mediana é 162. Para encontrá-la, ordenamos as 309 contagens e olhamos o valor do meio. Ela ajuda a entender a distribuição junto com a média.
 
-No Swagger, abra GET `/ia/dados-publicos/agrupamentos/{dimensao}`, clique Try it out, selecione linha, preencha limite com 5 e clique Execute. A resposta mostra cinco grupos, total_grupos 309 e o total completo separado da soma dos grupos exibidos. O limite é só de exibição; não muda o cálculo do resumo.
+Esses valores são quantidades de registros do arquivo. Não são minutos de atraso nem uma quantidade diária de ônibus.”
 
-“A segunda pergunta é como esses registros se distribuem pelas linhas. Para facilitar a leitura no telão, exibimos cinco grupos de um total de 309. O agrupamento conserva o código e o nome publicados e informa a quantidade de registros e categorias de serviço presentes. A soma dos cinco grupos exibidos aparece separada do total completo.”
+O JSON mostra a média com mais precisão: 230,0518. Dizer aproximadamente 230 evita sobrecarregar a fala; se perguntarem o cálculo, mostre 71.086 / 309. Não calcular mediana dos códigos das linhas: a mediana é das contagens por código.
 
-Não chamar o máximo de “linha mais movimentada”: não temos passageiros, veículos ou demanda observada.
+### Passo 2: mostrar cinco grupos por linha
 
-### Passo 3: repetir com dimensao servico
+Em GET `/ia/dados-publicos/agrupamentos/{dimensao}`, clique Try it out, selecione linha, preencha limite 5 e Execute.
 
-Deixe limite vazio ou mantenha 5: só existem três categorias.
+“Agora separamos os registros por linha para comparar as quantidades. Para facilitar a leitura no telão, mostramos cinco grupos. O total completo continua identificado: são 309 grupos.”
 
-“A terceira pergunta é como os registros se distribuem por categoria de serviço. Temos 33.425 para dias úteis, 20.754 para sábado e 16.907 para domingo. A soma dessas categorias também é 71.086.
+Aponte total_grupos e grupos_exibidos. A soma dos cinco grupos está separada da soma de todos. Não chamar a linha com mais registros de mais movimentada: não há passageiros ou demanda observada nessa análise.
 
-A soma é do arquivo de programação, não o total de viagens realizadas em um dia ou semana. Os campos de viagens realizadas e atraso médio aparecem como null porque essas medidas não estão disponíveis. Null não significa zero.
+### Passo 3: agrupar por serviço
 
-Não há previsão de chegada nem IA preditiva nesta etapa. Agora a Ana Carolina vai concluir.”
+Na mesma operação, selecione servico e Execute. Com limite vazio ou 5, aparecem as três categorias.
 
-## Parte 7 — Ana Carolina: evidências e conclusão (cerca de 40 segundos)
+“Também podemos separar os registros nas categorias dias úteis, sábado e domingo. Isso mostra como o arquivo está organizado por tipo de serviço.”
 
-“Demonstramos cadastro, consulta, relacionamento entre tabelas e validação de dados. Na parte de Ciência de Dados, mostramos a origem pública do CSV de Curitiba, a qualidade e os indicadores que ele permite calcular.
+Volte ao GET `/ia/dados-publicos/resumo` e aponte atraso_medio_min. Esse campo não está no agrupamento.
 
-O projeto inclui testes automatizados e um gerador que confere 22 requisições HTTP e salva suas respostas. O código e as evidências estão versionados no GitHub na branch da entrega. A execução ao vivo de hoje usa o banco local.
+“O campo de atraso médio aparece como null, que significa informação indisponível, não atraso zero. A fonte não tem a medição necessária para esse cálculo. Agora a Ana Carolina vai concluir.”
 
-A conexão da API com o Supabase continua como pendência. Não apresentamos login, GPS ou pagamentos reais nesta API. Obrigada pela atenção. Estamos disponíveis para perguntas.”
+No resumo estão os campos null; no agrupamento aparecem as três categorias. Se necessário, volte ao resumo para apontar atraso_medio_min. Não espere esse campo no JSON do agrupamento. As categorias somam 71.086: dias úteis 33.425, sábado 20.754, domingo 16.907. Não é total de viagens realizadas em um dia ou semana. Não é necessário recitar esses três números: estão disponíveis para conferência na tela e nas perguntas.
 
-Só diga que os testes passaram no notebook da apresentação depois de executá-los nele. Nesta revisão são 29 testes e 22 requisições do gerador; evidências mais antigas registram versões anteriores. As medidas de transporte vêm do arquivo público, não dos testes da API.
+## Parte 7 — Ana Carolina: conclusão (cerca de 40 segundos)
+
+“Hoje mostramos três resultados: cadastrar e consultar informações, impedir cadastros inválidos e transformar um arquivo público em indicadores que podem ser conferidos.
+
+A preparação inclui testes automatizados e respostas registradas como evidência. O código e o roteiro estão disponíveis no GitHub.
+
+A demonstração usa banco local e dados públicos históricos de Curitiba. A conexão com o Supabase ainda está pendente. Nosso objetivo nesta etapa é demonstrar o funcionamento do backend e explicar os dados com clareza.
+
+Obrigada pela atenção! Estamos disponíveis para perguntas.”
+
+Informação de apoio, se perguntarem sobre testes: a revisão da API passou em 29 testes e 22 requisições na nuvem Linux. Só afirmar execução no notebook da apresentação depois de conferir os resultados nele. Não confundir contagem de testes com registros de transporte.
 
 ## 5. O que demonstramos de DS e de IA
 

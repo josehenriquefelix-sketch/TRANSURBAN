@@ -80,7 +80,7 @@ Se houver falha não resolvida na hora, mostre os JSONs de `backend_escola/evide
 | Camila | Média, mediana, total e agrupamentos |
 | Ana Carolina | Evidências, GitHub e limitações |
 
-As falas individuais estão em `apresentacoes/api-sem-slides/falas/`. O PDF nessa mesma pasta é um roteiro de leitura A4, não slides. Há oito arquivos de fala: a abertura do líder e as sete partes da equipe.
+Para treinar sem comandos, leia `apresentacoes/api-sem-slides/FALAS_PARA_TREINAR.txt`. As falas individuais com indicações de tela estão em `apresentacoes/api-sem-slides/falas/`. O PDF nessa mesma pasta é um roteiro de leitura A4, não slides. Há oito arquivos de fala: a abertura do líder e as sete partes da equipe.
 
 ## Conferência dos resultados de IA — dados públicos
 
