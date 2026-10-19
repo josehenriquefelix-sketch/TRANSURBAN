@@ -1,0 +1,17 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+
+## Abertura — José Henrique, líder (cerca de 1 minuto e meio)
+
+“Bom dia, professores, equipe pedagógica, direção e colegas. Eu sou José Henrique e vou iniciar a apresentação da nossa equipe, formada por Bruno, Kauan, Gustavo, Jullyany, Camila, Ana Carolina e por mim.
+
+Nosso projeto se chama TRANSURBAN e tem como tema a mobilidade e o transporte coletivo entre Maringá e Sarandi. A proposta do projeto é organizar informações que possam apoiar quem utiliza ou estuda esse transporte.
+
+Hoje vamos apresentar o backend, que é a parte do sistema responsável por receber solicitações, validar informações, trabalhar com o banco de dados e devolver resultados. A tela que vocês verão é o Swagger, nossa ferramenta para demonstrar e testar a API. Ela não é a interface final dos passageiros.
+
+A apresentação une duas partes da avaliação. Em Desenvolvimento de Sistemas, vamos cadastrar cidades e linhas de ônibus, mostrar a relação entre elas e testar dados válidos e inválidos. Em Ciência de Dados, vamos verificar um arquivo CSV e mostrar contagens, médias, mediana e agrupamentos disponibilizados pela API.
+
+Nesta demonstração usamos um banco local e uma base de dados sintética para estudo. Não estamos mostrando a localização real de ônibus, pagamentos ou previsão de chegada. Vamos mostrar o que está implementado, explicar cada resultado e também como a API trata erros de entrada.
+
+O Bruno vai apresentar o objetivo da demonstração.”
+
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

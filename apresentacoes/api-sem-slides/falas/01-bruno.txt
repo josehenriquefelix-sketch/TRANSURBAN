@@ -1,12 +1,9 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
-Bruno
 
-## Parte 1 — Bruno: abertura curta (20 a 30 segundos)
+## Parte 1 — Bruno (20 a 30 segundos)
 
-“Bom dia! Nosso projeto é o TRANSURBAN, pensado para o transporte entre Maringá e Sarandi. Hoje vamos mostrar como a API cadastra e consulta cidades e linhas de ônibus. Agora o Kauan vai explicar a consulta.”
+“Nosso objetivo é mostrar que a API consegue cadastrar e consultar cidades e linhas de ônibus. Também vamos mostrar como ela rejeita informações inválidas e fornece resultados da análise dos dados. Agora o Kauan vai explicar a consulta.”
 
-Bruno pode ler essa fala. Não precisa operar o computador nem explicar bibliotecas.
+Bruno pode ler. Não precisa explicar Python, chaves, bibliotecas ou executar comandos.
 
-PASSAGEM: próxima parte com Kauan.
-
-Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

@@ -1,24 +1,31 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
-Camila
 
-— números e interpretação (1 minuto)
+## Parte 6 — Camila: indicadores e perguntas de análise (cerca de 1 minuto e meio)
 
-Mostre os números do JSON:
+### Passo 1: executar GET /ia/resumo
 
-- 180 observações válidas.
-- Soma de 1.362 minutos por observação.
-- Média de 7,5667 minutos: 1.362 dividido por 180.
-- Mediana de 8 minutos.
-- Maior atraso de 12 minutos.
+“A primeira pergunta é: como os atrasos se distribuem nessa base de estudo? Temos 180 observações válidas, em duas cidades.
 
-“Média é a soma dividida pela quantidade; mediana é o valor central dos dados ordenados. O máximo de 12 minutos ocorre em sete observações, e a API preserva todos os empates.”
+A soma dos atrasos por observação é de 1.362 minutos. A média é aproximadamente 7,57 minutos, obtida dividindo 1.362 por 180. A mediana é 8 minutos e representa o centro dos valores ordenados.
 
-Execute GET `/ia/agrupamentos/linha` e `/ia/agrupamentos/data`.
+O maior atraso é de 12 minutos. Ele aparece em sete observações. Também temos 26 observações acima de 10 minutos, aproximadamente 14,44 por cento da base.”
 
-“Essas rotas respondem quais linhas apresentam maiores atrasos e como os valores variam no tempo. Os agrupamentos reconciliam as mesmas 180 observações e os mesmos 1.362 minutos. A soma não representa minutos perdidos por passageiros, e os grupos não comprovam causalidade.”
+Não interpretar null em viagens_completas como zero: não é possível contar viagens completas com essa fonte.
 
-Não é necessário mostrar o dashboard: o objetivo aqui é explicar as respostas da API em JSON.
+### Passo 2: executar o agrupamento por linha
 
-PASSAGEM: próxima parte com Ana Carolina.
+Abra GET `/ia/agrupamentos/{dimensao}`, clique em Try it out, selecione linha e clique em Execute.
 
-Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.
+“A segunda pergunta é: como os atrasos se comparam entre linhas? Agrupamos por cidade e código da linha para não misturar códigos iguais de municípios diferentes. Os grupos apresentam contagem, total, média, mediana e máximo.”
+
+Exemplo opcional, somente se estiver visível: Maringá, código 031, possui 12 observações, soma 108 e média 9 minutos. O código 324 também tem média 9; não afirmar um único vencedor quando houver empate.
+
+### Passo 3: repetir o agrupamento selecionando data
+
+“A terceira pergunta é: como os resultados variam ao longo das datas? Esse agrupamento mostra os indicadores de cada dia. Os dias têm quantidades de observações que podem ser diferentes; a média ajuda a comparar, mas ainda depende da amostra disponível.”
+
+“Esses resultados em JSON podem alimentar um dashboard. A análise é descritiva, com dados sintéticos. Não há modelo preditivo treinado nem previsão operacional de chegada nesta etapa.”
+
+“Agora a Ana Carolina vai concluir.”
+
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

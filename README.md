@@ -4,13 +4,13 @@
 
 ## API Python — comece aqui
 
-A API escolar está em **[backend_escola/](backend_escola/)**. A versão 1.1 reúne cadastros de cidades e linhas, relacionamento PK/FK, indicadores de IA a partir do CSV e um dashboard integrado.
+A API escolar está em **[backend_escola/](backend_escola/)**. A versão 1.1.1 reúne cadastros de cidades e linhas, relacionamento PK/FK, indicadores de IA a partir do CSV e um dashboard integrado.
 
 **[Leia o guia completo da API: arquivos, conexão, rotas, exemplos, testes e apresentação](backend_escola/API_EXPLICADA.md).**
 
 **[Atualizar a escola e concluir a entrega DS + IA](backend_escola/FINALIZAR_ENTREGA.md)** — inclui evidências automáticas e configuração privada do Supabase com auditoria de leitura.
 
-**[Apresentação de 20/10: roteiro da API, sem slides](apresentacoes/ROTEIRO_API_SEM_SLIDES_20_10.md)** — equipe confirmada, falas, demonstração e perguntas dos professores.
+**[Apresentação de 20/10: abertura do líder, projetor e roteiro detalhado da API, sem slides](apresentacoes/ROTEIRO_API_SEM_SLIDES_20_10.md)** — equipe confirmada, falas, demonstração e perguntas dos professores.
 
 **[Supabase: estrutura essencial e auditoria antes de alterar](backend_escola/sql/LEIA_PRIMEIRO.md)** — scripts preparados; execução no projeto remoto ainda não realizada.
 

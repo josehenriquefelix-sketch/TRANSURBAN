@@ -1,42 +1,53 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
-José Henrique
 
-## Parte 3 — José Henrique: arquivos, relacionamento e cadastro (3 minutos)
+## Parte 3 — José Henrique: estrutura e cadastro (cerca de 3 minutos)
 
-Mostre brevemente os arquivos no VS Code, sem editar durante a fala.
+### Passo 1: mostrar os arquivos no VS Code
 
-“O `database.py` configura a conexão e as sessões de banco. O `models.py` representa as tabelas e seus relacionamentos. O `schemas.py` valida a entrada e define o formato da resposta. O `main.py` registra as rotas e coordena as operações.”
+“Usamos Python com FastAPI para disponibilizar as rotas. O SQLAlchemy permite trabalhar com as tabelas por meio de objetos Python, e o Pydantic valida os dados recebidos.
 
-“Cidade possui `id_cidade` como chave primária. Linha de ônibus possui `id_linha` como sua chave primária e `id_cidade` como chave estrangeira. Uma cidade pode ter várias linhas; cada linha pertence a uma cidade existente.”
+O `database.py` configura a conexão e as sessões de banco. O `models.py` representa as tabelas. O `schemas.py` define a validação e o formato das respostas. O `main.py` registra as rotas e coordena as operações. A parte de Ciência de Dados está em `analise.py` e `ia_routes.py`.
 
-“ForeignKey estabelece a referência no banco. relationship permite navegar entre os objetos Python. Por isso conseguimos retornar o nome da cidade na consulta, além do identificador armazenado.”
+Cidade possui `id_cidade` como chave primária. Linha possui `id_linha` como chave primária e `id_cidade` como chave estrangeira. Uma cidade pode ter várias linhas; cada linha precisa apontar para uma cidade existente. Adaptamos o exemplo didático de Categoria e Produto ao contexto do nosso projeto.”
 
-“Usamos Python, FastAPI, SQLAlchemy e Pydantic. Esta tela é o Swagger, uma ferramenta de teste da API.”
+### Passo 2: voltar ao Swagger e conferir /health
 
-No Swagger, abra POST `/cidades`, clique em Try it out e envie:
+Abra GET `/health`, clique em Try it out e depois Execute. Aguarde a resposta.
+
+“O status ok confirma a consulta de verificação ao banco. O campo sqlite_local identifica o banco usado nesta demonstração.”
+
+### Passo 3: cadastrar a cidade
+
+Em POST `/cidades`, clique em Try it out, substitua o exemplo inteiro e clique em Execute:
 
 ```json
 {"nome":"Sarandi"}
 ```
 
-“POST envia dados para cadastro. A resposta 201 informa que o registro foi criado. O banco devolveu o identificador da cidade.”
+Esperado: Server response 201, com id_cidade e nome. Não confundir o Example Value da documentação com a resposta real do servidor.
 
-Anote o `id_cidade` realmente retornado. Em POST `/linhas`, substitua o 2 do exemplo pelo número que acabou de receber:
+“POST envia os dados para cadastro. O código 201 indica que o registro foi criado. O identificador da cidade foi gerado pelo banco.”
+
+Anote o ID devolvido. Não assuma que é 1. Se o registro do ensaio já existir, um novo cadastro pode gerar outro ID; esta versão SQLite não impõe nome único.
+
+### Passo 4: cadastrar a linha
+
+Em POST `/linhas`, use o ID realmente devolvido no campo id_cidade. O 1 abaixo é somente um exemplo:
 
 ```json
-{"codigo":"DEMO-20","nome":"Linha da apresentação","id_cidade":2}
+{"codigo":"DEMO-20","nome":"Linha da apresentação","id_cidade":1}
 ```
 
-“Antes de salvar a linha, a API verifica se a cidade informada existe. A resposta inclui a chave estrangeira e também o nome da cidade, que é uma informação mais compreensível para o usuário.”
+Esperado: Server response 201 com cidade Sarandi e identificadores.
 
-Execute GET `/cidades` e GET `/linhas`.
+“A API verifica se a cidade existe antes de cadastrar a linha. Na resposta, retorna a referência e também o nome da cidade para facilitar a leitura.”
 
-“GET faz uma consulta. O status 200 mostra que a requisição foi atendida. Os registros retornaram em uma nova requisição, demonstrando a gravação e a leitura no banco configurado.”
+### Passo 5: consultar
 
-Evite cadastrar várias vezes por engano: esta API escolar não impõe unicidade de nome ou código. Não apresente rejeição de duplicidade como funcionalidade dela.
+Execute GET `/cidades` e GET `/linhas`. Esperado: 200, listas contendo os cadastros realizados.
 
-Essa observação refere-se ao banco SQLite criado pelos models desta API. O Supabase existente tem restrições próprias de unicidade, confirmadas na auditoria escolar; não confunda as duas configurações.
+“Agora fazemos uma nova requisição de consulta. Os dados cadastrados aparecem na lista. Isso demonstra gravação e leitura no banco. A resposta é JSON, um formato que pode ser consumido por outra aplicação ou interface.”
 
-PASSAGEM: próxima parte com Gustavo.
+“Agora o Gustavo vai demonstrar as validações.”
 
-Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

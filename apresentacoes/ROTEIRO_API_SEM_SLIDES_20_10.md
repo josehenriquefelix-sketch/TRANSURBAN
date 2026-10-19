@@ -1,170 +1,308 @@
-# TRANSURBAN — explicação da API, sem slides
+# TRANSURBAN — guia de apresentação no auditório, sem slides
 
-Apresentação de 20/10/2026. Duração sugerida: 8 a 10 minutos. Usar somente Swagger e VS Code, sem slides. Equipe confirmada pelo usuário: José Henrique, Bruno, Kauan, Gustavo, Jullyany, Camila e Ana Carolina. A divisão abaixo é de fala e demonstração; não atribui autoria individual do código.
+Apresentação de 20/10/2026. Usar o Swagger e, brevemente, o VS Code. Duração sugerida: 10 a 12 minutos, além de perguntas. Os tempos dependem do ensaio. A divisão abaixo distribui as falas; não atribui autoria individual do código.
 
-**Para transferir a outro notebook:** siga primeiro `COMECE_AQUI_APRESENTACAO.md`, na raiz. O novo `backend_escola/iniciar_apresentacao.py` prepara Windows/Linux e inicia explicitamente SQLite local, preservando o `.env`. O Supabase ainda não teve POST/GET remoto comprovado: a conexão foi interrompida antes da autenticação. Os comandos abaixo com `.venv-escola` continuam destinados à instalação Linux anterior; para o notebook novo use o inicializador descrito no guia de transferência.
+## 1. Decisão para a demonstração
 
-| Ordem | Integrante | Parte | Tempo |
-|---|---|---|---|
-| 1 | Bruno | Abertura curta | 20–30 s |
-| 2 | Kauan | Explicar GET em poucas palavras | 20–30 s |
-| 3 | José Henrique | Arquivos, PK/FK e demonstração POST/GET | 3 min |
-| 4 | Gustavo | Erros 404 e 422; consulta após rejeição | 1 min 30 s |
-| 5 | Jullyany | CSV, unidade de análise e qualidade | 1 min |
-| 6 | Camila | Cálculos, agrupamentos e interpretação | 1 min |
-| 7 | Ana Carolina | Evidências, GitHub, limites e encerramento | 40 s |
+A opção recomendada é levar o notebook Windows do líder, com Python 3.12, dependências instaladas, API ensaiada e a fonte de alimentação. Conectar o notebook ao cabo do projetor, se a escola permitir. Assim não é necessário instalar a API no computador do auditório. Uma saída HDMI pode conectar diretamente; USB-C exige suporte a vídeo e adaptador compatível. Peça ao responsável para conferir o cabo e a entrada disponíveis.
 
-## Antes da aula: preparar, não improvisar
+Na apresentação: SQLite local, CSV sintético do pacote e Swagger servido pelo próprio projeto. O inicializador `iniciar_apresentacao.py` define a conexão local no processo; não precisa de `.env`. O banco local é um banco de dados SQL em arquivo, com PK e FK; não é um banco Supabase. O arquivo `.env` é configuração privada para outras formas de iniciar, não um requisito para esta demonstração.
 
-O teste escolar já demonstrou POST/GET de cidades e linhas, cidade relacionada no JSON, 404 sem inserção e 422 para nome vazio. A versão 1.1 acrescenta IA e `/health`; é preciso atualizar e iniciar essa versão na máquina antes de demonstrar as rotas novas. A atualização na nuvem não altera automaticamente o computador da escola.
+A estrutura do Supabase foi conferida por capturas enviadas pelo usuário, incluindo PK/FK, geração automática de IDs e RLS. A conexão Python com o pooler foi interrompida antes da autenticação. Não há comprovação de POST/GET remoto. Não tentar resolver senhas, rede ou TLS no palco.
 
-Hoje, pare o servidor antigo com Ctrl+C e siga `backend_escola/FINALIZAR_ENTREGA.md` para atualizar. Faça um ensaio. Na apresentação, com dependências já instaladas, abra o terminal na pasta `backend_escola` e use:
+## 2. Preparação no Windows, antes de sair de casa
 
-```bash
-./.venv-escola/bin/python -m uvicorn main:app --host 127.0.0.1 --port 8000
+Baixe a versão atual da branch `entrega/escola-apresentacao-2026-10-20` e extraia o ZIP. Não use uma cópia antiga sem `swagger_static`. Abra o terminal do VS Code na pasta `backend_escola`. Não copie o ambiente virtual Linux para Windows.
+
+Execute um comando de cada vez e confira o resultado antes de continuar:
+
+```powershell
+py -3.12 iniciar_apresentacao.py --preparar
+py -3.12 iniciar_apresentacao.py --testar
+py -3.12 iniciar_apresentacao.py --evidencias
+py -3.12 iniciar_apresentacao.py
 ```
 
-Deixe o terminal aberto. Abra `http://127.0.0.1:8000/docs` no mesmo computador. Deixe VS Code com `database.py`, `models.py`, `schemas.py` e `main.py` disponíveis. Não abra `.env`. Não é necessário iniciar o frontend Vite nem abrir slides.
+A preparação requer internet e Python 3.12. Os testes devem passar sem falhas; o número de referência nesta revisão é 23 testes. O aviso de depreciação de Starlette/httpx, se aparecer, não é falha. O gerador deve indicar 16 requisições verificadas. A contagem deve ser confirmada no notebook: a validação na nuvem não substitui a execução nele.
 
-## Parte 1 — Bruno: abertura curta (20 a 30 segundos)
+Aguarde `Application startup complete`, deixe o terminal aberto e digite no navegador DO MESMO NOTEBOOK:
 
-“Bom dia! Nosso projeto é o TRANSURBAN, pensado para o transporte entre Maringá e Sarandi. Hoje vamos mostrar como a API cadastra e consulta cidades e linhas de ônibus. Agora o Kauan vai explicar a consulta.”
+- `http://127.0.0.1:8000/health`: deve mostrar status ok e banco sqlite_local.
+- `http://127.0.0.1:8000/docs`: Swagger para os testes.
+- `/painel/`: painel opcional; não é necessário na apresentação.
 
-Bruno pode ler essa fala. Não precisa operar o computador nem explicar bibliotecas.
+A partir desta revisão, `/docs` carrega JS e CSS locais de `swagger_static`, em vez de CDN. Depois da instalação, faça um ensaio com o Wi-Fi desligado: abra uma nova aba, carregue `/docs` e execute `/health` e `/ia/resumo`. O banco e o CSV devem funcionar sem internet. Ligue a rede novamente se precisar baixar ou enviar arquivos; não execute instalação durante a apresentação.
 
-## Parte 2 — Kauan: explicar a consulta (20 a 30 segundos)
+Pare com Ctrl+C, inicie novamente com o último comando e faça GET `/linhas`. Confira que os cadastros do ensaio permaneceram no arquivo `apresentacao_local.db`. Não apague esse arquivo sem necessidade. IDs podem mudar ao repetir cadastros; use sempre o ID realmente retornado.
+
+Leve também o ZIP atualizado num pendrive, o roteiro e os JSONs das evidências. Como a instalação de dependências exige internet, um pendrive com o código sozinho não garante que um computador novo esteja preparado.
+
+## 3. Projetor e organização do palco
+
+1. Chegue antes do público. Peça ao responsável para conectar a saída do notebook à entrada correta do projetor. Não altere instalações ou cabeamento fixo sem orientação.
+2. No Windows, pressione Win+P e escolha Duplicar. O telão mostrará a mesma tela do notebook. Se não aparecer, confira com o responsável a entrada selecionada e o adaptador; o fato de o cabo entrar não garante compatibilidade.
+3. Conecte o carregador, desative a suspensão durante a apresentação e silencie notificações.
+4. Inicie a API e abra `/docs` no navegador do notebook. Não use o celular para abrir 127.0.0.1: ele aponta para o próprio aparelho.
+5. Ajuste o zoom do Chrome, por exemplo para 125% ou 150%, e confira a leitura no fundo da sala. Use F11 se ajudar. Evite mostrar páginas longas de JSON sem indicar o campo explicado.
+6. Deixe `database.py`, `models.py`, `schemas.py` e `main.py` abertos no VS Code. Nunca projete `.env`, senhas ou autenticações.
+7. José Henrique pode operar o computador durante todas as falas. Bruno e Kauan apenas falam e podem ler suas frases. Cada colega espera o resultado da tela antes de anunciar o que aconteceu.
+8. Deixe os exemplos deste roteiro em um arquivo de texto local. Copie somente o JSON necessário, com calma, sem editar código no palco.
+
+Se tiverem de usar o computador Linux do auditório, preparem-no antes da entrada do público, com Python 3.12. Na pasta `backend_escola`:
+
+```bash
+python3 iniciar_apresentacao.py --preparar
+python3 iniciar_apresentacao.py --testar
+python3 iniciar_apresentacao.py --evidencias
+python3 iniciar_apresentacao.py
+```
+
+Confira antes que `python3 --version` indica 3.12; não execute esses comandos às cegas em uma versão diferente. Não transfira `.venv-apresentacao` do Windows para Linux. Use o mesmo navegador e a mesma URL no computador que estiver executando a API.
+
+## 4. Ordem e apoio de cada integrante
+
+| Ordem | Integrante | Responsabilidade | Apoio na tela |
+|---|---|---|---|
+| Abertura | José Henrique, líder | Resumo do projeto e limites da demonstração | Swagger aberto, sem clicar |
+| 1 | Bruno | Objetivo, fala curta | Não opera o computador |
+| 2 | Kauan | GET, fala curta | Não opera o computador |
+| 3 | José Henrique | Arquivos, PK/FK, POST e GET | VS Code, depois Swagger |
+| 4 | Gustavo | Validações e erros esperados | 404, consulta e 422 |
+| 5 | Jullyany | CSV e qualidade | GET /ia/qualidade |
+| 6 | Camila | Indicadores e agrupamentos | Resumo, linha e data |
+| 7 | Ana Carolina | Evidências, GitHub e conclusão | Roteiro ou resultados já exibidos |
+
+## Abertura — José Henrique, líder (cerca de 1 minuto e meio)
+
+“Bom dia, professores, equipe pedagógica, direção e colegas. Eu sou José Henrique e vou iniciar a apresentação da nossa equipe, formada por Bruno, Kauan, Gustavo, Jullyany, Camila, Ana Carolina e por mim.
+
+Nosso projeto se chama TRANSURBAN e tem como tema a mobilidade e o transporte coletivo entre Maringá e Sarandi. A proposta do projeto é organizar informações que possam apoiar quem utiliza ou estuda esse transporte.
+
+Hoje vamos apresentar o backend, que é a parte do sistema responsável por receber solicitações, validar informações, trabalhar com o banco de dados e devolver resultados. A tela que vocês verão é o Swagger, nossa ferramenta para demonstrar e testar a API. Ela não é a interface final dos passageiros.
+
+A apresentação une duas partes da avaliação. Em Desenvolvimento de Sistemas, vamos cadastrar cidades e linhas de ônibus, mostrar a relação entre elas e testar dados válidos e inválidos. Em Ciência de Dados, vamos verificar um arquivo CSV e mostrar contagens, médias, mediana e agrupamentos disponibilizados pela API.
+
+Nesta demonstração usamos um banco local e uma base de dados sintética para estudo. Não estamos mostrando a localização real de ônibus, pagamentos ou previsão de chegada. Vamos mostrar o que está implementado, explicar cada resultado e também como a API trata erros de entrada.
+
+O Bruno vai apresentar o objetivo da demonstração.”
+
+## Parte 1 — Bruno (20 a 30 segundos)
+
+“Nosso objetivo é mostrar que a API consegue cadastrar e consultar cidades e linhas de ônibus. Também vamos mostrar como ela rejeita informações inválidas e fornece resultados da análise dos dados. Agora o Kauan vai explicar a consulta.”
+
+Bruno pode ler. Não precisa explicar Python, chaves, bibliotecas ou executar comandos.
+
+## Parte 2 — Kauan (20 a 30 segundos)
 
 “GET é o comando usado para consultar informações. Na nossa API, podemos consultar as cidades e as linhas cadastradas. A consulta mostra os dados e não faz um novo cadastro. Agora o José Henrique vai demonstrar.”
 
-Kauan pode ler essa fala. José Henrique fica no computador; Kauan não precisa explicar código, chaves ou executar comandos.
+Kauan pode ler. Não precisa operar o computador nem explicar os arquivos.
 
-## Parte 3 — José Henrique: arquivos, relacionamento e cadastro (3 minutos)
+## Parte 3 — José Henrique: estrutura e cadastro (cerca de 3 minutos)
 
-Mostre brevemente os arquivos no VS Code, sem editar durante a fala.
+### Passo 1: mostrar os arquivos no VS Code
 
-“O `database.py` configura a conexão e as sessões de banco. O `models.py` representa as tabelas e seus relacionamentos. O `schemas.py` valida a entrada e define o formato da resposta. O `main.py` registra as rotas e coordena as operações.”
+“Usamos Python com FastAPI para disponibilizar as rotas. O SQLAlchemy permite trabalhar com as tabelas por meio de objetos Python, e o Pydantic valida os dados recebidos.
 
-“Cidade possui `id_cidade` como chave primária. Linha de ônibus possui `id_linha` como sua chave primária e `id_cidade` como chave estrangeira. Uma cidade pode ter várias linhas; cada linha pertence a uma cidade existente.”
+O `database.py` configura a conexão e as sessões de banco. O `models.py` representa as tabelas. O `schemas.py` define a validação e o formato das respostas. O `main.py` registra as rotas e coordena as operações. A parte de Ciência de Dados está em `analise.py` e `ia_routes.py`.
 
-“ForeignKey estabelece a referência no banco. relationship permite navegar entre os objetos Python. Por isso conseguimos retornar o nome da cidade na consulta, além do identificador armazenado.”
+Cidade possui `id_cidade` como chave primária. Linha possui `id_linha` como chave primária e `id_cidade` como chave estrangeira. Uma cidade pode ter várias linhas; cada linha precisa apontar para uma cidade existente. Adaptamos o exemplo didático de Categoria e Produto ao contexto do nosso projeto.”
 
-“Usamos Python, FastAPI, SQLAlchemy e Pydantic. Esta tela é o Swagger, uma ferramenta de teste da API.”
+### Passo 2: voltar ao Swagger e conferir /health
 
-No Swagger, abra POST `/cidades`, clique em Try it out e envie:
+Abra GET `/health`, clique em Try it out e depois Execute. Aguarde a resposta.
+
+“O status ok confirma a consulta de verificação ao banco. O campo sqlite_local identifica o banco usado nesta demonstração.”
+
+### Passo 3: cadastrar a cidade
+
+Em POST `/cidades`, clique em Try it out, substitua o exemplo inteiro e clique em Execute:
 
 ```json
 {"nome":"Sarandi"}
 ```
 
-“POST envia dados para cadastro. A resposta 201 informa que o registro foi criado. O banco devolveu o identificador da cidade.”
+Esperado: Server response 201, com id_cidade e nome. Não confundir o Example Value da documentação com a resposta real do servidor.
 
-Anote o `id_cidade` realmente retornado. Em POST `/linhas`, substitua o 2 do exemplo pelo número que acabou de receber:
+“POST envia os dados para cadastro. O código 201 indica que o registro foi criado. O identificador da cidade foi gerado pelo banco.”
+
+Anote o ID devolvido. Não assuma que é 1. Se o registro do ensaio já existir, um novo cadastro pode gerar outro ID; esta versão SQLite não impõe nome único.
+
+### Passo 4: cadastrar a linha
+
+Em POST `/linhas`, use o ID realmente devolvido no campo id_cidade. O 1 abaixo é somente um exemplo:
 
 ```json
-{"codigo":"DEMO-20","nome":"Linha da apresentação","id_cidade":2}
+{"codigo":"DEMO-20","nome":"Linha da apresentação","id_cidade":1}
 ```
 
-“Antes de salvar a linha, a API verifica se a cidade informada existe. A resposta inclui a chave estrangeira e também o nome da cidade, que é uma informação mais compreensível para o usuário.”
+Esperado: Server response 201 com cidade Sarandi e identificadores.
 
-Execute GET `/cidades` e GET `/linhas`.
+“A API verifica se a cidade existe antes de cadastrar a linha. Na resposta, retorna a referência e também o nome da cidade para facilitar a leitura.”
 
-“GET faz uma consulta. O status 200 mostra que a requisição foi atendida. Os registros retornaram em uma nova requisição, demonstrando a gravação e a leitura no banco configurado.”
+### Passo 5: consultar
 
-Evite cadastrar várias vezes por engano: esta API escolar não impõe unicidade de nome ou código. Não apresente rejeição de duplicidade como funcionalidade dela.
+Execute GET `/cidades` e GET `/linhas`. Esperado: 200, listas contendo os cadastros realizados.
 
-Essa observação refere-se ao banco SQLite criado pelos models desta API. O Supabase existente tem restrições próprias de unicidade, confirmadas na auditoria escolar; não confunda as duas configurações.
+“Agora fazemos uma nova requisição de consulta. Os dados cadastrados aparecem na lista. Isso demonstra gravação e leitura no banco. A resposta é JSON, um formato que pode ser consumido por outra aplicação ou interface.”
 
-## Parte 4 — Gustavo: demonstrar as validações (1 minuto e 30 segundos)
+“Agora o Gustavo vai demonstrar as validações.”
 
-Confirme que o ID 999999 não existe na consulta de cidades. Em POST `/linhas`, envie:
+## Parte 4 — Gustavo: testes de erro (cerca de 1 minuto e meio)
+
+### Passo 1: conferir que a cidade 999999 não existe
+
+Na lista de GET `/cidades`, confirme que não há id_cidade 999999. Se existir, escolha outro inteiro positivo comprovadamente ausente.
+
+“Uma API também precisa tratar dados incorretos. Vamos tentar cadastrar uma linha apontando para uma cidade inexistente.”
+
+### Passo 2: enviar o cadastro inválido
+
+POST `/linhas`:
 
 ```json
 {"codigo":"TESTE-ERRO","nome":"Tentativa inválida","id_cidade":999999}
 ```
 
-“A API responde 404 porque a cidade não existe. A operação é interrompida antes do cadastro. A FK do banco também protege essa referência.”
+Esperado: 404, detail Cidade não encontrada.
 
-Execute GET `/linhas` e mostre que TESTE-ERRO não foi inserida.
+“O 404 é o resultado esperado deste teste. A API identificou que a cidade não existe e interrompeu o cadastro. Essa mensagem é uma validação, não uma falha inesperada da apresentação.”
 
-Em POST `/cidades`, envie:
+### Passo 3: provar que não inseriu
+
+Execute GET `/linhas`. A tentativa TESTE-ERRO não deve aparecer.
+
+“A consulta confirma que a tentativa inválida não foi salva.”
+
+### Passo 4: testar texto vazio
+
+POST `/cidades`:
 
 ```json
 {"nome":"   "}
 ```
 
-“O schema remove os espaços e rejeita o nome vazio com 422. Assim evitamos que uma entrada inválida chegue ao cadastro.”
+Esperado: 422 com indicação do campo nome.
 
-Resumo para dizer em voz alta: “201 é cadastro, 200 é consulta, 404 indica referência inexistente e 422 indica entrada inválida.”
+“A validação remove espaços das extremidades e rejeita o nome que ficou vazio. O código 422 informa que os dados recebidos não atendem às regras de entrada.”
 
-## Parte 5 — Jullyany e Camila: rotas de dados da versão 1.1 (2 minutos)
+“Agora a Jullyany vai explicar a fonte usada na parte de Ciência de Dados.”
 
-Esta parte exige a versão atualizada. Confirme antes da apresentação que o Swagger exibe o grupo IA — Ciência de Dados.
+## Parte 5 — Jullyany: CSV e qualidade (cerca de 1 minuto)
 
-### Jullyany — fonte, significado e qualidade (1 minuto)
+Execute GET `/ia/qualidade`, indicando no JSON os campos registros_lidos, registros_validos, registros_excluidos e duplicatas_exatas_adicionais.
 
-Execute GET `/ia/qualidade`, depois GET `/ia/resumo`.
+“Usamos Pandas para ler um CSV desnormalizado. Esse arquivo repete informações como cidade e linha em diferentes observações. Cada registro representa uma observação de atraso em um trecho, associada a uma data e a uma linha de ônibus. Não corresponde necessariamente a uma viagem completa.
 
-“Na parte de Ciência de Dados, a API usa Pandas para ler e verificar um CSV desnormalizado do projeto. Cada linha representa uma observação por trecho, data e linha de ônibus. A base é sintética: não representa a operação real da frota e não permite contar viagens completas.”
+A base contém 180 observações sintéticas para estudo. A verificação apresentada não encontrou registros inválidos ou duplicatas exatas adicionais nessa fonte. Também verificamos valores ausentes, datas, valores numéricos e coerência entre tempo programado, tempo real e atraso.
 
-“A qualidade verifica ausências, datas, valores inválidos, duplicatas e coerência entre os tempos. Se a fonte tiver problemas, os indicadores são interrompidos com 422, sem apagar silenciosamente a fonte.”
+O cálculo considera atraso como o tempo real menos o programado, com mínimo zero. Se a fonte apresentar inconsistências relevantes, a API interrompe os indicadores para revisão em vez de ocultar o problema.
 
-### Camila — números e interpretação (1 minuto)
+Agora a Camila vai mostrar os resultados.”
 
-Mostre os números do JSON:
+A checagem não comprova que os dados são reais ou completos sobre a cidade. Não dizer que qualidade zero erros torna a fonte uma representação da operação real.
 
-- 180 observações válidas.
-- Soma de 1.362 minutos por observação.
-- Média de 7,5667 minutos: 1.362 dividido por 180.
-- Mediana de 8 minutos.
-- Maior atraso de 12 minutos.
+## Parte 6 — Camila: indicadores e perguntas de análise (cerca de 1 minuto e meio)
 
-“Média é a soma dividida pela quantidade; mediana é o valor central dos dados ordenados. O máximo de 12 minutos ocorre em sete observações, e a API preserva todos os empates.”
+### Passo 1: executar GET /ia/resumo
 
-Execute GET `/ia/agrupamentos/linha` e `/ia/agrupamentos/data`.
+“A primeira pergunta é: como os atrasos se distribuem nessa base de estudo? Temos 180 observações válidas, em duas cidades.
 
-“Essas rotas respondem quais linhas apresentam maiores atrasos e como os valores variam no tempo. Os agrupamentos reconciliam as mesmas 180 observações e os mesmos 1.362 minutos. A soma não representa minutos perdidos por passageiros, e os grupos não comprovam causalidade.”
+A soma dos atrasos por observação é de 1.362 minutos. A média é aproximadamente 7,57 minutos, obtida dividindo 1.362 por 180. A mediana é 8 minutos e representa o centro dos valores ordenados.
 
-Não é necessário mostrar o dashboard: o objetivo aqui é explicar as respostas da API em JSON.
+O maior atraso é de 12 minutos. Ele aparece em sete observações. Também temos 26 observações acima de 10 minutos, aproximadamente 14,44 por cento da base.”
 
-## Parte 6 — Ana Carolina: concluir com o estado real (40 segundos)
+Não interpretar null em viagens_completas como zero: não é possível contar viagens completas com essa fonte.
 
-“Demonstramos cadastro, consulta, relacionamento e validação de erros. A API também fornece indicadores auditáveis do CSV. Os testes automatizados conferem os cálculos e situações de fonte inválida.”
+### Passo 2: executar o agrupamento por linha
 
-“O código e as evidências estão versionados no GitHub. A demonstração é local. A conexão Supabase precisa ser comprovada separadamente, com a configuração privada e os mesmos registros no banco remoto. Não estamos apresentando GPS, login ou recarga reais nesta API.”
+Abra GET `/ia/agrupamentos/{dimensao}`, clique em Try it out, selecione linha e clique em Execute.
 
-Abra o repositório somente se houver tempo. A branch da entrega é `entrega/escola-apresentacao-2026-10-20`. Uma branch publicada não significa que as mudanças foram incorporadas à main nem que o site foi hospedado.
+“A segunda pergunta é: como os atrasos se comparam entre linhas? Agrupamos por cidade e código da linha para não misturar códigos iguais de municípios diferentes. Os grupos apresentam contagem, total, média, mediana e máximo.”
 
-## Perguntas prováveis e respostas curtas
+Exemplo opcional, somente se estiver visível: Maringá, código 031, possui 12 observações, soma 108 e média 9 minutos. O código 324 também tem média 9; não afirmar um único vencedor quando houver empate.
 
-**Por que guardar o ID e devolver o nome?** O ID mantém a referência entre tabelas; o nome facilita a leitura pelo consumidor da API.
+### Passo 3: repetir o agrupamento selecionando data
 
-**Model e schema são iguais?** Model mapeia a tabela e o relacionamento; schema valida os dados HTTP e define a resposta.
+“A terceira pergunta é: como os resultados variam ao longo das datas? Esse agrupamento mostra os indicadores de cada dia. Os dias têm quantidades de observações que podem ser diferentes; a média ajuda a comparar, mas ainda depende da amostra disponível.”
 
-**O que fazem add, commit e refresh?** Add inclui o objeto na sessão; commit confirma a transação; refresh relê os valores salvos e gerados.
+“Esses resultados em JSON podem alimentar um dashboard. A análise é descritiva, com dados sintéticos. Não há modelo preditivo treinado nem previsão operacional de chegada nesta etapa.”
 
-**Por que fechar a sessão?** Para liberar recursos usados pela requisição, inclusive quando ocorre um erro.
+“Agora a Ana Carolina vai concluir.”
 
-**Por que usar venv?** Para isolar as bibliotecas e poder reinstalá-las com requirements.txt.
+## Parte 7 — Ana Carolina: evidências e conclusão (cerca de 40 segundos)
 
-**Os dados estão no Supabase?** Só afirmem isso depois da auditoria e de conferir POST/GET com os mesmos IDs no banco remoto. Os testes registrados da preparação usaram SQLite.
+“Demonstramos cadastro, consulta, relacionamento entre tabelas e validação de dados. Na parte de Ciência de Dados, mostramos a leitura do CSV, a qualidade e os indicadores.
 
-**Tem inteligência artificial treinada?** Esta etapa é Ciência de Dados descritiva. Não há modelo preditivo treinado ou previsão operacional de chegada.
+O projeto inclui testes automatizados e um gerador que confere 16 requisições HTTP e salva suas respostas. O código e as evidências estão versionados no GitHub na branch da entrega. A execução ao vivo de hoje usa o banco local.
 
-**São 180 viagens?** Não. São 180 observações, sem identificador de viagem completa.
+A conexão da API com o Supabase continua como pendência. Não apresentamos login, GPS ou pagamentos reais nesta API. Obrigada pela atenção. Estamos disponíveis para perguntas.”
 
-**Os dados persistem?** O cadastro confirma uma transação no banco; uma consulta posterior retornou os registros. Testar persistência após reiniciar é uma verificação adicional e não foi confirmado explicitamente nas capturas recebidas.
+Só diga que os testes passaram no notebook da apresentação depois de executá-los nele. Na preparação anterior, foram aprovados 22 testes; a revisão com Swagger local acrescenta um teste, totalizando 23 quando todos forem executados.
 
-**O site está integrado?** O dashboard servido por esta API usa suas rotas. O frontend React/Vite da escola e o site V2 são versões distintas; não afirmem que os fluxos de passageiro usam esta API sem verificar essa integração.
+## 5. O que demonstramos de DS e de IA
 
-## Plano B: se houver falha na hora
+| Área ou disciplina | Evidência concreta nesta entrega |
+|---|---|
+| Análise e Métodos de Sistemas | Tema de mobilidade, entidades Cidade/Linha, organização de responsabilidades e requisitos de cadastro/consulta |
+| Banco de Dados I e II | PK, FK, relacionamento um para muitos, gravação, leitura e consulta com nome relacionado |
+| Lógica Computacional | Verificação de existência, rejeição de texto vazio e regras para calcular atraso |
+| Programação Backend I | FastAPI, POST/GET, Pydantic, SQLAlchemy, sessões, códigos HTTP e testes |
+| Programação Python I | Módulos, funções, dependências isoladas e processamento em Python |
+| Ciência de Dados | CSV, unidade de análise, qualidade, contagens, soma, média, mediana e agrupamentos com Pandas |
+| Inovação e Tecnologia | Aplicação ao tema de mobilidade e disponibilização de indicadores para uma interface futura |
 
-- Conexão recusada: confira o terminal e o processo antes de mudar código. Deixe a API aberta.
-- Porta ocupada: use a instância já iniciada ou encerre apenas seu servidor antigo. Não mate processos desconhecidos.
-- Falha no Supabase ou na internet: use as respostas JSON e as capturas já obtidas, dizendo de onde vieram. Não troque banco nem digite credenciais diante da turma.
-- Rotas IA ausentes: a cópia escolar não foi atualizada. Mostre os JSONs versionados da validação na nuvem e explique que as rotas novas precisam ser instaladas nessa máquina. Não finja uma execução ao vivo.
-- Banco sem registros: os cadastros do roteiro podem ser feitos ao vivo em banco de testes autorizado. Use o ID realmente retornado, sem pressupor 1 ou 2.
-- Não use a nota ou a avaliação simulada do frontend como prova de gravação no banco da API.
+Essa tabela relaciona conteúdos demonstrados; não substitui critérios específicos de correção do professor. O backend escolar tem duas entidades principais; não afirmar que todo o sistema de transporte está implementado.
 
-## Fonte das afirmações
+## 6. Perguntas prováveis
 
-Código de `backend_escola`; respostas de Swagger coladas pelo usuário em `backend_escola/evidencias/testes-escola-2026-10-19.json`; testes e HTTP reais da versão integrada em `backend_escola/evidencias/integracao-ds-ia-2026-10-19/`. O roteiro distingue execução na escola, validação na nuvem e funcionalidades simuladas.
+**O que é API?** Uma interface com regras de comunicação. Neste projeto recebe requisições HTTP e devolve respostas JSON para acesso às funções do backend.
+
+**Swagger é a API?** É uma interface de documentação e teste. As rotas continuam acessíveis por outros clientes HTTP.
+
+**GET e POST?** GET consulta; nossos POSTs cadastram registros.
+
+**Por que voltar o nome da cidade se já tem o ID?** O ID mantém a referência; o nome torna a resposta compreensível.
+
+**Model e schema?** Model representa as tabelas e relações; schema valida os dados HTTP e descreve a resposta.
+
+**Por que venv?** Para isolar bibliotecas e reproduzir as dependências sem misturá-las com outros projetos.
+
+**Por que não tem .env?** No modo de apresentação, o inicializador define explicitamente SQLite local no processo. Outros modos podem ler a conexão privada no .env. Não é necessário projetá-lo nem distribuí-lo.
+
+**Onde ficam os cadastros?** Em apresentacao_local.db no notebook que executa a API. Uma consulta após reiniciar confere a persistência no mesmo arquivo. O banco não é compartilhado automaticamente entre notebooks.
+
+**O Supabase está conectado?** Ainda não foi comprovada a conexão Python. A estrutura foi conferida, mas a demonstração usa SQLite. Não confundir o editor SQL acessível pelo navegador com acesso PostgreSQL pelo Python.
+
+**Por que usar SQLite?** É um banco relacional local adequado à demonstração sem depender de acesso ao banco remoto. Não estamos afirmando que representa a implantação final de produção.
+
+**Os 180 registros são viagens?** Não. São observações por trecho, sem identificador de viagem completa. Por isso viagens_completas é null, não zero.
+
+**Somamos minutos perdidos pelos passageiros?** Não. A soma é dos atrasos das observações; não há número de passageiros para calcular impacto individual.
+
+**O cadastro de uma linha altera os indicadores?** Não. Os cadastros usam o banco SQL; os indicadores leem o CSV independente. Não existe sincronização automática entre essas fontes.
+
+**Tem IA treinada?** Nesta avaliação há Ciência de Dados descritiva; não há modelo preditivo treinado.
+
+**A análise prova o motivo do atraso?** Não. Agrupamentos podem mostrar associações; não comprovam causalidade.
+
+**Tudo está na main e publicado na internet?** A entrega está na branch indicada. Branch publicada não significa merge na main, API hospedada ou site em produção.
+
+**O frontend de passageiro usa esta API?** O painel servido em /painel/ usa suas rotas. O protótipo React/Vite da escola e o site V2 são versões diferentes; não afirmar integração sem verificar.
+
+## 7. Se algo não sair como esperado
+
+- 404 no teste de cidade inexistente e 422 no teste de nome vazio são resultados esperados. Expliquem isso antes e depois da execução.
+- Se a API não responder, confira o terminal. Não feche a janela do servidor nem pressione Ctrl+C durante o teste sem intenção de reiniciar.
+- Se a porta estiver ocupada, não encerre processos desconhecidos. Inicie com `--port 8001` e use 8001 no navegador.
+- Se o Swagger estiver em branco, confira se é a cópia atual com swagger_static e se a API está funcionando. Evite tentar consertar bibliotecas no palco.
+- Se aparecer outro resultado ou erro inesperado, não invente uma explicação. Diga: “Vamos conferir a execução; temos as respostas dos testes anteriores como apoio.” Use as evidências, identificando de onde vieram.
+- Sem internet, não tentar Supabase, GitHub ou instalação. Com dependências e Swagger locais já preparados, a demonstração SQLite não depende desses serviços.
+- Se o projetor não exibir, peça ajuda ao responsável pelo equipamento. A API funcionar e o vídeo projetar são verificações diferentes.
+- Se o notebook não puder ser conectado, só use o computador do auditório depois de preparar e testar nele. Não existe garantia de funcionamento por apenas copiar um ambiente virtual de outro sistema.
+
+## 8. Conferência final do líder
+
+Antes de chamar a equipe: notebook carregando; cabo/adaptador conferidos; projeção legível; notificações silenciadas; API iniciada; /health com sqlite_local; Swagger carregado; CSV com 180 observações; ID da cidade anotado; exemplos prontos; falas distribuídas; backup no pendrive. Não mudar o código depois do ensaio sem repetir a verificação afetada.
+
+Esta orientação reduz riscos; não promete ausência de falhas em equipamento que ainda não foi testado. A validação final precisa ocorrer no notebook e na ligação com o projetor que serão usados.

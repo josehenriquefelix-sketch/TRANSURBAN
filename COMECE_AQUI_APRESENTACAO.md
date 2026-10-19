@@ -2,6 +2,8 @@
 
 Apresentação em 20/10/2026, sem slides: API no Swagger e explicação dos arquivos no VS Code.
 
+**Recomendado: preparar no notebook Windows de casa e conectar esse mesmo notebook ao projetor, com autorização da escola. Veja o roteiro completo para HDMI, Win+P → Duplicar, abertura do líder, falas e testes: `apresentacoes/ROTEIRO_API_SEM_SLIDES_20_10.md`.**
+
 ## O que está pronto e o que está pendente
 
 A API Python permite cadastrar e consultar cidades e linhas, relacionar as tabelas e rejeitar cidade inexistente e texto vazio. A parte de Ciência de Dados lê 180 observações sintéticas em CSV e fornece qualidade, resumo e agrupamentos em JSON. O painel da própria API é opcional; não é necessário para esta apresentação.
@@ -13,7 +15,7 @@ No Supabase, as capturas escolares confirmaram tabelas com PK, FK, IDs automáti
 1. Copie o ZIP para o outro notebook por pendrive ou download e EXTRAIA tudo. Não execute dentro do ZIP.
 2. Instale Python **3.12**, se necessário. No Windows, marque a opção de adicionar Python ao PATH e instale o Python Launcher. Abra a pasta extraída no VS Code.
 3. No terminal, entre em `backend_escola`. Os comandos abaixo partem dessa pasta. Não copie ambientes virtuais de outro computador.
-4. Prepare com internet. Depois dessa preparação, a apresentação local não precisa da internet. Não deixe a instalação para o auditório.
+4. Prepare com internet. Depois dessa preparação, a apresentação local não precisa da internet. Nesta revisão, o Swagger também usa arquivos locais da pasta `swagger_static`. Ensaiem com o Wi-Fi desligado antes de apresentar. Não deixe a instalação para o auditório.
 
 ### Windows (PowerShell)
 
@@ -37,7 +39,7 @@ python3.12 iniciar_apresentacao.py
 
 Se `python3.12` não existir, confira `python3 --version`; use `python3` somente se indicar 3.12. Em Linux pode ser necessário instalar o pacote de venv correspondente com o responsável pelo notebook.
 
-O teste automático deve terminar com 22 testes aprovados; o gerador confere 16 requisições HTTP em banco temporário e guarda os resultados em `backend_escola/evidencias/execucao-*`. Confirme os resultados NO NOVO NOTEBOOK. A validação na nuvem não comprova a instalação em outra máquina. Windows tem instruções fornecidas, mas não foi executado no ambiente Linux de preparação.
+O teste automático deve terminar com 23 testes aprovados; o gerador confere 16 requisições HTTP em banco temporário e guarda os resultados em `backend_escola/evidencias/execucao-*`. Confirme os resultados NO NOVO NOTEBOOK. A validação na nuvem não comprova a instalação em outra máquina. Windows tem instruções fornecidas, mas não foi executado no ambiente Linux de preparação.
 
 Depois de `Application startup complete`, abra no navegador DO MESMO NOTEBOOK:
 
@@ -72,7 +74,7 @@ Se houver falha não resolvida na hora, mostre os JSONs de `backend_escola/evide
 | Camila | Média, mediana, total e agrupamentos |
 | Ana Carolina | Evidências, GitHub e limitações |
 
-As falas individuais estão em `apresentacoes/api-sem-slides/falas/`. O PDF nessa mesma pasta é um roteiro de leitura A4, não slides.
+As falas individuais estão em `apresentacoes/api-sem-slides/falas/`. O PDF nessa mesma pasta é um roteiro de leitura A4, não slides. Há oito arquivos de fala: a abertura do líder e as sete partes da equipe.
 
 ## Conferência dos resultados de IA
 

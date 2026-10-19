@@ -1,12 +1,9 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
-Kauan
 
-## Parte 2 — Kauan: explicar a consulta (20 a 30 segundos)
+## Parte 2 — Kauan (20 a 30 segundos)
 
 “GET é o comando usado para consultar informações. Na nossa API, podemos consultar as cidades e as linhas cadastradas. A consulta mostra os dados e não faz um novo cadastro. Agora o José Henrique vai demonstrar.”
 
-Kauan pode ler essa fala. José Henrique fica no computador; Kauan não precisa explicar código, chaves ou executar comandos.
+Kauan pode ler. Não precisa operar o computador nem explicar os arquivos.
 
-PASSAGEM: próxima parte com José Henrique.
-
-Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

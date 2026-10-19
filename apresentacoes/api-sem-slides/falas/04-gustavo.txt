@@ -1,28 +1,43 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
-Gustavo
 
-— Gustavo: demonstrar as validações (1 minuto e 30 segundos)
+## Parte 4 — Gustavo: testes de erro (cerca de 1 minuto e meio)
 
-Confirme que o ID 999999 não existe na consulta de cidades. Em POST `/linhas`, envie:
+### Passo 1: conferir que a cidade 999999 não existe
+
+Na lista de GET `/cidades`, confirme que não há id_cidade 999999. Se existir, escolha outro inteiro positivo comprovadamente ausente.
+
+“Uma API também precisa tratar dados incorretos. Vamos tentar cadastrar uma linha apontando para uma cidade inexistente.”
+
+### Passo 2: enviar o cadastro inválido
+
+POST `/linhas`:
 
 ```json
 {"codigo":"TESTE-ERRO","nome":"Tentativa inválida","id_cidade":999999}
 ```
 
-“A API responde 404 porque a cidade não existe. A operação é interrompida antes do cadastro. A FK do banco também protege essa referência.”
+Esperado: 404, detail Cidade não encontrada.
 
-Execute GET `/linhas` e mostre que TESTE-ERRO não foi inserida.
+“O 404 é o resultado esperado deste teste. A API identificou que a cidade não existe e interrompeu o cadastro. Essa mensagem é uma validação, não uma falha inesperada da apresentação.”
 
-Em POST `/cidades`, envie:
+### Passo 3: provar que não inseriu
+
+Execute GET `/linhas`. A tentativa TESTE-ERRO não deve aparecer.
+
+“A consulta confirma que a tentativa inválida não foi salva.”
+
+### Passo 4: testar texto vazio
+
+POST `/cidades`:
 
 ```json
 {"nome":"   "}
 ```
 
-“O schema remove os espaços e rejeita o nome vazio com 422. Assim evitamos que uma entrada inválida chegue ao cadastro.”
+Esperado: 422 com indicação do campo nome.
 
-Resumo para dizer em voz alta: “201 é cadastro, 200 é consulta, 404 indica referência inexistente e 422 indica entrada inválida.”
+“A validação remove espaços das extremidades e rejeita o nome que ficou vazio. O código 422 informa que os dados recebidos não atendem às regras de entrada.”
 
-PASSAGEM: próxima parte com Jullyany.
+“Agora a Jullyany vai explicar a fonte usada na parte de Ciência de Dados.”
 
-Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

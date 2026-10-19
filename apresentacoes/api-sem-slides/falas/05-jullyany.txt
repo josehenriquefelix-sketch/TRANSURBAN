@@ -1,14 +1,17 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
-Jullyany
 
-— fonte, significado e qualidade (1 minuto)
+## Parte 5 — Jullyany: CSV e qualidade (cerca de 1 minuto)
 
-Execute GET `/ia/qualidade`, depois GET `/ia/resumo`.
+Execute GET `/ia/qualidade`, indicando no JSON os campos registros_lidos, registros_validos, registros_excluidos e duplicatas_exatas_adicionais.
 
-“Na parte de Ciência de Dados, a API usa Pandas para ler e verificar um CSV desnormalizado do projeto. Cada linha representa uma observação por trecho, data e linha de ônibus. A base é sintética: não representa a operação real da frota e não permite contar viagens completas.”
+“Usamos Pandas para ler um CSV desnormalizado. Esse arquivo repete informações como cidade e linha em diferentes observações. Cada registro representa uma observação de atraso em um trecho, associada a uma data e a uma linha de ônibus. Não corresponde necessariamente a uma viagem completa.
 
-“A qualidade verifica ausências, datas, valores inválidos, duplicatas e coerência entre os tempos. Se a fonte tiver problemas, os indicadores são interrompidos com 422, sem apagar silenciosamente a fonte.”
+A base contém 180 observações sintéticas para estudo. A verificação apresentada não encontrou registros inválidos ou duplicatas exatas adicionais nessa fonte. Também verificamos valores ausentes, datas, valores numéricos e coerência entre tempo programado, tempo real e atraso.
 
-PASSAGEM: próxima parte com Camila.
+O cálculo considera atraso como o tempo real menos o programado, com mínimo zero. Se a fonte apresentar inconsistências relevantes, a API interrompe os indicadores para revisão em vez de ocultar o problema.
 
-Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.
+Agora a Camila vai mostrar os resultados.”
+
+A checagem não comprova que os dados são reais ou completos sobre a cidade. Não dizer que qualidade zero erros torna a fonte uma representação da operação real.
+
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

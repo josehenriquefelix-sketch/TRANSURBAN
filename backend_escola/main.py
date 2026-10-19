@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 from pathlib import Path
 from fastapi import Depends, FastAPI, HTTPException
+from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy import select, text
@@ -21,9 +22,23 @@ async def lifespan(app: FastAPI):
     finally:
         engine.dispose()
 
-app = FastAPI(title="API TRANSURBAN", version="1.1.0", lifespan=lifespan,
+app = FastAPI(title="API TRANSURBAN", version="1.1.1", lifespan=lifespan,
+              docs_url=None, redoc_url=None,
               description="Cadastros de cidades e linhas, análise de CSV acadêmico e dashboard em /painel/.")
 app.include_router(ia_router)
+
+app.mount("/documentacao-static", StaticFiles(directory=Path(__file__).resolve().parent / "swagger_static"), name="swagger-static")
+
+@app.get("/docs", include_in_schema=False)
+def documentacao():
+    return get_swagger_ui_html(
+        openapi_url=app.openapi_url,
+        title="API TRANSURBAN — documentação",
+        swagger_js_url="/documentacao-static/swagger-ui-bundle.js",
+        swagger_css_url="/documentacao-static/swagger-ui.css",
+        swagger_favicon_url="/documentacao-static/favicon-32x32.png",
+        swagger_ui_parameters={"validatorUrl": None},
+    )
 
 @app.exception_handler(SQLAlchemyError)
 async def erro_banco(_request, _error):
