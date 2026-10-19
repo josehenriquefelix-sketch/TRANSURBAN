@@ -1,0 +1,16 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+Kauan
+
+— Kauan: explicar os arquivos e o banco (1 minuto e 30 segundos)
+
+Mostre brevemente os arquivos no VS Code, sem editar durante a fala.
+
+“O `database.py` configura a conexão e cria as sessões de banco. O `models.py` representa as tabelas e seus relacionamentos. O `schemas.py` valida a entrada e define o formato da resposta. O `main.py` registra as rotas e coordena as operações.”
+
+“Cidade possui `id_cidade` como chave primária. Linha de ônibus possui `id_linha` como sua chave primária e `id_cidade` como chave estrangeira. Uma cidade pode ter várias linhas; cada linha pertence a uma cidade existente.”
+
+“ForeignKey estabelece a referência no banco. relationship permite navegar entre os objetos Python. Por isso conseguimos retornar o nome da cidade na consulta, além do identificador armazenado.”
+
+PASSAGEM: próxima parte com José Henrique.
+
+Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.

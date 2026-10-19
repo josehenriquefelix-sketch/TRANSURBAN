@@ -1,5 +1,7 @@
 # TRANSURBAN — backend da avaliação
 
+**Atualização 1.1, de 19/10/2026:** use `COMECE_NA_ESCOLA.md` e `FINALIZAR_ENTREGA.md` para a instalação Linux atual. A API agora reúne DS, IA e dashboard; `API_EXPLICADA.md` detalha as rotas. O roteiro vigente é `../apresentacoes/ROTEIRO_API_SEM_SLIDES_20_10.md`. As instruções antigas abaixo não substituem esse roteiro.
+
 Adaptação: Categoria → Cidade; Produto → Linha de ônibus.
 Não é necessário construir frontend nesta avaliação.
 
@@ -77,7 +79,7 @@ No Table Editor confira as tabelas existentes no schema public:
 - cidade: id_cidade (PK inteira, com geração automática) e nome.
 - linha_onibus: id_linha (PK inteira, com geração automática), id_cidade (FK), codigo e nome.
 
-O backend cria essas duas tabelas se elas não existirem. `create_all` NÃO altera tabelas existentes nem corrige campos, PKs ou FKs. Se seu banco possui uma estrutura diferente, compare o DER e ajuste o código antes de usar; não apague tabelas para tentar resolver.
+Na versão 1.1, o backend cria tabelas automaticamente somente no SQLite local. Ele não cria nem migra tabelas PostgreSQL na inicialização. Use a auditoria de leitura `bash iniciar-linux.sh --supabase`; diferenças de campos, PKs ou FKs precisam de revisão separada. Não apague tabelas para tentar resolver.
 Para inspecionar sem modificar dados, use o SQL Editor:
 
 ```sql

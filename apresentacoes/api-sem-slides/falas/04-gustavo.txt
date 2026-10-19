@@ -1,0 +1,28 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+Gustavo
+
+— Gustavo: demonstrar as validações (1 minuto e 30 segundos)
+
+Confirme que o ID 999999 não existe na consulta de cidades. Em POST `/linhas`, envie:
+
+```json
+{"codigo":"TESTE-ERRO","nome":"Tentativa inválida","id_cidade":999999}
+```
+
+“A API responde 404 porque a cidade não existe. A operação é interrompida antes do cadastro. A FK do banco também protege essa referência.”
+
+Execute GET `/linhas` e mostre que TESTE-ERRO não foi inserida.
+
+Em POST `/cidades`, envie:
+
+```json
+{"nome":"   "}
+```
+
+“O schema remove os espaços e rejeita o nome vazio com 422. Assim evitamos que uma entrada inválida chegue ao cadastro.”
+
+Resumo para dizer em voz alta: “201 é cadastro, 200 é consulta, 404 indica referência inexistente e 422 indica entrada inválida.”
+
+PASSAGEM: próxima parte com Jullyany.
+
+Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.

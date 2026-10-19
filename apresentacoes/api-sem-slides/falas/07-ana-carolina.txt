@@ -1,0 +1,14 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+Ana Carolina
+
+— Ana Carolina: concluir com o estado real (40 segundos)
+
+“Demonstramos cadastro, consulta, relacionamento e validação de erros. A API também fornece indicadores auditáveis do CSV. Os testes automatizados conferem os cálculos e situações de fonte inválida.”
+
+“O código e as evidências estão versionados no GitHub. A demonstração é local. A conexão Supabase precisa ser comprovada separadamente, com a configuração privada e os mesmos registros no banco remoto. Não estamos apresentando GPS, login ou recarga reais nesta API.”
+
+Abra o repositório somente se houver tempo. A branch da entrega é `entrega/escola-apresentacao-2026-10-20`. Uma branch publicada não significa que as mudanças foram incorporadas à main nem que o site foi hospedado.
+
+PASSAGEM: próxima parte com perguntas dos professores.
+
+Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.

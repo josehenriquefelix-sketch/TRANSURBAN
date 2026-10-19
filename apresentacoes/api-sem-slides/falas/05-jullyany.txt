@@ -1,0 +1,14 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+Jullyany
+
+— fonte, significado e qualidade (1 minuto)
+
+Execute GET `/ia/qualidade`, depois GET `/ia/resumo`.
+
+“Na parte de Ciência de Dados, a API usa Pandas para ler e verificar um CSV desnormalizado do projeto. Cada linha representa uma observação por trecho, data e linha de ônibus. A base é sintética: não representa a operação real da frota e não permite contar viagens completas.”
+
+“A qualidade verifica ausências, datas, valores inválidos, duplicatas e coerência entre os tempos. Se a fonte tiver problemas, os indicadores são interrompidos com 422, sem apagar silenciosamente a fonte.”
+
+PASSAGEM: próxima parte com Camila.
+
+Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.

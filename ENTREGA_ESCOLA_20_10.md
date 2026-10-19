@@ -4,7 +4,7 @@ Os pacotes enviados foram organizados sem substituir o backend antigo nem os arq
 
 | Pasta | Conteúdo | Como abrir |
 |---|---|---|
-| `backend_escola/` | API Python enviada em `TRANSURBAN_BACKEND.zip`, com iniciador Linux | Na pasta, execute `bash iniciar-linux.sh`; depois abra `/docs` no servidor local |
+| `backend_escola/` | API Python 1.1: DS + IA, iniciador Linux e dashboard integrado | Execute `bash iniciar-linux.sh`; depois abra `/painel/` ou `/docs` no servidor local |
 | `avaliacao_backend/` | Avaliação DS + IA, CSV, dashboard e modelo brModelo da entrega anterior | Siga `avaliacao_backend/docs/FRONTEND.md` |
 | `site_v2/` | Código-fonte do site V2 enviado, catálogo e testes | Node.js >=22.13, `npm ci`, `npm test`, `npm run preview:local` |
 | `apresentacoes/terca-20-10/` | Demonstração offline e roteiro de terça-feira | Abra `01-ABRIR-APRESENTACAO.html` no navegador |
@@ -31,7 +31,7 @@ bash iniciar-linux.sh --testar
 
 ## O que permanece separado
 
-A API escolar, o dashboard DS/IA e o site V2 são componentes distintos. O site V2 não foi automaticamente ligado à API Python nem ao Supabase; ele tem regras de servidor e persistência próprias. Não inicie os componentes imaginando que compartilham o mesmo banco ou login.
+A API escolar 1.1 inclui análise de CSV e dashboard no próprio servidor. O pacote anterior `avaliacao_backend` permanece como referência. O site V2 e o `frontend-app` local não foram automaticamente ligados à API Python nem ao Supabase; têm fluxos próprios. Consulte `backend_escola/FINALIZAR_ENTREGA.md` antes de escolher qual componente executar.
 
 A apresentação offline é uma demonstração: seus passageiros, motoristas, posições e tempos são fictícios. O catálogo de 84 linhas é pesquisado em fontes secundárias e não garante cobertura integral ou operação atual. A fonte de atrasos de DS/IA é sintética. Não há integração oficial com operadoras nem previsão operacional de chegada validada.
 

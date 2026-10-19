@@ -1,0 +1,24 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+Camila
+
+— números e interpretação (1 minuto)
+
+Mostre os números do JSON:
+
+- 180 observações válidas.
+- Soma de 1.362 minutos por observação.
+- Média de 7,5667 minutos: 1.362 dividido por 180.
+- Mediana de 8 minutos.
+- Maior atraso de 12 minutos.
+
+“Média é a soma dividida pela quantidade; mediana é o valor central dos dados ordenados. O máximo de 12 minutos ocorre em sete observações, e a API preserva todos os empates.”
+
+Execute GET `/ia/agrupamentos/linha` e `/ia/agrupamentos/data`.
+
+“Essas rotas respondem quais linhas apresentam maiores atrasos e como os valores variam no tempo. Os agrupamentos reconciliam as mesmas 180 observações e os mesmos 1.362 minutos. A soma não representa minutos perdidos por passageiros, e os grupos não comprovam causalidade.”
+
+Não é necessário mostrar o dashboard: o objetivo aqui é explicar as respostas da API em JSON.
+
+PASSAGEM: próxima parte com Ana Carolina.
+
+Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.

@@ -2,6 +2,8 @@
 
 Esta é a API Python do pacote `TRANSURBAN_BACKEND.zip` enviado para a revisão da escola. Ela cadastra e consulta **cidades** e **linhas de ônibus**. Foi adaptada do exemplo Categoria → Produto para o domínio do TRANSURBAN.
 
+**Atualização de 19/10:** a versão 1.1 integra também a análise do CSV, `/health` e o dashboard `/painel/` no mesmo servidor. Os cadastros já existentes e o `.env` local são preservados. Veja `FINALIZAR_ENTREGA.md` para o roteiro atualizado de DS + IA e a auditoria privada do Supabase.
+
 ## 1. API, site e banco: quem faz o quê?
 
 O site é a interface que uma pessoa vê e usa. A API recebe pedidos HTTP e devolve dados JSON. O banco guarda os registros. Swagger, em `/docs`, é uma interface para testar a API; não é o site final para passageiros.
@@ -91,8 +93,14 @@ Se a porta estiver ocupada, encerre somente seu servidor antigo no terminal corr
 | GET | /linhas | Nenhuma | 200, lista de linhas com nome da cidade |
 | GET | /docs | Nenhuma | Documentação interativa Swagger |
 | GET | /openapi.json | Nenhuma | Contrato das rotas e schemas |
+| GET | /health | Nenhuma | Verifica conexão com o banco e identifica o modo local/PostgreSQL |
+| GET | /ia/resumo | Nenhuma | Contagem, soma, média, mediana e limites da fonte |
+| GET | /ia/qualidade | Nenhuma | Auditoria do CSV |
+| GET | /ia/agrupamentos/{dimensao} | Dimensão na URL | Indicadores por linha, data, cidade, período, trânsito, clima ou trecho |
+| GET | /ia/maiores-atrasos | Nenhuma | Todos os registros empatados no maior atraso |
+| GET | /painel/ | Nenhuma | Dashboard e formulários integrados à API |
 
-Esta API escolar não possui `/health`, rotas `/ia/*`, GPS, autenticação nem frontend embutido. Essas funcionalidades pertencem a outros pacotes ou etapas. GET `/` comprova que o servidor responde; GET `/cidades` e `/linhas` também exercitam a conexão e a consulta ao banco.
+A API não possui GPS real ou autenticação de passageiros. GET `/` comprova que o servidor responde; GET `/health`, `/cidades` e `/linhas` também exercitam a conexão ao banco. O dashboard usa as rotas desta mesma API; o site V2 e o `frontend-app` do computador da escola continuam componentes distintos.
 
 ## 6. Demonstração passo a passo no Swagger
 
@@ -158,7 +166,7 @@ DATABASE_URL=postgresql+psycopg2://USUARIO:SENHA_CODIFICADA@HOST:PORTA/BANCO?ssl
 
 Não use chave anon como senha. Preserve usuário, host e porta do painel. Codifique caracteres especiais da senha na URI e nunca publique `.env` nem fotos dessa configuração. O arquivo `.env` só é lido ao iniciar o processo; reinicie a API depois de alterá-lo.
 
-O `lifespan` original chama `Base.metadata.create_all`. Em PostgreSQL isso pode criar tabelas ausentes, mas não migra as tabelas existentes nem corrige IDs sem geração automática. Confira o esquema antes de apontar para o banco remoto. O banco deve possuir PKs compatíveis, geração de IDs e a FK esperada. Não apague tabelas para tentar fazer uma conexão funcionar.
+Na versão 1.1, o `lifespan` cria tabelas automaticamente somente no SQLite local. A inicialização não cria nem migra tabelas remotas. Use `bash iniciar-linux.sh --supabase` para informar a URI em entrada oculta e auditar conexão, campos, tipos, PKs e FK por leitura. A configuração só é salva se a auditoria passar. Um esquema incompatível precisa de revisão separada; não apague tabelas para tentar fazer uma conexão funcionar.
 
 ## 9. Testes e evidências
 
@@ -168,7 +176,7 @@ bash iniciar-linux.sh --testar
 
 O teste fornecido usa um banco SQLite temporário e sobrescreve DATABASE_URL apenas no processo de teste. Confere servidor, documentação, POST/GET, ID persistido, nome relacionado, 404, 422 e rejeição de FK inválida por SQL direto.
 
-Na preparação de 19/10/2026: **1 teste de integração aprovado**, com várias verificações internas. Também foram executados GET `/`, `/docs`, `/openapi.json`, `/cidades` e `/linhas` contra Uvicorn, todos com 200. Não são 18 testes desta API: os 18 testes citados na entrega anterior pertencem ao pacote `avaliacao_backend`.
+Na preparação inicial de 19/10/2026, o pacote original passou em **1 teste de integração**, e as cinco consultas HTTP foram executadas com 200. A versão 1.1 possui testes adicionais de IA, dashboard e configuração privada; os resultados atuais estão em `evidencias/integracao-ds-ia-2026-10-19/` e `FINALIZAR_ENTREGA.md`. Os 18 testes da entrega antiga pertencem ao pacote separado `avaliacao_backend`.
 
 Para a apresentação, registre capturas de rota, status e JSON, sem credenciais. A comprovação remota exige que os mesmos registros apareçam no PostgreSQL/Supabase realmente configurado.
 

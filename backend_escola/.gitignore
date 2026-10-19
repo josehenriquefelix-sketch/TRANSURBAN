@@ -6,3 +6,5 @@ __pycache__/
 *.db
 .venv-escola/
 transurban_escola.db
+.env-backups/
+.config-*

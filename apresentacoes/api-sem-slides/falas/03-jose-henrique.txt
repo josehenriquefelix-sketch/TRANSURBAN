@@ -1,0 +1,30 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+José Henrique
+
+— José Henrique: demonstrar cadastro e consulta (2 minutos)
+
+No Swagger, abra POST `/cidades`, clique em Try it out e envie:
+
+```json
+{"nome":"Sarandi"}
+```
+
+“POST envia dados para cadastro. A resposta 201 informa que o registro foi criado. O banco devolveu o identificador da cidade.”
+
+Anote o `id_cidade` realmente retornado. Em POST `/linhas`, substitua o 2 do exemplo pelo número que acabou de receber:
+
+```json
+{"codigo":"DEMO-20","nome":"Linha da apresentação","id_cidade":2}
+```
+
+“Antes de salvar a linha, a API verifica se a cidade informada existe. A resposta inclui a chave estrangeira e também o nome da cidade, que é uma informação mais compreensível para o usuário.”
+
+Execute GET `/cidades` e GET `/linhas`.
+
+“GET faz uma consulta. O status 200 mostra que a requisição foi atendida. Os registros retornaram em uma nova requisição, demonstrando a gravação e a leitura no banco configurado.”
+
+Evite cadastrar várias vezes por engano: esta API escolar não impõe unicidade de nome ou código. Não apresente rejeição de duplicidade como funcionalidade dela.
+
+PASSAGEM: próxima parte com Gustavo.
+
+Divisão de apresentação, sem atribuição de autoria do código. Nunca mostre .env ou credenciais.
