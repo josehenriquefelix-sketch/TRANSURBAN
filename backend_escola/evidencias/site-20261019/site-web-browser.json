@@ -1,0 +1,18 @@
+{
+  "ambiente": "Chromium Linux, dois contextos isolados. Não comprova GPS de dispositivo físico, mapa online, clima ou roteamento externo.",
+  "fluxos": [
+    "cadastro/login de motorista e passageiro",
+    "planejamento de dois pontos sem desenho de via fictícia",
+    "início de viagem e GPS emulado exclusivamente no teste",
+    "embarque, lotação superlotado e desembarque",
+    "avaliação 5 estrelas e descrição como texto, sem XSS",
+    "crédito de demonstração parcelado em 12 e VT de teste",
+    "persistência de sessão e saldo após recarregar",
+    "viewport 390px sem transbordamento horizontal",
+    "encerramento da viagem pelo motorista"
+  ],
+  "saldo_demo_centavos": 15000,
+  "erros_javascript": [],
+  "servicos_externos": "Bloqueados no navegador; mensagens de indisponibilidade exercitadas.",
+  "aprovado": true
+}

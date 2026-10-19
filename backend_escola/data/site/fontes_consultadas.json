@@ -1,0 +1,19 @@
+{
+  "consultado_em_utc": "2026-10-19T21:46:45.076423+00:00",
+  "fontes": [
+    {
+      "url": "https://www.nahoramaringa.com.br/",
+      "sha256_html": "67f551849a6827b2e87784585114531083a9829002d5d531da55b4b14125b2d5",
+      "resultado": "Página recebida; declara projeto oficial da Prefeitura de Maringá."
+    },
+    {
+      "url": "https://www.nahoramaringa.com.br/pesquisa-por-linhas/",
+      "resultado": "Página pública recebida; direciona consulta de linhas ao serviço externo bus2.info/reports/2you/43wpt. Conteúdo do widget não acessível neste ambiente."
+    },
+    {
+      "url": "https://www.tccc.com.br",
+      "resultado": "HTTP 503 durante consulta; tarifa não confirmada."
+    }
+  ],
+  "nota": "Nenhum itinerário ou preço foi inferido destas páginas. Clima e OSRM possuem evidência separada."
+}

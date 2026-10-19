@@ -2,6 +2,8 @@ from contextlib import asynccontextmanager
 import os
 from pathlib import Path
 from fastapi import Body, Depends, FastAPI, HTTPException
+from fastapi.exceptions import RequestValidationError
+from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -13,6 +15,7 @@ import schemas
 from database import Base, SessionLocal, engine, is_sqlite
 from ia_routes import router as ia_router
 from dados_publicos import router as dados_publicos_router
+from web_api import router as web_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -25,7 +28,7 @@ async def lifespan(app: FastAPI):
         engine.dispose()
 
 APRESENTACAO = os.getenv("TRANSURBAN_APRESENTACAO") == "1"
-app = FastAPI(title="API TRANSURBAN", version="1.3.0", lifespan=lifespan,
+app = FastAPI(title="API TRANSURBAN", version="1.4.0", lifespan=lifespan,
               docs_url=None, redoc_url=None,
               openapi_tags=[
                   {"name":"Apresentação", "description":"Comece pelo roteiro dos testes. Cadastros DS são exemplos; IA usa programação pública histórica de Curitiba."},
@@ -34,9 +37,27 @@ app = FastAPI(title="API TRANSURBAN", version="1.3.0", lifespan=lifespan,
                   {"name":"DS — Linhas", "description":"Use o ID real da cidade. A linha DEMO-20 é um exemplo de cadastro, não uma linha operacional verificada."},
                   {"name":"IA — Dados públicos: Curitiba (histórico)", "description":"Snapshot comunitário, não oficial, de 28/09–05/10/2026. Não é dado de Maringá/Sarandi, atraso medido ou viagem realizada."},
               ],
-              description="DS: cadastro e consulta em banco SQL. IA: programação publicada de Curitiba, com fonte, período e limitações. Para apresentar, abra GET /apresentacao. Não há GPS, atraso medido ou previsão de chegada.")
+              description="DS: cadastro e consulta em banco SQL. IA: programação publicada de Curitiba, com fonte, período e limitações. Para apresentar, abra GET /apresentacao. O estudo IA não inclui GPS, atraso medido ou previsão de chegada. O site em /app oferece viagens autodeclaradas e GPS voluntário, sem integração à frota oficial.")
+@app.middleware("http")
+async def cabecalhos_site(request, call_next):
+    response = await call_next(request)
+    if request.url.path.startswith(("/app", "/web-api/")):
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["Referrer-Policy"] = "same-origin"
+        response.headers["Permissions-Policy"] = "geolocation=(self), camera=(), microphone=()"
+        if request.url.path.startswith("/web-api/"):
+            response.headers["Cache-Control"] = "no-store"
+        else:
+            response.headers["Content-Security-Policy"] = (
+                "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; "
+                "img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self'; "
+                "object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'"
+            )
+    return response
+
 app.include_router(dados_publicos_router)
 app.include_router(ia_router, include_in_schema=not APRESENTACAO)
+app.include_router(web_router, include_in_schema=not APRESENTACAO)
 
 app.mount("/documentacao-static", StaticFiles(directory=Path(__file__).resolve().parent / "swagger_static"), name="swagger-static")
 
@@ -56,6 +77,16 @@ def documentacao():
 @app.exception_handler(SQLAlchemyError)
 async def erro_banco(_request, _error):
     return JSONResponse(status_code=503, content={"detail": "Banco indisponível ou esquema incompatível. Verifique a configuração privada e execute a auditoria do banco."})
+
+@app.exception_handler(RequestValidationError)
+async def erro_validacao(request, error):
+    if request.url.path.startswith('/web-api/'):
+        # Não devolve senha ou outros valores enviados em respostas de validação.
+        return JSONResponse(status_code=422,content={'detail':[
+            {'loc':item['loc'],'type':item['type'],'msg':item['msg']}
+            for item in error.errors()
+        ]})
+    return await request_validation_exception_handler(request,error)
 
 def get_db():
     db = SessionLocal()
@@ -81,7 +112,7 @@ def resposta_linha(linha):
 def inicio():
     return {"mensagem": "API TRANSURBAN funcionando", "documentacao": "/docs",
             "roteiro": "/apresentacao", "dados_publicos": "/ia/dados-publicos/resumo",
-            "modo_apresentacao": APRESENTACAO}
+            "modo_apresentacao": APRESENTACAO, "site": "/app/"}
 
 @app.get("/apresentacao", tags=["Apresentação"], summary="Comece aqui: sequência e resultados esperados")
 def roteiro() -> dict:
@@ -148,3 +179,4 @@ def listar_linhas(db: Session = Depends(get_db)):
     return [resposta_linha(linha) for linha in db.scalars(consulta).all()]
 
 app.mount("/painel", StaticFiles(directory=Path(__file__).resolve().parent / "frontend", html=True), name="painel")
+app.mount("/app", StaticFiles(directory=Path(__file__).resolve().parent / "web", html=True), name="site")

@@ -104,3 +104,6 @@ Não copiar senhas ou `.env` para GitHub/Classroom. A senha antes compartilhada 
 GitHub: https://github.com/josehenriquefelix-sketch/TRANSURBAN/tree/entrega/escola-apresentacao-2026-10-20
 
 As alterações estão na branch indicada; isso não significa merge na main ou hospedagem pública.
+
+
+Site funcional adicional: veja [guia do site](backend_escola/SITE_FUNCIONAL.md). A própria API serve a interface em `/app/`, com contas, viagens, avaliações e carteira de demonstração. A apresentação DS/IA em `/docs` continua disponível.

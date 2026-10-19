@@ -49,6 +49,7 @@ def main():
         print("Apresentação com SQLite LOCAL. IA pública: snapshot histórico de Curitiba em /ia/dados-publicos. Não usa Supabase.", flush=True)
         print("Swagger em modo apresentação: testes sintéticos anteriores não são listados. Comece por GET /apresentacao.", flush=True)
         print("O .env existente é preservado. Deixe este terminal aberto; Ctrl+C encerra.", flush=True)
+        print(f"Site opcional: http://127.0.0.1:{args.port}/app/", flush=True)
         print(f"No navegador deste notebook: http://127.0.0.1:{args.port}/docs", flush=True)
         command = [str(python), "-m", "uvicorn", "main:app", "--host", "127.0.0.1", "--port", str(args.port)]
     try:

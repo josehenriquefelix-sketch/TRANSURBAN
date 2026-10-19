@@ -1,0 +1,8 @@
+{
+  "cidade": "Maringá",
+  "ano_referencia": 2026,
+  "verificada": false,
+  "valor_centavos": null,
+  "fonte_url": "https://www.tccc.com.br/",
+  "mensagem": "Tarifa de 2026 ainda não verificada. Não calculamos quantidade de passes ou cobranças com um valor presumido."
+}

@@ -1,0 +1,5 @@
+{
+  "tiles_carregados": 1,
+  "erros_javascript": [],
+  "nota": "Teste via proxy do ambiente, com exceção de certificado somente no navegador de QA; imagens reais OpenStreetMap. A aplicação não desativa validação TLS. Não comprova GPS físico ou configuração do navegador do usuário."
+}

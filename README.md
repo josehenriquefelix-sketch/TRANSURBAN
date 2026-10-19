@@ -342,3 +342,6 @@ Essas evidências não devem ser inventadas ou simuladas.
 ## 8. Repositório
 
 `https://github.com/josehenriquefelix-sketch/TRANSURBAN`
+
+
+Site funcional adicional: veja [guia do site](backend_escola/SITE_FUNCIONAL.md). A própria API serve a interface em `/app/`, com contas, viagens, avaliações e carteira de demonstração. A apresentação DS/IA em `/docs` continua disponível.
