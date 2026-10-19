@@ -1,0 +1,5 @@
+Um roteiro HTML e um TXT por integrante. O HTML pode ser aberto no navegador e impresso. O TXT é fácil de copiar para uma mensagem. O arquivo 00 contém a apresentação inteira.
+
+A ordem foi sugerida conforme a equipe registrada no projeto: Ana Clara, Bruno Miguel, Ana Carolina, Kauan Celso, José Henrique, Jullyany e Camila. As falas explicam o projeto; não atribuem a autoria de todo o código a uma pessoa específica.
+
+Compartilhe cada arquivo com o respectivo integrante. Nenhum arquivo foi enviado automaticamente por mensagem ou e-mail.

@@ -1,5 +1,23 @@
 # TRANSURBAN
 
+## API Python — comece aqui
+
+A API escolar está em **[backend_escola/](backend_escola/)**. Ela cadastra e consulta cidades e linhas de ônibus com relacionamento PK/FK, valida a cidade referenciada e devolve seu nome no JSON.
+
+**[Leia o guia completo da API: arquivos, conexão, rotas, exemplos, testes e apresentação](backend_escola/API_EXPLICADA.md).**
+
+No Linux, abra um terminal na pasta `backend_escola` e execute `bash iniciar-linux.sh`. Após a inicialização, abra `http://127.0.0.1:8000/docs` no mesmo computador e mantenha o terminal aberto.
+
+| API escolar | Finalidade |
+|---|---|
+| POST /cidades e GET /cidades | Cadastrar e consultar cidades |
+| POST /linhas e GET /linhas | Cadastrar e consultar linhas com a cidade relacionada |
+| /docs | Testar as rotas na documentação interativa |
+
+O **[site V2](site_v2/README.md)** e as **[apresentações](ENTREGA_ESCOLA_20_10.md)** estão separados. O site V2 não é automaticamente conectado à API Python. O painel DS/IA anterior está em `avaliacao_backend/`. Veja **[a organização completa da entrega](ENTREGA_ESCOLA_20_10.md)** antes de escolher qual componente executar.
+
+---
+
 
 
 O **TransUrban** é um projeto acadêmico voltado à organização e análise de dados relacionados a atrasos no transporte coletivo entre **Maringá e Sarandi**.

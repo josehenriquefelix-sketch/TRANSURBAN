@@ -1,0 +1,4 @@
+Teste realizado em 08/10/2026 no ambiente de preparação com SQLite temporário.
+pytest: 1 teste de integração aprovado; uma advertência de depreciação do TestClient.
+Verificado: GET /, /docs e /openapi.json; POST e GET /cidades; POST e GET /linhas; nome da cidade na resposta; ID armazenado no banco; cidade inexistente retorna 404 e não insere linha; campos inválidos retornam 422; FK também impede inserção inválida direta no SQLite.
+Não foi testada a conexão com o Supabase do usuário nem feito push no GitHub.

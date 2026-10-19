@@ -1,0 +1,35 @@
+TRANSURBAN — PACOTE DE APRESENTAÇÃO
+Preparado em 17/10/2026 para terça-feira, 20/10/2026.
+
+PRONTO PARA DEMONSTRAÇÃO OFFLINE
+
+• Arquivo HTML único, com JavaScript, CSS e ícone embutidos.
+• Não depende de servidor, instalação, senha, GPS real ou biblioteca remota.
+• Catálogo com 84 linhas pesquisadas e fonte por linha.
+• Busca, filtro por cidade, detalhes e favoritos da sessão.
+• Troca entre perfis fictícios de passageiro e motorista.
+• Embarque e desembarque no cenário de demonstração.
+• Avaliação com nota, descrição e lotação vazia, normal ou cheia.
+• Mapa esquemático e avanço controlado do ônibus fictício.
+• Estimativa didática calculada com distância e velocidade simuladas.
+• Encerramento/início de viagem fictícia pelo perfil motorista.
+• Botão Reiniciar para limpar a demonstração antes de apresentar.
+• Roteiro de fala, perguntas prováveis e relatório da base acadêmica.
+
+VERIFICAÇÕES CONCLUÍDAS
+
+• Dez testes automatizados aprovados: API, autorização, concorrência, privacidade, HTTP local, renderização e cenários de apresentação.
+• TypeScript sem erros.
+• Sintaxe do JavaScript exportado conferida.
+• Arquivo de apresentação verificado sem scripts, folhas de estilo ou fontes remotas obrigatórias.
+• Estatísticas recalculadas sobre 180 registros sintéticos: média 7,57 min, mediana 8 min e máximo 12 min.
+
+LIMITES QUE PRECISAM SER DITOS
+
+O modo de apresentação não é o servidor publicado. Os perfis, veículos, posições e tempos são fictícios. A amostra de atrasos também é sintética.
+
+O código de produção está separado. Ainda faltam publicação, integração com dados reais e validação dos itinerários para uma previsão operacional. O catálogo não garante cobertura integral da rede.
+
+A inspeção visual e a passagem completa em um navegador real não foram concluídas nesta sessão, por restrições do navegador conectado. Antes da aula, é necessário abrir o arquivo no computador que será usado e conferir o roteiro. Os testes de renderização automatizados não substituem essa conferência.
+
+Se precisar de um plano B sem interação, os arquivos 03-ROTEIRO.html e 04-DADOS-ACADEMICOS.html são páginas estáticas que podem ser abertas ou impressas pelo navegador.

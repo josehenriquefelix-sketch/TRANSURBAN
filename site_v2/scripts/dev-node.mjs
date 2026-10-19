@@ -1,0 +1,26 @@
+// Loopback-only QA harness. Never deploy this file or use its mock identity
+// outside local development. Production identity remains Sites-owned.
+import './windows-fs-compat.mjs';
+import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {DatabaseSync} from 'node:sqlite';
+import {build} from 'esbuild';
+import {handleApi} from '../lib/api.mjs';
+const root=fileURLToPath(new URL('../',import.meta.url));process.chdir(root);
+const port=5174,origin=`http://127.0.0.1:${port}`;
+fs.mkdirSync('.local-dev',{recursive:true});
+await build({stdin:{contents:`import React from 'react';import {createRoot} from 'react-dom/client';import Dashboard from './app/dashboard';const state=window.__TU_LOCAL__;createRoot(document.getElementById('root')).render(React.createElement(Dashboard,state));`,resolveDir:root,loader:'tsx'},bundle:true,outfile:'.local-dev/client.js',platform:'browser',format:'iife',define:{'process.env.NODE_ENV':'"development"'}});
+const sql=new DatabaseSync(process.env.TU_QA_MEMORY==='1'?':memory:':'.local-dev/transurban.sqlite');sql.exec('PRAGMA foreign_keys=ON');sql.exec('CREATE TABLE IF NOT EXISTS local_migrations(name TEXT PRIMARY KEY)');for(const name of fs.readdirSync('drizzle').filter(x=>x.endsWith('.sql')).sort()){if(!sql.prepare('SELECT name FROM local_migrations WHERE name=?').get(name)){sql.exec('BEGIN');try{sql.exec(fs.readFileSync(path.join('drizzle',name),'utf8').replaceAll('--> statement-breakpoint',''));sql.prepare('INSERT INTO local_migrations(name) VALUES(?)').run(name);sql.exec('COMMIT')}catch(e){sql.exec('ROLLBACK');throw e}}}
+function prepare(query){let args=[];return{bind(...values){args=values;return this},async first(){return sql.prepare(query).get(...args)||null},async all(){return{results:sql.prepare(query).all(...args)}},run(){return sql.prepare(query).run(...args)}}}
+const db={prepare,async batch(queries){sql.exec('BEGIN');try{const rows=[];for(const q of queries)rows.push(q.run());sql.exec('COMMIT');return rows}catch(e){sql.exec('ROLLBACK');throw e}}};
+const server=http.createServer(async(req,res)=>{try{if(!['127.0.0.1:'+port,'localhost:'+port].includes(req.headers.host)){res.writeHead(403).end('Local development only');return}const url=new URL(req.url,origin);const localId=(req.headers.cookie||'').match(/(?:^|;\s*)tu_local=(local_passenger|local_driver)(?:;|$)/)?.[1];const user=localId?{userId:localId}:null;
+if(url.pathname==='/signin-with-chatgpt'){const target=new URL(url.searchParams.get('return_to')||'/',origin);if(target.origin!==origin){res.writeHead(400).end();return}const role=target.searchParams.get('role')==='driver'?'driver':'passenger';res.writeHead(303,{'Set-Cookie':`tu_local=local_${role}; HttpOnly; SameSite=Strict; Path=/`,Location:'/?role='+role}).end();return}
+if(url.pathname==='/signout-with-chatgpt'){if(user){await db.prepare('UPDATE runs SET active=0,lat=NULL,lng=NULL,speed=NULL WHERE driver_id=? AND active=1').bind(user.userId).run()}res.writeHead(303,{'Set-Cookie':'tu_local=; Max-Age=0; HttpOnly; SameSite=Strict; Path=/',Location:'/'}).end();return}
+if(url.pathname.startsWith('/api/')){let body='';for await(const chunk of req){body+=chunk;if(body.length>8192){res.writeHead(413).end();return}}const request=new Request(origin+url.pathname+url.search,{method:req.method,headers:req.headers,...(req.method!=='GET'?{body}: {})});const result=await handleApi(request,{db,user});res.writeHead(result.status,Object.fromEntries(result.headers));res.end(await result.text());return}
+const files={'/client.js':['.local-dev/client.js','application/javascript'],'/globals.css':['app/globals.css','text/css'],'/product.css':['app/product.css','text/css'],'/favicon.svg':['public/favicon.svg','image/svg+xml']};if(files[url.pathname]){const [file,type]=files[url.pathname];res.writeHead(200,{'Content-Type':type+'; charset=utf-8','Cache-Control':'no-store'}).end(fs.readFileSync(file));return}
+if(url.pathname!=='/'){res.writeHead(404).end();return}const state={identity:user?{name:localId==='local_driver'?'Motorista de teste':'Passageiro de teste'}:null,signIn:'/signin-with-chatgpt?return_to=%2F',signOut:'/signout-with-chatgpt?return_to=%2F'};res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'}).end(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TransUrban • Prévia local</title><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/globals.css"><link rel="stylesheet" href="/product.css"></head><body><div id="root"></div><div style="position:fixed;bottom:0;right:0;background:#fff7d7;color:#806a35;padding:5px 12px;font:10px Arial;z-index:100">Prévia local · Login de teste · Sem credenciais reais</div><script>window.__TU_LOCAL__=${JSON.stringify(state).replaceAll('<','\\u003c')}</script><script src="/client.js"></script></body></html>`);
+}catch(error){console.error(error);if(!res.headersSent)res.writeHead(500,{'Content-Type':'text/plain; charset=utf-8'});res.end('Falha na prévia local. Veja o terminal.')}});
+server.listen(port,'127.0.0.1',()=>console.log(origin+' • mock login local; produção usa Sites'));
+export {server,sql,origin};

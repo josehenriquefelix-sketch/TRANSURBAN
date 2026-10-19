@@ -1,0 +1,34 @@
+TRANSURBAN — ANA CLARA
+TERÇA-FEIRA, 20/10/2026
+
+PARTE 1/7: Abertura, problema e objetivo
+TEMPO ESTIMADO: 50–60 segundos
+TELA: Visão geral da demonstração
+
+Você abre a apresentação.
+
+O QUE MOSTRAR
+1. Abra 01-ABRIR-APRESENTACAO.html e clique em Reiniciar antes de começar.
+2. Deixe a página inicial visível durante a fala.
+
+FALA COMPLETA
+
+Olá, pessoal. Nosso projeto é o TransUrban. A proposta é ajudar quem utiliza o transporte coletivo em Maringá e Sarandi a encontrar sua linha e ter mais informação durante a viagem.
+
+O problema que a gente quer trabalhar é a dificuldade de reunir informações sobre linhas, chegada dos ônibus e lotação em um só lugar. Nossa proposta reúne consulta de linhas, participação dos passageiros e uma área para o motorista.
+
+Primeiro estamos desenvolvendo um site responsivo. A versão de aplicativo será uma etapa futura.
+
+Hoje vamos apresentar uma demonstração acadêmica que funciona sem internet. O catálogo veio de uma pesquisa, mas os perfis, o ônibus, o mapa e os tempos deste cenário são fictícios. A gente vai mostrar o funcionamento proposto sem apresentar essa simulação como GPS real.
+
+PASSAGEM
+Agora o Bruno vai mostrar como funciona a consulta das linhas.
+
+PERGUNTA PROVÁVEL
+Por que começar com um site?
+
+RESPOSTA
+Porque conseguimos demonstrar e organizar os fluxos em diferentes tamanhos de tela antes de preparar um aplicativo. Rastreamento nativo em segundo plano será uma etapa posterior.
+
+LEMBRETE PARA TODOS
+O catálogo vem de pesquisa. Os perfis, veículos, posições e tempos da apresentação são fictícios. A base de atrasos é sintética. O servidor ainda não está publicado e não há integração operacional com a frota.

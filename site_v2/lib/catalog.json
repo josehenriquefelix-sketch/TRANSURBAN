@@ -1,0 +1,1458 @@
+{
+  "checkedAt": "2026-10-16",
+  "coverage": "Linhas indexadas nas páginas consultadas de Maringá e Sarandi. Não constitui garantia de catálogo integral ou de operação atual.",
+  "lines": [
+    {
+      "id": "maringa-007",
+      "code": "007",
+      "name": "Interbairros Zona Norte",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/007-interbairros-zona-norte/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Interbairros Zona Norte",
+      "routeNotes": [
+        "1 – PI 17-HU – Sentido para HU – Hospital Universitário",
+        "2 – HU-PI",
+        "17 – Sentido para PI-17 – Av. Guaiapó"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-008",
+      "code": "008",
+      "name": "Interbairros 1",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/008-interbairros-1/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Interbairros 1",
+      "routeNotes": [
+        "1 – PI 17-IVAI – Sentido para Praça Ivaí",
+        "2 – IVAI-PI",
+        "17 – Sentido para PI-17 – Av. Guaiapó"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-009",
+      "code": "009",
+      "name": "Interbairros 2",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/009-interbairros-2/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Interbairros 2",
+      "routeNotes": [
+        "1 – PI 17-IVAI – Sentido para Praça Ivaí",
+        "2 – IVAI-PI",
+        "17 – Sentido para PI-17 – Av. Guaiapó"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-010",
+      "code": "010",
+      "name": "Universidade",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/010-universidade/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Universidade",
+      "routeNotes": [
+        "1 – TER-UNIV – Sentido para Bairro – Universidade",
+        "2 – UNIV-TER – Sentido para Terminal",
+        "3 – P-UEM-TER – Sentido para Terminal – Inicio no Portão da UEM"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-011",
+      "code": "011",
+      "name": "Vila Esperança",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/011-vila-esperanca/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Vila Esperança",
+      "routeNotes": [
+        "1 – TER-ESP – Sentido para Bairro – Vila Esperança",
+        "2 – ESP-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-020",
+      "code": "020",
+      "name": "Avenida São Domingos",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/020-avenida-sao-domingos/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Avenida São Domingos",
+      "routeNotes": [
+        "1 – TER-SÃO – Sentido para Av. São Domingos",
+        "2 – SÃO-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-021",
+      "code": "021",
+      "name": "Avenida Tuiuti",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/021-avenida-tuiuti/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Avenida Tuiuti",
+      "routeNotes": [
+        "1 – TER-TUI – Sentido para Av. Tuiuti",
+        "2 – TUI-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-022",
+      "code": "022",
+      "name": "Conjunto Guaiapó",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/022-conjunto-guaiapo/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto Guaiapó",
+      "routeNotes": [
+        "1 – TER-GUA – Sentido para Bairro – Cj. Guaiapó",
+        "2 – TER-ZAU – Sentido para Bairro – Via Condomínio Estância Zaúna",
+        "3 – RODO-GUA – Sentido para Bairro – Saída da Rodoviária",
+        "4 – GUA-TER – Sentido para Terminal",
+        "5 – ZAU-TER – Sentido para Terminal – Via Estância Zaúna"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-023",
+      "code": "023",
+      "name": "Conjunto Requião",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/023-conjunto-requiao/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto Requião",
+      "routeNotes": [
+        "1 – TER-REQ – Sentido para Bairro – Cj. Requião",
+        "2 – REQ-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-026",
+      "code": "026",
+      "name": "Jardim Paulista",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/026-jardim-paulista/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Paulista",
+      "routeNotes": [
+        "1 – TER-PAU – Sentido para Bairro – Jd. Paulista",
+        "2 – PAU-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-040",
+      "code": "040",
+      "name": "AABB",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/040-aabb/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "AABB",
+      "routeNotes": [
+        "1 – TER-A.A – Sentido para Bairro – A.A.B.B.",
+        "2 – A.A-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-041",
+      "code": "041",
+      "name": "Jardim Monções",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/041-jardim-moncoes/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Monções",
+      "routeNotes": [
+        "1 – TER-MON – Sentido para Bairro – Jd. Monções",
+        "2 – MON-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-131",
+      "code": "131",
+      "name": "Jardim Vitória",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/131-jardim-vitoria/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Vitória",
+      "routeNotes": [
+        "1 – TER-IMP – Sentido para Bairro – Via Imperial",
+        "2 – TER-VIT – Sentido para Bairro – Jd. Vitória",
+        "3 – IMP-TER – Sentido para Terminal – Via Imperial",
+        "4 – VIT-TER – Sentido para Terminal – Jd. Vitória"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-137",
+      "code": "137",
+      "name": "Conjunto Hermann de Morais Barros",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/137-conjunto-hermann-de-morais-barros/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto Hermann de Morais Barros",
+      "routeNotes": [
+        "1 – TER-H.M – Sentido para Bairro – Cj. Hermann M. de Barros",
+        "2 – H.M-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-138",
+      "code": "138",
+      "name": "Miosótis",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/138-miosotis/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Miosótis",
+      "routeNotes": [
+        "1 – TER-MIO – Sentido para Bairro – Miosótis",
+        "2 – TER-T-M – Sentido para Bairro – Via UBS Portal das Torres",
+        "3 – TER-MIO-E – Sentido para Bairro – Via Vila Esperança",
+        "4 – MIO-TER – Sentido para Terminal – Miosótis",
+        "5 – T-M-TER – Sentido para Terminal – Via UBS Portal das Torres",
+        "6 – MIO-E-TER – Sentido para Terminal – Via Vila Esperança"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-141",
+      "code": "141",
+      "name": "Parque Avenida / Via Portal das Torres",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/141-parque-avenida-via-portal-das-torres/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Parque Avenida / Via Portal das Torres",
+      "routeNotes": [
+        "1 – TER-AVE – Sentido para Bairro – Pq. Avenida via Portal das Torres",
+        "2 – AVE-TER – Sentido para Terminal – Pq. Avenida via Portal das Torres"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-152",
+      "code": "152",
+      "name": "Conjunto João Paulino",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/152-conjunto-joao-paulino/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto João Paulino",
+      "routeNotes": [
+        "1 – TER-JOA – Sentido para Bairro – Cj. João Paulino",
+        "2 – TER-BRAN – Sentido para Bairro – Via Branca Vieira",
+        "3 – JOA-TER – Sentido para Terminal – Cj. João Paulino",
+        "4 – BRAN-TER – Sentido para Terminal – Via Branca Vieira"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-162",
+      "code": "162",
+      "name": "Conjunto Léa Leal",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/162-conjunto-lea-leal/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto Léa Leal",
+      "routeNotes": [
+        "1 – TER-LEA – Sentido para Bairro – Cj. Léa Leal",
+        "2 – LEA-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-169",
+      "code": "169",
+      "name": "Jardim Alvorada",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/169-jardim-alvorada/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Alvorada",
+      "routeNotes": [
+        "1 – TER-ALV – Sentido para Bairro – Jd. Alvorada",
+        "2 – ALV-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-175",
+      "code": "175",
+      "name": "Jardim Sumaré",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/175-jardim-sumare/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Sumaré",
+      "routeNotes": [
+        "1 – TER-SUM – Sentido para Bairro – Jd. Sumaré",
+        "2 – SUM-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-177",
+      "code": "177",
+      "name": "Parque Itaipu / Jardim Ebenezer",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/177-parque-itaipu-jardim-ebenezer/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Parque Itaipu / Jardim Ebenezer",
+      "routeNotes": [
+        "1 – TER-EBE – Sentido para Bairro – Jd. Ebenezer",
+        "2 – TER-ITA – Sentido para Bairro – Pq. Itaipu",
+        "3 – ITA-TER – Sentido para Terminal – Pq. Itaipu",
+        "4 – EBE-TER – Sentido para Terminal – Jd. Ebenezer",
+        "5 – COC-TER – Sentido para Terminal – Via Cocamar",
+        "6 – FEI-TER – Sentido para Terminal – Via Cocamar e Faculdade Feitep"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-178",
+      "code": "178",
+      "name": "Floriano",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/178-floriano/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Floriano",
+      "routeNotes": [
+        "1 – TER-FLO – Sentido para Floriano",
+        "2 – TER-F-SUL – Sentido para Floriano – Via Contorno Sul",
+        "3 – FLO-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-179",
+      "code": "179",
+      "name": "Jardim Andrade",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/179-jardim-andrade/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Andrade",
+      "routeNotes": [
+        "1 – TER-AND – Sentido para Bairro – Jd. Andrade",
+        "2 – AND-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-201",
+      "code": "201",
+      "name": "Iguatemi",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/201-iguatemi/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Iguatemi",
+      "routeNotes": [
+        "1 – TER-IGU – Sentido para Iguatemi",
+        "2 – TER-CAN – Terminal – Frangos Canção",
+        "3 – CAN-STA – Especial – Iguatemi – ADM. Usina Santa Terezinha",
+        "4 – TER-SOL – Sentido para Iguatemi – Via Jd. Solo Rico",
+        "5 – IGU-TER – Sentido para Terminal",
+        "6 – I-SOL-TER – Sentido para Terminal – Inicio no Jd. Solo Rico",
+        "7 – COR-TER – Abatedouro Coroaves – Terminal",
+        "8 – CAN-TER – Sentido para Terminal – Saída do Abatedouro",
+        "9 – USI-IGREJ – Especial – ADM. Usina Santa Terezinha – Iguatemi",
+        "10 – COCA-TER – Sentido para Terminal – Via Coca Cola"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-204",
+      "code": "204",
+      "name": "Jardim Licce",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/204-jardim-licce/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Licce",
+      "routeNotes": [
+        "1 – TER-LIC – Sentido para Bairro – Jd. Licce",
+        "2 – LIC-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-205",
+      "code": "205",
+      "name": "Thermas",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/205-thermas/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Thermas",
+      "routeNotes": [
+        "1 – TER-UNIN – Sentido para Bairro – Uningá",
+        "2 – TER-THE – Sentido para Bairro – Thermas",
+        "3 – TER-T-UNI – Sentido para Bairro – Thermas via Uningá",
+        "4 – TER-U-SAN – Sentido para Bairro – Sanches Tripoloni",
+        "5 – UNIN-THE – Sentido para Bairro – Thermas – Saída da Uningá",
+        "6 – TER-THE-L – Sentido para Bairro – Via Jd. Licce",
+        "7 – THE-TER – Sentido para Terminal – Thermas",
+        "8 – U-SAN-TER – Sentido para Terminal – Sanches Tripoloni",
+        "9 – UNIN-TER – Sentido para Terminal – Uningá",
+        "10 – U-MOD-TER – Sentido para Terminal – Uningá via Modulaque",
+        "11 – THE-L-TER – Sentido para Terminal – Via Jd. Licce"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-219",
+      "code": "219",
+      "name": "Jardim Iguaçu",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/219-jardim-iguacu/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Iguaçu",
+      "routeNotes": [
+        "1 – TER-IGUA – Sentido para Bairro",
+        "2 – IGUA-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-220",
+      "code": "220",
+      "name": "Jardim São Clemente",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/220-jardim-sao-clemente/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim São Clemente",
+      "routeNotes": [
+        "1 – TER-CLE – Sentido para Bairro – Via Jd. Espanha e Europa",
+        "2 – TER-CTE – Sentido para Bairro – Via Colégio Thomaz Edison",
+        "3 – CLE-TER – Sentido para Terminal",
+        "4 – CTE-TER – Sentido para Terminal – Via Colégio Thomaz Edison"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-221",
+      "code": "221",
+      "name": "Jardim Montreal",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/221-jardim-montreal/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Montreal",
+      "routeNotes": [
+        "1 – TER-MONT – Sentido para Bairro – Jd. Montreal",
+        "2 – MONT-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-222",
+      "code": "222",
+      "name": "Praça São Vicente / Higienópolis",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/222-praca-sao-vicente-higienopolis/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Praça São Vicente / Higienópolis",
+      "routeNotes": [
+        "1 – TER-VIC – Sentido para Bairro – Pça. São Vicente (Ebenezer)",
+        "2 – TER-HIG – Sentido para Bairro – Higienópolis",
+        "3 – HIG-TER – Sentido para Terminal – Higienópolis",
+        "4 – VIC-TER – Sentido para Terminal – Pça. São Vicente (Ebenezer)"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-233",
+      "code": "233",
+      "name": "Conjunto Guaiapó",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/233-conjunto-guaiapo/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto Guaiapó",
+      "routeNotes": [
+        "1 – TER-AGU – Sentido para Bairro – Guaiapó",
+        "2 – AGU-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-234",
+      "code": "234",
+      "name": "Conjunto JB Champagnat",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/234-conjunto-jb-champagnat/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto JB Champagnat",
+      "routeNotes": [
+        "1 – TER-CHA – Sentido para Bairro – Cj. Champagnat",
+        "2 – CHA-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-235",
+      "code": "235",
+      "name": "Jardim Campos Eliseos",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/235-jardim-campos-eliseos/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Campos Eliseos",
+      "routeNotes": [
+        "1 – TER-CAM – Sentido para Bairro – Jd. Campos Elísios",
+        "2 – TER-BAT – Sentido para Bairro – Via Batel",
+        "3 – CAM-TER – Sentido para Terminal – Jd. Campos Elísios",
+        "4 – BAT-TER – Sentido para Terminal – Via Batel"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-242",
+      "code": "242",
+      "name": "Jardim América",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/242-jardim-america/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim América",
+      "routeNotes": [
+        "1 – TER-AME-S – Sentido para Bairro – Via SAOP",
+        "2 – TER-AME – Sentido para Bairro – Jd. América",
+        "3 – TER-AME-V – Sentido para Bairro – Via Vila Nova",
+        "4 – AME-TER – Sentido para Terminal",
+        "5 – AME-V-TER – Sentido para Terminal – Via Vila Nova"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-243",
+      "code": "243",
+      "name": "Jardim Liberdade",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/243-jardim-liberdade/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Liberdade",
+      "routeNotes": [
+        "1 – TER-LIB – Sentido para Bairro – Jd. Liberdade",
+        "2 – LIB-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-300",
+      "code": "300",
+      "name": "Eurogarden",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/300-eurogarden/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Eurogarden",
+      "routeNotes": [
+        "1 – TER-EURO – Sentido para Bairro – Eurogarden",
+        "2 – EURO-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-314",
+      "code": "314",
+      "name": "Vila Nova",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/314-vila-nova/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Vila Nova",
+      "routeNotes": [
+        "1 – TER-VIL – Sentido para Bairro – Vila Nova",
+        "2 – VIL-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-323",
+      "code": "323",
+      "name": "Jardim Bertioga",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/323-jardim-bertioga/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Bertioga",
+      "routeNotes": [
+        "1 – TER-SIL – Sentido para Bairro – São Silvestre",
+        "2 – TER-BER – Sentido para Bairro – Bertioga",
+        "3 – TER-S-CEU – Sentido para Bairro – São Silvestre via Céu Azul",
+        "4 – TER-B-CEU – Sentido para Bairro – Bertioga via Céu Azul",
+        "5 – SIL-TER – Sentido para Terminal – São Silvestre",
+        "6 – BER-TER – Sentido para Terminal – Bertioga",
+        "7 – B-CEU-TER – Sentido para Terminal – Bertioga via Céu Azul"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-324",
+      "code": "324",
+      "name": "Porto Seguro / Conjunto Thais",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/324-porto-seguro-conjunto-thais/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Porto Seguro / Conjunto Thais",
+      "routeNotes": [
+        "1 – TER-THA – Sentido para Bairro – Cj. Thais",
+        "2 – TER-POR – Sentido para Bairro – Porto Seguro",
+        "3 – THA-TER – Sentido para Terminal – Cj. Thais",
+        "4 – POR-TER – Sentido para Terminal – Porto Seguro"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-326",
+      "code": "326",
+      "name": "Conjunto Europa",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/326-conjunto-europa/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto Europa",
+      "routeNotes": [
+        "1 – TER-EURO – Sentido para Bairro – Cj. Europa",
+        "2 – EURO-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-334",
+      "code": "334",
+      "name": "Conjunto Cidade Canção",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/334-conjunto-cidade-cancao/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto Cidade Canção",
+      "routeNotes": [
+        "1 – TER-CID – Sentido para Bairro – Cj. Cidade Canção",
+        "2 – CID-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-335",
+      "code": "335",
+      "name": "Vila Operária",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/335-vila-operaria/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Vila Operária",
+      "routeNotes": [
+        "1 – TER-OPE – Sentido para Bairro – Vila Operária",
+        "2 – OPE-TER – Sentido para Terminal",
+        "3 – CES-TER – Sentido para Terminal – Via Unicesumar"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-414",
+      "code": "414",
+      "name": "Hospital Municipal",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/414-hospital-municipal/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Hospital Municipal",
+      "routeNotes": [
+        "1 – TER-H-MUN – Sentido para Bairro – Hospital Municipal",
+        "2 – H-MUN-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-415",
+      "code": "415",
+      "name": "Cidade Alta",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/415-cidade-alta/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Cidade Alta",
+      "routeNotes": [
+        "1 – TER-ALT – Sentido para Bairro – Cidade Alta",
+        "2 – TER-ECO-G – Sentido para Bairro – Via Eco Garden",
+        "3 – TER-F-ECO – Sentido para Bairro – Via Jd. França e Eco Valley",
+        "4 – ALT-TER – Sentido para Terminal",
+        "5 – ECO-G-TER – Sentido Terminal – Via Eco Garden",
+        "6 – FRA-TER – Sentido para Terminal – Via Jd. França e Eco Valley"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-416",
+      "code": "416",
+      "name": "Cidade Alta / Via Brasil",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/416-cidade-alta-via-brasil/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Cidade Alta / Via Brasil",
+      "routeNotes": [
+        "1 – TER-BRA – Sentido para Bairro – Cidade Alta via Av. Brasil",
+        "2 – BRA-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-417",
+      "code": "417",
+      "name": "Jardim França",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/417-jardim-franca/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim França",
+      "routeNotes": [
+        "1 – TER-FRA – Sentido para Bairro – Jd. França",
+        "2 – FRA-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-427",
+      "code": "427",
+      "name": "Cerro Azul",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/427-cerro-azul/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Cerro Azul",
+      "routeNotes": [
+        "1 – TER-CER – Sentido para Bairro – Cerro Azul",
+        "2 – CER-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-458",
+      "code": "458",
+      "name": "Jardim Universo / Via Cerro Azul",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/458-jardim-universo-via-cerro-azul/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Universo / Via Cerro Azul",
+      "routeNotes": [
+        "1 – TER-UNI-C – Sentido para Bairro – Jd. Universo via Cerro Azul",
+        "2 – UNI-C-TER – Sentido para Terminal",
+        "3 – H.P-TER – Sentido para Terminal – Via Hospital Paraná"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-459",
+      "code": "459",
+      "name": "Jardim Universo / Via Borba Gato",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/459-jardim-universo-via-borba-gato/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Universo / Via Borba Gato",
+      "routeNotes": [
+        "1 – TER-UNI-B – Sentido para Bairro – Jd. Universo via Borba Gato",
+        "2 – UNI-B-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-460",
+      "code": "460",
+      "name": "Jardim Olímpico",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/460-jardim-olimpico/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Olímpico",
+      "routeNotes": [
+        "1 – TER-OLI – Sentido para Bairro – Jd. Olímpico",
+        "2 – OLI-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-461",
+      "code": "461",
+      "name": "Jardim Ouro Cola",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/461-jardim-ouro-cola/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Ouro Cola",
+      "routeNotes": [
+        "1 – TER-BUN – Sentido para Bairro – Bunge",
+        "2 – TER-OUR – Sentido para Bairro – Ouro Cola",
+        "3 – TER-B-FAM – Sentido para Bairro – Bunge via Faculdade Unifamma",
+        "4 – TER-D-FAM – Sentido para Bairro – Direto Unifamma",
+        "5 – BUN-TER – Sentido para Terminal – Bunge",
+        "6 – OUR-TER – Sentido para Terminal – Ouro Cola",
+        "7 – B-FAM-TER – Sentido para Terminal – Via Faculdade Unifamma",
+        "8 – D-FAM-TER – Sentido para Terminal – Direto Unifamma e Unifeitep",
+        "9 – CAT-TER – Sentido para Terminal – Shopping Catuaí"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-466",
+      "code": "466",
+      "name": "Conjunto Borba Gato",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/466-conjunto-borba-gato/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto Borba Gato",
+      "routeNotes": [
+        "1 – TER-BOR – Sentido para Bairro – Cj. Borba Gato",
+        "2 – TER-I-B – Sentido para Bairro – Via Pq. Itaipu",
+        "3 – BOR-TER – Sentido para Terminal",
+        "4 – I-B-TER – Sentido para Terminal – Via Pq. Itaipu"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-469",
+      "code": "469",
+      "name": "Jardim Barcelona",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/469-jardim-barcelona/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Barcelona",
+      "routeNotes": [
+        "1 – TER-BARC – Sentido para Bairro – Jd. Barcelona",
+        "2 – BARC-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-512",
+      "code": "512",
+      "name": "Cocamar",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/512-cocamar/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Cocamar",
+      "routeNotes": [
+        "1 – TER-COC – Sentido para Bairro – Cocamar",
+        "2 – TER-MER – Sentido Bairro – Via Mercedes-Benz e Sest Senat",
+        "3 – TER-VES – Sentido para Bairro – Via Vest Sul",
+        "4 – TER-EBE – Sentido para Bairro – Jd. Ebenezer",
+        "5 – EBE-TER – Sentido para Terminal – Jd. Ebenezer",
+        "6 – VES-TER – Sentido para Terminal – Via Vest Sul",
+        "7 – MAR-TER – Sentido para Terminal – Via Pq. Ind. Mário Bulhões"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-528",
+      "code": "528",
+      "name": "Ceasa / Aeroporto / Jardim Oasis",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/528-ceasa-aeroporto-jardim-oasis/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Ceasa / Aeroporto / Jardim Oasis",
+      "routeNotes": [
+        "1 – TER-CEA – Sentido Bairro – Ceasa (Aeroporto)",
+        "2 – TER-OAS – Sentido Bairro – Jd. Oasis",
+        "3 – TER-CE-ES – Sentido Bairro – Ceasa via Educandário/Sest-Senat",
+        "4 – TER-SES – Sentido Bairro – Ceasa via Sest-Senat",
+        "5 – TER-CEA-E – Sentido Bairro – Ceasa via Educandário",
+        "6 – CEA-TER – Sentido Terminal – Ceasa",
+        "7 – OAS-TER – Sentido Terminal – Jd. Oasis",
+        "8 – CE-ES-TER – Sentido Terminal – Ceasa via Educandário/Sest-Senat",
+        "9 – SES-TER – Sentido Terminal – Ceasa via Sest-Senat",
+        "10 – CEA-E-TER – Sentido Terminal – Ceasa via Educandário",
+        "11 – AVESS-TER – Sentido Terminal – Ceasa via Lado Avesso",
+        "12 – TER-CE-VC – Sentido Terminal – Paraná Moda Park via Vest Sul e Cocamar"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-528A",
+      "code": "528A",
+      "name": "Aeroporto",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/528a-aeroporto/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Aeroporto",
+      "routeNotes": [
+        "1 – TER-AERO – Sentido para Aeroporto",
+        "2 – TER-E-BUL – Sentido para Aeroporto – Via Pq. Ind. Mario Bulhões",
+        "3 – AERO-TER – Sentido para Terminal",
+        "4 – E-BUL-TER – Sentido para Terminal – Via Pq. Ind. Mario Bulhões"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-531",
+      "code": "531",
+      "name": "Parque Industrial / Copasa / ALL",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/531-parque-industrial-copasa-all/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Parque Industrial / Copasa / ALL",
+      "routeNotes": [
+        "1 – TER-IND – Sentido para Bairro – Jd. Industrial e ALL",
+        "2 – TER-COP – Sentido para Bairro – Via Copasa e PR-317",
+        "3 – IND-TER – Sentido para Terminal – Jd. Industrial e ALL"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-611",
+      "code": "611",
+      "name": "Bunge",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/611-bunge/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Bunge",
+      "routeNotes": [
+        "1 – TER-STE – Sentido para Bairro – Bunge via Stevia"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-713",
+      "code": "713",
+      "name": "Parque Hortência",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/713-parque-hortencia/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Parque Hortência",
+      "routeNotes": [
+        "1 – TER-HOR – Sentido para Bairro – Pq. Hortência",
+        "2 – HOR-TER – Sentido para Terminal",
+        "3 – HOR-M-TER – Sentido Terminal – Via Jd. Montreal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-721",
+      "code": "721",
+      "name": "Atenas",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/721-atenas/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Atenas",
+      "routeNotes": [
+        "1 – TER-ATE – Sentido para Bairro – Atenas",
+        "2 – BAND-TER – Sentido para Terminal – Via Condomínio Bandeirantes",
+        "3 – ATE-TER – Sentido para Terminal – Atenas"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-722",
+      "code": "722",
+      "name": "Conjunto Ney Braga",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/722-conjunto-ney-braga/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto Ney Braga",
+      "routeNotes": [
+        "1 – TER-NEY – Sentido para Bairro – Cj. Ney Braga",
+        "2 – NEY-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-734",
+      "code": "734",
+      "name": "Parque das Laranjeiras",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/734-parque-das-laranjeiras/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Parque das Laranjeiras",
+      "routeNotes": [
+        "1 – TER-LAR – Sentido para Bairro – Pq. das Laranjeiras",
+        "2 – LAR-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-735",
+      "code": "735",
+      "name": "Jardim Rebouças",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/735-jardim-reboucas/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Rebouças",
+      "routeNotes": [
+        "1 – TER-REB – Sentido para Bairro – Jd. Rebouças",
+        "2 – REB-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-736",
+      "code": "736",
+      "name": "Jardim Paris",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/736-jardim-paris/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Paris",
+      "routeNotes": [
+        "1 – TER-PAR – Sentido para Bairro – Jd. Paris",
+        "2 – PAR-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-739",
+      "code": "739",
+      "name": "Jardim Munique",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/739-jardim-munique/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Munique",
+      "routeNotes": [
+        "1 – TER-MUN – Sentido Bairro – Jd. Munique",
+        "2 – MUN-TER – Sentido Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "maringa-UEM",
+      "code": "UEM",
+      "name": "Universidade",
+      "city": "Maringá",
+      "operator": "Transporte Coletivo Cidade Canção",
+      "source": "https://onibus.online/pr/maringa/uem-universidade/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Universidade",
+      "routeNotes": [
+        "1 – TER-UEM – Sentido para UEM",
+        "2 – UEM-TER – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "06/10/2026"
+    },
+    {
+      "id": "sarandi-4AO",
+      "code": "4AO",
+      "name": "Jardim Independência Direto",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/4ao-jardim-independencia-direto/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Independência Direto",
+      "routeNotes": [
+        "1 – IND-DIR-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254A",
+      "code": "254A",
+      "name": "Parque Alvamar",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254a-parque-alvamar/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Parque Alvamar",
+      "routeNotes": [
+        "1 – TERM-ALVAM – Sentido para Bairro",
+        "2 – ALVAM-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254CT",
+      "code": "254CT",
+      "name": "Jardim Cometa",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254ct-jardim-cometa/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Cometa",
+      "routeNotes": [
+        "1 – TERM-COMET – Sentido para Bairro",
+        "2 – TERM-C-JR – Sentido para Bairro – Via José Richa",
+        "3 – TERM-C-JR-SC – Sentido para Bairro – Via José Richa e Santa Cruz",
+        "4 – COMET-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254E",
+      "code": "254E",
+      "name": "Jardim Esperança",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254e-jardim-esperanca/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Esperança",
+      "routeNotes": [
+        "1 – TERM-ESPER – Sentido para Bairro",
+        "2 – TERM-M-ESP – Sentido para Bairro – Via Jd. Monte Rey",
+        "3 – ESPER-TERM – Sentido para Terminal",
+        "4 – M-ESP-TERM – Sentido para Terminal – Via Jd. Monte Rey"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254I",
+      "code": "254I",
+      "name": "Jardim Independência",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254i-jardim-independencia/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Independência",
+      "routeNotes": [
+        "1 – TERM-INDEP – Sentido para Bairro",
+        "2 – TERM-IT-IND – Sentido para Bairro – Via Jd. Itália",
+        "3 – TERM-OV-IND – Sentido para Bairro – Via Jd. Ouro Verde e Jd. Itália",
+        "4 – INDEP-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254IT",
+      "code": "254IT",
+      "name": "Jardim Itália",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254it-jardim-italia/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Itália",
+      "routeNotes": [
+        "1 – TERM-ITALI – Sentido para Bairro",
+        "2 – ITALI-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254J",
+      "code": "254J",
+      "name": "Conjunto José Richa",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254j-conjunto-jose-richa/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto José Richa",
+      "routeNotes": [
+        "1 – TERM-RICHA – Sentido para Bairro",
+        "2 – RICHA-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254L",
+      "code": "254L",
+      "name": "Jardim Leblon",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254l-jardim-leblon/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Leblon",
+      "routeNotes": [
+        "1 – TERM-LBLON – Sentido para Bairro",
+        "2 – TER-LB-AUR – Sentido para Bairro – Via Jd. Aurora",
+        "3 – LB-AUR-TER – Sentido para Terminal – Via Jd. Aurora",
+        "4 – LBLON-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254M",
+      "code": "254M",
+      "name": "Monte Rey",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254m-monte-rey/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Monte Rey",
+      "routeNotes": [
+        "1 – TERM-REY – Sentido para Bairro",
+        "2 – REY-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254N",
+      "code": "254N",
+      "name": "Nova Aliança",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254n-nova-alianca/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Nova Aliança",
+      "routeNotes": [
+        "1 – TERM-ALIAN – Sentido para Bairro",
+        "2 – ALIAN-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254O",
+      "code": "254O",
+      "name": "Ouro Verde",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254o-ouro-verde/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Ouro Verde",
+      "routeNotes": [
+        "1 – TERM-OVERD – Sentido para Bairro",
+        "2 – OVERD-TERM – Sentido para Terminal",
+        "3 – OV-D-TERM – Sentido para Terminal – Direto"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254SA",
+      "code": "254SA",
+      "name": "Aeroporto de Maringá / Centro de Sarandi",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254sa-aeroporto-de-maringa-centro-de-sarandi/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Aeroporto de Maringá / Centro de Sarandi",
+      "routeNotes": [
+        "1 – SARAN-AEROP – Sentido para Aeroporto",
+        "2 – AEROP-SARAN – Sentido para Sarandi Centro"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254SJ",
+      "code": "254SJ",
+      "name": "Residencial São José",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254sj-residencial-sao-jose/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Residencial São José",
+      "routeNotes": [
+        "1 – TERM-SJOSE – Sentido para Bairro",
+        "2 – SJOSE-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254SP",
+      "code": "254SP",
+      "name": "Jardim São Paulo",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254sp-jardim-sao-paulo/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim São Paulo",
+      "routeNotes": [
+        "1 – TERM-JD-SP – Sentido para Bairro",
+        "2 – JD-SP-TERM – Sentido para Terminal",
+        "3 – SP-IT-TERM – Sentido para Terminal – Via Jd. Itália"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254TR",
+      "code": "254TR",
+      "name": "Jardim Triângulo",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254tr-jardim-triangulo/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Triângulo",
+      "routeNotes": [
+        "1 – TERM-TRIAN – Sentido para Bairro",
+        "2 – TRIAN-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254U",
+      "code": "254U",
+      "name": "Jardim Universal",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254u-jardim-universal/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Universal",
+      "routeNotes": [
+        "1 – TERM-UNIVE – Sentido para Bairro",
+        "2 – TERM-U-DIR – Sentido para Bairro – Direto",
+        "3 – TERM-U-LEB – Sentido para Bairro – Via Jd. Leblon",
+        "4 – UNIVE-TERM – Sentido para Terminal"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254V",
+      "code": "254V",
+      "name": "Jardim Verão",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254v-jardim-verao/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Jardim Verão",
+      "routeNotes": [
+        "1 – TERM-VERAO – Sentido para Bairro",
+        "2 – TERM-CPA – Sentido para Bairro – Via KM15 / CPA",
+        "3 – TERM-IPES – Sentido para Bairro – Via Jd. dos Ipês",
+        "4 – TERM-NA-VE – Sentido para Bairro – Via Jd. Nova Aliança",
+        "5 – VERAO-TERM – Sentido para Terminal",
+        "6 – IPES-TERM – Sentido para Terminal – Início no Jd. dos Ipês",
+        "7 – NA-VE-TERM – Sentido para Terminal – Via Jd. Nova Aliança",
+        "8 – CPA-TERM – Sentido para Terminal – Via KM15 / CPA",
+        "9 – IP-NA-TERM – Sentido para Terminal – Início no Jd. dos Ipês via Jd. Nova Aliança"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    },
+    {
+      "id": "sarandi-254VZ",
+      "code": "254VZ",
+      "name": "Conjunto Vale Azul",
+      "city": "Sarandi",
+      "operator": "Cidade Verde",
+      "source": "https://onibus.online/pr/sarandi/254vz-conjunto-vale-azul/",
+      "sourceLabel": "Ônibus Online • consulta secundária",
+      "checkedAt": "2026-10-16",
+      "regions": "Conjunto Vale Azul",
+      "routeNotes": [
+        "1 – TERM-VAZUL – Sentido para Bairro",
+        "2 – TERM-VZ-BER – Sentido para Bairro / Via Bertioga",
+        "3 – VAZUL-TERM – Sentido para Terminal",
+        "4 – VZ-BER-TERM – Sentido para Terminal – Via Bertioga"
+      ],
+      "scheduleUpdated": "22/09/2026"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,39 @@
+TRANSURBAN — ANA CAROLINA
+TERÇA-FEIRA, 20/10/2026
+
+PARTE 3/7: Demonstração do passageiro e do motorista
+TEMPO ESTIMADO: 1 minuto e 45 segundos a 2 minutos, com os cliques
+TELA: Minha viagem → troca de perfil → Área do motorista
+
+Você entra depois de Bruno Miguel.
+
+O QUE MOSTRAR
+1. Clique em Entrar na demonstração ou Trocar perfil e escolha Sou passageiro.
+2. Selecione o ponto de demonstração e consulte quanto falta para chegar ao ponto.
+3. Clique em Peguei este busão e depois em Quanto falta para o terminal. Avance o ônibus simulado uma vez.
+4. Clique em Avaliar motorista e circular. Use nota 5, lotação normal e a descrição fictícia: Condução tranquila e ônibus com lotação normal. Envie.
+5. Troque para Sou motorista, encerre a viagem de demonstração e inicie outra com o prefixo DEMO-02.
+
+FALA COMPLETA
+
+Como passageiro, eu escolho um ponto e consulto uma estimativa de chegada. Neste cenário, o ponto e a posição do ônibus são fictícios. Nenhuma localização real está sendo coletada.
+
+Depois eu registro que peguei o ônibus. Com o embarque registrado, posso acompanhar uma estimativa até o terminal. Quando avanço o ônibus simulado, a distância diminui e o cálculo é atualizado.
+
+O passageiro também pode dar uma nota para a condução, escrever uma descrição e informar se a circular está vazia, normal ou cheia. A proposta é vincular a avaliação à viagem em que o embarque foi registrado e evitar avaliações duplicadas.
+
+Agora vou trocar para o perfil motorista. Essa troca é apenas uma demonstração dos papéis; não é um login real. Na área do motorista, é possível escolher uma linha, informar o prefixo e iniciar ou encerrar uma viagem.
+
+No produto, o compartilhamento de GPS dependerá do consentimento do motorista. A configuração deve ser feita com o veículo parado, sem mexer no celular enquanto dirige. Aqui usamos apenas posições simuladas.
+
+PASSAGEM
+O Kauan vai explicar como essas informações são organizadas no banco.
+
+PERGUNTA PROVÁVEL
+O tempo de chegada mostrado é real?
+
+RESPOSTA
+Não. É um exemplo didático sobre um percurso fictício e uma velocidade simulada. Uma previsão operacional exige posição recente e itinerário real validado.
+
+LEMBRETE PARA TODOS
+O catálogo vem de pesquisa. Os perfis, veículos, posições e tempos da apresentação são fictícios. A base de atrasos é sintética. O servidor ainda não está publicado e não há integração operacional com a frota.
