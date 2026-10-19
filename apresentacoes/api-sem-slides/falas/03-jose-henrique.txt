@@ -1,7 +1,17 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
 José Henrique
 
-— José Henrique: demonstrar cadastro e consulta (2 minutos)
+## Parte 3 — José Henrique: arquivos, relacionamento e cadastro (3 minutos)
+
+Mostre brevemente os arquivos no VS Code, sem editar durante a fala.
+
+“O `database.py` configura a conexão e as sessões de banco. O `models.py` representa as tabelas e seus relacionamentos. O `schemas.py` valida a entrada e define o formato da resposta. O `main.py` registra as rotas e coordena as operações.”
+
+“Cidade possui `id_cidade` como chave primária. Linha de ônibus possui `id_linha` como sua chave primária e `id_cidade` como chave estrangeira. Uma cidade pode ter várias linhas; cada linha pertence a uma cidade existente.”
+
+“ForeignKey estabelece a referência no banco. relationship permite navegar entre os objetos Python. Por isso conseguimos retornar o nome da cidade na consulta, além do identificador armazenado.”
+
+“Usamos Python, FastAPI, SQLAlchemy e Pydantic. Esta tela é o Swagger, uma ferramenta de teste da API.”
 
 No Swagger, abra POST `/cidades`, clique em Try it out e envie:
 
@@ -24,6 +34,8 @@ Execute GET `/cidades` e GET `/linhas`.
 “GET faz uma consulta. O status 200 mostra que a requisição foi atendida. Os registros retornaram em uma nova requisição, demonstrando a gravação e a leitura no banco configurado.”
 
 Evite cadastrar várias vezes por engano: esta API escolar não impõe unicidade de nome ou código. Não apresente rejeição de duplicidade como funcionalidade dela.
+
+Essa observação refere-se ao banco SQLite criado pelos models desta API. O Supabase existente tem restrições próprias de unicidade, confirmadas na auditoria escolar; não confunda as duas configurações.
 
 PASSAGEM: próxima parte com Gustavo.
 

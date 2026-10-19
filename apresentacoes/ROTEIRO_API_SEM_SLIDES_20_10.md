@@ -6,9 +6,9 @@ Apresentação de 20/10/2026. Duração sugerida: 8 a 10 minutos. Usar somente S
 
 | Ordem | Integrante | Parte | Tempo |
 |---|---|---|---|
-| 1 | Bruno | Objetivo e papel da API | 40 s |
-| 2 | Kauan | Arquivos, PK, FK e relacionamento | 1 min 30 s |
-| 3 | José Henrique | POST/GET de cidades e linhas | 2 min |
+| 1 | Bruno | Abertura curta | 20–30 s |
+| 2 | Kauan | Explicar GET em poucas palavras | 20–30 s |
+| 3 | José Henrique | Arquivos, PK/FK e demonstração POST/GET | 3 min |
 | 4 | Gustavo | Erros 404 e 422; consulta após rejeição | 1 min 30 s |
 | 5 | Jullyany | CSV, unidade de análise e qualidade | 1 min |
 | 6 | Camila | Cálculos, agrupamentos e interpretação | 1 min |
@@ -26,25 +26,29 @@ Hoje, pare o servidor antigo com Ctrl+C e siga `backend_escola/FINALIZAR_ENTREGA
 
 Deixe o terminal aberto. Abra `http://127.0.0.1:8000/docs` no mesmo computador. Deixe VS Code com `database.py`, `models.py`, `schemas.py` e `main.py` disponíveis. Não abra `.env`. Não é necessário iniciar o frontend Vite nem abrir slides.
 
-## Parte 1 — Bruno: explicar o objetivo (40 segundos)
+## Parte 1 — Bruno: abertura curta (20 a 30 segundos)
 
-**Fala sugerida:**
+“Bom dia! Nosso projeto é o TRANSURBAN, pensado para o transporte entre Maringá e Sarandi. Hoje vamos mostrar como a API cadastra e consulta cidades e linhas de ônibus. Agora o Kauan vai explicar a consulta.”
 
-“Nosso projeto é o TRANSURBAN, voltado ao transporte entre Maringá e Sarandi. Nesta avaliação, vamos demonstrar a API: a parte do sistema que recebe pedidos, valida os dados, consulta ou grava no banco e devolve respostas em JSON. Adaptamos o exemplo Categoria e Produto para Cidade e Linha de ônibus.”
+Bruno pode ler essa fala. Não precisa operar o computador nem explicar bibliotecas.
 
-“Usamos Python, FastAPI, SQLAlchemy e Pydantic. O Swagger é a ferramenta de teste que estamos mostrando; ele não é o site final para passageiros.”
+## Parte 2 — Kauan: explicar a consulta (20 a 30 segundos)
 
-## Parte 2 — Kauan: explicar os arquivos e o banco (1 minuto e 30 segundos)
+“GET é o comando usado para consultar informações. Na nossa API, podemos consultar as cidades e as linhas cadastradas. A consulta mostra os dados e não faz um novo cadastro. Agora o José Henrique vai demonstrar.”
+
+Kauan pode ler essa fala. José Henrique fica no computador; Kauan não precisa explicar código, chaves ou executar comandos.
+
+## Parte 3 — José Henrique: arquivos, relacionamento e cadastro (3 minutos)
 
 Mostre brevemente os arquivos no VS Code, sem editar durante a fala.
 
-“O `database.py` configura a conexão e cria as sessões de banco. O `models.py` representa as tabelas e seus relacionamentos. O `schemas.py` valida a entrada e define o formato da resposta. O `main.py` registra as rotas e coordena as operações.”
+“O `database.py` configura a conexão e as sessões de banco. O `models.py` representa as tabelas e seus relacionamentos. O `schemas.py` valida a entrada e define o formato da resposta. O `main.py` registra as rotas e coordena as operações.”
 
 “Cidade possui `id_cidade` como chave primária. Linha de ônibus possui `id_linha` como sua chave primária e `id_cidade` como chave estrangeira. Uma cidade pode ter várias linhas; cada linha pertence a uma cidade existente.”
 
 “ForeignKey estabelece a referência no banco. relationship permite navegar entre os objetos Python. Por isso conseguimos retornar o nome da cidade na consulta, além do identificador armazenado.”
 
-## Parte 3 — José Henrique: demonstrar cadastro e consulta (2 minutos)
+“Usamos Python, FastAPI, SQLAlchemy e Pydantic. Esta tela é o Swagger, uma ferramenta de teste da API.”
 
 No Swagger, abra POST `/cidades`, clique em Try it out e envie:
 

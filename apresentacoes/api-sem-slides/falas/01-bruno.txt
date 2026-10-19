@@ -1,13 +1,11 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
 Bruno
 
-— Bruno: explicar o objetivo (40 segundos)
+## Parte 1 — Bruno: abertura curta (20 a 30 segundos)
 
-**Fala sugerida:**
+“Bom dia! Nosso projeto é o TRANSURBAN, pensado para o transporte entre Maringá e Sarandi. Hoje vamos mostrar como a API cadastra e consulta cidades e linhas de ônibus. Agora o Kauan vai explicar a consulta.”
 
-“Nosso projeto é o TRANSURBAN, voltado ao transporte entre Maringá e Sarandi. Nesta avaliação, vamos demonstrar a API: a parte do sistema que recebe pedidos, valida os dados, consulta ou grava no banco e devolve respostas em JSON. Adaptamos o exemplo Categoria e Produto para Cidade e Linha de ônibus.”
-
-“Usamos Python, FastAPI, SQLAlchemy e Pydantic. O Swagger é a ferramenta de teste que estamos mostrando; ele não é o site final para passageiros.”
+Bruno pode ler essa fala. Não precisa operar o computador nem explicar bibliotecas.
 
 PASSAGEM: próxima parte com Kauan.
 

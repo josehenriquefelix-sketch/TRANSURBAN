@@ -64,9 +64,9 @@ Se houver falha não resolvida na hora, mostre os JSONs de `backend_escola/evide
 
 | Integrante | Explicação |
 |---|---|
-| Bruno | Objetivo e papel da API |
-| Kauan | Arquivos, chave primária e chave estrangeira |
-| José Henrique | POST/GET de cidades e linhas |
+| Bruno | Abertura curta, pode ler; sem operar o computador |
+| Kauan | Explicação curta de GET, pode ler; sem operar o computador |
+| José Henrique | Arquivos, chaves, relacionamento e demonstração POST/GET |
 | Gustavo | Erros 404 e 422 e confirmação de não inserção |
 | Jullyany | CSV sintético, unidade de análise e qualidade |
 | Camila | Média, mediana, total e agrupamentos |

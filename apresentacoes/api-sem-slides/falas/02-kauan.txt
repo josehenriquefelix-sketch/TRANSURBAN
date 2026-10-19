@@ -1,15 +1,11 @@
 TRANSURBAN — API SEM SLIDES — 20/10/2026
 Kauan
 
-— Kauan: explicar os arquivos e o banco (1 minuto e 30 segundos)
+## Parte 2 — Kauan: explicar a consulta (20 a 30 segundos)
 
-Mostre brevemente os arquivos no VS Code, sem editar durante a fala.
+“GET é o comando usado para consultar informações. Na nossa API, podemos consultar as cidades e as linhas cadastradas. A consulta mostra os dados e não faz um novo cadastro. Agora o José Henrique vai demonstrar.”
 
-“O `database.py` configura a conexão e cria as sessões de banco. O `models.py` representa as tabelas e seus relacionamentos. O `schemas.py` valida a entrada e define o formato da resposta. O `main.py` registra as rotas e coordena as operações.”
-
-“Cidade possui `id_cidade` como chave primária. Linha de ônibus possui `id_linha` como sua chave primária e `id_cidade` como chave estrangeira. Uma cidade pode ter várias linhas; cada linha pertence a uma cidade existente.”
-
-“ForeignKey estabelece a referência no banco. relationship permite navegar entre os objetos Python. Por isso conseguimos retornar o nome da cidade na consulta, além do identificador armazenado.”
+Kauan pode ler essa fala. José Henrique fica no computador; Kauan não precisa explicar código, chaves ou executar comandos.
 
 PASSAGEM: próxima parte com José Henrique.
 
