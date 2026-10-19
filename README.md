@@ -1,5 +1,7 @@
 # TRANSURBAN
 
+**[Levar o trabalho para outro notebook e apresentar em 20/10, sem slides](COMECE_AQUI_APRESENTACAO.md)** — preparação Windows/Linux, API local, sete falas e situação real do Supabase.
+
 ## API Python — comece aqui
 
 A API escolar está em **[backend_escola/](backend_escola/)**. A versão 1.1 reúne cadastros de cidades e linhas, relacionamento PK/FK, indicadores de IA a partir do CSV e um dashboard integrado.

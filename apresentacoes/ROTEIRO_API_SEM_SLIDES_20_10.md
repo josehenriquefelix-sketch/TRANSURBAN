@@ -2,6 +2,8 @@
 
 Apresentação de 20/10/2026. Duração sugerida: 8 a 10 minutos. Usar somente Swagger e VS Code, sem slides. Equipe confirmada pelo usuário: José Henrique, Bruno, Kauan, Gustavo, Jullyany, Camila e Ana Carolina. A divisão abaixo é de fala e demonstração; não atribui autoria individual do código.
 
+**Para transferir a outro notebook:** siga primeiro `COMECE_AQUI_APRESENTACAO.md`, na raiz. O novo `backend_escola/iniciar_apresentacao.py` prepara Windows/Linux e inicia explicitamente SQLite local, preservando o `.env`. O Supabase ainda não teve POST/GET remoto comprovado: a conexão foi interrompida antes da autenticação. Os comandos abaixo com `.venv-escola` continuam destinados à instalação Linux anterior; para o notebook novo use o inicializador descrito no guia de transferência.
+
 | Ordem | Integrante | Parte | Tempo |
 |---|---|---|---|
 | 1 | Bruno | Objetivo e papel da API | 40 s |
@@ -65,6 +67,8 @@ Execute GET `/cidades` e GET `/linhas`.
 “GET faz uma consulta. O status 200 mostra que a requisição foi atendida. Os registros retornaram em uma nova requisição, demonstrando a gravação e a leitura no banco configurado.”
 
 Evite cadastrar várias vezes por engano: esta API escolar não impõe unicidade de nome ou código. Não apresente rejeição de duplicidade como funcionalidade dela.
+
+Essa observação refere-se ao banco SQLite criado pelos models desta API. O Supabase existente tem restrições próprias de unicidade, confirmadas na auditoria escolar; não confunda as duas configurações.
 
 ## Parte 4 — Gustavo: demonstrar as validações (1 minuto e 30 segundos)
 

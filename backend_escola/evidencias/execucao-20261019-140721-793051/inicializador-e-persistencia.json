@@ -1,0 +1,9 @@
+{
+  "modo": "SQLite local pelo novo inicializador; não é Supabase",
+  "verificacoes": [
+    "DATABASE_URL remota herdada substituída somente no processo por SQLite local",
+    "Swagger e CSV do pacote disponíveis",
+    "POST cidade/linha e GET após reiniciar confirmam persistência no mesmo arquivo"
+  ],
+  "aprovado": true
+}
