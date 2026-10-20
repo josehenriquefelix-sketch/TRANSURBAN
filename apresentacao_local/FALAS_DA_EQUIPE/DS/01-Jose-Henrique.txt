@@ -1,0 +1,16 @@
+﻿TRANSURBAN — José Henrique
+DS | Abertura e API
+Tempo de fala: 45–60 segundos, mais os cliques
+
+NA TELA — NÃO PRECISA LER
+1. Comece na página inicial do site e apresente o objetivo.
+2. Abra /docs ou /console. Cadastre uma cidade em POST /cidades, com {"nome":"Maringá"}.
+3. Execute GET /cidades para mostrar o registro salvo.
+
+SUA FALA
+
+Bom dia! Eu sou o José Henrique e vou começar a apresentação do TransUrban. Nossa proposta é facilitar o acesso às informações do transporte coletivo em Maringá e Sarandi. Hoje mostramos um protótipo acadêmico, com um site demonstrativo e uma API local. A API recebe os pedidos, valida os dados e acessa o banco. Vou cadastrar uma cidade e consultar o registro salvo. Agora o Kauan vai explicar como o banco organiza essas informações.
+
+SE O PROFESSOR PERGUNTAR
+Qual a diferença entre model e schema?
+O model descreve a tabela do banco. O schema valida a entrada e define o formato da resposta.

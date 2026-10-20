@@ -1,0 +1,15 @@
+﻿TRANSURBAN — Kauan Celso
+DS | Banco de dados
+Tempo de fala: 35–45 segundos
+
+NA TELA — NÃO PRECISA LER
+1. Abra a API em /docs.
+2. Mostre as rotas de cidades e linhas, sem executar cadastros durante a sua fala.
+
+SUA FALA
+
+Na API desta apresentação, organizamos cidades e linhas de ônibus em duas tabelas. Cada cidade tem um ID, que é sua chave primária. A linha guarda o ID da cidade como chave estrangeira, ligando os registros. Isso evita associar uma linha a uma cidade inexistente. Usamos SQLite, um banco salvo em arquivo, para funcionar localmente sem depender do Supabase. Agora o Bruno vai mostrar a consulta das linhas no site.
+
+SE O PROFESSOR PERGUNTAR
+O site usa esse mesmo banco?
+O console e a API usam o SQLite. O site demonstrativo tem seu próprio cenário, separado desse banco.

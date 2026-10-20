@@ -1,0 +1,15 @@
+﻿TRANSURBAN — Gustavo
+DS | Conclusão e próximos passos
+Tempo de fala: 30–40 segundos
+
+NA TELA — NÃO PRECISA LER
+1. Deixe a página inicial ou Sobre o projeto visível.
+2. Conclua a parte de DS. Não chame IA como continuação: a apresentação delas é separada.
+
+SUA FALA
+
+Para concluir, mostramos a consulta de linhas, os perfis demonstrativos e os cadastros da API. O pacote passou em 39 verificações, usando um banco de teste separado. O site ainda usa mapa e posições simuladas; ele não acompanha a frota real. Os próximos passos são validar dados e itinerários reais e integrar os serviços. Assim, conseguimos demonstrar a proposta e explicar o que ainda precisa evoluir. Obrigado pela atenção!
+
+SE O PROFESSOR PERGUNTAR
+O sistema já está pronto para uso pela população?
+Ainda é um protótipo acadêmico. A integração com a frota e a validação em operação continuam pendentes.

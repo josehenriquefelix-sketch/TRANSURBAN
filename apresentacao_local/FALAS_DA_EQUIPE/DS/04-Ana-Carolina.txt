@@ -9,7 +9,7 @@ NA TELA — NÃO PRECISA LER
 
 SUA FALA
 
-Como passageiro, eu registro o embarque e posso avaliar a viagem com nota, descrição e informação de lotação. A avaliação fica disponível depois do embarque. Na área do motorista, mostramos o início e o encerramento de uma viagem, com a linha e o prefixo do ônibus. Aqui a troca de perfil é demonstrativa, sem uma conta real. O mapa e as posições também são simulados. O Kauan vai explicar o banco de dados da API.
+Como passageiro, eu registro o embarque e posso avaliar a viagem com nota, descrição e informação de lotação. A avaliação fica disponível depois do embarque. Na área do motorista, mostramos o início e o encerramento de uma viagem, com a linha e o prefixo do ônibus. Aqui a troca de perfil é demonstrativa, sem uma conta real. O mapa e as posições também são simulados. O Gustavo vai concluir com os resultados e os próximos passos.
 
 SE O PROFESSOR PERGUNTAR
 O mapa está usando GPS?
