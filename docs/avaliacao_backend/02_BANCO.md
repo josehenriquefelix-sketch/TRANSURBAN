@@ -65,3 +65,7 @@ No banco novo gerado pelo SQLAlchemy, column_default usa nextval de sequência. 
 ## Resultado do Supabase inspecionado
 
 O projeto lsnpvokfnvyjkvqzkvof possui as PKs automáticas, a FK e as unicidades esperadas. O limite de linha_onibus.nome foi ajustado de 150 para 120, compatível com o dicionário. As 6 cidades e 4 linhas foram preservadas. Consulte EVIDENCIAS.md para os registros anteriores e posteriores. A API não recebe a senha PostgreSQL através do login no painel web; configure essa conexão localmente para verificar a integração direta.
+
+## Estado final desta máquina
+
+DATABASE_URL foi configurada privadamente pelo usuário e a conexão da API ao Supabase foi confirmada. As consultas HTTP devolveram exatamente os dados obtidos por SELECT no banco. TEST_DATABASE_URL continuou no PostgreSQL local. Não execute init_db.py no Supabase existente.

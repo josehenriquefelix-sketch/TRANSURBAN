@@ -6,7 +6,7 @@ Fonte: caderno do professor lido integralmente em 20/10/2026. As localizações 
 |---|---|---|---|---|
 | Adaptar o exemplo ao projeto autoral e ao DER | Aviso introdutório ESTE É UM MODELO GENÉRICO | backend/models.py; docs/DER.md; docs/dicionario_dados.md | Cidade sem FK; LinhaOnibus com id_cidade | Atendido |
 | Backend executável FastAPI e SQLAlchemy | Missão da revisão; §§1 e 9 | backend/main.py; database.py | Servidor HTTP; testes reais | Implementado e testado |
-| PostgreSQL e configuração local | §§5, 8 e 9 | backend/database.py; .env.example | Conexão real com PostgreSQL 17.11 | Implementado e testado localmente |
+| PostgreSQL e configuração local | §§5, 8 e 9 | backend/database.py; .env.example | Conexão real com PostgreSQL 17.11 | Testado localmente; conexão e GETs também confirmados no Supabase |
 | Ambiente virtual | §§4 e 15 | backend/.venv local; 01_ROTEIRO.md | Interpretador e dependências; testes executados nele | Criado e testado |
 | Registrar e reinstalar dependências | §5 | requirements.txt; requirements.lock.txt; requirements-test.lock.txt | Instalação em .venv nova; pip check | Implementado e testado |
 | Configurar VS Code | §§4 e 6 | .vscode/; TRANSURBAN.code-workspace; 04_VSCODE.md | Abrir workspace; confirmar Python da .venv | Workspace aberto, confiança confirmada pelo usuário; .venv 3.13.15 selecionada |
@@ -29,7 +29,7 @@ Fonte: caderno do professor lido integralmente em 20/10/2026. As localizações 
 | Checklist de aprendizagem | §15 | 03_DEMONSTRACAO.md | Estudante explica cada item | Material entregue; aprendizagem é individual |
 | Desafio de compreensão de outra entidade | §16 | 01_ROTEIRO.md §11 | Explicar trecho e suas duas FKs | Exemplo de raciocínio entregue |
 | Site integrado | Pedido posterior no chat; não é exigência do caderno | frontend/; /site/ | Cadastro, consulta, duplicidade e console | Implementado e testado no navegador |
-| Inspeção e correção do Supabase | Pedido posterior no chat | evidências Supabase; 02_BANCO.md | SQL de metadados e comparação dos registros | Estrutura corrigida e verificada |
+| Inspeção e correção do Supabase | Pedido posterior no chat | evidências Supabase; 02_BANCO.md | SQL de metadados e comparação dos registros | Estrutura corrigida; API e site consultando Supabase com dados conferidos |
 
 ## Escolhas técnicas necessárias
 

@@ -109,22 +109,18 @@ Execute GET /linhas. O nome da cidade deve aparecer. O banco guarda id_cidade; a
 
 ## 8 Testes automatizados
 
-Use um PostgreSQL exclusivo de testes. A suíte cria um schema aleatório por caso e remove somente esse schema ao final. Ela não usa SQLite. Não aponte para produção.
+Use um PostgreSQL exclusivo de testes. A suíte cria um schema aleatório por caso e remove somente esse schema ao final. Ela não usa SQLite. Não aponte para produção nem copie DATABASE_URL para TEST_DATABASE_URL.
 
-Na pasta backend, em outro terminal com o ambiente ativo:
+Na entrega desta máquina, backend/.env já mantém TEST_DATABASE_URL no PostgreSQL local isolado, mesmo com DATABASE_URL apontando para o Supabase. Em outra instalação, configure TEST_DATABASE_URL com uma conexão exclusiva de testes antes de executar. O arquivo .env é carregado pelo código, sem imprimir sua senha.
+
+Na pasta backend, com o ambiente ativo:
 
 ```powershell
 python -m pip install -r requirements-test.lock.txt
-$env:TEST_DATABASE_URL = $env:DATABASE_URL
 python -m pytest tests -v
-Remove-Item Env:TEST_DATABASE_URL
 ```
 
-O comando de atribuição acima só funciona se DATABASE_URL estiver definida no ambiente do terminal. O .env é carregado pelo código durante a execução, não pelo PowerShell. Para usar a mesma conexão de desenvolvimento do .env sem expor a senha, execute em vez dessa atribuição:
-
-```powershell
-python -c "import os; from dotenv import load_dotenv; load_dotenv('.env'); os.environ['TEST_DATABASE_URL']=os.environ['DATABASE_URL']; import pytest; raise SystemExit(pytest.main(['tests','-v']))"
-```
+Se houver TEST_DATABASE_URL exportada no ambiente do terminal, confira privadamente se ela corresponde ao banco de testes. Não publique seu valor. Variáveis do ambiente têm prioridade sobre as variáveis carregadas do .env.
 
 ## 9 Encerrar e retomar
 

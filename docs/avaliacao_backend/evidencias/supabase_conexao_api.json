@@ -1,0 +1,11 @@
+{
+  "projeto": "lsnpvokfnvyjkvqzkvof",
+  "conexao_postgresql": "confirmada",
+  "operacao": "somente leitura",
+  "contagens": {
+    "cidade": 6,
+    "linha_onibus": 4
+  },
+  "limite_nome_linha": 120,
+  "linhas_sem_cidade": 0
+}

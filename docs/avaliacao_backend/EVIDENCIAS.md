@@ -26,7 +26,7 @@ Arquivos: evidencias/supabase_antes.json, supabase_depois.json, supabase_migraca
 
 As primeiras tentativas de inicializar/conectar ao PostgreSQL local aconteceram antes da extração completa e depois encontraram o processo encerrado ao final do comando de inicialização. Foram corrigidas mantendo o servidor em sessão ativa; as verificações completas posteriores passaram. A organização do runtime local exigiu parar e reiniciar os processos. A verificação HTTP final confirma os dados após esse reinício.
 
-A API foi testada contra PostgreSQL local. A estrutura do Supabase foi inspecionada e corrigida pelo painel. A ligação direta desta API ao Supabase depende de o usuário configurar sua conexão privada em backend/.env; o login web não substitui essa credencial. Não foi inventado teste de conexão da API com Supabase.
+A suíte automatizada foi testada contra PostgreSQL local. Após o usuário salvar a configuração privada, a API foi reiniciada e conectou-se ao Supabase. GET /cidades retornou 6 cidades e GET /linhas retornou 4 linhas, ambos com HTTP 200. As respostas coincidiram integralmente com SELECTs diretos ao Supabase. Esta verificação externa foi somente de leitura; os testes positivos de POST, validações, FK e persistência continuam comprovados na suíte local, sem apresentar isso como novos cadastros no Supabase.
 
 O VS Code foi aberto com o workspace correto; .env e .venv foram vistos no Explorer. A confiança foi confirmada manualmente pelo usuário. Após aviso inicial de interpretador, foi selecionada explicitamente a .venv (3.13.15) do backend; a barra de problemas mostrou zero problemas no main.py aberto. Não confunda a configuração entregue com uma execução de depuração já comprovada pelo editor.
 
@@ -34,7 +34,6 @@ O frontend anterior com Flask/Ollama foi preservado em frontend/historico. Não 
 
 ## Pendências reais
 
-- Conexão privada API → Supabase: preencher DATABASE_URL localmente com a senha do banco e reiniciar/testar; TEST_DATABASE_URL deve continuar no PostgreSQL isolado.
 - Publicação no GitHub: não executada por restrição explícita do usuário. O código é entregue localmente; push exige autorização.
 - Apresentação individual: estudante deve executar o roteiro e explicar os conceitos do checklist. A geração de código não comprova aprendizagem individual.
 
@@ -44,4 +43,8 @@ Não há declaração de ausência absoluta de erros. Estas evidências cobrem o
 
 O utilitário backend/verificar_http.py aprovou 12 checagens e salvou respostas reais em evidencias/http.json. GET /cidades preservou Maringá (1) e Sarandi (3); GET /linhas preservou a linha TESTE-001 ligada a Maringá. Foram testados também os arquivos da página, o favicon, /docs, /openapi.json e entradas com 404/422.
 
-O utilitário configurar_supabase.py foi compilado/verificado, mas sua execução com credencial privada depende do usuário; esse acesso não foi declarado como testado.
+O utilitário configurar_supabase.py foi compilado/verificado. Após a configuração privada pelo usuário, a conexão real foi confirmada sem imprimir a senha. TEST_DATABASE_URL permaneceu apontando para PostgreSQL local.
+
+## Conexão final ao Supabase concluída
+
+Evidências: supabase_conexao_api.json registra conexão, contagens, limite 120 e ausência de linhas órfãs; http_supabase.json registra HTTP 200 e a comparação com SELECTs; site_supabase.png mostra o site com Banco conectado, 6 cidades e 4 linhas. Nenhum registro foi criado, alterado ou excluído nesta verificação de conexão. A API mantém o título TRANSURBAN - API. A senha não foi incluída nas evidências, no Git ou no ZIP.
