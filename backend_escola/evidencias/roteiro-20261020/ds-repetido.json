@@ -1,0 +1,176 @@
+{
+  "executado_em_utc": "2026-10-20T11:20:01.638933+00:00",
+  "servidor": "http://127.0.0.1:48209",
+  "frontend_testado": false,
+  "concluido": true,
+  "requisicoes": [
+    {
+      "metodo": "GET",
+      "rota": "/health",
+      "status": 200,
+      "esperado": 200,
+      "entrada": null,
+      "resposta": {
+        "status": "ok",
+        "banco": "sqlite_local"
+      }
+    },
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "status": 201,
+      "esperado": 201,
+      "entrada": {
+        "nome": "Sarandi"
+      },
+      "resposta": {
+        "id_cidade": 2,
+        "nome": "Sarandi"
+      }
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "status": 201,
+      "esperado": 201,
+      "entrada": {
+        "codigo": "DEMO-20-113d6a",
+        "nome": "Linha da apresentação",
+        "id_cidade": 2
+      },
+      "resposta": {
+        "id_linha": 2,
+        "codigo": "DEMO-20-113d6a",
+        "nome": "Linha da apresentação",
+        "id_cidade": 2,
+        "cidade": "Sarandi"
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades",
+      "status": 200,
+      "esperado": 200,
+      "entrada": null,
+      "resposta": [
+        {
+          "id_cidade": 1,
+          "nome": "Sarandi"
+        },
+        {
+          "id_cidade": 2,
+          "nome": "Sarandi"
+        }
+      ]
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas",
+      "status": 200,
+      "esperado": 200,
+      "entrada": null,
+      "resposta": [
+        {
+          "id_linha": 1,
+          "codigo": "DEMO-20-24fbf7",
+          "nome": "Linha da apresentação",
+          "id_cidade": 1,
+          "cidade": "Sarandi"
+        },
+        {
+          "id_linha": 2,
+          "codigo": "DEMO-20-113d6a",
+          "nome": "Linha da apresentação",
+          "id_cidade": 2,
+          "cidade": "Sarandi"
+        }
+      ]
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "status": 404,
+      "esperado": 404,
+      "entrada": {
+        "codigo": "ERRO-cabd08",
+        "nome": "Tentativa inválida",
+        "id_cidade": 999999
+      },
+      "resposta": {
+        "detail": "Cidade não encontrada"
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas",
+      "status": 200,
+      "esperado": 200,
+      "entrada": null,
+      "resposta": [
+        {
+          "id_linha": 1,
+          "codigo": "DEMO-20-24fbf7",
+          "nome": "Linha da apresentação",
+          "id_cidade": 1,
+          "cidade": "Sarandi"
+        },
+        {
+          "id_linha": 2,
+          "codigo": "DEMO-20-113d6a",
+          "nome": "Linha da apresentação",
+          "id_cidade": 2,
+          "cidade": "Sarandi"
+        }
+      ]
+    },
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "status": 422,
+      "esperado": 422,
+      "entrada": {
+        "nome": "   "
+      },
+      "resposta": {
+        "detail": [
+          {
+            "type": "string_too_short",
+            "loc": [
+              "body",
+              "nome"
+            ],
+            "msg": "String should have at least 1 character",
+            "input": "   ",
+            "ctx": {
+              "min_length": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades",
+      "status": 200,
+      "esperado": 200,
+      "entrada": null,
+      "resposta": [
+        {
+          "id_cidade": 1,
+          "nome": "Sarandi"
+        },
+        {
+          "id_cidade": 2,
+          "nome": "Sarandi"
+        }
+      ]
+    }
+  ],
+  "ds": {
+    "id_cidade_criado": 2,
+    "id_linha_criado": 2,
+    "codigo_demonstracao": "DEMO-20-113d6a",
+    "relacionamento_conferido": true,
+    "validacoes_404_422_conferidas": true
+  }
+}
