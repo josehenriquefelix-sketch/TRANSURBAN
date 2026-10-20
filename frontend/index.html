@@ -1,47 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TRANSURBAN | Cidades e linhas</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="modulo6.css">
-<style>
-nav{display:flex;gap:18px;align-items:center}nav a{color:#123d66;font-weight:700}
-.forms{display:grid;grid-template-columns:1fr 1fr;gap:24px}.form-grid{grid-template-columns:1fr}
-.form-card input,.form-card select{font:inherit;padding:12px;border:1px solid #b9c9d9;border-radius:8px;width:100%;box-sizing:border-box}
-.form-card label{margin-top:14px}.form-card button{padding:12px 18px;background:#174d80;color:white;border:0;border-radius:8px;cursor:pointer}
-.form-card button:disabled{opacity:.55;cursor:wait}.feedback{min-height:24px;margin-top:12px;font-size:14px}
-[data-error="true"]{color:#a22222}.metric-grid{grid-template-columns:1fr 1fr}.data-panel{scroll-margin-top:20px}
-h2,h3{line-height:1.3}.empty{color:#52677b}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #d27b00;outline-offset:3px}
-@media(max-width:700px){.forms{grid-template-columns:1fr}.header{flex-wrap:wrap;gap:20px}nav{flex-wrap:wrap}.hero{padding:24px}.hero h2{font-size:30px}}
-</style>
-<script src="script.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TRANSURBAN: uma base para organizar informações do transporte coletivo de Maringá e Sarandi. Consulte cidades e linhas cadastradas.">
+  <title>TRANSURBAN | Transporte de Maringá e Sarandi</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="app.css?v=20261020-r2">
+  <script src="script.js?v=20261020-r2" defer></script>
 </head>
 <body>
-<header class="header">
-<div class="logo"><div class="logo-icon" aria-hidden="true">🚌</div><div><h1>TransUrban</h1><span>Maringá ↔ Sarandi</span></div></div>
-<nav aria-label="Navegação principal"><a href="#cadastros">Cadastros</a><a href="#consultas">Consultas</a><a href="/docs">Documentação da API</a></nav>
-</header>
-<main class="container">
-<section class="hero"><div class="hero-text"><span class="tag">TRANSPORTE COLETIVO • PROJETO ACADÊMICO</span><h2>Cidades conectadas.<br><strong>Informações organizadas.</strong></h2><p>Cadastre cidades e associe suas linhas de ônibus. Consulte os registros e a cidade de cada linha em um só lugar.</p></div><div class="bus-image" aria-hidden="true">🚌</div></section>
-<section class="data-panel" id="cadastros">
-<div class="section-title"><div><span class="eyebrow">CIDADES E LINHAS DE ÔNIBUS</span><h2>Cadastros</h2></div><span id="connection" role="status">Consultando banco…</span></div>
-<p class="section-description">Os identificadores são gerados automaticamente. Cadastre uma cidade antes de associar uma linha. Os exemplos desta avaliação são acadêmicos.</p>
-<div class="forms">
-<form id="cityForm" class="form-card"><h3>Nova cidade</h3>
-<label for="cityName">Nome da cidade<input id="cityName" name="nome" maxlength="100" required autocomplete="off" placeholder="Ex.: Maringá"></label>
-<div class="form-actions"><button type="submit">Cadastrar cidade</button></div><p id="cityFeedback" class="feedback" role="status"></p></form>
-<form id="lineForm" class="form-card"><h3>Nova linha de ônibus</h3>
-<label for="lineCity">Cidade<select id="lineCity" name="id_cidade" required><option value="">Selecione uma cidade</option></select></label>
-<label for="lineCode">Código da linha<input id="lineCode" name="codigo" maxlength="20" required autocomplete="off" placeholder="Ex.: TESTE-001"></label>
-<label for="lineName">Nome da linha<input id="lineName" name="nome" maxlength="120" required autocomplete="off" placeholder="Ex.: Linha acadêmica"></label>
-<div class="form-actions"><button type="submit" id="saveLine" disabled>Cadastrar linha</button></div><p id="lineFeedback" class="feedback" role="status"></p></form>
-</div></section>
-<section class="data-panel" id="consultas"><div class="section-title"><div><span class="eyebrow">REGISTROS DO BANCO</span><h2>Consulta de cidades e linhas</h2></div><button type="button" class="secondary-button" id="refresh">Atualizar consultas</button></div>
-<p id="queryFeedback" class="feedback" role="status"></p>
-<div class="metric-grid"><article class="metric-card"><span>Cidades cadastradas</span><strong id="cityCount">—</strong></article><article class="metric-card"><span>Linhas cadastradas</span><strong id="lineCount">—</strong></article></div>
-<div class="table-card"><div class="table-header"><h3>Cidades</h3></div><div class="table-scroll"><table><thead><tr><th scope="col">ID</th><th scope="col">Cidade</th></tr></thead><tbody id="cityRows"><tr><td colspan="2">Consultando…</td></tr></tbody></table></div></div>
-<div class="table-card" style="margin-top:20px"><div class="table-header"><h3>Linhas de ônibus</h3></div><div class="table-scroll"><table><thead><tr><th scope="col">ID</th><th scope="col">Código</th><th scope="col">Linha</th><th scope="col">Cidade</th></tr></thead><tbody id="lineRows"><tr><td colspan="4">Consultando…</td></tr></tbody></table></div></div>
-</section>
-</main>
-<footer><strong>TransUrban</strong><span> | Maringá e Sarandi • Dados acadêmicos, sem monitoramento em tempo real.</span></footer>
-</body></html>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  <header class="header">
+    <a class="brand" href="#inicio" aria-label="TRANSURBAN, início"><span class="brand-icon" aria-hidden="true">🚌</span><span><strong>TRANSURBAN</strong><small>Maringá e Sarandi</small></span></a>
+    <nav aria-label="Navegação principal"><a href="#projeto">O projeto</a><a href="#consultas">Consultas</a><a href="#cadastros">Cadastros</a><a href="/docs">API <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main class="container" id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="heroTitle">
+      <div class="hero-content"><p class="tag">TRANSPORTE COLETIVO · PROJETO DE DS</p><h1 id="heroTitle">Transporte de Maringá e Sarandi.<br><span>Uma base organizada.</span></h1><p class="hero-description">O TRANSURBAN reúne cidades e linhas de ônibus em uma mesma interface. Consulte os registros, encontre uma linha e entenda a proposta do projeto.</p><div class="hero-actions"><a class="button button-light" href="#consultas">Consultar registros <span aria-hidden="true">↓</span></a><a class="hero-link" href="#projeto">Conhecer a proposta</a></div></div>
+      <div class="hero-aside"><span class="route-label">NOSSO CONTEXTO</span><p>Maringá <span aria-hidden="true">↔</span> Sarandi</p><span>Informações organizadas em um só lugar.</span></div>
+    </section>
+
+    <section class="project-section" id="projeto" aria-labelledby="projectTitle">
+      <div class="section-heading"><div><p class="eyebrow">POR QUE O TRANSURBAN EXISTE</p><h2 id="projectTitle">O que o projeto busca resolver</h2></div></div>
+      <div class="project-grid">
+        <article><span class="step">01 / O problema que buscamos tratar</span><h3>Informação difícil de relacionar</h3><p>Quando cidades, linhas e seus vínculos ficam dispersos, consultar e manter os dados se torna mais difícil. O projeto parte dessa necessidade de organização.</p></article>
+        <article><span class="step">02 / A solução proposta</span><h3>Uma base integrada</h3><p>Reunir os registros em um banco de dados e disponibilizá-los por uma API, com uma interface acessível para cadastrar, relacionar e consultar as informações.</p></article>
+        <article><span class="step">03 / O que funciona nesta etapa</span><h3>Cidades e linhas conectadas</h3><p>Cadastro e consulta de cidades e linhas, validação dos campos e vínculo com uma cidade existente. Essa é a base para futuras etapas do projeto.</p></article>
+      </div>
+      <p class="data-notice"><strong>Sobre os dados:</strong> as consultas mostram os registros do banco conectado, que ainda inclui demonstrações. A conciliação com fontes oficiais está pendente. O sistema ainda não informa horários, localização de ônibus ou atrasos em tempo real.</p>
+    </section>
+
+    <section class="panel" id="consultas" aria-labelledby="queryTitle">
+      <div class="section-heading"><div><p class="eyebrow">EXPLORE A BASE</p><h2 id="queryTitle">Consulte cidades e linhas</h2></div><button type="button" class="button button-secondary" id="refresh">Atualizar consultas</button></div>
+      <p class="section-description">Encontre uma linha pelo nome, pelo código ou pela cidade. Os filtros consultam os registros carregados abaixo.</p>
+      <div class="metrics"><article><span>Cidades cadastradas</span><strong id="cityCount">—</strong></article><article><span>Linhas cadastradas</span><strong id="lineCount">—</strong></article></div>
+      <div class="filters"><label for="lineSearch">Buscar linha<input type="search" id="lineSearch" placeholder="Nome, código ou cidade" autocomplete="off" disabled></label><label for="cityFilter">Filtrar linhas por cidade<select id="cityFilter" disabled><option value="">Todas as cidades</option></select></label><button class="button button-secondary" type="button" id="clearFilters" disabled>Limpar filtros</button></div>
+      <p id="queryFeedback" class="feedback" role="status" aria-live="polite">Consultando registros…</p>
+      <div class="table-card"><div class="table-heading"><h3>Linhas de ônibus</h3><span id="lineResultCount" role="status"></span></div><table class="line-table"><caption class="sr-only">Linhas cadastradas e a cidade associada a cada uma</caption><thead><tr><th scope="col">ID</th><th scope="col">Código</th><th scope="col">Linha</th><th scope="col">Cidade</th></tr></thead><tbody id="lineRows"><tr><td colspan="4">Consultando…</td></tr></tbody></table></div>
+      <div class="table-card"><div class="table-heading"><h3>Cidades</h3><span>Registros cadastrados na base</span></div><table class="city-table"><caption class="sr-only">Cidades cadastradas</caption><thead><tr><th scope="col">ID</th><th scope="col">Cidade</th></tr></thead><tbody id="cityRows"><tr><td colspan="2">Consultando…</td></tr></tbody></table></div>
+    </section>
+
+    <section class="panel" id="cadastros" aria-labelledby="registerTitle">
+      <div class="section-heading"><div><p class="eyebrow">MANTENHA A BASE ORGANIZADA</p><h2 id="registerTitle">Cadastre cidades e linhas</h2></div><span id="connection" class="connection" role="status" aria-live="polite">Consultando banco…</span></div>
+      <p class="section-description">Cadastre primeiro a cidade e depois associe a linha. Informe somente dados conferidos. Para uma linha oficial, confirme o código e o nome na fonte responsável.</p>
+      <div class="forms">
+        <form id="cityForm" class="form-card"><span class="step">PASSO 1</span><h3>Nova cidade</h3><p>O ponto de partida para organizar as linhas.</p><label for="cityName">Nome da cidade<input id="cityName" name="nome" maxlength="100" required autocomplete="off" placeholder="Ex.: Maringá"></label><div class="form-actions"><button class="button" type="submit">Cadastrar cidade</button></div><p id="cityFeedback" class="feedback" role="status" aria-live="polite"></p></form>
+        <form id="lineForm" class="form-card"><span class="step">PASSO 2</span><h3>Nova linha de ônibus</h3><p>Associe a linha a uma cidade já cadastrada.</p><label for="lineCity">Cidade<select id="lineCity" name="id_cidade" required><option value="">Selecione uma cidade</option></select></label><label for="lineCode">Código da linha<input id="lineCode" name="codigo" maxlength="20" required autocomplete="off" placeholder="Informe o código conferido"></label><label for="lineName">Nome da linha<input id="lineName" name="nome" maxlength="120" required autocomplete="off" placeholder="Informe o nome conferido"></label><div class="form-actions"><button class="button" type="submit" id="saveLine" disabled>Cadastrar linha</button></div><p id="lineFeedback" class="feedback" role="status" aria-live="polite"></p></form>
+      </div>
+    </section>
+    <section class="next-section" aria-labelledby="nextTitle"><div><p class="eyebrow">PRÓXIMAS ETAPAS</p><h2 id="nextTitle">Como o TRANSURBAN pode evoluir</h2><p>O próximo passo é conferir e consolidar o catálogo oficial de linhas. A partir dessa base, o projeto poderá receber novas consultas e análises sobre o transporte, conforme forem desenvolvidas e validadas.</p></div><a class="button button-secondary" href="/docs">Explorar TRANSURBAN - API <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer><div><strong>TRANSURBAN</strong><p>Projeto de Desenvolvimento de Sistemas · Maringá e Sarandi</p></div><p>Cadastro e consulta de cidades e linhas.<br>Sem monitoramento em tempo real.</p></footer>
+</body>
+</html>

@@ -48,3 +48,27 @@ O utilitário configurar_supabase.py foi compilado/verificado. Após a configura
 ## Conexão final ao Supabase concluída
 
 Evidências: supabase_conexao_api.json registra conexão, contagens, limite 120 e ausência de linhas órfãs; http_supabase.json registra HTTP 200 e a comparação com SELECTs; site_supabase.png mostra o site com Banco conectado, 6 cidades e 4 linhas. Nenhum registro foi criado, alterado ou excluído nesta verificação de conexão. A API mantém o título TRANSURBAN - API. A senha não foi incluída nas evidências, no Git ou no ZIP.
+
+## Revisão para o auditório em 20/10/2026
+
+- Site com explicação de problema, proposta e escopo implementado, navegação, busca sem acento, filtro por cidade e apresentação de registros adaptada a celular.
+- Interface conferida no navegador em 1440px, 320px e 390px; nas duas larguras móveis, scrollWidth e clientWidth foram iguais. Busca por cidade sem acento, busca por código, filtro sem resultados e limpeza dos filtros conferidos com os registros do banco.
+- Suíte completa: 18 aprovados, 1 aviso de depreciação de Starlette/AnyIO e nenhuma falha, em 4,82s. Registro: evidencias/testes_auditorio.txt e pytest_auditorio.xml.
+- pip check: No broken requirements found.
+- API conectada ao Supabase e modo auditório local: 13 verificações HTTP aprovadas em cada modo. Registros em http_auditorio_supabase.json e http_auditorio_local.json.
+- Modo local: schema transurban_auditorio, isolado no PostgreSQL local, mantendo .env e Supabase preservados. Cadastro de linha com identificação consultada no DER/PR retornou 201; GET confirmou e novo GET após reiniciar Uvicorn comprovou persistência. Fonte e resposta em cadastro_local_oficial.json. A vinculação a Sarandi serve ao modelo da avaliação, sem alegar representação completa do trajeto.
+- Swagger UI 5.34.0 incluído com licença e origem em backend/static/swagger. /docs agora usa JavaScript e CSS locais, com teste de regressão no caso test_openapi.
+- preparar.py cria a .venv e instala as dependências, preservando .env existente. O comando python funciona nesta máquina; py -3.13 não localizou a instalação e foi substituído no guia.
+- Configuração Docker para um novo computador incluída em compose.yaml. Docker não está instalado nesta máquina, portanto essa rota não foi executada aqui. Os testes PostgreSQL e a API local foram executados com o servidor local já preparado.
+- Workflow anterior preservado em docs/historico/workflow_avaliacao_anterior.yml. O workflow ativo api.yml testa o backend atual com PostgreSQL. A execução remota precisa ser conferida depois da publicação.
+- Falas individuais e roteiro completo estão em docs/apresentacao. Tempo planejado de 8min25s, sujeito ao ensaio e à velocidade das ferramentas.
+
+Fontes técnicas consultadas: https://fastapi.tiangolo.com/how-to/custom-docs-ui-assets/ ; https://docs.github.com/en/actions/tutorials/use-containerized-services/create-postgresql-service-containers ; https://github.com/actions/setup-python . Dados de identificação de linha: https://www.der.pr.gov.br/Pagina/Horarios-Vigentes . Nenhuma estatística de atraso ou dado de GPS foi inventado.
+
+### Conferência final desta revisão
+
+O fluxo manual foi repetido em schema local novo: duas cidades cadastradas com 201, consultas 200, linha vinculada com 201, rejeições 409/404/422 e persistência confirmada após reiniciar o processo. Registro: testes_manuais_api.json.
+
+A suíte, após a documentação explícita das respostas de erro no Swagger, teve 18 aprovados e 1 aviso em 4,65s. Uma instalação limpa, sem copiar .env ou .venv privados, instalou todas as dependências e teve 18 aprovados e 1 aviso em 5,03s. O modo auditório também foi conferido para recusar URLs remotas e SQLite.
+
+O roteiro oral foi corrigido para demonstrar como testar a API, distribuindo cadastro e consulta de cidades para Kauan, cadastro e consulta de linhas para Bruno, rejeições e suíte para Gustavo, e persistência/site para Ana Carolina. José apresenta o problema e a solução. O tempo planejado permanece 8min25s.

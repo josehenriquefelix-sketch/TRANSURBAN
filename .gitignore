@@ -6,3 +6,4 @@ backend/.env
 
 .pytest_cache/
 .local-postgres/
+.cache-install/

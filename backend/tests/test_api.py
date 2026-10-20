@@ -90,7 +90,15 @@ def test_banco_indisponivel_sem_expor_segredo():
 def test_openapi():
     with TestClient(app) as client:
         spec = client.get("/openapi.json").json()
+        docs = client.get("/docs").text
+        assert "/documentacao/swagger-ui-bundle.js" in docs
+        assert "/documentacao/swagger-ui.css" in docs
+        assert "cdn.jsdelivr.net" not in docs
+        assert client.get("/documentacao/swagger-ui-bundle.js").status_code == 200
+        assert client.get("/documentacao/swagger-ui.css").status_code == 200
     assert set(spec["paths"]) == {"/", "/cidades", "/linhas"}
     for caminho in ("/cidades", "/linhas"):
         assert set(spec["paths"][caminho]) == {"get", "post"}
+        assert {"201", "409", "422", "503"} <= set(spec["paths"][caminho]["post"]["responses"])
+    assert "404" in spec["paths"]["/linhas"]["post"]["responses"]
     assert "id_cidade" not in spec["components"]["schemas"]["CidadeCreate"]["properties"]

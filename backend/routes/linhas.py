@@ -6,13 +6,15 @@ from models import Cidade, LinhaOnibus
 from schemas import LinhaCreate, LinhaResponse
 from services import salvar
 
-router = APIRouter(prefix="/linhas", tags=["Linhas"])
+router = APIRouter(prefix="/linhas", tags=["Linhas"], responses={503: {"description": "Banco indisponível ou estrutura incompatível"}})
 
 def representar(linha):
     return {"id_linha": linha.id_linha, "codigo": linha.codigo,
             "nome": linha.nome, "cidade": linha.cidade.nome}
 
-@router.post("", response_model=LinhaResponse, status_code=201)
+@router.post("", response_model=LinhaResponse, status_code=201,
+             responses={404: {"description": "Cidade não encontrada"},
+                        409: {"description": "Já existe esse código de linha na cidade"}})
 def criar_linha(dados: LinhaCreate, db: Session = Depends(get_db)):
     if db.get(Cidade, dados.id_cidade) is None:
         raise HTTPException(404, "Cidade não encontrada")

@@ -1,0 +1,34 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.15, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\josep\Documents\Codex\2026-10-20\quero-refazer-a-api-e-os\outputs\TRANSURBAN\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\josep\Documents\Codex\2026-10-20\quero-refazer-a-api-e-os\outputs\TRANSURBAN\backend
+plugins: anyio-4.15.1
+collecting ... collected 18 items
+
+tests/test_api.py::test_fluxo_completo_e_persistencia PASSED             [  5%]
+tests/test_api.py::test_fk_inexistente PASSED                            [ 11%]
+tests/test_api.py::test_cidade_invalida[dados0] PASSED                   [ 16%]
+tests/test_api.py::test_cidade_invalida[dados1] PASSED                   [ 22%]
+tests/test_api.py::test_cidade_invalida[dados2] PASSED                   [ 27%]
+tests/test_api.py::test_cidade_invalida[dados3] PASSED                   [ 33%]
+tests/test_api.py::test_cidade_invalida[dados4] PASSED                   [ 38%]
+tests/test_api.py::test_linha_invalida[alteracao0] PASSED                [ 44%]
+tests/test_api.py::test_linha_invalida[alteracao1] PASSED                [ 50%]
+tests/test_api.py::test_linha_invalida[alteracao2] PASSED                [ 55%]
+tests/test_api.py::test_linha_invalida[alteracao3] PASSED                [ 61%]
+tests/test_api.py::test_linha_invalida[alteracao4] PASSED                [ 66%]
+tests/test_api.py::test_linha_invalida[alteracao5] PASSED                [ 72%]
+tests/test_api.py::test_linha_invalida[alteracao6] PASSED                [ 77%]
+tests/test_api.py::test_unicidade_e_recuperacao PASSED                   [ 83%]
+tests/test_api.py::test_fk_garantida_no_postgresql PASSED                [ 88%]
+tests/test_api.py::test_banco_indisponivel_sem_expor_segredo PASSED      [ 94%]
+tests/test_api.py::test_openapi PASSED                                   [100%]
+
+============================== warnings summary ===============================
+.venv\Lib\site-packages\starlette\testclient.py:45
+  C:\Users\josep\Documents\Codex\2026-10-20\quero-refazer-a-api-e-os\outputs\TRANSURBAN\backend\.venv\Lib\site-packages\starlette\testclient.py:45: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: C:\Users\josep\Documents\Codex\2026-10-20\quero-refazer-a-api-e-os\outputs\TRANSURBAN\docs\avaliacao_backend\evidencias\pytest_auditorio.xml -
+======================== 18 passed, 1 warning in 4.65s ========================
