@@ -1,96 +1,23 @@
-from fastapi import Depends, FastAPI
-from sqlalchemy import text
-from sqlalchemy.orm import Session
+"""Na pasta backend: python -m uvicorn main:app --reload."""
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+from sqlalchemy.exc import SQLAlchemyError
+from routes import cidades_router, linhas_router
 
-from database import get_db
-from routes import cidades_router
-
-app = FastAPI(
-    title="TransUrban API - Módulo 6",
-    version="1.0.0",
-    description=(
-        "Primeiras rotas do Projeto Integrador TransUrban. "
-        "A tabela cidade foi escolhida porque possui PK simples, "
-        "não possui FK e não possui chave composta."
-    ),
-)
-
+app = FastAPI(title="TRANSURBAN — Avaliação de backend", version="2.0.0",
+              description="Cidade e linha de ônibus relacionadas conforme o DER do projeto.")
 app.include_router(cidades_router)
+app.include_router(linhas_router)
+app.mount("/site", StaticFiles(directory=Path(__file__).resolve().parents[1] / "frontend", html=True), name="site")
 
+@app.exception_handler(SQLAlchemyError)
+async def erro_banco(_request, _exception):
+    return JSONResponse(status_code=503, content={
+        "detail": "Banco indisponível ou estrutura incompatível. Confira a configuração e o roteiro de banco."
+    })
 
-@app.get("/")
-def raiz():
-    return {
-        "projeto": "TransUrban",
-        "modulo": "Do banco de dados às primeiras rotas",
-        "documentacao_api": "/docs",
-        "rota_trabalhada": "/cidades/",
-    }
-
-
-@app.get("/health")
-def health(db: Session = Depends(get_db)):
-    db.execute(text("SELECT 1"))
-    return {
-        "status": "ok",
-        "database": "PostgreSQL/Supabase conectado",
-    }
-
-
-def demonstrar_analise():
-    from analise import (
-        agregar_dados,
-        aplicar_classificacao,
-        calcular_estatisticas,
-        carregar_dados,
-        gerar_visualizacao,
-    )
-
-    dados = carregar_dados()
-
-    print("Primeiras linhas:")
-    print(dados.head())
-
-    print("\nColunas:")
-    print(list(dados.columns))
-
-    print("\nQuantidade de registros:")
-    print(len(dados))
-
-    print("\nEstatísticas de minutos_atraso:")
-    estatisticas = calcular_estatisticas(
-        dados,
-        "minutos_atraso",
-    )
-    for nome, valor in estatisticas.items():
-        print(f"{nome}: {valor:.2f}" if valor is not None else f"{nome}: -")
-
-    print("\nAtraso médio por condição de trânsito:")
-    agregado = agregar_dados(
-        dados,
-        "condicao_transito",
-        "minutos_atraso",
-        "media",
-    )
-    print(agregado.round(2))
-
-    classificados = aplicar_classificacao(dados)
-    print("\nClassificação dos primeiros registros:")
-    print(
-        classificados[
-            ["minutos_atraso", "classificacao_atraso"]
-        ].head()
-    )
-
-    caminho = gerar_visualizacao(
-        agregado.sort_values(),
-        "Atraso médio por condição de trânsito",
-        "Condição de trânsito",
-        "Minutos de atraso",
-        "grafico_02_transito.png",
-    )
-    print("\nGráfico salvo em:", caminho)
-
-
-if __name__ == "__main__":
-    demonstrar_analise()
+@app.get("/", tags=["Sistema"])
+def inicio():
+    return {"mensagem": "API TRANSURBAN funcionando", "documentacao": "/docs"}

@@ -1,0 +1,58 @@
+{
+  "cidades": 6,
+  "linhas": 4,
+  "maior_nome_linha": 30,
+  "linhas_sem_cidade": 0,
+  "dados_cidades": [
+    {
+      "id_cidade": 1,
+      "nome": "Maringá"
+    },
+    {
+      "id_cidade": 2,
+      "nome": "Sarandi"
+    },
+    {
+      "id_cidade": 3,
+      "nome": "Cidade A DEMO 1016222827802930"
+    },
+    {
+      "id_cidade": 4,
+      "nome": "Cidade B DEMO 1016222827802930"
+    },
+    {
+      "id_cidade": 5,
+      "nome": "Cidade A DEMO 1017210432607863"
+    },
+    {
+      "id_cidade": 6,
+      "nome": "Cidade B DEMO 1017210432607863"
+    }
+  ],
+  "dados_linhas": [
+    {
+      "id_linha": 1,
+      "id_cidade": 1,
+      "codigo": "001",
+      "nome": "Linha 001 - Maringá"
+    },
+    {
+      "id_linha": 2,
+      "id_cidade": 1,
+      "codigo": "REVISAO-01",
+      "nome": "Linha de teste da avaliação"
+    },
+    {
+      "id_linha": 3,
+      "id_cidade": 3,
+      "codigo": "D1016222827802930",
+      "nome": "Linha fictícia de demonstração"
+    },
+    {
+      "id_linha": 5,
+      "id_cidade": 5,
+      "codigo": "D1017210432607863",
+      "nome": "Linha fictícia de demonstração"
+    }
+  ]
+}

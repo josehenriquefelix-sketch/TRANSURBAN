@@ -1,96 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TransUrban — Gestão, Dados e Inteligência</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="modulo6.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRANSURBAN | Cidades e linhas</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css"><link rel="stylesheet" href="modulo6.css">
+<style>
+nav{display:flex;gap:18px;align-items:center}nav a{color:#123d66;font-weight:700}
+.forms{display:grid;grid-template-columns:1fr 1fr;gap:24px}.form-grid{grid-template-columns:1fr}
+.form-card input,.form-card select{font:inherit;padding:12px;border:1px solid #b9c9d9;border-radius:8px;width:100%;box-sizing:border-box}
+.form-card label{margin-top:14px}.form-card button{padding:12px 18px;background:#174d80;color:white;border:0;border-radius:8px;cursor:pointer}
+.form-card button:disabled{opacity:.55;cursor:wait}.feedback{min-height:24px;margin-top:12px;font-size:14px}
+[data-error="true"]{color:#a22222}.metric-grid{grid-template-columns:1fr 1fr}.data-panel{scroll-margin-top:20px}
+h2,h3{line-height:1.3}.empty{color:#52677b}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #d27b00;outline-offset:3px}
+@media(max-width:700px){.forms{grid-template-columns:1fr}.header{flex-wrap:wrap;gap:20px}nav{flex-wrap:wrap}.hero{padding:24px}.hero h2{font-size:30px}}
+</style>
+<script src="script.js" defer></script>
 </head>
 <body>
-  <header class="header">
-    <div class="logo">
-      <div class="logo-icon">🚌</div>
-      <div><h1>TransUrban</h1><span>Maringá ↔ Sarandi</span></div>
-    </div>
-    <div class="status" id="apiStatus"><span class="status-dot"></span>Verificando backend</div>
-  </header>
-
-  <main class="container">
-    <section class="hero">
-      <div class="hero-text">
-        <span class="tag">PROJETO INTEGRADOR — DS + IA</span>
-        <h2>Gestão de dados e análise de <strong>atrasos de ônibus</strong></h2>
-        <p>O TransUrban organiza dados acadêmicos de linhas, trechos e atrasos entre Maringá e Sarandi e transforma esses registros em informação.</p>
-      </div>
-      <div class="bus-image">🚌</div>
-    </section>
-
-    <section class="data-panel">
-      <div class="section-title">
-        <div><span class="eyebrow">DESENVOLVIMENTO DE SISTEMAS</span><h2>Painel do Supabase</h2></div>
-        <button class="secondary-button" onclick="carregarDadosBanco()">Atualizar dados</button>
-      </div>
-      <p class="section-description">Esta área consome as rotas GET do backend Flask. Os valores aparecem quando <code>DATABASE_URL</code> está configurada.</p>
-
-      <div class="metric-grid">
-        <article class="metric-card"><span>Registros</span><strong id="metricTotal">—</strong></article>
-        <article class="metric-card"><span>Atraso médio</span><strong id="metricMedia">—</strong></article>
-        <article class="metric-card"><span>Maior atraso</span><strong id="metricMaior">—</strong></article>
-        <article class="metric-card"><span>Menor atraso</span><strong id="metricMenor">—</strong></article>
-      </div>
-
-      <div class="table-card">
-        <div class="table-header"><h3>Registros de atraso</h3><span id="databaseMessage">Aguardando consulta.</span></div>
-        <div class="table-scroll">
-          <table>
-            <thead><tr><th>Data</th><th>Linha</th><th>Trecho</th><th>Atraso</th></tr></thead>
-            <tbody id="atrasosTable"><tr><td colspan="4">Carregando...</td></tr></tbody>
-          </table>
-        </div>
-      </div>
-
-      <form id="atrasoForm" class="form-card">
-        <div><span class="eyebrow">ROTA POST</span><h3>Registrar atraso de teste</h3></div>
-        <div class="form-grid">
-          <label>ID da linha<input id="idLinha" type="number" min="1" value="1" required></label>
-          <label>ID do trecho<input id="idTrecho" type="number" min="1" value="1" required></label>
-          <label>Data<input id="dataRegistro" type="date" required></label>
-          <label>Minutos de atraso<input id="minutosAtraso" type="number" min="0" required></label>
-        </div>
-        <label>Observação<input id="observacao" type="text" maxlength="255" placeholder="DADO DE TESTE - validação do backend"></label>
-        <div class="form-actions"><button type="submit">Registrar no Supabase</button><span id="formMessage"></span></div>
-      </form>
-    </section>
-
-    <section class="chat-container">
-      <div class="chat-header"><div class="chat-avatar">TU</div><div><h3>TransUrban Chat</h3><p>IA baseada na massa acadêmica em CSV</p></div></div>
-      <div id="chatMessages" class="chat-messages">
-        <div class="message bot"><div class="avatar">TU</div><div class="bubble">
-          Olá! Eu sou o assistente do <strong>TransUrban</strong>.<br><br>
-          Respondo com base na massa acadêmica de análise.<br><br>
-          <button class="suggestion" onclick="sendSuggestion('Qual foi o maior atraso registrado na massa de análise?')">Qual foi o maior atraso?</button>
-          <button class="suggestion" onclick="sendSuggestion('Qual é o atraso médio da massa de análise?')">Qual é o atraso médio?</button>
-        </div></div>
-      </div>
-      <div class="quick-actions">
-        <button onclick="sendSuggestion('Quantos registros existem na massa de análise?')">📊 Quantidade de registros</button>
-        <button onclick="sendSuggestion('Qual linha teve o maior atraso?')">🚌 Linha com maior atraso</button>
-      </div>
-      <div class="input-area"><input type="text" id="userInput" placeholder="Pergunte sobre a massa de análise..." autocomplete="off"><button onclick="sendMessage()">➤</button></div>
-      <div class="disclaimer">Os dados são sintéticos e acadêmicos. O projeto não possui rastreamento em tempo real nesta etapa.</div>
-    </section>
-
-    <section class="cities">
-      <h2>Escopo geográfico validado</h2>
-      <div class="city-grid two-columns">
-        <div class="city-card"><div>📍</div><h3>Maringá</h3><p>Cidade de origem utilizada na massa de validação do banco.</p></div>
-        <div class="city-card"><div>📍</div><h3>Sarandi</h3><p>Cidade de destino do trecho acadêmico Maringá → Sarandi.</p></div>
-      </div>
-    </section>
-  </main>
-
-  <footer><strong>TransUrban</strong><span> | Gestão + Dados + Inteligência.</span></footer>
-  <script src="script.js"></script>
-</body>
-</html>
+<header class="header">
+<div class="logo"><div class="logo-icon" aria-hidden="true">🚌</div><div><h1>TransUrban</h1><span>Maringá ↔ Sarandi</span></div></div>
+<nav aria-label="Navegação principal"><a href="#cadastros">Cadastros</a><a href="#consultas">Consultas</a><a href="/docs">Documentação da API</a></nav>
+</header>
+<main class="container">
+<section class="hero"><div class="hero-text"><span class="tag">TRANSPORTE COLETIVO • PROJETO ACADÊMICO</span><h2>Cidades conectadas.<br><strong>Informações organizadas.</strong></h2><p>Cadastre cidades e associe suas linhas de ônibus. Consulte os registros e a cidade de cada linha em um só lugar.</p></div><div class="bus-image" aria-hidden="true">🚌</div></section>
+<section class="data-panel" id="cadastros">
+<div class="section-title"><div><span class="eyebrow">CIDADES E LINHAS DE ÔNIBUS</span><h2>Cadastros</h2></div><span id="connection" role="status">Consultando banco…</span></div>
+<p class="section-description">Os identificadores são gerados automaticamente. Cadastre uma cidade antes de associar uma linha. Os exemplos desta avaliação são acadêmicos.</p>
+<div class="forms">
+<form id="cityForm" class="form-card"><h3>Nova cidade</h3>
+<label for="cityName">Nome da cidade<input id="cityName" name="nome" maxlength="100" required autocomplete="off" placeholder="Ex.: Maringá"></label>
+<div class="form-actions"><button type="submit">Cadastrar cidade</button></div><p id="cityFeedback" class="feedback" role="status"></p></form>
+<form id="lineForm" class="form-card"><h3>Nova linha de ônibus</h3>
+<label for="lineCity">Cidade<select id="lineCity" name="id_cidade" required><option value="">Selecione uma cidade</option></select></label>
+<label for="lineCode">Código da linha<input id="lineCode" name="codigo" maxlength="20" required autocomplete="off" placeholder="Ex.: TESTE-001"></label>
+<label for="lineName">Nome da linha<input id="lineName" name="nome" maxlength="120" required autocomplete="off" placeholder="Ex.: Linha acadêmica"></label>
+<div class="form-actions"><button type="submit" id="saveLine" disabled>Cadastrar linha</button></div><p id="lineFeedback" class="feedback" role="status"></p></form>
+</div></section>
+<section class="data-panel" id="consultas"><div class="section-title"><div><span class="eyebrow">REGISTROS DO BANCO</span><h2>Consulta de cidades e linhas</h2></div><button type="button" class="secondary-button" id="refresh">Atualizar consultas</button></div>
+<p id="queryFeedback" class="feedback" role="status"></p>
+<div class="metric-grid"><article class="metric-card"><span>Cidades cadastradas</span><strong id="cityCount">—</strong></article><article class="metric-card"><span>Linhas cadastradas</span><strong id="lineCount">—</strong></article></div>
+<div class="table-card"><div class="table-header"><h3>Cidades</h3></div><div class="table-scroll"><table><thead><tr><th scope="col">ID</th><th scope="col">Cidade</th></tr></thead><tbody id="cityRows"><tr><td colspan="2">Consultando…</td></tr></tbody></table></div></div>
+<div class="table-card" style="margin-top:20px"><div class="table-header"><h3>Linhas de ônibus</h3></div><div class="table-scroll"><table><thead><tr><th scope="col">ID</th><th scope="col">Código</th><th scope="col">Linha</th><th scope="col">Cidade</th></tr></thead><tbody id="lineRows"><tr><td colspan="4">Consultando…</td></tr></tbody></table></div></div>
+</section>
+</main>
+<footer><strong>TransUrban</strong><span> | Maringá e Sarandi • Dados acadêmicos, sem monitoramento em tempo real.</span></footer>
+</body></html>

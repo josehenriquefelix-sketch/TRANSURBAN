@@ -1,100 +1,77 @@
-const chatMessages=document.getElementById("chatMessages");
-const userInput=document.getElementById("userInput");
-const atrasoForm=document.getElementById("atrasoForm");
-
-function escaparHtml(texto){const div=document.createElement("div");div.textContent=String(texto??"");return div.innerHTML;}
-function formatarData(valor){if(!valor)return "—";const data=new Date(valor+"T00:00:00");return Number.isNaN(data.getTime())?escaparHtml(valor):data.toLocaleDateString("pt-BR");}
-function minutos(valor){return valor===null||valor===undefined?"—":valor+" min";}
-
-async function obterJson(url,opcoes={}){
-  const resposta=await fetch(url,opcoes);
-  const dados=await resposta.json().catch(()=>({}));
-  if(!resposta.ok)throw new Error(dados.error||dados.message||("Erro HTTP "+resposta.status));
-  return dados;
+"use strict";
+const byId = id => document.getElementById(id);
+function feedback(id, message, error = false) {
+  const node = byId(id); node.textContent = message; node.dataset.error = String(error);
 }
-
-async function verificarBackend(){
-  const status=document.getElementById("apiStatus");
-  try{
-    const dados=await obterJson("/api/health");
-    status.classList.remove("offline");
-    status.innerHTML='<span class="status-dot"></span>'+escaparHtml(dados.message);
-  }catch(_){
-    status.classList.add("offline");
-    status.innerHTML='<span class="status-dot"></span>Backend ativo / banco pendente';
+async function request(path, body) {
+  const options = body === undefined ? {} : {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)};
+  let response;
+  try { response = await fetch(path, options); }
+  catch { throw new Error("Não foi possível conectar à API. Confira se o servidor está ativo."); }
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    const detail = result.detail;
+    throw new Error(typeof detail === "string" ? detail : response.status === 422 ? "Dados inválidos. Confira os campos obrigatórios e seus limites." : "Não foi possível concluir a operação.");
+  }
+  return result;
+}
+function renderRows(target, records, fields) {
+  const rows = byId(target); rows.replaceChildren();
+  if (!records.length) {
+    const row = rows.insertRow(); const cell = row.insertCell();
+    cell.colSpan = fields.length; cell.textContent = "Nenhum registro cadastrado."; return;
+  }
+  for (const record of records) {
+    const row = rows.insertRow();
+    for (const field of fields) row.insertCell().textContent = String(record[field]);
   }
 }
-
-async function carregarDadosBanco(){
-  const mensagem=document.getElementById("databaseMessage");
-  const tabela=document.getElementById("atrasosTable");
-  mensagem.textContent="Consultando Supabase...";
-  try{
-    const [resumo,atrasos]=await Promise.all([
-      obterJson("/api/atrasos/resumo"),
-      obterJson("/api/atrasos?limit=10")
-    ]);
-    document.getElementById("metricTotal").textContent=resumo.total_registros??0;
-    document.getElementById("metricMedia").textContent=minutos(resumo.atraso_medio);
-    document.getElementById("metricMaior").textContent=minutos(resumo.maior_atraso);
-    document.getElementById("metricMenor").textContent=minutos(resumo.menor_atraso);
-
-    tabela.innerHTML=atrasos.length?atrasos.map(item=>`
-      <tr>
-        <td>${formatarData(item.data_registro)}</td>
-        <td>${escaparHtml(item.codigo_linha)} — ${escaparHtml(item.linha)}</td>
-        <td>${escaparHtml(item.trecho)}</td>
-        <td><strong>${escaparHtml(item.minutos_atraso)} min</strong></td>
-      </tr>`).join(""):'<tr><td colspan="4">Nenhum registro encontrado.</td></tr>';
-    mensagem.textContent="Dados carregados pela API Flask.";
-  }catch(erro){
-    mensagem.textContent=erro.message;
-    tabela.innerHTML='<tr><td colspan="4">'+escaparHtml(erro.message)+'</td></tr>';
-  }
+async function refresh() {
+  byId("refresh").disabled = true;
+  feedback("queryFeedback", "Consultando…");
+  try {
+    const [cities, lines] = await Promise.all([request("/cidades"), request("/linhas")]);
+    renderRows("cityRows", cities, ["id_cidade","nome"]);
+    renderRows("lineRows", lines, ["id_linha","codigo","nome","cidade"]);
+    byId("cityCount").textContent = cities.length;
+    byId("lineCount").textContent = lines.length;
+    const select = byId("lineCity"); const previous = select.value;
+    select.replaceChildren(new Option("Selecione uma cidade", ""));
+    for (const city of cities) select.add(new Option(city.nome, String(city.id_cidade)));
+    select.value = previous;
+    byId("saveLine").disabled = cities.length === 0;
+    feedback("connection", "Banco conectado");
+    feedback("queryFeedback", "Consultas atualizadas.");
+    return true;
+  } catch (error) {
+    feedback("connection", "Conexão pendente", true);
+    feedback("queryFeedback", error.message, true);
+    byId("cityCount").textContent = "—"; byId("lineCount").textContent = "—";
+    renderRows("cityRows", [], ["id_cidade","nome"]);
+    renderRows("lineRows", [], ["id_linha","codigo","nome","cidade"]);
+    for (const id of ["cityRows","lineRows"]) byId(id).rows[0].cells[0].textContent = "Consulta indisponível. Tente atualizar.";
+    byId("saveLine").disabled = true; return false;
+  } finally { byId("refresh").disabled = false; }
 }
-
-async function registrarAtraso(event){
-  event.preventDefault();
-  const mensagem=document.getElementById("formMessage");
-  mensagem.textContent="Enviando...";
-  const corpo={
-    id_linha:Number(document.getElementById("idLinha").value),
-    id_trecho:Number(document.getElementById("idTrecho").value),
-    data_registro:document.getElementById("dataRegistro").value,
-    minutos_atraso:Number(document.getElementById("minutosAtraso").value),
-    observacao:document.getElementById("observacao").value.trim()
-  };
-  try{
-    const dados=await obterJson("/api/atrasos",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(corpo)});
-    mensagem.textContent="Sucesso: registro #"+dados.registro.id_atraso+" criado.";
-    await carregarDadosBanco();
-  }catch(erro){mensagem.textContent=erro.message;}
-}
-
-async function sendMessage(){
-  const texto=userInput.value.trim();if(!texto)return;
-  adicionarMensagem(texto,"user");userInput.value="";mostrarDigitando();
-  try{
-    const dados=await obterJson("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:texto})});
-    removerDigitando();adicionarMensagem(formatarResposta(dados.answer),"bot");
-  }catch(erro){
-    removerDigitando();adicionarMensagem("Não foi possível consultar a IA agora.<br><br>"+escaparHtml(erro.message),"bot");
-  }
-}
-
-function sendSuggestion(texto){userInput.value=texto;sendMessage();}
-function formatarResposta(texto){return escaparHtml(texto).replace(/\n/g,"<br>");}
-function adicionarMensagem(texto,tipo){
-  const message=document.createElement("div");message.className="message "+tipo;
-  const avatar=document.createElement("div");avatar.className="avatar";avatar.innerText=tipo==="bot"?"TU":"VOCÊ";
-  const bubble=document.createElement("div");bubble.className="bubble";bubble.innerHTML=texto;
-  message.appendChild(avatar);message.appendChild(bubble);chatMessages.appendChild(message);chatMessages.scrollTop=chatMessages.scrollHeight;
-}
-function mostrarDigitando(){removerDigitando();const typing=document.createElement("div");typing.id="typing";typing.className="message bot";typing.innerHTML='<div class="avatar">TU</div><div class="bubble">Digitando...</div>';chatMessages.appendChild(typing);}
-function removerDigitando(){const typing=document.getElementById("typing");if(typing)typing.remove();}
-
-userInput.addEventListener("keydown",event=>{if(event.key==="Enter"){event.preventDefault();sendMessage();}});
-atrasoForm.addEventListener("submit",registrarAtraso);
-document.getElementById("dataRegistro").value=new Date().toISOString().slice(0,10);
-verificarBackend();
-carregarDadosBanco();
+byId("cityForm").addEventListener("submit", async event => {
+  event.preventDefault(); const button = event.target.querySelector("button"); button.disabled = true;
+  try {
+    const city = await request("/cidades", {nome:byId("cityName").value.trim()});
+    event.target.reset();
+    const updated = await refresh();
+    if (updated) byId("lineCity").value = String(city.id_cidade);
+    feedback("cityFeedback", "Cidade cadastrada. ID: " + city.id_cidade + (updated ? "." : ". Atualize a consulta quando a conexão voltar."));
+  } catch (error) { feedback("cityFeedback", error.message, true); }
+  finally { button.disabled = false; }
+});
+byId("lineForm").addEventListener("submit", async event => {
+  event.preventDefault(); byId("saveLine").disabled = true;
+  try {
+    const line = await request("/linhas", {id_cidade:Number(byId("lineCity").value),codigo:byId("lineCode").value.trim(),nome:byId("lineName").value.trim()});
+    event.target.reset(); await refresh();
+    feedback("lineFeedback", "Linha cadastrada. ID: " + line.id_linha + ". Cidade: " + line.cidade + ".");
+  } catch (error) { feedback("lineFeedback", error.message, true); }
+  finally { byId("saveLine").disabled = byId("lineCity").options.length <= 1; }
+});
+byId("refresh").addEventListener("click", refresh);
+refresh();

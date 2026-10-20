@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 backend/.env
 .env
+
+.pytest_cache/
+.local-postgres/

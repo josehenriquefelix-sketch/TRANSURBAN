@@ -1,22 +1,28 @@
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from typing import Annotated
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
+NomeCidade = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)]
+NomeLinha = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=120)]
+CodigoLinha = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=20)]
 
-class CidadeCreate(BaseModel):
-    # No DDL atual do TransUrban, id_cidade não é IDENTITY/SERIAL.
-    # Por isso, o identificador precisa ser informado no POST.
-    id_cidade: int = Field(gt=0)
-    nome: str = Field(min_length=1, max_length=100)
+class Entrada(BaseModel):
+    model_config = ConfigDict(extra="forbid")
 
-    @field_validator("nome")
-    @classmethod
-    def normalizar_nome(cls, valor: str) -> str:
-        nome = valor.strip()
-        if not nome:
-            raise ValueError("O nome da cidade não pode ficar vazio.")
-        return nome
-
+class CidadeCreate(Entrada):
+    nome: NomeCidade
 
 class CidadeResponse(BaseModel):
     id_cidade: int
     nome: str
     model_config = ConfigDict(from_attributes=True)
+
+class LinhaCreate(Entrada):
+    nome: NomeLinha
+    codigo: CodigoLinha
+    id_cidade: int = Field(gt=0, strict=True)
+
+class LinhaResponse(BaseModel):
+    id_linha: int
+    codigo: str
+    nome: str
+    cidade: str
