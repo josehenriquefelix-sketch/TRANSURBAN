@@ -48,7 +48,7 @@ FALA: A mediana é 162. Para encontrá-la, ordenamos as quantidades e identifica
 
 ## 3:15–4:05 — Camila: agrupamento e comparação
 
-NA TELA: abra GET /ia/dados-publicos/agrupamentos/{dimensao}. Preencha dimensao = linha e limite = 5. Clique Try it out e Execute, conforme a interface permitir. O nome do parâmetro é limite.
+NA TELA: abra GET /ia/dados-publicos/agrupamentos/{dimensao} e clique Try it out. Preencha dimensao = linha e limite = 5. Depois clique Execute. O nome do parâmetro é limite.
 
 FALA: “Aqui agrupamos os registros por linha. Agrupar significa reunir registros com uma característica em comum para comparar suas quantidades.
 
