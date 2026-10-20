@@ -1,8 +1,8 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class CidadeCreate(BaseModel):
-    nome: str
+    nome: str = Field(min_length=1, max_length=100)
 
 
 class CidadeResponse(BaseModel):
@@ -10,3 +10,16 @@ class CidadeResponse(BaseModel):
     nome: str
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class LinhaOnibusCreate(BaseModel):
+    nome: str = Field(min_length=1, max_length=120)
+    codigo: str = Field(min_length=1, max_length=20)
+    id_cidade: int = Field(gt=0)
+
+
+class LinhaOnibusResponse(BaseModel):
+    id_linha: int
+    codigo: str
+    nome: str
+    cidade: str

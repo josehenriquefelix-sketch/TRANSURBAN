@@ -1,0 +1,66 @@
+[
+  {
+    "metodo": "GET",
+    "rota": "/",
+    "status": 200,
+    "resposta": {
+      "mensagem": "API funcionando"
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/docs",
+    "status": 200,
+    "resposta": {
+      "html": true
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/cidades",
+    "status": 200,
+    "resposta": [
+      {
+        "id_cidade": 1,
+        "nome": "Maringá"
+      },
+      {
+        "id_cidade": 2,
+        "nome": "Sarandi"
+      }
+    ]
+  },
+  {
+    "metodo": "GET",
+    "rota": "/linhas",
+    "status": 200,
+    "resposta": [
+      {
+        "id_linha": 1,
+        "codigo": "001.0254-420",
+        "nome": "Maringá - Sarandi (Parque Alvamar)",
+        "cidade": "Sarandi"
+      },
+      {
+        "id_linha": 2,
+        "codigo": "001.0254-470",
+        "nome": "Maringá - Sarandi (Cj. Vale Azul)",
+        "cidade": "Sarandi"
+      },
+      {
+        "id_linha": 3,
+        "codigo": "002.0254-470",
+        "nome": "Maringá - Sarandi (Monte Rey)",
+        "cidade": "Sarandi"
+      }
+    ]
+  },
+  {
+    "metodo": "POST",
+    "rota": "/linhas",
+    "status": 404,
+    "resposta": {
+      "detail": "Cidade não encontrada"
+    }
+  }
+]

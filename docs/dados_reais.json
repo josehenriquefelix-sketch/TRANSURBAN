@@ -1,0 +1,12 @@
+{
+  "consultado_em": "2026-10-20",
+  "cidades": [
+    {"nome": "Maringá", "codigo_ibge": "4115200", "fonte": "https://www.ibge.gov.br/explica/codigos-dos-municipios.php"},
+    {"nome": "Sarandi", "codigo_ibge": "4126256", "fonte": "https://www.ibge.gov.br/explica/codigos-dos-municipios.php"}
+  ],
+  "linhas": [
+    {"codigo": "001.0254-420", "nome": "Maringá - Sarandi (Parque Alvamar)", "cidade_referencia": "Sarandi", "vigencia_documento": "2026-02-01", "fonte": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-02/Maringa_Sarandi_Pq_Alvamar_REG0511_Linha0010254420_010226.pdf"},
+    {"codigo": "001.0254-470", "nome": "Maringá - Sarandi (Cj. Vale Azul)", "cidade_referencia": "Sarandi", "vigencia_documento": "2026-02-01", "fonte": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-02/Maringa_Sarandi_Cj_Vale_Azul_REG0511_Linha0010254470_010226.pdf"},
+    {"codigo": "002.0254-470", "nome": "Maringá - Sarandi (Monte Rey)", "cidade_referencia": "Sarandi", "vigencia_documento": "2026-04-15", "fonte": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-04/Maringa_Sarandi_Monte_Rey_REG0511_Linha0020254470_150426.pdf"}
+  ]
+}

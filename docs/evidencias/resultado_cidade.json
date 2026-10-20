@@ -1,0 +1,84 @@
+[
+  {
+    "metodo": "GET",
+    "rota": "/",
+    "status": 200,
+    "resposta": {
+      "mensagem": "API funcionando"
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/docs",
+    "status": 200,
+    "resposta": {
+      "html": true
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/cidades",
+    "status": 200,
+    "resposta": []
+  },
+  {
+    "metodo": "POST",
+    "rota": "/cidades",
+    "status": 200,
+    "resposta": {
+      "id_cidade": 1,
+      "nome": "Maringá"
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/cidades",
+    "status": 200,
+    "resposta": [
+      {
+        "id_cidade": 1,
+        "nome": "Maringá"
+      }
+    ]
+  },
+  {
+    "metodo": "POST",
+    "rota": "/cidades",
+    "status": 409,
+    "resposta": {
+      "detail": "Registro já cadastrado"
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/cidades",
+    "status": 422,
+    "resposta": {
+      "detail": [
+        {
+          "type": "string_too_long",
+          "loc": [
+            "body",
+            "nome"
+          ],
+          "msg": "String should have at most 100 characters",
+          "input": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "ctx": {
+            "max_length": 100
+          }
+        }
+      ]
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/cidades",
+    "status": 200,
+    "resposta": [
+      {
+        "id_cidade": 1,
+        "nome": "Maringá"
+      }
+    ]
+  }
+]

@@ -1,0 +1,103 @@
+[
+  {
+    "metodo": "GET",
+    "rota": "/",
+    "status": 200,
+    "resposta": {
+      "mensagem": "API funcionando"
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/docs",
+    "status": 200,
+    "resposta": {
+      "html": true
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/cidades",
+    "status": 200,
+    "resposta": [
+      {
+        "id_cidade": 1,
+        "nome": "Maringá"
+      }
+    ]
+  },
+  {
+    "metodo": "POST",
+    "rota": "/linhas",
+    "status": 200,
+    "resposta": {
+      "id_linha": 1,
+      "codigo": "001",
+      "nome": "Centro",
+      "cidade": "Maringá"
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/linhas",
+    "status": 200,
+    "resposta": [
+      {
+        "id_linha": 1,
+        "codigo": "001",
+        "nome": "Centro",
+        "cidade": "Maringá"
+      }
+    ]
+  },
+  {
+    "metodo": "POST",
+    "rota": "/linhas",
+    "status": 409,
+    "resposta": {
+      "detail": "Registro já cadastrado"
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/linhas",
+    "status": 422,
+    "resposta": {
+      "detail": [
+        {
+          "type": "string_too_long",
+          "loc": [
+            "body",
+            "nome"
+          ],
+          "msg": "String should have at most 120 characters",
+          "input": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "ctx": {
+            "max_length": 120
+          }
+        }
+      ]
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/linhas",
+    "status": 404,
+    "resposta": {
+      "detail": "Cidade não encontrada"
+    }
+  },
+  {
+    "metodo": "GET",
+    "rota": "/linhas",
+    "status": 200,
+    "resposta": [
+      {
+        "id_linha": 1,
+        "codigo": "001",
+        "nome": "Centro",
+        "cidade": "Maringá"
+      }
+    ]
+  }
+]

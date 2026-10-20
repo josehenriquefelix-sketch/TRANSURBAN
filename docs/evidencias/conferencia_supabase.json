@@ -1,0 +1,49 @@
+{
+  "conexao": "Supabase confirmado",
+  "cidades": 7,
+  "linhas": 6,
+  "linhas_sem_cidade": 0,
+  "pk_automaticas": 2,
+  "fk": [
+    {
+      "name": "fk_linha_cidade",
+      "constrained_columns": [
+        "id_cidade"
+      ],
+      "referred_schema": null,
+      "referred_table": "cidade",
+      "referred_columns": [
+        "id_cidade"
+      ],
+      "options": {},
+      "comment": null
+    }
+  ],
+  "unicidade_cidade": [
+    {
+      "column_names": [
+        "nome"
+      ],
+      "name": "cidade_nome_key",
+      "comment": null,
+      "dialect_options": {
+        "postgresql_include": [],
+        "postgresql_nulls_not_distinct": false
+      }
+    }
+  ],
+  "unicidade_linha": [
+    {
+      "column_names": [
+        "id_cidade",
+        "codigo"
+      ],
+      "name": "uq_linha_cidade_codigo",
+      "comment": null,
+      "dialect_options": {
+        "postgresql_include": [],
+        "postgresql_nulls_not_distinct": false
+      }
+    }
+  ]
+}
