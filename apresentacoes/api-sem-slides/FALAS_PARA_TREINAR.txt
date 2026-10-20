@@ -1,0 +1,100 @@
+TRANSURBAN — SOMENTE AS FALAS PARA TREINAR
+20/10/2026 | Sem slides
+
+Leia com calma. Não é preciso decorar cada palavra. José Henrique pode operar a tela para todos. As respostas devem ser conferidas antes de anunciadas.
+
+
+
+
+
+Abertura — José Henrique, líder (cerca de 1 minuto)
+Bom dia, pessoal! Eu sou o José Henrique e esta é a nossa equipe: Bruno, Kauan, Gustavo, Jullyany, Camila e Ana Carolina. Hoje vamos apresentar o TRANSURBAN, um projeto pensado para a mobilidade entre Maringá e Sarandi.
+
+Vamos mostrar a parte que trabalha por trás de uma interface: a API. Ela recebe um pedido, confere as informações e devolve uma resposta. Por exemplo: cadastrar uma cidade ou consultar uma linha de ônibus.
+
+Nossa apresentação tem duas partes. Primeiro, vamos cadastrar e consultar informações e testar o que acontece quando alguém envia um dado inválido. Depois, vamos mostrar como o Python transforma um arquivo de dados em números que podemos analisar.
+
+Nessa análise, usamos uma base pública histórica de Curitiba como estudo externo. A fonte não é oficial da URBS e não contém atrasos medidos. Vamos deixar claro o que os dados mostram e o que não permitem concluir.
+
+O Bruno vai começar explicando o objetivo dos cadastros.
+
+----------------------------------------
+
+Parte 1 — Bruno (15 a 20 segundos)
+Nosso sistema organiza cidades e linhas de ônibus. Primeiro cadastramos a cidade. Depois, cadastramos uma linha ligada a ela. Assim conseguimos consultar a linha e saber a qual cidade ela está vinculada. Agora o Kauan vai explicar a consulta.
+
+----------------------------------------
+
+Parte 2 — Kauan (15 a 20 segundos)
+Consultar é pedir para ver uma informação que já está salva. Na API, usamos GET para isso. Ele mostra os dados sem fazer um novo cadastro. O José Henrique vai mostrar como cadastramos e consultamos na prática.
+
+----------------------------------------
+
+Parte 3 — José Henrique: cadastro e relacionamento (cerca de 2 minutos e meio)
+Organizamos o código em partes: conexão com o banco, tabelas, validação dos dados e rotas. Isso facilita entender a função de cada arquivo e encontrar onde fazer uma alteração.
+
+O projeto usa Python. O FastAPI disponibiliza as rotas, o SQLAlchemy trabalha com o banco e o Pydantic valida os dados recebidos. A análise do arquivo público usa Pandas.
+
+Agora cadastramos Sarandi. POST é o método que usamos para enviar esse cadastro. O código 201 confirma que o registro foi criado.
+
+Este número é a identificação da cidade no banco. Ele é a chave primária: permite identificar cada registro sem confundir um com outro.
+
+Vamos cadastrar uma linha de demonstração usando a identificação da cidade. Esse nome e esse código foram escolhidos apenas para o teste.
+
+O campo id_cidade liga a linha ao registro da cidade. Essa ligação é a chave estrangeira. Neste recorte do sistema, uma cidade pode ter várias linhas, e cada linha precisa apontar para uma cidade cadastrada.
+
+Agora consultamos o que acabamos de salvar. O código 200 indica que a consulta foi atendida. A resposta traz o nome da cidade junto da linha, para facilitar a leitura.
+
+Esse formato de campos e valores se chama JSON. Uma interface pode usar essa resposta para mostrar as informações ao usuário. O Gustavo vai testar o que acontece quando os dados estão errados.
+
+----------------------------------------
+
+Parte 4 — Gustavo: validações (cerca de 1 minuto)
+Até aqui usamos dados válidos. Agora vamos enviar uma cidade que não está cadastrada, de propósito, para testar a proteção da API.
+
+A API identificou que a cidade não existe e recusou o cadastro. Esse 404 é o resultado esperado do nosso teste.
+
+A consulta mostra que a tentativa inválida não foi salva.
+
+Agora enviamos um nome com apenas espaços. A validação rejeitou esse valor e retornou 422. Isso evita guardar uma cidade sem nome. A Jullyany vai explicar os dados usados na análise.
+
+----------------------------------------
+
+Parte 5 — Jullyany: de onde vêm os dados (cerca de 1 minuto)
+Para a análise, usamos um arquivo público de programação do transporte de Curitiba. Ele foi publicado pelo projeto comunitário URBS-GTFS e está catalogado na Mobility Database. A origem e o link para conferência aparecem aqui.
+
+O período informado vai de 28 de setembro a 5 de outubro de 2026. Portanto, é uma base histórica de Curitiba. Ela não é um feed oficial da URBS e não representa a operação de Maringá e Sarandi.
+
+O arquivo foi organizado como CSV, uma tabela de dados. Cada linha representa um registro de programação publicado; não uma viagem que comprovadamente aconteceu.
+
+Antes de calcular, conferimos campos vazios, identificadores repetidos e se os arquivos continuam iguais aos que foram importados. Se essas verificações encontrarem um problema, a API bloqueia os indicadores para revisão.
+
+Não criamos tempos de atraso para preencher o que a fonte não informa. A Camila vai mostrar o que podemos calcular com esses registros.
+
+----------------------------------------
+
+Parte 6 — Camila: explicar os números (cerca de 1 minuto e meio)
+A primeira pergunta é: o que existe nesse arquivo? Encontramos 71.086 registros de programação, distribuídos por 309 códigos de linha.
+
+Contamos quantos registros pertencem a cada linha. Dividindo o total por 309, temos uma média de aproximadamente 230 registros por linha.
+
+A mediana é 162. Para encontrá-la, ordenamos as 309 contagens e olhamos o valor do meio. Ela ajuda a entender a distribuição junto com a média.
+
+Esses valores são quantidades de registros do arquivo. Não são minutos de atraso nem uma quantidade diária de ônibus.
+
+Agora separamos os registros por linha para comparar as quantidades. Para facilitar a leitura no telão, mostramos cinco grupos. O total completo continua identificado: são 309 grupos.
+
+Também podemos separar os registros nas categorias dias úteis, sábado e domingo. Isso mostra como o arquivo está organizado por tipo de serviço.
+
+O campo de atraso médio aparece como null, que significa informação indisponível, não atraso zero. A fonte não tem a medição necessária para esse cálculo. Agora a Ana Carolina vai concluir.
+
+----------------------------------------
+
+Parte 7 — Ana Carolina: conclusão (cerca de 40 segundos)
+Hoje mostramos três resultados: cadastrar e consultar informações, impedir cadastros inválidos e transformar um arquivo público em indicadores que podem ser conferidos.
+
+A preparação inclui testes automatizados e respostas registradas como evidência. O código e o roteiro estão disponíveis no GitHub.
+
+A demonstração usa banco local e dados públicos históricos de Curitiba. A conexão com o Supabase ainda está pendente. Nosso objetivo nesta etapa é demonstrar o funcionamento do backend e explicar os dados com clareza.
+
+Obrigada pela atenção! Estamos disponíveis para perguntas.

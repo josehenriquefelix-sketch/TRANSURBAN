@@ -1,0 +1,5 @@
+# Preservar bytes dos snapshots e seus hashes em Windows/Linux.
+backend_escola/data/dados_publicos/** -text
+backend_escola/*.cmd text eol=crlf
+# Biblioteca de terceiros: preservar bytes/licença e hashes do pacote original.
+backend_escola/web/vendor/** -text -whitespace

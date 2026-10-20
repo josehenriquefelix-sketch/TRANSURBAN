@@ -1,5 +1,33 @@
 # TRANSURBAN
 
+**[Levar o trabalho para outro notebook e apresentar em 20/10, sem slides](COMECE_AQUI_APRESENTACAO.md)** — preparação Windows/Linux, API local, sete falas e situação real do Supabase.
+
+## API Python — comece aqui
+
+A API escolar está em **[backend_escola/](backend_escola/)**. A versão 1.3.0 reúne cadastros de cidades e linhas, relacionamento PK/FK, análise de snapshot público comunitário de Curitiba em `/ia/dados-publicos`, com fonte e limites explícitos. A análise sintética anterior e seu painel permanecem identificados para testes, sem representar atrasos reais.
+
+**[Leia o guia completo da API: arquivos, conexão, rotas, exemplos, testes e apresentação](backend_escola/API_EXPLICADA.md).**
+
+**[Atualizar a escola e concluir a entrega DS + IA](backend_escola/FINALIZAR_ENTREGA.md)** — inclui evidências automáticas e configuração privada do Supabase com auditoria de leitura.
+
+**[Apresentação de 20/10: abertura do líder, projetor e roteiro detalhado da API, sem slides](apresentacoes/ROTEIRO_API_SEM_SLIDES_20_10.md)** — equipe confirmada, falas, demonstração e perguntas dos professores.
+
+**[Supabase: estrutura essencial e auditoria antes de alterar](backend_escola/sql/LEIA_PRIMEIRO.md)** — scripts preparados; execução no projeto remoto ainda não realizada.
+
+No Linux, abra um terminal na pasta `backend_escola` e execute `bash iniciar-linux.sh`. Após a inicialização, abra `http://127.0.0.1:8000/docs` no mesmo computador e mantenha o terminal aberto.
+
+| API escolar | Finalidade |
+|---|---|
+| POST /cidades e GET /cidades | Cadastrar e consultar cidades |
+| POST /linhas e GET /linhas | Cadastrar e consultar linhas com a cidade relacionada |
+| /docs | Testar as rotas na documentação interativa |
+| /ia/resumo, /ia/qualidade e /ia/agrupamentos/{dimensao} | Validar o CSV e consultar indicadores em JSON |
+| /painel/ | Usar o dashboard e cadastrar cidades/linhas no mesmo servidor |
+
+O **[site V2](site_v2/README.md)** e as **[apresentações](ENTREGA_ESCOLA_20_10.md)** estão separados. O site V2 não é automaticamente conectado à API Python. O painel DS/IA anterior está em `avaliacao_backend/`. Veja **[a organização completa da entrega](ENTREGA_ESCOLA_20_10.md)** antes de escolher qual componente executar.
+
+---
+
 
 
 O **TransUrban** é um projeto acadêmico voltado à organização e análise de dados relacionados a atrasos no transporte coletivo entre **Maringá e Sarandi**.
@@ -314,3 +342,6 @@ Essas evidências não devem ser inventadas ou simuladas.
 ## 8. Repositório
 
 `https://github.com/josehenriquefelix-sketch/TRANSURBAN`
+
+
+Site funcional adicional: veja [guia do site](backend_escola/SITE_FUNCIONAL.md). A própria API serve a interface em `/app/`, com contas, viagens, avaliações e carteira de demonstração. A apresentação DS/IA em `/docs` continua disponível.

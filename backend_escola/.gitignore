@@ -1,0 +1,11 @@
+.env
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+*.db
+.venv-escola/
+.venv-apresentacao/
+transurban_escola.db
+.env-backups/
+.config-*

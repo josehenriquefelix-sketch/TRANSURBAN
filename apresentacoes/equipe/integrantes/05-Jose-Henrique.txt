@@ -1,0 +1,36 @@
+TRANSURBAN — JOSÉ HENRIQUE
+TERÇA-FEIRA, 20/10/2026
+
+PARTE 5/7: Backend, autorização, GPS e testes
+TEMPO ESTIMADO: 60–75 segundos
+TELA: Sobre o projeto → arquitetura e próximos passos
+
+Você entra depois de Kauan Celso.
+
+O QUE MOSTRAR
+1. Mantenha a tela Sobre o projeto aberta.
+2. Aponte a separação entre interface, API e banco. Não abra terminal nem tente publicar durante a fala.
+
+FALA COMPLETA
+
+A API é a parte que recebe as ações da interface, verifica os dados e aplica as regras antes de gravar no banco.
+
+No código de servidor, um passageiro não pode alterar a viagem de outro usuário. O perfil motorista só pode atualizar e encerrar a própria viagem. As avaliações exigem um embarque associado ao passageiro.
+
+O compartilhamento de localização foi preparado para depender de consentimento. Posições antigas deixam de aparecer, e há validações para descartar dados imprecisos. As coordenadas vencidas também são limpas no próximo acesso autenticado.
+
+O código passou em testes de autorização, concorrência, privacidade, renderização e funcionamento por HTTP local. Com os testes da apresentação, foram dez testes aprovados. Isso não substitui a validação com usuários e dispositivos em circulação.
+
+A publicação ainda está pendente. Também precisamos obter e validar os itinerários reais antes de habilitar uma previsão operacional. Por isso a apresentação usa uma simulação claramente identificada.
+
+PASSAGEM
+A Jullyany vai mostrar a base acadêmica e os resultados da análise dos dados.
+
+PERGUNTA PROVÁVEL
+Já dá para acompanhar a frota oficial?
+
+RESPOSTA
+Ainda não. Não temos uma API da operadora conectada nem itinerários geográficos validados. O código foi preparado, mas essa integração não está concluída.
+
+LEMBRETE PARA TODOS
+O catálogo vem de pesquisa. Os perfis, veículos, posições e tempos da apresentação são fictícios. A base de atrasos é sintética. O servidor ainda não está publicado e não há integração operacional com a frota.

@@ -1,0 +1,17 @@
+{
+  "ambiente": "Linux Python 3.12, pasta extraída; bibliotecas em ambiente já preparado",
+  "checks": [
+    {
+      "comando": "python -m pytest -q",
+      "exit_code": 0,
+      "resumo": "41 passed, 1 warning in 26.17s"
+    },
+    {
+      "comando": "python diagnosticar_apresentacao.py",
+      "exit_code": 0,
+      "resumo": "Diagnóstico aprovado."
+    }
+  ],
+  "aprovado": true,
+  "nao_verificado": "Windows e projetor do auditório"
+}

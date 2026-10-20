@@ -1,0 +1,25 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+
+## Parte 5 — Jullyany: de onde vêm os dados (cerca de 1 minuto)
+
+### Passo 1: executar GET /ia/dados-publicos/fonte
+
+Aponte para publicador_gtfs, download_url e periodo_declarado_feed. Não precisa decorar todos os nomes de instituições ou ler o hash em voz alta.
+
+“Para a análise, usamos um arquivo público de programação do transporte de Curitiba. Ele foi publicado pelo projeto comunitário URBS-GTFS e está catalogado na Mobility Database. A origem e o link para conferência aparecem aqui.
+
+O período informado vai de 28 de setembro a 5 de outubro de 2026. Portanto, é uma base histórica de Curitiba. Ela não é um feed oficial da URBS e não representa a operação de Maringá e Sarandi.”
+
+### Passo 2: executar GET /ia/dados-publicos/qualidade
+
+Aponte para registros_lidos, ids_duplicados, ausentes_por_coluna e apta_para_calculos_do_snapshot. Só anuncie as verificações que aparecerem na resposta.
+
+“O arquivo foi organizado como CSV, uma tabela de dados. Cada linha representa um registro de programação publicado; não uma viagem que comprovadamente aconteceu.
+
+Antes de calcular, conferimos campos vazios, identificadores repetidos e se os arquivos continuam iguais aos que foram importados. Se essas verificações encontrarem um problema, a API bloqueia os indicadores para revisão.
+
+Não criamos tempos de atraso para preencher o que a fonte não informa. A Camila vai mostrar o que podemos calcular com esses registros.”
+
+Se perguntarem a origem primária, use a resposta de apoio no final: o publicador declara usar URBS/C3SL-UFPR; nossa conferência direta foi do derivado publicado, do código e do catálogo. Não afirmar coleta da equipe ou certificação da URBS.
+
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

@@ -1,0 +1,25 @@
+/workspace/.venvs/transurban/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_calculos_conferidos_sem_pandas (test_analise.TestAnalise.test_calculos_conferidos_sem_pandas) ... ok
+test_campos_invalidos_excluidos_sem_imputacao (test_analise.TestAnalise.test_campos_invalidos_excluidos_sem_imputacao) ... ok
+test_codigo_preserva_zeros (test_analise.TestAnalise.test_codigo_preserva_zeros) ... ok
+test_coluna_ausente (test_analise.TestAnalise.test_coluna_ausente) ... ok
+test_csv_vazio_com_cabecalho (test_analise.TestAnalise.test_csv_vazio_com_cabecalho) ... ok
+test_duplicatas_sinalizadas_mantidas (test_analise.TestAnalise.test_duplicatas_sinalizadas_mantidas) ... ok
+test_grupos_reconciliam_contagem_e_soma (test_analise.TestAnalise.test_grupos_reconciliam_contagem_e_soma) ... ok
+test_inf_nan_e_tempo_inconsistente (test_analise.TestAnalise.test_inf_nan_e_tempo_inconsistente) ... ok
+test_todos_os_empates (test_analise.TestAnalise.test_todos_os_empates) ... ok
+test_cadastro_consulta_persistencia_e_relacionamento (test_api.TestAPI.test_cadastro_consulta_persistencia_e_relacionamento) ... ok
+test_codigo_pode_repetir_em_cidades_distintas (test_api.TestAPI.test_codigo_pode_repetir_em_cidades_distintas) ... ok
+test_csv_vazio_duplicado_e_cabecalho_invalido (test_api.TestAPI.test_csv_vazio_duplicado_e_cabecalho_invalido) ... ok
+test_duplicata_409_e_rollback (test_api.TestAPI.test_duplicata_409_e_rollback) ... ok
+test_fk_inexistente_404_e_banco_vazio (test_api.TestAPI.test_fk_inexistente_404_e_banco_vazio) ... ok
+test_fk_tambem_protegida_no_banco (test_api.TestAPI.test_fk_tambem_protegida_no_banco) ... ok
+test_fonte_invalida_interrompe_indicadores_com_422 (test_api.TestAPI.test_fonte_invalida_interrompe_indicadores_com_422) ... ok
+test_get_ia_docs_health_e_filtros (test_api.TestAPI.test_get_ia_docs_health_e_filtros) ... ok
+test_validacao_422 (test_api.TestAPI.test_validacao_422) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.707s
+
+OK

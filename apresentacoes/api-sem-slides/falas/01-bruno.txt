@@ -1,0 +1,9 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+
+## Parte 1 — Bruno (15 a 20 segundos)
+
+“Nosso sistema organiza cidades e linhas de ônibus. Primeiro cadastramos a cidade. Depois, cadastramos uma linha ligada a ela. Assim conseguimos consultar a linha e saber a qual cidade ela está vinculada. Agora o Kauan vai explicar a consulta.”
+
+Bruno só lê ou fala essas frases. Não precisa operar o computador ou explicar bibliotecas.
+
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

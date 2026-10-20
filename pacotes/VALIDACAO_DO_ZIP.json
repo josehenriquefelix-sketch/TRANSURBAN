@@ -1,0 +1,20 @@
+{
+  "executado_em_utc": "2026-10-20T01:01:29.745974+00:00",
+  "ambiente": "Linux, Python 3.12; cópia extraída do ZIP com ambiente virtual recém-preparado",
+  "preparar": "concluído pelo inicializador documentado",
+  "zip_sha256": "16082ab010830760736859b5844048aa1dfdbcf9145be68588b2a00ca19b5574",
+  "checks": [
+    {
+      "comando": "python3 iniciar_apresentacao.py --testar",
+      "exit_code": 0,
+      "resumo": "41 passed, 1 warning in 31.46s"
+    },
+    {
+      "comando": "python3 iniciar_apresentacao.py --diagnostico",
+      "exit_code": 0,
+      "resumo": "Diagnóstico aprovado."
+    }
+  ],
+  "limites": "Não comprova instalação Windows, GPS físico nem projetor.",
+  "aprovado": true
+}

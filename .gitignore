@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 backend/.env
 .env
+.venv-escola/
+backend_escola/*.db
+backend_escola/*.sqlite*

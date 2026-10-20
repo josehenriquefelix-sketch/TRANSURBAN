@@ -1,0 +1,38 @@
+TRANSURBAN — APRESENTAÇÃO DE TERÇA-FEIRA, 20/10/2026
+
+1. Abra 01-ABRIR-APRESENTACAO.html com Chrome, Edge ou Firefox.
+2. Não precisa instalar nada, usar terminal, entrar em uma conta nem ter internet.
+3. Clique em “Reiniciar” antes de começar.
+4. Use “Modo projetor” para aumentar os textos. F11 costuma alternar a tela cheia do navegador.
+5. O roteiro fica na faixa verde. Você pode ocultá-lo durante a fala.
+
+ORDEM SUGERIDA
+
+• Apresente a ideia na página inicial.
+• Vá em Explorar linhas, pesquise 010 e mostre os detalhes. Salve pelo coração.
+• Use Entrar na demonstração → Sou passageiro.
+• Selecione o ponto fictício e consulte a chegada ao ponto.
+• Clique em Peguei este busão e depois em Quanto falta para o terminal.
+• Clique em Avançar ônibus simulado para mostrar a estimativa diminuindo.
+• Avalie motorista e circular: nota, vazia/normal/cheia e uma descrição fictícia.
+• Troque para motorista, encerre a viagem e inicie outra com o prefixo DEMO-02.
+• Abra Sobre o projeto e explique os próximos passos.
+
+ARQUIVOS DE APOIO
+
+03-ROTEIRO.html: fala sugerida, perguntas prováveis e checagem antes da aula.
+04-DADOS-ACADEMICOS.html: análise da amostra original de 180 registros sintéticos.
+05-BASE-ACADEMICA.csv: os registros usados nessa análise.
+06-ESTADO-DA-ENTREGA.txt: o que foi testado e o que ainda está pendente.
+
+O QUE DIZER COM CLAREZA
+
+“Esta é uma demonstração acadêmica offline. O catálogo foi pesquisado; os perfis, o ônibus, o mapa e os tempos deste cenário são fictícios.”
+
+Não apresente isso como login de produção, GPS real, frota oficial, catálogo completo garantido ou modelo de IA treinado. O código do servidor existe e passou em testes; sua publicação e integração operacional ainda estão pendentes.
+
+ANTES DE TERÇA
+
+Abra o arquivo no computador que será usado em sala e faça uma passagem completa pelo roteiro. Leve esta pasta em um pendrive e mantenha outra cópia. O mesmo arquivo HTML também funciona sozinho; os arquivos de apoio ficam separados para consulta.
+
+Se aparecer a tela de código ao abrir o HTML: clique com o botão direito no arquivo → Abrir com → Chrome, Edge ou Firefox.

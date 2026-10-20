@@ -1,0 +1,10 @@
+import './windows-fs-compat.mjs';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {build} from 'esbuild';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const out=path.join(root,'preview');await fs.mkdir(out,{recursive:true});
+await build({stdin:{contents:`import React from 'react';import {createRoot} from 'react-dom/client';import Dashboard from './app/dashboard';createRoot(document.getElementById('root')).render(React.createElement(Dashboard,{identity:null,signIn:'#',signOut:'#',offline:true}));`,resolveDir:root,loader:'tsx'},bundle:true,outfile:path.join(out,'site.js'),platform:'browser',format:'iife',minify:true,define:{'process.env.NODE_ENV':'"production"'}});
+await fs.copyFile(path.join(root,'app/globals.css'),path.join(out,'style.css'));await fs.copyFile(path.join(root,'app/product.css'),path.join(out,'product.css'));await fs.copyFile(path.join(root,'public/favicon.svg'),path.join(out,'favicon.svg'));
+await fs.writeFile(path.join(out,'index.html'),'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TransUrban • Prévia do site</title><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="product.css"></head><body><div id="root"></div><div style="position:fixed;bottom:0;right:0;background:#fff7d7;color:#806a35;padding:5px 12px;font:10px Arial;z-index:100">Prévia offline · Contas e GPS exigem o servidor</div><script src="site.js"></script></body></html>');console.log(out);

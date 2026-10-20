@@ -1,0 +1,37 @@
+name: API escolar DS e IA
+on:
+  push:
+    paths:
+      - 'backend_escola/**'
+      - '.github/workflows/escola-ds-ia.yml'
+  pull_request:
+    paths:
+      - 'backend_escola/**'
+      - '.github/workflows/escola-ds-ia.yml'
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: backend_escola
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            backend_escola/requirements.txt
+            backend_escola/requirements-dev.txt
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pytest -q
+      - run: python gerar_evidencias.py --dest "$RUNNER_TEMP/evidencias-ds-ia"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evidencias-ds-ia
+          path: ${{ runner.temp }}/evidencias-ds-ia
+          if-no-files-found: warn

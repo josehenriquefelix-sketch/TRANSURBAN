@@ -1,0 +1,35 @@
+TRANSURBAN — BRUNO MIGUEL
+TERÇA-FEIRA, 20/10/2026
+
+PARTE 2/7: Interface, busca de linhas e favoritos
+TEMPO ESTIMADO: 60–75 segundos, com os cliques
+TELA: Explorar linhas → detalhes → Minhas linhas
+
+Você entra depois de Ana Clara.
+
+O QUE MOSTRAR
+1. Clique em Explorar linhas. Digite 010 na busca.
+2. Clique em Ver linha e mostre o nome, os sentidos e a fonte. Não abra o link externo se estiver sem internet.
+3. Salve pelo coração, feche o detalhe e abra Minhas linhas.
+
+FALA COMPLETA
+
+Na interface, a ideia é facilitar o acesso às informações que o passageiro procura no dia a dia. A página tem busca, filtro por cidade, detalhes e favoritos.
+
+Foram pesquisadas 84 linhas: 66 de Maringá e 18 de Sarandi. Aqui eu pesquiso a linha 010 e abro os detalhes para consultar as informações encontradas na fonte.
+
+Cada linha mantém seu link de consulta e a data de atualização declarada pela página pesquisada. Isso ajuda a mostrar de onde veio a informação. Não estamos garantindo que o catálogo tenha todas as linhas em circulação nem que não existam mudanças recentes.
+
+Também posso salvar a linha nos favoritos para encontrá-la com mais facilidade. Nesta demonstração, os favoritos ficam na sessão e são apagados quando a gente reinicia o cenário.
+
+PASSAGEM
+Agora a Ana Carolina vai mostrar os fluxos de passageiro e motorista.
+
+PERGUNTA PROVÁVEL
+O site depende de internet para essa apresentação?
+
+RESPOSTA
+Não. O arquivo de demonstração tem o código e os estilos embutidos. Só os links externos das fontes precisam de internet.
+
+LEMBRETE PARA TODOS
+O catálogo vem de pesquisa. Os perfis, veículos, posições e tempos da apresentação são fictícios. A base de atrasos é sintética. O servidor ainda não está publicado e não há integração operacional com a frota.

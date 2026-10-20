@@ -1,0 +1,15 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+
+## Abertura — José Henrique, líder (cerca de 1 minuto)
+
+“Bom dia, pessoal! Eu sou o José Henrique e esta é a nossa equipe: Bruno, Kauan, Gustavo, Jullyany, Camila e Ana Carolina. Hoje vamos apresentar o TRANSURBAN, um projeto pensado para a mobilidade entre Maringá e Sarandi.
+
+Vamos mostrar a parte que trabalha por trás de uma interface: a API. Ela recebe um pedido, confere as informações e devolve uma resposta. Por exemplo: cadastrar uma cidade ou consultar uma linha de ônibus.
+
+Nossa apresentação tem duas partes. Primeiro, vamos cadastrar e consultar informações e testar o que acontece quando alguém envia um dado inválido. Depois, vamos mostrar como o Python transforma um arquivo de dados em números que podemos analisar.
+
+Nessa análise, usamos uma base pública histórica de Curitiba como estudo externo. A fonte não é oficial da URBS e não contém atrasos medidos. Vamos deixar claro o que os dados mostram e o que não permitem concluir.
+
+O Bruno vai começar explicando o objetivo dos cadastros.”
+
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

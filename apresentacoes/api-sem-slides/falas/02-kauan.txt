@@ -1,0 +1,9 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+
+## Parte 2 — Kauan (15 a 20 segundos)
+
+“Consultar é pedir para ver uma informação que já está salva. Na API, usamos GET para isso. Ele mostra os dados sem fazer um novo cadastro. O José Henrique vai mostrar como cadastramos e consultamos na prática.”
+
+Kauan só lê ou fala essas frases. Não precisa executar comandos.
+
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

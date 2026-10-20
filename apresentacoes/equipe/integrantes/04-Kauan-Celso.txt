@@ -1,0 +1,36 @@
+TRANSURBAN — KAUAN CELSO
+TERÇA-FEIRA, 20/10/2026
+
+PARTE 4/7: Banco de dados e organização das informações
+TEMPO ESTIMADO: 55–70 segundos
+TELA: Sobre o projeto → arquitetura
+
+Você entra depois de Ana Carolina.
+
+O QUE MOSTRAR
+1. Abra Sobre o projeto.
+2. Mantenha o esquema Interface → API → Banco visível.
+
+FALA COMPLETA
+
+Para organizar as informações, a versão web preparada separa os perfis, as viagens, os embarques e as avaliações.
+
+O perfil identifica o papel do usuário. Uma viagem é vinculada ao motorista e à linha escolhida. O embarque relaciona o passageiro à viagem, e a avaliação fica vinculada a esse embarque.
+
+No código, também existem restrições para impedir duas viagens ativas do mesmo motorista, embarques duplicados na mesma viagem e mais de uma avaliação por embarque. Essas restrições ajudam a manter a consistência dos registros.
+
+A versão web preparada usa D1 e SQLite. O projeto original também possui material de banco PostgreSQL e Supabase, que permanece separado. Não estamos afirmando que esta demonstração esteja conectada ao Supabase ou a um banco publicado.
+
+No arquivo offline, os dados do cenário são mantidos só durante a demonstração. O servidor e o banco persistente são uma parte separada do projeto.
+
+PASSAGEM
+Agora o José Henrique vai explicar a API e as validações do servidor.
+
+PERGUNTA PROVÁVEL
+Os dados digitados na demonstração estão indo para um banco real?
+
+RESPOSTA
+Não. O cenário offline usa estado de demonstração. O código do servidor tem persistência e foi testado com SQLite, mas a publicação do ambiente hospedado continua pendente.
+
+LEMBRETE PARA TODOS
+O catálogo vem de pesquisa. Os perfis, veículos, posições e tempos da apresentação são fictícios. A base de atrasos é sintética. O servidor ainda não está publicado e não há integração operacional com a frota.

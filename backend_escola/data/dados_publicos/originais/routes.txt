@@ -1,0 +1,310 @@
+route_id,agency_id,route_long_name,route_type
+464,1,A. Munhoz / Jd. Botânico,3
+226,1,Abaeté,3
+182,1,Abranches,3
+332,1,Acrópole,3
+334,1,Agrícola,3
+863,1,Água Verde,3
+265,1,Ahú / Los Angeles,3
+560,1,Alferes Poli,3
+232,1,Aliança,3
+629,1,Alto Boqueirão,3
+373,1,Alto Tarumã,3
+245,1,Anita Garibaldi,3
+311,1,Araguaia,3
+350,1,Atuba / Pinheirinho,3
+238,1,Atuba/Sta.Candida,3
+823,1,Augusta,3
+820,1,Augusta/V. Marqueto,3
+361,1,Augusto Stresser,3
+345,1,B. Alto / Atuba,3
+342,1,B. Alto / Boa Vista,3
+307,1,B. Alto / Sta. Felicidade,3
+506,1,Bairro Novo,3
+541,1,Bairro Novo A,3
+542,1,Bairro Novo B,3
+524,1,Bairro Novo B/C,3
+547,1,Bairro Novo C,3
+231,1,Banestado / Califórnia,3
+862,1,Barigui,3
+205,1,Barreirinha,3
+206,1,Barreirinha / São José,3
+725,1,Batel / Mossunguê,3
+875,1,Bigorrilho,3
+225,1,Boa Vista / Barreirinha,3
+175,1,Bom Retiro / Puc,3
+503,1,Boqueirão,3
+505,1,Boqueirão / C. Cívico,3
+528,1,Boqueirão/Pinheirinho,3
+627,1,Bosch,3
+170,1,Bracatinga,3
+X43,1,Brf / Copel,3
+913,1,Butiatuvinha,3
+948,1,Butiatuvinha/ Ouro Verde,3
+516,1,C. Belem / S. Filho,3
+828,1,C. Comprido / C. Raso,3
+826,1,C. Comprido / Cic,3
+150,1,C. Música / V. Alegre,3
+027,1,C. Raso / C. Do Siqueira,3
+658,1,C. Raso / Caiuá,3
+024,1,C. Raso / Camp. Siqueira,3
+207,1,Cabral / Osório,3
+216,1,Cabral / Portão,3
+177,1,Cabral / Pq.Tanguá,3
+220,1,Cabral/Hauer,3
+703,1,Caiuá,3
+702,1,Caiua/Cachoeira,3
+706,1,Caiua/Faz/Centro,3
+386,1,Cajuru,3
+322,1,Camargo,3
+801,1,Camp. Siqueira / Batel,3
+816,1,Camp. Siqueira / Sta.Felicidade,3
+654,1,Campo Alegre,3
+475,1,Canal Belém,3
+628,1,Carbomafra,3
+224,1,Cassiopéia,3
+659,1,Caximba / Olaria,3
+305,1,Centenário,3
+335,1,Centenário / Boqueirão,3
+303,1,Centenário / C. Comprido,3
+338,1,Centenário / Hauer,3
+302,1,Centenário / Rui Barbosa,3
+469,1,Centro Politécnico,3
+210,1,Cic/Cabral,3
+X90,1,Circuito 01,3
+X91,1,Circuito 02,3
+X92,1,Circuito 03,3
+X93,1,Circuito 04,3
+X94,1,Circuito 05,3
+602,1,Circular Sul  (Anti-Horário),3
+502,1,Circular Sul (Horário),3
+211,1,Colina Verde,3
+607,1,Colombo / Cic,3
+722,1,Complexo Industrial,3
+778,1,Cotolengo,3
+385,1,Cristo Rei,3
+681,1,Dalagassa,3
+380,1,Detran / Vic. Machado,3
+662,1,Dom Ático,3
+533,1,E. Veríssimo / Pantanal,3
+723,1,Emílio Romani,3
+465,1,Erasto  Gaertner,3
+X48,1,Esp. Eufrásio / Rui Barbosa,3
+X45,1,Especial B.Alto / C.Imbuia,3
+X12,1,Especial Boqueirao,3
+X47,1,Especial Pinheirinho,3
+266,1,Estribo Ahú,3
+466,1,Estudantes,3
+275,1,F. Noronha / Laranjeiras,3
+621,1,Fanny,3
+701,1,Fazendinha,3
+720,1,Fazendinha / C. Comprido,3
+831,1,Fazendinha / C.Raso,3
+611,1,Fazendinha / Portão,3
+614,1,Fazendinha / Puc,3
+724,1,Fazendinha/Caiuá-B.Vista,3
+821,1,Fernão Dias,3
+673,1,Formosa,3
+639,1,Futurama,3
+683,1,Futurama / S. Cercado,3
+822,1,Gabineto,3
+642,1,Ganchinho,3
+625,1,Gramados,3
+561,1,Guilhermina,3
+513,1,Hauer / Boqueirão,3
+525,1,Hauer / C.Raso,3
+371,1,Higienópolis,3
+247,1,Hosp. Veterinário,3
+374,1,Hugo Lange,3
+523,1,Iguape I,3
+515,1,Iguape Ii,3
+023,1,Inter 2 ( Anti-Horário),3
+022,1,Inter 2 (Horário),3
+011,1,Interbairros I (Anti-Horário),3
+010,1,Interbairros I (Horário),3
+021,1,Interbairros Ii (Anti-Horário),3
+020,1,Interbairros Ii (Horário),3
+030,1,Interbairros Iii,3
+040,1,Interbairros Iv,3
+050,1,Interbairros V,3
+060,1,Interbairros Vi,3
+526,1,Itamarati / V. São Pedro,3
+711,1,Itatiaia,3
+366,1,Itupava / Hosp. Militar,3
+468,1,Jd. Centauro,3
+183,1,Jd. Chaparral,3
+655,1,Jd. Da Ordem,3
+244,1,Jd. Do Arroio,3
+865,1,Jd. Esplanada,3
+712,1,Jd. Independência / Cic,3
+917,1,Jd. Ipê,3
+972,1,Jd. Itália,3
+474,1,Jd. Itiberê,3
+169,1,Jd. Kosmos,3
+617,1,Jd. Ludovica,3
+160,1,Jd. Mercês / Guanabara,3
+365,1,Jd. Social / Batel,3
+532,1,Jd.Paranaense,3
+912,1,José Culpi,3
+967,1,Júlio Graf,3
+500,1,Ligeirão Boqueirão,3
+250,1,Ligeirão Norte / Sul,3
+550,1,Ligeirão Pinheirinho / C. Gomes,3
+661,1,Lindóia,3
+635,1,Londrina,3
+641,1,Luiz Nichele,3
+189,1,Mad. Abranches,3
+549,1,Mad. Bairro Novo,3
+509,1,Mad. Boqueirão,3
+789,1,Mad. Caiuá,3
+809,1,Mad. Campo Comprido,3
+309,1,Mad. Centenário,3
+308,1,Mad. Centenário / Rui Barbosa,3
+609,1,Mad. Cic,3
+229,1,Mad. Penha / F. Noronha,3
+489,1,Mad. Petrópolis / Solitude,3
+188,1,Mad. Pilarzinho / Uberaba,3
+209,1,Mad. S. Cândida / C. Raso,3
+519,1,Mad. S. Francisco / Iguape,3
+689,1,Mad. S. Pedro / R. Negro,3
+889,1,Mad. São Bráz,3
+989,1,Mad. Sta. Felicidade,3
+389,1,Mad. Tarumã / Augusta,3
+679,1,Mad. Tatuquara,3
+788,1,Mad. V. Velha,3
+260,1,Mal. Hermes / Sta. Efigênia,3
+633,1,Maria Angélica,3
+522,1,Maringá,3
+721,1,Mário Jorge,3
+181,1,Mateus Leme,3
+331,1,Mercúrio,3
+812,1,Montana,3
+553,1,Moradias Pq. Iguaçu,3
+814,1,Mossunguê,3
+521,1,Nivaldo Braga,3
+360,1,Novena,3
+666,1,Novo Mundo,3
+674,1,Nsa. Sra. Da Luz,3
+280,1,Nsa.Sra.De Nazaré,3
+233,1,Olaria,3
+535,1,Osternack / Boqueirão,3
+548,1,Osternack / S. Cercado,3
+520,1,Osternack / S. Cercado L.D.,3
+915,1,Ouro Verde (Via Vl.Bádia),3
+272,1,Paineiras,3
+640,1,Palmeira,3
+387,1,Palotinos,3
+343,1,Paraíso,3
+534,1,Parigot De Souza,3
+237,1,Parque Atuba,3
+623,1,Parque Industrial,3
+529,1,Parque Náutico,3
+176,1,Parque Tanguá,3
+911,1,Passaúna,3
+928,1,Passaúna / Jd.Ipê,3
+462,1,Petrópolis,3
+304,1,Pinhais / C. Comprido,3
+638,1,Pinheirinho,3
+644,1,Pinheirinho / Cic,3
+700,1,Pinheirinho/Cabral,3
+603,1,Pinheirinho/Rui Barbosa,3
+916,1,Pinheiros,3
+958,1,Pinheiros / José Culpi,3
+631,1,Piratini / Br-476,3
+649,1,Pirineus,3
+646,1,Pompeia/Janaina,3
+671,1,Portão,3
+612,1,Portão / Cic,3
+616,1,Portao / Sta.Bernadethe,3
+X20,1,Portao/Sitio Cercado,3
+718,1,Porto Belo,3
+832,1,Posiville / Inc,3
+794,1,Pq. Lago Azul,3
+171,1,Primavera,3
+632,1,Quartel General,3
+168,1,Raposo Tavares,3
+X36,1,Ref. Guadalupe / Fazendinha,3
+X55,1,Reforço Cic / Av. J.K.,3
+X14,1,Reforço Hauer,3
+X08,1,Reforço Pinheirinho,3
+X49,1,Reforço Portão / Cabral,3
+X41,1,Reforço Sabará,3
+X02,1,Reforço Tubo Barigui,3
+815,1,Reforço Tuiuti,3
+684,1,Rio Bonito,3
+685,1,Rio Bonito / Cic,3
+X38,1,Rio Bonito (Semi-Direto),3
+636,1,Rio Negro,3
+827,1,Riviera,3
+622,1,Rondon,3
+164,1,R.Prado/C.Gomes,3
+680,1,Rurbana,3
+610,1,S. Cercado / C. Raso,3
+653,1,Sabará,3
+375,1,Sagrado Coração,3
+552,1,Sambaqui,3
+236,1,São Benedito,3
+965,1,São Bernardo,3
+870,1,São Braz,3
+213,1,São João,3
+670,1,São Jorge,3
+817,1,Saturno / Veneza,3
+876,1,Savóia,3
+X11,1,Sitio Cercado / C. Raso,3
+508,1,Sítio Cercado (Anti-Horário),3
+507,1,Sítio Cercado (Horário),3
+212,1,Solar,3
+463,1,Solitude,3
+713,1,Sta. Amélia,3
+461,1,Sta. Barbara,3
+203,1,Sta. Cândida / C. Raso,3
+620,1,Sta. Cruz,3
+901,1,Sta. Felicidade,3
+902,1,Sta. Felicidade / Pca.Tiradentes,3
+924,1,Sta. Felicidade / Sta. Cândida,3
+274,1,Sta. Gema,3
+531,1,Sta. Inês,3
+637,1,Sta. Joana,3
+760,1,Sta. Quitéria,3
+619,1,Sta. Rita / Cic,3
+X37,1,Sta. Rita / Pinh. (Semi Direto),3
+650,1,Sta. Rita / Pinheirinho,3
+243,1,Sta. Terezinha,3
+710,1,Sta.Amelia/P.Belo,3
+372,1,Tarumã,3
+707,1,Tatuquara / Centro,3
+708,1,Tatuquara / S. Cercado,3
+864,1,Tequaly,3
+600,1,Tequaly/Quartel General,3
+214,1,Tingui,3
+545,1,Trabalhador,3
+861,1,Tramontina,3
+321,1,Trindade,3
+772,1,Tupy/Juliana,3
+979,1,Turismo,3
+472,1,Uberaba,3
+615,1,Uberlândia,3
+643,1,Umbará,3
+829,1,Univ.Positivo,3
+323,1,V. Autódromo,3
+663,1,V. Cubas,3
+222,1,V. Esperança,3
+761,1,V. Izabel,3
+690,1,V. Juliana,3
+242,1,V. Leonice,3
+477,1,V. Macedo Via Guabirotuba,3
+825,1,V. Marqueto,3
+166,1,V. Nori,3
+336,1,V. Reno,3
+665,1,V. Rex,3
+762,1,V. Rosinha,3
+860,1,V. Sandra,3
+471,1,V. São Paulo,3
+184,1,V. Suiça,3
+709,1,V. Tiradentes / Cic,3
+777,1,V. Velha,3
+779,1,V. Velha/Buriti,3
+652,1,V. Verde,3
+630,1,Vitória Régia,3
+773,1,Vizinhança/Sta. Rita,3
+536,1,Zoológico,3

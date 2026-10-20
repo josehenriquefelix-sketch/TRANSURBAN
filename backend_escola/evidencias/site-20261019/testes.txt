@@ -1,0 +1,10 @@
+Validação em 19/10/2026 — Linux, Python 3.12
+python3 iniciar_apresentacao.py --testar
+41 passed, 1 warning in 28.51s
+Aviso: StarletteDeprecationWarning sobre httpx/TestClient; não é falha de teste.
+
+python3 iniciar_apresentacao.py --evidencias
+22 requisições verificadas; servidor de teste encerrado.
+Pasta correspondente: ../execucao-20261019-214743-466882/
+
+Ensaios Windows, GPS físico e projetor: pendentes no equipamento da equipe.

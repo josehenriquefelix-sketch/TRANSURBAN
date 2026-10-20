@@ -1,0 +1,405 @@
+{
+  "Maringá": {
+    "cidade": "Maringá",
+    "fonte": "Open-Meteo",
+    "fonte_url": "https://open-meteo.com/",
+    "consultado_em": 1792446361,
+    "instante_previsao": "2026-10-19T18:45",
+    "temperatura_c": 20.1,
+    "sensacao_c": 18.8,
+    "codigo_tempo": 0,
+    "dia": false,
+    "probabilidade_chuva_percentual": 0,
+    "maxima_c": 25.0,
+    "minima_c": 12.1,
+    "sugere_guarda_chuva": false,
+    "aviso": "Previsão meteorológica, não garantia. Probabilidade diária; não indica chuva em cada ponto da cidade."
+  },
+  "Sarandi": {
+    "cidade": "Sarandi",
+    "fonte": "Open-Meteo",
+    "fonte_url": "https://open-meteo.com/",
+    "consultado_em": 1792446367,
+    "instante_previsao": "2026-10-19T18:45",
+    "temperatura_c": 20.2,
+    "sensacao_c": 19.2,
+    "codigo_tempo": 0,
+    "dia": false,
+    "probabilidade_chuva_percentual": 0,
+    "maxima_c": 25.0,
+    "minima_c": 12.3,
+    "sugere_guarda_chuva": false,
+    "aviso": "Previsão meteorológica, não garantia. Probabilidade diária; não indica chuva em cada ponto da cidade."
+  },
+  "percurso": {
+    "id": "09b17ee4-9062-4c2d-8c70-d6f23a5dc11e",
+    "pontos": [
+      {
+        "nome": "Ponto selecionado A",
+        "latitude": -23.42,
+        "longitude": -51.93
+      },
+      {
+        "nome": "Ponto selecionado B",
+        "latitude": -23.43,
+        "longitude": -51.92
+      }
+    ],
+    "geometria": {
+      "coordinates": [
+        [
+          -51.930018,
+          -23.42
+        ],
+        [
+          -51.930018,
+          -23.420022
+        ],
+        [
+          -51.929753,
+          -23.420035
+        ],
+        [
+          -51.929353,
+          -23.420078
+        ],
+        [
+          -51.928931,
+          -23.420149
+        ],
+        [
+          -51.928262,
+          -23.420322
+        ],
+        [
+          -51.928441,
+          -23.42078
+        ],
+        [
+          -51.92858,
+          -23.420778
+        ],
+        [
+          -51.928708,
+          -23.420802
+        ],
+        [
+          -51.928825,
+          -23.420855
+        ],
+        [
+          -51.928924,
+          -23.420932
+        ],
+        [
+          -51.928994,
+          -23.421006
+        ],
+        [
+          -51.92903,
+          -23.421072
+        ],
+        [
+          -51.929046,
+          -23.421122
+        ],
+        [
+          -51.929056,
+          -23.421181
+        ],
+        [
+          -51.929057,
+          -23.421252
+        ],
+        [
+          -51.929028,
+          -23.421404
+        ],
+        [
+          -51.928948,
+          -23.421539
+        ],
+        [
+          -51.928825,
+          -23.421643
+        ],
+        [
+          -51.928672,
+          -23.421705
+        ],
+        [
+          -51.928531,
+          -23.421719
+        ],
+        [
+          -51.928441,
+          -23.422292
+        ],
+        [
+          -51.928301,
+          -23.422913
+        ],
+        [
+          -51.928202,
+          -23.423343
+        ],
+        [
+          -51.928235,
+          -23.423448
+        ],
+        [
+          -51.928254,
+          -23.423598
+        ],
+        [
+          -51.928244,
+          -23.423762
+        ],
+        [
+          -51.928212,
+          -23.423871
+        ],
+        [
+          -51.928177,
+          -23.42398
+        ],
+        [
+          -51.928047,
+          -23.424185
+        ],
+        [
+          -51.927943,
+          -23.424402
+        ],
+        [
+          -51.927859,
+          -23.424667
+        ],
+        [
+          -51.927775,
+          -23.425039
+        ],
+        [
+          -51.9277,
+          -23.425378
+        ],
+        [
+          -51.927672,
+          -23.425552
+        ],
+        [
+          -51.927523,
+          -23.425595
+        ],
+        [
+          -51.927329,
+          -23.425669
+        ],
+        [
+          -51.927011,
+          -23.425776
+        ],
+        [
+          -51.925439,
+          -23.426336
+        ],
+        [
+          -51.924864,
+          -23.426536
+        ],
+        [
+          -51.923817,
+          -23.426887
+        ],
+        [
+          -51.923161,
+          -23.427117
+        ],
+        [
+          -51.922832,
+          -23.427234
+        ],
+        [
+          -51.922713,
+          -23.427312
+        ],
+        [
+          -51.922632,
+          -23.427418
+        ],
+        [
+          -51.922616,
+          -23.427528
+        ],
+        [
+          -51.922572,
+          -23.427633
+        ],
+        [
+          -51.922505,
+          -23.427726
+        ],
+        [
+          -51.922446,
+          -23.427875
+        ],
+        [
+          -51.922436,
+          -23.427956
+        ],
+        [
+          -51.922436,
+          -23.427966
+        ],
+        [
+          -51.922437,
+          -23.427981
+        ],
+        [
+          -51.922444,
+          -23.428069
+        ],
+        [
+          -51.922508,
+          -23.428285
+        ],
+        [
+          -51.922589,
+          -23.428473
+        ],
+        [
+          -51.922838,
+          -23.429107
+        ],
+        [
+          -51.922774,
+          -23.429133
+        ],
+        [
+          -51.922762,
+          -23.429136
+        ],
+        [
+          -51.922716,
+          -23.429151
+        ],
+        [
+          -51.921102,
+          -23.429726
+        ],
+        [
+          -51.92004,
+          -23.430097
+        ]
+      ],
+      "type": "LineString"
+    },
+    "instrucoes": [
+      {
+        "via": "",
+        "tipo": "depart",
+        "direcao": "",
+        "distancia_m": 2.4,
+        "posicao": [
+          -51.930018,
+          -23.42
+        ]
+      },
+      {
+        "via": "Avenida Mauá",
+        "tipo": "turn",
+        "direcao": "left",
+        "distancia_m": 183.1,
+        "posicao": [
+          -51.930018,
+          -23.420022
+        ]
+      },
+      {
+        "via": "Avenida Pedro Taques",
+        "tipo": "turn",
+        "direcao": "right",
+        "distancia_m": 53.9,
+        "posicao": [
+          -51.928262,
+          -23.420322
+        ]
+      },
+      {
+        "via": "Avenida Laguna",
+        "tipo": "rotary",
+        "direcao": "right",
+        "distancia_m": 176.2,
+        "posicao": [
+          -51.928441,
+          -23.42078
+        ]
+      },
+      {
+        "via": "Avenida Laguna",
+        "tipo": "exit rotary",
+        "direcao": "right",
+        "distancia_m": 418.7,
+        "posicao": [
+          -51.928531,
+          -23.421719
+        ]
+      },
+      {
+        "via": "Avenida Paissandu",
+        "tipo": "turn",
+        "direcao": "left",
+        "distancia_m": 577.4,
+        "posicao": [
+          -51.9277,
+          -23.425378
+        ]
+      },
+      {
+        "via": "Avenida Riachuelo",
+        "tipo": "rotary",
+        "direcao": "slight right",
+        "distancia_m": 37.1,
+        "posicao": [
+          -51.922632,
+          -23.427418
+        ]
+      },
+      {
+        "via": "Avenida Riachuelo",
+        "tipo": "exit rotary",
+        "direcao": "straight",
+        "distancia_m": 161.0,
+        "posicao": [
+          -51.922505,
+          -23.427726
+        ]
+      },
+      {
+        "via": "Rua Inhaúma",
+        "tipo": "turn",
+        "direcao": "left",
+        "distancia_m": 306.3,
+        "posicao": [
+          -51.922838,
+          -23.429107
+        ]
+      },
+      {
+        "via": "Rua Inhaúma",
+        "tipo": "arrive",
+        "direcao": "left",
+        "distancia_m": 0.0,
+        "posicao": [
+          -51.92004,
+          -23.430097
+        ]
+      }
+    ],
+    "distancia_m": 1916.2,
+    "fonte": "OSRM sobre OpenStreetMap, perfil driving. Rota viária, não itinerário oficial de ônibus.",
+    "itinerario_oficial": false,
+    "aviso": "Percurso escolhido pelo motorista. Rota viária de referência não é itinerário oficial nem considera restrições de ônibus."
+  },
+  "nota": "Consultas externas reais em 19/10/2026. Pontos de teste escolhidos, não são paradas oficiais. Não comprova GPS físico nem tarifa."
+}

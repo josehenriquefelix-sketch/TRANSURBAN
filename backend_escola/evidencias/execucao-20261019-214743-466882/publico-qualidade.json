@@ -1,0 +1,28 @@
+{
+  "fonte": "programacao_curitiba.csv",
+  "natureza": "snapshot histórico de registros de programação publicados em GTFS comunitário",
+  "registros_lidos": 71086,
+  "ids_programacao_distintos": 71086,
+  "ausentes_por_coluna": {
+    "id_programacao": 0,
+    "codigo_linha": 0,
+    "nome_linha": 0,
+    "tipo_servico": 0,
+    "operadora": 0,
+    "cidade_fonte": 0,
+    "uf_fonte": 0,
+    "periodo_feed_inicio": 0,
+    "periodo_feed_fim": 0
+  },
+  "ids_duplicados": 0,
+  "codigos_com_nomes_divergentes": 0,
+  "servicos_invalidos": 0,
+  "local_incompativel": 0,
+  "periodo_incompativel": 0,
+  "sha256": "7f931bcf64eade974dc0eb6226fed63e546e9cef0778ef02126ab5b7c019fdd3",
+  "hash_csv_confere": true,
+  "hashes_originais_conferem": true,
+  "contagem_confere_com_importacao": true,
+  "politica": "Nenhuma linha é descartada ou substituída silenciosamente; indicadores bloqueados se houver divergência.",
+  "apta_para_calculos_do_snapshot": true
+}

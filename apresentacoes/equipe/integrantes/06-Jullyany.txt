@@ -1,0 +1,37 @@
+TRANSURBAN — JULLYANY
+TERÇA-FEIRA, 20/10/2026
+
+PARTE 6/7: Base de dados, medidas e comparação de grupos
+TEMPO ESTIMADO: 60–75 segundos
+TELA: 04-DADOS-ACADEMICOS.html
+
+Você entra depois de José Henrique.
+
+O QUE MOSTRAR
+1. Abra 04-DADOS-ACADEMICOS.html em outra aba.
+2. Mostre os quatro indicadores e o gráfico de atraso médio por condição de trânsito.
+3. Se perguntarem pela origem, mostre a indicação da base sintética e o arquivo CSV disponível.
+
+FALA COMPLETA
+
+Na parte de dados, recuperamos uma base acadêmica com 180 registros sintéticos. Eles foram criados para estudo e validação; não são dados de GPS da frota real.
+
+A análise calcula medidas e agrupa os registros para transformar os números em informação. Nessa amostra, o atraso médio é de aproximadamente 7,57 minutos, a mediana é de 8 minutos e o maior atraso é de 12 minutos.
+
+Também comparamos o atraso médio entre as condições de trânsito. Na categoria leve, a média da amostra é de aproximadamente 4,22 minutos. Na categoria intenso, é de aproximadamente 9,84 minutos.
+
+Esses resultados descrevem apenas a massa sintética. Eles não provam que uma condição causou um atraso e não devem ser usados para prever uma viagem real.
+
+O arquivo CSV foi mantido junto com a análise para permitir conferir os registros e os cálculos.
+
+PASSAGEM
+Para concluir, a Camila vai explicar a classificação e os próximos passos da parte de inteligência artificial.
+
+PERGUNTA PROVÁVEL
+Essas médias representam os atrasos de Maringá e Sarandi?
+
+RESPOSTA
+Não. Representam somente os registros sintéticos da base acadêmica. Para estudar a operação real, precisamos de dados reais, origem conhecida e validação.
+
+LEMBRETE PARA TODOS
+O catálogo vem de pesquisa. Os perfis, veículos, posições e tempos da apresentação são fictícios. A base de atrasos é sintética. O servidor ainda não está publicado e não há integração operacional com a frota.

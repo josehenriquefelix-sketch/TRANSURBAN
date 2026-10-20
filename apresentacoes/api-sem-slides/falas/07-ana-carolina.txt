@@ -1,0 +1,15 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+
+## Parte 7 — Ana Carolina: conclusão (cerca de 40 segundos)
+
+“Hoje mostramos três resultados: cadastrar e consultar informações, impedir cadastros inválidos e transformar um arquivo público em indicadores que podem ser conferidos.
+
+A preparação inclui testes automatizados e respostas registradas como evidência. O código e o roteiro estão disponíveis no GitHub.
+
+A demonstração usa banco local e dados públicos históricos de Curitiba. A conexão com o Supabase ainda está pendente. Nosso objetivo nesta etapa é demonstrar o funcionamento do backend e explicar os dados com clareza.
+
+Obrigada pela atenção! Estamos disponíveis para perguntas.”
+
+Informação de apoio, se perguntarem sobre testes: a revisão da API passou em 29 testes e 22 requisições na nuvem Linux. Só afirmar execução no notebook da apresentação depois de conferir os resultados nele. Não confundir contagem de testes com registros de transporte.
+
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

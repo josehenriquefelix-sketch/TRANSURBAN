@@ -1,0 +1,68 @@
+{
+  "data": "2026-10-19",
+  "origem": "Respostas do Swagger executado no computador da escola e coladas pelo usuário nesta conversa.",
+  "execucao_pelo_agente": false,
+  "banco": "Banco configurado no computador da escola; fornecedor não verificado por estas respostas.",
+  "reinicio_confirmado": false,
+  "resultados": [
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "entrada": {"nome": "Maringá"},
+      "status": 201,
+      "resposta": {"id_cidade": 1, "nome": "Maringá"}
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "entrada": {"codigo": "001", "nome": "Linha de demonstração", "id_cidade": 1},
+      "status": 201,
+      "resposta": {"id_linha": 1, "codigo": "001", "nome": "Linha de demonstração", "id_cidade": 1, "cidade": "Maringá"}
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas",
+      "status": 200,
+      "resposta": [{"id_linha": 1, "codigo": "001", "nome": "Linha de demonstração", "id_cidade": 1, "cidade": "Maringá"}]
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "entrada": {"codigo": "TESTE-ERRO", "nome": "Teste de cidade inexistente", "id_cidade": 999999},
+      "status": 404,
+      "resposta": {"detail": "Cidade não encontrada"}
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas",
+      "status": 200,
+      "resposta": [{"id_linha": 1, "codigo": "001", "nome": "Linha de demonstração", "id_cidade": 1, "cidade": "Maringá"}],
+      "verificacao": "A tentativa TESTE-ERRO não aparece na consulta posterior."
+    },
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "entrada": {"nome": "   "},
+      "status": 422,
+      "resposta": {"detail": [{"type": "string_too_short", "loc": ["body", "nome"], "msg": "String should have at least 1 character", "input": "   ", "ctx": {"min_length": 1}}]}
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades",
+      "status": 200,
+      "resposta": [{"id_cidade": 1, "nome": "Maringá"}]
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas",
+      "status": 200,
+      "resposta": [{"id_linha": 1, "codigo": "001", "nome": "Linha de demonstração", "id_cidade": 1, "cidade": "Maringá"}]
+    }
+  ],
+  "limitacoes": [
+    "Os resultados foram transcritos das respostas fornecidas pelo usuário; não são capturas de tela.",
+    "As respostas não comprovam conexão com Supabase nem identificam o banco utilizado.",
+    "As consultas finais preservam os registros, mas o usuário não confirmou explicitamente o reinício do processo.",
+    "Não houve acesso remoto do agente ao computador da escola."
+  ]
+}

@@ -1,0 +1,55 @@
+TRANSURBAN — API SEM SLIDES — 20/10/2026
+
+## Parte 3 — José Henrique: cadastro e relacionamento (cerca de 2 minutos e meio)
+
+### Antes de falar: preparar a tela
+
+Confira GET `/apresentacao` e GET `/health` antes de chamar a equipe. Na fala, basta apontar que /health retornou status ok e banco sqlite_local. Se o professor pedir, abra as respostas. Os testes da demonstração usam banco local; não há conexão Supabase comprovada.
+
+### Passo 1: explicar a organização, mostrando o VS Code brevemente
+
+“Organizamos o código em partes: conexão com o banco, tabelas, validação dos dados e rotas. Isso facilita entender a função de cada arquivo e encontrar onde fazer uma alteração.
+
+O projeto usa Python. O FastAPI disponibiliza as rotas, o SQLAlchemy trabalha com o banco e o Pydantic valida os dados recebidos. A análise do arquivo público usa Pandas.”
+
+Quem opera aponta, sem ler o código inteiro: database.py = conexão; models.py = tabelas e relações; schemas.py = validação; main.py = rotas. A análise pública atual está em dados_publicos.py; importar_dados_publicos.py produz o CSV. analise.py/ia_routes.py pertencem à base sintética anterior e não são os arquivos da nova análise pública.
+
+### Passo 2: cadastrar a cidade
+
+Volte ao Swagger. Em POST `/cidades`, clique Try it out, selecione o exemplo de cadastro válido e Execute:
+
+```json
+{"nome":"Sarandi"}
+```
+
+Espere Server response 201. Aponte para nome e id_cidade, sem assumir que o ID é 1.
+
+“Agora cadastramos Sarandi. POST é o método que usamos para enviar esse cadastro. O código 201 confirma que o registro foi criado.
+
+Este número é a identificação da cidade no banco. Ele é a chave primária: permite identificar cada registro sem confundir um com outro.”
+
+### Passo 3: cadastrar a linha usando o ID retornado
+
+Em POST `/linhas`, selecione o exemplo válido, substitua id_cidade pelo número realmente devolvido e Execute. O 1 abaixo é só ilustrativo:
+
+```json
+{"codigo":"DEMO-20","nome":"Linha da apresentação","id_cidade":1}
+```
+
+Espere 201. Aponte para id_cidade e cidade.
+
+“Vamos cadastrar uma linha de demonstração usando a identificação da cidade. Esse nome e esse código foram escolhidos apenas para o teste.
+
+O campo id_cidade liga a linha ao registro da cidade. Essa ligação é a chave estrangeira. Neste recorte do sistema, uma cidade pode ter várias linhas, e cada linha precisa apontar para uma cidade cadastrada.”
+
+### Passo 4: consultar o que foi salvo
+
+Execute GET `/linhas`. Esperado: 200, com o cadastro e cidade Sarandi. GET `/cidades` também fica disponível se quiserem conferir a cidade.
+
+“Agora consultamos o que acabamos de salvar. O código 200 indica que a consulta foi atendida. A resposta traz o nome da cidade junto da linha, para facilitar a leitura.
+
+Esse formato de campos e valores se chama JSON. Uma interface pode usar essa resposta para mostrar as informações ao usuário. O Gustavo vai testar o que acontece quando os dados estão errados.”
+
+Repetir cadastro pode criar outro ID: use sempre o retornado nessa execução. Não apagar o banco do ensaio nem afirmar que SQLite rejeita nomes repetidos.
+
+Não mostre senhas ou .env. As respostas devem ser conferidas antes de anunciadas.

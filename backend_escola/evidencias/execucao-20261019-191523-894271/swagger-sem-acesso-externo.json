@@ -1,0 +1,16 @@
+{
+  "ambiente": "Chromium Linux na nuvem; não comprova ensaio no notebook Windows/projetor",
+  "acesso_externo": "bloqueado pelo navegador durante todo o teste",
+  "swagger": "carregado com assets locais",
+  "health": {
+    "status": "ok",
+    "banco": "sqlite_local"
+  },
+  "resumo": {
+    "observacoes": 180,
+    "total": 1362
+  },
+  "requisicoes_externas": [],
+  "erros_javascript": [],
+  "aprovado": true
+}
