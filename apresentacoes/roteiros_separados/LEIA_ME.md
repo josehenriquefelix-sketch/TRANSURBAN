@@ -14,3 +14,7 @@ Os Markdown ao lado são as fontes dos documentos. `ferramentas/gerar_roteiros_d
 ## Versão curta de IA — cerca de 5 minutos
 
 Use `ROTEIRO_IA_CSV_5_MINUTOS.docx` ou `.pdf` para o tempo reduzido solicitado. Jullyany e Camila dividem 492 palavras de fala, com marcações de tempo e quatro consultas ao vivo (fonte pode ficar aberta antes do início). Os tempos são metas de ensaio; não há garantia de duração sem ensaiar os cliques. A fonte Markdown está ao lado. O roteiro anterior de IA é a versão mais longa, mantida para consulta.
+
+## Versão curta de DS — somente José, Bruno e Kauan
+
+Use `ROTEIRO_DS_5_MINUTOS_JOSE_BRUNO_KAUAN.docx` ou `.pdf`. Esta revisão atende à equipe reduzida: José opera e explica a parte técnica; Bruno e Kauan têm falas curtas. São 412 palavras de fala com exemplos JSON, instruções e marcações para aproximadamente cinco minutos, incluindo cliques. Não há falas para integrantes ausentes. O texto contém somente backend DS. O arquivo `.md` é a fonte; os roteiros anteriores ficam como versões históricas.
