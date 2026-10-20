@@ -1,15 +1,26 @@
 """Execute no terminal local. Não envie sua senha no chat."""
 from getpass import getpass
+from argparse import ArgumentParser
 from pathlib import Path
 from dotenv import set_key
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import URL
 
 def main():
-    host = input("Host (painel Connect): ").strip()
-    usuario = input("Usuário (painel Connect): ").strip()
-    porta = int(input("Porta [5432]: ").strip() or "5432")
-    banco = input("Banco [postgres]: ").strip() or "postgres"
+    parser = ArgumentParser(description="Configura a conexão privada sem mostrar a senha.")
+    parser.add_argument("--transurban", action="store_true", help="Usa os parâmetros públicos do projeto TRANSURBAN já conferidos no painel.")
+    args = parser.parse_args()
+    if args.transurban:
+        host = "aws-0-us-east-2.pooler.supabase.com"
+        usuario = "postgres.lsnpvokfnvyjkvqzkvof"
+        porta = 5432
+        banco = "postgres"
+        print("Projeto TRANSURBAN selecionado. Informe a senha do banco, não a senha do GitHub.")
+    else:
+        host = input("Host (painel Connect): ").strip()
+        usuario = input("Usuário (painel Connect): ").strip()
+        porta = int(input("Porta [5432]: ").strip() or "5432")
+        banco = input("Banco [postgres]: ").strip() or "postgres"
     senha = getpass("Senha do banco (não será exibida): ")
     if not host or not usuario or not senha:
         raise SystemExit("Campos obrigatórios não preenchidos. .env não foi alterado.")

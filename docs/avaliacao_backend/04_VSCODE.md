@@ -55,3 +55,7 @@ Em backend, o utilitário configurar_supabase.py pede host, usuário, porta e se
 ```
 
 Esse passo deve ser executado pelo usuário para informar a credencial privada. Depois reinicie a API e teste GET /cidades e GET /linhas. A autenticação do painel web não fornece automaticamente a senha de conexão PostgreSQL à API.
+
+## Atalho simples para este projeto
+
+No Explorador de Arquivos, abra a raiz da entrega e dê duplo clique em CONECTAR_SUPABASE.cmd. O atalho executa o utilitário com --transurban e já informa o host, o usuário, a porta e o banco conferidos no painel. Digite somente a senha do banco no prompt oculto e pressione Enter. Se a conexão não for confirmada, o .env é preservado. Se funcionar, DATABASE_URL é atualizada, TEST_DATABASE_URL é mantida e a mensagem pede reiniciar a API. A senha do banco é diferente da senha de login do GitHub. A execução com credencial real continua dependendo do usuário.
