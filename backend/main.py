@@ -44,7 +44,8 @@ def inicio():
 
 @app.post(
     "/cidades",
-    response_model=schemas.CidadeResponse
+    response_model=schemas.CidadeResponse,
+    responses={409: {"model": schemas.ErroResponse, "description": "Registro já cadastrado"}}
 )
 def criar_cidade(
     cidade: schemas.CidadeCreate,
@@ -71,7 +72,11 @@ def listar_cidades(
 
 @app.post(
     "/linhas",
-    response_model=schemas.LinhaOnibusResponse
+    response_model=schemas.LinhaOnibusResponse,
+    responses={
+        404: {"model": schemas.ErroResponse, "description": "Cidade não encontrada"},
+        409: {"model": schemas.ErroResponse, "description": "Registro já cadastrado"}
+    }
 )
 def criar_linha(
     linha: schemas.LinhaOnibusCreate,

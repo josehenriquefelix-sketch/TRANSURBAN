@@ -24,29 +24,29 @@ DATABASE_SCHEMA=transurban_caderno
 Nesta máquina, a conexão já está configurada no `.env`. Esse arquivo e a `.venv` ficam fora do Git.
 
 ```bat
-python -m uvicorn main:app --port 8090
+python -m uvicorn main:app --port 8091
 ```
 
-Esta execução utiliza a porta 8090. Para desenvolvimento, a opção `--reload` pode ser acrescentada ao comando.
+Esta revisão utiliza a porta 8091. Para desenvolvimento, a opção `--reload` pode ser acrescentada ao comando.
 
-Acesse a documentação em http://127.0.0.1:8090/docs.
+Acesse a documentação em http://127.0.0.1:8091/docs. A execução anterior na porta 8090 não contém as últimas correções de documentação.
 
 ## Demonstração na ordem do caderno
 
 1. Execute `GET /` para conferir a API.
-2. Execute `POST /cidades` com `{"nome":"Paiçandu"}`, cidade real confirmada no [IBGE](https://www.ibge.gov.br/cidades-e-estados/pr/paicandu.html). Ela foi reservada para o cadastro ao vivo e ainda não faz parte da base inicial.
+2. Execute `POST /cidades` com `{"nome":"Marialva"}`, cidade real confirmada no [IBGE](https://www.ibge.gov.br/cidades-e-estados/pr/marialva.html). Na revisão de 20/10, ela ainda não estava cadastrada. Paiçandu e sua linha já foram cadastradas no ensaio.
 3. Observe o `id_cidade` gerado e execute `GET /cidades`.
 4. Execute `POST /linhas` usando o identificador retornado no passo 2:
 
 ```json
 {
-  "nome": "Maringá - Paiçandu (Via Trevo)",
-  "codigo": "001.0327-400",
+  "nome": "Maringá - Marialva",
+  "codigo": "001.0224-400",
   "id_cidade": 1
 }
 ```
 
-Substitua `1` pelo identificador realmente retornado. Essa linha consta no [documento oficial do DER-PR](https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2025-12/MaringaPaicanduViaTrevoREG0511001.032740025.059.028801.12.25retif.pdf). Se repetir um cadastro já existente, a API responderá 409 com `Registro já cadastrado`.
+Substitua `1` pelo identificador realmente retornado antes de executar. Essa linha consta no [documento oficial do DER-PR](https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-02/Maringa_Marialva_REG0007_Linha0010224400_150226.pdf). Se repetir um cadastro já existente, a API responderá 409 com `Registro já cadastrado`.
 
 5. Execute `GET /linhas`. A resposta apresenta `cidade` com o nome, além de `id_linha`, `nome` e `codigo`.
 6. Faça outro `POST /linhas` com um `id_cidade` inexistente. A resposta esperada é HTTP 404 com `{"detail":"Cidade não encontrada"}`.
@@ -67,5 +67,7 @@ Substitua `1` pelo identificador realmente retornado. Essa linha consta no [docu
 O recorte desta avaliação utiliza Cidade e Linha de Ônibus. Os demais relacionamentos do DER servem de contexto para o projeto e para o desafio de compreensão do caderno.
 
 Os dados iniciais e suas fontes oficiais estão em [docs/FONTES.md](docs/FONTES.md). O schema `transurban_caderno` já foi criado no Supabase desta máquina. Em outro banco, crie esse schema antes de iniciar ou deixe `DATABASE_SCHEMA` vazio para utilizar o schema padrão.
+
+Os [roteiros de apresentação](docs/ROTEIROS_APRESENTACAO.md) incluem falas, demonstração e perguntas frequentes. O [relatório de revisão](docs/REVISAO_FINAL.md) registra os testes e os ajustes feitos.
 
 Foram feitos dois ajustes de integração às regras do TRANSURBAN: seleção explícita do schema no mapeamento SQLAlchemy, pois a conexão do Supabase não aplicou o parâmetro da URL; e tratamento de duplicidades e limites de texto definidos no dicionário. As rotas e o percurso PK → FK seguem o caderno.

@@ -1,0 +1,142 @@
+{
+  "http": [
+    {
+      "rota": "/",
+      "metodo": "GET",
+      "status": 200,
+      "resposta": {
+        "mensagem": "API funcionando"
+      }
+    },
+    {
+      "rota": "/openapi.json",
+      "metodo": "GET",
+      "status": 200,
+      "resposta": {
+        "erros_documentados": [
+          404,
+          409,
+          422
+        ]
+      }
+    },
+    {
+      "rota": "/cidades",
+      "metodo": "GET",
+      "status": 200,
+      "resposta": [
+        {
+          "id_cidade": 1,
+          "nome": "Maringá"
+        },
+        {
+          "id_cidade": 2,
+          "nome": "Sarandi"
+        },
+        {
+          "id_cidade": 3,
+          "nome": "Paiçandu"
+        }
+      ]
+    },
+    {
+      "rota": "/linhas",
+      "metodo": "GET",
+      "status": 200,
+      "resposta": [
+        {
+          "id_linha": 1,
+          "codigo": "001.0254-420",
+          "nome": "Maringá - Sarandi (Parque Alvamar)",
+          "cidade": "Sarandi"
+        },
+        {
+          "id_linha": 2,
+          "codigo": "001.0254-470",
+          "nome": "Maringá - Sarandi (Cj. Vale Azul)",
+          "cidade": "Sarandi"
+        },
+        {
+          "id_linha": 3,
+          "codigo": "002.0254-470",
+          "nome": "Maringá - Sarandi (Monte Rey)",
+          "cidade": "Sarandi"
+        },
+        {
+          "id_linha": 4,
+          "codigo": "001.0327-400",
+          "nome": "Maringá - Paiçandu (Via Trevo)",
+          "cidade": "Paiçandu"
+        }
+      ]
+    },
+    {
+      "rota": "/cidades",
+      "metodo": "POST",
+      "status": 409,
+      "resposta": {
+        "detail": "Registro já cadastrado"
+      }
+    },
+    {
+      "rota": "/linhas",
+      "metodo": "POST",
+      "status": 409,
+      "resposta": {
+        "detail": "Registro já cadastrado"
+      }
+    },
+    {
+      "rota": "/linhas",
+      "metodo": "POST",
+      "status": 404,
+      "resposta": {
+        "detail": "Cidade não encontrada"
+      }
+    },
+    {
+      "rota": "/cidades",
+      "metodo": "POST",
+      "status": 422,
+      "resposta": {
+        "detail": [
+          {
+            "type": "string_too_short",
+            "loc": [
+              "body",
+              "nome"
+            ],
+            "msg": "String should have at least 1 character",
+            "input": "   ",
+            "ctx": {
+              "min_length": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "rota": "/linhas",
+      "metodo": "POST",
+      "status": 422,
+      "resposta": {
+        "detail": [
+          {
+            "type": "string_too_short",
+            "loc": [
+              "body",
+              "codigo"
+            ],
+            "msg": "String should have at least 1 character",
+            "input": "   ",
+            "ctx": {
+              "min_length": 1
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "conferencia_sql": "3 cidades, 4 linhas, FK e nomes conferidos",
+  "demo_marialva": "ainda não cadastrada"
+}

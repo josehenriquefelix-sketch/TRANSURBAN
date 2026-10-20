@@ -17,6 +17,23 @@
   },
   {
     "metodo": "GET",
+    "rota": "/openapi.json",
+    "status": 200,
+    "resposta": {
+      "rotas": [
+        "/",
+        "/cidades",
+        "/linhas"
+      ],
+      "erros_documentados": [
+        404,
+        409,
+        422
+      ]
+    }
+  },
+  {
+    "metodo": "GET",
     "rota": "/cidades",
     "status": 200,
     "resposta": []
@@ -65,6 +82,27 @@
           "input": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
           "ctx": {
             "max_length": 100
+          }
+        }
+      ]
+    }
+  },
+  {
+    "metodo": "POST",
+    "rota": "/cidades",
+    "status": 422,
+    "resposta": {
+      "detail": [
+        {
+          "type": "string_too_short",
+          "loc": [
+            "body",
+            "nome"
+          ],
+          "msg": "String should have at least 1 character",
+          "input": "   ",
+          "ctx": {
+            "min_length": 1
           }
         }
       ]

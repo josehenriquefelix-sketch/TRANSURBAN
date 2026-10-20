@@ -17,6 +17,23 @@
   },
   {
     "metodo": "GET",
+    "rota": "/openapi.json",
+    "status": 200,
+    "resposta": {
+      "rotas": [
+        "/",
+        "/cidades",
+        "/linhas"
+      ],
+      "erros_documentados": [
+        404,
+        409,
+        422
+      ]
+    }
+  },
+  {
+    "metodo": "GET",
     "rota": "/cidades",
     "status": 200,
     "resposta": [
@@ -27,6 +44,10 @@
       {
         "id_cidade": 2,
         "nome": "Sarandi"
+      },
+      {
+        "id_cidade": 3,
+        "nome": "Paiçandu"
       }
     ]
   },
@@ -52,6 +73,12 @@
         "codigo": "002.0254-470",
         "nome": "Maringá - Sarandi (Monte Rey)",
         "cidade": "Sarandi"
+      },
+      {
+        "id_linha": 4,
+        "codigo": "001.0327-400",
+        "nome": "Maringá - Paiçandu (Via Trevo)",
+        "cidade": "Paiçandu"
       }
     ]
   },
