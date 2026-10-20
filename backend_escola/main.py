@@ -43,7 +43,8 @@ async def cabecalhos_site(request, call_next):
     response = await call_next(request)
     if request.url.path.startswith(("/app", "/web-api/")):
         response.headers["X-Content-Type-Options"] = "nosniff"
-        response.headers["Referrer-Policy"] = "same-origin"
+        response.headers["Referrer-Policy"] = ("strict-origin-when-cross-origin"
+                                                if request.url.path.startswith("/app") else "same-origin")
         response.headers["Permissions-Policy"] = "geolocation=(self), camera=(), microphone=()"
         if request.url.path.startswith("/web-api/"):
             response.headers["Cache-Control"] = "no-store"

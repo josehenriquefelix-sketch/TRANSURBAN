@@ -217,3 +217,5 @@ def test_percurso_recebido_do_servico_e_cabecalhos(clients,monkeypatch):
     assert route['instrucoes'][0]['direcao']=='right'
     assert d.get('/web-api/me').headers['cache-control']=='no-store'
     assert "script-src 'self'" in d.get('/app/').headers['content-security-policy']
+    assert d.get('/app/').headers['referrer-policy']=='strict-origin-when-cross-origin'
+    assert d.get('/web-api/me').headers['referrer-policy']=='same-origin'
