@@ -1,0 +1,14 @@
+﻿FALAS CURTAS — TRANSURBAN
+
+DS — apresentação própria:
+Ana Clara → Bruno Miguel → Ana Carolina → Kauan Celso → José Henrique.
+Falas: cerca de 3 a 4 minutos ao todo, mais o tempo dos cliques. Reserve aproximadamente 5 a 6 minutos com a demonstração.
+
+IA — apresentação separada:
+Jullyany → Camila. Cerca de 2 minutos de fala, mais a execução das rotas. Não precisam repetir a apresentação de DS.
+
+Cada arquivo tem: o que mostrar na tela, a fala curta e uma resposta para pergunta provável. Leia somente SUA FALA; as instruções da tela servem para ensaiar.
+
+Nesta versão: API local de cidades e linhas; CSV sintético com 180 registros; cenário do site separado do banco da API. Sem GPS real ou pagamentos reais. Não usem o roteiro antigo de 71.086 registros de Curitiba para esta base.
+
+Antes de começar o site, clique em Reiniciar. Nas rotas de cadastro, use o ID que a API devolver, pois ele pode ser diferente de 1. A fala não atribui autoria exclusiva de arquivos a nenhum integrante.

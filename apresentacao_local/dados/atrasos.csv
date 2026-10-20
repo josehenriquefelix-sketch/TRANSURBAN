@@ -1,4 +1,4 @@
-data_registro,cidade,codigo_linha,nome_linha,trecho,tipo_trecho,periodo,condicao_transito,clima,tempo_programado_min,tempo_real_min,minutos_atraso,observacao
+﻿data_registro,cidade,codigo_linha,nome_linha,trecho,tipo_trecho,periodo,condicao_transito,clima,tempo_programado_min,tempo_real_min,minutos_atraso,observacao
 2026-08-01,Sarandi,001,Parque Alvamar / Conjunto Floresta,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,29,34,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
 2026-08-02,Maringá,010,Universidade,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,35,45,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
 2026-08-03,Maringá,021,Av. Tuiuti,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,40,49,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.

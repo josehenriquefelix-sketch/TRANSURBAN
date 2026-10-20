@@ -1,0 +1,30 @@
+TRANSURBAN — LEVAR AO COMPUTADOR DA APRESENTAÇÃO
+
+1. Baixe TRANSURBAN-APRESENTACAO-COM-VIDEO.zip e envie como DOCUMENTO pelo WhatsApp ou copie para um pendrive.
+2. No outro computador, baixe e escolha Extrair tudo. Não execute de dentro do ZIP.
+3. A videoaula.mp4 pode ser assistida imediatamente, sem Python nem internet.
+4. Para API e site juntos, é necessário Windows com Python 3.12 ou 3.13 instalado e internet na primeira preparação. Downloads oficiais: https://www.python.org/downloads/windows/
+5. Abra PREPARAR-OUTRO-COMPUTADOR.cmd. Espere aparecer Preparacao concluida. Não feche enquanto estiver instalando.
+6. Abra ABRIR-APRESENTACAO.cmd. O navegador deve abrir a API, o site e o painel.
+
+API: http://127.0.0.1:8000/docs
+Site: http://127.0.0.1:8000/app/
+Painel com videoaula: http://127.0.0.1:8000/apresentacao
+Console alternativo ao Swagger: http://127.0.0.1:8000/console
+
+NO VS CODE
+Depois de preparar, abra ABRIR-NO-VSCODE.code-workspace e consulte GUIA-DA-EQUIPE.md. O ambiente Python configurado fica em .venv. A instalação do VS Code é opcional para executar a apresentação.
+
+SEM INTERNET
+Depois da preparação, API SQLite, console, vídeo e cenário do site funcionam localmente. O Swagger pode depender de internet para sua interface. Como reserva, site/index.html funciona como demonstração offline mesmo sem instalar Python. Essa reserva não executa a API.
+
+GITHUB
+Código disponível em um branch separado:
+https://github.com/josehenriquefelix-sketch/TRANSURBAN/tree/apresentacao-local-20-10-2026
+A videoaula foi narrada antes desse envio; referências a GitHub pendente na gravação descrevem a etapa anterior. O MP4 completo está neste ZIP local; os arquivos binários de mídia não foram enviados ao branch.
+
+LIMITES IMPORTANTES
+O site mostra perfis, mapa e deslocamento simulados. O CSV de 180 registros é sintético. Não há GPS real, pagamento ou frota oficial conectados. A voz é neural masculina brasileira com pausas reduzidas; não há garantia de sotaque paranaense específico.
+
+ANTES DA AULA
+Teste no computador e no projetor. Cadastre uma cidade na API e use o ID retornado para cadastrar uma linha. Se houver falha de inicialização, consulte servidor.log e mantenha a demonstração offline como reserva. Leve também o ZIP em pendrive.

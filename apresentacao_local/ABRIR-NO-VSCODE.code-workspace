@@ -1,0 +1,14 @@
+{
+  "folders": [{"path": "."}],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+    "python.analysis.extraPaths": ["./backend"]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {"label": "Abrir apresentação", "type": "shell", "command": "${workspaceFolder}/ABRIR-APRESENTACAO.cmd", "problemMatcher": []},
+      {"label": "Verificar API", "type": "process", "command": "${workspaceFolder}/.venv/Scripts/python.exe", "args": ["${workspaceFolder}/verificar.py"], "problemMatcher": []}
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+﻿TRANSURBAN — Jullyany
+IA | CSV, origem e qualidade
+Tempo de fala: 45–55 segundos
+
+NA TELA — NÃO PRECISA LER
+1. Comece a apresentação de IA separadamente da de DS.
+2. Execute GET /ia/fonte e destaque que a base é sintética.
+3. Execute GET /ia/qualidade e mostre contagem, nulos e duplicados.
+
+SUA FALA
+
+Bom dia! Na parte de Ciência de Dados do TransUrban, usamos Python e Pandas para analisar um CSV. Esse arquivo organiza os dados em linhas e colunas e contém 180 registros sintéticos, criados para estudo. Não são medições reais de ônibus. Antes dos cálculos, verificamos valores ausentes, duplicados, datas e a diferença entre os tempos programado e real. Nessa amostra, essas verificações não encontraram inconsistências. Agora a Camila vai mostrar os resultados.
+
+SE O PROFESSOR PERGUNTAR
+A base é de Curitiba ou da frota de Maringá?
+Não. O pacote que estamos apresentando usa uma amostra acadêmica sintética de 180 registros.

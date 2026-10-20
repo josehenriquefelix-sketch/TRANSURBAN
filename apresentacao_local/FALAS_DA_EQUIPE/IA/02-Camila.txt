@@ -1,0 +1,16 @@
+﻿TRANSURBAN — Camila
+IA | Indicadores e conclusão de IA
+Tempo de fala: 50–60 segundos
+
+NA TELA — NÃO PRECISA LER
+1. Execute GET /ia/resumo e mostre os resultados.
+2. Execute GET /ia/agrupamentos/cidade para comparar os grupos.
+3. Se perguntarem por previsão de chegada, explique o limite da análise.
+
+SUA FALA
+
+Na amostra, a média do atraso é de 7,57 minutos, a mediana é de 8 minutos e o maior valor é de 12 minutos. A média considera todos os valores; a mediana é o valor central depois de ordenar os dados. Também agrupamos os registros por cidade para comparar os resultados. A API entrega essas informações em JSON. Esses números descrevem apenas a base sintética. Nesta etapa fizemos análise descritiva, sem treinar um modelo de IA nem prever chegadas reais. Obrigada!
+
+SE O PROFESSOR PERGUNTAR
+Onde está a IA?
+Nesta etapa, trabalhamos a preparação e a análise dos dados. Não apresentamos um modelo de aprendizado de máquina treinado.

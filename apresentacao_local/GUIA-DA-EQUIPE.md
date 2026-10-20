@@ -122,5 +122,12 @@ Fala final: “Esta análise descreve uma amostra de teste. Não treinamos um mo
 
 ## Versionamento
 
-Este trabalho foi salvo como pacote local. Nenhum commit, envio ao GitHub ou publicação em hospedagem foi realizado nesta etapa.
+O código foi enviado ao branch apresentacao-local-20-10-2026, preservando main:
+https://github.com/josehenriquefelix-sketch/TRANSURBAN/tree/apresentacao-local-20-10-2026
+A videoaula foi narrada antes do envio; falas sobre GitHub ainda pendente descrevem a etapa anterior. O MP4 está no ZIP local e não foi enviado ao branch. O site não foi publicado em hospedagem.
 O serviço é restrito ao próprio computador, no endereço 127.0.0.1. O site continua demonstrativo; não há GPS real, pagamento real nem integração operacional à frota.
+
+
+## Ritmo da narração
+
+A voz neural masculina foi ajustada para reduzir silêncios longos e manter pequenas pausas entre frases. O idioma é português brasileiro, sem controle específico de sotaque paranaense. Os 18 capítulos e o texto narrado foram preservados.
