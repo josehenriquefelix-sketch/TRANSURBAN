@@ -10,3 +10,7 @@ Para usar no Google Docs: Google Drive → Novo → Upload de arquivo → seleci
 Somente os parágrafos identificados por FALA são para ler ao público. NA TELA e APOIO orientam os cliques e perguntas. Execute cada consulta e espere o resultado antes de anunciá-lo. O parâmetro de exibição do agrupamento IA chama-se **limite**; use 5 no telão.
 
 Os Markdown ao lado são as fontes dos documentos. `ferramentas/gerar_roteiros_docx.py` recria os `.docx` com python-docx. Os arquivos foram reabertos e sua estrutura e conteúdo conferidos; não foi realizado ensaio no Word/Google Docs da equipe.
+
+## Versão curta de IA — cerca de 5 minutos
+
+Use `ROTEIRO_IA_CSV_5_MINUTOS.docx` ou `.pdf` para o tempo reduzido solicitado. Jullyany e Camila dividem 492 palavras de fala, com marcações de tempo e quatro consultas ao vivo (fonte pode ficar aberta antes do início). Os tempos são metas de ensaio; não há garantia de duração sem ensaiar os cliques. A fonte Markdown está ao lado. O roteiro anterior de IA é a versão mais longa, mantida para consulta.
