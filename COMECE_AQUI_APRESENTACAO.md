@@ -107,3 +107,6 @@ As alterações estão na branch indicada; isso não significa merge na main ou 
 
 
 Site funcional adicional: veja [guia do site](backend_escola/SITE_FUNCIONAL.md). A própria API serve a interface em `/app/`, com contas, viagens, avaliações e carteira de demonstração. A apresentação DS/IA em `/docs` continua disponível.
+
+
+Entrega reduzida de 20/10: [ZIP, API, site e falas](pacotes/LEIA-ME.md). [Guia do líder e explicação dos códigos](apresentacoes/GUIA_LIDER_API_SITE.md). O diagnóstico antes de apresentar está em `iniciar_apresentacao.py --diagnostico`.

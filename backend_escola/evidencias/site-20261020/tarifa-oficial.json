@@ -1,0 +1,19 @@
+{
+  "cidade": "Maringá",
+  "ano_referencia": 2026,
+  "verificada": true,
+  "valor_centavos": 580,
+  "moeda": "BRL",
+  "tipo": "Tarifa integral do transporte coletivo urbano municipal",
+  "vigente_desde": "2026-07-12",
+  "publicado_em": "2026-07-10",
+  "consultado_em_utc": "2026-10-20T00:55:23.065551+00:00",
+  "fonte": "Prefeitura do Município de Maringá",
+  "fonte_url": "https://www.maringa.pr.gov.br/noticias/com-investimento-de-r-60-milhoes-prefeitura-de-maringa-garante-menor-tarifa-de-transporte-coletivo/42651",
+  "titulo_fonte": "Com investimento de R$ 60 milhões, Prefeitura de Maringá garante menor tarifa de transporte coletivo entre as quatro maiores cidades do Paraná",
+  "trecho_fonte": "Nova tarifa será de R$ 5,80 e passa a valer a partir deste domingo, 12",
+  "sha256_html_consultado": "57c53b977daedcc8ae996c0a8f56c40daff2fd16fe5900dde2f4a118ee3bd3d9",
+  "decreto_citado_na_noticia": "1262/2026; texto do decreto não auditado nesta consulta",
+  "abrangencia": "Somente tarifa integral urbana municipal de Maringá. Não aplicar automaticamente a Sarandi, linhas metropolitanas, gratuidades ou benefícios.",
+  "mensagem": "Referência oficial publicada em 10/07/2026, com início em 12/07/2026. Carteira e equivalência neste site são demonstrações; não emitem bilhetes."
+}

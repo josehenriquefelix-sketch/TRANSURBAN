@@ -359,8 +359,15 @@ def carteira(conta=Depends(conta_atual),db:Session=Depends(banco)):
     exigir(conta,'passageiro')
     rows=db.scalars(select(LancamentoWeb).where(LancamentoWeb.conta_id==conta.id).order_by(LancamentoWeb.criado_em.desc(),LancamentoWeb.id.desc())).all()
     saldo=sum(x.valor_centavos for x in rows)
+    tarifa=json.loads((ROOT/'data/site/tarifa.json').read_text(encoding='utf-8'))
+    valor=tarifa.get('valor_centavos')
+    referencia=valor if tarifa.get('verificada') and type(valor) is int and valor>0 else None
     return {'modo':'demonstracao','saldo_centavos':saldo,'credito_vt_centavos':sum(x.valor_centavos for x in rows if x.tipo=='vt_demo'),
-            'passes_reais':None,'aviso':'Créditos de demonstração: não compram passagens e não são depósitos de empresas ou cobranças bancárias.',
+            'passes_reais':None,'equivalencia_demonstracao':({
+                'tarifa_integral_centavos':referencia,'quantidade':saldo//referencia,
+                'resto_centavos':saldo%referencia,'cidade':'Maringá','fonte_url':tarifa['fonte_url'],
+                'aviso':'Equivalência matemática em tarifa integral urbana de Maringá; não são bilhetes ou passes disponíveis para embarque.'
+            } if referencia else None),'aviso':'Créditos de demonstração: não compram passagens e não são depósitos de empresas ou cobranças bancárias.',
             'lancamentos':[{'id':x.id,'tipo':x.tipo,'valor_centavos':x.valor_centavos,'metodo':x.metodo,'parcelas':x.parcelas,'origem':x.origem,'criado_em':x.criado_em} for x in rows]}
 
 def lancar(db,conta,valor,tipo,metodo,parcelas,chave,origem_credito=None):

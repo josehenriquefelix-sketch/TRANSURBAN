@@ -1,5 +1,5 @@
 {
-  "consultado_em_utc": "2026-10-19T21:46:45.076423+00:00",
+  "consultado_em_utc": "2026-10-20T00:57:57.963311+00:00",
   "fontes": [
     {
       "url": "https://www.nahoramaringa.com.br/",
@@ -13,7 +13,11 @@
     {
       "url": "https://www.tccc.com.br",
       "resultado": "HTTP 503 durante consulta; tarifa não confirmada."
+    },
+    {
+      "url": "https://www.maringa.pr.gov.br/noticias/com-investimento-de-r-60-milhoes-prefeitura-de-maringa-garante-menor-tarifa-de-transporte-coletivo/42651",
+      "resultado": "Fonte oficial Prefeitura, notícia de 10/07/2026: tarifa integral urbana R$ 5,80 com início em 12/07/2026. Snapshot e abrangência em tarifa.json."
     }
   ],
-  "nota": "Nenhum itinerário ou preço foi inferido destas páginas. Clima e OSRM possuem evidência separada."
+  "nota": "Nenhum itinerário foi inferido destas páginas. Tarifa urbana integral de Maringá confirmada em notícia oficial; clima e OSRM possuem evidências separadas."
 }

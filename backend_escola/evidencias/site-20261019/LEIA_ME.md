@@ -7,3 +7,5 @@
 Não foram publicados banco de contas, cookies, senha pessoal, `.env` nem dados de cartão. Estes resultados não substituem o ensaio no notebook e projetor do auditório.
 
 - `site-mapa-online.json`: imagem OpenStreetMap carregada no navegador via proxy de QA; exceção de certificado apenas no navegador de teste, descrita no relatório. Não comprova a rede do auditório.
+
+Atualização 20/10: o ensaio anterior do mapa com exceção de certificado foi substituído por `../site-20261020/mapa-tls-validado.json`, com validação TLS ativa. Use o novo resultado para a entrega atual.

@@ -153,7 +153,10 @@ def test_carteira_demo_idempotente_parcelas_e_vt_sem_cobranca(clients):
     assert wallet['saldo_centavos']==22001 and wallet['credito_vt_centavos']==10000
     assert len(wallet['lancamentos'])==2 and wallet['passes_reais'] is None
     assert o.get('/web-api/carteira').json()['saldo_centavos']==0
-    config=p.get('/web-api/configuracao').json();assert config['tarifa']['valor_centavos'] is None and config['pagamentos_reais'] is False
+    config=p.get('/web-api/configuracao').json();assert config['tarifa']['valor_centavos']==580 and config['pagamentos_reais'] is False
+    assert config['tarifa']['vigente_desde']=='2026-07-12'
+    assert wallet['equivalencia_demonstracao']['quantidade']==37
+    assert wallet['equivalencia_demonstracao']['resto_centavos']==541
 
 
 def test_servicos_externos_nao_fabricam_clima_ou_geometria(clients,monkeypatch):

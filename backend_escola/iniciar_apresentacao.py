@@ -15,6 +15,7 @@ def main():
     modes.add_argument("--preparar", action="store_true")
     modes.add_argument("--testar", action="store_true")
     modes.add_argument("--evidencias", action="store_true")
+    modes.add_argument("--diagnostico", action="store_true")
     parser.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
@@ -45,6 +46,8 @@ def main():
         command = [str(python), "-m", "pytest", "-q"]
     elif args.evidencias:
         command = [str(python), "gerar_evidencias.py"]
+    elif args.diagnostico:
+        command = [str(python), "diagnosticar_apresentacao.py"]
     else:
         print("Apresentação com SQLite LOCAL. IA pública: snapshot histórico de Curitiba em /ia/dados-publicos. Não usa Supabase.", flush=True)
         print("Swagger em modo apresentação: testes sintéticos anteriores não são listados. Comece por GET /apresentacao.", flush=True)

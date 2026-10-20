@@ -1,0 +1,73 @@
+{
+  "executado_em_utc": "2026-10-20T00:54:24.932384+00:00",
+  "verificacoes": [
+    {
+      "nome": "Python",
+      "ok": true,
+      "detalhe": "3.12; esta entrega foi validada em 3.12"
+    },
+    {
+      "nome": "Dependências",
+      "ok": true,
+      "detalhe": "instaladas"
+    },
+    {
+      "nome": "Biblioteca do mapa",
+      "ok": true,
+      "detalhe": "hashes dos arquivos locais conferidos"
+    },
+    {
+      "nome": "Banco de ensaio",
+      "ok": true,
+      "detalhe": "SQLite temporário; banco pessoal preservado"
+    },
+    {
+      "nome": "/docs",
+      "ok": true,
+      "detalhe": "recurso recebido"
+    },
+    {
+      "nome": "/app/",
+      "ok": true,
+      "detalhe": "recurso recebido"
+    },
+    {
+      "nome": "/app/app.js",
+      "ok": true,
+      "detalhe": "recurso recebido"
+    },
+    {
+      "nome": "/app/styles.css",
+      "ok": true,
+      "detalhe": "recurso recebido"
+    },
+    {
+      "nome": "IA e integridade da fonte",
+      "ok": true,
+      "detalhe": "programação histórica de Curitiba; sem inventar atraso medido"
+    },
+    {
+      "nome": "Carteira de demonstração",
+      "ok": true,
+      "detalhe": "sem cobrança ou depósito real"
+    },
+    {
+      "nome": "Clima",
+      "ok": true,
+      "detalhe": "resposta real recebida com validação TLS ativa"
+    },
+    {
+      "nome": "Traçado de ruas",
+      "ok": true,
+      "detalhe": "resposta real recebida com validação TLS ativa"
+    },
+    {
+      "nome": "Imagem do mapa",
+      "ok": true,
+      "detalhe": "resposta real recebida com validação TLS ativa"
+    }
+  ],
+  "internet_testada": true,
+  "observacao": "Não comprova GPS físico, projetor, Windows ou conexão Supabase.",
+  "aprovado": true
+}

@@ -6,6 +6,8 @@ py -3.12 iniciar_apresentacao.py --preparar
 if errorlevel 1 goto falha
 py -3.12 iniciar_apresentacao.py --testar
 if errorlevel 1 goto falha
+py -3.12 iniciar_apresentacao.py --diagnostico
+if errorlevel 1 goto falha
 py -3.12 iniciar_apresentacao.py --evidencias
 if errorlevel 1 goto falha
 echo.

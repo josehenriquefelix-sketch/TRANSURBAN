@@ -1,0 +1,5 @@
+{
+  "tiles_carregados": 8,
+  "erros_javascript": [],
+  "nota": "Imagens reais OpenStreetMap recebidas por cliente HTTPS Playwright com validação TLS ativa e repassadas ao Chromium. Relay de QA necessário ao certificado do proxy; sem exceção TLS. Não comprova rede do usuário ou GPS físico."
+}

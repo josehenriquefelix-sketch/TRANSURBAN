@@ -28,7 +28,7 @@ async def lifespan(app: FastAPI):
         engine.dispose()
 
 APRESENTACAO = os.getenv("TRANSURBAN_APRESENTACAO") == "1"
-app = FastAPI(title="API TRANSURBAN", version="1.4.0", lifespan=lifespan,
+app = FastAPI(title="API TRANSURBAN", version="1.4.1", lifespan=lifespan,
               docs_url=None, redoc_url=None,
               openapi_tags=[
                   {"name":"Apresentação", "description":"Comece pelo roteiro dos testes. Cadastros DS são exemplos; IA usa programação pública histórica de Curitiba."},

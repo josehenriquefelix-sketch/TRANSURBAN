@@ -55,7 +55,7 @@ Fala sugerida: “Agora mostramos um protótipo funcional da experiência do pas
 | Clima | Open-Meteo, com horário/fonte e chance de chuva; sem conexão informa indisponibilidade. Previsão não é certeza de chuva. |
 | PIX/cartões/12x | Carteira de demonstração, centavos inteiros, proteção contra repetição do mesmo crédito. Sem dados de cartão, QR de cobrança ou gateway. |
 | Vale-transporte | Lançamento de teste feito pelo usuário, claramente identificado; não comprova depósito de empresa. |
-| Tarifa Maringá 2026 | Nenhum valor é inventado. Sem fonte oficial confirmada, não calculamos quantidade real de passagens. |
+| Tarifa Maringá 2026 | R$ 5,80 integral urbana: Prefeitura, notícia de 10/07/2026, início em 12/07/2026. Equivalência matemática do saldo de teste, sem bilhetes reais. Não aplicar a Sarandi ou a benefícios. |
 | Supabase | Este inicializador usa SQLite. As novas tabelas web não são migradas automaticamente para PostgreSQL; requer migração e revisão próprias. |
 
 Mapa, clima e OSRM dependem de internet e disponibilidade de terceiros. Consultas externas usam timeout e apresentam erro explícito. Não se mantém desenho aproximado, clima inventado ou veículo fictício como substituto silencioso.
@@ -85,6 +85,17 @@ GPS funciona em `localhost`/`127.0.0.1` no próprio notebook. Acesso por outro a
 
 Em Linux/Python 3.12: **41 testes aprovados**, com um aviso de depreciação de biblioteca de testes. Chromium: fluxo de duas contas aprovado, sem erros JavaScript, incluindo tentativa de descrição com HTML, saldo persistido e largura de 390 px. O GPS foi emulado somente no teste automatizado; não é evidência de GPS do notebook.
 
-Open-Meteo e OSRM responderam a consultas reais neste ambiente. O carregamento de imagem do mapa também foi verificado em Chromium via proxy; o navegador de QA precisou de exceção ao certificado do proxy (a aplicação não desativa TLS). Há evidências em `evidencias/site-20261019/`. Disponibilidade no auditório continua dependendo da rede. O portal Na Hora Maringá foi consultado e oferece pesquisa de linhas; o site fornece um link externo para a consulta original. O widget externo não foi incorporado como se fosse uma integração própria.
+Open-Meteo e OSRM responderam a consultas reais neste ambiente. O mapa foi revalidado em Chromium com imagens reais transmitidas pelo cliente HTTPS de QA e validação TLS ativa; nenhuma exceção de certificado é necessária nesse ensaio. O relay é somente do teste e não faz parte do site. Há evidências em `evidencias/site-20261019/`. Disponibilidade no auditório continua dependendo da rede. O portal Na Hora Maringá foi consultado e oferece pesquisa de linhas; o site fornece um link externo para a consulta original. O widget externo não foi incorporado como se fosse uma integração própria.
 
 Para repetir o ensaio automatizado de interface (desenvolvedor, opcional): `verificar_site.cjs` requer Node, Playwright e Chromium em `/usr/bin/chromium`, além da API em execução. Execute `node verificar_site.cjs`; `TRANSURBAN_TEST_URL` permite outra origem local e `EVIDENCIAS_SITE` outra pasta. O script cria contas e registros de teste: use banco isolado. Esta ferramenta não é necessária para abrir o site e não foi executada no Windows.
+
+
+## Diagnóstico antes de sair de casa
+
+Depois de preparar, execute `py -3.12 iniciar_apresentacao.py --diagnostico` no Windows ou `python3 iniciar_apresentacao.py --diagnostico` no Linux. No Windows também pode abrir `DIAGNOSTICO-WINDOWS.cmd`. Ele verifica os arquivos do mapa, dependências, inicialização, páginas e os números da análise histórica usando banco temporário. Não altera o `.env` nem seu banco.
+
+Para também consultar internet, execute o Python do ambiente: `.\.venv-apresentacao\Scripts\python.exe diagnosticar_apresentacao.py --internet` (Windows) ou `./.venv-apresentacao/bin/python diagnosticar_apresentacao.py --internet` (Linux). Mapa, clima e percurso devem responder. O teste não comprova o GPS físico nem a conexão do projetor.
+
+## Tarifa confirmada na fonte oficial
+
+A [notícia da Prefeitura de 10/07/2026](https://www.maringa.pr.gov.br/noticias/com-investimento-de-r-60-milhoes-prefeitura-de-maringa-garante-menor-tarifa-de-transporte-coletivo/42651) informa R$ 5,80, com início em 12/07/2026. A notícia cita o decreto 1262/2026; não foi feita auditoria do texto do decreto. O valor se refere à tarifa integral urbana municipal de Maringá. Não generalizamos para Sarandi, linhas metropolitanas, gratuidades ou descontos. A carteira mostra quantas tarifas inteiras equivalem ao saldo de teste, mantendo explícito que nenhum bilhete foi comprado.
