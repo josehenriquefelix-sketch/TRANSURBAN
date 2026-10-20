@@ -1,0 +1,466 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:00.792
+Olá, equipe.
+
+00:00:00.792 --> 00:00:04.951
+Esta aula explica o pacote local de apresentação do Transurban.
+
+00:00:04.951 --> 00:00:09.836
+Vamos entender o site, a API, o banco de dados e a análise do arquivo CSV.
+
+00:00:09.836 --> 00:00:16.833
+A aula usa os arquivos realmente encontrados neste computador e a adaptação preparada para a apresentação.
+
+00:00:16.833 --> 00:00:21.850
+O objetivo é conseguir demonstrar cada parte e explicar o caminho dos dados.
+
+00:00:21.850 --> 00:00:24.226
+O site é uma demonstração acadêmica.
+
+00:00:24.226 --> 00:00:27.725
+O banco e as requisições da API funcionam localmente.
+
+00:00:27.725 --> 00:00:32.553
+Neste notebook, abra o arquivo chamado abrir apresentação, com extensão CMD.
+
+00:00:32.553 --> 00:00:37.444
+Ele usa o ambiente Python já existente e inicia o servidor na porta oito mil.
+
+00:00:37.444 --> 00:00:43.288
+O inicializador abre três páginas: a documentação da API, o site e o painel da apresentação.
+
+00:00:43.288 --> 00:00:48.624
+O servidor roda em segundo plano e registra mensagens no arquivo servidor ponto log.
+
+00:00:48.624 --> 00:00:57.772
+Em outro computador, é necessário ter Python instalado, executar primeiro preparar outro computador e ter internet para instalar as bibliotecas.
+
+00:00:57.772 --> 00:01:01.138
+Faça isso antes da aula, nunca na hora de apresentar.
+
+00:01:01.138 --> 00:01:04.967
+A API é uma ponte para o sistema conversar com os dados.
+
+00:01:04.967 --> 00:01:07.566
+O navegador envia uma requisição HTTP.
+
+00:01:07.566 --> 00:01:11.668
+A biblioteca FastAPI escolhe a função responsável pela rota.
+
+00:01:11.668 --> 00:01:16.728
+O Pydantic verifica se o corpo enviado possui os campos e tipos esperados.
+
+00:01:16.728 --> 00:01:19.121
+O SQLAlchemy acessa o banco SQLite.
+
+00:01:19.121 --> 00:01:21.720
+A função devolve uma resposta em JSON.
+
+00:01:21.720 --> 00:01:25.754
+No console e no Swagger, conseguimos observar esse caminho.
+
+00:01:25.754 --> 00:01:33.891
+Atenção: o site demonstrativo em barra app usa dados próprios no navegador e não foi integrado aos cadastros dessa API.
+
+00:01:33.891 --> 00:01:37.241
+O painel e o console, sim, consultam a API local.
+
+00:01:37.241 --> 00:01:40.090
+O arquivo database ponto py configura o banco.
+
+00:01:40.090 --> 00:01:45.601
+Neste pacote, usamos SQLite para dispensar Supabase e credenciais durante a apresentação.
+
+00:01:45.601 --> 00:01:49.007
+O banco fica no arquivo apresentação ponto sqlite três.
+
+00:01:49.007 --> 00:01:51.360
+A engine representa o acesso ao banco.
+
+00:01:51.360 --> 00:01:54.828
+SessionLocal cria sessões para consultar e salvar dados.
+
+00:01:54.828 --> 00:02:00.030
+A instrução pragma foreign keys igual on ativa a verificação de chaves estrangeiras.
+
+00:02:00.030 --> 00:02:08.080
+Isso evita cadastrar uma linha ligada a uma cidade inexistente, mesmo quando alguém tenta inserir o registro diretamente no banco.
+
+00:02:08.080 --> 00:02:14.520
+Esta escolha facilita a demonstração local, sem comprovar que o sistema já está preparado para produção.
+
+00:02:14.520 --> 00:02:17.423
+O arquivo models ponto py descreve as tabelas.
+
+00:02:17.423 --> 00:02:20.515
+Cidade possui um identificador inteiro e um nome.
+
+00:02:20.515 --> 00:02:25.500
+Linha de ônibus possui identificador, código, nome e o identificador da cidade.
+
+00:02:25.500 --> 00:02:28.150
+A chave primária identifica cada registro.
+
+00:02:28.150 --> 00:02:31.620
+A chave estrangeira conecta uma linha à cidade correta.
+
+00:02:31.620 --> 00:02:36.794
+Uma cidade pode ter várias linhas, e cada linha cadastrada aponta para uma cidade.
+
+00:02:36.794 --> 00:02:42.599
+O relacionamento do SQLAlchemy permite acessar o nome da cidade a partir do objeto da linha.
+
+00:02:42.599 --> 00:02:50.991
+Por isso usamos o identificador da cidade no cadastro da linha: ele é a referência do relacionamento, não o nome digitado livremente.
+
+00:02:50.991 --> 00:02:55.111
+O arquivo schemas ponto py define os formatos aceitos pela API.
+
+00:02:55.111 --> 00:02:56.746
+O model descreve o banco.
+
+00:02:56.746 --> 00:02:59.689
+O schema descreve os dados que entram e saem.
+
+00:02:59.689 --> 00:03:01.913
+CidadeCreate exige um nome válido.
+
+00:03:01.913 --> 00:03:06.818
+LinhaCreate exige código, nome e um identificador de cidade maior que zero.
+
+00:03:06.818 --> 00:03:09.499
+Espaços no início e no fim são removidos.
+
+00:03:09.499 --> 00:03:11.919
+Há limites de tamanho para os textos.
+
+00:03:11.919 --> 00:03:16.170
+Os schemas de resposta mostram os campos devolvidos ao navegador.
+
+00:03:16.170 --> 00:03:23.756
+Quando enviamos nome vazio, tipo errado ou identificador zero, o FastAPI devolve código quatrocentos e vinte e dois.
+
+00:03:23.756 --> 00:03:26.502
+Isso indica falha na validação da entrada.
+
+00:03:26.502 --> 00:03:30.483
+No arquivo main ponto py estão as rotas originais de cadastro.
+
+00:03:30.483 --> 00:03:33.180
+GET consulta os registros sem criar novos.
+
+00:03:33.180 --> 00:03:36.133
+POST cria um registro e retorna duzentos e um.
+
+00:03:36.133 --> 00:03:40.050
+Ao cadastrar uma linha, a função verifica se a cidade existe.
+
+00:03:40.050 --> 00:03:43.003
+Se não existir, devolve quatrocentos e quatro.
+
+00:03:43.003 --> 00:03:49.552
+A função salvar adiciona o objeto, confirma a transação com commit e atualiza seus campos com refresh.
+
+00:03:49.552 --> 00:03:56.229
+Se ocorrer uma violação de restrição, ela desfaz a transação com rollback e devolve quatrocentos e nove.
+
+00:03:56.229 --> 00:03:58.798
+A sessão é fechada ao terminar o pedido.
+
+00:03:58.798 --> 00:04:02.393
+O lifespan cria as tabelas necessárias na inicialização.
+
+00:04:02.393 --> 00:04:04.493
+Para demonstrar, abra barra docs.
+
+00:04:04.493 --> 00:04:09.139
+Em post cidades, clique em Try it out, preencha o nome Maringá e execute.
+
+00:04:09.139 --> 00:04:11.876
+Copie o identificador recebido na resposta.
+
+00:04:11.876 --> 00:04:13.403
+Depois abra post linhas.
+
+00:04:13.403 --> 00:04:20.340
+Informe código DEMO zero um, nome Linha de demonstração e o identificador real da cidade que acabou de criar.
+
+00:04:20.340 --> 00:04:22.950
+Execute e confira o código duzentos e um.
+
+00:04:22.950 --> 00:04:27.341
+Por fim, execute get linhas e mostre o registro com o nome da cidade.
+
+00:04:27.341 --> 00:04:31.605
+Se o Swagger não carregar por falta de internet, use barra console.
+
+00:04:31.605 --> 00:04:39.624
+Esse console é um arquivo local e envia as mesmas requisições para a API, sem depender de uma biblioteca externa de interface.
+
+00:04:39.624 --> 00:04:43.834
+Na parte de Ciência de Dados, usamos o arquivo atrasos ponto CSV.
+
+00:04:43.834 --> 00:04:46.943
+CSV é uma tabela em texto, com linhas e colunas.
+
+00:04:46.943 --> 00:04:53.226
+Esta versão contém uma massa de teste sintética, identificada nas observações do próprio arquivo.
+
+00:04:53.226 --> 00:04:59.833
+Ela não é uma medição de atrasos reais nem a base pública de Curitiba mencionada na conversa anterior.
+
+00:04:59.833 --> 00:05:05.274
+Não apresentem os números daquele roteiro como se fossem os resultados desta versão.
+
+00:05:05.274 --> 00:05:12.204
+Antes de falar os indicadores, consultem a rota barra IA barra resumo e usem os valores realmente exibidos.
+
+00:05:12.204 --> 00:05:15.378
+Os cálculos são reais sobre uma amostra fictícia.
+
+00:05:15.378 --> 00:05:19.060
+O arquivo dados acadêmicos ponto py lê o CSV com Pandas.
+
+00:05:19.060 --> 00:05:23.926
+O campo código da linha é lido como texto para preservar zeros à esquerda.
+
+00:05:23.926 --> 00:05:29.778
+A rota qualidade conta valores ausentes, duplicados, datas inválidas e atrasos negativos.
+
+00:05:29.778 --> 00:05:35.301
+Também verifica se o tempo real menos o programado corresponde ao atraso registrado.
+
+00:05:35.301 --> 00:05:40.890
+A rota resumo calcula a quantidade de registros, a média, a mediana e o maior atraso.
+
+00:05:40.890 --> 00:05:43.520
+Média é a soma dividida pela quantidade.
+
+00:05:43.520 --> 00:05:46.545
+Mediana é o valor central dos dados ordenados.
+
+00:05:46.545 --> 00:05:52.660
+A função groupby agrupa os registros por cidade, clima, período, trânsito ou código da linha.
+
+00:05:52.660 --> 00:05:58.758
+A rota fonte mostra a natureza sintética e o hash SHA duzentos e cinquenta e seis do arquivo atual.
+
+00:05:58.758 --> 00:06:02.946
+O hash identifica o conteúdo: se o arquivo mudar, a assinatura muda.
+
+00:06:02.946 --> 00:06:10.522
+Nesta versão, ele serve para rastrear a fonte usada, mas não há comparação automática com uma assinatura oficial confiável.
+
+00:06:10.522 --> 00:06:15.080
+Para a apresentação, Jullyany pode explicar o CSV, a origem e a qualidade.
+
+00:06:15.080 --> 00:06:18.529
+Camila pode mostrar o resumo e o agrupamento por cidade.
+
+00:06:18.529 --> 00:06:26.967
+Se perguntarem onde está a inteligência artificial, expliquem com precisão: esta etapa trabalha preparação e análise descritiva de dados.
+
+00:06:26.967 --> 00:06:29.862
+Não treinamos um modelo de previsão de chegada.
+
+00:06:29.862 --> 00:06:32.284
+No site, comecem pela página inicial.
+
+00:06:32.284 --> 00:06:36.473
+Abram explorar linhas, pesquisem zero dez e mostrem os detalhes.
+
+00:06:36.473 --> 00:06:42.692
+Entrem no perfil demonstrativo de passageiro, selecionem o ponto fictício e simulem o embarque.
+
+00:06:42.692 --> 00:06:47.339
+Mostrem a chegada simulada e a avaliação com nota, descrição e lotação.
+
+00:06:47.339 --> 00:06:52.379
+Depois troquem para o perfil de motorista, encerrem a viagem e iniciem outra.
+
+00:06:52.379 --> 00:06:55.848
+Esses perfis não são contas autenticadas de produção.
+
+00:06:55.848 --> 00:07:00.103
+O mapa, a posição do ônibus e os tempos do cenário são simulados.
+
+00:07:00.103 --> 00:07:06.649
+Não apresentem essa tela como rastreamento de frota, integração oficial ou navegação real de ônibus.
+
+00:07:06.649 --> 00:07:13.796
+O arquivo apresentação ponto py reúne a API original, as rotas de análise e os arquivos estáticos do site.
+
+00:07:13.796 --> 00:07:19.932
+O inicializador iniciar ponto py verifica a saúde do servidor e o inicia quando necessário.
+
+00:07:19.932 --> 00:07:22.696
+O painel organiza os links para a equipe.
+
+00:07:22.696 --> 00:07:27.619
+O console usa a função fetch do JavaScript para enviar requisições reais.
+
+00:07:27.619 --> 00:07:29.911
+Os códigos da API estão em Python.
+
+00:07:29.911 --> 00:07:32.204
+O banco é acessado com SQLAlchemy.
+
+00:07:32.204 --> 00:07:38.205
+A interface usa HTML para a estrutura, CSS para o visual e JavaScript para as interações.
+
+00:07:38.205 --> 00:07:42.048
+O arquivo de requisitos lista as bibliotecas necessárias.
+
+00:07:42.048 --> 00:07:45.554
+A execução é local e restrita ao próprio computador.
+
+00:07:45.554 --> 00:07:50.038
+Antes da apresentação, façam um ensaio completo no computador da sala.
+
+00:07:50.038 --> 00:07:54.330
+Confiram a abertura do site, uma consulta na API e o resumo do CSV.
+
+00:07:54.330 --> 00:07:58.173
+Não apaguem a pasta enquanto o servidor estiver em execução.
+
+00:07:58.173 --> 00:08:01.119
+Se ocorrer erro, consultem servidor ponto log.
+
+00:08:01.119 --> 00:08:06.564
+Cada participante deve entender o fluxo navegador, rota, validação, banco e resposta.
+
+00:08:06.564 --> 00:08:14.506
+Expliquem que pagamentos, frota e previsão operacional ainda exigem integrações externas e não foram validados neste pacote.
+
+00:08:14.506 --> 00:08:24.499
+A melhor apresentação é mostrar o que funciona, explicar como funciona e distinguir claramente o protótipo das funções que ainda precisam ser desenvolvidas.
+
+00:08:24.499 --> 00:08:27.620
+Vamos olhar algumas linhas importantes do código.
+
+00:08:27.620 --> 00:08:31.887
+A instrução from fastapi import carrega os recursos que vamos usar.
+
+00:08:31.887 --> 00:08:33.479
+FastAPI cria a aplicação.
+
+00:08:33.479 --> 00:08:40.167
+O símbolo arroba antes de app ponto get é um decorador: ele associa a função logo abaixo a uma rota HTTP.
+
+00:08:40.167 --> 00:08:45.899
+O nome da função pode ser listar cidades, mas é o caminho barra cidades que o cliente usa.
+
+00:08:45.899 --> 00:08:51.504
+Na assinatura da função, Depends, recebendo get db, pede ao FastAPI uma sessão do banco.
+
+00:08:51.504 --> 00:08:55.644
+A função get db abre a sessão e usa yield para entregá-la à rota.
+
+00:08:55.644 --> 00:09:01.377
+O bloco finally fecha a sessão quando o trabalho termina, mesmo quando ocorre uma exceção.
+
+00:09:01.377 --> 00:09:04.307
+As linhas indentadas pertencem ao bloco acima.
+
+00:09:04.307 --> 00:09:09.784
+Essa organização evita conexões esquecidas e separa a infraestrutura da regra da rota.
+
+00:09:09.784 --> 00:09:15.163
+No cadastro, models ponto Cidade cria um objeto Python representando o novo registro.
+
+00:09:15.163 --> 00:09:19.024
+O valor cidade ponto nome já passou pelo schema de validação.
+
+00:09:19.024 --> 00:09:21.239
+A função salvar recebe esse objeto.
+
+00:09:21.239 --> 00:09:23.264
+Add coloca o registro na sessão.
+
+00:09:23.264 --> 00:09:26.871
+Commit confirma a transação, gravando a mudança no banco.
+
+00:09:26.871 --> 00:09:32.060
+Refresh busca os valores atualizados, incluindo o identificador gerado pelo banco.
+
+00:09:32.060 --> 00:09:38.072
+Se houver um erro de integridade, o except captura essa situação e rollback desfaz a transação.
+
+00:09:38.072 --> 00:09:40.983
+Depois, a API devolve um erro HTTP controlado.
+
+00:09:40.983 --> 00:09:48.008
+Quando a rota retorna o objeto salvo, o schema de resposta escolhe os campos e o FastAPI os transforma em JSON.
+
+00:09:48.008 --> 00:09:54.716
+Chaves e valores formam um objeto JSON; uma consulta de vários registros devolve uma lista desses objetos.
+
+00:09:54.716 --> 00:10:02.310
+Cadastro e consulta usam o mesmo banco local, por isso os registros continuam disponíveis depois de uma nova requisição.
+
+00:10:02.310 --> 00:10:08.805
+Na leitura do CSV, pd é o apelido da biblioteca Pandas e read CSV produz uma tabela chamada DataFrame.
+
+00:10:08.805 --> 00:10:12.816
+O argumento dtype informa que o código da linha deve ser texto.
+
+00:10:12.816 --> 00:10:15.427
+Assim, zero dez não perde o zero inicial.
+
+00:10:15.427 --> 00:10:19.057
+A expressão df ponto minutos atraso seleciona uma coluna.
+
+00:10:19.057 --> 00:10:22.113
+Mean calcula a média e median calcula a mediana.
+
+00:10:22.113 --> 00:10:26.189
+No agrupamento, groupby reúne os registros pelo campo escolhido.
+
+00:10:26.189 --> 00:10:33.448
+Depois selecionamos a coluna de atraso e usamos agg para calcular contagem, média, mediana e máximo de cada grupo.
+
+00:10:33.448 --> 00:10:37.587
+Reset index transforma a chave de cada grupo em uma coluna comum.
+
+00:10:37.587 --> 00:10:40.007
+Rename dá nomes claros aos resultados.
+
+00:10:40.007 --> 00:10:48.794
+Por fim, to dict, com orient igual a records, transforma cada linha em um dicionário, formando uma lista que pode ser devolvida como JSON.
+
+00:10:48.794 --> 00:10:53.506
+A lista de campos permitidos impede agrupamentos por colunas inexistentes.
+
+00:10:53.506 --> 00:10:58.799
+O arquivo verificar ponto py inicia uma instância da API usando um banco temporário.
+
+00:10:58.799 --> 00:11:02.391
+Ele não apaga nem substitui os cadastros da apresentação.
+
+00:11:02.391 --> 00:11:11.024
+Os testes verificam páginas, cadastro de cidade, cadastro de linha, consulta, entradas inválidas, cidade inexistente e chave estrangeira.
+
+00:11:11.024 --> 00:11:17.388
+Também comparam contagem, média e mediana do CSV com cálculos independentes da biblioteca statistics.
+
+00:11:17.388 --> 00:11:20.917
+Cada agrupamento precisa preservar o total de registros.
+
+00:11:20.917 --> 00:11:26.714
+O material da aula precisa abrir, e o vídeo precisa aceitar leitura parcial para reprodução.
+
+00:11:26.714 --> 00:11:29.486
+São trinta e nove verificações nessa versão.
+
+00:11:29.486 --> 00:11:32.448
+O pacote também é extraído e testado novamente.
+
+00:11:32.448 --> 00:11:40.828
+Esses testes dão evidência do comportamento verificado, mas não são uma promessa de ausência de qualquer erro em qualquer computador.
+
+00:11:40.828 --> 00:11:44.042
+Para amanhã, ensaiem também no equipamento da sala.
+
+00:11:44.042 --> 00:11:52.486
+Nenhum commit ou envio ao GitHub foi realizado nesta etapa; a entrega aqui é o pacote local, com código, guia, evidências e videoaula.

@@ -1,0 +1,5 @@
+{
+  "python.defaultInterpreterPath": "${env:USERPROFILE}/Documents/TRANSURBAN/venv/Scripts/python.exe",
+  "python.analysis.extraPaths": ["./apresentacao_local/backend"],
+  "python.terminal.activateEnvironment": false
+}

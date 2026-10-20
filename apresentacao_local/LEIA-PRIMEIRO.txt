@@ -1,0 +1,16 @@
+TRANSURBAN — APRESENTAÇÃO
+
+Neste notebook: abra ABRIR-APRESENTACAO.cmd.
+Site: http://127.0.0.1:8000/app/
+API: http://127.0.0.1:8000/docs
+Painel e videoaula: http://127.0.0.1:8000/apresentacao
+Console sem internet: http://127.0.0.1:8000/console
+
+A videoaula.mp4 pode ser enviada ao grupo pelo WhatsApp. São 11 min 52 s, em português, com narração neural em português brasileiro e telas didáticas. Não é uma gravação do navegador.
+GUIA-DA-EQUIPE.md contém a transcrição, as explicações e as orientações de apresentação.
+
+Em outro computador: extraia o ZIP; instale Python 3.12 ou 3.13; execute PREPARAR-OUTRO-COMPUTADOR.cmd com internet. Depois abra ABRIR-APRESENTACAO.cmd.
+
+Site: cenário offline simulado, separado do banco da API.
+API: cadastros reais locais de cidades e linhas; análise de CSV sintético.
+Não há frota, GPS, pagamentos reais ou previsão operacional integrados.

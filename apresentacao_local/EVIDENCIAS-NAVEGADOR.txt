@@ -1,0 +1,9 @@
+Verificado no navegador da conversa:
+- Site carregou em /app/.
+- Busca 010 e detalhes da Universidade abriram.
+- Perfil de passageiro, embarque e avaliação fictícia foram registrados.
+- Área do motorista encerrou DEMO-01 e iniciou DEMO-02.
+- Swagger carregou o schema OpenAPI e as rotas.
+- Console executou /ia/resumo com HTTP 200 e resultados do CSV.
+- MP4 1280x720 carregou e reproduziu no player. Conferência final após atualização de voz está registrada em EVIDENCIAS-VIDEO.json.
+O ensaio foi local, sem GPS real, pagamentos ou acesso à frota.

@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "TRANSURBAN: abrir API, site e videoaula",
+      "type": "shell",
+      "command": "${workspaceFolder}/apresentacao_local/ABRIR-APRESENTACAO.cmd",
+      "options": {"cwd": "${workspaceFolder}/apresentacao_local"},
+      "problemMatcher": []
+    },
+    {
+      "label": "TRANSURBAN: verificar API em banco de teste",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}/apresentacao_local/verificar.py"],
+      "options": {"cwd": "${workspaceFolder}/apresentacao_local"},
+      "problemMatcher": []
+    }
+  ]
+}

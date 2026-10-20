@@ -1,0 +1,100 @@
+{
+  "segundos": 712.4855782312926,
+  "capitulos": 18,
+  "arquivo": "C:\\Users\\josep\\Documents\\Codex\\2026-10-19\\w\\outputs\\TRANSURBAN_APRESENTACAO\\videoaula.mp4",
+  "voz": "pt-BR-AntonioNeural",
+  "resolucao": "1280x720",
+  "audios": [
+    {
+      "capitulo": 1,
+      "rms": 4695.32,
+      "pico": 27575.0
+    },
+    {
+      "capitulo": 2,
+      "rms": 4707.02,
+      "pico": 27626.0
+    },
+    {
+      "capitulo": 3,
+      "rms": 4570.34,
+      "pico": 27571.0
+    },
+    {
+      "capitulo": 4,
+      "rms": 4599.38,
+      "pico": 27636.0
+    },
+    {
+      "capitulo": 5,
+      "rms": 4853.79,
+      "pico": 27656.0
+    },
+    {
+      "capitulo": 6,
+      "rms": 4651.23,
+      "pico": 27588.0
+    },
+    {
+      "capitulo": 7,
+      "rms": 4729.4,
+      "pico": 27590.0
+    },
+    {
+      "capitulo": 8,
+      "rms": 4635.93,
+      "pico": 27624.0
+    },
+    {
+      "capitulo": 9,
+      "rms": 4711.94,
+      "pico": 27635.0
+    },
+    {
+      "capitulo": 10,
+      "rms": 4650.96,
+      "pico": 27608.0
+    },
+    {
+      "capitulo": 11,
+      "rms": 4658.08,
+      "pico": 27650.0
+    },
+    {
+      "capitulo": 12,
+      "rms": 4587.41,
+      "pico": 27648.0
+    },
+    {
+      "capitulo": 13,
+      "rms": 4633.41,
+      "pico": 27614.0
+    },
+    {
+      "capitulo": 14,
+      "rms": 4647.65,
+      "pico": 27614.0
+    },
+    {
+      "capitulo": 15,
+      "rms": 4801.67,
+      "pico": 27593.0
+    },
+    {
+      "capitulo": 16,
+      "rms": 4661.17,
+      "pico": 27629.0
+    },
+    {
+      "capitulo": 17,
+      "rms": 4633.63,
+      "pico": 27687.0
+    },
+    {
+      "capitulo": 18,
+      "rms": 4717.91,
+      "pico": 27624.0
+    }
+  ],
+  "mp4_decodificado_integralmente": true
+}
