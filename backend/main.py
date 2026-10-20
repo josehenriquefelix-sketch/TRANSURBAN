@@ -6,7 +6,7 @@ from pathlib import Path
 from sqlalchemy.exc import SQLAlchemyError
 from routes import cidades_router, linhas_router
 
-app = FastAPI(title="TRANSURBAN — Avaliação de backend", version="2.0.0",
+app = FastAPI(title="TRANSURBAN - API", version="2.0.0",
               description="Cidade e linha de ônibus relacionadas conforme o DER do projeto.")
 app.include_router(cidades_router)
 app.include_router(linhas_router)
