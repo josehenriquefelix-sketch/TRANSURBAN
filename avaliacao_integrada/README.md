@@ -1,1 +1,118 @@
-YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éíß_tN‹Z–‹­¦ëeŠw¬ÔŒQI9MUI	8ƒŠPI•ÕÁ•É‡Ÿ¼L”¥¹Ñ•É‡Ÿ¼L€¬%()¹ÑÉ•„……“©µ¥„¥¹Ñ•É…‘„½´…ÍÑA$°Á…¹‘…Ì°MÕÁ…‰…Í”Á½È!QQAL°!Q50°ML”)…Ù…MÉ¥ÁÐ¸‘½Õµ•¹Ñ‡Ÿ¼½‰É”¼IU°„‰…Í”‘”§©¹¥„‘”…‘½Ì°…ÌÅÕ…ÑÉ¼Á•ÉÕ¹Ñ…Ì°¼=IL”¼É½Ñ•¥É¼‘”½¹™•Ë©¹¥„¸((¨©AÉ½©•Ñ¼‘„•ÅÕ¥Á”è¨¨Í¥ÍÑ•µ„……“©µ¥¼Í½‰É”ÑÉ…¹ÍÁ½ÉÑ”½±•Ñ¥Ù¼‘”5…É¥¹Ÿ„”M…É…¹‘¤¸€¨©ÕÑ½È‘„É•ÕÁ•É‡Ÿ¼è¨¨É¥¹…±‘¼M…¹¡•Ì9…Í¥µ•¹Ñ¼¸€¨©ÉÕÁ¼è¨¨ÁÉ••¹¡•È½Ì¹½µ•Ì‘½Ì¥¹Ñ•É…¹Ñ•Ì…¹Ñ•Ì‘„…ÁÉ•Í•¹Ñ‡Ÿ¼¸((ŒŒ½¹Ñ—é‘¼((´‰…­•¹½€è…ÍÑA$°µ½‘•±½ÌAå‘…¹Ñ¥Œ°IU‘”¥‘…‘””±¥¹¡„Á½ÈMÕÁ…‰…Í”…Ñ„A$!QQAL°±•¥ÑÕÉ„½Ù…±¥‘‡Ÿ¼‘¼MX°ÅÕ…ÑÉ¼Ñ½Ñ…±¥é‡ŸÕ•Ì”½¹™¥ÕÉ‡Ÿ¼‘”=IL¸(´‘…Ñ…‰…Í”½€è½¹ÍÕ±Ñ„‘”…Õ‘¥Ñ½É¥„”1ÌÁ…É„Õµ„¥¹ÍÓ‰¹¥„Ù…é¥„¸<‰…­•¹»¼É¥„¹•´µ½‘¥™¥„Ñ…‰•±…Ì…ÕÑ½µ…Ñ¥…µ•¹Ñ”¸(´‘…Ñ„½…ÑÉ…Í½Í}…¹…±¥Í”¹ÍÙ€è‰…Í”‘”‘•µ½¹ÍÑÉ‡Ÿ¼”=I%5}=L¹ÑáÑ€½´„ÁÉ½•“©¹¥„”½Ì±¥µ¥Ñ•Ì¸(´™É½¹Ñ•¹½€èÁ…¥¹•°Ý•ˆ…‘…ÁÓ…Ù•°°IU‘”¥‘…‘•Ì”±¥¹¡…Ì°”Ù¥ÍÕ…±¥é‡Ÿ¼‘…ÌÑ½Ñ…±¥é‡ŸÕ•Ì‘„A$¸(´‘½Ì½€è•áÁ±¥‡Ÿ¼Í½‰É”±¥¹¡„‘„‰…Í”°¥‘•¹Ñ¥™¥…‘½É•Ì”Á•ÉÕ¹Ñ…ÌÉ•ÍÁ½¹‘¥‘…Ì¸((ŒŒÍ½Á¼‘¼IU()<H……“©µ¥¼±¥ÍÑ„Í•¥ÌÑ…‰•±…Ì½´¡…Ù”ÁÉ¥·…É¥„è¥‘…‘•€°±¥¹¡…}½¹¥‰ÕÍ€°ÑÉ•¡½€°±¥¹¡…}ÑÉ•¡½€°™…¥á…}•á±ÕÍ¥Ù…€”É•¥ÍÑÉ½}…ÑÉ…Í½€¸€¨©¥‘…‘•€ƒ¤„ƒé¹¥„Í•´¡…Ù”•ÍÑÉ…¹•¥É„¨¨°Á½ÉÑ…¹Ñ¼ƒ¤„ƒé¹¥„¥¹±×µ‘„¹¼IU‘•ÍÑ„É•ÕÁ•É‡Ÿ¼¸±¥¹¡…}½¹¥‰ÕÍ€É•™•É•¹¥„¥‘…‘•€ìÑÉ•¡½€É•™•É•¹¥„¥‘…‘•Ìì…ÌÑ…‰•±…ÌÉ•ÍÑ…¹Ñ•ÌÑ…µ‹¥´Á½ÍÍÕ•´-Ì¸;¼½¹™Õ¹‘„A,½µÁ½ÍÑ„½´…ÕÏ©¹¥„‘”,¸()É•ÕÁ•É‡Ÿ¼‘”‰…­•¹¥µÁ±•µ•¹Ñ„¼IU½µÁ±•Ñ¼‘”¥‘…‘•€èA=MP€½¥‘…‘•Í€°P€½¥‘…‘•Í€°P€½¥‘…‘•Ì½í¥‘}¥‘…‘•õ€°AUP€½¥‘…‘•Ì½í¥‘}¥‘…‘•õ€”1Q€½¥‘…‘•Ì½í¥‘}¥‘…‘•õ€¸9„…Ù…±¥‡Ÿ¼¥¹Ñ•É…‘„°¼µ•Íµ¼Í¥Ñ”Ñ…µ‹¥´½™•É•”IU‘”±¥¹¡…}½¹¥‰ÕÍ€°Ù…±¥‘…¹‘¼„¥‘…‘”É•™•É•¹¥…‘„”µ…¹Ñ•¹‘¼„,¸•á±ÕÏ¼Á½‘”É••‰•È!QQ@€ÐÀäÍ”¡½ÕÙ•ÈÛµ¹Õ±½Ì‘•Á•¹‘•¹Ñ•Ìì¥ÍÍ¼ÁÉ•Í•ÉÙ„„¥¹Ñ•É¥‘…‘”É•™•É•¹¥…°¸((ŒŒI•ÅÕ¥Í¥Ñ½Ì((´AåÑ¡½¸€Ì¸ÄÀ½ÔÍÕÁ•É¥½È¸(´AÉ½©•Ñ¼MÕÁ…‰…Í”‘„•ÅÕ¥Á”½´…Ñ„A$¡…‰¥±¥Ñ…‘„°•ÍÅÕ•µ„ÁÕ‰±¥€•áÁ½ÍÑ¼”Ñ…‰•±„ÁÕ‰±¥Œ¹¥‘…‘•€½µÁ…ÓµÙ•°¸(´¡…Ù”Í•É•Ñ„‘¼MÕÁ…‰…Í”‘•Ù”™¥…È…Á•¹…Ì•´‰…­•¹¼¹•¹Ù€ì¹Õ¹„¹¼!Q50½)…Ù…MÉ¥ÁÐ½Ô¹¼¥Ñ!Õˆ¸(´¥Ð»¼‘•Ù”É••‰•È€¹•¹Ù€°€¹Ù•¹Ù€½ÔÍ•¹¡…Ì¸<€¹•¹Ø¹•á…µÁ±•€½¹Ó¥´…Á•¹…ÌÙ…±½É•Ì™¥Óµ¥½Ì¸((ŒŒAÉ•Á…É‡Ÿ¼¹¼]¥¹‘½ÝÌ€¡A½Ý•ÉM¡•±°¤()‰É„¼Ñ•Éµ¥¹…°¹„Á…ÍÑ„QI9MUI	9}9QI€è()Á½Ý•ÉÍ¡•±°)ÁåÑ¡½¸€µ´Ù•¹Ø‰…­•¹‘p¹Ù•¹Ø(¹q‰…­•¹‘p¹Ù•¹ÙqMÉ¥ÁÑÍqÁåÑ¡½¸¹•á”€µ´Á¥À¥¹ÍÑ…±°€µÈ‰…­•¹‘qÉ•ÅÕ¥É•µ•¹ÑÌ¹ÑáÐ)½Áäµ%Ñ•´‰…­•¹‘p¹•¹Ø¹•á…µÁ±”‰…­•¹‘p¹•¹Ø)€()‘¥Ñ”‰…­•¹¼¹•¹Ù€½´„AÉ½©•ÐUI0”„¡…Ù”Í•É•Ñ„‘¼€¨©ÁÉ½©•Ñ¼MÕÁ…‰…Í”½ÉÉ•Ñ¼¨¨¸;¼ÕÍ”„Í•¹¡„A½ÍÑÉ•ME0½µ¼¡…Ù”‘„A$¸´Õ´Ñ•Éµ¥¹…°°¹„É…¥è‘¼ÁÉ½©•Ñ¼°¥¹¥¥”¼‰…­•¹è()Á½Ý•ÉÍ¡•±°(¹q‰…­•¹‘p¹Ù•¹ÙqMÉ¥ÁÑÍqÁåÑ¡½¸¹•á”€µ´ÕÙ¥½É¸‰…­•¹¹µ…¥¸é…ÁÀ€´µÉ•±½…€´µ¡½ÍÐ€ÄÈÜ¸À¸À¸Ä€´µÁ½ÉÐ€àÀÀÀ)€()´½ÕÑÉ¼Ñ•Éµ¥¹…°°…¥¹‘„¹„É…¥è°Í¥ÉÙ„„¥¹Ñ•É™…”è()Á½Ý•ÉÍ¡•±°)ÁåÑ¡½¸€µ´¡ÑÑÀ¹Í•ÉÙ•È€ÔÔÀÀ€´µ‘¥É—]}ÒÚ$z{-®éÜj×&6Rì:6ò:’VçG&VwVRòæfVvF÷"â&÷WG&÷'Fö÷&–vVÒÆö6ÂÂ§W7FR4õ%5ôõ$”t”å6VÒ&6¶VæBòæVçfR&V–æ–6–R’à ¢22&÷FV—&òÖçVÂFR6öæfW,:¦æ6–RWf–L:¦æ6–0 ¥W6RVæ2æöÖW2f–7L:Ö6–÷2FR6–FFW2R6öæf—&ÖR÷2&Vv—7G&÷2æòF&ÆRVF—F÷"Fò7W&6Râæò7vvvW"†öFö76“  £âtUBö6–FFW6(	B6öæf—&Ö6öæWŒ:6òRÆ—7F–æ–6–Âà£"âõ5Bö6–FFW66öÒ²&æöÖR#¢$6–FFRFRFW7FRE2'Ö(	BW7W&Fò#R–Eö6–FFVvW&Fòà£2âtUBö6–FFW2÷´”GÖRFWö—2tUBö6–FFW6(	BW7W&Fò#R&Vv—7G&òæÆ—7Fà£BâUBö6–FFW2÷´”GÖ6öÒ²&æöÖR#¢$6–FFRFRFW7FRE2GVÆ—¦F'Ö(	BW7W&Fò#²6öç7VÇFRæ÷fÖVçFRà£RâDTÄUDRö6–FFW2÷´”GÖ(	BW7W&Fò#F²tUBö6–FFW2÷´”GÖFWö—2&WF÷&æCFâ6RW7F—fW"&VfW&Væ6–F÷"VÖÆ–æ†ÂW7W&RC–Rì:6òwVRd²à£bâõ5Bö6–FFW66öÒæöÖRf¦–ò÷R–Eö6–FFVW‡G&(	BW7W&FòC#&²æVæ‡VÒ6F7G&ò–æFWf–FòFWfR6W"w&fFòà£râ&W—Fò6–6Æò5%TB&Æ–æ†ööæ–'W6¢õ5BöÆ–æ†66öÒ–Eö6–FFVÂ6öF–vöRæöÖV²6öç7VÇFRÂVF—FR6öÒUFÂW†6ÇVR6öæf—&ÖRVRVÖ6–FFR–æW†—7FVçFR&WF÷&æCFò7&–"Æ–æ†àÐ£‚â'&26–æ6ò&÷F2ö–R6öæf—&ò¥4ôâ6öÒ÷2fÆ÷&W2&W6VçFF÷2æ–çFW&f6Rà£’â6ÇfR6GW&2Fò7vvvW"RFòF&ÆRVF—F÷"çFW2öFWö—2â÷2W7:v÷2&W6W'fF÷2FW7F7Fì:6òf—&ÖÒVRFW7FW2&VÖ÷F÷2f÷&ÒW†V7WFF÷3²&VVæ6†6WR&VÆL;7&–ò6öÒ6GW&2ö'F–F2æò6WR&ö¦WFòà ¢222FW7FW2Æö6—2&W&öGW¬:×fV—0 ¤÷2FW7FW2WFöÖF—¦F÷2W6ÒVÖF&VÆ2VÒÖVÜ;7&–&ò5%TBÂ6VÒÇFW&"ò7W&6Râ6öÒ2FWVæL:¦æ6–2–ç7FÆF2ÂW†V7WFRæ&—£¢&6¶VæEÂçfVçeÅ67&—G5Ç—F†öâæW†RÖÒVæ—GFW7BF—66÷fW"×2FW7G2×fâVÆW2fW&–f–6ÒòfÇW†ò5%TBÂ2fÆ–F:|;VW2Â2VG&òF÷FÆ—¦:|;VW26ö'&Rò55bRò&VfÆ–v‡B4õ%2â—76òì:6ò7V'7F—GV’÷2FW7FW2æò7vvvW"õ7W&6RFò&÷FV—&ò6–Öà ¢22&W6VçF:|:6òVÒWV—P ¢Ò¢¤…DÔÃ¢¢¢W7G'WGW&Â6×÷2ÂæfVv:|:6òÂ6W76–&–Æ–FFRRF&VÆ2à¢Ò¢¤553¢¢¢6÷&W2ÂF—öw&f–Â&W7öç6—f–FFRRÆV—GW&VÒ6VÇVÆ"ö6ö×WFF÷"à¢Ò¢¤¦f67&—C¢¢¢6†ÖF2fWF6†ÂfÆ–F:|;VW2f—7V—2Â5%TBFR6–FFW2RÆ–æ†2Â6öç7VÇFF’FRFF÷2RW†–&œ:|:6òF2F÷FÆ—¦:|;VW2à¢Ò¢¤’ô4õ%3¢¢¢f7D’Â–FçF–2Â&÷F2Âf&œ:fV—2&—fF2Â6ö×Væ–6:|:6ò…EE26öÒ7W&6RR÷&–vVç2WF÷&—¦F2à¢Ò¢¤6œ:¦æ6–FRFF÷3¢¢¢6–væ–f–6FòFR6FÆ–æ†Â6†fRW6F&F—7F–æwV—"Æ–æ†2ÂÆ–Ö—F:|;VW2FföçFRR–çFW'&WF:|:6òF2VG&òW&wVçF2à ¤F—7G&–'Vœ:|:6òFWVæFRFòFÖæ†òFòw'Wòâ6öÒGV2W76ö2Â6öÖ&–æ"…DÔÂô552R¦f67&—Bô4õ%2â6öÒG,:§2ÂF—f–F—"…DÔÂÂ552R¦f67&—Bô4õ%2âFöF÷2FWfVÒ6ö×æ†"òFW7FR–çFVw&FòRW‡Æ–6",;7&–'FRà ¢22&W÷6—L;7&–òFWV—P ¥&W÷6—L;7&–ò–FVçF–f–6FòæòÖFW&–ÂÆö6Ã¢¶v—F‡V"æ6öÒö¦÷6V†Vç&—VVfVÆ—‚×6¶WF6‚õE$å5U$$åÒ†‡GG3¢òöv—F‡V"æ6öÒö¦÷6V†Vç&—VVfVÆ—‚×6¶WF6‚õE$å5U$$â’âò6÷FRW7L:&öçFòÆö6ÆÖVçFRâòÆ–æ²FRVçG&VvFòv—D‡V"6W,:'&æ6‚V&Æ–6F&&Wf—<:6ó²6öæf—&FÖ,:–Ò2–ç7G'\:|;VW2FR–çFVw&:|:6òF7Fæò&W÷6—L;7&–òàÐ Ð Ð Ð Ð
+# TRANSURBAN â€” RecuperaÃ§Ã£o DS e integraÃ§Ã£o DS + IA
+
+Entrega acadÃªmica integrada com FastAPI, pandas, Supabase por HTTPS, HTML, CSS e JavaScript. A documentaÃ§Ã£o cobre o CRUD, a base de CiÃªncia de Dados, as quatro perguntas, o CORS e o roteiro de conferÃªncia.
+
+**Projeto da equipe:** sistema acadÃªmico sobre transporte coletivo de MaringÃ¡ e Sarandi. **Autor da recuperaÃ§Ã£o:** Erinaldo Sanches Nascimento. **Grupo:** preencher os nomes dos integrantes antes da apresentaÃ§Ã£o.
+
+## ConteÃºdo
+
+- `backend/`: FastAPI, modelos Pydantic, CRUD de cidade e linha por Supabase Data API HTTPS, leitura/validaÃ§Ã£o do CSV, quatro totalizaÃ§Ãµes e configuraÃ§Ã£o de CORS.
+- `database/`: consulta de auditoria e DDLs para uma instÃ¢ncia vazia. O backend nÃ£o cria nem modifica tabelas automaticamente.
+- `data/atrasos_analise.csv`: base de demonstraÃ§Ã£o e `ORIGEM_DADOS.txt` com a procedÃªncia e os limites.
+- `frontend/`: painel web adaptÃ¡vel, CRUD de cidades e linhas, e visualizaÃ§Ã£o das totalizaÃ§Ãµes da API.
+- `docs/`: explicaÃ§Ã£o sobre linha da base e perguntas, resultados conferidos, verificaÃ§Ã£o local e roteiro de apresentaÃ§Ã£o.
+
+## Escopo do CRUD
+
+O DER acadÃªmico lista seis tabelas com chave primÃ¡ria: `cidade`, `linha_onibus`, `trecho`, `linha_trecho`, `faixa_exclusiva` e `registro_atraso`. **`cidade` Ã© a Ãºnica sem chave estrangeira**, portanto Ã© a Ãºnica incluÃ­da no CRUD desta recuperaÃ§Ã£o. `linha_onibus` referencia `cidade`; `trecho` referencia cidades; as tabelas restantes tambÃ©m possuem FKs. NÃ£o confunda PK composta com ausÃªncia de FK.
+
+A recuperaÃ§Ã£o de backend implementa o CRUD completo de `cidade`: `POST /cidades`, `GET /cidades`, `GET /cidades/{id_cidade}`, `PUT /cidades/{id_cidade}` e `DELETE /cidades/{id_cidade}`. Na avaliaÃ§Ã£o integrada, o mesmo site tambÃ©m oferece CRUD de `linha_onibus`, validando a cidade referenciada e mantendo a FK. A exclusÃ£o pode receber HTTP 409 se houver vÃ­nculos dependentes; isso preserva a integridade referencial.
+
+## Requisitos
+
+- Python 3.10 ou superior.
+- Projeto Supabase da equipe com Data API habilitada, esquema `public` exposto e tabela `public.cidade` compatÃ­vel.
+- A chave secreta do Supabase deve ficar apenas em `backend/.env`; nunca no HTML/JavaScript ou no GitHub.
+- Git nÃ£o deve receber `.env`, `.venv` ou senhas. O `.env.example` contÃ©m apenas valores fictÃ­cios.
+
+## PreparaÃ§Ã£o no Windows (PowerShell)
+
+Abra o terminal na pasta `TRANSURBAN_ENTREGA`:
+
+```powershell
+python -m venv backend\.venv
+.\backend\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
+Copy-Item backend\.env.example backend\.env
+```
+
+Edite `backend/.env` com a Project URL e a chave secreta do **projeto Supabase correto**. NÃ£o use a senha PostgreSQL como chave da API. Em um terminal, na raiz do projeto, inicie o backend:
+
+```powershell
+.\backend\.venv\Scripts\python.exe -m uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000
+```
+
+Em outro terminal, ainda na raiz, sirva a interface:
+
+```powershell
+python -m http.server 5500 --directory frontend
+```
+
+Abra `http://127.0.0.1:5500` para a interface e `http://127.0.0.1:8000/docs` para o Swagger. Mantenha a API em `127.0.0.1`; esta versÃ£o acadÃªmica nÃ£o tem autenticaÃ§Ã£o e nÃ£o deve ser publicada para acesso pÃºblico.
+
+No Linux/macOS, crie o ambiente com `python3 -m venv backend/.venv`, instale `backend/requirements.txt`, copie o `.env.example` para `.env` dentro de `backend`, e inicie `uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000` na raiz. O frontend pode ser servido com `python3 -m http.server 5500 --directory frontend`.
+
+## Supabase: auditar antes de alterar
+
+1. No projeto correto, abra **SQL Editor** e execute `database/01_auditar_esquema.sql`. Ele somente lÃª metadados de `public`.
+2. Confirme que `cidade` tem `id_cidade` como PK gerada automaticamente e `nome` como texto obrigatÃ³rio e Ãºnico. A consulta tambÃ©m lista chaves estrangeiras do esquema.
+3. **NÃ£o execute DDL de criaÃ§Ã£o em tabela existente.** Se as tabelas nÃ£o existirem em uma instÃ¢ncia vazia de demonstraÃ§Ã£o, revise e entÃ£o execute `database/02_criar_cidade_banco_novo.sql` seguido de `database/03_criar_linha_banco_novo.sql`. Se a auditoria mostrar uma PK existente sem `IDENTITY` e sem `DEFAULT`, revise o script `database/04_ids_automaticos_existentes.sql`; ele bloqueia escrita durante a sincronizaÃ§Ã£o e deve ser executado em perÃ­odo sem alteraÃ§Ãµes.
+4. Mantenha RLS habilitada e use a chave secreta sÃ³ no backend local. O script concede privilÃ©gios a `service_role`; nÃ£o crie polÃ­tica pÃºblica `anon` nem desative RLS para esconder erro de configuraÃ§Ã£o.
+5. Se a tabela atual usar nomes/tipos/IDs diferentes, pare e adapte o modelo e as rotas ao resultado real. O projeto anterior registra divergÃªncias histÃ³ricas entre versÃµes do DER; este DDL nÃ£o deve ser aplicado sem auditoria.
+
+## Rotas de CiÃªncia de Dados
+
+| MÃ©todo | Rota | Pergunta |
+|---|---|---|
+| GET | `/ia/resumo` | Quantas observaÃ§Ãµes vÃ¡lidas hÃ¡, qual o perÃ­odo e quais os limites da base? |
+| GET | `/ia/totalizacao/cidade` | Quanto atraso foi observado em cada cidade? |
+| GET | `/ia/totalizacao/periodo` | Como total e mÃ©dia se distribuem por perÃ­odo do dia? |
+| GET | `/ia/totalizacao/transito` | Qual total e mÃ©dia para cada condiÃ§Ã£o de trÃ¢nsito? |
+| GET | `/ia/totalizacao/clima` | Qual total e mÃ©dia para cada condiÃ§Ã£o de clima? |
+
+Todas as respostas sÃ£o JSON. Cada agrupamento apresenta contagem de observaÃ§Ãµes, soma, mÃ©dia, mediana e mÃ¡ximo em minutos. O script `backend/analise.py` valida campos, datas, nÃºmeros, consistÃªncia de atrasos, ausentes e duplicatas antes de calcular.
+
+## Modelo da base e contagem sem duplicidade
+
+Cada linha do CSV representa uma observaÃ§Ã£o acadÃªmica de atraso em um trecho, em determinada data e contexto. NÃ£o representa necessariamente uma viagem completa, um Ã´nibus ou uma pessoa. O identificador composto para reconhecer uma linha de Ã´nibus Ã© `cidade + codigo_linha`; o cÃ³digo isolado pode se repetir entre cidades ou observaÃ§Ãµes. Como nÃ£o hÃ¡ `id_viagem` nem identificador Ãºnico da observaÃ§Ã£o, nÃ£o Ã© correto chamar a contagem de viagens distintas. As rotas somam minutos observados e nÃ£o estimam atraso de passageiros. A base Ã© sintÃ©tica, como descreve `data/ORIGEM_DADOS.txt`; nÃ£o representa telemetria real.
+
+## CORS e comunicaÃ§Ã£o
+
+O frontend chama `http://127.0.0.1:8000`; o middleware do FastAPI permite somente as origens configuradas em `CORS_ORIGINS` (`127.0.0.1:5500` e `localhost:5500`, por padrÃ£o), os mÃ©todos usados e o cabeÃ§alho JSON. O segredo do Supabase nÃ£o Ã© entregue ao navegador. Para outra porta/origem local, ajuste `CORS_ORIGINS` em `backend/.env` e reinicie a API.
+
+## Roteiro manual de conferÃªncia e evidÃªncias
+
+Use apenas nomes fictÃ­cios de cidades e confirme os registros no Table Editor do Supabase. No Swagger (`/docs`):
+
+1. `GET /cidades` â€” confirma conexÃ£o e lista inicial.
+2. `POST /cidades` com `{"nome":"Cidade de Teste DS"}` â€” esperado `201` e `id_cidade` gerado.
+3. `GET /cidades/{ID}` e depois `GET /cidades` â€” esperado `200` e registro na lista.
+4. `PUT /cidades/{ID}` com `{"nome":"Cidade de Teste DS Atualizada"}` â€” esperado `200`; consulte novamente.
+5. `DELETE /cidades/{ID}` â€” esperado `204`; `GET /cidades/{ID}` depois retorna `404`. Se estiver referenciada por uma linha, espere `409` e nÃ£o apague a FK.
+6. `POST /cidades` com nome vazio ou `id_cidade` extra â€” esperado `422`; nenhum cadastro indevido deve ser gravado.
+7. Repita o ciclo CRUD para `linha_onibus`: `POST /linhas` com `id_cidade`, `codigo` e `nome`; consulte, edite com `PUT`, exclua e confirme que uma cidade inexistente retorna `404` ao criar linha.
+8. Abra as cinco rotas `/ia` e confira o JSON com os valores apresentados na interface.
+9. Salve capturas do Swagger e do Table Editor antes/depois. Os espaÃ§os reservados desta pasta nÃ£o afirmam que testes remotos foram executados; preencha seu relatÃ³rio com capturas obtidas no seu projeto.
+
+### Testes locais reproduzÃ­veis
+
+Os testes automatizados usam uma tabelas em memÃ³ria para o CRUD, sem alterar o Supabase. Com as dependÃªncias instaladas, execute na raiz: `backend\.venv\Scripts\python.exe -m unittest discover -s tests -v`. Eles verificam o fluxo CRUD, as validaÃ§Ãµes, as quatro totalizaÃ§Ãµes sobre o CSV e o preflight CORS. Isso nÃ£o substitui os testes no Swagger/Supabase do roteiro acima.
+
+## ApresentaÃ§Ã£o em equipe
+
+- **HTML:** estrutura, campos, navegaÃ§Ã£o, acessibilidade e tabelas.
+- **CSS:** cores, tipografia, responsividade e leitura em celular/computador.
+- **JavaScript:** chamadas `fetch`, validaÃ§Ãµes visuais, CRUD de cidades e linhas, consulta da API de dados e exibiÃ§Ã£o das totalizaÃ§Ãµes.
+- **API/CORS:** FastAPI, Pydantic, rotas, variÃ¡veis privadas, comunicaÃ§Ã£o HTTPS com Supabase e origens autorizadas.
+- **CiÃªncia de Dados:** significado de cada linha, chave usada para distinguir linhas, limitaÃ§Ãµes da fonte e interpretaÃ§Ã£o das quatro perguntas.
+
+A distribuiÃ§Ã£o depende do tamanho do grupo. Com duas pessoas, combinar HTML/CSS e JavaScript/CORS. Com trÃªs, dividir HTML, CSS e JavaScript/CORS. Todos devem acompanhar o teste integrado e explicar a prÃ³pria parte.
+
+## RepositÃ³rio da equipe
+
+RepositÃ³rio identificado no material local: [github.com/josehenriquefelix-sketch/TRANSURBAN](https://github.com/josehenriquefelix-sketch/TRANSURBAN). O pacote estÃ¡ pronto localmente. O link de entrega do GitHub serÃ¡ a branch publicada para revisÃ£o; confira tambÃ©m as instruÃ§Ãµes de integraÃ§Ã£o da pasta no repositÃ³rio.
+
+
+
+
+
+
