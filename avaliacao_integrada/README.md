@@ -15,6 +15,7 @@ Entrega acadêmica integrada com FastAPI, pandas, Supabase por HTTPS, HTML, CSS 
 ## Escopo do CRUD
 
 Em auditoria somente de leitura do projeto Supabase `transurban`, em 28/10/2026, foram encontradas as tabelas públicas `cidade`, `faixa_exclusiva`, `linha_onibus`, `linha_trecho`, `registro_atraso` e `trecho`. As PKs observadas são `cidade.id_cidade`, `faixa_exclusiva.id_faixa`, `linha_onibus.id_linha` e a PK composta de `linha_trecho` (`id_linha`, `id_trecho`). As FKs observadas incluem `faixa_exclusiva.id_trecho`, `linha_onibus.id_cidade`, `linha_trecho.id_linha`/`id_trecho` e `registro_atraso.id_linha`/`id_trecho`. `trecho` e `registro_atraso` não apresentaram PK nessa auditoria. Assim, **`cidade` é a única tabela observada com PK e sem FK**, e é a única incluída no CRUD da recuperação. `linha_onibus` fica disponível na avaliação integrada e preserva sua FK para cidade. O banco não foi alterado durante a auditoria.
+
 ## Requisitos
 
 - Python 3.10 ou superior.
@@ -24,7 +25,7 @@ Em auditoria somente de leitura do projeto Supabase `transurban`, em 28/10/2026,
 
 ## Início rápido no Windows
 
-Dê duplo clique em `iniciar_local.cmd`. Na primeira execução, ele cria o ambiente virtual, instala as dependências, cria `backend/.env` a partir do exemplo e abre o arquivo para você preencher as credenciais localmente. Depois, inicia API e frontend em duas janelas e abre `http://127.0.0.1:5500/`. Mantenha as janelas de terminal abertas enquanto demonstra. Se ainda não tiver as credenciais Supabase, a tela e a análise do CSV podem abrir, mas o CRUD do banco não funcionará até configurar `backend/.env`.
+Dê duplo clique em `iniciar_local.cmd`. Se necessário, ele cria `backend/.env`; se a chave estiver vazia ou fictícia, abre o arquivo para você colar a chave secreta do projeto. A URL pública do projeto já está preenchida apenas no arquivo local. Depois, instala as dependências, inicia a API e o frontend em duas janelas e abre `http://127.0.0.1:5500/`. Mantenha as janelas abertas durante a apresentação. Sem a chave secreta, o painel e a análise do CSV podem abrir, mas o CRUD no Supabase não funcionará.
 ## Preparação no Windows (PowerShell)
 
 Abra o terminal na pasta `TRANSURBAN_ENTREGA`:
@@ -110,6 +111,7 @@ A distribuição depende do tamanho do grupo. Com duas pessoas, combinar HTML/CS
 ## Repositório da equipe
 
 Repositório identificado no material local: [github.com/josehenriquefelix-sketch/TRANSURBAN](https://github.com/josehenriquefelix-sketch/TRANSURBAN). O pacote está pronto localmente. O link de entrega do GitHub será a branch publicada para revisão; confira também as instruções de integração da pasta no repositório.
+
 
 
 
