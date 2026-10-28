@@ -19,9 +19,13 @@ if not exist "backend\.venv\Scripts\python.exe" (
 if not exist "backend\.env" (
   copy "backend\.env.example" "backend\.env" >nul
   echo Foi criado backend\.env a partir do exemplo.
-  echo Preencha SUPABASE_URL e SUPABASE_KEY nesse arquivo antes de usar o CRUD.
+)
+
+findstr /r /c:"^SUPABASE_KEY=$" /c:"^SUPABASE_KEY=sb_secret_EXEMPLO_FICTICIO_NAO_FUNCIONA$" "backend\.env" >nul
+if not errorlevel 1 (
+  echo Preencha SUPABASE_KEY com a chave secreta deste projeto. Ela deve ficar apenas no backend\.env local.
   start /wait notepad.exe "backend\.env"
-  echo Pressione uma tecla para continuar; a pagina de analise abre mesmo sem o banco.
+  echo Pressione uma tecla para continuar; sem chave o CRUD remoto nao funcionara.
   pause >nul
 )
 
@@ -40,6 +44,7 @@ exit /b 0
 echo Nao foi possivel preparar o ambiente. Confira a instalacao do Python e a conexao com a internet.
 pause
 exit /b 1
+
 
 
 
