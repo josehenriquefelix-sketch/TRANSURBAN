@@ -1,0 +1,181 @@
+﻿data_registro,cidade,codigo_linha,nome_linha,trecho,tipo_trecho,periodo,condicao_transito,clima,tempo_programado_min,tempo_real_min,minutos_atraso,observacao
+2026-08-01,Sarandi,001,Parque Alvamar / Conjunto Floresta,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,29,34,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-02,Maringá,010,Universidade,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,35,45,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-03,Maringá,021,Av. Tuiuti,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,40,49,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-04,Sarandi,254E,Jardim Esperança,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,35,43,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-05,Maringá,024,Parque Itaipu,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,30,33,3,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-06,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Entre picos,Muito intenso,Sem chuva,45,54,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-07,Sarandi,254L,Jardim Leblon,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,30,38,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-08,Maringá,041,Jardim Alvorada II,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,40,48,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-09,Maringá,051,Parque das Grevíleas,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,41,46,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-10,Sarandi,254C,Jardim Cometa,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,46,53,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-11,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,30,42,12,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-12,Maringá,010,Universidade,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,43,48,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-13,Sarandi,254J,Conjunto José Richa,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,53,55,2,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-14,Maringá,023,Jardim Olímpico,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,45,53,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-15,Maringá,024,Parque Itaipu,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,31,40,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-16,Sarandi,254A,Alvamar,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,41,50,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-17,Maringá,034,Jardim São Silvestre,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,31,37,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-18,Maringá,041,Jardim Alvorada II,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,45,52,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-19,Sarandi,254I,Jardim Independência,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,46,57,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-20,Maringá,324,UEM / Unicesumar,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,30,38,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-21,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,46,51,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-22,Sarandi,001,Parque Alvamar / Conjunto Floresta,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,39,47,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-23,Maringá,021,Av. Tuiuti,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,31,41,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-24,Maringá,023,Jardim Olímpico,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,26,35,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-25,Sarandi,254E,Jardim Esperança,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,47,53,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-26,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Entre picos,Muito intenso,Sem chuva,29,39,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-27,Maringá,034,Jardim São Silvestre,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,42,50,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-28,Sarandi,254L,Jardim Leblon,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,55,63,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-29,Maringá,051,Parque das Grevíleas,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,35,40,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-30,Maringá,324,UEM / Unicesumar,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,46,57,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-31,Sarandi,254C,Jardim Cometa,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,35,43,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-01,Maringá,010,Universidade,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,25,34,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-02,Maringá,021,Av. Tuiuti,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,31,33,2,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-03,Sarandi,254J,Conjunto José Richa,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,34,42,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-04,Maringá,024,Parque Itaipu,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,50,62,12,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-05,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Noite,Moderado,Chuva,39,46,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-06,Sarandi,254A,Alvamar,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,25,30,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-07,Maringá,041,Jardim Alvorada II,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,34,45,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-08,Maringá,051,Parque das Grevíleas,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,50,61,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-09,Sarandi,254I,Jardim Independência,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,42,49,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-10,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,27,30,3,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-11,Maringá,010,Universidade,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,26,33,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-12,Sarandi,001,Parque Alvamar / Conjunto Floresta,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,36,47,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-13,Maringá,023,Jardim Olímpico,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,41,49,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-14,Maringá,024,Parque Itaipu,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,50,52,2,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-15,Sarandi,254E,Jardim Esperança,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,45,55,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-16,Maringá,034,Jardim São Silvestre,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,37,48,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-17,Maringá,041,Jardim Alvorada II,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,54,59,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-18,Sarandi,254L,Jardim Leblon,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,33,39,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-19,Maringá,324,UEM / Unicesumar,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,39,49,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-20,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,45,57,12,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-21,Sarandi,254C,Jardim Cometa,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,40,45,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-22,Maringá,021,Av. Tuiuti,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,46,51,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-23,Maringá,023,Jardim Olímpico,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,41,49,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-24,Sarandi,254J,Conjunto José Richa,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,34,44,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-25,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Noite,Moderado,Chuva,28,35,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-26,Maringá,034,Jardim São Silvestre,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,41,47,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-27,Sarandi,254A,Alvamar,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,44,54,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-28,Maringá,051,Parque das Grevíleas,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,42,53,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-29,Maringá,324,UEM / Unicesumar,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,35,42,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-30,Sarandi,254I,Jardim Independência,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,28,32,4,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-31,Maringá,010,Universidade,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,55,62,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-01,Maringá,021,Av. Tuiuti,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,55,63,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-02,Sarandi,001,Parque Alvamar / Conjunto Floresta,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,32,38,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-03,Maringá,024,Parque Itaipu,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,33,36,3,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-04,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Entre picos,Muito intenso,Sem chuva,25,36,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-05,Sarandi,254E,Jardim Esperança,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,42,51,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-06,Maringá,041,Jardim Alvorada II,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,41,47,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-07,Maringá,051,Parque das Grevíleas,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,37,40,3,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-08,Sarandi,254L,Jardim Leblon,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,49,56,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-09,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,36,44,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-10,Maringá,010,Universidade,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,35,44,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-11,Sarandi,254C,Jardim Cometa,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,29,34,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-12,Maringá,023,Jardim Olímpico,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,30,40,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-13,Maringá,024,Parque Itaipu,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,45,55,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-14,Sarandi,254J,Conjunto José Richa,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,26,34,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-15,Maringá,034,Jardim São Silvestre,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,45,49,4,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-16,Maringá,041,Jardim Alvorada II,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,47,57,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-17,Sarandi,254A,Alvamar,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,26,34,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-18,Maringá,324,UEM / Unicesumar,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,25,34,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-19,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,51,55,4,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-20,Sarandi,254I,Jardim Independência,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,25,32,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-21,Maringá,021,Av. Tuiuti,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,51,60,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-22,Maringá,023,Jardim Olímpico,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,55,61,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-23,Sarandi,001,Parque Alvamar / Conjunto Floresta,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,44,49,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-24,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Entre picos,Muito intenso,Sem chuva,41,50,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-25,Maringá,034,Jardim São Silvestre,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,49,59,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-26,Sarandi,254E,Jardim Esperança,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,28,35,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-27,Maringá,051,Parque das Grevíleas,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,48,51,3,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-28,Maringá,324,UEM / Unicesumar,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,32,42,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-29,Sarandi,254L,Jardim Leblon,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,36,45,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-30,Maringá,010,Universidade,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,42,48,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-31,Maringá,021,Av. Tuiuti,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,33,36,3,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-01,Sarandi,254C,Jardim Cometa,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,34,41,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-02,Maringá,024,Parque Itaipu,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,40,48,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-03,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Noite,Moderado,Chuva,38,46,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-04,Sarandi,254J,Conjunto José Richa,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,52,58,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-05,Maringá,041,Jardim Alvorada II,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,32,41,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-06,Maringá,051,Parque das Grevíleas,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,40,51,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-07,Sarandi,254A,Alvamar,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,55,60,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-08,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,55,59,4,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-09,Maringá,010,Universidade,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,53,61,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-10,Sarandi,254I,Jardim Independência,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,43,52,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-11,Maringá,023,Jardim Olímpico,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,35,40,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-12,Maringá,024,Parque Itaipu,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,51,56,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-13,Sarandi,001,Parque Alvamar / Conjunto Floresta,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,52,59,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-14,Maringá,034,Jardim São Silvestre,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,48,60,12,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-15,Maringá,041,Jardim Alvorada II,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,38,46,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-16,Sarandi,254E,Jardim Esperança,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,29,33,4,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-17,Maringá,324,UEM / Unicesumar,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,43,53,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-18,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,50,61,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-19,Sarandi,254L,Jardim Leblon,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,42,50,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-20,Maringá,021,Av. Tuiuti,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,55,60,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-21,Maringá,023,Jardim Olímpico,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,47,57,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-22,Sarandi,254C,Jardim Cometa,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,32,40,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-23,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Noite,Moderado,Chuva,35,44,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-24,Maringá,034,Jardim São Silvestre,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,46,51,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-25,Sarandi,254J,Conjunto José Richa,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,50,58,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-26,Maringá,051,Parque das Grevíleas,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,47,59,12,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-27,Maringá,324,UEM / Unicesumar,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,49,55,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-28,Sarandi,254A,Alvamar,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,54,57,3,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-29,Maringá,010,Universidade,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,54,65,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-30,Maringá,021,Av. Tuiuti,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,43,51,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-31,Sarandi,254I,Jardim Independência,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,35,44,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-01,Maringá,024,Parque Itaipu,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,55,59,4,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-02,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Entre picos,Muito intenso,Sem chuva,28,39,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-03,Sarandi,001,Parque Alvamar / Conjunto Floresta,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,51,61,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-04,Maringá,041,Jardim Alvorada II,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,55,63,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-05,Maringá,051,Parque das Grevíleas,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,39,42,3,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-06,Sarandi,254E,Jardim Esperança,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,47,58,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-07,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,40,49,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-08,Maringá,010,Universidade,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,35,44,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-09,Sarandi,254L,Jardim Leblon,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,37,39,2,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-10,Maringá,023,Jardim Olímpico,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,47,55,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-11,Maringá,024,Parque Itaipu,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,31,42,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-12,Sarandi,254C,Jardim Cometa,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,27,33,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-13,Maringá,034,Jardim São Silvestre,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,31,37,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-14,Maringá,041,Jardim Alvorada II,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,47,55,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-15,Sarandi,254J,Conjunto José Richa,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,25,35,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-16,Maringá,324,UEM / Unicesumar,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,28,35,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-17,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,41,46,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-18,Sarandi,254A,Alvamar,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,48,58,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-19,Maringá,021,Av. Tuiuti,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,26,34,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-20,Maringá,023,Jardim Olímpico,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,47,52,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-21,Sarandi,254I,Jardim Independência,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,39,42,3,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-22,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Entre picos,Muito intenso,Sem chuva,43,54,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-23,Maringá,034,Jardim São Silvestre,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,29,38,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-24,Sarandi,001,Parque Alvamar / Conjunto Floresta,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,47,53,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-25,Maringá,051,Parque das Grevíleas,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,44,46,2,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-26,Maringá,324,UEM / Unicesumar,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,32,43,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-27,Sarandi,254E,Jardim Esperança,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,50,60,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-28,Maringá,010,Universidade,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,33,38,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-29,Maringá,021,Av. Tuiuti,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,41,46,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-30,Sarandi,254L,Jardim Leblon,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,28,36,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-31,Maringá,024,Parque Itaipu,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,50,59,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-01,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Noite,Moderado,Chuva,49,57,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-02,Sarandi,254C,Jardim Cometa,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,48,54,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-03,Maringá,041,Jardim Alvorada II,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,40,51,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-04,Maringá,051,Parque das Grevíleas,Zona Norte - Terminal,Urbano,Pico da tarde,Intenso,Sem chuva,36,48,12,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-05,Sarandi,254J,Conjunto José Richa,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,31,37,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-06,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,45,51,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-07,Maringá,010,Universidade,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,38,49,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-08,Sarandi,254A,Alvamar,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,27,37,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-09,Maringá,023,Jardim Olímpico,Av. Tuiuti - Centro,Urbano,Noite,Moderado,Chuva,39,44,5,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-10,Maringá,024,Parque Itaipu,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,41,43,2,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-11,Sarandi,254I,Jardim Independência,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,53,61,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-12,Maringá,034,Jardim São Silvestre,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,52,62,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-13,Maringá,041,Jardim Alvorada II,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,37,44,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-14,Sarandi,001,Parque Alvamar / Conjunto Floresta,Maringá - Sarandi,Intermunicipal,Pico da manhã,Leve,Sem chuva,34,36,2,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-15,Maringá,324,UEM / Unicesumar,Av. Tuiuti - Centro,Urbano,Entre picos,Muito intenso,Sem chuva,45,55,10,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-16,Maringá,007,Interbairros Zona Norte,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,33,45,12,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-17,Sarandi,254E,Jardim Esperança,Centro - Jardim Panorama,Urbano,Noite,Moderado,Chuva,27,33,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-18,Maringá,021,Av. Tuiuti,Av. Tuiuti - Centro,Urbano,Pico da manhã,Leve,Sem chuva,29,35,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-19,Maringá,023,Jardim Olímpico,Zona Norte - Terminal,Urbano,Entre picos,Muito intenso,Sem chuva,43,50,7,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-20,Sarandi,254L,Jardim Leblon,Maringá - Sarandi,Intermunicipal,Pico da tarde,Intenso,Sem chuva,32,43,11,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-21,Maringá,031,Conjunto Requião,Maringá - Sarandi,Intermunicipal,Noite,Moderado,Chuva,37,45,8,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-22,Maringá,034,Jardim São Silvestre,Zona Norte - Terminal,Urbano,Pico da manhã,Leve,Sem chuva,48,54,6,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-23,Sarandi,254C,Jardim Cometa,Centro - Jardim Panorama,Urbano,Entre picos,Muito intenso,Sem chuva,49,58,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-24,Maringá,051,Parque das Grevíleas,Av. Tuiuti - Centro,Urbano,Pico da tarde,Intenso,Sem chuva,35,44,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
+2026-08-25,Maringá,324,UEM / Unicesumar,Zona Norte - Terminal,Urbano,Noite,Moderado,Chuva,26,35,9,Massa de teste sintética para validação acadêmica; não representa telemetria real.
