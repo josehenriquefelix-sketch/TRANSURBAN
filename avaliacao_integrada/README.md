@@ -25,6 +25,9 @@ A recuperação de backend implementa o CRUD completo de `cidade`: `POST /cidade
 - A chave secreta do Supabase deve ficar apenas em `backend/.env`; nunca no HTML/JavaScript ou no GitHub.
 - Git não deve receber `.env`, `.venv` ou senhas. O `.env.example` contém apenas valores fictícios.
 
+## Início rápido no Windows
+
+Dê duplo clique em `iniciar_local.cmd`. Na primeira execução, ele cria o ambiente virtual, instala as dependências, cria `backend/.env` a partir do exemplo e abre o arquivo para você preencher as credenciais localmente. Depois, inicia API e frontend em duas janelas e abre `http://127.0.0.1:5500/`. Mantenha as janelas de terminal abertas enquanto demonstra. Se ainda não tiver as credenciais Supabase, a tela e a análise do CSV podem abrir, mas o CRUD do banco não funcionará até configurar `backend/.env`.
 ## Preparação no Windows (PowerShell)
 
 Abra o terminal na pasta `TRANSURBAN_ENTREGA`:
@@ -110,6 +113,7 @@ A distribuição depende do tamanho do grupo. Com duas pessoas, combinar HTML/CS
 ## Repositório da equipe
 
 Repositório identificado no material local: [github.com/josehenriquefelix-sketch/TRANSURBAN](https://github.com/josehenriquefelix-sketch/TRANSURBAN). O pacote está pronto localmente. O link de entrega do GitHub será a branch publicada para revisão; confira também as instruções de integração da pasta no repositório.
+
 
 
 
