@@ -14,10 +14,7 @@ Entrega acadêmica integrada com FastAPI, pandas, Supabase por HTTPS, HTML, CSS 
 
 ## Escopo do CRUD
 
-O DER acadêmico lista seis tabelas com chave primária: `cidade`, `linha_onibus`, `trecho`, `linha_trecho`, `faixa_exclusiva` e `registro_atraso`. **`cidade` é a única sem chave estrangeira**, portanto é a única incluída no CRUD desta recuperação. `linha_onibus` referencia `cidade`; `trecho` referencia cidades; as tabelas restantes também possuem FKs. Não confunda PK composta com ausência de FK.
-
-A recuperação de backend implementa o CRUD completo de `cidade`: `POST /cidades`, `GET /cidades`, `GET /cidades/{id_cidade}`, `PUT /cidades/{id_cidade}` e `DELETE /cidades/{id_cidade}`. Na avaliação integrada, o mesmo site também oferece CRUD de `linha_onibus`, validando a cidade referenciada e mantendo a FK. A exclusão pode receber HTTP 409 se houver vínculos dependentes; isso preserva a integridade referencial.
-
+Em auditoria somente de leitura do projeto Supabase `transurban`, em 28/10/2026, foram encontradas as tabelas públicas `cidade`, `faixa_exclusiva`, `linha_onibus`, `linha_trecho`, `registro_atraso` e `trecho`. As PKs observadas são `cidade.id_cidade`, `faixa_exclusiva.id_faixa`, `linha_onibus.id_linha` e a PK composta de `linha_trecho` (`id_linha`, `id_trecho`). As FKs observadas incluem `faixa_exclusiva.id_trecho`, `linha_onibus.id_cidade`, `linha_trecho.id_linha`/`id_trecho` e `registro_atraso.id_linha`/`id_trecho`. `trecho` e `registro_atraso` não apresentaram PK nessa auditoria. Assim, **`cidade` é a única tabela observada com PK e sem FK**, e é a única incluída no CRUD da recuperação. `linha_onibus` fica disponível na avaliação integrada e preserva sua FK para cidade. O banco não foi alterado durante a auditoria.
 ## Requisitos
 
 - Python 3.10 ou superior.
@@ -113,6 +110,7 @@ A distribuição depende do tamanho do grupo. Com duas pessoas, combinar HTML/CS
 ## Repositório da equipe
 
 Repositório identificado no material local: [github.com/josehenriquefelix-sketch/TRANSURBAN](https://github.com/josehenriquefelix-sketch/TRANSURBAN). O pacote está pronto localmente. O link de entrega do GitHub será a branch publicada para revisão; confira também as instruções de integração da pasta no repositório.
+
 
 
 
