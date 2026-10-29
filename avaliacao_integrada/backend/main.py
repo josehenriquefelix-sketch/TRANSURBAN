@@ -1,7 +1,9 @@
 """FastAPI: CRUD Supabase por HTTPS e consultas pandas sobre CSV."""
+import ctypes
 import logging
 import os
 from pathlib import Path
+from contextlib import asynccontextmanager
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
@@ -22,6 +24,30 @@ logger = logging.getLogger("uvicorn.error")
 
 FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
 
+
+@asynccontextmanager
+async def manter_computador_ativo(_app):
+    restaurar_estado = None
+    if os.name == "nt":
+        try:
+            kernel = ctypes.WinDLL("kernel32", use_last_error=True)
+            definir_estado = kernel.SetThreadExecutionState
+            definir_estado.argtypes = [ctypes.c_uint]
+            definir_estado.restype = ctypes.c_uint
+            estado_continuo = 0x80000000
+            estado_sistema_ativo = 0x00000001
+            if definir_estado(estado_continuo | estado_sistema_ativo):
+                restaurar_estado = definir_estado
+            else:
+                logger.warning("Nao foi possivel solicitar que o Windows mantenha o sistema ativo.")
+        except (AttributeError, OSError) as erro:
+            logger.warning("Solicitacao temporaria de sistema ativo indisponivel: %s", type(erro).__name__)
+    try:
+        yield
+    finally:
+        if restaurar_estado is not None:
+            restaurar_estado(0x80000000)
+
 app = FastAPI(
     title="TRANSURBAN · API integrada DS + IA",
     description=(
@@ -29,6 +55,7 @@ app = FastAPI(
         "descritivas do CSV acadêmico com pandas."
     ),
     version="1.0.0",
+    lifespan=manter_computador_ativo,
 )
 origens = [
     origem.strip()
