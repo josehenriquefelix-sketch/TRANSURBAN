@@ -1,11 +1,15 @@
 # Verificação local da entrega
 
-Data da verificação: 28/10/2026.
+Data da revisão: 28/10/2026.
 
-- Testes automatizados: `python -m unittest discover -s tests -v` — 5 testes aprovados (CRUD de cidade, CRUD de linha com FK, validações Pydantic, CORS local e quatro totalizações).
-- JavaScript: `node --check frontend/app.js` — sintaxe aprovada.
-- Dependências: `pip check` — nenhuma dependência quebrada.
-- Ciência de Dados: os valores conferidos com o CSV estão em `BASE_E_PERGUNTAS.md`; os testes usam a base entregue.
-- Limite da verificação: não foram executadas chamadas contra o Supabase da equipe nem foram capturadas evidências do Swagger/Table Editor. O pacote não contém `SUPABASE_URL` ou chave real. Os testes CRUD usam armazenamento em memória e não alteram banco remoto. Antes da apresentação, preencher `backend/.env` localmente e executar o roteiro do README no projeto correto.
-- Origem: CSV sintético para exercício, não dados operacionais reais.
+- Sintaxe Python: `py_compile` aprovado para `backend/main.py`, `backend/database.py` e `backend/abrir_app.py`.
+- Sintaxe JavaScript: `node --check frontend/app.js` aprovado.
+- Integridade da interface: 31 referências estáticas do JavaScript apontam para IDs existentes; não há IDs duplicados.
+- Inicialização: a aplicação foi reorganizada para servir a interface e a API pela mesma origem local, com o Swagger em `/docs`.
+- Pacote de transferência: inclui código, scripts, CSV e `.env.example`; não inclui o `.env` privado, `.venv`, logs nem cache.
+- Testes automatizados: a execução nesta sessão do Windows não completou. O `TestClient` ficou bloqueado ao criar seu socket interno antes de obter resposta da aplicação. Por isso, esta revisão não declara uma execução visual validada no navegador.
+- Nenhuma escrita de CRUD de demonstração foi enviada ao Supabase durante esta revisão. Use registros fictícios e confira os resultados no Table Editor durante o ensaio.
+- A base do projeto é sintética e não representa a operação real do transporte.
+
+A chave privada deve ficar somente em `backend/.env` no computador que executa a apresentação. Nunca a coloque no HTML/JavaScript, no arquivo `.env.example`, no ZIP compartilhado ou no GitHub.
 

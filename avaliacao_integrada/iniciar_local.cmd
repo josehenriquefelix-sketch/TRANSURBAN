@@ -17,12 +17,18 @@ if not exist "backend\.venv\Scripts\python.exe" (
 
 if not exist "backend\.env" copy "backend\.env.example" "backend\.env" >nul
 
+findstr /c:"SUPABASE_URL=https://SEU_PROJETO.supabase.co" "backend\.env" >nul
+if not errorlevel 1 goto configurar
 findstr /r /c:"^SUPABASE_KEY=$" /c:"^SUPABASE_KEY=sb_secret_EXEMPLO_FICTICIO_NAO_FUNCIONA$" "backend\.env" >nul
-if not errorlevel 1 (
-  echo Cole a chave secreta do Supabase no arquivo que sera aberto. Nao compartilhe essa chave.
-  start /wait notepad.exe "backend\.env"
-)
+if not errorlevel 1 goto configurar
+goto pronto
 
+:configurar
+echo Configure a URL do projeto e a chave privada no arquivo que sera aberto.
+echo A chave fica somente neste computador e nao deve ser enviada ao GitHub.
+start /wait notepad.exe "backend\.env"
+
+:pronto
 backend\.venv\Scripts\python.exe -c "import fastapi, uvicorn, pandas, dotenv, supabase" >nul 2>nul
 if errorlevel 1 (
   echo Instalando dependencias necessarias...

@@ -25,7 +25,9 @@ Em auditoria somente de leitura do projeto Supabase `transurban`, em 28/10/2026,
 
 ## Início rápido no Windows
 
-Dê duplo clique em `iniciar_local.cmd`. Se necessário, ele cria `backend/.env`; se a chave estiver vazia ou fictícia, abre o arquivo para você colar a chave secreta do projeto. A URL pública do projeto já está preenchida apenas no arquivo local. Depois, instala as dependências na primeira vez, inicia um único serviço e abre `http://127.0.0.1:8000/`. Mantenha a janela da API aberta durante a apresentação. Sem a chave secreta, o painel e a análise do CSV podem abrir, mas o CRUD no Supabase não funcionará.
+Dê duplo clique em `iniciar_local.cmd` (ou no atalho `ABRIR TRANSURBAN`, se já tiver sido criado). Na primeira execução, o iniciador cria o ambiente, instala as dependências e abre a configuração local se detectar uma URL ou chave de exemplo. Preencha os dados do Supabase neste computador. O iniciador sobe um único serviço que entrega a interface, a API e o Swagger. O painel abre em `http://127.0.0.1:8000/`; a documentação fica em `/docs`. Mantenha a janela da API aberta durante a apresentação.
+
+Para usar no computador da escola ou do auditório, atualize ou clone o repositório, abra `avaliacao_integrada` no VS Code e execute o mesmo `iniciar_local.cmd`. Cada computador precisa de sua própria configuração em `backend/.env`; esse arquivo privado não é transferido pelo GitHub. O repositório fornece apenas o `.env.example` fictício.
 ## Preparação no Windows (PowerShell)
 
 Abra o terminal na pasta `TRANSURBAN_ENTREGA`:

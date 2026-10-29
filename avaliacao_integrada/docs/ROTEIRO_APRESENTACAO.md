@@ -1,46 +1,51 @@
 # Roteiro de apresentação — TRANSURBAN
 
-## Antes de apresentar
+## Preparação nos computadores da escola e do auditório
 
-1. No computador que fará a demonstração, instale as dependências conforme o README.
-2. Copie `backend/.env.example` para `backend/.env` e configure a URL e a chave privada do projeto Supabase da equipe. Não mostre nem envie essa chave.
-3. Confira as tabelas e os nomes das colunas no projeto Supabase correto. Use `database/01_auditar_esquema.sql` antes de aplicar qualquer DDL.
-4. Dê duplo clique no atalho `ABRIR TRANSURBAN` (ou execute `iniciar_local.cmd`). Ele inicia um serviço e abre a interface. O Swagger fica em `http://127.0.0.1:8000/docs`.
-5. Combine nomes fictícios para os registros de teste. Anote o ID criado para editar, consultar e excluir o mesmo registro e evitar deixar dados de teste no banco.
+1. No GitHub, atualize ou clone o repositório `josehenriquefelix-sketch/TRANSURBAN` e abra a pasta `avaliacao_integrada` no VS Code.
+2. Confirme que o computador tem Python 3.10 ou superior e acesso à internet para instalar as dependências e acessar o Supabase.
+3. Na primeira execução, abra `iniciar_local.cmd`. Ele cria o ambiente, instala as dependências e, se detectar valores de exemplo, abre a configuração local. Preencha a URL e a chave privada do projeto Supabase nesse computador. Não coloque a chave no GitHub nem a mostre na apresentação.
+4. O iniciador sobe um único serviço e abre o painel. A interface fica em `http://127.0.0.1:8000/`; o Swagger fica em `http://127.0.0.1:8000/docs`. Mantenha a janela da API aberta.
+5. Antes de demonstrar alterações reais, use nomes fictícios e combine quem vai excluir cada registro de teste.
 
 ## Fala de abertura
 
-“Nosso projeto TRANSURBAN organiza informações acadêmicas sobre transporte coletivo em Maringá e Sarandi. A interface foi feita em HTML, CSS e JavaScript. O backend usa Python e FastAPI, e a persistência é no Supabase com PostgreSQL. O projeto mostra um CRUD de cidades e linhas e um resumo descritivo de uma base CSV.”
+“Eu vou apresentar o TRANSURBAN, um projeto acadêmico sobre mobilidade em Maringá e Sarandi. A aplicação integra o painel de dados, o cadastro de cidades e linhas, uma API e o Supabase. A base de análise é sintética, então usamos seus resultados para demonstrar o funcionamento, não para descrever a operação real do transporte.”
 
-## Demonstração das telas
+> Personalize esta fala para explicar sua contribuição real no grupo. Não diga que escreveu uma parte que não consegue explicar.
 
-1. Mostre o topo do site e explique que a navegação leva ao resumo dos dados, às cidades, às linhas e à documentação da API.
-2. No resumo, apresente os quatro agrupamentos: por cidade, período, condição de trânsito e clima. Os indicadores e tabelas são carregados pela API.
-3. Explique que cada linha do CSV representa uma observação acadêmica de atraso, não necessariamente uma viagem completa. A base é sintética e não representa a operação real.
-4. Em **Cadastro de cidades**, cadastre uma cidade fictícia. Mostre a confirmação e o ID gerado. Consulte esse ID, edite o nome, atualize a lista e exclua o registro de teste. Se houver linha vinculada, o banco pode bloquear a exclusão para preservar a chave estrangeira.
-5. Em **Linhas de ônibus**, selecione uma cidade existente, cadastre código e nome, consulte e edite a linha. Exclua o registro de teste ao terminar. A rota exige uma cidade válida.
-6. Se a interface estiver indisponível, abra o Swagger e demonstre as rotas equivalentes. Para erros, mostre a validação de campo obrigatório (422), ID inexistente (404) e restrição de vínculo (409 quando aplicável).
-7. No Supabase Table Editor, confirme os registros criados e removidos durante a demonstração. Não exponha a chave privada.
+## Demonstração do painel
 
-## Explicação da comunicação
+1. Mostre o cabeçalho, o indicador de conexão e o desenho conceitual da conexão urbana. Explique que a ilustração não é uma rota operacional.
+2. Abra **Ciência de Dados** e mostre os indicadores: observações válidas, soma e média do atraso por observação e cidades analisadas.
+3. Apresente as quatro perguntas: total e média por cidade, período, condição de trânsito e clima. Os resultados vêm da API e são organizados por pandas.
+4. Explique a unidade: cada linha do CSV é uma observação de atraso em um trecho, não necessariamente uma viagem completa. `codigo_linha` se repete; o par cidade + código identifica uma linha distinta. Sem `id_viagem`, não afirmamos contar viagens, ônibus ou passageiros únicos. Duplicatas exatas são verificadas.
+5. Reforce que o arquivo é uma base sintética didática. Os agrupamentos mostram associações dentro do CSV e não provam causas nem preveem horários.
 
-1. A FastAPI entrega a página HTML, os arquivos CSS/JavaScript e as rotas da API pelo mesmo serviço local.
-2. O JavaScript chama as rotas FastAPI na mesma origem `127.0.0.1:8000`.
-3. Como tela e API compartilham a origem, o navegador não precisa fazer uma requisição entre origens na abertura padrão.
-4. Para o CRUD, a API valida os dados com modelos Pydantic e acessa o Supabase pela Data API HTTPS usando segredo mantido só no backend.
-5. As rotas de Ciência de Dados leem e validam o CSV com pandas, agrupam as observações e devolvem JSON para a página.
+## Demonstração do CRUD
 
-## Fala de encerramento
+1. Em **Cadastro de cidades**, mostre o campo obrigatório e a lista carregada do Supabase. Cadastre uma cidade fictícia e anote o ID.
+2. Consulte pelo ID, edite o nome, atualize a lista e exclua o registro de teste. Se uma linha estiver vinculada, a chave estrangeira pode impedir a exclusão.
+3. Em **Linhas de ônibus**, escolha uma cidade existente, cadastre código e nome, consulte e edite a linha. Exclua o registro de teste ao terminar.
+4. Explique a regra da avaliação: cidade é a tabela observada com PK e sem FK, por isso atende ao CRUD obrigatório da recuperação. Linhas têm FK e fazem parte do CRUD integrado.
+5. Se necessário, abra `/docs` e mostre as rotas. Campo inválido retorna 422, ID inexistente retorna 404 e conflito de integridade pode retornar 409.
+6. No Supabase Table Editor, confira os registros criados e removidos. Nunca mostre a chave privada.
 
-“Testamos as operações no Swagger e pela interface, conferimos as alterações no banco e validamos as quatro totalizações do CSV. O CRUD obrigatório da recuperação é o de cidade, pois é a tabela com chave primária que não possui chave estrangeira. As linhas entram na avaliação integrada e mantêm o vínculo com cidade. A base de análise é sintética, então os resultados servem para demonstrar o funcionamento, não para tirar conclusões sobre o transporte real.”
+## Como explicar a tecnologia
 
-## Divisão de falas
+- **HTML:** estrutura as seções, formulários, indicadores e tabelas.
+- **CSS:** define cores, espaçamento, hierarquia visual e adaptação para telas menores.
+- **JavaScript:** consulta a API, envia JSON, atualiza listas e dá retorno para cadastrar, consultar, editar e excluir.
+- **Python e FastAPI:** validam as entradas, disponibilizam as rotas CRUD e de análise e servem os arquivos da interface pela mesma origem local.
+- **Pandas:** valida o CSV e calcula os agrupamentos.
+- **Supabase/PostgreSQL:** guarda os registros; o backend acessa a Data API por HTTPS com a chave mantida só localmente.
+- **CORS:** está configurado para desenvolvimento com frontend separado. No iniciador de apresentação, tela e API usam a mesma origem e não dependem de uma segunda janela de servidor.
 
-- **HTML:** apresenta estrutura, formulários, tabelas, seções e navegação.
-- **CSS:** explica cores, hierarquia visual, acessibilidade e reorganização da tela em celular e computador.
-- **JavaScript:** mostra validação no navegador, chamadas `fetch`, feedback, edição e exclusão.
-- **API e CORS:** explica modelos, rotas FastAPI, origens permitidas e acesso HTTPS ao Supabase.
-- **Ciência de Dados:** explica o CSV, o significado da observação, os agrupamentos e os limites dos dados sintéticos.
+## Roteiro curto em primeira pessoa
 
-Se a equipe tiver menos integrantes, uma pessoa pode apresentar mais de uma parte. Todos devem saber explicar o fluxo completo.
+“Eu entendi o fluxo desta forma: a tela envia uma solicitação em JSON; a FastAPI valida os campos; para os cadastros, o backend acessa o Supabase por HTTPS e devolve o resultado. Para a parte de dados, a API lê o CSV com pandas, calcula as totalizações e envia os resultados para a tela. No computador de apresentação, a interface e a API são abertas pelo mesmo iniciador. A chave privada fica no arquivo local de configuração e nunca no navegador.”
+
+## Encerramento
+
+“Com o TRANSURBAN, apresentamos operações de cadastro integradas ao banco e quatro totalizações sobre uma base acadêmica. O CRUD de cidade atende à regra de tabela com PK sem FK; o CRUD de linhas demonstra o relacionamento com cidade. Os resultados são descritivos e sintéticos.”
 
