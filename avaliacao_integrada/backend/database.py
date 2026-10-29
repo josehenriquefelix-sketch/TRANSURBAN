@@ -22,3 +22,4 @@ def get_supabase() -> Client:
 
 def supabase_configurado() -> bool:
     return bool(os.getenv("SUPABASE_URL", "").strip() and os.getenv("SUPABASE_KEY", "").strip())
+

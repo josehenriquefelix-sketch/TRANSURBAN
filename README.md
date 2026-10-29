@@ -1,5 +1,7 @@
 # TRANSURBAN — API
 
+> **Aplicação integrada DS + IA:** abra [`avaliacao_integrada/README.md`](avaliacao_integrada/README.md). No Windows, execute `avaliacao_integrada/iniciar_local.cmd` para iniciar um único serviço e abrir o painel. Configure `avaliacao_integrada/backend/.env` em cada computador; esse arquivo privado não é enviado ao GitHub.
+
 Backend da avaliação, seguindo o caderno do estudante e o DER do TRANSURBAN.
 
 Cidade é a primeira tabela, com `id_cidade` como PK. Linha de ônibus é a segunda, com `id_linha` como PK e `id_cidade` como FK. O banco armazena o identificador da cidade; a API apresenta o nome da cidade nas consultas de linhas.

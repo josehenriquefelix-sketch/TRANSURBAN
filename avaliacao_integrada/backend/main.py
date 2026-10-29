@@ -1,11 +1,13 @@
 """FastAPI: CRUD Supabase por HTTPS e consultas pandas sobre CSV."""
 import logging
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from httpx import RequestError
 from postgrest.exceptions import APIError
 
@@ -17,6 +19,8 @@ from backend.database import supabase_configurado
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("uvicorn.error")
+
+FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
 
 app = FastAPI(
     title="TRANSURBAN · API integrada DS + IA",
@@ -45,14 +49,19 @@ app.include_router(linhas_router)
 app.include_router(analise_router)
 
 
-@app.get("/", tags=["Sistema"])
-def inicio():
+@app.get("/health", tags=["Sistema"])
+def health():
     return {
         "projeto": "TRANSURBAN",
         "supabase_configurado": supabase_configurado(),
+        "interface": "/",
         "documentacao": "/docs",
-        "fonte_ia": "CSV sintético acadêmico; não é telemetria real",
     }
+
+
+@app.get("/", tags=["Sistema"], include_in_schema=False)
+def inicio():
+    return FileResponse(FRONTEND_DIR / "index.html")
 
 
 @app.exception_handler(APIError)
@@ -82,4 +91,8 @@ async def erro_rede(_request: Request, erro: RequestError):
         },
     )
 
+
+
+# Serve interface and API from one origin, so the project starts with one local service.
+app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
 

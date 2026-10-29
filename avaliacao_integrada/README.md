@@ -25,7 +25,7 @@ Em auditoria somente de leitura do projeto Supabase `transurban`, em 28/10/2026,
 
 ## Início rápido no Windows
 
-Dê duplo clique em `iniciar_local.cmd`. Se necessário, ele cria `backend/.env`; se a chave estiver vazia ou fictícia, abre o arquivo para você colar a chave secreta do projeto. A URL pública do projeto já está preenchida apenas no arquivo local. Depois, instala as dependências, inicia a API e o frontend em duas janelas e abre `http://127.0.0.1:5500/`. Mantenha as janelas abertas durante a apresentação. Sem a chave secreta, o painel e a análise do CSV podem abrir, mas o CRUD no Supabase não funcionará.
+Dê duplo clique em `iniciar_local.cmd`. Se necessário, ele cria `backend/.env`; se a chave estiver vazia ou fictícia, abre o arquivo para você colar a chave secreta do projeto. A URL pública do projeto já está preenchida apenas no arquivo local. Depois, instala as dependências na primeira vez, inicia um único serviço e abre `http://127.0.0.1:8000/`. Mantenha a janela da API aberta durante a apresentação. Sem a chave secreta, o painel e a análise do CSV podem abrir, mas o CRUD no Supabase não funcionará.
 ## Preparação no Windows (PowerShell)
 
 Abra o terminal na pasta `TRANSURBAN_ENTREGA`:
@@ -42,15 +42,9 @@ Edite `backend/.env` com a Project URL e a chave secreta do **projeto Supabase c
 .\backend\.venv\Scripts\python.exe -m uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Em outro terminal, ainda na raiz, sirva a interface:
+A FastAPI serve também a interface no mesmo endereço. Abra `http://127.0.0.1:8000/`; o Swagger fica em `http://127.0.0.1:8000/docs`. Mantenha o serviço em `127.0.0.1`; esta versão acadêmica não tem autenticação e não deve ser publicada para acesso público.
 
-```powershell
-python -m http.server 5500 --directory frontend
-```
-
-Abra `http://127.0.0.1:5500` para a interface e `http://127.0.0.1:8000/docs` para o Swagger. Mantenha a API em `127.0.0.1`; esta versão acadêmica não tem autenticação e não deve ser publicada para acesso público.
-
-No Linux/macOS, crie o ambiente com `python3 -m venv backend/.venv`, instale `backend/requirements.txt`, copie o `.env.example` para `.env` dentro de `backend`, e inicie `uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000` na raiz. O frontend pode ser servido com `python3 -m http.server 5500 --directory frontend`.
+No Linux/macOS, crie o ambiente com `python3 -m venv backend/.venv`, instale `backend/requirements.txt`, copie o `.env.example` para `.env` dentro de `backend` e inicie `uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000` na raiz. A própria API serve a interface em `/`.
 
 ## Supabase: auditar antes de alterar
 
@@ -78,7 +72,7 @@ Cada linha do CSV representa uma observação acadêmica de atraso em um trecho,
 
 ## CORS e comunicação
 
-O frontend chama `http://127.0.0.1:8000`; o middleware do FastAPI permite somente as origens configuradas em `CORS_ORIGINS` (`127.0.0.1:5500` e `localhost:5500`, por padrão), os métodos usados e o cabeçalho JSON. O segredo do Supabase não é entregue ao navegador. Para outra porta/origem local, ajuste `CORS_ORIGINS` em `backend/.env` e reinicie a API.
+A tela e a API usam a mesma origem local (`127.0.0.1:8000`), então a abertura padrão não depende de um segundo servidor nem de CORS no navegador. O middleware CORS permanece configurável para desenvolvimento com frontend separado. O segredo do Supabase não é entregue ao navegador.
 
 ## Roteiro manual de conferência e evidências
 

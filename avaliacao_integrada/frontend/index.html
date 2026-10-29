@@ -3,82 +3,141 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="TRANSURBAN: cadastro de cidades e resumo de observações de atraso no transporte coletivo.">
-  <title>TRANSURBAN | Dados e mobilidade</title>
+  <meta name="description" content="TRANSURBAN: painel acadêmico de transporte coletivo, cadastro integrado e análise de observações de atraso em Maringá e Sarandi.">
+  <meta name="theme-color" content="#10263d">
+  <title>TRANSURBAN | Mobilidade vista por dados</title>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <header class="site-header">
-    <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true">T</span><span><strong>TRANSURBAN</strong><small>Maringá · Sarandi</small></span></a>
-    <nav aria-label="Navegação principal"><a href="#resumo">Resumo de dados</a><a href="#cidades">Cadastro de cidades</a><a href="#linhas">Linhas de ônibus</a><a href="http://127.0.0.1:8000/docs" target="_blank" rel="noreferrer">Documentação da API ↗</a></nav>
+    <a class="brand" href="#inicio" aria-label="TRANSURBAN, início">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" focusable="false"><path d="M8 9h24v5H22v18h-5V14H8z" fill="currentColor"/><circle cx="29" cy="28" r="3" fill="#ffb64a"/></svg></span>
+      <span class="brand-copy"><strong>TRANSURBAN</strong><small>Maringá · Sarandi</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#resumo">Dados</a><a href="#cidades">Cidades</a><a href="#linhas">Linhas</a><a href="#integracao">Projeto</a>
+      <a class="nav-api" href="/docs" target="_blank" rel="noreferrer">API <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="service-status" id="serviceStatus" data-state="loading" role="status" aria-live="polite"><span class="service-dot" aria-hidden="true"></span><span>Verificando serviço</span></div>
   </header>
-  <main id="inicio">
-    <section class="hero">
-      <div><p class="eyebrow">PROJETO DE DESENVOLVIMENTO DE SISTEMAS</p><h1>Dados organizados para entender o transporte.</h1><p class="hero-copy">O TRANSURBAN reúne um cadastro de cidades e apresenta totalizações descritivas de uma base acadêmica sobre atrasos.</p><a class="button button-light" href="#resumo">Explorar os resultados <span aria-hidden="true">↓</span></a></div>
-      <aside class="hero-note"><span class="note-icon" aria-hidden="true">↗</span><strong>Base de demonstração</strong><p>A base de atrasos é sintética e não representa horários ou operação em tempo real.</p></aside>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio" aria-labelledby="heroTitle">
+      <div class="hero-copy-block">
+        <p class="eyebrow"><span class="eyebrow-line"></span> PAINEL ACADÊMICO DE MOBILIDADE</p>
+        <h1 id="heroTitle">Entender o transporte começa <em>pelos dados.</em></h1>
+        <p class="hero-description">Um projeto integrado para organizar cidades e linhas de ônibus e explorar observações de atraso em Maringá e Sarandi.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#resumo">Explorar o painel <span aria-hidden="true">↓</span></a><a class="button button-quiet" href="#cidades">Abrir cadastros <span aria-hidden="true">→</span></a></div>
+        <div class="hero-tags"><span><i class="tag-dot"></i>Interface + API + banco</span><span><i class="tag-dot tag-dot-orange"></i>Base didática sintética</span></div>
+      </div>
+      <div class="route-art" aria-label="Ilustração de um trajeto conectando duas cidades">
+        <div class="route-art-top"><span>REDE EM FOCO</span><span class="route-live"><i></i> VISÃO DO PROJETO</span></div>
+        <svg class="route-map" viewBox="0 0 440 250" role="img" aria-labelledby="routeTitle routeDesc">
+          <title id="routeTitle">Trajeto entre Maringá e Sarandi</title><desc id="routeDesc">Ilustração conceitual da conexão urbana, sem representar uma rota ou horário real.</desc>
+          <path class="map-road map-road-soft" d="M-20 60 C70 115 110 40 190 91 S315 180 470 68"/><path class="map-road map-road-soft" d="M-20 205 C58 153 110 222 195 168 S345 65 470 176"/><path class="map-road map-road-main" d="M38 188 C105 167 111 112 193 132 S312 93 402 49"/>
+          <path class="map-route" d="M38 188 C105 167 111 112 193 132 S312 93 402 49"/>
+          <circle class="route-stop route-stop-a" cx="38" cy="188" r="9"/><circle class="route-stop route-stop-mid" cx="193" cy="132" r="7"/><circle class="route-stop route-stop-b" cx="402" cy="49" r="9"/>
+          <circle class="route-halo" cx="38" cy="188" r="18"/><circle class="route-halo" cx="402" cy="49" r="18"/>
+        </svg>
+        <div class="route-label route-label-a"><span class="route-index">01</span><span><strong>Maringá</strong><small>Ponto de partida</small></span></div>
+        <div class="route-label route-label-b"><span class="route-index">02</span><span><strong>Sarandi</strong><small>Conexão urbana</small></span></div>
+        <div class="route-art-foot"><span>LEITURA DESCRITIVA</span><span>SEM PREVISÃO EM TEMPO REAL</span></div>
+      </div>
+      <div class="hero-ribbon" aria-label="Resumo do que a aplicação demonstra"><span><strong>04</strong> perguntas de dados</span><span><strong>02</strong> cadastros integrados</span><span><strong>05</strong> operações CRUD</span></div>
     </section>
 
-    <section class="section" id="resumo" aria-labelledby="summaryTitle">
-      <div class="section-heading"><div><p class="eyebrow">CIÊNCIA DE DADOS</p><h2 id="summaryTitle">Resumo das observações</h2></div><button class="button button-outline" id="reloadData" type="button">Atualizar dados</button></div>
-      <p class="section-copy">As médias e somas descrevem as observações do CSV. Uma linha do arquivo não equivale necessariamente a uma viagem completa.</p>
-      <p class="status" id="dataStatus" role="status" aria-live="polite">Carregando a API…</p>
+    <section class="section section-data" id="resumo" aria-labelledby="summaryTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow eyebrow-dark">01 / CIÊNCIA DE DADOS</p><h2 id="summaryTitle">O que as observações mostram</h2><p class="section-intro">Quatro perguntas transformam o CSV em um resumo claro. Os números são calculados pela API com pandas.</p></div>
+        <button class="button button-outline" id="reloadData" type="button"><span aria-hidden="true">↻</span> Atualizar análise</button>
+      </div>
+      <p class="status data-status" id="dataStatus" role="status" aria-live="polite">Carregando as totalizações…</p>
       <div class="metrics" aria-label="Indicadores principais">
-        <article class="metric"><span>Observações válidas</span><strong id="metricObservations">—</strong></article>
-        <article class="metric"><span>Atraso somado*</span><strong id="metricTotal">—</strong><small>minutos por observação</small></article>
-        <article class="metric"><span>Atraso médio*</span><strong id="metricAverage">—</strong><small>minutos por observação</small></article>
-        <article class="metric"><span>Cidades na base</span><strong id="metricCities">—</strong></article>
+        <article class="metric metric-featured"><span class="metric-icon" aria-hidden="true">▤</span><span class="metric-label">Observações válidas</span><strong id="metricObservations">—</strong><small>registros usados na análise</small></article>
+        <article class="metric"><span class="metric-icon metric-icon-orange" aria-hidden="true">↗</span><span class="metric-label">Atraso somado*</span><strong id="metricTotal">—</strong><small>minutos por observação</small></article>
+        <article class="metric"><span class="metric-icon metric-icon-blue" aria-hidden="true">◷</span><span class="metric-label">Atraso médio*</span><strong id="metricAverage">—</strong><small>minutos por observação</small></article>
+        <article class="metric"><span class="metric-icon metric-icon-green" aria-hidden="true">◎</span><span class="metric-label">Cidades analisadas</span><strong id="metricCities">—</strong><small>presentes no conjunto</small></article>
       </div>
       <div class="analysis-grid">
-        <article class="data-card"><div class="card-heading"><div><p class="eyebrow">PERGUNTA 01</p><h3>Atrasos por cidade</h3></div></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byCity"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div></article>
-        <article class="data-card"><div class="card-heading"><div><p class="eyebrow">PERGUNTA 02</p><h3>Atrasos por período</h3></div></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byPeriod"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div></article>
-        <article class="data-card"><div class="card-heading"><div><p class="eyebrow">PERGUNTA 03</p><h3>Atrasos por condição de trânsito</h3></div></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byTraffic"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div></article>
-        <article class="data-card"><div class="card-heading"><div><p class="eyebrow">PERGUNTA 04</p><h3>Atrasos por clima</h3></div></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byWeather"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div></article>
+        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 01</span><h3>Onde se concentram os atrasos?</h3><p>Comparação entre as cidades do conjunto.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byCity"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Total e média de minutos registrados por cidade.</p></article>
+        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 02</span><h3>Como os atrasos variam no dia?</h3><p>Distribuição conforme o período registrado.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byPeriod"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Agrupamento por período; não é previsão de horário.</p></article>
+        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 03</span><h3>Qual condição de trânsito acompanha os registros?</h3><p>Leitura descritiva por condição informada.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byTraffic"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Associação observada, sem afirmar causa.</p></article>
+        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 04</span><h3>Como o clima aparece nos atrasos?</h3><p>Comparação por condição climática registrada.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byWeather"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Os grupos descrevem o CSV didático, não a operação real.</p></article>
       </div>
-      <p class="footnote">* A soma e a média são calculadas sobre observações registradas. Não estimam minutos de passageiros nem tempo total de uma viagem.</p>
+      <aside class="interpretation-note"><span class="note-mark" aria-hidden="true">i</span><div><strong>Como interpretar estes números</strong><p>* A soma e a média contam minutos por observação. Uma observação não equivale a uma viagem completa, passageiro ou ônibus. A base é sintética e não representa telemetria real.</p></div></aside>
     </section>
 
-    <section class="section city-section" id="cidades" aria-labelledby="citiesTitle">
-      <div class="section-heading"><div><p class="eyebrow">CRUD · ENTIDADE INDEPENDENTE</p><h2 id="citiesTitle">Cadastro de cidades</h2></div><span class="scope-badge">PK: id_cidade · sem FK</span></div>
-      <p class="section-copy">Cadastre, consulte, edite e exclua cidades. A API gera o identificador. O cadastro de linhas vinculadas fica fora do CRUD desta recuperação porque a tabela de linhas possui chave estrangeira.</p>
-      <div class="city-layout">
+    <section class="section section-method" aria-labelledby="methodTitle">
+      <div class="section-heading"><div><p class="eyebrow eyebrow-dark">02 / CRITÉRIOS DA BASE</p><h2 id="methodTitle">Cada linha tem um significado</h2><p class="section-intro">Antes de somar, definimos a unidade analisada e como evitar contagens indevidas.</p></div></div>
+      <div class="method-grid">
+        <article class="method-card"><span class="method-index">A</span><h3>Unidade de análise</h3><p>Cada linha do CSV é uma observação de atraso registrada em um trecho; não representa necessariamente uma viagem completa.</p></article>
+        <article class="method-card"><span class="method-index">B</span><h3>Códigos que se repetem</h3><p>O código da linha se repete entre observações. Para identificar uma linha distinta, usamos o par <strong>cidade + código</strong>; sem <code>id_viagem</code>, não contamos viagens ou ônibus únicos.</p></article>
+        <article class="method-card"><span class="method-index">C</span><h3>Qualidade e limites</h3><p>Linhas inválidas e duplicatas exatas são verificadas. Os agrupamentos descrevem associações no CSV e não provam causas nem preveem chegadas.</p></article>
+      </div>
+    </section>
+
+    <section class="section section-crud" id="cidades" aria-labelledby="citiesTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow eyebrow-dark">03 / RECUPERAÇÃO · CRUD OBRIGATÓRIO</p><h2 id="citiesTitle">Cadastro de cidades</h2><p class="section-intro">Esta é a tabela independente: possui chave primária e não possui chave estrangeira. O ID é gerado pelo banco.</p></div>
+        <span class="scope-badge"><span>PK</span> id_cidade · sem FK</span>
+      </div>
+      <div class="crud-layout">
         <form class="form-card" id="cityForm">
-          <h3 id="formTitle">Nova cidade</h3><p id="formHelp">O identificador será gerado pelo banco.</p>
+          <div class="form-card-kicker"><span class="form-card-icon" aria-hidden="true">＋</span><span>REGISTRO DE CIDADE</span></div>
+          <h3 id="formTitle">Nova cidade</h3><p id="formHelp">O identificador será gerado automaticamente.</p>
           <label for="cityName">Nome da cidade</label><input id="cityName" name="nome" maxlength="100" minlength="2" required placeholder="Ex.: Maringá" autocomplete="off">
-          <div class="form-actions"><button class="button" id="saveCity" type="submit">Cadastrar cidade</button><button class="button button-outline" id="clearCity" type="button">Limpar</button><button class="button button-outline hidden" id="cancelEdit" type="button">Cancelar edição</button></div>
-          <p id="cityFeedback" class="status" role="status" aria-live="polite"></p>
+          <div class="form-actions"><button class="button button-primary" id="saveCity" type="submit">Cadastrar cidade</button><button class="button button-outline" id="clearCity" type="button">Limpar</button><button class="button button-outline hidden" id="cancelEdit" type="button">Cancelar edição</button></div>
+          <p id="cityFeedback" class="status form-feedback" role="status" aria-live="polite"></p>
+          <div class="form-hint"><span aria-hidden="true">✓</span> Validação dos campos antes de gravar.</div>
         </form>
-        <div class="data-card city-list-card">
-          <div class="list-toolbar"><div><h3>Cidades cadastradas</h3><p id="cityCount">Consultando o Supabase…</p></div><button class="button button-outline" id="reloadCities" type="button">Recarregar</button></div>
-          <form id="lookupForm" class="lookup-form"><label for="lookupId">Consultar pelo ID</label><div><input id="lookupId" type="number" min="1" step="1" placeholder="ID da cidade" required><button class="button button-outline" type="submit">Consultar</button></div><p id="lookupFeedback" class="status" role="status" aria-live="polite"></p></form>
-          <div class="table-wrap"><table class="city-table"><thead><tr><th>ID</th><th>Cidade</th><th>Ações</th></tr></thead><tbody id="cityRows"><tr><td colspan="3">Conectando…</td></tr></tbody></table></div>
+        <div class="data-card records-card">
+          <div class="list-toolbar"><div><span class="list-kicker">BANCO DE DADOS · SUPABASE</span><h3>Cidades cadastradas</h3><p id="cityCount">Consultando o Supabase…</p></div><button class="button button-outline" id="reloadCities" type="button">Recarregar</button></div>
+          <form id="lookupForm" class="lookup-form"><label for="lookupId">Consultar pelo ID</label><div><input id="lookupId" type="number" min="1" step="1" placeholder="ID da cidade" required><button class="button button-secondary" type="submit">Consultar</button></div><p id="lookupFeedback" class="status" role="status" aria-live="polite"></p></form>
+          <div class="table-wrap"><table class="records-table"><thead><tr><th>ID</th><th>Cidade</th><th>Ações</th></tr></thead><tbody id="cityRows"><tr><td colspan="3">Conectando…</td></tr></tbody></table></div>
         </div>
       </div>
+      <p class="section-footnote">Operações disponíveis: cadastrar, listar, consultar por ID, atualizar e excluir. Se uma linha depender da cidade, o banco protege o relacionamento.</p>
     </section>
 
-    <section class="section" id="linhas" aria-labelledby="linesTitle">
-      <div class="section-heading"><div><p class="eyebrow">CRUD · ENTIDADE RELACIONADA</p><h2 id="linesTitle">Linhas de ônibus</h2></div><span class="scope-badge">FK: id_cidade → cidade.id_cidade</span></div>
-      <p class="section-copy">Na interface integrada, as linhas também podem ser cadastradas, consultadas, editadas e excluídas. A API valida a cidade antes de gravar e o banco protege os vínculos por chave estrangeira.</p>
-      <div class="city-layout">
+    <section class="section section-lines" id="linhas" aria-labelledby="linesTitle">
+      <div class="section-heading">
+        <div><p class="eyebrow eyebrow-dark">04 / AVALIAÇÃO INTEGRADA</p><h2 id="linesTitle">Linhas de ônibus</h2><p class="section-intro">O cadastro integrado demonstra como uma entidade relacionada preserva o vínculo com sua cidade.</p></div>
+        <span class="scope-badge scope-badge-related"><span>FK</span> id_cidade → cidade.id_cidade</span>
+      </div>
+      <div class="crud-layout">
         <form class="form-card" id="lineForm">
-          <h3 id="lineFormTitle">Nova linha</h3><p id="lineFormHelp">Escolha uma cidade cadastrada para manter o vínculo.</p>
+          <div class="form-card-kicker"><span class="form-card-icon form-card-icon-orange" aria-hidden="true">↗</span><span>REGISTRO RELACIONADO</span></div>
+          <h3 id="lineFormTitle">Nova linha</h3><p id="lineFormHelp">Escolha uma cidade para manter a chave estrangeira.</p>
           <label for="lineCity">Cidade vinculada</label><select id="lineCity" required><option value="">Carregando cidades…</option></select>
           <label for="lineCode">Código da linha</label><input id="lineCode" maxlength="20" required placeholder="Ex.: 001" autocomplete="off">
           <label for="lineName">Nome da linha</label><input id="lineName" maxlength="120" minlength="2" required placeholder="Ex.: Terminal · Universidade" autocomplete="off">
-          <div class="form-actions"><button class="button" id="saveLine" type="submit">Cadastrar linha</button><button class="button button-outline hidden" id="cancelLineEdit" type="button">Cancelar edição</button></div>
-          <p id="lineFeedback" class="status" role="status" aria-live="polite"></p>
+          <div class="form-actions"><button class="button button-primary" id="saveLine" type="submit">Cadastrar linha</button><button class="button button-outline hidden" id="cancelLineEdit" type="button">Cancelar edição</button></div>
+          <p id="lineFeedback" class="status form-feedback" role="status" aria-live="polite"></p>
+          <div class="form-hint"><span aria-hidden="true">✓</span> A API valida a cidade antes de salvar.</div>
         </form>
-        <div class="data-card city-list-card">
-          <div class="list-toolbar"><div><h3>Linhas cadastradas</h3><p id="lineCount">Consultando a API…</p></div><button class="button button-outline" id="reloadLines" type="button">Recarregar</button></div>
-          <form id="lookupLineForm" class="lookup-form"><label for="lookupLineId">Consultar pelo ID</label><div><input id="lookupLineId" type="number" min="1" step="1" placeholder="ID da linha" required><button class="button button-outline" type="submit">Consultar</button></div><p id="lookupLineFeedback" class="status" role="status" aria-live="polite"></p></form>
-          <div class="table-wrap"><table class="city-table"><thead><tr><th>ID</th><th>Código</th><th>Linha</th><th>Cidade</th><th>Ações</th></tr></thead><tbody id="lineRows"><tr><td colspan="5">Conectando…</td></tr></tbody></table></div>
+        <div class="data-card records-card">
+          <div class="list-toolbar"><div><span class="list-kicker">REGISTROS RELACIONADOS</span><h3>Linhas cadastradas</h3><p id="lineCount">Consultando a API…</p></div><button class="button button-outline" id="reloadLines" type="button">Recarregar</button></div>
+          <form id="lookupLineForm" class="lookup-form"><label for="lookupLineId">Consultar pelo ID</label><div><input id="lookupLineId" type="number" min="1" step="1" placeholder="ID da linha" required><button class="button button-secondary" type="submit">Consultar</button></div><p id="lookupLineFeedback" class="status" role="status" aria-live="polite"></p></form>
+          <div class="table-wrap"><table class="records-table"><thead><tr><th>ID</th><th>Código</th><th>Linha</th><th>Cidade</th><th>Ações</th></tr></thead><tbody id="lineRows"><tr><td colspan="5">Conectando…</td></tr></tbody></table></div>
         </div>
       </div>
-    </section>  </main>
-  <footer><div><strong>TRANSURBAN</strong><p>Projeto acadêmico · Sistema de apoio ao transporte coletivo</p></div><p>Dados sintéticos para demonstração · Sem previsão de chegada em tempo real</p></footer>
+    </section>
+
+    <section class="section section-project" id="integracao" aria-labelledby="projectTitle">
+      <div class="section-heading"><div><p class="eyebrow eyebrow-dark">05 / COMO O APP FUNCIONA</p><h2 id="projectTitle">Uma solução, quatro partes</h2><p class="section-intro">Da tela ao banco, cada tecnologia tem uma função definida.</p></div><a class="button button-outline docs-button" href="/docs" target="_blank" rel="noreferrer">Abrir documentação da API <span aria-hidden="true">↗</span></a></div>
+      <div class="stack-grid">
+        <article class="stack-card"><span class="stack-number">01</span><h3>Interface</h3><p>HTML organiza a página; CSS adapta o visual; JavaScript atualiza tabelas e envia as operações.</p><span class="stack-tech">HTML · CSS · JavaScript</span></article>
+        <article class="stack-card"><span class="stack-number">02</span><h3>API e validação</h3><p>FastAPI recebe as solicitações, valida os campos e devolve respostas em JSON.</p><span class="stack-tech">Python · FastAPI · Pydantic</span></article>
+        <article class="stack-card"><span class="stack-number">03</span><h3>Análise</h3><p>Pandas lê o CSV, confere a qualidade dos dados e calcula os quatro agrupamentos.</p><span class="stack-tech">Python · pandas · CSV</span></article>
+        <article class="stack-card"><span class="stack-number">04</span><h3>Persistência</h3><p>Supabase armazena cidades e linhas; o backend acessa o banco por HTTPS sem expor a chave no navegador.</p><span class="stack-tech">Supabase · PostgreSQL · HTTPS</span></article>
+      </div>
+      <div class="presentation-flow"><span class="flow-label">FLUXO DA DEMONSTRAÇÃO</span><p><strong>Navegador</strong><span aria-hidden="true">→</span><strong>FastAPI</strong><span aria-hidden="true">→</span><strong>Supabase</strong><span class="flow-or">e</span><strong>CSV + pandas</strong><span aria-hidden="true">→</span><strong>Resultados na tela</strong></p></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="footer-brand" href="#inicio">TRANSURBAN</a><p>Projeto acadêmico de mobilidade · Maringá e Sarandi</p><p>Base sintética para demonstração · sem previsão em tempo real</p></footer>
 </body>
 </html>
-
-
-
 

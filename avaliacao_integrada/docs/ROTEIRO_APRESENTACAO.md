@@ -5,7 +5,7 @@
 1. No computador que fará a demonstração, instale as dependências conforme o README.
 2. Copie `backend/.env.example` para `backend/.env` e configure a URL e a chave privada do projeto Supabase da equipe. Não mostre nem envie essa chave.
 3. Confira as tabelas e os nomes das colunas no projeto Supabase correto. Use `database/01_auditar_esquema.sql` antes de aplicar qualquer DDL.
-4. Inicie a API e o servidor do frontend em dois terminais. Abra a interface e `http://127.0.0.1:8000/docs`.
+4. Dê duplo clique no atalho `ABRIR TRANSURBAN` (ou execute `iniciar_local.cmd`). Ele inicia um serviço e abre a interface. O Swagger fica em `http://127.0.0.1:8000/docs`.
 5. Combine nomes fictícios para os registros de teste. Anote o ID criado para editar, consultar e excluir o mesmo registro e evitar deixar dados de teste no banco.
 
 ## Fala de abertura
@@ -24,9 +24,9 @@
 
 ## Explicação da comunicação
 
-1. O navegador apresenta os arquivos HTML e CSS e executa o JavaScript.
-2. O JavaScript envia requisições HTTP com JSON para as rotas FastAPI em `127.0.0.1:8000`.
-3. O CORS da API permite as origens locais configuradas para o servidor do frontend.
+1. A FastAPI entrega a página HTML, os arquivos CSS/JavaScript e as rotas da API pelo mesmo serviço local.
+2. O JavaScript chama as rotas FastAPI na mesma origem `127.0.0.1:8000`.
+3. Como tela e API compartilham a origem, o navegador não precisa fazer uma requisição entre origens na abertura padrão.
 4. Para o CRUD, a API valida os dados com modelos Pydantic e acessa o Supabase pela Data API HTTPS usando segredo mantido só no backend.
 5. As rotas de Ciência de Dados leem e validam o CSV com pandas, agrupam as observações e devolvem JSON para a página.
 

@@ -1,5 +1,5 @@
 "use strict";
-const API = "http://127.0.0.1:8000";
+const API = window.location.origin;
 const $ = id => document.getElementById(id);
 let cityEditId = null;
 let lineEditId = null;
@@ -21,7 +21,7 @@ async function api(path, options = {}) {
       headers: {"Content-Type": "application/json", ...(options.headers || {})},
     });
   } catch {
-    throw new Error("API indisponível. Inicie o backend e confira o CORS_ORIGINS.");
+    throw new Error("Serviço indisponível. Abra o atalho ABRIR TRANSURBAN e tente novamente.");
   }
   if (response.status === 204) return null;
   const data = await response.json().catch(() => ({}));
@@ -43,6 +43,24 @@ function renderAggregate(id, rows, label) {
     }
   }
 }
+async function checkService() {
+  const badge = $("serviceStatus");
+  try {
+    const health = await api("/health");
+    const label = badge.querySelector("span:last-child");
+    if (health.supabase_configurado) {
+      badge.dataset.state = "ok";
+      label.textContent = "API e Supabase conectados";
+    } else {
+      badge.dataset.state = "warning";
+      label.textContent = "API ativa · configure o Supabase";
+    }
+  } catch {
+    badge.dataset.state = "error";
+    badge.querySelector("span:last-child").textContent = "API indisponível";
+  }
+}
+
 async function refreshAnalysis() {
   $("reloadData").disabled = true; setStatus("dataStatus", "Consultando as totalizações da API…");
   try {
@@ -192,6 +210,7 @@ $("cancelLineEdit").addEventListener("click", resetLineForm);
 $("reloadCities").addEventListener("click", refreshCities);
 $("reloadLines").addEventListener("click", refreshLines);
 $("reloadData").addEventListener("click", refreshAnalysis);
-refreshAll(); refreshAnalysis();
+checkService(); refreshAll(); refreshAnalysis();
+
 
 
