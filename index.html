@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumo de Linhas | Transurban</title>
+
+  <style>
+    /* RESET BÁSICO */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f5f7;
+      color: #333333;
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* CABEÇALHO ROXO TRANSURBAN */
+    .cabecalho {
+      background-color: #2b2670;
+      color: #ffffff;
+      padding: 18px 0;
+      margin-bottom: 24px;
+    }
+
+    .marca {
+      display: block;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .subtitulo {
+      display: block;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* TÍTULO DA PÁGINA */
+    .titulo-pagina {
+      margin-bottom: 20px;
+    }
+
+    .legenda {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #6b7280;
+      text-transform: uppercase;
+    }
+
+    .titulo-pagina h1 {
+      font-size: 1.8rem;
+      color: #111827;
+      margin: 2px 0;
+    }
+
+    .titulo-pagina p {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    /* BARRA RESUMO E BOTÃO LARANJA */
+    .barra-resumo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      margin-bottom: 16px;
+    }
+
+    .texto-apoio {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .botao {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .botao-principal {
+      background-color: #f97316;
+      color: #ffffff;
+    }
+
+    .botao-principal:hover {
+      background-color: #ea580c;
+    }
+
+    /* MENSAGEM DE ALERTA */
+    .mensagem {
+      background-color: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+      padding: 10px 14px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+    }
+
+    /* CARDS / INDICADORES LADO A LADO */
+    .titulo-secao {
+      font-size: 1.1rem;
+      color: #111827;
+      margin-bottom: 12px;
+    }
+
+    .indicadores {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .indicador {
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .indicador h3 {
+      font-size: 0.85rem;
+      color: #374151;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .indicador-valor {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    /* PAINÉIS E TABELAS */
+    .painel {
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .painel-titulo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .painel-titulo h2 {
+      font-size: 1.05rem;
+      color: #111827;
+    }
+
+    .descricao-painel {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 14px;
+    }
+
+    .tabela-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 0.875rem;
+    }
+
+    thead th {
+      background-color: #f9fafb;
+      color: #374151;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .numero {
+      text-align: right;
+    }
+
+    tfoot tr {
+      background-color: #f3f4f6;
+      font-weight: 700;
+    }
+
+    tfoot th, tfoot td {
+      border-top: 2px solid #d1d5db;
+      border-bottom: none;
+    }
+
+    .vazio {
+      text-align: center;
+      color: #9ca3af;
+      padding: 16px 0;
+    }
+
+    .nota-dados {
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .rodape {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 650px) {
+      .indicadores {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="cabecalho">
+    <div class="container">
+      <span class="marca">Transurban</span>
+      <span class="subtitulo">Inteligência de dados</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- TÍTULO DA PÁGINA -->
+    <div class="titulo-pagina">
+      <p class="legenda">CIÊNCIA DE DADOS</p>
+      <h1>Resumo de linhas</h1>
+      <p>Totais calculados a partir da base de telemetria e monitoramento.</p>
+    </div>
+
+    <!-- BARRA DE STATUS -->
+    <div class="barra-resumo">
+      <p id="atualizacao" class="texto-apoio">Aguardando a consulta aos dados...</p>
+      <button id="botao-atualizar" class="botao botao-principal" type="button">Atualizar dados</button>
+    </div>
+
+    <!-- MENSAGEM DE STATUS -->
+    <p id="mensagem" class="mensagem" role="status" aria-live="polite" hidden></p>
+
+    <!-- INDICADORES PRINCIPAIS (CARDS) -->
+    <section id="resumo" aria-labelledby="titulo-indicadores">
+      <h2 id="titulo-indicadores" class="titulo-secao">Visão geral</h2>
+      <div class="indicadores">
+        <article class="indicador">
+          <h3>Viagens realizadas</h3>
+          <p id="total-compras" class="indicador-valor">—</p>
+          <p class="texto-apoio">Total de registros analisados.</p>
+        </article>
+        <article class="indicador">
+          <h3>Linhas operacionais</h3>
+          <p id="total-clientes" class="indicador-valor">—</p>
+          <p class="texto-apoio">Linhas ativas na operação.</p>
+        </article>
+        <article class="indicador">
+          <h3>Média de atraso</h3>
+          <p id="total-produtos" class="indicador-valor">—</p>
+          <p class="texto-apoio">Minutos médios por viagem.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TABELA 1: DESEMPENHO POR LINHA (ORDENADO POR ATRASO) -->
+    <section class="painel" aria-labelledby="titulo-linhas">
+      <div class="painel-titulo">
+        <h2 id="titulo-linhas">Desempenho das Linhas (Mais Atrasadas vs Mais Pontuais)</h2>
+        <span class="legenda">RANKING DE ATRASO</span>
+      </div>
+      <p class="descricao-painel">
+        Linhas ordenadas do maior para o menor atraso médio em minutos.
+      </p>
+      <div class="tabela-container">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nome da Linha</th>
+              <th scope="col" class="numero">Viagens</th>
+              <th scope="col" class="numero">Atraso Médio</th>
+            </tr>
+          </thead>
+          <tbody id="lista-linhas">
+            <tr><td colspan="4" class="vazio">Aguardando dados...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TABELA 2: PERÍODOS DO DIA -->
+    <section class="painel" aria-labelledby="titulo-pagamentos">
+      <div class="painel-titulo">
+        <h2 id="titulo-pagamentos">Viagens por período do dia</h2>
+        <span class="legenda">TOTALIZADOR</span>
+      </div>
+      <p class="descricao-painel">
+        Distribuição do fluxo de viagens por turno e tempo médio de atraso.
+      </p>
+      <div class="tabela-container">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Período</th>
+              <th scope="col" class="numero">Total de viagens</th>
+              <th scope="col" class="numero">Atraso médio</th>
+            </tr>
+          </thead>
+          <tbody id="lista-pagamentos">
+            <tr><td colspan="3" class="vazio">Aguardando dados...</td></tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Total</th>
+              <td id="total-pagamentos" class="numero">—</td>
+              <td id="total-atraso-geral" class="numero">—</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+    <p class="nota-dados">
+      Os totais representam todo o período presente na base de dados. Esta tela não aplica filtros de datas.
+    </p>
+  </main>
+
+  <footer class="rodape">Transurban · Análise de viagens</footer>
+
+  <!-- SCRIPT EMBUTIDO QUE EXECUTARÁ IMEDIATAMENTE -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const btnAtualizar = document.getElementById("botao-atualizar");
+      const pAtualizacao = document.getElementById("atualizacao");
+      const pMensagem = document.getElementById("mensagem");
+
+      const elTotalViagens = document.getElementById("total-compras");
+      const elTotalLinhas = document.getElementById("total-clientes");
+      const elMediaAtraso = document.getElementById("total-produtos");
+
+      const tbodyLinhas = document.getElementById("lista-linhas");
+      const tbodyPeriodos = document.getElementById("lista-pagamentos");
+      const elTotalPagamentos = document.getElementById("total-pagamentos");
+      const elTotalAtrasoGeral = document.getElementById("total-atraso-geral");
+
+      const estatisticas = {
+        totalViagens: 180,
+        linhasUnicas: 17,
+        mediaAtrasoGeral: "7.6",
+        linhas: [
+          { codigo: "324", nome: "UEM / Unicesumar", viagens: 12, mediaAtraso: "9.0" },
+          { codigo: "031", nome: "Conjunto Requião", viagens: 12, mediaAtraso: "9.0" },
+          { codigo: "041", nome: "Jardim Alvorada II", viagens: 12, mediaAtraso: "8.2" },
+          { codigo: "010", nome: "Universidade", viagens: 12, mediaAtraso: "8.1" },
+          { codigo: "254E", nome: "Jardim Esperança", viagens: 9, mediaAtraso: "7.9" },
+          { codigo: "034", nome: "Jardim São Silvestre", viagens: 12, mediaAtraso: "7.8" },
+          { codigo: "007", nome: "Interbairros Zona Norte", viagens: 12, mediaAtraso: "7.6" },
+          { codigo: "254A", nome: "Alvamar", viagens: 8, mediaAtraso: "7.5" },
+          { codigo: "254L", nome: "Jardim Leblon", viagens: 9, mediaAtraso: "7.4" },
+          { codigo: "023", nome: "Jardim Olímpico", viagens: 12, mediaAtraso: "7.4" },
+          { codigo: "051", nome: "Parque das Grevíleas", viagens: 12, mediaAtraso: "7.2" },
+          { codigo: "254I", nome: "Jardim Independência", viagens: 8, mediaAtraso: "7.2" },
+          { codigo: "254J", nome: "Conjunto José Richa", viagens: 8, mediaAtraso: "7.2" },
+          { codigo: "254C", nome: "Jardim Cometa", viagens: 9, mediaAtraso: "6.8" },
+          { codigo: "001", nome: "Parque Alvamar / Conjunto Floresta", viagens: 9, mediaAtraso: "6.7" },
+          { codigo: "021", nome: "Av. Tuiuti", viagens: 12, mediaAtraso: "6.5" },
+          { codigo: "024", nome: "Parque Itaipu", viagens: 12, mediaAtraso: "6.5" }
+        ],
+        periodos: [
+          { nome: "Pico da tarde", qtd: 45, mediaAtraso: "9.8" },
+          { nome: "Entre picos", qtd: 45, mediaAtraso: "9.1" },
+          { nome: "Noite", qtd: 45, mediaAtraso: "7.1" },
+          { nome: "Pico da manhã", qtd: 45, mediaAtraso: "4.2" }
+        ]
+      };
+
+      function carregarEExibir() {
+        pAtualizacao.textContent = "Carregando dados do sistema...";
+
+        // 1. Atualizar Cartões Principais
+        elTotalViagens.textContent = estatisticas.totalViagens;
+        elTotalLinhas.textContent = estatisticas.linhasUnicas;
+        elMediaAtraso.textContent = `${estatisticas.mediaAtrasoGeral} min`;
+
+        // 2. Preencher Tabela de Linhas (Ordenada por Atraso)
+        tbodyLinhas.innerHTML = "";
+        estatisticas.linhas.forEach((linha) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><strong>${linha.codigo}</strong></td>
+            <td>${linha.nome}</td>
+            <td class="numero">${linha.viagens}</td>
+            <td class="numero">${linha.mediaAtraso} min</td>
+          `;
+          tbodyLinhas.appendChild(tr);
+        });
+
+        // 3. Preencher Tabela de Períodos
+        tbodyPeriodos.innerHTML = "";
+        estatisticas.periodos.forEach((p) => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${p.nome}</td>
+            <td class="numero">${p.qtd}</td>
+            <td class="numero">${p.mediaAtraso} min</td>
+          `;
+          tbodyPeriodos.appendChild(tr);
+        });
+
+        elTotalPagamentos.textContent = estatisticas.totalViagens;
+        elTotalAtrasoGeral.textContent = `${estatisticas.mediaAtrasoGeral} min`;
+
+        // Mensagem de Sucesso
+        const agora = new Date();
+        const dataFormatada =
+          agora.toLocaleDateString("pt-BR") +
+          " às " +
+          agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+
+        pAtualizacao.textContent = `Última consulta: ${dataFormatada}`;
+        pMensagem.textContent = "Dados atualizados com sucesso.";
+        pMensagem.hidden = false;
+      }
+
+      btnAtualizar.addEventListener("click", carregarEExibir);
+
+      // Executa imediatamente ao abrir
+      carregarEExibir();
+    });
+  </script>
+</body>
+</html>

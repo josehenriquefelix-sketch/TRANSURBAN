@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesso ao Sistema | Transurban</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f4f5f7;
+      color: #333333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* CABEÇALHO ROXO TRANSURBAN */
+    .cabecalho {
+      background-color: #2b2670;
+      color: #ffffff;
+      padding: 18px 0;
+      text-align: center;
+    }
+
+    .marca {
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: block;
+    }
+
+    .subtitulo {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      display: block;
+    }
+
+    /* CONTAINER DO FORMULÁRIO */
+    .container-login {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .card-cadastro {
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 30px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .titulo-form {
+      font-size: 1.4rem;
+      color: #111827;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .descricao-form {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .grupo-campo {
+      margin-bottom: 18px;
+    }
+
+    .grupo-campo label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+
+    .grupo-campo input {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .grupo-campo input:focus {
+      border-color: #f97316;
+    }
+
+    .botao-entrar {
+      width: 100%;
+      background-color: #f97316;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-top: 10px;
+    }
+
+    .botao-entrar:hover {
+      background-color: #ea580c;
+    }
+
+    .rodape {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="cabecalho">
+    <span class="marca">Transurban</span>
+    <span class="subtitulo">Inteligência de dados</span>
+  </header>
+
+  <!-- FORMULÁRIO DE CADASTRO -->
+  <main class="container-login">
+    <div class="card-cadastro">
+      <h1 class="titulo-form">Acesso ao Painel</h1>
+      <p class="descricao-form">Preencha os seus dados para visualizar o relatório de telemetria.</p>
+
+      <form id="form-cadastro">
+        <div class="grupo-campo">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" placeholder="Digite o seu nome" required>
+        </div>
+
+        <div class="grupo-campo">
+          <label for="email">E-mail corporativo</label>
+          <input type="email" id="email" placeholder="seu.email@transurban.com" required>
+        </div>
+
+        <div class="grupo-campo">
+          <label for="telefone">Telefone / Telemóvel</label>
+          <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+        </div>
+
+        <button type="submit" class="botao-entrar">Acessar Relatório</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    Transurban · Análise de viagens
+  </footer>
+
+  <script>
+    document.getElementById("form-cadastro").addEventListener("submit", (e) => {
+      e.preventDefault(); // Impede o recarregamento padrão da página
+
+      // Guarda o nome do utilizador para usar no painel principal
+      const nomeUsuario = document.getElementById("nome").value;
+      localStorage.setItem("usuarioTransurban", nomeUsuario);
+
+      // Redireciona para a página do painel principal (index.html)
+      window.location.href = "index.html";
+    });
+  </script>
+
+</body>
+</html>
