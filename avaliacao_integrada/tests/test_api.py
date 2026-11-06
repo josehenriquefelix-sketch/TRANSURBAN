@@ -3,6 +3,7 @@ import unittest
 from unittest.mock import patch
 
 from fastapi.testclient import TestClient
+from postgrest.exceptions import APIError
 
 from backend.controller import cidades, linhas
 from backend.main import app
@@ -71,6 +72,16 @@ class FakeQuery:
                 row.update(self.payload)
             return FakeResponse([self._represent(r) for r in matched])
         if self.operation == "delete":
+            if self.table_name == "cidade" and any(
+                line["id_cidade"] in {row["id_cidade"] for row in matched}
+                for line in self.database["linha_onibus"]
+            ):
+                raise APIError({
+                    "code": "23503",
+                    "message": "update or delete violates foreign key constraint",
+                    "details": None,
+                    "hint": None,
+                })
             result = [self._represent(r) for r in matched]
             for row in matched:
                 rows.remove(row)
@@ -128,6 +139,21 @@ class EntregaTests(unittest.TestCase):
         invalida = self.client.post("/linhas", json={**payload, "id_cidade": 999})
         self.assertEqual(invalida.status_code, 404)
 
+    def test_fk_impede_excluir_cidade_com_linha_vinculada(self):
+        cidade = self.client.post("/cidades", json={"nome": "Maringá"}).json()
+        payload = {"id_cidade": cidade["id_cidade"], "codigo": "FK01", "nome": "Linha de Teste"}
+        criada = self.client.post("/linhas", json=payload)
+        self.assertEqual(criada.status_code, 201, criada.text)
+
+        bloqueio = self.client.delete(f"/cidades/{cidade['id_cidade']}")
+        self.assertEqual(bloqueio.status_code, 409, bloqueio.text)
+        self.assertIn("linhas de ônibus vinculadas", bloqueio.json()["detail"])
+        self.assertEqual(self.client.get(f"/cidades/{cidade['id_cidade']}").status_code, 200)
+        self.assertEqual(self.client.get(f"/linhas/{criada.json()['id_linha']}").status_code, 200)
+
+        self.assertEqual(self.client.delete(f"/linhas/{criada.json()['id_linha']}").status_code, 204)
+        self.assertEqual(self.client.delete(f"/cidades/{cidade['id_cidade']}").status_code, 204)
+
     def test_modelo_rejeita_nome_vazio_e_id_no_cadastro(self):
         self.assertEqual(self.client.post("/cidades", json={"nome": "  "}).status_code, 422)
         self.assertEqual(self.client.post("/cidades", json={"id_cidade": 10, "nome": "Teste"}).status_code, 422)
@@ -155,3 +181,4 @@ class EntregaTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
