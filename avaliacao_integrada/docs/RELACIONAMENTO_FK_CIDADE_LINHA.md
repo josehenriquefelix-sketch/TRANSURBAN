@@ -39,7 +39,7 @@ Use um `id_cidade` retornado pela sua própria API. A resposta contém o ID gera
 }
 ```
 
-O modelo rejeita campos extras; não envie `cidade` no POST ou PUT. A API verifica se a cidade existe antes de cadastrar ou alterar a linha. Código de cidade inválido retorna `404`. A chave estrangeira no banco protege o vínculo mesmo se os dados mudarem entre a validação e a gravação.
+O modelo rejeita campos extras; não envie `cidade` no POST ou PUT. A API verifica se a cidade existe antes de cadastrar ou alterar a linha. Código de cidade inválido retorna `400`. A chave estrangeira no banco protege o vínculo mesmo se os dados mudarem entre a validação e a gravação.
 
 ## CRUD e regra de exclusão
 
@@ -61,7 +61,7 @@ Abra `http://127.0.0.1:8000/docs` e siga esta sequência com dados fictícios:
 3. `POST /linhas` com o ID válido; confirme `201` e que a resposta mostra `cidade` com o nome correto.
 4. Faça outro POST com o mesmo `id_cidade`; confirme que duas linhas podem pertencer à mesma cidade.
 5. `GET /linhas` e `GET /linhas/{id_linha}`; confira o vínculo e os dados.
-6. Tente `POST /linhas` com ID de cidade inexistente; espere `404` e confirme que nenhuma linha foi inserida.
+6. Tente `POST /linhas` com ID de cidade inexistente; espere `400` e confirme que nenhuma linha foi inserida.
 7. Faça `PUT /linhas/{id_linha}` com os campos válidos; confirme `200` e o nome da nova cidade escolhida.
 8. Tente excluir a cidade que ainda possui linha; espere `409` e confirme que a cidade e a linha permanecem.
 9. Exclua a linha (`204`) e depois a cidade de teste (`204`). Confirme `404` para as consultas aos IDs excluídos.
