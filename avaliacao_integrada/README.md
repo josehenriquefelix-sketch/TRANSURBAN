@@ -16,6 +16,12 @@ Entrega acadêmica integrada com FastAPI, pandas, Supabase por HTTPS, HTML, CSS 
 
 Em auditoria somente de leitura do projeto Supabase `transurban`, em 28/10/2026, foram encontradas as tabelas públicas `cidade`, `faixa_exclusiva`, `linha_onibus`, `linha_trecho`, `registro_atraso` e `trecho`. As PKs observadas são `cidade.id_cidade`, `faixa_exclusiva.id_faixa`, `linha_onibus.id_linha` e a PK composta de `linha_trecho` (`id_linha`, `id_trecho`). As FKs observadas incluem `faixa_exclusiva.id_trecho`, `linha_onibus.id_cidade`, `linha_trecho.id_linha`/`id_trecho` e `registro_atraso.id_linha`/`id_trecho`. `trecho` e `registro_atraso` não apresentaram PK nessa auditoria. Assim, **`cidade` é a única tabela observada com PK e sem FK**, e é a única incluída no CRUD da recuperação. `linha_onibus` fica disponível na avaliação integrada e preserva sua FK para cidade. O banco não foi alterado durante a auditoria.
 
+## Atividade de chave estrangeira (DS)
+
+O relacionamento autoral aplicado é `cidade` → `linha_onibus`: `cidade.id_cidade` é PK; `linha_onibus.id_linha` é PK e `linha_onibus.id_cidade` é FK. O endpoint `/linhas` guarda o ID da cidade e inclui seu nome consultado na resposta. O CRUD de linhas valida a cidade e a FK do banco impede excluir uma cidade que ainda tenha linhas vinculadas. Consulte o [passo a passo e roteiro de teste da atividade](docs/RELACIONAMENTO_FK_CIDADE_LINHA.md).
+
+No Supabase atual essas tabelas já existem. Não execute DDL de criação sobre elas; os scripts em `database/` são para uma base de demonstração vazia e devem ser revisados após a auditoria.
+
 ## Requisitos
 
 - Python 3.10 ou superior.
