@@ -33,7 +33,9 @@ def _representar(registro):
     cidade = registro.get("cidade")
     if isinstance(cidade, list):
         cidade = cidade[0] if cidade else None
-    registro["cidade"] = cidade.get("nome", "") if isinstance(cidade, dict) else ""
+    if not isinstance(cidade, dict) or not cidade.get("nome"):
+        raise HTTPException(502, "Não foi possível consultar a cidade vinculada à linha.")
+    registro["cidade"] = cidade["nome"]
     return registro
 
 
@@ -42,7 +44,7 @@ def _validar_cidade(id_cidade):
         lambda db: db.table("cidade").select("id_cidade").eq("id_cidade", id_cidade).limit(1)
     )
     if not resposta.data:
-        raise HTTPException(404, "Cidade vinculada não encontrada.")
+        raise HTTPException(400, "Cidade não encontrada. Consulte uma cidade cadastrada.")
 
 
 @router.post("", response_model=LinhaSaida, status_code=status.HTTP_201_CREATED)
@@ -76,6 +78,7 @@ def consultar_linha(id_linha: int):
 
 @router.put("/{id_linha}", response_model=LinhaSaida)
 def atualizar_linha(id_linha: int, dados: LinhaEntrada):
+    consultar_linha(id_linha)
     _validar_cidade(dados.id_cidade)
     resposta = _executar(
         lambda db: db.table(TABELA).update(dados.model_dump()).eq(PK, id_linha).select(COLUNAS)
