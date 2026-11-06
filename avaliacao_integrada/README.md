@@ -2,7 +2,7 @@
 
 Entrega acadêmica integrada com FastAPI, pandas, Supabase por HTTPS, HTML, CSS e JavaScript. A documentação cobre o CRUD, a base de Ciência de Dados, as quatro perguntas, o CORS e o roteiro de conferência.
 
-**Projeto da equipe:** sistema acadêmico sobre transporte coletivo de Maringá e Sarandi. **Autor da recuperação:** Erinaldo Sanches Nascimento. **Grupo:** preencher os nomes dos integrantes antes da apresentação.
+**Projeto da equipe:** sistema acadêmico sobre transporte coletivo de Maringá e Sarandi. **Professor responsável:** Erinaldo Sanches Nascimento. **Grupo:** preencher os nomes dos integrantes antes da apresentação.
 
 ## Conteúdo
 
@@ -86,6 +86,8 @@ A tela e a API usam a mesma origem local (`127.0.0.1:8000`), então a abertura p
 
 ## Roteiro manual de conferência e evidências
 
+Confira a [verificação atualizada](docs/VERIFICACAO_LOCAL.md) e o [relatório das 37 verificações com Supabase real](docs/EVIDENCIAS_FK_20261106.json).
+
 Use apenas nomes fictícios de cidades e confirme os registros no Table Editor do Supabase. No Swagger (`/docs`):
 
 1. `GET /cidades` — confirma conexão e lista inicial.
@@ -94,7 +96,7 @@ Use apenas nomes fictícios de cidades e confirme os registros no Table Editor d
 4. `PUT /cidades/{ID}` com `{"nome":"Cidade de Teste DS Atualizada"}` — esperado `200`; consulte novamente.
 5. `DELETE /cidades/{ID}` — esperado `204`; `GET /cidades/{ID}` depois retorna `404`. Se estiver referenciada por uma linha, espere `409` e não apague a FK.
 6. `POST /cidades` com nome vazio ou `id_cidade` extra — esperado `422`; nenhum cadastro indevido deve ser gravado.
-7. Repita o ciclo CRUD para `linha_onibus`: `POST /linhas` com `id_cidade`, `codigo` e `nome`; consulte, edite com `PUT`, exclua e confirme que uma cidade inexistente retorna `404` ao criar linha.
+7. Repita o ciclo CRUD para `linha_onibus`: `POST /linhas` com `id_cidade`, `codigo` e `nome`; consulte, edite com `PUT`, exclua e confirme que uma cidade inexistente retorna `400` ao criar linha.
 8. Abra as cinco rotas `/ia` e confira o JSON com os valores apresentados na interface.
 9. Salve capturas do Swagger e do Table Editor antes/depois. Os espaços reservados desta pasta não afirmam que testes remotos foram executados; preencha seu relatório com capturas obtidas no seu projeto.
 
