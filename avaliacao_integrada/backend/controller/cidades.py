@@ -16,7 +16,13 @@ def _executar(operacao):
     except RuntimeError as erro:
         raise HTTPException(status_code=503, detail=str(erro)) from erro
     except APIError as erro:
-        if getattr(erro, "code", None) in {"23505", "23503", "23514"}:
+        codigo = getattr(erro, "code", None)
+        if codigo == "23503":
+            raise HTTPException(
+                409,
+                "Esta cidade não pode ser excluída enquanto houver linhas de ônibus vinculadas.",
+            ) from erro
+        if codigo in {"23505", "23514"}:
             raise HTTPException(409, "Conflito com uma regra de integridade do banco.") from erro
         raise
 
@@ -57,3 +63,4 @@ def excluir_cidade(id_cidade: int):
     if not resposta.data:
         raise HTTPException(404, "Cidade não encontrada.")
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
