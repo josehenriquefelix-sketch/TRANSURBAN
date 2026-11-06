@@ -137,7 +137,7 @@ class EntregaTests(unittest.TestCase):
         self.assertEqual(self.client.delete("/linhas/1").status_code, 204)
         self.assertEqual(self.client.get("/linhas/1").status_code, 404)
         invalida = self.client.post("/linhas", json={**payload, "id_cidade": 999})
-        self.assertEqual(invalida.status_code, 404)
+        self.assertEqual(invalida.status_code, 400)
 
     def test_fk_impede_excluir_cidade_com_linha_vinculada(self):
         cidade = self.client.post("/cidades", json={"nome": "Maringá"}).json()
