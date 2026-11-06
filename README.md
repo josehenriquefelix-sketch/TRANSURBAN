@@ -1,5 +1,23 @@
 # TRANSURBAN — API
 
+## Abrir o projeto de apresentação no VS Code (Windows)
+
+1. No VS Code, pressione **Ctrl + Shift + P**, escolha **Git: Clone** e cole `https://github.com/josehenriquefelix-sketch/TRANSURBAN.git`.
+2. Escolha uma pasta e abra o repositório clonado.
+3. No VS Code, abra **Terminal → New Terminal** e execute:
+
+   `.\avaliacao_integrada\iniciar_local.cmd`
+
+4. Na primeira execução, configure `avaliacao_integrada/backend/.env` com a Project URL e a chave secreta do projeto Supabase. Salve e feche o Bloco de Notas.
+5. O site abre sozinho. Clique em **Ver API (Swagger)** para abrir a API. Mantenha a janela do servidor aberta.
+
+Requisitos: Git for Windows, Python 3.10 ou superior e internet na primeira instalação. Para um repositório já clonado, use **Source Control → … → Pull** antes de apresentar. O arquivo `.env` é local e não está no GitHub.
+
+- [Guia rápido para o computador do auditório](avaliacao_integrada/GUIA_RAPIDO_AUDITORIO.md)
+- [Instruções completas da integração DS + IA e da FK](avaliacao_integrada/README.md)
+- [Adaptação da atividade de chave estrangeira ao TRANSURBAN](avaliacao_integrada/docs/RELACIONAMENTO_FK_CIDADE_LINHA.md)
+
+
 > **Aplicação integrada DS + IA:** abra [`avaliacao_integrada/README.md`](avaliacao_integrada/README.md). No Windows, execute `avaliacao_integrada/iniciar_local.cmd` para iniciar um único serviço e abrir o painel. Configure `avaliacao_integrada/backend/.env` em cada computador; esse arquivo privado não é enviado ao GitHub.
 
 Backend da avaliação, seguindo o caderno do estudante e o DER do TRANSURBAN.
