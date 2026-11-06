@@ -99,7 +99,17 @@ async def erro_supabase(_request: Request, erro: APIError):
         codigo or "sem código",
         getattr(erro, "message", "erro de API"),
     )
-    status_code = 409 if codigo in {"23505", "23503", "23514"} else 502
+    if codigo == "23503":
+        return JSONResponse(
+            status_code=409,
+            content={
+                "detail": (
+                    "A operação foi bloqueada por uma chave estrangeira. "
+                    "Confira os registros relacionados antes de tentar novamente."
+                )
+            },
+        )
+    status_code = 409 if codigo in {"23505", "23514"} else 502
     mensagem = (
         "Conflito com uma regra de integridade do banco."
         if status_code == 409
