@@ -1,0 +1,244 @@
+{
+  "data": "2026-11-06",
+  "ambiente": "FastAPI TestClient com Supabase real por HTTPS; interface e Swagger verificados por HTTP, sem captura visual",
+  "resultado": "aprovado",
+  "testes_automatizados_memoria": 6,
+  "registros_temporarios_removidos": true,
+  "verificacoes": [
+    {
+      "metodo": "GET",
+      "rota": "/",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/docs",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/health",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/resumo",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/totalizacao/cidade",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/totalizacao/periodo",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/totalizacao/transito",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/ia/totalizacao/clima",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "esperado": 201,
+      "recebido": 201
+    },
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "esperado": 201,
+      "recebido": 201
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "esperado": 201,
+      "recebido": 201
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "esperado": 201,
+      "recebido": 201
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades/10",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "PUT",
+      "rota": "/cidades/10",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas/13",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "PUT",
+      "rota": "/linhas/13",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "DELETE",
+      "rota": "/cidades/10",
+      "esperado": 409,
+      "recebido": 409
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades/10",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas/14",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "esperado": 400,
+      "recebido": 400
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "esperado": 422,
+      "recebido": 422
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "esperado": 422,
+      "recebido": 422
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "esperado": 422,
+      "recebido": 422
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas/2147483647",
+      "esperado": 404,
+      "recebido": 404
+    },
+    {
+      "metodo": "PUT",
+      "rota": "/linhas/2147483647",
+      "esperado": 404,
+      "recebido": 404
+    },
+    {
+      "metodo": "DELETE",
+      "rota": "/linhas/13",
+      "esperado": 204,
+      "recebido": 204
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas/13",
+      "esperado": 404,
+      "recebido": 404
+    },
+    {
+      "metodo": "DELETE",
+      "rota": "/linhas/14",
+      "esperado": 204,
+      "recebido": 204
+    },
+    {
+      "metodo": "GET",
+      "rota": "/linhas/14",
+      "esperado": 404,
+      "recebido": 404
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades/10",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "DELETE",
+      "rota": "/cidades/10",
+      "esperado": 204,
+      "recebido": 204
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades/10",
+      "esperado": 404,
+      "recebido": 404
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades/11",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "DELETE",
+      "rota": "/cidades/11",
+      "esperado": 204,
+      "recebido": 204
+    },
+    {
+      "metodo": "GET",
+      "rota": "/cidades/11",
+      "esperado": 404,
+      "recebido": 404
+    }
+  ],
+  "interface": {
+    "ids_unicos": 54,
+    "referencias_js_validas": 31,
+    "arquivos_http_aprovados": [
+      "/",
+      "/styles.css",
+      "/app.js",
+      "/docs",
+      "/openapi.json"
+    ],
+    "link_swagger": true,
+    "verificacao_visual_interativa": false
+  }
+}
