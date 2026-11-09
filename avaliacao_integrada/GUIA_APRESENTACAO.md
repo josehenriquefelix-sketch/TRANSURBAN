@@ -1,4 +1,4 @@
-# TRANSURBAN — apresentação de DS + IA
+# TRANSURBAN — apresentação de Desenvolvimento de Sistemas
 
 Na pasta `avaliacao_integrada`, no Linux, execute `PORT=8092 bash iniciar_linux.sh` para usar o Supabase. Reaproveite `backend/.env` se ele já contém a URL e a chave secreta do Supabase. O iniciador cria um modelo caso o arquivo ainda não exista. A chave fica no backend local.
 
