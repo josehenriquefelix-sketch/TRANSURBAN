@@ -248,3 +248,19 @@ tbody tr:last-child td { border-bottom: 0; }
 .analysis-grid > * {min-width:0}
 button:disabled {opacity:.55;cursor:wait}
 @media(max-width:600px){.service-status{max-width:100%;font-size:11px}}
+
+/* Identidade compartilhada com a área de mobilidade. */
+body{background:#f2f6f5;color:#142932}
+.site-header{border-bottom:1px solid #dce7e4}
+.hero{background:#112d35}
+.hero h1 em{color:#79edbe}
+.section-crud,.section-lines{background:#f2f6f5}
+.form-card,.records-card{border:1px solid #dce7e4;border-radius:18px}
+.quick-filter{margin:0 0 12px;display:grid;gap:6px}
+.quick-filter label{font-size:.83rem;font-weight:750;color:#305249}
+.quick-filter input{width:100%;min-height:44px;background:#f7faf9;border:1px solid #bbcec7;border-radius:9px;padding:.65rem .75rem;font:inherit}
+.map-action{display:inline-block;text-decoration:none;color:#09614e}
+.records-table td:last-child{white-space:normal;min-width:130px}
+.records-table td:last-child>*{margin:2px}
+#cidades,#linhas{scroll-margin-top:100px}
+@media(max-width:620px){.crud-layout>*{min-width:0}.table-wrap{overflow:auto}.form-actions button{min-height:44px}.hero-actions{gap:8px}}

@@ -14,7 +14,10 @@ async function req(path, {method="GET", body, token}={}) {
   if(!r.ok)throw Error(typeof d.detail==="string"?d.detail:"Confira o código da linha, do ônibus e os dados informados.");
   return d;
 }
-let linha="001", map, markers, rota, primeira=true, watch=null, sessao=null, fila=Promise.resolve(), atualizando=false;
+const inicial = (new URLSearchParams(location.search).get("linha") || "001").trim().toUpperCase();
+let linha=/^[A-Z0-9-]{1,20}$/.test(inicial) ? inicial : "001", map, markers, rota, primeira=true, watch=null, sessao=null, fila=Promise.resolve(), atualizando=false;
+el("linhaMapa").value=linha;
+el("linhaAval").value=linha;
 if(window.L){
   map=L.map("mapa").setView([-23.425,-51.906],12);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(map);

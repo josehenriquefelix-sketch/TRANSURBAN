@@ -59,10 +59,15 @@ function syncCitySelect() {
   $("saveLine").disabled = !cityRecords.length;
   showSelectedCity();
 }
-function renderCities(items = cityRecords) {
+const normalizar = value => String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+function filtro(registros, id, campos) {
+  const q = normalizar($(id).value);
+  return q ? registros.filter(r => campos.some(c => normalizar(r[c]).includes(q))) : registros;
+}
+function renderCities(items = filtro(cityRecords, "cityFilter", ["nome","id_cidade"])) {
   const body = $("cityRows"); body.replaceChildren();
   $("cityCount").textContent = `${items.length} ${items.length === 1 ? "cidade" : "cidades"}`;
-  if (!items.length) { const tr = body.insertRow(); const td = tr.insertCell(); td.colSpan = 3; td.textContent = "Nenhuma cidade cadastrada."; syncCitySelect(); return; }
+  if (!items.length) { const tr = body.insertRow(); const td = tr.insertCell(); td.colSpan = 3; td.textContent = cityRecords.length ? "Nenhuma cidade encontrada para essa busca." : "Nenhuma cidade cadastrada."; syncCitySelect(); return; }
   for (const city of items) {
     const tr = body.insertRow(); tr.insertCell().textContent = String(city.id_cidade); tr.insertCell().textContent = city.nome;
     const actions = tr.insertCell();
@@ -72,17 +77,21 @@ function renderCities(items = cityRecords) {
   }
   syncCitySelect();
 }
-function renderLines(items = lineRecords) {
+function renderLines(items = filtro(lineRecords, "lineFilter", ["nome","codigo","cidade","id_linha"])) {
   const body = $("lineRows"); body.replaceChildren();
   $("lineCount").textContent = `${items.length} ${items.length === 1 ? "linha" : "linhas"}`;
-  if (!items.length) { const tr = body.insertRow(); const td = tr.insertCell(); td.colSpan = 5; td.textContent = "Nenhuma linha cadastrada."; return; }
+  if (!items.length) { const tr = body.insertRow(); const td = tr.insertCell(); td.colSpan = 5; td.textContent = lineRecords.length ? "Nenhuma linha encontrada para essa busca." : "Nenhuma linha cadastrada."; return; }
   for (const line of items) {
     const tr = body.insertRow();
     for (const value of [line.id_linha, line.codigo, line.nome, line.cidade]) tr.insertCell().textContent = String(value);
     const actions = tr.insertCell();
     const edit = document.createElement("button"); edit.className = "table-action"; edit.type = "button"; edit.textContent = "Editar"; edit.dataset.action = "edit"; edit.dataset.id = line.id_linha;
     const remove = document.createElement("button"); remove.className = "table-action danger"; remove.type = "button"; remove.textContent = "Excluir"; remove.dataset.action = "delete"; remove.dataset.id = line.id_linha;
-    actions.append(edit, remove);
+    const mapa = document.createElement("a");
+    mapa.className = "table-action map-action";
+    mapa.textContent = "Mapa";
+    mapa.href = "mobilidade.html?linha=" + encodeURIComponent(line.codigo);
+    actions.append(edit, remove, mapa);
   }
 }
 async function refreshCities() {
@@ -185,6 +194,8 @@ function showSelectedCity(){
  const s=$("lineCity"); $("selectedCity").textContent=s.value ? `Cidade: ${s.selectedOptions[0].textContent}. ID enviado: ${s.value}.` : "Escolha a cidade pelo nome. O vínculo será gravado pelo ID.";
 }
 $("lineCity").addEventListener("change",showSelectedCity);
+$("cityFilter").addEventListener("input", () => renderCities());
+$("lineFilter").addEventListener("input", () => renderLines());
 checkService(); refreshAll();
 
 

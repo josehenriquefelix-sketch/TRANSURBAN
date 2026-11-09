@@ -28,10 +28,10 @@
     <section class="hero" id="inicio" aria-labelledby="heroTitle">
       <div class="hero-copy-block">
         <p class="eyebrow"><span class="eyebrow-line"></span> PAINEL ACADÊMICO DE MOBILIDADE</p>
-        <h1 id="heroTitle">Entender o transporte começa <em>pelos dados.</em></h1>
-        <p class="hero-description">Um projeto integrado para organizar cidades e linhas de ônibus de Maringá e Sarandi.</p>
-        <div class="hero-actions"><a class="button button-quiet" href="#cidades">Abrir cadastros <span aria-hidden="true">→</span></a><a class="button button-quiet" href="/docs" target="_blank" rel="noreferrer">Ver API (Swagger) <span aria-hidden="true">↗</span></a></div>
-        <div class="hero-tags"><span><i class="tag-dot"></i>Interface + API + banco</span><span><i class="tag-dot tag-dot-orange"></i>Base didática sintética</span></div>
+        <h1 id="heroTitle">Transporte urbano,<br><em>em um só lugar.</em></h1>
+        <p class="hero-description">Gerencie as cidades e linhas do TransUrban. Na área de Mobilidade, consulte trajetos e acompanhe os ônibus com GPS ativo.</p>
+        <div class="hero-actions"><a class="button button-primary" href="mobilidade.html">Abrir mapa <span aria-hidden="true">→</span></a><a class="button button-quiet" href="#cidades">Gerenciar cadastros</a><a class="button button-quiet" href="/docs" target="_blank" rel="noreferrer">Ver API (Swagger) <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-tags"><span><i class="tag-dot"></i>Interface + API + banco</span><span><i class="tag-dot tag-dot-orange"></i>Maringá e Sarandi</span></div>
       </div>
       <div class="route-art" aria-label="Ilustração de um trajeto conectando duas cidades">
         <div class="route-art-top"><span>REDE EM FOCO</span><span class="route-live"><i></i> VISÃO DO PROJETO</span></div>
@@ -53,7 +53,7 @@
 
     <section class="section section-crud" id="cidades" aria-labelledby="citiesTitle">
       <div class="section-heading">
-        <div><p class="eyebrow eyebrow-dark">03 / RECUPERAÇÃO · CRUD OBRIGATÓRIO</p><h2 id="citiesTitle">Cadastro de cidades</h2><p class="section-intro">Esta é a tabela independente: possui chave primária e não possui chave estrangeira. O ID é gerado pelo banco.</p></div>
+        <div><p class="eyebrow eyebrow-dark">01 / CADASTROS</p><h2 id="citiesTitle">Cadastro de cidades</h2><p class="section-intro">Esta é a tabela independente: possui chave primária e não possui chave estrangeira. O ID é gerado pelo banco.</p></div>
         <span class="scope-badge"><span>PK</span> id_cidade · sem FK</span>
       </div>
       <div class="crud-layout">
@@ -67,7 +67,7 @@
         </form>
         <div class="data-card records-card">
           <div class="list-toolbar"><div><span class="list-kicker">BANCO DE DADOS · SUPABASE</span><h3>Cidades cadastradas</h3><p id="cityCount">Consultando o Supabase…</p></div><button class="button button-outline" id="reloadCities" type="button">Recarregar</button></div>
-          <form id="lookupForm" class="lookup-form"><label for="lookupId">Consultar pelo ID</label><div><input id="lookupId" type="number" min="1" step="1" placeholder="ID da cidade" required><button class="button button-secondary" type="submit">Consultar</button></div><p id="lookupFeedback" class="status" role="status" aria-live="polite"></p></form>
+          <div class="quick-filter"><label for="cityFilter">Buscar cidade pelo nome ou ID</label><input type="search" id="cityFilter" placeholder="Buscar cidade pelo nome ou ID" autocomplete="off"></div><form id="lookupForm" class="lookup-form"><label for="lookupId">Consultar pelo ID</label><div><input id="lookupId" type="number" min="1" step="1" placeholder="ID da cidade" required><button class="button button-secondary" type="submit">Consultar</button></div><p id="lookupFeedback" class="status" role="status" aria-live="polite"></p></form>
           <div class="table-wrap"><table class="records-table"><thead><tr><th>ID</th><th>Cidade</th><th>Ações</th></tr></thead><tbody id="cityRows"><tr><td colspan="3">Conectando…</td></tr></tbody></table></div>
         </div>
       </div>
@@ -76,13 +76,13 @@
 
     <section class="section section-lines" id="linhas" aria-labelledby="linesTitle">
       <div class="section-heading">
-        <div><p class="eyebrow eyebrow-dark">04 / AVALIAÇÃO INTEGRADA</p><h2 id="linesTitle">Linhas de ônibus</h2><p class="section-intro">O cadastro integrado demonstra como uma entidade relacionada preserva o vínculo com sua cidade.</p></div>
+        <div><p class="eyebrow eyebrow-dark">02 / CADASTROS</p><h2 id="linesTitle">Linhas de ônibus</h2><p class="section-intro">Cadastre uma linha, vincule a cidade responsável e abra seu mapa direto da lista.</p></div>
         <span class="scope-badge scope-badge-related"><span>FK</span> id_cidade → cidade.id_cidade</span>
       </div>
       <div class="crud-layout">
         <form class="form-card" id="lineForm">
           <div class="form-card-kicker"><span class="form-card-icon form-card-icon-orange" aria-hidden="true">↗</span><span>REGISTRO RELACIONADO</span></div>
-          <h3 id="lineFormTitle">Nova linha</h3><p id="lineFormHelp">Escolha uma cidade para manter a chave estrangeira.</p>
+          <h3 id="lineFormTitle">Nova linha</h3><p id="lineFormHelp">Selecione a cidade e informe o código e o nome da linha.</p>
           <label for="lineCity">Cidade vinculada</label><select id="lineCity" required><option value="">Carregando cidades…</option></select>
           <p id="selectedCity" class="status">Escolha a cidade pelo nome. O vínculo será gravado pelo ID.</p><label for="lineCode">Código da linha</label><input id="lineCode" maxlength="20" required placeholder="Ex.: 001" autocomplete="off">
           <label for="lineName">Nome da linha</label><input id="lineName" maxlength="120" minlength="2" required placeholder="Ex.: Terminal · Universidade" autocomplete="off">
@@ -92,14 +92,14 @@
         </form>
         <div class="data-card records-card">
           <div class="list-toolbar"><div><span class="list-kicker">REGISTROS RELACIONADOS</span><h3>Linhas cadastradas</h3><p id="lineCount">Consultando a API…</p></div><button class="button button-outline" id="reloadLines" type="button">Recarregar</button></div>
-          <form id="lookupLineForm" class="lookup-form"><label for="lookupLineId">Consultar pelo ID</label><div><input id="lookupLineId" type="number" min="1" step="1" placeholder="ID da linha" required><button class="button button-secondary" type="submit">Consultar</button></div><p id="lookupLineFeedback" class="status" role="status" aria-live="polite"></p></form>
+          <div class="quick-filter"><label for="lineFilter">Buscar linha por código, nome ou cidade</label><input type="search" id="lineFilter" placeholder="Buscar linha por código, nome ou cidade" autocomplete="off"></div><form id="lookupLineForm" class="lookup-form"><label for="lookupLineId">Consultar pelo ID</label><div><input id="lookupLineId" type="number" min="1" step="1" placeholder="ID da linha" required><button class="button button-secondary" type="submit">Consultar</button></div><p id="lookupLineFeedback" class="status" role="status" aria-live="polite"></p></form>
           <div class="table-wrap"><table class="records-table"><thead><tr><th>ID</th><th>Código</th><th>Linha</th><th>Cidade</th><th>Ações</th></tr></thead><tbody id="lineRows"><tr><td colspan="5">Conectando…</td></tr></tbody></table></div>
         </div>
       </div>
     </section>
 
     <section class="section section-project" id="integracao" aria-labelledby="projectTitle">
-      <div class="section-heading"><div><p class="eyebrow eyebrow-dark">05 / COMO O APP FUNCIONA</p><h2 id="projectTitle">Uma solução, três partes</h2><p class="section-intro">Da tela ao banco, cada tecnologia tem uma função definida.</p></div><a class="button button-outline docs-button" href="/docs" target="_blank" rel="noreferrer">Abrir documentação da API <span aria-hidden="true">↗</span></a></div>
+      <div class="section-heading"><div><p class="eyebrow eyebrow-dark">03 / INTEGRAÇÃO</p><h2 id="projectTitle">Uma solução, três partes</h2><p class="section-intro">Da tela ao banco, cada tecnologia tem uma função definida.</p></div><a class="button button-outline docs-button" href="/docs" target="_blank" rel="noreferrer">Abrir documentação da API <span aria-hidden="true">↗</span></a></div>
       <div class="stack-grid">
         <article class="stack-card"><span class="stack-number">01</span><h3>Interface</h3><p>HTML organiza a página; CSS adapta o visual; JavaScript atualiza tabelas e envia as operações.</p><span class="stack-tech">HTML · CSS · JavaScript</span></article>
         <article class="stack-card"><span class="stack-number">02</span><h3>API e validação</h3><p>FastAPI recebe as solicitações, valida os campos e devolve respostas em JSON.</p><span class="stack-tech">Python · FastAPI · Pydantic</span></article>
