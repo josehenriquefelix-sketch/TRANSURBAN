@@ -1,4 +1,4 @@
-"""FastAPI: CRUD Supabase por HTTPS e consultas pandas sobre CSV."""
+"""FastAPI: CRUD de cidades e linhas via Supabase."""
 import ctypes
 import logging
 import os
@@ -13,7 +13,6 @@ from fastapi.staticfiles import StaticFiles
 from httpx import RequestError
 from postgrest.exceptions import APIError
 
-from backend.controller.analise import router as analise_router
 from backend.controller.cidades import router as cidades_router
 from backend.controller.linhas import router as linhas_router
 from backend.database import supabase_configurado, get_supabase, modo_demo
@@ -49,10 +48,9 @@ async def manter_computador_ativo(_app):
             restaurar_estado(0x80000000)
 
 app = FastAPI(
-    title="TRANSURBAN · API integrada DS + IA",
+    title="TRANSURBAN · API de cadastros",
     description=(
-        "CRUD de cidades pela Data API HTTPS do Supabase e totalizações "
-        "descritivas do CSV acadêmico com pandas."
+        "CRUD de cidades e linhas pela Data API HTTPS do Supabase."
     ),
     version="1.0.0",
     lifespan=manter_computador_ativo,
@@ -73,7 +71,6 @@ app.add_middleware(
 )
 app.include_router(cidades_router)
 app.include_router(linhas_router)
-app.include_router(analise_router)
 
 
 @app.get("/health", tags=["Sistema"])

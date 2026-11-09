@@ -1,6 +1,5 @@
 "use strict";
 const API = window.TRANSURBAN_API_URL || (location.port === "5500" ? "http://127.0.0.1:8091" : window.location.origin);
-const charts = new Map();
 let mutationBusy = false;
 const $ = id => document.getElementById(id);
 let cityEditId = null;
@@ -33,26 +32,6 @@ async function api(path, options = {}) {
   }
   return data;
 }
-function renderChart(id, rows, label) {
-  if (typeof Chart === "undefined") throw new Error("Chart.js não carregou. Confira a pasta vendor.");
-  charts.get(id)?.destroy();
-  charts.set(id, new Chart($(id), {
-    type: "bar", data: {labels: rows.map(r => r[label]), datasets: [{label: "Atraso médio (min)", data: rows.map(r=>r.atraso_medio_min), backgroundColor: ["#157d82", "#e3a043", "#315a82", "#8a75aa"], borderRadius: 6}]},
-    options: {responsive:true, maintainAspectRatio:false, animation:false, plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${fmt(ctx.parsed.y)} minutos`}}}, scales:{y:{beginAtZero:true,title:{display:true,text:"Minutos de atraso"}},x:{grid:{display:false}}}}
-  }));
-}
-function renderAggregate(id, rows, label) {
-  const body = $(id); body.replaceChildren();
-  if (!rows.length) {
-    const tr = body.insertRow(); const td = tr.insertCell(); td.colSpan = 4; td.textContent = "Sem observações para este grupo."; return;
-  }
-  for (const item of rows) {
-    const tr = body.insertRow();
-    for (const value of [item[label], fmt(item.observacoes), fmt(item.atraso_total_min), fmt(item.atraso_medio_min)]) {
-      const td = tr.insertCell(); td.textContent = String(value);
-    }
-  }
-}
 async function checkService() {
   const badge = $("serviceStatus");
   try {
@@ -71,31 +50,6 @@ async function checkService() {
   }
 }
 
-async function refreshAnalysis() {
-  $("reloadData").disabled = true; setStatus("dataStatus", "Consultando as totalizações da API…");
-  try {
-    const [summary, city, period, traffic, weather] = await Promise.all([
-      api("/ia/resumo"), api("/ia/totalizacao/cidade"), api("/ia/totalizacao/periodo"),
-      api("/ia/totalizacao/transito"), api("/ia/totalizacao/clima"),
-    ]);
-    $("metricObservations").textContent = fmt(summary.observacoes_validas);
-    $("metricTotal").textContent = fmt(summary.atraso_total_min_observacoes);
-    $("metricAverage").textContent = fmt(summary.atraso_medio_min);
-    $("metricCities").textContent = fmt(summary.cidades_distintas);
-    renderAggregate("byCity", city, "cidade"); renderAggregate("byPeriod", period, "periodo");
-    renderAggregate("byTraffic", traffic, "condicao_transito"); renderAggregate("byWeather", weather, "clima");
-    renderChart("chartCity", city, "cidade"); renderChart("chartPeriod", period, "periodo");
-    renderChart("chartTraffic", traffic, "condicao_transito"); renderChart("chartWeather", weather, "clima");
-    setStatus("dataStatus", `CSV validado: ${fmt(summary.observacoes_validas)} observações, de ${summary.periodo_inicio} a ${summary.periodo_fim}. Fonte sintética acadêmica.`);
-  } catch (error) {
-    charts.forEach(c=>c.destroy()); charts.clear();
-    for (const id of ["metricObservations", "metricTotal", "metricAverage", "metricCities"]) $(id).textContent = "—";
-    for (const id of ["byCity", "byPeriod", "byTraffic", "byWeather"]) {
-      $(id).replaceChildren(); const tr = $(id).insertRow(); const td = tr.insertCell(); td.colSpan = 4; td.textContent = "Resultados indisponíveis.";
-    }
-    setStatus("dataStatus", error.message, true);
-  } finally { $("reloadData").disabled = false; }
-}
 function syncCitySelect() {
   const select = $("lineCity"); const previous = select.value;
   select.replaceChildren(new Option("Selecione uma cidade", ""));
@@ -226,12 +180,11 @@ $("clearCity").addEventListener("click", () => { resetCityForm(); setStatus("cit
 $("cancelLineEdit").addEventListener("click", resetLineForm);
 $("reloadCities").addEventListener("click", refreshCities);
 $("reloadLines").addEventListener("click", refreshLines);
-$("reloadData").addEventListener("click", refreshAnalysis);
 function showSelectedCity(){
  const s=$("lineCity"); $("selectedCity").textContent=s.value ? `Cidade: ${s.selectedOptions[0].textContent}. ID enviado: ${s.value}.` : "Escolha a cidade pelo nome. O vínculo será gravado pelo ID.";
 }
 $("lineCity").addEventListener("change",showSelectedCity);
-checkService(); refreshAll(); refreshAnalysis();
+checkService(); refreshAll();
 
 
 

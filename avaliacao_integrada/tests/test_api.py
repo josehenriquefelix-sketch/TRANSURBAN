@@ -159,20 +159,9 @@ class EntregaTests(unittest.TestCase):
         self.assertEqual(self.client.post("/cidades", json={"id_cidade": 10, "nome": "Teste"}).status_code, 422)
         self.assertEqual(self.database["cidade"], [])
 
-    def test_quatro_totalizacoes_retorna_json_completo(self):
-        for rota in ("cidade", "periodo", "transito", "clima"):
-            resposta = self.client.get(f"/ia/totalizacao/{rota}")
-            self.assertEqual(resposta.status_code, 200, resposta.text)
-            self.assertTrue(resposta.json())
-            self.assertIn("observacoes", resposta.json()[0])
-            self.assertIn("atraso_total_min", resposta.json()[0])
-        resumo = self.client.get("/ia/resumo")
-        self.assertEqual(resumo.status_code, 200, resumo.text)
-        self.assertGreater(resumo.json()["observacoes_validas"], 0)
-
     def test_cors_permite_origem_local_configurada(self):
         resposta = self.client.options(
-            "/ia/resumo",
+            "/cidades",
             headers={"Origin": "http://127.0.0.1:5500", "Access-Control-Request-Method": "GET"},
         )
         self.assertEqual(resposta.status_code, 200)

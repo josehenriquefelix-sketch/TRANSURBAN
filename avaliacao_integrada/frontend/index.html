@@ -3,11 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="TRANSURBAN: painel acadêmico de transporte coletivo, cadastro integrado e análise de observações de atraso em Maringá e Sarandi.">
+  <meta name="description" content="Cadastro de cidades e linhas de ônibus do TransUrban.">
   <meta name="theme-color" content="#10263d">
   <title>TRANSURBAN | Mobilidade vista por dados</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="vendor/chart.umd.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -18,9 +17,8 @@
       <span class="brand-copy"><strong>TRANSURBAN</strong><small>Maringá · Sarandi</small></span>
     </a>
     <nav class="main-nav" aria-label="Navegação principal">
-      <a href="#resumo">Dados</a><a href="#cidades">Cidades</a><a href="#linhas">Linhas</a><a href="#integracao">Projeto</a>
+      <a href="#cidades">Cidades</a><a href="#linhas">Linhas</a><a href="#integracao">Projeto</a>
       <a class="nav-api" href="/docs" target="_blank" rel="noreferrer">API <span aria-hidden="true">↗</span></a>
-      <a href="/login.html">Login</a>
     </nav>
     <div class="service-status" id="serviceStatus" data-state="loading" role="status" aria-live="polite"><span class="service-dot" aria-hidden="true"></span><span>Verificando serviço</span></div>
   </header>
@@ -30,8 +28,8 @@
       <div class="hero-copy-block">
         <p class="eyebrow"><span class="eyebrow-line"></span> PAINEL ACADÊMICO DE MOBILIDADE</p>
         <h1 id="heroTitle">Entender o transporte começa <em>pelos dados.</em></h1>
-        <p class="hero-description">Um projeto integrado para organizar cidades e linhas de ônibus e explorar observações de atraso em Maringá e Sarandi.</p>
-        <div class="hero-actions"><a class="button button-primary" href="#resumo">Explorar o painel <span aria-hidden="true">↓</span></a><a class="button button-quiet" href="#cidades">Abrir cadastros <span aria-hidden="true">→</span></a><a class="button button-quiet" href="/docs" target="_blank" rel="noreferrer">Ver API (Swagger) <span aria-hidden="true">↗</span></a></div>
+        <p class="hero-description">Um projeto integrado para organizar cidades e linhas de ônibus de Maringá e Sarandi.</p>
+        <div class="hero-actions"><a class="button button-quiet" href="#cidades">Abrir cadastros <span aria-hidden="true">→</span></a><a class="button button-quiet" href="/docs" target="_blank" rel="noreferrer">Ver API (Swagger) <span aria-hidden="true">↗</span></a></div>
         <div class="hero-tags"><span><i class="tag-dot"></i>Interface + API + banco</span><span><i class="tag-dot tag-dot-orange"></i>Base didática sintética</span></div>
       </div>
       <div class="route-art" aria-label="Ilustração de um trajeto conectando duas cidades">
@@ -47,38 +45,10 @@
         <div class="route-label route-label-b"><span class="route-index">02</span><span><strong>Sarandi</strong><small>Conexão urbana</small></span></div>
         <div class="route-art-foot"><span>LEITURA DESCRITIVA</span><span>SEM PREVISÃO EM TEMPO REAL</span></div>
       </div>
-      <div class="hero-ribbon" aria-label="Resumo do que a aplicação demonstra"><span><strong>04</strong> perguntas de dados</span><span><strong>02</strong> cadastros integrados</span><span><strong>05</strong> operações CRUD</span></div>
+      <div class="hero-ribbon" aria-label="Resumo do que a aplicação demonstra"><span><strong>02</strong> cadastros integrados</span><span><strong>05</strong> operações CRUD</span></div>
     </section>
 
-    <section class="section section-data" id="resumo" aria-labelledby="summaryTitle">
-      <div class="section-heading">
-        <div><p class="eyebrow eyebrow-dark">01 / CIÊNCIA DE DADOS</p><h2 id="summaryTitle">O que as observações mostram</h2><p class="section-intro">Quatro perguntas transformam o CSV em um resumo claro. Os números são calculados pela API com pandas.</p></div>
-        <button class="button button-outline" id="reloadData" type="button"><span aria-hidden="true">↻</span> Atualizar análise</button>
-      </div>
-      <p class="status data-status" id="dataStatus" role="status" aria-live="polite">Carregando as totalizações…</p>
-      <div class="metrics" aria-label="Indicadores principais">
-        <article class="metric metric-featured"><span class="metric-icon" aria-hidden="true">▤</span><span class="metric-label">Observações válidas</span><strong id="metricObservations">—</strong><small>registros usados na análise</small></article>
-        <article class="metric"><span class="metric-icon metric-icon-orange" aria-hidden="true">↗</span><span class="metric-label">Atraso somado*</span><strong id="metricTotal">—</strong><small>minutos por observação</small></article>
-        <article class="metric"><span class="metric-icon metric-icon-blue" aria-hidden="true">◷</span><span class="metric-label">Atraso médio*</span><strong id="metricAverage">—</strong><small>minutos por observação</small></article>
-        <article class="metric"><span class="metric-icon metric-icon-green" aria-hidden="true">◎</span><span class="metric-label">Cidades analisadas</span><strong id="metricCities">—</strong><small>presentes no conjunto</small></article>
-      </div>
-      <div class="analysis-grid">
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 01</span><h3>Onde se concentram os atrasos?</h3><p>Comparação entre as cidades do conjunto.</p></div><div class="chart-box"><canvas id="chartCity" role="img" aria-label="Atraso médio por cidade, em minutos. Valores na tabela a seguir."></canvas></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byCity"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Total e média de minutos registrados por cidade.</p></article>
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 02</span><h3>Como os atrasos variam no dia?</h3><p>Distribuição conforme o período registrado.</p></div><div class="chart-box"><canvas id="chartPeriod" role="img" aria-label="Atraso médio por período, em minutos. Valores na tabela a seguir."></canvas></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byPeriod"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Agrupamento por período; não é previsão de horário.</p></article>
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 03</span><h3>Qual condição de trânsito acompanha os registros?</h3><p>Leitura descritiva por condição informada.</p></div><div class="chart-box"><canvas id="chartTraffic" role="img" aria-label="Atraso médio por trânsito, em minutos. Valores na tabela a seguir."></canvas></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byTraffic"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Associação observada, sem afirmar causa.</p></article>
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 04</span><h3>Como o clima aparece nos atrasos?</h3><p>Comparação por condição climática registrada.</p></div><div class="chart-box"><canvas id="chartWeather" role="img" aria-label="Atraso médio por clima, em minutos. Valores na tabela a seguir."></canvas></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byWeather"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Os grupos descrevem o CSV didático, não a operação real.</p></article>
-      </div>
-      <aside class="interpretation-note"><span class="note-mark" aria-hidden="true">i</span><div><strong>Como interpretar estes números</strong><p>* A soma e a média contam minutos por observação. Uma observação não equivale a uma viagem completa, passageiro ou ônibus. A base é sintética e não representa telemetria real.</p></div></aside>
-    </section>
 
-    <section class="section section-method" aria-labelledby="methodTitle">
-      <div class="section-heading"><div><p class="eyebrow eyebrow-dark">02 / CRITÉRIOS DA BASE</p><h2 id="methodTitle">Cada linha tem um significado</h2><p class="section-intro">Antes de somar, definimos a unidade analisada e como evitar contagens indevidas.</p></div></div>
-      <div class="method-grid">
-        <article class="method-card"><span class="method-index">A</span><h3>Unidade de análise</h3><p>Cada linha do CSV é uma observação de atraso registrada em um trecho; não representa necessariamente uma viagem completa.</p></article>
-        <article class="method-card"><span class="method-index">B</span><h3>Códigos que se repetem</h3><p>O código da linha se repete entre observações. Para identificar uma linha distinta, usamos o par <strong>cidade + código</strong>; sem <code>id_viagem</code>, não contamos viagens ou ônibus únicos.</p></article>
-        <article class="method-card"><span class="method-index">C</span><h3>Qualidade e limites</h3><p>Linhas inválidas e duplicatas exatas são verificadas. Os agrupamentos descrevem associações no CSV e não provam causas nem preveem chegadas.</p></article>
-      </div>
-    </section>
 
     <section class="section section-crud" id="cidades" aria-labelledby="citiesTitle">
       <div class="section-heading">
@@ -128,18 +98,17 @@
     </section>
 
     <section class="section section-project" id="integracao" aria-labelledby="projectTitle">
-      <div class="section-heading"><div><p class="eyebrow eyebrow-dark">05 / COMO O APP FUNCIONA</p><h2 id="projectTitle">Uma solução, quatro partes</h2><p class="section-intro">Da tela ao banco, cada tecnologia tem uma função definida.</p></div><a class="button button-outline docs-button" href="/docs" target="_blank" rel="noreferrer">Abrir documentação da API <span aria-hidden="true">↗</span></a></div>
+      <div class="section-heading"><div><p class="eyebrow eyebrow-dark">05 / COMO O APP FUNCIONA</p><h2 id="projectTitle">Uma solução, três partes</h2><p class="section-intro">Da tela ao banco, cada tecnologia tem uma função definida.</p></div><a class="button button-outline docs-button" href="/docs" target="_blank" rel="noreferrer">Abrir documentação da API <span aria-hidden="true">↗</span></a></div>
       <div class="stack-grid">
-        <article class="stack-card"><span class="stack-number">01</span><h3>Interface</h3><p>HTML organiza a página; CSS adapta o visual; JavaScript atualiza tabelas e envia as operações.</p><span class="stack-tech">HTML · CSS · JavaScript · Chart.js</span></article>
+        <article class="stack-card"><span class="stack-number">01</span><h3>Interface</h3><p>HTML organiza a página; CSS adapta o visual; JavaScript atualiza tabelas e envia as operações.</p><span class="stack-tech">HTML · CSS · JavaScript</span></article>
         <article class="stack-card"><span class="stack-number">02</span><h3>API e validação</h3><p>FastAPI recebe as solicitações, valida os campos e devolve respostas em JSON.</p><span class="stack-tech">Python · FastAPI · Pydantic</span></article>
-        <article class="stack-card"><span class="stack-number">03</span><h3>Análise</h3><p>Pandas lê o CSV, confere a qualidade dos dados e calcula os quatro agrupamentos.</p><span class="stack-tech">Python · pandas · CSV</span></article>
         <article class="stack-card"><span class="stack-number">04</span><h3>Persistência</h3><p>Supabase armazena cidades e linhas; o backend acessa o banco por HTTPS sem expor a chave no navegador.</p><span class="stack-tech">Supabase · PostgreSQL · HTTPS</span></article>
       </div>
-      <div class="presentation-flow"><span class="flow-label">FLUXO DA DEMONSTRAÇÃO</span><p><strong>Navegador</strong><span aria-hidden="true">→</span><strong>FastAPI</strong><span aria-hidden="true">→</span><strong>Supabase</strong><span class="flow-or">e</span><strong>CSV + pandas</strong><span aria-hidden="true">→</span><strong>Resultados na tela</strong></p></div>
+      <div class="presentation-flow"><span class="flow-label">FLUXO DA DEMONSTRAÇÃO</span><p><strong>Navegador</strong><span aria-hidden="true">→</span><strong>FastAPI</strong><span aria-hidden="true">→</span><strong>Supabase</strong></p></div>
     </section>
   </main>
 
-  <footer class="site-footer"><a class="footer-brand" href="#inicio">TRANSURBAN</a><p>Projeto acadêmico de mobilidade · Maringá e Sarandi</p><p>Base sintética para demonstração · sem previsão em tempo real</p></footer>
+  <footer class="site-footer"><a class="footer-brand" href="#inicio">TRANSURBAN</a><p>Projeto acadêmico de mobilidade · Maringá e Sarandi</p><p>Cadastro de cidades e linhas</p></footer>
 </body>
 </html>
 

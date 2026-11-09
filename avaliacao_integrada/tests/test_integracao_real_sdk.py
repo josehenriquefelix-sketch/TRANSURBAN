@@ -28,22 +28,7 @@ class SDKTests(unittest.TestCase):
   self.assertIn(('POST','/rest/v1/linha_onibus'),calls)
   db.session.close()
 
-class AnaliseTests(unittest.TestCase):
- def test_calculos_independentes(self):
-  import csv
-  from pathlib import Path
-  rows=list(csv.DictReader((Path(__file__).parents[1]/'data/atrasos_analise.csv').open(encoding='utf-8-sig')))
-  values=[float(x['minutos_atraso']) for x in rows]
-  c=TestClient(app);s=c.get('/ia/resumo').json()
-  self.assertEqual(len(rows),180)
-  self.assertEqual(s['observacoes_validas'],len(rows))
-  self.assertEqual(s['atraso_total_min_observacoes'],sum(values))
-  self.assertAlmostEqual(s['atraso_medio_min'],sum(values)/len(values),places=4)
-  self.assertEqual(s['maior_atraso_min'],max(values))
-  for key in ('cidade','periodo','transito','clima'):
-   groups=c.get('/ia/totalizacao/'+key).json()
-   self.assertEqual(sum(x['observacoes'] for x in groups),len(rows))
-   self.assertEqual(sum(x['atraso_total_min'] for x in groups),sum(values))
+class ValidacaoTests(unittest.TestCase):
  def test_validacoes_linha(self):
   c=TestClient(app)
   for payload in ({'id_cidade':1,'codigo':'X','nome':' a '},{'id_cidade':'1','codigo':'X','nome':'Teste'},{'id_cidade':0,'codigo':'X','nome':'Teste'},{'id_cidade':1,'codigo':'X','nome':'Teste','cidade':'Copiada'}):
