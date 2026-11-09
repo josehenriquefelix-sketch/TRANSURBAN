@@ -15,6 +15,7 @@ from postgrest.exceptions import APIError
 
 from backend.controller.cidades import router as cidades_router
 from backend.controller.linhas import router as linhas_router
+from backend.controller.mobilidade import router as mobilidade_router
 from backend.database import supabase_configurado, get_supabase, modo_demo
 
 load_dotenv()
@@ -48,9 +49,9 @@ async def manter_computador_ativo(_app):
             restaurar_estado(0x80000000)
 
 app = FastAPI(
-    title="TRANSURBAN · API de cadastros",
+    title="TRANSURBAN · API de transporte",
     description=(
-        "CRUD de cidades e linhas pela Data API HTTPS do Supabase."
+        "Cadastros de cidades e linhas, trajetos, posições GPS e avaliações de viagens."
     ),
     version="1.0.0",
     lifespan=manter_computador_ativo,
@@ -67,10 +68,11 @@ app.add_middleware(
     allow_origins=origens,
     allow_credentials=False,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allow_headers=["Content-Type"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 app.include_router(cidades_router)
 app.include_router(linhas_router)
+app.include_router(mobilidade_router)
 
 
 @app.get("/health", tags=["Sistema"])
@@ -140,5 +142,6 @@ async def erro_rede(_request: Request, erro: RequestError):
 
 # Serve interface and API from one origin, so the project starts with one local service.
 app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
+
 
 

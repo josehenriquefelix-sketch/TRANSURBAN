@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TransUrban | Mobilidade</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script defer src="mobilidade.js"></script>
+<style>
+.mob {max-width:1100px;margin:auto;padding:24px 16px}.mob h1{margin:.35em 0}.mob h2{margin-top:0}.mob form{display:grid;gap:10px}.mob :is(input,textarea,select){width:100%}.mob [hidden]{display:none!important}.mob #mapa{height:clamp(300px,52vh,510px);border-radius:14px;margin:14px 0;background:#eaf1f7}.mob nav{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0}.mob #avaliacoes{padding-left:24px}.mob .form-card{margin:16px 0}
+</style>
+</head>
+<body><main class="mob" data-api="">
+<a href="./">← Cadastros do TransUrban</a>
+<h1>TransUrban Mobilidade</h1><p>Maringá e Sarandi · trajetos, localização e avaliação de viagens</p>
+<nav aria-label="Área do usuário"><button class="button button-primary" id="passageiro" type="button" aria-pressed="true">Sou passageiro</button><button class="button button-outline" id="motorista" type="button" aria-pressed="false">Sou motorista</button></nav>
+<section id="passageiroArea">
+<form id="buscar"><label for="linhaMapa">Código da linha</label><input id="linhaMapa" required maxlength="20" value="001"><button class="button button-primary">Ver linha</button></form>
+<p id="mapaStatus" role="status"></p><p id="trajetoStatus"></p><div id="mapa" aria-label="Mapa da linha e posição dos ônibus"></div><ul id="veiculos" aria-label="Ônibus com posição recente"></ul>
+<form id="avaliar" class="form-card"><h2>Avaliar viagem</h2>
+<label for="linhaAval">Linha</label><input id="linhaAval" required maxlength="20" value="001">
+<label for="veiculoAval">Identificação do ônibus</label><input id="veiculoAval" required maxlength="20" placeholder="Ex.: BUS-01">
+<label for="nota">Nota da viagem</label><select id="nota" required><option value="">Selecione</option><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select>
+<label for="lotacao">Lotação</label><select id="lotacao"><option>Vazio</option><option>Normal</option><option>Cheio</option></select>
+<label for="descricao">Descrição da viagem</label><textarea id="descricao" required minlength="3" maxlength="400" rows="4" placeholder="Conte como foi a viagem, sem incluir dados pessoais"></textarea>
+<button class="button button-primary">Enviar avaliação</button><p id="avalStatus" role="status"></p></form>
+<h2>Avaliações recentes da linha</h2><ul id="avaliacoes"></ul>
+</section>
+<section id="motoristaArea" hidden><form id="transmitir" class="form-card"><h2>Compartilhar GPS do ônibus</h2>
+<p>Use o celular que está no veículo. Enquanto transmitir, passageiros poderão ver a posição. Mantenha a página aberta e só opere a tela com o veículo parado.</p>
+<label for="linhaMotorista">Código da linha</label><input id="linhaMotorista" required maxlength="20">
+<label for="veiculoMotorista">Identificação do ônibus</label><input id="veiculoMotorista" required maxlength="20">
+<label for="token">Código de acesso do motorista</label><input id="token" type="password" required minlength="24" autocomplete="off">
+<button class="button button-primary" id="iniciar">Iniciar GPS</button><button class="button button-outline" id="parar" type="button" disabled>Parar transmissão</button><p id="gpsStatus" role="status"></p>
+</form></section></main></body></html>
