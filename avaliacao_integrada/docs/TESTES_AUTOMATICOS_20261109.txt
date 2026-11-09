@@ -1,0 +1,74 @@
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_cors_permite_origem_local_configurada (test_api.EntregaTests.test_cors_permite_origem_local_configurada) ... INFO:httpx:HTTP Request: OPTIONS http://testserver/ia/resumo "HTTP/1.1 200 OK"
+ok
+test_crud_completo_de_cidade (test_api.EntregaTests.test_crud_completo_de_cidade) ... INFO:httpx:HTTP Request: GET http://testserver/cidades "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST http://testserver/cidades "HTTP/1.1 201 Created"
+INFO:httpx:HTTP Request: GET http://testserver/cidades/1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: PUT http://testserver/cidades/1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/cidades "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: DELETE http://testserver/cidades/1 "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: GET http://testserver/cidades/1 "HTTP/1.1 404 Not Found"
+ok
+test_crud_integrado_de_linha_preserva_cidade (test_api.EntregaTests.test_crud_integrado_de_linha_preserva_cidade) ... INFO:httpx:HTTP Request: POST http://testserver/cidades "HTTP/1.1 201 Created"
+INFO:httpx:HTTP Request: POST http://testserver/linhas "HTTP/1.1 201 Created"
+INFO:httpx:HTTP Request: GET http://testserver/linhas "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/linhas/1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: PUT http://testserver/linhas/1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: DELETE http://testserver/linhas/1 "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: GET http://testserver/linhas/1 "HTTP/1.1 404 Not Found"
+INFO:httpx:HTTP Request: POST http://testserver/linhas "HTTP/1.1 400 Bad Request"
+ok
+test_fk_impede_excluir_cidade_com_linha_vinculada (test_api.EntregaTests.test_fk_impede_excluir_cidade_com_linha_vinculada) ... INFO:httpx:HTTP Request: POST http://testserver/cidades "HTTP/1.1 201 Created"
+INFO:httpx:HTTP Request: POST http://testserver/linhas "HTTP/1.1 201 Created"
+INFO:httpx:HTTP Request: DELETE http://testserver/cidades/1 "HTTP/1.1 409 Conflict"
+INFO:httpx:HTTP Request: GET http://testserver/cidades/1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/linhas/1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: DELETE http://testserver/linhas/1 "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: DELETE http://testserver/cidades/1 "HTTP/1.1 204 No Content"
+ok
+test_modelo_rejeita_nome_vazio_e_id_no_cadastro (test_api.EntregaTests.test_modelo_rejeita_nome_vazio_e_id_no_cadastro) ... INFO:httpx:HTTP Request: POST http://testserver/cidades "HTTP/1.1 422 Unprocessable Entity"
+INFO:httpx:HTTP Request: POST http://testserver/cidades "HTTP/1.1 422 Unprocessable Entity"
+ok
+test_quatro_totalizacoes_retorna_json_completo (test_api.EntregaTests.test_quatro_totalizacoes_retorna_json_completo) ... INFO:httpx:HTTP Request: GET http://testserver/ia/totalizacao/cidade "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/ia/totalizacao/periodo "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/ia/totalizacao/transito "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/ia/totalizacao/clima "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/ia/resumo "HTTP/1.1 200 OK"
+ok
+test_calculos_independentes (test_integracao_real_sdk.AnaliseTests.test_calculos_independentes) ... /workspace/scratch/b64cdc757c5e/repo/avaliacao_integrada/tests/test_integracao_real_sdk.py:35: ResourceWarning: unclosed file <_io.TextIOWrapper name='/workspace/scratch/b64cdc757c5e/repo/avaliacao_integrada/data/atrasos_analise.csv' mode='r' encoding='utf-8-sig'>
+  rows=list(csv.DictReader((Path(__file__).parents[1]/'data/atrasos_analise.csv').open(encoding='utf-8-sig')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+INFO:httpx:HTTP Request: GET http://testserver/ia/resumo "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/ia/totalizacao/cidade "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/ia/totalizacao/periodo "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/ia/totalizacao/transito "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/ia/totalizacao/clima "HTTP/1.1 200 OK"
+ok
+test_cors_put_delete (test_integracao_real_sdk.AnaliseTests.test_cors_put_delete) ... INFO:httpx:HTTP Request: OPTIONS http://testserver/linhas "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: OPTIONS http://testserver/linhas "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: OPTIONS http://testserver/linhas "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: OPTIONS http://testserver/linhas "HTTP/1.1 400 Bad Request"
+ok
+test_validacoes_linha (test_integracao_real_sdk.AnaliseTests.test_validacoes_linha) ... INFO:httpx:HTTP Request: POST http://testserver/linhas "HTTP/1.1 422 Unprocessable Entity"
+INFO:httpx:HTTP Request: POST http://testserver/linhas "HTTP/1.1 422 Unprocessable Entity"
+INFO:httpx:HTTP Request: POST http://testserver/linhas "HTTP/1.1 422 Unprocessable Entity"
+INFO:httpx:HTTP Request: POST http://testserver/linhas "HTTP/1.1 422 Unprocessable Entity"
+ok
+test_crud_com_sdk_real (test_integracao_real_sdk.SDKTests.test_crud_com_sdk_real) ... INFO:httpx:HTTP Request: GET https://teste.invalid/rest/v1/cidade?select=id_cidade&id_cidade=eq.7&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://teste.invalid/rest/v1/linha_onibus?select=id_linha%2Cid_cidade%2Ccodigo%2Cnome%2Ccidade%28nome%29 "HTTP/1.1 201 Created"
+INFO:httpx:HTTP Request: POST http://testserver/linhas "HTTP/1.1 201 Created"
+INFO:httpx:HTTP Request: GET https://teste.invalid/rest/v1/linha_onibus?select=id_linha%2Cid_cidade%2Ccodigo%2Cnome%2Ccidade%28nome%29&id_linha=eq.31&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://teste.invalid/rest/v1/cidade?select=id_cidade&id_cidade=eq.7&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: PATCH https://teste.invalid/rest/v1/linha_onibus?id_linha=eq.31&select=id_linha%2Cid_cidade%2Ccodigo%2Cnome%2Ccidade%28nome%29 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: PUT http://testserver/linhas/31 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET https://teste.invalid/rest/v1/linha_onibus?select=id_linha%2Cid_cidade%2Ccodigo%2Cnome%2Ccidade%28nome%29&id_linha=eq.31&limit=1 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: GET http://testserver/linhas/31 "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: DELETE https://teste.invalid/rest/v1/linha_onibus?id_linha=eq.31&select=id_linha "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: DELETE http://testserver/linhas/31 "HTTP/1.1 204 No Content"
+ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.260s
+
+OK

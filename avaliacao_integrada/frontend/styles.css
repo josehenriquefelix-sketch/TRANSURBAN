@@ -243,3 +243,9 @@ tbody tr:last-child td { border-bottom: 0; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
 
+
+
+.chart-box {position:relative;height:260px;padding:12px 22px 8px;min-width:0}
+.analysis-grid > * {min-width:0}
+button:disabled {opacity:.55;cursor:wait}
+@media(max-width:600px){.chart-box{height:230px;padding:8px}.service-status{max-width:100%;font-size:11px}}

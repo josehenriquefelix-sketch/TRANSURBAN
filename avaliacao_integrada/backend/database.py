@@ -21,8 +21,15 @@ def supabase_configurado() -> bool:
     )
 
 
+def modo_demo():
+    return os.getenv("TRANSURBAN_DEMO", "0") == "1"
+
+
 @lru_cache(maxsize=1)
 def get_supabase() -> Client:
+    if modo_demo():
+        from backend.demo_db import DemoDB
+        return DemoDB()
     url = os.getenv("SUPABASE_URL", "").strip()
     key = os.getenv("SUPABASE_KEY", "").strip()
     if not url or not key:
@@ -32,4 +39,5 @@ def get_supabase() -> Client:
     if "EXEMPLO_FICTICIO" in key:
         raise RuntimeError("Substitua SUPABASE_KEY de exemplo pela chave privada do projeto.")
     return create_client(url, key)
+
 

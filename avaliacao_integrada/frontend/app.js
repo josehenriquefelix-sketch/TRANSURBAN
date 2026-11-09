@@ -1,5 +1,7 @@
 "use strict";
-const API = window.location.origin;
+const API = window.TRANSURBAN_API_URL || (location.port === "5500" ? "http://127.0.0.1:8091" : window.location.origin);
+const charts = new Map();
+let mutationBusy = false;
 const $ = id => document.getElementById(id);
 let cityEditId = null;
 let lineEditId = null;
@@ -31,6 +33,14 @@ async function api(path, options = {}) {
   }
   return data;
 }
+function renderChart(id, rows, label) {
+  if (typeof Chart === "undefined") throw new Error("Chart.js não carregou. Confira a pasta vendor.");
+  charts.get(id)?.destroy();
+  charts.set(id, new Chart($(id), {
+    type: "bar", data: {labels: rows.map(r => r[label]), datasets: [{label: "Atraso médio (min)", data: rows.map(r=>r.atraso_medio_min), backgroundColor: ["#157d82", "#e3a043", "#315a82", "#8a75aa"], borderRadius: 6}]},
+    options: {responsive:true, maintainAspectRatio:false, animation:false, plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${fmt(ctx.parsed.y)} minutos`}}}, scales:{y:{beginAtZero:true,title:{display:true,text:"Minutos de atraso"}},x:{grid:{display:false}}}}
+  }));
+}
 function renderAggregate(id, rows, label) {
   const body = $(id); body.replaceChildren();
   if (!rows.length) {
@@ -46,18 +56,18 @@ function renderAggregate(id, rows, label) {
 async function checkService() {
   const badge = $("serviceStatus");
   try {
-    const health = await api("/health");
+    const health = await api("/health/banco");
     const label = badge.querySelector("span:last-child");
-    if (health.supabase_configurado) {
+    if (health.conectado) {
       badge.dataset.state = "ok";
-      label.textContent = "API e Supabase conectados";
+      label.textContent = health.modo === "demo" ? "ENSAIO LOCAL · SQLite, sem Supabase" : "API e Supabase conectados";
     } else {
       badge.dataset.state = "warning";
       label.textContent = "API ativa · configure o Supabase";
     }
   } catch {
     badge.dataset.state = "error";
-    badge.querySelector("span:last-child").textContent = "API indisponível";
+    badge.querySelector("span:last-child").textContent = "Banco indisponível · confira a configuração";
   }
 }
 
@@ -74,8 +84,11 @@ async function refreshAnalysis() {
     $("metricCities").textContent = fmt(summary.cidades_distintas);
     renderAggregate("byCity", city, "cidade"); renderAggregate("byPeriod", period, "periodo");
     renderAggregate("byTraffic", traffic, "condicao_transito"); renderAggregate("byWeather", weather, "clima");
+    renderChart("chartCity", city, "cidade"); renderChart("chartPeriod", period, "periodo");
+    renderChart("chartTraffic", traffic, "condicao_transito"); renderChart("chartWeather", weather, "clima");
     setStatus("dataStatus", `CSV validado: ${fmt(summary.observacoes_validas)} observações, de ${summary.periodo_inicio} a ${summary.periodo_fim}. Fonte sintética acadêmica.`);
   } catch (error) {
+    charts.forEach(c=>c.destroy()); charts.clear();
     for (const id of ["metricObservations", "metricTotal", "metricAverage", "metricCities"]) $(id).textContent = "—";
     for (const id of ["byCity", "byPeriod", "byTraffic", "byWeather"]) {
       $(id).replaceChildren(); const tr = $(id).insertRow(); const td = tr.insertCell(); td.colSpan = 4; td.textContent = "Resultados indisponíveis.";
@@ -88,6 +101,8 @@ function syncCitySelect() {
   select.replaceChildren(new Option("Selecione uma cidade", ""));
   for (const city of cityRecords) select.add(new Option(city.nome, String(city.id_cidade)));
   if ([...select.options].some(option => option.value === previous)) select.value = previous;
+  $("saveLine").disabled = !cityRecords.length;
+  showSelectedCity();
 }
 function renderCities(items = cityRecords) {
   const body = $("cityRows"); body.replaceChildren();
@@ -139,32 +154,34 @@ function resetLineForm() {
   $("saveLine").textContent = "Cadastrar linha"; $("cancelLineEdit").classList.add("hidden");
 }
 $("cityForm").addEventListener("submit", async event => {
-  event.preventDefault(); const button = $("saveCity"); button.disabled = true;
+  event.preventDefault(); if(mutationBusy)return; mutationBusy=true; const button = $("saveCity"); button.disabled = true;
   const method = cityEditId === null ? "POST" : "PUT";
   const path = cityEditId === null ? "/cidades" : `/cidades/${cityEditId}`;
   try {
     const result = await api(path, {method, body: JSON.stringify({nome: $("cityName").value.trim()})});
     setStatus("cityFeedback", cityEditId === null ? `Cidade cadastrada com ID ${result.id_cidade}.` : `Cidade ${result.id_cidade} atualizada.`);
     resetCityForm(); await refreshAll();
-  } catch (error) { setStatus("cityFeedback", error.message, true); }
-  finally { button.disabled = false; }
+  } catch (error) { setStatus("cityFeedback", error.message + " Se houve falha de rede, consulte a lista antes de repetir o envio.", true); }
+  finally { button.disabled = false; mutationBusy=false; }
 });
 $("cityRows").addEventListener("click", async event => {
   const button = event.target.closest("button[data-action]"); if (!button) return;
   const id = Number(button.dataset.id);
   if (button.dataset.action === "edit") {
-    cityEditId = id; $("cityName").value = button.dataset.name; $("formTitle").textContent = `Editar cidade · ID ${id}`;
+    let city;
+    try {city = await api(`/cidades/${id}`);} catch(error){setStatus("cityFeedback",error.message,true);return;}
+    cityEditId = id; $("cityName").value = city.nome; $("formTitle").textContent = `Editar cidade · ID ${id}`;
     $("formHelp").textContent = "Altere o nome e salve para atualizar o registro."; $("saveCity").textContent = "Salvar alterações";
     $("cancelEdit").classList.remove("hidden"); $("cityName").focus(); return;
   }
   if (!window.confirm(`Excluir a cidade ${id}? Se houver linhas vinculadas, o banco impedirá a exclusão.`)) return;
   button.disabled = true;
   try { await api(`/cidades/${id}`, {method: "DELETE"}); setStatus("cityFeedback", `Cidade ${id} excluída.`); await refreshAll(); }
-  catch (error) { setStatus("cityFeedback", error.message, true); }
-  finally { button.disabled = false; }
+  catch (error) { setStatus("cityFeedback", error.message + " Se houve falha de rede, consulte a lista antes de repetir o envio.", true); }
+  finally { button.disabled = false; mutationBusy=false; }
 });
 $("lineForm").addEventListener("submit", async event => {
-  event.preventDefault(); const button = $("saveLine"); button.disabled = true;
+  event.preventDefault(); if(mutationBusy)return; mutationBusy=true; const button = $("saveLine"); button.disabled = true;
   const idCidade = Number($("lineCity").value);
   const payload = {id_cidade: idCidade, codigo: $("lineCode").value.trim(), nome: $("lineName").value.trim()};
   const method = lineEditId === null ? "POST" : "PUT";
@@ -173,16 +190,16 @@ $("lineForm").addEventListener("submit", async event => {
     const result = await api(path, {method, body: JSON.stringify(payload)});
     setStatus("lineFeedback", lineEditId === null ? `Linha cadastrada com ID ${result.id_linha}.` : `Linha ${result.id_linha} atualizada.`);
     resetLineForm(); await refreshLines();
-  } catch (error) { setStatus("lineFeedback", error.message, true); }
-  finally { button.disabled = false; }
+  } catch (error) { setStatus("lineFeedback", error.message + " Se houve falha de rede, consulte a lista antes de repetir o envio.", true); }
+  finally { button.disabled = false; mutationBusy=false; }
 });
 $("lineRows").addEventListener("click", async event => {
   const button = event.target.closest("button[data-action]"); if (!button) return;
   const id = Number(button.dataset.id);
   if (button.dataset.action === "edit") {
     try {
-      const line = await api(`/linhas/${id}`); lineEditId = id; $("lineCity").value = String(line.id_cidade);
-      $("lineCode").value = line.codigo; $("lineName").value = line.nome;
+      const line = await api(`/linhas/${id}`); await refreshCities(); lineEditId = id; $("lineCity").value = String(line.id_cidade);
+      showSelectedCity(); $("lineCode").value = line.codigo; $("lineName").value = line.nome;
       $("lineFormTitle").textContent = `Editar linha · ID ${id}`; $("lineFormHelp").textContent = "Confira os dados e salve para atualizar.";
       $("saveLine").textContent = "Salvar alterações"; $("cancelLineEdit").classList.remove("hidden"); $("lineCode").focus();
     } catch (error) { setStatus("lineFeedback", error.message, true); }
@@ -191,8 +208,8 @@ $("lineRows").addEventListener("click", async event => {
   if (!window.confirm(`Excluir a linha ${id}? O banco pode impedir a exclusão se ela estiver relacionada a registros.`)) return;
   button.disabled = true;
   try { await api(`/linhas/${id}`, {method: "DELETE"}); setStatus("lineFeedback", `Linha ${id} excluída.`); await refreshLines(); }
-  catch (error) { setStatus("lineFeedback", error.message, true); }
-  finally { button.disabled = false; }
+  catch (error) { setStatus("lineFeedback", error.message + " Se houve falha de rede, consulte a lista antes de repetir o envio.", true); }
+  finally { button.disabled = false; mutationBusy=false; }
 });
 $("lookupForm").addEventListener("submit", async event => {
   event.preventDefault();
@@ -210,7 +227,12 @@ $("cancelLineEdit").addEventListener("click", resetLineForm);
 $("reloadCities").addEventListener("click", refreshCities);
 $("reloadLines").addEventListener("click", refreshLines);
 $("reloadData").addEventListener("click", refreshAnalysis);
+function showSelectedCity(){
+ const s=$("lineCity"); $("selectedCity").textContent=s.value ? `Cidade: ${s.selectedOptions[0].textContent}. ID enviado: ${s.value}.` : "Escolha a cidade pelo nome. O vínculo será gravado pelo ID.";
+}
+$("lineCity").addEventListener("change",showSelectedCity);
 checkService(); refreshAll(); refreshAnalysis();
+
 
 
 

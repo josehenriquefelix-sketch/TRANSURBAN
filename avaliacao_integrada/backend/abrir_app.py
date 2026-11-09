@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 import socket
 import subprocess
 import sys
@@ -12,7 +13,7 @@ from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parent.parent
 HOST = "127.0.0.1"
-PORT = 8000
+PORT = int(os.getenv("PORT", "8091"))
 URL = f"http://{HOST}:{PORT}/"
 
 
@@ -86,4 +87,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+
 

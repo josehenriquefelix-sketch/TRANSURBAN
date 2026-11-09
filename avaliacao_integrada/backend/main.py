@@ -6,7 +6,7 @@ from pathlib import Path
 from contextlib import asynccontextmanager
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -16,7 +16,7 @@ from postgrest.exceptions import APIError
 from backend.controller.analise import router as analise_router
 from backend.controller.cidades import router as cidades_router
 from backend.controller.linhas import router as linhas_router
-from backend.database import supabase_configurado
+from backend.database import supabase_configurado, get_supabase, modo_demo
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -86,6 +86,17 @@ def health():
     }
 
 
+@app.get("/health/banco", tags=["Sistema"])
+def health_banco():
+    try:
+        db = get_supabase()
+        db.table("cidade").select("id_cidade").limit(1).execute()
+        db.table("linha_onibus").select("id_linha,cidade(nome)").limit(1).execute()
+    except RuntimeError as erro:
+        raise HTTPException(503, str(erro)) from erro
+    return {"conectado": True, "modo": "demo" if modo_demo() else "supabase"}
+
+
 @app.get("/", tags=["Sistema"], include_in_schema=False)
 def inicio():
     return FileResponse(FRONTEND_DIR / "index.html")
@@ -132,4 +143,5 @@ async def erro_rede(_request: Request, erro: RequestError):
 
 # Serve interface and API from one origin, so the project starts with one local service.
 app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
+
 

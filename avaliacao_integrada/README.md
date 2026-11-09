@@ -1,3 +1,5 @@
+> [Apresentação: iniciar no Linux, ensaiar e verificar o Supabase](GUIA_APRESENTACAO.md)
+
 # TRANSURBAN — Recuperação DS e integração DS + IA
 
 Entrega acadêmica integrada com FastAPI, pandas, Supabase por HTTPS, HTML, CSS e JavaScript. A documentação cobre o CRUD, a base de Ciência de Dados, as quatro perguntas, o CORS e o roteiro de conferência.
@@ -117,6 +119,7 @@ A distribuição depende do tamanho do grupo. Com duas pessoas, combinar HTML/CS
 ## Repositório da equipe
 
 Repositório identificado no material local: [github.com/josehenriquefelix-sketch/TRANSURBAN](https://github.com/josehenriquefelix-sketch/TRANSURBAN). O pacote está pronto localmente. O link de entrega do GitHub será a branch publicada para revisão; confira também as instruções de integração da pasta no repositório.
+
 
 
 

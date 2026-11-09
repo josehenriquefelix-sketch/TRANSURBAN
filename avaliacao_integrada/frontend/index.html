@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" translate="no">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#10263d">
   <title>TRANSURBAN | Mobilidade vista por dados</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="vendor/chart.umd.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -61,10 +62,10 @@
         <article class="metric"><span class="metric-icon metric-icon-green" aria-hidden="true">◎</span><span class="metric-label">Cidades analisadas</span><strong id="metricCities">—</strong><small>presentes no conjunto</small></article>
       </div>
       <div class="analysis-grid">
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 01</span><h3>Onde se concentram os atrasos?</h3><p>Comparação entre as cidades do conjunto.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byCity"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Total e média de minutos registrados por cidade.</p></article>
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 02</span><h3>Como os atrasos variam no dia?</h3><p>Distribuição conforme o período registrado.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byPeriod"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Agrupamento por período; não é previsão de horário.</p></article>
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 03</span><h3>Qual condição de trânsito acompanha os registros?</h3><p>Leitura descritiva por condição informada.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byTraffic"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Associação observada, sem afirmar causa.</p></article>
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 04</span><h3>Como o clima aparece nos atrasos?</h3><p>Comparação por condição climática registrada.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byWeather"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Os grupos descrevem o CSV didático, não a operação real.</p></article>
+        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 01</span><h3>Onde se concentram os atrasos?</h3><p>Comparação entre as cidades do conjunto.</p></div><div class="chart-box"><canvas id="chartCity" role="img" aria-label="Atraso médio por cidade, em minutos. Valores na tabela a seguir."></canvas></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byCity"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Total e média de minutos registrados por cidade.</p></article>
+        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 02</span><h3>Como os atrasos variam no dia?</h3><p>Distribuição conforme o período registrado.</p></div><div class="chart-box"><canvas id="chartPeriod" role="img" aria-label="Atraso médio por período, em minutos. Valores na tabela a seguir."></canvas></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byPeriod"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Agrupamento por período; não é previsão de horário.</p></article>
+        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 03</span><h3>Qual condição de trânsito acompanha os registros?</h3><p>Leitura descritiva por condição informada.</p></div><div class="chart-box"><canvas id="chartTraffic" role="img" aria-label="Atraso médio por trânsito, em minutos. Valores na tabela a seguir."></canvas></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byTraffic"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Associação observada, sem afirmar causa.</p></article>
+        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 04</span><h3>Como o clima aparece nos atrasos?</h3><p>Comparação por condição climática registrada.</p></div><div class="chart-box"><canvas id="chartWeather" role="img" aria-label="Atraso médio por clima, em minutos. Valores na tabela a seguir."></canvas></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byWeather"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Os grupos descrevem o CSV didático, não a operação real.</p></article>
       </div>
       <aside class="interpretation-note"><span class="note-mark" aria-hidden="true">i</span><div><strong>Como interpretar estes números</strong><p>* A soma e a média contam minutos por observação. Uma observação não equivale a uma viagem completa, passageiro ou ônibus. A base é sintética e não representa telemetria real.</p></div></aside>
     </section>
@@ -111,7 +112,7 @@
           <div class="form-card-kicker"><span class="form-card-icon form-card-icon-orange" aria-hidden="true">↗</span><span>REGISTRO RELACIONADO</span></div>
           <h3 id="lineFormTitle">Nova linha</h3><p id="lineFormHelp">Escolha uma cidade para manter a chave estrangeira.</p>
           <label for="lineCity">Cidade vinculada</label><select id="lineCity" required><option value="">Carregando cidades…</option></select>
-          <label for="lineCode">Código da linha</label><input id="lineCode" maxlength="20" required placeholder="Ex.: 001" autocomplete="off">
+          <p id="selectedCity" class="status">Escolha a cidade pelo nome. O vínculo será gravado pelo ID.</p><label for="lineCode">Código da linha</label><input id="lineCode" maxlength="20" required placeholder="Ex.: 001" autocomplete="off">
           <label for="lineName">Nome da linha</label><input id="lineName" maxlength="120" minlength="2" required placeholder="Ex.: Terminal · Universidade" autocomplete="off">
           <div class="form-actions"><button class="button button-primary" id="saveLine" type="submit">Cadastrar linha</button><button class="button button-outline hidden" id="cancelLineEdit" type="button">Cancelar edição</button></div>
           <p id="lineFeedback" class="status form-feedback" role="status" aria-live="polite"></p>
@@ -128,7 +129,7 @@
     <section class="section section-project" id="integracao" aria-labelledby="projectTitle">
       <div class="section-heading"><div><p class="eyebrow eyebrow-dark">05 / COMO O APP FUNCIONA</p><h2 id="projectTitle">Uma solução, quatro partes</h2><p class="section-intro">Da tela ao banco, cada tecnologia tem uma função definida.</p></div><a class="button button-outline docs-button" href="/docs" target="_blank" rel="noreferrer">Abrir documentação da API <span aria-hidden="true">↗</span></a></div>
       <div class="stack-grid">
-        <article class="stack-card"><span class="stack-number">01</span><h3>Interface</h3><p>HTML organiza a página; CSS adapta o visual; JavaScript atualiza tabelas e envia as operações.</p><span class="stack-tech">HTML · CSS · JavaScript</span></article>
+        <article class="stack-card"><span class="stack-number">01</span><h3>Interface</h3><p>HTML organiza a página; CSS adapta o visual; JavaScript atualiza tabelas e envia as operações.</p><span class="stack-tech">HTML · CSS · JavaScript · Chart.js</span></article>
         <article class="stack-card"><span class="stack-number">02</span><h3>API e validação</h3><p>FastAPI recebe as solicitações, valida os campos e devolve respostas em JSON.</p><span class="stack-tech">Python · FastAPI · Pydantic</span></article>
         <article class="stack-card"><span class="stack-number">03</span><h3>Análise</h3><p>Pandas lê o CSV, confere a qualidade dos dados e calcula os quatro agrupamentos.</p><span class="stack-tech">Python · pandas · CSV</span></article>
         <article class="stack-card"><span class="stack-number">04</span><h3>Persistência</h3><p>Supabase armazena cidades e linhas; o backend acessa o banco por HTTPS sem expor a chave no navegador.</p><span class="stack-tech">Supabase · PostgreSQL · HTTPS</span></article>
@@ -140,4 +141,5 @@
   <footer class="site-footer"><a class="footer-brand" href="#inicio">TRANSURBAN</a><p>Projeto acadêmico de mobilidade · Maringá e Sarandi</p><p>Base sintética para demonstração · sem previsão em tempo real</p></footer>
 </body>
 </html>
+
 

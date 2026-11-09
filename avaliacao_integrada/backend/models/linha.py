@@ -11,9 +11,9 @@ class LinhaEntrada(BaseModel):
 
     @field_validator("codigo", "nome")
     @classmethod
-    def texto_sem_espacos(cls, valor: str) -> str:
+    def texto_sem_espacos(cls, valor: str, info) -> str:
         valor = valor.strip()
-        if not valor:
+        if len(valor) < (2 if info.field_name == "nome" else 1):
             raise ValueError("O campo não pode ficar vazio.")
         return valor
 
@@ -21,3 +21,4 @@ class LinhaEntrada(BaseModel):
 class LinhaSaida(LinhaEntrada):
     id_linha: int = Field(gt=0)
     cidade: str
+
