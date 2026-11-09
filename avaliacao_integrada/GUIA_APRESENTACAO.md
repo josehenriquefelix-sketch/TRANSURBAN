@@ -1,12 +1,12 @@
 # TRANSURBAN — apresentação de DS + IA
 
-Na pasta `avaliacao_integrada`, no Linux, execute `bash iniciar_linux.sh` para usar o Supabase. Reaproveite `backend/.env` se ele já contém a URL e a chave secreta do Supabase. O iniciador cria um modelo caso o arquivo ainda não exista. A chave fica no backend local.
+Na pasta `avaliacao_integrada`, no Linux, execute `PORT=8092 bash iniciar_linux.sh` para usar o Supabase. Reaproveite `backend/.env` se ele já contém a URL e a chave secreta do Supabase. O iniciador cria um modelo caso o arquivo ainda não exista. A chave fica no backend local.
 
-Para ensaiar sem credenciais, execute `bash iniciar_linux.sh --demo`. A tela indica **ENSAIO LOCAL · SQLite, sem Supabase**. O modo de ensaio não comprova conexão com o Supabase. No Windows, para conectar ao Supabase, execute `iniciar_local.cmd`.
+Para ensaiar sem credenciais, execute `PORT=8092 bash iniciar_linux.sh --demo`. A tela indica **ENSAIO LOCAL · SQLite, sem Supabase**. O modo de ensaio não comprova conexão com o Supabase. No Windows, para conectar ao Supabase, execute `set PORT=8092` seguido de `iniciar_local.cmd` no Prompt de Comando.
 
-- Painel: http://127.0.0.1:8091/
-- Swagger: http://127.0.0.1:8091/docs
-- Verificação do banco: http://127.0.0.1:8091/health/banco
+- Painel: http://127.0.0.1:8092/
+- Swagger: http://127.0.0.1:8092/docs
+- Verificação do banco: http://127.0.0.1:8092/health/banco
 
 1. Abra **Cidades** e cadastre uma cidade de demonstração com nome único.
 2. Abra **Linhas**, selecione a cidade pelo nome e cadastre uma linha de demonstração. Mostre na aba Rede que o POST envia `id_cidade`, e que a resposta devolve também o nome da cidade.

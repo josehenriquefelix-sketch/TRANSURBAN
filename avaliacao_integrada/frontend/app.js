@@ -1,5 +1,6 @@
 "use strict";
-const API = window.TRANSURBAN_API_URL || (location.port === "5500" ? "http://127.0.0.1:8091" : window.location.origin);
+const API = window.TRANSURBAN_API_URL || (location.port === "5500" ? "http://127.0.0.1:8092" : window.location.origin);
+document.querySelectorAll('a[href="/docs"]').forEach(link => { link.href = new URL("/docs", API).href; });
 let mutationBusy = false;
 const $ = id => document.getElementById(id);
 let cityEditId = null;
