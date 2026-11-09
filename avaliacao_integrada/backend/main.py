@@ -96,6 +96,19 @@ def health_banco():
     return {"conectado": True, "modo": "demo" if modo_demo() else "supabase"}
 
 
+@app.get("/health/mobilidade", tags=["Sistema"])
+def health_mobilidade():
+    if modo_demo():
+        return {"conectado": True, "modo": "demo"}
+    try:
+        db = get_supabase()
+        db.table("transurban_gps").select("veiculo").limit(1).execute()
+        db.table("transurban_avaliacoes").select("id").limit(1).execute()
+    except RuntimeError as erro:
+        raise HTTPException(503, str(erro)) from erro
+    return {"conectado": True, "modo": "supabase"}
+
+
 @app.get("/", tags=["Sistema"], include_in_schema=False)
 def inicio():
     return FileResponse(FRONTEND_DIR / "index.html")
@@ -109,6 +122,16 @@ async def erro_supabase(_request: Request, erro: APIError):
         codigo or "sem código",
         getattr(erro, "message", "erro de API"),
     )
+    diagnosticos = {
+        "42501": "Permissão insuficiente no Supabase. Confira a chave do backend e os GRANTs.",
+        "PGRST301": "O Supabase não aceitou a chave. Confira se a chave e a URL são do mesmo projeto.",
+        "PGRST205": "Tabela não encontrada no Supabase. Confira os scripts SQL e o schema public.",
+        "42P01": "Tabela não encontrada no Supabase. Confira os scripts SQL e o schema public.",
+        "PGRST200": "Relacionamento não encontrado. Confira a chave estrangeira entre linha_onibus e cidade.",
+        "PGRST202": "Função GPS não encontrada. Execute database/06_mobilidade_supabase.sql.",
+    }
+    if codigo in diagnosticos:
+        return JSONResponse(status_code=502, content={"detail": diagnosticos[codigo]})
     if codigo == "23503":
         return JSONResponse(
             status_code=409,

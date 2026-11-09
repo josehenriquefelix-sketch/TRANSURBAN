@@ -45,9 +45,9 @@ async function checkService() {
       badge.dataset.state = "warning";
       label.textContent = "API ativa · configure o Supabase";
     }
-  } catch {
+  } catch (error) {
     badge.dataset.state = "error";
-    badge.querySelector("span:last-child").textContent = "Banco indisponível · confira a configuração";
+    badge.querySelector("span:last-child").textContent = "Banco indisponível · " + error.message;
   }
 }
 

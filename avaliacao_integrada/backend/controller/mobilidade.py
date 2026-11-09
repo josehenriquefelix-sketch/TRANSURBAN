@@ -11,6 +11,14 @@ from fastapi import APIRouter, Depends, HTTPException
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel, Field, StringConstraints, ConfigDict
 
+from backend.database import get_supabase, modo_demo
+
+def remoto():
+    try:
+        return get_supabase()
+    except RuntimeError as erro:
+        raise HTTPException(503, str(erro)) from erro
+
 router = APIRouter(prefix="/mobilidade", tags=["Mobilidade"])
 Codigo = Annotated[str, StringConstraints(pattern=r"^[A-Z0-9-]{1,20}$")]
 Expira = 35
@@ -65,17 +73,25 @@ def gps(p: Posicao, _motorista: Annotated[None, Depends(motorista)]):
     agora = time.time()
     if not agora - Expira <= p.gps_em <= agora + 15:
         raise HTTPException(422, "Leitura de GPS fora da janela de atualização.")
+    if not modo_demo():
+        remoto().rpc("transurban_publicar_gps", {"leitura": {**p.model_dump(), "recebido": agora}}).execute()
+        return {"recebido": True}
     with banco() as con:
         con.execute("INSERT INTO gps VALUES(?,?,?,?,?,?,?) ON CONFLICT(veiculo) DO UPDATE SET linha=excluded.linha,latitude=excluded.latitude,longitude=excluded.longitude,precisao=excluded.precisao,gps_em=excluded.gps_em,recebido=excluded.recebido WHERE excluded.gps_em >= gps.gps_em", (p.veiculo,p.linha,p.latitude,p.longitude,p.precisao,p.gps_em,agora))
     return {"recebido": True}
 
 @router.delete("/gps/{veiculo}", status_code=204, summary="Encerrar compartilhamento do ônibus")
 def parar(veiculo: Codigo, _motorista: Annotated[None, Depends(motorista)]):
+    if not modo_demo():
+        remoto().table("transurban_gps").delete().eq("veiculo", veiculo).execute()
+        return
     with banco() as con:
         con.execute("DELETE FROM gps WHERE veiculo=?", (veiculo,))
 
 @router.get("/onibus", summary="Listar ônibus com posição recente na linha")
 def onibus(linha: Codigo):
+    if not modo_demo():
+        return remoto().table("transurban_gps").select("*").eq("linha", linha).gte("gps_em", time.time()-Expira).order("veiculo").limit(100).execute().data
     with banco() as con:
         agora = time.time()
         con.execute("DELETE FROM gps WHERE gps_em < ?", (agora-Expira,))
@@ -96,11 +112,18 @@ def trajeto(linha: Codigo):
 
 @router.post("/avaliacoes", status_code=201, summary="Registrar nota, lotação e relato da viagem")
 def avaliar(a: Avaliacao):
+    if not modo_demo():
+        dados = remoto().table("transurban_avaliacoes").insert({**a.model_dump(), "criado": time.time()}).execute().data
+        if not dados:
+            raise HTTPException(502, "O Supabase não confirmou a avaliação.")
+        return {"id": dados[0]["id"]}
     with banco() as con:
         cur = con.execute("INSERT INTO avaliacoes(veiculo,linha,nota,lotacao,descricao,criado) VALUES(?,?,?,?,?,?)", (a.veiculo,a.linha,a.nota,a.lotacao,a.descricao,time.time()))
         return {"id": cur.lastrowid}
 
 @router.get("/avaliacoes", summary="Listar avaliações recentes da linha")
 def avaliacoes(linha: Codigo):
+    if not modo_demo():
+        return remoto().table("transurban_avaliacoes").select("veiculo,nota,lotacao,descricao").eq("linha", linha).order("id", desc=True).limit(10).execute().data
     with banco() as con:
         return [dict(r) for r in con.execute("SELECT veiculo, nota, lotacao, descricao FROM avaliacoes WHERE linha=? ORDER BY id DESC LIMIT 10", (linha,))]
