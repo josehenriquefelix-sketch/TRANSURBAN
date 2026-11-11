@@ -38,6 +38,32 @@ async function api(path, options = {}, retry = true) {
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
     const detail = data.detail;
+    if (response.status === 422 && Array.isArray(detail)) {
+      const labels = {
+        cpf: "CPF",
+        email: "E-mail",
+        senha: "Senha",
+        nome: "Nome",
+        identificador: "E-mail ou CPF",
+        codigo: "Código da linha",
+        id_cidade: "Cidade"
+      };
+      const messages = detail.map(error => {
+        const field = error.loc?.[error.loc.length - 1];
+        const label = labels[field] || "Campo informado";
+        if (error.type === "value_error") {
+          return `${label} — ${String(error.msg).replace(/^Value error,\s*/, "")}`;
+        }
+        if (error.type === "string_too_short") {
+          return `${label} — use pelo menos ${error.ctx.min_length} caracteres.`;
+        }
+        if (error.type === "string_too_long") {
+          return `${label} — use no máximo ${error.ctx.max_length} caracteres.`;
+        }
+        return `${label} — confira o valor preenchido.`;
+      });
+      throw new Error(messages.join(" "));
+    }
     throw new Error(typeof detail === "string" ? detail : response.status === 422 ? "Confira os campos informados." : "A operação não foi concluída.");
   }
   return data;
