@@ -1,5 +1,7 @@
 # Portal TRANSURBAN — atualização de novembro de 2026
 
+Para preparar o computador da Ficiências 2026, consulte o [guia do evento](avaliacao_integrada/docs/FICIENCIAS_2026.md). Depois de iniciar o sistema, execute `VERIFICAR_TRANSURBAN.cmd` na raiz para conferir o ambiente com consultas ao Supabase e à API local.
+
 O portal completo fica em [avaliacao_integrada](avaliacao_integrada). O produto atende à população de Maringá e Sarandi com conta, informações de mobilidade, dashboard com fontes oficiais e consulta aos cadastros da rede.
 
 Para abrir no Windows, clone este repositório pelo VS Code, configure o arquivo privado `avaliacao_integrada/backend/.env` usando o `.env.example` e execute `INICIAR_TRANSURBAN.cmd` na raiz. O iniciador prepara o ambiente e abre o site em `http://127.0.0.1:8000/`.
