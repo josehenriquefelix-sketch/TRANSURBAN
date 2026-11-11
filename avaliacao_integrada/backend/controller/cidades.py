@@ -1,5 +1,6 @@
 """CRUD HTTP da entidade independente cidade (PK sem FK)."""
-from fastapi import APIRouter, HTTPException, Response, status
+from fastapi import APIRouter, Depends, HTTPException, Response, status
+from backend.auth import administrador
 from postgrest.exceptions import APIError
 
 from backend.database import get_supabase
@@ -27,7 +28,7 @@ def _executar(operacao):
         raise
 
 
-@router.post("", response_model=CidadeSaida, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=CidadeSaida, status_code=status.HTTP_201_CREATED, dependencies=[Depends(administrador)])
 def cadastrar_cidade(dados: CidadeEntrada):
     resposta = _executar(lambda db: db.table(TABELA).insert(dados.model_dump()))
     if not resposta.data:
@@ -49,7 +50,7 @@ def consultar_cidade(id_cidade: int):
     return resposta.data[0]
 
 
-@router.put("/{id_cidade}", response_model=CidadeSaida)
+@router.put("/{id_cidade}", response_model=CidadeSaida, dependencies=[Depends(administrador)])
 def atualizar_cidade(id_cidade: int, dados: CidadeEntrada):
     resposta = _executar(lambda db: db.table(TABELA).update(dados.model_dump()).eq(PK, id_cidade))
     if not resposta.data:
@@ -57,10 +58,9 @@ def atualizar_cidade(id_cidade: int, dados: CidadeEntrada):
     return resposta.data[0]
 
 
-@router.delete("/{id_cidade}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{id_cidade}", status_code=status.HTTP_204_NO_CONTENT, dependencies=[Depends(administrador)])
 def excluir_cidade(id_cidade: int):
     resposta = _executar(lambda db: db.table(TABELA).delete().eq(PK, id_cidade))
     if not resposta.data:
         raise HTTPException(404, "Cidade não encontrada.")
     return Response(status_code=status.HTTP_204_NO_CONTENT)
-

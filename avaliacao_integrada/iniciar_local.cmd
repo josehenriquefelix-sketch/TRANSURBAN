@@ -29,7 +29,7 @@ echo A chave fica somente neste computador e nao deve ser enviada ao GitHub.
 start /wait notepad.exe "backend\.env"
 
 :pronto
-backend\.venv\Scripts\python.exe -c "import fastapi, uvicorn, pandas, dotenv, supabase" >nul 2>nul
+backend\.venv\Scripts\python.exe -c "import fastapi, uvicorn, pandas, dotenv, supabase, httpx, tzdata" >nul 2>nul
 if errorlevel 1 (
   echo Instalando dependencias necessarias...
   backend\.venv\Scripts\python.exe -m pip install -r backend\requirements.txt
@@ -44,4 +44,3 @@ exit /b 0
 echo Nao foi possivel iniciar. Confira a janela de mensagens e tente novamente.
 pause
 exit /b 1
-

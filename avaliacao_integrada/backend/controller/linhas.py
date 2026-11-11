@@ -1,5 +1,6 @@
 """CRUD de linhas para a interface integrada; preserva a FK para cidade."""
-from fastapi import APIRouter, HTTPException, Response, status
+from fastapi import APIRouter, Depends, HTTPException, Response, status
+from backend.auth import administrador
 from postgrest.exceptions import APIError
 
 from backend.database import get_supabase
@@ -47,7 +48,7 @@ def _validar_cidade(id_cidade):
         raise HTTPException(400, "Cidade não encontrada. Consulte uma cidade cadastrada.")
 
 
-@router.post("", response_model=LinhaSaida, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=LinhaSaida, status_code=status.HTTP_201_CREATED, dependencies=[Depends(administrador)])
 def cadastrar_linha(dados: LinhaEntrada):
     _validar_cidade(dados.id_cidade)
     resposta = _executar(
@@ -76,7 +77,7 @@ def consultar_linha(id_linha: int):
     return _representar(resposta.data[0])
 
 
-@router.put("/{id_linha}", response_model=LinhaSaida)
+@router.put("/{id_linha}", response_model=LinhaSaida, dependencies=[Depends(administrador)])
 def atualizar_linha(id_linha: int, dados: LinhaEntrada):
     consultar_linha(id_linha)
     _validar_cidade(dados.id_cidade)
@@ -88,7 +89,7 @@ def atualizar_linha(id_linha: int, dados: LinhaEntrada):
     return _representar(resposta.data[0])
 
 
-@router.delete("/{id_linha}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{id_linha}", status_code=status.HTTP_204_NO_CONTENT, dependencies=[Depends(administrador)])
 def excluir_linha(id_linha: int):
     resposta = _executar(
         lambda db: db.table(TABELA).delete().eq(PK, id_linha).select(PK)
@@ -96,4 +97,3 @@ def excluir_linha(id_linha: int):
     if not resposta.data:
         raise HTTPException(404, "Linha não encontrada.")
     return Response(status_code=status.HTTP_204_NO_CONTENT)
-

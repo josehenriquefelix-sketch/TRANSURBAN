@@ -1,0 +1,271 @@
+{
+  "data": "2026-11-10",
+  "ambiente": "FastAPI TestClient e Supabase real por HTTPS",
+  "resultado": "aprovado",
+  "verificacoes": [
+    {
+      "metodo": "GET",
+      "rota": "/",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal.css",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal.js",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/logo.svg",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/docs",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/dados/docs",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal/contexto",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal/trajetos",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal/horarios?trajeto_id=1",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/openapi.json",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/dados/openapi.json",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal/passe",
+      "esperado": 401,
+      "recebido": 401
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal/avaliacoes",
+      "esperado": 401,
+      "recebido": 401
+    },
+    {
+      "metodo": "GET",
+      "rota": "/auth/me",
+      "esperado": 401,
+      "recebido": 401
+    },
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "esperado": 401,
+      "recebido": 401
+    },
+    {
+      "metodo": "POST",
+      "rota": "/auth/login",
+      "esperado": 401,
+      "recebido": 401
+    },
+    {
+      "metodo": "POST",
+      "rota": "/auth/cadastro",
+      "esperado": 422,
+      "recebido": 422
+    },
+    {
+      "metodo": "POST",
+      "rota": "/auth/login",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/auth/me",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal/passe",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/portal/recargas",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/portal/recargas",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal/passe",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/portal/recargas",
+      "esperado": 409,
+      "recebido": 409
+    },
+    {
+      "metodo": "POST",
+      "rota": "/portal/recargas",
+      "esperado": 422,
+      "recebido": 422
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal/horarios?trajeto_id=1",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/portal/avaliacoes",
+      "esperado": 201,
+      "recebido": 201
+    },
+    {
+      "metodo": "POST",
+      "rota": "/portal/avaliacoes",
+      "esperado": 409,
+      "recebido": 409
+    },
+    {
+      "metodo": "GET",
+      "rota": "/portal/avaliacoes",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "DELETE",
+      "rota": "/portal/avaliacoes/1",
+      "esperado": 204,
+      "recebido": 204
+    },
+    {
+      "metodo": "POST",
+      "rota": "/cidades",
+      "esperado": 201,
+      "recebido": 201
+    },
+    {
+      "metodo": "POST",
+      "rota": "/linhas",
+      "esperado": 201,
+      "recebido": 201
+    },
+    {
+      "metodo": "PUT",
+      "rota": "/linhas/15",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "DELETE",
+      "rota": "/cidades/12",
+      "esperado": 409,
+      "recebido": 409
+    },
+    {
+      "metodo": "DELETE",
+      "rota": "/linhas/15",
+      "esperado": 204,
+      "recebido": 204
+    },
+    {
+      "metodo": "DELETE",
+      "rota": "/cidades/12",
+      "esperado": 204,
+      "recebido": 204
+    },
+    {
+      "metodo": "POST",
+      "rota": "/auth/refresh",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/auth/logout",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "GET",
+      "rota": "/auth/me",
+      "esperado": 401,
+      "recebido": 401
+    },
+    {
+      "metodo": "POST",
+      "rota": "/auth/login",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/auth/logout",
+      "esperado": 200,
+      "recebido": 200
+    },
+    {
+      "metodo": "POST",
+      "rota": "/auth/login",
+      "esperado": 403,
+      "recebido": 403
+    }
+  ],
+  "operacoes": {
+    "login_email_cpf": true,
+    "cookie_httponly": true,
+    "logout_refresh": true,
+    "restricao_sem_login": true,
+    "recarga_idempotente": true,
+    "recarga_demo_centavos_adicionada": 500,
+    "avaliacao_temporaria_removida": true,
+    "crud_temporario_removido": true,
+    "swagger_ds_sem_ia": true,
+    "swagger_dados_cinco_rotas": true
+  }
+}

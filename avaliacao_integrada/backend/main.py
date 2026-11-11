@@ -10,6 +10,8 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.openapi.docs import get_swagger_ui_html
+from fastapi.openapi.utils import get_openapi
 from httpx import RequestError
 from postgrest.exceptions import APIError
 
@@ -17,6 +19,8 @@ from backend.controller.analise import router as analise_router
 from backend.controller.cidades import router as cidades_router
 from backend.controller.linhas import router as linhas_router
 from backend.database import supabase_configurado
+from backend.auth import router as auth_router
+from backend.controller.portal import router as portal_router
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -49,12 +53,12 @@ async def manter_computador_ativo(_app):
             restaurar_estado(0x80000000)
 
 app = FastAPI(
-    title="TRANSURBAN · API integrada DS + IA",
+    title="TRANSURBAN · API de Desenvolvimento de Sistemas",
     description=(
-        "CRUD de cidades pela Data API HTTPS do Supabase e totalizações "
-        "descritivas do CSV acadêmico com pandas."
+        "Contas, cidades, linhas, trajetos, avaliações e passe demonstrativo. "
+        "Integração com Supabase por HTTPS."
     ),
-    version="1.0.0",
+    version="2.0.0",
     lifespan=manter_computador_ativo,
 )
 origens = [
@@ -69,11 +73,54 @@ app.add_middleware(
     allow_origins=origens,
     allow_credentials=False,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allow_headers=["Content-Type"],
+    allow_headers=["Content-Type", "Authorization"],
 )
+app.include_router(auth_router)
+app.include_router(portal_router)
 app.include_router(cidades_router)
 app.include_router(linhas_router)
 app.include_router(analise_router)
+
+
+def esquema_ds():
+    if app.openapi_schema is None:
+        app.openapi_schema = get_openapi(title=app.title, version=app.version,
+                                         description=app.description, routes=app.routes)
+        app.openapi_schema["paths"] = {path: value for path, value in app.openapi_schema["paths"].items()
+                                        if not path.startswith("/ia/")}
+    return app.openapi_schema
+
+
+app.openapi = esquema_ds
+
+
+@app.get("/dados/openapi.json", include_in_schema=False)
+def esquema_dados():
+    schema = get_openapi(title="TRANSURBAN · API de Ciência de Dados", version=app.version,
+                        description="Resumo e quatro totalizações do CSV acadêmico, calculados com pandas.", routes=app.routes)
+    schema["paths"] = {path: value for path, value in schema["paths"].items() if path.startswith("/ia/")}
+    return schema
+
+
+@app.get("/dados/docs", include_in_schema=False)
+def documentacao_dados():
+    return get_swagger_ui_html(openapi_url="/dados/openapi.json", title="TRANSURBAN · Ciência de Dados")
+
+
+@app.middleware("http")
+async def proteger_solicitacoes(request: Request, call_next):
+    # Cookies só podem autorizar alterações da própria origem ou de origens configuradas.
+    origin = request.headers.get("origin")
+    mesma_origem = str(request.base_url).rstrip("/")
+    if request.method in {"POST", "PUT", "DELETE", "PATCH"} and origin and origin not in [mesma_origem, *origens]:
+        return JSONResponse(status_code=403, content={"detail": "Origem da solicitação não permitida."})
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["Referrer-Policy"] = "same-origin"
+    response.headers["X-Frame-Options"] = "DENY"
+    if request.url.path.startswith(("/auth", "/portal/passe", "/portal/avaliacoes", "/portal/recargas")):
+        response.headers["Cache-Control"] = "no-store"
+    return response
 
 
 @app.get("/health", tags=["Sistema"])
@@ -132,4 +179,3 @@ async def erro_rede(_request: Request, erro: RequestError):
 
 # Serve interface and API from one origin, so the project starts with one local service.
 app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
-

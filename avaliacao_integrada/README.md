@@ -1,5 +1,43 @@
 # TRANSURBAN — Recuperação DS e integração DS + IA
 
+## Portal de mobilidade — atualização de novembro de 2026
+
+O portal inclui telas de login por e-mail ou CPF, cadastro de conta, recuperação de senha, início, dashboard, cidades, linhas, trajetos/horários, avaliações e passe demonstrativo. A interface usa HTML, CSS e JavaScript. A API usa Python/FastAPI e o banco usa Supabase/PostgreSQL por HTTPS.
+
+- Site em `http://127.0.0.1:8000/`.
+- Swagger de Desenvolvimento de Sistemas em `/docs`. As totalizações de IA foram retiradas desse Swagger.
+- Swagger de Ciência de Dados em `/dados/docs`. Os endpoints `/ia/*` continuam disponíveis para a atividade acadêmica e o dashboard.
+- O dashboard apresenta documentos oficiais com links e datas, seguidos das quatro totalizações do CSV sintético.
+- Passageiros e motoristas consultam cidades e linhas cadastradas. Alterações exigem sessão e e-mail autorizado em `ADMIN_EMAILS` no `.env` do backend.
+- Contas e senhas são administradas pelo Supabase Auth. A sessão fica em cookies HttpOnly. O CPF é validado e seu resumo SHA-256 é gravado para a busca de login.
+- Avaliações e carteira são vinculadas ao usuário autenticado. Os endpoints filtram os dados pelo usuário validado pelo Supabase.
+- Os trajetos, horários, veículos e motoristas do módulo de consulta são demonstrativos. A recarga é fictícia, sem integração com pagamento ou bilhetagem da operadora. Cada operação usa uma chave única e uma transação no PostgreSQL para evitar duplicação.
+
+### Preparar o banco e as contas
+
+No projeto Supabase da equipe a migração `database/05_portal.sql` já foi aplicada. Ao usar esse mesmo projeto em outro computador, não é necessário executá-la novamente. Em um banco novo, prepare primeiro as tabelas de cidades e linhas e depois execute `05_portal.sql` no SQL Editor. O script é transacional e pode ser repetido.
+
+Em Authentication → URL Configuration, configure o Site URL como `http://127.0.0.1:8000` e autorize o retorno para `http://127.0.0.1:8000/**`. Essas URLs já foram configuradas no projeto da equipe. Para hospedagem, use a URL HTTPS do site, ajuste `APP_URL` e configure `COOKIE_SECURE=true`.
+
+O cadastro público solicita confirmação de e-mail conforme a configuração do Supabase. Entrega de mensagens depende da configuração e dos limites do serviço de e-mail do projeto. Valide o recebimento com o endereço real que será usado antes da apresentação. Para envio a público externo, configure o SMTP do projeto.
+
+Uma conta fictícia da equipe foi preparada para os testes de apresentação. Suas credenciais estão apenas no `.env` privado deste computador, nos campos `DEMO_EMAIL`, `DEMO_PASSWORD` e `DEMO_CPF`. Os e-mails com acesso aos cadastros ficam em `ADMIN_EMAILS`. Novas contas recebem acesso de passageiro. Credenciais de apresentação também devem ser transferidas por meio privado.
+
+### Abrir no computador da escola
+
+1. No VS Code, use Git → Clonar Repositório com o endereço deste repositório, ou execute `git pull` se o projeto já estiver clonado.
+2. Abra a pasta `avaliacao_integrada`.
+3. Configure `backend/.env` usando `backend/.env.example` como referência. Use o mesmo projeto Supabase e os e-mails autorizados da equipe. O arquivo privado não vem pelo GitHub.
+4. Execute `iniciar_local.cmd`. Ele prepara o ambiente e abre o site. O link da API está no menu do site.
+
+O Windows precisa ter Python 3.10 ou superior disponível no PATH e acesso à internet para instalar dependências e consultar o Supabase. Mantenha o servidor aberto durante o uso. O endereço `127.0.0.1` representa o próprio computador.
+
+### Verificação desta atualização
+
+Os 12 testes automatizados, incluindo seis de regressão e seis de autenticação/permissão/documentação, passaram. Foram realizadas 42 verificações adicionais com FastAPI TestClient e Supabase real, registradas em `docs/EVIDENCIAS_PORTAL_20261110.json`, incluindo login por e-mail/CPF, sessão, logout, restrição de acesso, avaliação, CRUD/FK e recarga idempotente. As duas recargas de demonstração somam R$ 15 na conta fictícia. O teste pela interface também registrou uma avaliação de demonstração. Consulte `docs/EVIDENCIAS_INTERFACE_20261111.json`. O recebimento de e-mail em caixa postal real precisa de validação com o endereço da equipe.
+
+Consulte `docs/PORTAL_E_APRESENTACAO.md` para o roteiro e os limites da demonstração.
+
 Entrega acadêmica integrada com FastAPI, pandas, Supabase por HTTPS, HTML, CSS e JavaScript. A documentação cobre o CRUD, a base de Ciência de Dados, as quatro perguntas, o CORS e o roteiro de conferência.
 
 **Projeto da equipe:** sistema acadêmico sobre transporte coletivo de Maringá e Sarandi. **Professor responsável:** Erinaldo Sanches Nascimento. **Grupo:** preencher os nomes dos integrantes antes da apresentação.
@@ -117,7 +155,6 @@ A distribuição depende do tamanho do grupo. Com duas pessoas, combinar HTML/CS
 ## Repositório da equipe
 
 Repositório identificado no material local: [github.com/josehenriquefelix-sketch/TRANSURBAN](https://github.com/josehenriquefelix-sketch/TRANSURBAN). O pacote está pronto localmente. O link de entrega do GitHub será a branch publicada para revisão; confira também as instruções de integração da pasta no repositório.
-
 
 
 

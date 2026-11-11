@@ -7,6 +7,7 @@ from postgrest.exceptions import APIError
 
 from backend.controller import cidades, linhas
 from backend.main import app
+from backend.auth import administrador
 
 
 class FakeResponse:
@@ -99,6 +100,8 @@ class FakeSupabase:
 
 class EntregaTests(unittest.TestCase):
     def setUp(self):
+        app.dependency_overrides[administrador] = lambda: {"id": "teste", "email": "teste@exemplo.com"}
+        self.addCleanup(app.dependency_overrides.clear)
         self.database = {"cidade": [], "linha_onibus": []}
         self.client = TestClient(app)
         fake = lambda: FakeSupabase(self.database)
@@ -181,4 +184,3 @@ class EntregaTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

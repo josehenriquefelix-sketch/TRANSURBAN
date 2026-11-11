@@ -1,3 +1,15 @@
+# Portal TRANSURBAN — atualização de novembro de 2026
+
+O portal completo fica em [avaliacao_integrada](avaliacao_integrada). Inclui login, início, dashboard com fontes oficiais, consulta de cidades e linhas, trajetos e horários, avaliações e passe demonstrativo.
+
+Para abrir no Windows, clone este repositório pelo VS Code, configure o arquivo privado `avaliacao_integrada/backend/.env` usando o `.env.example` e execute `INICIAR_TRANSURBAN.cmd` na raiz. O iniciador prepara o ambiente e abre o site em `http://127.0.0.1:8000/`.
+
+A API de DS fica em `/docs`. A API de Ciência de Dados fica em `/dados/docs`. O projeto Supabase da equipe já recebeu a migração do portal. Cada computador precisa de Python e de sua configuração privada do `.env`.
+
+Consulte as [instruções do portal](avaliacao_integrada/README.md) e o [roteiro da apresentação](avaliacao_integrada/docs/PORTAL_E_APRESENTACAO.md). Horários, avaliações de teste e recargas do módulo de apresentação usam dados de demonstração. O dashboard identifica os documentos oficiais por fonte e data.
+
+---
+
 # TRANSURBAN — API
 
 ## Abrir o projeto de apresentação no VS Code (Windows)

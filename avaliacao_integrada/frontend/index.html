@@ -1,143 +1,1378 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="TRANSURBAN: painel acadêmico de transporte coletivo, cadastro integrado e análise de observações de atraso em Maringá e Sarandi.">
-  <meta name="theme-color" content="#10263d">
-  <title>TRANSURBAN | Mobilidade vista por dados</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
-</head>
-<body>
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <header class="site-header">
-    <a class="brand" href="#inicio" aria-label="TRANSURBAN, início">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" focusable="false"><path d="M8 9h24v5H22v18h-5V14H8z" fill="currentColor"/><circle cx="29" cy="28" r="3" fill="#ffb64a"/></svg></span>
-      <span class="brand-copy"><strong>TRANSURBAN</strong><small>Maringá · Sarandi</small></span>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="TRANSURBAN — Mobilidade urbana entre Maringá e Sarandi. Trajetos, horários, passe e informações em um só lugar." name="description"/>
+  <meta content="#102a43" name="theme-color"/>
+  <title>
+   TRANSURBAN | Mobilidade que conecta
+  </title>
+  <link href="/logo.svg" rel="icon" type="image/svg+xml"/>
+  <link href="/portal.css?v=20261110b" rel="stylesheet"/>
+  <script defer="" src="/app.js?v=20261110b">
+  </script>
+  <script defer="" src="/portal.js?v=20261110b">
+  </script>
+ </head>
+ <body>
+  <a class="skip-link" href="#conteudo">
+   Pular para o conteúdo
+  </a>
+  <section class="auth-screen" id="authScreen">
+   <div class="auth-story">
+    <a class="brand" href="#inicio">
+     <img alt="" height="43" src="/logo.svg" width="43"/>
+     <span>
+      transurban
+      <small>
+       Mobilidade que conecta.
+      </small>
+     </span>
     </a>
-    <nav class="main-nav" aria-label="Navegação principal">
-      <a href="#resumo">Dados</a><a href="#cidades">Cidades</a><a href="#linhas">Linhas</a><a href="#integracao">Projeto</a>
-      <a class="nav-api" href="/docs" target="_blank" rel="noreferrer">API <span aria-hidden="true">↗</span></a>
+    <div>
+     <span class="pill">
+      MARINGÁ ↔ SARANDI
+     </span>
+     <h1>
+      Seu próximo destino
+      <br/>
+      começa por aqui.
+     </h1>
+     <p>
+      Planeje o trajeto. Acompanhe sua mobilidade.
+      <br/>
+      Conecte-se a uma cidade mais acessível.
+     </p>
+     <div class="auth-route">
+      <i>
+      </i>
+      <span>
+       Maringá
+      </span>
+      <b>
+       ───────── →
+      </b>
+      <i>
+      </i>
+      <span>
+       Sarandi
+      </span>
+     </div>
+    </div>
+    <small>
+     TRANSURBAN • Projeto acadêmico de mobilidade urbana
+    </small>
+   </div>
+   <div class="auth-panel">
+    <a class="back-link" href="#inicio">
+     ← Explorar o projeto
+    </a>
+    <form class="auth-form" id="loginForm">
+     <span class="eyebrow">
+      BEM-VINDO AO TRANSURBAN
+     </span>
+     <h2>
+      Bom ter você aqui.
+     </h2>
+     <p>
+      Acesse sua conta e siga seu caminho.
+     </p>
+     <label for="loginId">
+      E-mail ou CPF
+     </label>
+     <input autocomplete="username" id="loginId" maxlength="254" placeholder="Seu e-mail ou CPF" required=""/>
+     <label for="loginPassword">
+      Senha
+     </label>
+     <div class="password-field">
+      <input autocomplete="current-password" id="loginPassword" maxlength="72" placeholder="Sua senha" required="" type="password"/>
+      <button aria-label="Mostrar senha" class="show-password" data-for="loginPassword" type="button">
+       Ver
+      </button>
+     </div>
+     <a class="forgot" href="#esqueci-senha">
+      Esqueci minha senha
+     </a>
+     <button class="button button-primary wide">
+      Entrar na minha conta →
+     </button>
+     <p class="status" id="loginFeedback" role="status">
+     </p>
+     <p class="auth-switch">
+      Primeira vez por aqui?
+      <a href="#cadastro">
+       Criar conta
+      </a>
+     </p>
+     <a class="guest-link" href="#inicio">
+      Explorar como visitante →
+     </a>
+    </form>
+    <form class="auth-form" hidden="" id="registerForm">
+     <span class="eyebrow">
+      UMA NOVA CONEXÃO
+     </span>
+     <h2>
+      Crie sua conta.
+     </h2>
+     <p>
+      Seu passe e suas avaliações em um só lugar.
+     </p>
+     <label for="registerName">
+      Nome completo
+     </label>
+     <input autocomplete="name" id="registerName" maxlength="100" minlength="2" required=""/>
+     <label for="registerEmail">
+      E-mail
+     </label>
+     <input autocomplete="email" id="registerEmail" maxlength="254" required="" type="email"/>
+     <label for="registerCpf">
+      CPF
+     </label>
+     <input id="registerCpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required=""/>
+     <small>
+      Usado para identificar sua conta. O sistema guarda um resumo criptográfico do CPF.
+     </small>
+     <label for="registerPassword">
+      Senha
+     </label>
+     <input autocomplete="new-password" id="registerPassword" maxlength="72" minlength="8" placeholder="Mínimo de 8 caracteres" required="" type="password"/>
+     <label for="registerConfirm">
+      Confirme a senha
+     </label>
+     <input autocomplete="new-password" id="registerConfirm" maxlength="72" minlength="8" required="" type="password"/>
+     <button class="button button-primary wide">
+      Criar minha conta →
+     </button>
+     <p class="status" id="registerFeedback" role="status">
+     </p>
+     <p>
+      Já tem conta?
+      <a href="#login">
+       Entrar
+      </a>
+     </p>
+    </form>
+    <form class="auth-form" hidden="" id="forgotForm">
+     <span class="eyebrow">
+      RECUPERE O ACESSO
+     </span>
+     <h2>
+      Esqueci minha senha
+     </h2>
+     <p>
+      Informe o e-mail da conta. Você receberá um link para criar uma nova senha.
+     </p>
+     <label for="forgotEmail">
+      E-mail cadastrado
+     </label>
+     <input autocomplete="email" id="forgotEmail" maxlength="254" required="" type="email"/>
+     <button class="button button-primary wide">
+      Enviar link de recuperação →
+     </button>
+     <p class="status" id="forgotFeedback" role="status">
+     </p>
+     <a href="#login">
+      ← Voltar para o login
+     </a>
+    </form>
+    <form class="auth-form" hidden="" id="resetForm">
+     <span class="eyebrow">
+      REDEFINIR ACESSO
+     </span>
+     <h2>
+      Crie uma nova senha.
+     </h2>
+     <label for="newPassword">
+      Nova senha
+     </label>
+     <input autocomplete="new-password" id="newPassword" maxlength="72" minlength="8" required="" type="password"/>
+     <label for="newConfirm">
+      Confirme a nova senha
+     </label>
+     <input autocomplete="new-password" id="newConfirm" maxlength="72" minlength="8" required="" type="password"/>
+     <button class="button button-primary wide">
+      Salvar nova senha →
+     </button>
+     <p class="status" id="resetFeedback" role="status">
+     </p>
+     <a href="#login">
+      Voltar para entrar
+     </a>
+    </form>
+   </div>
+  </section>
+  <div hidden="" id="appShell">
+   <aside class="sidebar">
+    <a class="brand" href="#inicio">
+     <img alt="" height="43" src="/logo.svg" width="43"/>
+     <span>
+      transurban
+      <small>
+       Mobilidade que conecta.
+      </small>
+     </span>
+    </a>
+    <p class="nav-label">
+     SEU CAMINHO
+    </p>
+    <nav aria-label="Navegação principal">
+     <a data-page="inicio" href="#inicio">
+      <span>
+       ⌂
+      </span>
+      Início
+     </a>
+     <a data-page="dashboard" href="#dashboard">
+      <span>
+       ▥
+      </span>
+      Dashboard
+     </a>
+     <a data-page="trajetos" href="#trajetos">
+      <span>
+       ↗
+      </span>
+      Trajetos e horários
+     </a>
+     <a data-page="passe" href="#passe">
+      <span>
+       ▣
+      </span>
+      Meu passe
+     </a>
+     <a data-page="avaliacoes" href="#avaliacoes">
+      <span>
+       ☆
+      </span>
+      Avaliações
+     </a>
+     <p class="nav-label">
+      EXPLORE A REDE
+     </p>
+     <a data-page="cidades" href="#cidades">
+      <span>
+       ▦
+      </span>
+      Cidades cadastradas
+     </a>
+     <a data-page="linhas" href="#linhas">
+      <span>
+       ⇄
+      </span>
+      Linhas cadastradas
+     </a>
     </nav>
-    <div class="service-status" id="serviceStatus" data-state="loading" role="status" aria-live="polite"><span class="service-dot" aria-hidden="true"></span><span>Verificando serviço</span></div>
-  </header>
-
-  <main id="conteudo">
-    <section class="hero" id="inicio" aria-labelledby="heroTitle">
-      <div class="hero-copy-block">
-        <p class="eyebrow"><span class="eyebrow-line"></span> PAINEL ACADÊMICO DE MOBILIDADE</p>
-        <h1 id="heroTitle">Entender o transporte começa <em>pelos dados.</em></h1>
-        <p class="hero-description">Um projeto integrado para organizar cidades e linhas de ônibus e explorar observações de atraso em Maringá e Sarandi.</p>
-        <div class="hero-actions"><a class="button button-primary" href="#resumo">Explorar o painel <span aria-hidden="true">↓</span></a><a class="button button-quiet" href="#cidades">Abrir cadastros <span aria-hidden="true">→</span></a><a class="button button-quiet" href="/docs" target="_blank" rel="noreferrer">Ver API (Swagger) <span aria-hidden="true">↗</span></a></div>
-        <div class="hero-tags"><span><i class="tag-dot"></i>Interface + API + banco</span><span><i class="tag-dot tag-dot-orange"></i>Base didática sintética</span></div>
+    <div class="sidebar-foot">
+     <div class="region-label">
+      <i>
+      </i>
+      Maringá ↔ Sarandi
+     </div>
+     <a href="/docs" rel="noopener" target="_blank">
+      Documentação da API ↗
+     </a>
+     <small>
+      Projeto acadêmico • DS + IA
+     </small>
+    </div>
+   </aside>
+   <div class="workspace">
+    <header class="topbar">
+     <div class="topbar-left">
+      <button aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" id="menuToggle">
+       ☰
+      </button>
+      <span id="pageBreadcrumb">
+       Visão geral
+      </span>
+     </div>
+     <div class="topbar-right">
+      <div class="service-status" id="serviceStatus" role="status">
+       <i>
+       </i>
+       <span>
+        Verificando serviço
+       </span>
       </div>
-      <div class="route-art" aria-label="Ilustração de um trajeto conectando duas cidades">
-        <div class="route-art-top"><span>REDE EM FOCO</span><span class="route-live"><i></i> VISÃO DO PROJETO</span></div>
-        <svg class="route-map" viewBox="0 0 440 250" role="img" aria-labelledby="routeTitle routeDesc">
-          <title id="routeTitle">Trajeto entre Maringá e Sarandi</title><desc id="routeDesc">Ilustração conceitual da conexão urbana, sem representar uma rota ou horário real.</desc>
-          <path class="map-road map-road-soft" d="M-20 60 C70 115 110 40 190 91 S315 180 470 68"/><path class="map-road map-road-soft" d="M-20 205 C58 153 110 222 195 168 S345 65 470 176"/><path class="map-road map-road-main" d="M38 188 C105 167 111 112 193 132 S312 93 402 49"/>
-          <path class="map-route" d="M38 188 C105 167 111 112 193 132 S312 93 402 49"/>
-          <circle class="route-stop route-stop-a" cx="38" cy="188" r="9"/><circle class="route-stop route-stop-mid" cx="193" cy="132" r="7"/><circle class="route-stop route-stop-b" cx="402" cy="49" r="9"/>
-          <circle class="route-halo" cx="38" cy="188" r="18"/><circle class="route-halo" cx="402" cy="49" r="18"/>
+      <a class="account-link" href="#login" id="accountLink">
+       <span id="accountAvatar">
+        ↗
+       </span>
+       <span id="accountLabel">
+        Entrar na conta
+       </span>
+      </a>
+      <button class="logout" hidden="" id="logoutButton" type="button">
+       Sair ↪
+      </button>
+     </div>
+    </header>
+    <main id="conteudo" tabindex="-1">
+     <section class="page home-page" hidden="" id="inicio">
+      <div class="home-hero">
+       <div class="hero-text">
+        <span class="pill">
+         <i>
+         </i>
+         MOBILIDADE URBANA • MARINGÁ &amp; SARANDI
+        </span>
+        <h1>
+         Conectando cidades.
+         <br/>
+         <em>
+          Aproximando você.
+         </em>
+        </h1>
+        <p>
+         Mais clareza para o seu caminho. Explore trajetos, consulte horários e tenha sua mobilidade em um só lugar.
+        </p>
+        <div class="hero-actions">
+         <a class="button button-mint" href="#trajetos">
+          Planejar meu trajeto
+          <span>
+           ↗
+          </span>
+         </a>
+         <a class="button button-glass" href="#dashboard">
+          Conhecer o dashboard →
+         </a>
+        </div>
+        <div class="hero-proof">
+         <span>
+          <b>
+           02
+          </b>
+          cidades conectadas
+         </span>
+         <span>
+          <b>
+           01
+          </b>
+          experiência integrada
+         </span>
+        </div>
+       </div>
+       <div aria-label="Ilustração conceitual de uma conexão entre Maringá e Sarandi" class="city-visual" role="img">
+        <div class="map-grid">
+        </div>
+        <svg aria-hidden="true" viewbox="0 0 560 400">
+         <g fill="#21435a" stroke="#385d6e" stroke-width="1">
+          <path d="M30 300V130h60v170M100 280V180h40v100M400 260V110h55v150M470 300V180h50v120">
+          </path>
+          <path d="M165 250V150l18-65 18 65v100M225 260V140h80v120">
+          </path>
+         </g>
+         <path d="M-20 340Q140 340 240 270T580 200" fill="none" stroke="#335f71" stroke-width="70">
+         </path>
+         <path d="M-20 340Q140 340 240 270T580 200" fill="none" stroke="#12d6a0" stroke-dasharray="8 12" stroke-width="3">
+         </path>
+         <circle cx="86" cy="330" fill="#12d6a0" r="12">
+         </circle>
+         <circle cx="467" cy="210" fill="#12d6a0" r="12">
+         </circle>
+         <g transform="translate(235 214)">
+          <rect fill="#e3f6ed" height="70" rx="14" width="148">
+          </rect>
+          <rect fill="#27556a" height="25" rx="5" width="110" x="9" y="9">
+          </rect>
+          <rect fill="#27556a" height="45" rx="3" width="15" x="125" y="9">
+          </rect>
+          <path d="M0 44h148" stroke="#12d6a0" stroke-width="8">
+          </path>
+          <circle cx="29" cy="69" fill="#102a43" r="11">
+          </circle>
+          <circle cx="113" cy="69" fill="#102a43" r="11">
+          </circle>
+          <circle cx="29" cy="69" fill="#89a6ad" r="5">
+          </circle>
+          <circle cx="113" cy="69" fill="#89a6ad" r="5">
+          </circle>
+         </g>
         </svg>
-        <div class="route-label route-label-a"><span class="route-index">01</span><span><strong>Maringá</strong><small>Ponto de partida</small></span></div>
-        <div class="route-label route-label-b"><span class="route-index">02</span><span><strong>Sarandi</strong><small>Conexão urbana</small></span></div>
-        <div class="route-art-foot"><span>LEITURA DESCRITIVA</span><span>SEM PREVISÃO EM TEMPO REAL</span></div>
+        <div class="map-city city-a">
+         <span>
+          ●
+         </span>
+         Maringá
+         <small>
+          O começo de uma conexão.
+         </small>
+        </div>
+        <div class="map-city city-b">
+         <span>
+          ●
+         </span>
+         Sarandi
+         <small>
+          Seu próximo destino.
+         </small>
+        </div>
+        <div class="map-caption">
+         <i>
+         </i>
+         Conexão ilustrativa entre cidades
+        </div>
+       </div>
       </div>
-      <div class="hero-ribbon" aria-label="Resumo do que a aplicação demonstra"><span><strong>04</strong> perguntas de dados</span><span><strong>02</strong> cadastros integrados</span><span><strong>05</strong> operações CRUD</span></div>
-    </section>
-
-    <section class="section section-data" id="resumo" aria-labelledby="summaryTitle">
+      <div class="quick-grid">
+       <a class="quick-card" href="#trajetos">
+        <span class="quick-icon">
+         ↗
+        </span>
+        <h3>
+         Seu caminho, planejado.
+        </h3>
+        <p>
+         Consulte o trajeto, as paradas e a programação de embarque e chegada.
+        </p>
+        <b>
+         Explorar trajetos →
+        </b>
+       </a>
+       <a class="quick-card" href="#passe">
+        <span class="quick-icon">
+         ▣
+        </span>
+        <h3>
+         Seu passe, organizado.
+        </h3>
+        <p>
+         Conheça a carteira digital e experimente a recarga acadêmica.
+        </p>
+        <b>
+         Acessar meu passe →
+        </b>
+       </a>
+       <a class="quick-card" href="#avaliacoes">
+        <span class="quick-icon">
+         ☆
+        </span>
+        <h3>
+         Sua experiência importa.
+        </h3>
+        <p>
+         Avalie o ônibus e o motorista. Ajude a construir uma mobilidade melhor.
+        </p>
+        <b>
+         Enviar uma avaliação →
+        </b>
+       </a>
+      </div>
+      <div class="project-strip">
+       <div>
+        <span class="eyebrow">
+         TECNOLOGIA COM PROPÓSITO
+        </span>
+        <h2>
+         Mobilidade começa com informação.
+        </h2>
+        <p>
+         Um projeto acadêmico que reúne interface, API e banco de dados para explorar o transporte coletivo entre Maringá e Sarandi.
+        </p>
+       </div>
+       <a class="button button-outline" href="/docs" rel="noopener" target="_blank">
+        Explorar a API ↗
+       </a>
+      </div>
+     </section>
+     <section class="page section" hidden="" id="dashboard">
+      <div class="official-context" id="officialContext">
+       <p>
+        Consultando documentos públicos…
+       </p>
+      </div>
       <div class="section-heading">
-        <div><p class="eyebrow eyebrow-dark">01 / CIÊNCIA DE DADOS</p><h2 id="summaryTitle">O que as observações mostram</h2><p class="section-intro">Quatro perguntas transformam o CSV em um resumo claro. Os números são calculados pela API com pandas.</p></div>
-        <button class="button button-outline" id="reloadData" type="button"><span aria-hidden="true">↻</span> Atualizar análise</button>
+       <div>
+        <p class="eyebrow eyebrow-dark">
+         01 / CIÊNCIA DE DADOS
+        </p>
+        <h2 id="summaryTitle">
+         O que as observações mostram
+        </h2>
+        <p class="section-intro">
+         Quatro perguntas transformam o CSV em um resumo claro. Os números são calculados pela API com pandas.
+        </p>
+       </div>
+       <a class="button button-outline" href="/dados/docs" rel="noopener" target="_blank">
+        API de Ciência de Dados ↗
+       </a>
+       <button class="button button-outline" id="reloadData" type="button">
+        <span aria-hidden="true">
+         ↻
+        </span>
+        Atualizar análise
+       </button>
       </div>
-      <p class="status data-status" id="dataStatus" role="status" aria-live="polite">Carregando as totalizações…</p>
-      <div class="metrics" aria-label="Indicadores principais">
-        <article class="metric metric-featured"><span class="metric-icon" aria-hidden="true">▤</span><span class="metric-label">Observações válidas</span><strong id="metricObservations">—</strong><small>registros usados na análise</small></article>
-        <article class="metric"><span class="metric-icon metric-icon-orange" aria-hidden="true">↗</span><span class="metric-label">Atraso somado*</span><strong id="metricTotal">—</strong><small>minutos por observação</small></article>
-        <article class="metric"><span class="metric-icon metric-icon-blue" aria-hidden="true">◷</span><span class="metric-label">Atraso médio*</span><strong id="metricAverage">—</strong><small>minutos por observação</small></article>
-        <article class="metric"><span class="metric-icon metric-icon-green" aria-hidden="true">◎</span><span class="metric-label">Cidades analisadas</span><strong id="metricCities">—</strong><small>presentes no conjunto</small></article>
+      <p aria-live="polite" class="status data-status" id="dataStatus" role="status">
+       Carregando as totalizações…
+      </p>
+      <div aria-label="Indicadores principais" class="metrics">
+       <article class="metric metric-featured">
+        <span aria-hidden="true" class="metric-icon">
+         ▤
+        </span>
+        <span class="metric-label">
+         Observações válidas
+        </span>
+        <strong id="metricObservations">
+         —
+        </strong>
+        <small>
+         registros usados na análise
+        </small>
+       </article>
+       <article class="metric">
+        <span aria-hidden="true" class="metric-icon metric-icon-orange">
+         ↗
+        </span>
+        <span class="metric-label">
+         Atraso somado*
+        </span>
+        <strong id="metricTotal">
+         —
+        </strong>
+        <small>
+         minutos por observação
+        </small>
+       </article>
+       <article class="metric">
+        <span aria-hidden="true" class="metric-icon metric-icon-blue">
+         ◷
+        </span>
+        <span class="metric-label">
+         Atraso médio*
+        </span>
+        <strong id="metricAverage">
+         —
+        </strong>
+        <small>
+         minutos por observação
+        </small>
+       </article>
+       <article class="metric">
+        <span aria-hidden="true" class="metric-icon metric-icon-green">
+         ◎
+        </span>
+        <span class="metric-label">
+         Cidades analisadas
+        </span>
+        <strong id="metricCities">
+         —
+        </strong>
+        <small>
+         presentes no conjunto
+        </small>
+       </article>
       </div>
       <div class="analysis-grid">
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 01</span><h3>Onde se concentram os atrasos?</h3><p>Comparação entre as cidades do conjunto.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byCity"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Total e média de minutos registrados por cidade.</p></article>
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 02</span><h3>Como os atrasos variam no dia?</h3><p>Distribuição conforme o período registrado.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byPeriod"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Agrupamento por período; não é previsão de horário.</p></article>
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 03</span><h3>Qual condição de trânsito acompanha os registros?</h3><p>Leitura descritiva por condição informada.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byTraffic"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Associação observada, sem afirmar causa.</p></article>
-        <article class="data-card"><div class="card-heading"><span class="question-number">PERGUNTA 04</span><h3>Como o clima aparece nos atrasos?</h3><p>Comparação por condição climática registrada.</p></div><div class="table-wrap"><table><thead><tr><th>Grupo</th><th>Observações</th><th>Total (min)</th><th>Média (min)</th></tr></thead><tbody id="byWeather"><tr><td colspan="4">Carregando…</td></tr></tbody></table></div><p class="table-caption">Os grupos descrevem o CSV didático, não a operação real.</p></article>
+       <article class="data-card">
+        <div class="card-heading">
+         <span class="question-number">
+          PERGUNTA 01
+         </span>
+         <h3>
+          Onde se concentram os atrasos?
+         </h3>
+         <p>
+          Comparação entre as cidades do conjunto.
+         </p>
+        </div>
+        <div class="table-wrap">
+         <table>
+          <thead>
+           <tr>
+            <th>
+             Grupo
+            </th>
+            <th>
+             Observações
+            </th>
+            <th>
+             Total (min)
+            </th>
+            <th>
+             Média (min)
+            </th>
+           </tr>
+          </thead>
+          <tbody id="byCity">
+           <tr>
+            <td colspan="4">
+             Carregando…
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <p class="table-caption">
+         Total e média de minutos registrados por cidade.
+        </p>
+       </article>
+       <article class="data-card">
+        <div class="card-heading">
+         <span class="question-number">
+          PERGUNTA 02
+         </span>
+         <h3>
+          Como os atrasos variam no dia?
+         </h3>
+         <p>
+          Distribuição conforme o período registrado.
+         </p>
+        </div>
+        <div class="table-wrap">
+         <table>
+          <thead>
+           <tr>
+            <th>
+             Grupo
+            </th>
+            <th>
+             Observações
+            </th>
+            <th>
+             Total (min)
+            </th>
+            <th>
+             Média (min)
+            </th>
+           </tr>
+          </thead>
+          <tbody id="byPeriod">
+           <tr>
+            <td colspan="4">
+             Carregando…
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <p class="table-caption">
+         Agrupamento por período; não é previsão de horário.
+        </p>
+       </article>
+       <article class="data-card">
+        <div class="card-heading">
+         <span class="question-number">
+          PERGUNTA 03
+         </span>
+         <h3>
+          Qual condição de trânsito acompanha os registros?
+         </h3>
+         <p>
+          Leitura descritiva por condição informada.
+         </p>
+        </div>
+        <div class="table-wrap">
+         <table>
+          <thead>
+           <tr>
+            <th>
+             Grupo
+            </th>
+            <th>
+             Observações
+            </th>
+            <th>
+             Total (min)
+            </th>
+            <th>
+             Média (min)
+            </th>
+           </tr>
+          </thead>
+          <tbody id="byTraffic">
+           <tr>
+            <td colspan="4">
+             Carregando…
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <p class="table-caption">
+         Associação observada, sem afirmar causa.
+        </p>
+       </article>
+       <article class="data-card">
+        <div class="card-heading">
+         <span class="question-number">
+          PERGUNTA 04
+         </span>
+         <h3>
+          Como o clima aparece nos atrasos?
+         </h3>
+         <p>
+          Comparação por condição climática registrada.
+         </p>
+        </div>
+        <div class="table-wrap">
+         <table>
+          <thead>
+           <tr>
+            <th>
+             Grupo
+            </th>
+            <th>
+             Observações
+            </th>
+            <th>
+             Total (min)
+            </th>
+            <th>
+             Média (min)
+            </th>
+           </tr>
+          </thead>
+          <tbody id="byWeather">
+           <tr>
+            <td colspan="4">
+             Carregando…
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <p class="table-caption">
+         Os grupos descrevem o CSV didático, não a operação real.
+        </p>
+       </article>
       </div>
-      <aside class="interpretation-note"><span class="note-mark" aria-hidden="true">i</span><div><strong>Como interpretar estes números</strong><p>* A soma e a média contam minutos por observação. Uma observação não equivale a uma viagem completa, passageiro ou ônibus. A base é sintética e não representa telemetria real.</p></div></aside>
-    </section>
-
-    <section class="section section-method" aria-labelledby="methodTitle">
-      <div class="section-heading"><div><p class="eyebrow eyebrow-dark">02 / CRITÉRIOS DA BASE</p><h2 id="methodTitle">Cada linha tem um significado</h2><p class="section-intro">Antes de somar, definimos a unidade analisada e como evitar contagens indevidas.</p></div></div>
-      <div class="method-grid">
-        <article class="method-card"><span class="method-index">A</span><h3>Unidade de análise</h3><p>Cada linha do CSV é uma observação de atraso registrada em um trecho; não representa necessariamente uma viagem completa.</p></article>
-        <article class="method-card"><span class="method-index">B</span><h3>Códigos que se repetem</h3><p>O código da linha se repete entre observações. Para identificar uma linha distinta, usamos o par <strong>cidade + código</strong>; sem <code>id_viagem</code>, não contamos viagens ou ônibus únicos.</p></article>
-        <article class="method-card"><span class="method-index">C</span><h3>Qualidade e limites</h3><p>Linhas inválidas e duplicatas exatas são verificadas. Os agrupamentos descrevem associações no CSV e não provam causas nem preveem chegadas.</p></article>
+      <aside class="interpretation-note">
+       <span aria-hidden="true" class="note-mark">
+        i
+       </span>
+       <div>
+        <strong>
+         Como interpretar estes números
+        </strong>
+        <p>
+         * A soma e a média contam minutos por observação. Uma observação não equivale a uma viagem completa, passageiro ou ônibus. A base é sintética e não representa telemetria real.
+        </p>
+       </div>
+      </aside>
+     </section>
+     <section class="page section" hidden="" id="cidades">
+      <div class="notice admin-notice">
+       Os cadastros são gerenciados pela equipe. Entre com uma conta autorizada para cadastrar, editar ou excluir.
       </div>
-    </section>
-
-    <section class="section section-crud" id="cidades" aria-labelledby="citiesTitle">
       <div class="section-heading">
-        <div><p class="eyebrow eyebrow-dark">03 / RECUPERAÇÃO · CRUD OBRIGATÓRIO</p><h2 id="citiesTitle">Cadastro de cidades</h2><p class="section-intro">Esta é a tabela independente: possui chave primária e não possui chave estrangeira. O ID é gerado pelo banco.</p></div>
-        <span class="scope-badge"><span>PK</span> id_cidade · sem FK</span>
+       <div>
+        <p class="eyebrow eyebrow-dark">
+         CONEXÕES DA REGIÃO
+        </p>
+        <h2 id="citiesTitle">
+         Cidades cadastradas
+        </h2>
+        <p class="section-intro">
+         Consulte as cidades que fazem parte da rede TRANSURBAN.
+        </p>
+       </div>
       </div>
       <div class="crud-layout">
-        <form class="form-card" id="cityForm">
-          <div class="form-card-kicker"><span class="form-card-icon" aria-hidden="true">＋</span><span>REGISTRO DE CIDADE</span></div>
-          <h3 id="formTitle">Nova cidade</h3><p id="formHelp">O identificador será gerado automaticamente.</p>
-          <label for="cityName">Nome da cidade</label><input id="cityName" name="nome" maxlength="100" minlength="2" required placeholder="Ex.: Maringá" autocomplete="off">
-          <div class="form-actions"><button class="button button-primary" id="saveCity" type="submit">Cadastrar cidade</button><button class="button button-outline" id="clearCity" type="button">Limpar</button><button class="button button-outline hidden" id="cancelEdit" type="button">Cancelar edição</button></div>
-          <p id="cityFeedback" class="status form-feedback" role="status" aria-live="polite"></p>
-          <div class="form-hint"><span aria-hidden="true">✓</span> Validação dos campos antes de gravar.</div>
-        </form>
-        <div class="data-card records-card">
-          <div class="list-toolbar"><div><span class="list-kicker">BANCO DE DADOS · SUPABASE</span><h3>Cidades cadastradas</h3><p id="cityCount">Consultando o Supabase…</p></div><button class="button button-outline" id="reloadCities" type="button">Recarregar</button></div>
-          <form id="lookupForm" class="lookup-form"><label for="lookupId">Consultar pelo ID</label><div><input id="lookupId" type="number" min="1" step="1" placeholder="ID da cidade" required><button class="button button-secondary" type="submit">Consultar</button></div><p id="lookupFeedback" class="status" role="status" aria-live="polite"></p></form>
-          <div class="table-wrap"><table class="records-table"><thead><tr><th>ID</th><th>Cidade</th><th>Ações</th></tr></thead><tbody id="cityRows"><tr><td colspan="3">Conectando…</td></tr></tbody></table></div>
+       <form class="form-card" data-admin-form="" id="cityForm">
+        <div class="form-card-kicker">
+         <span aria-hidden="true" class="form-card-icon">
+          ＋
+         </span>
+         <span>
+          REGISTRO DE CIDADE
+         </span>
         </div>
+        <h3 id="formTitle">
+         Nova cidade
+        </h3>
+        <p id="formHelp">
+         O identificador será gerado automaticamente.
+        </p>
+        <label for="cityName">
+         Nome da cidade
+        </label>
+        <input autocomplete="off" id="cityName" maxlength="100" minlength="2" name="nome" placeholder="Ex.: Maringá" required=""/>
+        <div class="form-actions">
+         <button class="button button-primary" id="saveCity" type="submit">
+          Cadastrar cidade
+         </button>
+         <button class="button button-outline" id="clearCity" type="button">
+          Limpar
+         </button>
+         <button class="button button-outline hidden" id="cancelEdit" type="button">
+          Cancelar edição
+         </button>
+        </div>
+        <p aria-live="polite" class="status form-feedback" id="cityFeedback" role="status">
+        </p>
+        <div class="form-hint">
+         <span aria-hidden="true">
+          ✓
+         </span>
+         Validação dos campos antes de gravar.
+        </div>
+       </form>
+       <div class="data-card records-card">
+        <div class="list-toolbar">
+         <div>
+          <span class="list-kicker">
+           BANCO DE DADOS · SUPABASE
+          </span>
+          <h3>
+           Cidades cadastradas
+          </h3>
+          <p id="cityCount">
+           Consultando o Supabase…
+          </p>
+         </div>
+         <button class="button button-outline" id="reloadCities" type="button">
+          Recarregar
+         </button>
+        </div>
+        <form class="lookup-form" id="lookupForm">
+         <label for="lookupId">
+          Consultar pelo ID
+         </label>
+         <div>
+          <input id="lookupId" min="1" placeholder="ID da cidade" required="" step="1" type="number"/>
+          <button class="button button-secondary" type="submit">
+           Consultar
+          </button>
+         </div>
+         <p aria-live="polite" class="status" id="lookupFeedback" role="status">
+         </p>
+        </form>
+        <div class="table-wrap">
+         <table class="records-table">
+          <thead>
+           <tr>
+            <th>
+             ID
+            </th>
+            <th>
+             Cidade
+            </th>
+            <th>
+             Ações
+            </th>
+           </tr>
+          </thead>
+          <tbody id="cityRows">
+           <tr>
+            <td colspan="3">
+             Conectando…
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
       </div>
-      <p class="section-footnote">Operações disponíveis: cadastrar, listar, consultar por ID, atualizar e excluir. Se uma linha depender da cidade, o banco protege o relacionamento.</p>
-    </section>
-
-    <section class="section section-lines" id="linhas" aria-labelledby="linesTitle">
+     </section>
+     <section class="page section" hidden="" id="linhas">
+      <div class="notice admin-notice">
+       Os cadastros são gerenciados pela equipe. Entre com uma conta autorizada para cadastrar, editar ou excluir.
+      </div>
       <div class="section-heading">
-        <div><p class="eyebrow eyebrow-dark">04 / AVALIAÇÃO INTEGRADA</p><h2 id="linesTitle">Linhas de ônibus</h2><p class="section-intro">O cadastro integrado demonstra como uma entidade relacionada preserva o vínculo com sua cidade.</p></div>
-        <span class="scope-badge scope-badge-related"><span>FK</span> id_cidade → cidade.id_cidade</span>
+       <div>
+        <p class="eyebrow eyebrow-dark">
+         TRANSPORTE COLETIVO
+        </p>
+        <h2 id="linesTitle">
+         Linhas de ônibus
+        </h2>
+        <p class="section-intro">
+         Encontre as linhas cadastradas e confira a cidade vinculada a cada uma.
+        </p>
+       </div>
       </div>
       <div class="crud-layout">
-        <form class="form-card" id="lineForm">
-          <div class="form-card-kicker"><span class="form-card-icon form-card-icon-orange" aria-hidden="true">↗</span><span>REGISTRO RELACIONADO</span></div>
-          <h3 id="lineFormTitle">Nova linha</h3><p id="lineFormHelp">Escolha uma cidade para manter a chave estrangeira.</p>
-          <label for="lineCity">Cidade vinculada</label><select id="lineCity" required><option value="">Carregando cidades…</option></select>
-          <label for="lineCode">Código da linha</label><input id="lineCode" maxlength="20" required placeholder="Ex.: 001" autocomplete="off">
-          <label for="lineName">Nome da linha</label><input id="lineName" maxlength="120" minlength="2" required placeholder="Ex.: Terminal · Universidade" autocomplete="off">
-          <div class="form-actions"><button class="button button-primary" id="saveLine" type="submit">Cadastrar linha</button><button class="button button-outline hidden" id="cancelLineEdit" type="button">Cancelar edição</button></div>
-          <p id="lineFeedback" class="status form-feedback" role="status" aria-live="polite"></p>
-          <div class="form-hint"><span aria-hidden="true">✓</span> A API valida a cidade antes de salvar.</div>
-        </form>
-        <div class="data-card records-card">
-          <div class="list-toolbar"><div><span class="list-kicker">REGISTROS RELACIONADOS</span><h3>Linhas cadastradas</h3><p id="lineCount">Consultando a API…</p></div><button class="button button-outline" id="reloadLines" type="button">Recarregar</button></div>
-          <form id="lookupLineForm" class="lookup-form"><label for="lookupLineId">Consultar pelo ID</label><div><input id="lookupLineId" type="number" min="1" step="1" placeholder="ID da linha" required><button class="button button-secondary" type="submit">Consultar</button></div><p id="lookupLineFeedback" class="status" role="status" aria-live="polite"></p></form>
-          <div class="table-wrap"><table class="records-table"><thead><tr><th>ID</th><th>Código</th><th>Linha</th><th>Cidade</th><th>Ações</th></tr></thead><tbody id="lineRows"><tr><td colspan="5">Conectando…</td></tr></tbody></table></div>
+       <form class="form-card" data-admin-form="" id="lineForm">
+        <div class="form-card-kicker">
+         <span aria-hidden="true" class="form-card-icon form-card-icon-orange">
+          ↗
+         </span>
+         <span>
+          REGISTRO RELACIONADO
+         </span>
         </div>
+        <h3 id="lineFormTitle">
+         Nova linha
+        </h3>
+        <p id="lineFormHelp">
+         Escolha uma cidade para manter a chave estrangeira.
+        </p>
+        <label for="lineCity">
+         Cidade vinculada
+        </label>
+        <select id="lineCity" required="">
+         <option value="">
+          Carregando cidades…
+         </option>
+        </select>
+        <label for="lineCode">
+         Código da linha
+        </label>
+        <input autocomplete="off" id="lineCode" maxlength="20" placeholder="Ex.: 001" required=""/>
+        <label for="lineName">
+         Nome da linha
+        </label>
+        <input autocomplete="off" id="lineName" maxlength="120" minlength="2" placeholder="Ex.: Terminal · Universidade" required=""/>
+        <div class="form-actions">
+         <button class="button button-primary" id="saveLine" type="submit">
+          Cadastrar linha
+         </button>
+         <button class="button button-outline hidden" id="cancelLineEdit" type="button">
+          Cancelar edição
+         </button>
+        </div>
+        <p aria-live="polite" class="status form-feedback" id="lineFeedback" role="status">
+        </p>
+        <div class="form-hint">
+         <span aria-hidden="true">
+          ✓
+         </span>
+         A API valida a cidade antes de salvar.
+        </div>
+       </form>
+       <div class="data-card records-card">
+        <div class="list-toolbar">
+         <div>
+          <span class="list-kicker">
+           REGISTROS RELACIONADOS
+          </span>
+          <h3>
+           Linhas cadastradas
+          </h3>
+          <p id="lineCount">
+           Consultando a API…
+          </p>
+         </div>
+         <button class="button button-outline" id="reloadLines" type="button">
+          Recarregar
+         </button>
+        </div>
+        <form class="lookup-form" id="lookupLineForm">
+         <label for="lookupLineId">
+          Consultar pelo ID
+         </label>
+         <div>
+          <input id="lookupLineId" min="1" placeholder="ID da linha" required="" step="1" type="number"/>
+          <button class="button button-secondary" type="submit">
+           Consultar
+          </button>
+         </div>
+         <p aria-live="polite" class="status" id="lookupLineFeedback" role="status">
+         </p>
+        </form>
+        <div class="table-wrap">
+         <table class="records-table">
+          <thead>
+           <tr>
+            <th>
+             ID
+            </th>
+            <th>
+             Código
+            </th>
+            <th>
+             Linha
+            </th>
+            <th>
+             Cidade
+            </th>
+            <th>
+             Ações
+            </th>
+           </tr>
+          </thead>
+          <tbody id="lineRows">
+           <tr>
+            <td colspan="5">
+             Conectando…
+            </td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+       </div>
       </div>
-    </section>
-
-    <section class="section section-project" id="integracao" aria-labelledby="projectTitle">
-      <div class="section-heading"><div><p class="eyebrow eyebrow-dark">05 / COMO O APP FUNCIONA</p><h2 id="projectTitle">Uma solução, quatro partes</h2><p class="section-intro">Da tela ao banco, cada tecnologia tem uma função definida.</p></div><a class="button button-outline docs-button" href="/docs" target="_blank" rel="noreferrer">Abrir documentação da API <span aria-hidden="true">↗</span></a></div>
-      <div class="stack-grid">
-        <article class="stack-card"><span class="stack-number">01</span><h3>Interface</h3><p>HTML organiza a página; CSS adapta o visual; JavaScript atualiza tabelas e envia as operações.</p><span class="stack-tech">HTML · CSS · JavaScript</span></article>
-        <article class="stack-card"><span class="stack-number">02</span><h3>API e validação</h3><p>FastAPI recebe as solicitações, valida os campos e devolve respostas em JSON.</p><span class="stack-tech">Python · FastAPI · Pydantic</span></article>
-        <article class="stack-card"><span class="stack-number">03</span><h3>Análise</h3><p>Pandas lê o CSV, confere a qualidade dos dados e calcula os quatro agrupamentos.</p><span class="stack-tech">Python · pandas · CSV</span></article>
-        <article class="stack-card"><span class="stack-number">04</span><h3>Persistência</h3><p>Supabase armazena cidades e linhas; o backend acessa o banco por HTTPS sem expor a chave no navegador.</p><span class="stack-tech">Supabase · PostgreSQL · HTTPS</span></article>
+     </section>
+     <section class="page" hidden="" id="trajetos">
+      <div class="page-heading">
+       <div>
+        <span class="eyebrow">
+         SEU PRÓXIMO DESTINO
+        </span>
+        <h1>
+         Trajetos e horários
+        </h1>
+        <p>
+         Planeje o embarque e veja a programação de chegada.
+        </p>
+       </div>
+       <span class="tag">
+        Programação acadêmica
+       </span>
       </div>
-      <div class="presentation-flow"><span class="flow-label">FLUXO DA DEMONSTRAÇÃO</span><p><strong>Navegador</strong><span aria-hidden="true">→</span><strong>FastAPI</strong><span aria-hidden="true">→</span><strong>Supabase</strong><span class="flow-or">e</span><strong>CSV + pandas</strong><span aria-hidden="true">→</span><strong>Resultados na tela</strong></p></div>
-    </section>
-  </main>
-
-  <footer class="site-footer"><a class="footer-brand" href="#inicio">TRANSURBAN</a><p>Projeto acadêmico de mobilidade · Maringá e Sarandi</p><p>Base sintética para demonstração · sem previsão em tempo real</p></footer>
-</body>
+      <div class="notice">
+       Os trajetos, motoristas e horários abaixo são sintéticos, preparados para a apresentação. A programação representa horários previstos e pode ser consultada por data.
+      </div>
+      <form class="card journey-search" id="journeyForm">
+       <div>
+        <label for="journeyRoute">
+         De onde para onde?
+        </label>
+        <select id="journeyRoute" required="">
+         <option value="">
+          Carregando trajetos…
+         </option>
+        </select>
+       </div>
+       <div>
+        <label for="journeyDate">
+         Data da viagem
+        </label>
+        <input id="journeyDate" required="" type="date"/>
+       </div>
+       <button class="button button-primary">
+        Consultar horários ↗
+       </button>
+      </form>
+      <p class="status" id="journeyFeedback" role="status">
+      </p>
+      <div class="journey-grid">
+       <article class="card">
+        <span class="eyebrow">
+         O CAMINHO
+        </span>
+        <h2 id="routeName">
+         Selecione um trajeto
+        </h2>
+        <div class="timeline" id="routeStops">
+         <p>
+          As paradas aparecerão aqui.
+         </p>
+        </div>
+       </article>
+       <article class="card">
+        <span class="eyebrow">
+         PROGRAMAÇÃO DE EMBARQUE E CHEGADA
+        </span>
+        <h2>
+         Escolha seu horário
+        </h2>
+        <div id="scheduleList">
+         <p>
+          Consulte a programação para ver os horários.
+         </p>
+        </div>
+       </article>
+      </div>
+     </section>
+     <section class="page" hidden="" id="avaliacoes">
+      <div class="page-heading">
+       <div>
+        <span class="eyebrow">
+         SUA VOZ CONECTA
+        </span>
+        <h1>
+         Como foi seu caminho?
+        </h1>
+        <p>
+         Avalie o ônibus e o motorista em uma experiência de demonstração.
+        </p>
+       </div>
+       <span class="tag">
+        Feedback do passageiro
+       </span>
+      </div>
+      <div class="login-gate notice" data-private="">
+       Entre na sua conta para registrar e consultar suas avaliações.
+       <a href="#login">
+        Entrar →
+       </a>
+      </div>
+      <div class="journey-grid private-content">
+       <form class="card" id="reviewForm">
+        <h2>
+         Conte sua experiência.
+        </h2>
+        <p class="muted">
+         Os veículos e motoristas cadastrados são demonstrativos.
+        </p>
+        <label for="reviewRoute">
+         Trajeto
+        </label>
+        <select id="reviewRoute" required="">
+         <option value="">
+          Selecione
+         </option>
+        </select>
+        <label for="reviewSchedule">
+         Horário, ônibus e motorista
+        </label>
+        <select id="reviewSchedule" required="">
+         <option value="">
+          Escolha um trajeto primeiro
+         </option>
+        </select>
+        <label for="reviewDate">
+         Data da experiência
+        </label>
+        <input id="reviewDate" required="" type="date"/>
+        <fieldset class="rating">
+         <legend>
+          Como você avalia o ônibus?
+         </legend>
+         <div class="stars">
+          <label>
+           <input name="busRating" required="" type="radio" value="1"/>
+           <span>
+            1 ★
+           </span>
+          </label>
+          <label>
+           <input name="busRating" required="" type="radio" value="2"/>
+           <span>
+            2 ★
+           </span>
+          </label>
+          <label>
+           <input name="busRating" required="" type="radio" value="3"/>
+           <span>
+            3 ★
+           </span>
+          </label>
+          <label>
+           <input name="busRating" required="" type="radio" value="4"/>
+           <span>
+            4 ★
+           </span>
+          </label>
+          <label>
+           <input name="busRating" required="" type="radio" value="5"/>
+           <span>
+            5 ★
+           </span>
+          </label>
+         </div>
+        </fieldset>
+        <fieldset class="rating">
+         <legend>
+          Como você avalia o motorista?
+         </legend>
+         <div class="stars">
+          <label>
+           <input name="driverRating" required="" type="radio" value="1"/>
+           <span>
+            1 ★
+           </span>
+          </label>
+          <label>
+           <input name="driverRating" required="" type="radio" value="2"/>
+           <span>
+            2 ★
+           </span>
+          </label>
+          <label>
+           <input name="driverRating" required="" type="radio" value="3"/>
+           <span>
+            3 ★
+           </span>
+          </label>
+          <label>
+           <input name="driverRating" required="" type="radio" value="4"/>
+           <span>
+            4 ★
+           </span>
+          </label>
+          <label>
+           <input name="driverRating" required="" type="radio" value="5"/>
+           <span>
+            5 ★
+           </span>
+          </label>
+         </div>
+        </fieldset>
+        <label for="reviewComment">
+         Quer acrescentar algo?
+         <small>
+          (opcional)
+         </small>
+        </label>
+        <textarea id="reviewComment" maxlength="1000" placeholder="Conforto, limpeza, atendimento…" rows="3"></textarea>
+        <small>
+         Evite incluir dados pessoais no comentário.
+        </small>
+        <button class="button button-primary wide">
+         Enviar avaliação →
+        </button>
+        <p class="status" id="reviewFeedback" role="status">
+        </p>
+       </form>
+       <article class="card">
+        <span class="eyebrow">
+         SUAS CONTRIBUIÇÕES
+        </span>
+        <h2>
+         Minhas avaliações
+        </h2>
+        <div class="stack" id="reviewList">
+         <p>
+          Entre para consultar seu histórico.
+         </p>
+        </div>
+       </article>
+      </div>
+     </section>
+     <section class="page" hidden="" id="passe">
+      <div class="page-heading">
+       <div>
+        <span class="eyebrow">
+         MAIS AUTONOMIA NO SEU CAMINHO
+        </span>
+        <h1>
+         Meu passe
+        </h1>
+        <p>
+         Seu cartão, suas recargas e seu histórico.
+        </p>
+       </div>
+       <span class="tag">
+        Carteira demonstrativa
+       </span>
+      </div>
+      <div class="notice">
+       Ambiente acadêmico. O saldo é fictício e as recargas não geram cobrança nem créditos no cartão real de transporte.
+      </div>
+      <div class="login-gate notice" data-private="">
+       Entre para acessar a sua carteira.
+       <a href="#login">
+        Entrar →
+       </a>
+      </div>
+      <div class="journey-grid private-content">
+       <div>
+        <article class="transit-card">
+         <div>
+          <a class="brand" href="#inicio">
+           <img alt="" height="43" src="/logo.svg" width="43"/>
+           <span>
+            transurban
+            <small>
+             Mobilidade que conecta.
+            </small>
+           </span>
+          </a>
+          <span>
+           DEMO
+          </span>
+         </div>
+         <small>
+          SALDO DEMONSTRATIVO
+         </small>
+         <strong id="walletBalance">
+          R$ —
+         </strong>
+         <div class="card-bottom">
+          <span id="walletHolder">
+           Seu nome
+          </span>
+          <span id="walletNumber">
+           •••• ••••
+          </span>
+         </div>
+         <div class="card-orbit">
+         </div>
+        </article>
+        <div class="card recharge-card">
+         <h2>
+          Faça uma recarga de teste.
+         </h2>
+         <p class="muted">
+          Escolha um valor de R$ 5 a R$ 200. Limite de saldo demonstrativo de R$ 1.000.
+         </p>
+         <div class="amounts">
+          <button data-amount="10" type="button">
+           R$ 10
+          </button>
+          <button data-amount="20" type="button">
+           R$ 20
+          </button>
+          <button data-amount="50" type="button">
+           R$ 50
+          </button>
+          <button data-amount="100" type="button">
+           R$ 100
+          </button>
+         </div>
+         <form id="rechargeForm">
+          <label for="rechargeValue">
+           Valor da recarga (R$)
+          </label>
+          <input id="rechargeValue" max="200" min="5" required="" step="0.01" type="number" value="20"/>
+          <label class="check-label">
+           <input id="demoConsent" required="" type="checkbox"/>
+           Entendo que esta recarga usa saldo fictício para demonstração.
+          </label>
+          <button class="button button-primary wide">
+           Revisar recarga →
+          </button>
+          <p class="status" id="walletFeedback" role="status">
+          </p>
+         </form>
+        </div>
+       </div>
+       <article class="card">
+        <span class="eyebrow">
+         TUDO EM UM LUGAR
+        </span>
+        <h2>
+         Histórico de recargas
+        </h2>
+        <p class="muted">
+         As últimas 50 operações desta conta.
+        </p>
+        <div class="stack" id="walletHistory">
+         <p>
+          Entre para consultar suas recargas.
+         </p>
+        </div>
+       </article>
+      </div>
+      <dialog id="rechargeDialog">
+       <form method="dialog">
+        <button aria-label="Fechar" class="dialog-close">
+         ×
+        </button>
+       </form>
+       <span class="eyebrow">
+        CONFIRA SUA RECARGA
+       </span>
+       <h2 id="rechargeConfirmValue">
+       </h2>
+       <p>
+        O valor será adicionado à sua carteira demonstrativa. Esta operação usa créditos fictícios.
+       </p>
+       <button class="button button-primary wide" id="confirmRecharge" type="button">
+        Confirmar recarga de teste
+       </button>
+       <p class="status" id="rechargeDialogStatus" role="status">
+       </p>
+      </dialog>
+     </section>
+    </main>
+    <footer class="footer">
+     <span>
+      © 2026 TRANSURBAN · Mobilidade que conecta.
+     </span>
+     <span>
+      Projeto acadêmico • Maringá &amp; Sarandi
+     </span>
+    </footer>
+   </div>
+  </div>
+  <div class="toast" hidden="" id="toast" role="status">
+  </div>
+ </body>
 </html>
-

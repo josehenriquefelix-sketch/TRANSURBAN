@@ -1,0 +1,25 @@
+{
+  "data": "2026-11-11",
+  "testes_automatizados": 12,
+  "navegador": "Chromium no navegador integrado",
+  "largura_css_observada_px": 700,
+  "redimensionamento_viewport": "O controle de viewport não alterou a largura observada. A inspeção visual ficou restrita à largura disponível.",
+  "verificacoes": {
+    "login_conta_demo": true,
+    "logout_interface": true,
+    "consulta_cidades_sem_formulario_para_visitante": true,
+    "dashboard_fontes_oficiais_carregadas": true,
+    "dashboard_csv_carregado": true,
+    "trajeto_oito_horarios": true,
+    "recarga_interface_centavos": 1000,
+    "saldo_demo_final_centavos": 1500,
+    "avaliacao_interface_registrada": true,
+    "erros_javascript_observados": 0
+  },
+  "observacoes": [
+    "A conta e os registros de apresentação são fictícios.",
+    "A avaliação de demonstração e as duas recargas fictícias foram mantidas como evidência.",
+    "O recebimento de e-mail em uma caixa postal real permanece a validar.",
+    "Os horários consultados são sintéticos. Os documentos do dashboard trazem fonte e data."
+  ]
+}
