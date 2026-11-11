@@ -2,6 +2,8 @@
 
 ## Portal de mobilidade — atualização de novembro de 2026
 
+O produto é destinado à população de Maringá e Sarandi. A interface pública apresenta informações de mobilidade com fonte e data. Os indicadores sintéticos e as operações de teste ficaram restritos à conta da equipe na interface. A consulta operacional de horários, o envio de avaliações sobre veículos reais e a recarga efetiva dependem de integração e validação com a operadora. Essas pendências são informadas nas respectivas telas. As atividades e evidências acadêmicas abaixo documentam o desenvolvimento do sistema.
+
 O portal inclui telas de login por e-mail ou CPF, cadastro de conta, recuperação de senha, início, dashboard, cidades, linhas, trajetos/horários, avaliações e passe demonstrativo. A interface usa HTML, CSS e JavaScript. A API usa Python/FastAPI e o banco usa Supabase/PostgreSQL por HTTPS.
 
 - Site em `http://127.0.0.1:8000/`.

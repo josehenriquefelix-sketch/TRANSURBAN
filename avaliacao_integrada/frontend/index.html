@@ -9,10 +9,10 @@
    TRANSURBAN | Mobilidade que conecta
   </title>
   <link href="/logo.svg" rel="icon" type="image/svg+xml"/>
-  <link href="/portal.css?v=20261110b" rel="stylesheet"/>
-  <script defer="" src="/app.js?v=20261110b">
+  <link href="/portal.css?v=20261111publico" rel="stylesheet"/>
+  <script defer="" src="/app.js?v=20261111publico">
   </script>
-  <script defer="" src="/portal.js?v=20261110b">
+  <script defer="" src="/portal.js?v=20261111publico">
   </script>
  </head>
  <body>
@@ -61,7 +61,7 @@
      </div>
     </div>
     <small>
-     TRANSURBAN • Projeto acadêmico de mobilidade urbana
+     TRANSURBAN • Mobilidade urbana entre Maringá e Sarandi
     </small>
    </div>
    <div class="auth-panel">
@@ -274,7 +274,7 @@
       Documentação da API ↗
      </a>
      <small>
-      Projeto acadêmico • DS + IA
+      Mobilidade urbana • Maringá e Sarandi
      </small>
     </div>
    </aside>
@@ -439,7 +439,7 @@
          Seu passe, organizado.
         </h3>
         <p>
-         Conheça a carteira digital e experimente a recarga acadêmica.
+         Encontre informações sobre seu passe e os serviços de recarga.
         </p>
         <b>
          Acessar meu passe →
@@ -469,7 +469,7 @@
          Mobilidade começa com informação.
         </h2>
         <p>
-         Um projeto acadêmico que reúne interface, API e banco de dados para explorar o transporte coletivo entre Maringá e Sarandi.
+         Informações sobre transporte coletivo para ajudar você a se deslocar entre Maringá e Sarandi.
         </p>
        </div>
        <a class="button button-outline" href="/docs" rel="noopener" target="_blank">
@@ -483,276 +483,278 @@
         Consultando documentos públicos…
        </p>
       </div>
-      <div class="section-heading">
-       <div>
-        <p class="eyebrow eyebrow-dark">
-         01 / CIÊNCIA DE DADOS
-        </p>
-        <h2 id="summaryTitle">
-         O que as observações mostram
-        </h2>
-        <p class="section-intro">
-         Quatro perguntas transformam o CSV em um resumo claro. Os números são calculados pela API com pandas.
-        </p>
+      <div data-internal="" hidden="">
+       <div class="section-heading">
+        <div>
+         <p class="eyebrow eyebrow-dark">
+          01 / CIÊNCIA DE DADOS
+         </p>
+         <h2 id="summaryTitle">
+          O que as observações mostram
+         </h2>
+         <p class="section-intro">
+          Quatro perguntas transformam o CSV em um resumo claro. Os números são calculados pela API com pandas.
+         </p>
+        </div>
+        <a class="button button-outline" href="/dados/docs" rel="noopener" target="_blank">
+         API de Ciência de Dados ↗
+        </a>
+        <button class="button button-outline" id="reloadData" type="button">
+         <span aria-hidden="true">
+          ↻
+         </span>
+         Atualizar análise
+        </button>
        </div>
-       <a class="button button-outline" href="/dados/docs" rel="noopener" target="_blank">
-        API de Ciência de Dados ↗
-       </a>
-       <button class="button button-outline" id="reloadData" type="button">
-        <span aria-hidden="true">
-         ↻
-        </span>
-        Atualizar análise
-       </button>
-      </div>
-      <p aria-live="polite" class="status data-status" id="dataStatus" role="status">
-       Carregando as totalizações…
-      </p>
-      <div aria-label="Indicadores principais" class="metrics">
-       <article class="metric metric-featured">
-        <span aria-hidden="true" class="metric-icon">
-         ▤
-        </span>
-        <span class="metric-label">
-         Observações válidas
-        </span>
-        <strong id="metricObservations">
-         —
-        </strong>
-        <small>
-         registros usados na análise
-        </small>
-       </article>
-       <article class="metric">
-        <span aria-hidden="true" class="metric-icon metric-icon-orange">
-         ↗
-        </span>
-        <span class="metric-label">
-         Atraso somado*
-        </span>
-        <strong id="metricTotal">
-         —
-        </strong>
-        <small>
-         minutos por observação
-        </small>
-       </article>
-       <article class="metric">
-        <span aria-hidden="true" class="metric-icon metric-icon-blue">
-         ◷
-        </span>
-        <span class="metric-label">
-         Atraso médio*
-        </span>
-        <strong id="metricAverage">
-         —
-        </strong>
-        <small>
-         minutos por observação
-        </small>
-       </article>
-       <article class="metric">
-        <span aria-hidden="true" class="metric-icon metric-icon-green">
-         ◎
-        </span>
-        <span class="metric-label">
-         Cidades analisadas
-        </span>
-        <strong id="metricCities">
-         —
-        </strong>
-        <small>
-         presentes no conjunto
-        </small>
-       </article>
-      </div>
-      <div class="analysis-grid">
-       <article class="data-card">
-        <div class="card-heading">
-         <span class="question-number">
-          PERGUNTA 01
+       <p aria-live="polite" class="status data-status" id="dataStatus" role="status">
+        Carregando as totalizações…
+       </p>
+       <div aria-label="Indicadores principais" class="metrics">
+        <article class="metric metric-featured">
+         <span aria-hidden="true" class="metric-icon">
+          ▤
          </span>
-         <h3>
-          Onde se concentram os atrasos?
-         </h3>
-         <p>
-          Comparação entre as cidades do conjunto.
-         </p>
-        </div>
-        <div class="table-wrap">
-         <table>
-          <thead>
-           <tr>
-            <th>
-             Grupo
-            </th>
-            <th>
-             Observações
-            </th>
-            <th>
-             Total (min)
-            </th>
-            <th>
-             Média (min)
-            </th>
-           </tr>
-          </thead>
-          <tbody id="byCity">
-           <tr>
-            <td colspan="4">
-             Carregando…
-            </td>
-           </tr>
-          </tbody>
-         </table>
-        </div>
-        <p class="table-caption">
-         Total e média de minutos registrados por cidade.
-        </p>
-       </article>
-       <article class="data-card">
-        <div class="card-heading">
-         <span class="question-number">
-          PERGUNTA 02
+         <span class="metric-label">
+          Observações válidas
          </span>
-         <h3>
-          Como os atrasos variam no dia?
-         </h3>
-         <p>
-          Distribuição conforme o período registrado.
-         </p>
-        </div>
-        <div class="table-wrap">
-         <table>
-          <thead>
-           <tr>
-            <th>
-             Grupo
-            </th>
-            <th>
-             Observações
-            </th>
-            <th>
-             Total (min)
-            </th>
-            <th>
-             Média (min)
-            </th>
-           </tr>
-          </thead>
-          <tbody id="byPeriod">
-           <tr>
-            <td colspan="4">
-             Carregando…
-            </td>
-           </tr>
-          </tbody>
-         </table>
-        </div>
-        <p class="table-caption">
-         Agrupamento por período; não é previsão de horário.
-        </p>
-       </article>
-       <article class="data-card">
-        <div class="card-heading">
-         <span class="question-number">
-          PERGUNTA 03
+         <strong id="metricObservations">
+          —
+         </strong>
+         <small>
+          registros usados na análise
+         </small>
+        </article>
+        <article class="metric">
+         <span aria-hidden="true" class="metric-icon metric-icon-orange">
+          ↗
          </span>
-         <h3>
-          Qual condição de trânsito acompanha os registros?
-         </h3>
-         <p>
-          Leitura descritiva por condição informada.
-         </p>
-        </div>
-        <div class="table-wrap">
-         <table>
-          <thead>
-           <tr>
-            <th>
-             Grupo
-            </th>
-            <th>
-             Observações
-            </th>
-            <th>
-             Total (min)
-            </th>
-            <th>
-             Média (min)
-            </th>
-           </tr>
-          </thead>
-          <tbody id="byTraffic">
-           <tr>
-            <td colspan="4">
-             Carregando…
-            </td>
-           </tr>
-          </tbody>
-         </table>
-        </div>
-        <p class="table-caption">
-         Associação observada, sem afirmar causa.
-        </p>
-       </article>
-       <article class="data-card">
-        <div class="card-heading">
-         <span class="question-number">
-          PERGUNTA 04
+         <span class="metric-label">
+          Atraso somado*
          </span>
-         <h3>
-          Como o clima aparece nos atrasos?
-         </h3>
-         <p>
-          Comparação por condição climática registrada.
-         </p>
-        </div>
-        <div class="table-wrap">
-         <table>
-          <thead>
-           <tr>
-            <th>
-             Grupo
-            </th>
-            <th>
-             Observações
-            </th>
-            <th>
-             Total (min)
-            </th>
-            <th>
-             Média (min)
-            </th>
-           </tr>
-          </thead>
-          <tbody id="byWeather">
-           <tr>
-            <td colspan="4">
-             Carregando…
-            </td>
-           </tr>
-          </tbody>
-         </table>
-        </div>
-        <p class="table-caption">
-         Os grupos descrevem o CSV didático, não a operação real.
-        </p>
-       </article>
-      </div>
-      <aside class="interpretation-note">
-       <span aria-hidden="true" class="note-mark">
-        i
-       </span>
-       <div>
-        <strong>
-         Como interpretar estes números
-        </strong>
-        <p>
-         * A soma e a média contam minutos por observação. Uma observação não equivale a uma viagem completa, passageiro ou ônibus. A base é sintética e não representa telemetria real.
-        </p>
+         <strong id="metricTotal">
+          —
+         </strong>
+         <small>
+          minutos por observação
+         </small>
+        </article>
+        <article class="metric">
+         <span aria-hidden="true" class="metric-icon metric-icon-blue">
+          ◷
+         </span>
+         <span class="metric-label">
+          Atraso médio*
+         </span>
+         <strong id="metricAverage">
+          —
+         </strong>
+         <small>
+          minutos por observação
+         </small>
+        </article>
+        <article class="metric">
+         <span aria-hidden="true" class="metric-icon metric-icon-green">
+          ◎
+         </span>
+         <span class="metric-label">
+          Cidades analisadas
+         </span>
+         <strong id="metricCities">
+          —
+         </strong>
+         <small>
+          presentes no conjunto
+         </small>
+        </article>
        </div>
-      </aside>
+       <div class="analysis-grid">
+        <article class="data-card">
+         <div class="card-heading">
+          <span class="question-number">
+           PERGUNTA 01
+          </span>
+          <h3>
+           Onde se concentram os atrasos?
+          </h3>
+          <p>
+           Comparação entre as cidades do conjunto.
+          </p>
+         </div>
+         <div class="table-wrap">
+          <table>
+           <thead>
+            <tr>
+             <th>
+              Grupo
+             </th>
+             <th>
+              Observações
+             </th>
+             <th>
+              Total (min)
+             </th>
+             <th>
+              Média (min)
+             </th>
+            </tr>
+           </thead>
+           <tbody id="byCity">
+            <tr>
+             <td colspan="4">
+              Carregando…
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <p class="table-caption">
+          Total e média de minutos registrados por cidade.
+         </p>
+        </article>
+        <article class="data-card">
+         <div class="card-heading">
+          <span class="question-number">
+           PERGUNTA 02
+          </span>
+          <h3>
+           Como os atrasos variam no dia?
+          </h3>
+          <p>
+           Distribuição conforme o período registrado.
+          </p>
+         </div>
+         <div class="table-wrap">
+          <table>
+           <thead>
+            <tr>
+             <th>
+              Grupo
+             </th>
+             <th>
+              Observações
+             </th>
+             <th>
+              Total (min)
+             </th>
+             <th>
+              Média (min)
+             </th>
+            </tr>
+           </thead>
+           <tbody id="byPeriod">
+            <tr>
+             <td colspan="4">
+              Carregando…
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <p class="table-caption">
+          Agrupamento por período; não é previsão de horário.
+         </p>
+        </article>
+        <article class="data-card">
+         <div class="card-heading">
+          <span class="question-number">
+           PERGUNTA 03
+          </span>
+          <h3>
+           Qual condição de trânsito acompanha os registros?
+          </h3>
+          <p>
+           Leitura descritiva por condição informada.
+          </p>
+         </div>
+         <div class="table-wrap">
+          <table>
+           <thead>
+            <tr>
+             <th>
+              Grupo
+             </th>
+             <th>
+              Observações
+             </th>
+             <th>
+              Total (min)
+             </th>
+             <th>
+              Média (min)
+             </th>
+            </tr>
+           </thead>
+           <tbody id="byTraffic">
+            <tr>
+             <td colspan="4">
+              Carregando…
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <p class="table-caption">
+          Associação observada, sem afirmar causa.
+         </p>
+        </article>
+        <article class="data-card">
+         <div class="card-heading">
+          <span class="question-number">
+           PERGUNTA 04
+          </span>
+          <h3>
+           Como o clima aparece nos atrasos?
+          </h3>
+          <p>
+           Comparação por condição climática registrada.
+          </p>
+         </div>
+         <div class="table-wrap">
+          <table>
+           <thead>
+            <tr>
+             <th>
+              Grupo
+             </th>
+             <th>
+              Observações
+             </th>
+             <th>
+              Total (min)
+             </th>
+             <th>
+              Média (min)
+             </th>
+            </tr>
+           </thead>
+           <tbody id="byWeather">
+            <tr>
+             <td colspan="4">
+              Carregando…
+             </td>
+            </tr>
+           </tbody>
+          </table>
+         </div>
+         <p class="table-caption">
+          Os grupos descrevem o CSV didático, não a operação real.
+         </p>
+        </article>
+       </div>
+       <aside class="interpretation-note">
+        <span aria-hidden="true" class="note-mark">
+         i
+        </span>
+        <div>
+         <strong>
+          Como interpretar estes números
+         </strong>
+         <p>
+          * A soma e a média contam minutos por observação. Uma observação não equivale a uma viagem completa, passageiro ou ônibus. A base é sintética e não representa telemetria real.
+         </p>
+        </div>
+       </aside>
+      </div>
      </section>
      <section class="page section" hidden="" id="cidades">
       <div class="notice admin-notice">
@@ -1007,66 +1009,82 @@
          Trajetos e horários
         </h1>
         <p>
-         Planeje o embarque e veja a programação de chegada.
+         Encontre referências de trajetos e consulte a programação publicada.
         </p>
        </div>
        <span class="tag">
-        Programação acadêmica
+        Informações de transporte
        </span>
       </div>
-      <div class="notice">
-       Os trajetos, motoristas e horários abaixo são sintéticos, preparados para a apresentação. A programação representa horários previstos e pode ser consultada por data.
-      </div>
-      <form class="card journey-search" id="journeyForm">
-       <div>
-        <label for="journeyRoute">
-         De onde para onde?
-        </label>
-        <select id="journeyRoute" required="">
-         <option value="">
-          Carregando trajetos…
-         </option>
-        </select>
+      <article class="card public-service">
+       <h2>
+        Consulte a programação publicada
+       </h2>
+       <p>
+        O DER/PR disponibiliza a tabela da linha Maringá–Sarandi (Jd. Independência), com os sentidos e as partidas previstos no documento.
+       </p>
+       <a class="button button-primary" href="https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-03/Maringa_Sarandi_JdIndependencia_L03_REG0511_Linha0010254410_150326.pdf" rel="noopener" target="_blank">
+        Abrir tabela do DER/PR ↗
+       </a>
+       <p class="muted">
+        Documento com vigência informada em 15/03/2026. Confirme alterações e horários atuais com a operadora. O acompanhamento de chegada em tempo real depende da integração com os dados dos ônibus.
+       </p>
+      </article>
+      <div data-internal="" hidden="">
+       <div class="notice">
+        Os trajetos, motoristas e horários abaixo são sintéticos, preparados para a apresentação. A programação representa horários previstos e pode ser consultada por data.
        </div>
-       <div>
-        <label for="journeyDate">
-         Data da viagem
-        </label>
-        <input id="journeyDate" required="" type="date"/>
+       <form class="card journey-search" id="journeyForm">
+        <div>
+         <label for="journeyRoute">
+          De onde para onde?
+         </label>
+         <select id="journeyRoute" required="">
+          <option value="">
+           Carregando trajetos…
+          </option>
+         </select>
+        </div>
+        <div>
+         <label for="journeyDate">
+          Data da viagem
+         </label>
+         <input id="journeyDate" required="" type="date"/>
+        </div>
+        <button class="button button-primary">
+         Consultar horários ↗
+        </button>
+       </form>
+       <p class="status" id="journeyFeedback" role="status">
+       </p>
+       <div class="journey-grid">
+        <article class="card">
+         <span class="eyebrow">
+          O CAMINHO
+         </span>
+         <h2 id="routeName">
+          Selecione um trajeto
+         </h2>
+         <div class="timeline" id="routeStops">
+          <p>
+           As paradas aparecerão aqui.
+          </p>
+         </div>
+        </article>
+        <article class="card">
+         <span class="eyebrow">
+          PROGRAMAÇÃO DE EMBARQUE E CHEGADA
+         </span>
+         <h2>
+          Escolha seu horário
+         </h2>
+         <div id="scheduleList">
+          <p>
+           Consulte a programação para ver os horários.
+          </p>
+         </div>
+        </article>
        </div>
-       <button class="button button-primary">
-        Consultar horários ↗
-       </button>
-      </form>
-      <p class="status" id="journeyFeedback" role="status">
-      </p>
-      <div class="journey-grid">
-       <article class="card">
-        <span class="eyebrow">
-         O CAMINHO
-        </span>
-        <h2 id="routeName">
-         Selecione um trajeto
-        </h2>
-        <div class="timeline" id="routeStops">
-         <p>
-          As paradas aparecerão aqui.
-         </p>
-        </div>
-       </article>
-       <article class="card">
-        <span class="eyebrow">
-         PROGRAMAÇÃO DE EMBARQUE E CHEGADA
-        </span>
-        <h2>
-         Escolha seu horário
-        </h2>
-        <div id="scheduleList">
-         <p>
-          Consulte a programação para ver os horários.
-         </p>
-        </div>
-       </article>
       </div>
      </section>
      <section class="page" hidden="" id="avaliacoes">
@@ -1079,150 +1097,166 @@
          Como foi seu caminho?
         </h1>
         <p>
-         Avalie o ônibus e o motorista em uma experiência de demonstração.
+         Sua experiência ajuda a melhorar o transporte coletivo.
         </p>
        </div>
        <span class="tag">
         Feedback do passageiro
        </span>
       </div>
-      <div class="login-gate notice" data-private="">
-       Entre na sua conta para registrar e consultar suas avaliações.
-       <a href="#login">
-        Entrar →
+      <article class="card public-service">
+       <h2>
+        Avaliações vinculadas ao serviço
+       </h2>
+       <p>
+        O envio de avaliações será disponibilizado após a validação do cadastro de linhas, veículos e motoristas da operação. Assim, cada avaliação poderá ser associada ao serviço utilizado.
+       </p>
+       <p class="muted">
+        Você já pode criar sua conta no TRANSURBAN.
+       </p>
+       <a class="button button-outline" href="#cadastro">
+        Criar minha conta →
        </a>
-      </div>
-      <div class="journey-grid private-content">
-       <form class="card" id="reviewForm">
-        <h2>
-         Conte sua experiência.
-        </h2>
-        <p class="muted">
-         Os veículos e motoristas cadastrados são demonstrativos.
-        </p>
-        <label for="reviewRoute">
-         Trajeto
-        </label>
-        <select id="reviewRoute" required="">
-         <option value="">
-          Selecione
-         </option>
-        </select>
-        <label for="reviewSchedule">
-         Horário, ônibus e motorista
-        </label>
-        <select id="reviewSchedule" required="">
-         <option value="">
-          Escolha um trajeto primeiro
-         </option>
-        </select>
-        <label for="reviewDate">
-         Data da experiência
-        </label>
-        <input id="reviewDate" required="" type="date"/>
-        <fieldset class="rating">
-         <legend>
-          Como você avalia o ônibus?
-         </legend>
-         <div class="stars">
-          <label>
-           <input name="busRating" required="" type="radio" value="1"/>
-           <span>
-            1 ★
-           </span>
-          </label>
-          <label>
-           <input name="busRating" required="" type="radio" value="2"/>
-           <span>
-            2 ★
-           </span>
-          </label>
-          <label>
-           <input name="busRating" required="" type="radio" value="3"/>
-           <span>
-            3 ★
-           </span>
-          </label>
-          <label>
-           <input name="busRating" required="" type="radio" value="4"/>
-           <span>
-            4 ★
-           </span>
-          </label>
-          <label>
-           <input name="busRating" required="" type="radio" value="5"/>
-           <span>
-            5 ★
-           </span>
-          </label>
-         </div>
-        </fieldset>
-        <fieldset class="rating">
-         <legend>
-          Como você avalia o motorista?
-         </legend>
-         <div class="stars">
-          <label>
-           <input name="driverRating" required="" type="radio" value="1"/>
-           <span>
-            1 ★
-           </span>
-          </label>
-          <label>
-           <input name="driverRating" required="" type="radio" value="2"/>
-           <span>
-            2 ★
-           </span>
-          </label>
-          <label>
-           <input name="driverRating" required="" type="radio" value="3"/>
-           <span>
-            3 ★
-           </span>
-          </label>
-          <label>
-           <input name="driverRating" required="" type="radio" value="4"/>
-           <span>
-            4 ★
-           </span>
-          </label>
-          <label>
-           <input name="driverRating" required="" type="radio" value="5"/>
-           <span>
-            5 ★
-           </span>
-          </label>
-         </div>
-        </fieldset>
-        <label for="reviewComment">
-         Quer acrescentar algo?
-         <small>
-          (opcional)
-         </small>
-        </label>
-        <textarea id="reviewComment" maxlength="1000" placeholder="Conforto, limpeza, atendimento…" rows="3"></textarea>
-        <small>
-         Evite incluir dados pessoais no comentário.
-        </small>
-        <button class="button button-primary wide">
-         Enviar avaliação →
-        </button>
-        <p class="status" id="reviewFeedback" role="status">
-        </p>
-       </form>
-       <article class="card">
-        <span class="eyebrow">
-         SUAS CONTRIBUIÇÕES
-        </span>
-        <h2>
-         Minhas avaliações
-        </h2>
-        <div class="stack" id="reviewList">
-         <p>
-          Entre para consultar seu histórico.
+      </article>
+      <div data-internal="" hidden="">
+       <div class="login-gate notice" data-private="">
+        Entre na sua conta para registrar e consultar suas avaliações.
+        <a href="#login">
+         Entrar →
+        </a>
+       </div>
+       <div class="journey-grid private-content">
+        <form class="card" id="reviewForm">
+         <h2>
+          Conte sua experiência.
+         </h2>
+         <p class="muted">
+          Os veículos e motoristas cadastrados são demonstrativos.
          </p>
-        </div>
-       </article>
+         <label for="reviewRoute">
+          Trajeto
+         </label>
+         <select id="reviewRoute" required="">
+          <option value="">
+           Selecione
+          </option>
+         </select>
+         <label for="reviewSchedule">
+          Horário, ônibus e motorista
+         </label>
+         <select id="reviewSchedule" required="">
+          <option value="">
+           Escolha um trajeto primeiro
+          </option>
+         </select>
+         <label for="reviewDate">
+          Data da experiência
+         </label>
+         <input id="reviewDate" required="" type="date"/>
+         <fieldset class="rating">
+          <legend>
+           Como você avalia o ônibus?
+          </legend>
+          <div class="stars">
+           <label>
+            <input name="busRating" required="" type="radio" value="1"/>
+            <span>
+             1 ★
+            </span>
+           </label>
+           <label>
+            <input name="busRating" required="" type="radio" value="2"/>
+            <span>
+             2 ★
+            </span>
+           </label>
+           <label>
+            <input name="busRating" required="" type="radio" value="3"/>
+            <span>
+             3 ★
+            </span>
+           </label>
+           <label>
+            <input name="busRating" required="" type="radio" value="4"/>
+            <span>
+             4 ★
+            </span>
+           </label>
+           <label>
+            <input name="busRating" required="" type="radio" value="5"/>
+            <span>
+             5 ★
+            </span>
+           </label>
+          </div>
+         </fieldset>
+         <fieldset class="rating">
+          <legend>
+           Como você avalia o motorista?
+          </legend>
+          <div class="stars">
+           <label>
+            <input name="driverRating" required="" type="radio" value="1"/>
+            <span>
+             1 ★
+            </span>
+           </label>
+           <label>
+            <input name="driverRating" required="" type="radio" value="2"/>
+            <span>
+             2 ★
+            </span>
+           </label>
+           <label>
+            <input name="driverRating" required="" type="radio" value="3"/>
+            <span>
+             3 ★
+            </span>
+           </label>
+           <label>
+            <input name="driverRating" required="" type="radio" value="4"/>
+            <span>
+             4 ★
+            </span>
+           </label>
+           <label>
+            <input name="driverRating" required="" type="radio" value="5"/>
+            <span>
+             5 ★
+            </span>
+           </label>
+          </div>
+         </fieldset>
+         <label for="reviewComment">
+          Quer acrescentar algo?
+          <small>
+           (opcional)
+          </small>
+         </label>
+         <textarea id="reviewComment" maxlength="1000" placeholder="Conforto, limpeza, atendimento…" rows="3"></textarea>
+         <small>
+          Evite incluir dados pessoais no comentário.
+         </small>
+         <button class="button button-primary wide">
+          Enviar avaliação →
+         </button>
+         <p class="status" id="reviewFeedback" role="status">
+         </p>
+        </form>
+        <article class="card">
+         <span class="eyebrow">
+          SUAS CONTRIBUIÇÕES
+         </span>
+         <h2>
+          Minhas avaliações
+         </h2>
+         <div class="stack" id="reviewList">
+          <p>
+           Entre para consultar seu histórico.
+          </p>
+         </div>
+        </article>
+       </div>
       </div>
      </section>
      <section class="page" hidden="" id="passe">
@@ -1235,131 +1269,144 @@
          Meu passe
         </h1>
         <p>
-         Seu cartão, suas recargas e seu histórico.
+         Informações para utilizar seu cartão de transporte.
         </p>
        </div>
        <span class="tag">
-        Carteira demonstrativa
+        Serviços do passe
        </span>
       </div>
-      <div class="notice">
-       Ambiente acadêmico. O saldo é fictício e as recargas não geram cobrança nem créditos no cartão real de transporte.
-      </div>
-      <div class="login-gate notice" data-private="">
-       Entre para acessar a sua carteira.
-       <a href="#login">
-        Entrar →
-       </a>
-      </div>
-      <div class="journey-grid private-content">
-       <div>
-        <article class="transit-card">
-         <div>
-          <a class="brand" href="#inicio">
-           <img alt="" height="43" src="/logo.svg" width="43"/>
-           <span>
-            transurban
-            <small>
-             Mobilidade que conecta.
-            </small>
-           </span>
-          </a>
-          <span>
-           DEMO
-          </span>
-         </div>
-         <small>
-          SALDO DEMONSTRATIVO
-         </small>
-         <strong id="walletBalance">
-          R$ —
-         </strong>
-         <div class="card-bottom">
-          <span id="walletHolder">
-           Seu nome
-          </span>
-          <span id="walletNumber">
-           •••• ••••
-          </span>
-         </div>
-         <div class="card-orbit">
-         </div>
-        </article>
-        <div class="card recharge-card">
-         <h2>
-          Faça uma recarga de teste.
-         </h2>
-         <p class="muted">
-          Escolha um valor de R$ 5 a R$ 200. Limite de saldo demonstrativo de R$ 1.000.
-         </p>
-         <div class="amounts">
-          <button data-amount="10" type="button">
-           R$ 10
-          </button>
-          <button data-amount="20" type="button">
-           R$ 20
-          </button>
-          <button data-amount="50" type="button">
-           R$ 50
-          </button>
-          <button data-amount="100" type="button">
-           R$ 100
-          </button>
-         </div>
-         <form id="rechargeForm">
-          <label for="rechargeValue">
-           Valor da recarga (R$)
-          </label>
-          <input id="rechargeValue" max="200" min="5" required="" step="0.01" type="number" value="20"/>
-          <label class="check-label">
-           <input id="demoConsent" required="" type="checkbox"/>
-           Entendo que esta recarga usa saldo fictício para demonstração.
-          </label>
-          <button class="button button-primary wide">
-           Revisar recarga →
-          </button>
-          <p class="status" id="walletFeedback" role="status">
-          </p>
-         </form>
-        </div>
-       </div>
-       <article class="card">
-        <span class="eyebrow">
-         TUDO EM UM LUGAR
-        </span>
-        <h2>
-         Histórico de recargas
-        </h2>
-        <p class="muted">
-         As últimas 50 operações desta conta.
-        </p>
-        <div class="stack" id="walletHistory">
-         <p>
-          Entre para consultar suas recargas.
-         </p>
-        </div>
-       </article>
-      </div>
-      <dialog id="rechargeDialog">
-       <form method="dialog">
-        <button aria-label="Fechar" class="dialog-close">
-         ×
-        </button>
-       </form>
-       <span class="eyebrow">
-        CONFIRA SUA RECARGA
-       </span>
-       <h2 id="rechargeConfirmValue">
+      <article class="card public-service">
+       <h2>
+        Recarga de passe
        </h2>
        <p>
-        O valor será adicionado à sua carteira demonstrativa. Esta operação usa créditos fictícios.
+        A recarga pelo TRANSURBAN depende da integração com a bilhetagem da operadora e com um provedor de pagamento. Essa integração ainda está pendente.
        </p>
-       <button class="button button-primary wide" id="confirmRecharge" type="button">
-        Confirmar recarga de teste
-       </button>
-       <p class="status" id="rechargeDialogStatus" role="status">
+       <p class="muted">
+        A compra e a validação de créditos devem ser realizadas pelos canais autorizados da sua operadora.
        </p>
-      </dialog>
+      </article>
+      <div data-internal="" hidden="">
+       <div class="notice">
+        Ambiente acadêmico. O saldo é fictício e as recargas não geram cobrança nem créditos no cartão real de transporte.
+       </div>
+       <div class="login-gate notice" data-private="">
+        Entre para acessar a sua carteira.
+        <a href="#login">
+         Entrar →
+        </a>
+       </div>
+       <div class="journey-grid private-content">
+        <div>
+         <article class="transit-card">
+          <div>
+           <a class="brand" href="#inicio">
+            <img alt="" height="43" src="/logo.svg" width="43"/>
+            <span>
+             transurban
+             <small>
+              Mobilidade que conecta.
+             </small>
+            </span>
+           </a>
+           <span>
+            DEMO
+           </span>
+          </div>
+          <small>
+           SALDO DEMONSTRATIVO
+          </small>
+          <strong id="walletBalance">
+           R$ —
+          </strong>
+          <div class="card-bottom">
+           <span id="walletHolder">
+            Seu nome
+           </span>
+           <span id="walletNumber">
+            •••• ••••
+           </span>
+          </div>
+          <div class="card-orbit">
+          </div>
+         </article>
+         <div class="card recharge-card">
+          <h2>
+           Faça uma recarga de teste.
+          </h2>
+          <p class="muted">
+           Escolha um valor de R$ 5 a R$ 200. Limite de saldo demonstrativo de R$ 1.000.
+          </p>
+          <div class="amounts">
+           <button data-amount="10" type="button">
+            R$ 10
+           </button>
+           <button data-amount="20" type="button">
+            R$ 20
+           </button>
+           <button data-amount="50" type="button">
+            R$ 50
+           </button>
+           <button data-amount="100" type="button">
+            R$ 100
+           </button>
+          </div>
+          <form id="rechargeForm">
+           <label for="rechargeValue">
+            Valor da recarga (R$)
+           </label>
+           <input id="rechargeValue" max="200" min="5" required="" step="0.01" type="number" value="20"/>
+           <label class="check-label">
+            <input id="demoConsent" required="" type="checkbox"/>
+            Entendo que esta recarga usa saldo fictício para demonstração.
+           </label>
+           <button class="button button-primary wide">
+            Revisar recarga →
+           </button>
+           <p class="status" id="walletFeedback" role="status">
+           </p>
+          </form>
+         </div>
+        </div>
+        <article class="card">
+         <span class="eyebrow">
+          TUDO EM UM LUGAR
+         </span>
+         <h2>
+          Histórico de recargas
+         </h2>
+         <p class="muted">
+          As últimas 50 operações desta conta.
+         </p>
+         <div class="stack" id="walletHistory">
+          <p>
+           Entre para consultar suas recargas.
+          </p>
+         </div>
+        </article>
+       </div>
+       <dialog id="rechargeDialog">
+        <form method="dialog">
+         <button aria-label="Fechar" class="dialog-close">
+          ×
+         </button>
+        </form>
+        <span class="eyebrow">
+         CONFIRA SUA RECARGA
+        </span>
+        <h2 id="rechargeConfirmValue">
+        </h2>
+        <p>
+         O valor será adicionado à sua carteira demonstrativa. Esta operação usa créditos fictícios.
+        </p>
+        <button class="button button-primary wide" id="confirmRecharge" type="button">
+         Confirmar recarga de teste
+        </button>
+        <p class="status" id="rechargeDialogStatus" role="status">
+        </p>
+       </dialog>
+      </div>
      </section>
     </main>
     <footer class="footer">
@@ -1367,7 +1414,7 @@
       © 2026 TRANSURBAN · Mobilidade que conecta.
      </span>
      <span>
-      Projeto acadêmico • Maringá &amp; Sarandi
+      Maringá &amp; Sarandi • Mobilidade que conecta
      </span>
     </footer>
    </div>

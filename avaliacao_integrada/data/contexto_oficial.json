@@ -3,18 +3,60 @@
   "titulo": "A mobilidade da nossa região, em contexto",
   "descricao": "Informações de documentos públicos, com referência e data de origem.",
   "indicadores": [
-    {"valor": "11 km", "rotulo": "Extensão informada", "contexto": "Linha 001.0254-410 · Maringá–Sarandi (Jd. Independência)", "fonte_id": "der2026"},
-    {"valor": "45 min", "rotulo": "Tempo de percurso programado", "contexto": "Tempo indicado na tabela do DER/PR para essa linha", "fonte_id": "der2026"},
-    {"valor": "131", "rotulo": "Frequência diária em dias úteis", "contexto": "Quantidade do quadro do DER/PR, somados os sentidos", "fonte_id": "der2026"}
+    {
+      "valor": "11 km",
+      "rotulo": "Extensão informada",
+      "contexto": "Linha 001.0254-410 · Maringá–Sarandi (Jd. Independência)",
+      "fonte_id": "der2026"
+    },
+    {
+      "valor": "45 min",
+      "rotulo": "Tempo de percurso programado",
+      "contexto": "Tempo indicado na tabela do DER/PR para essa linha",
+      "fonte_id": "der2026"
+    },
+    {
+      "valor": "131",
+      "rotulo": "Frequência diária em dias úteis",
+      "contexto": "Quantidade do quadro do DER/PR, somados os sentidos",
+      "fonte_id": "der2026"
+    }
   ],
   "registros": [
-    {"titulo": "Integração entre municípios", "texto": "Em ofício de 2023, a Secretaria de Mobilidade Urbana de Maringá registra a integração metropolitana entre Maringá, Sarandi e Paiçandu e atribui sua gestão ao governo estadual.", "citacao": "a integração metropolitana no transporte coletivo já ocorre entre as cidades de Maringá, Sarandi e Paiçandu", "atribuicao": "Secretaria Municipal de Mobilidade Urbana de Maringá · Ofício 18/2023", "fonte_id": "semob2023"},
-    {"titulo": "Demandas de acesso ao transporte", "texto": "A Indicação 223/2025 da Câmara de Sarandi solicita linhas para o Jardim Aurora 4 e o Jardim dos Ipês com destino a Maringá. O registro documenta uma solicitação legislativa para ampliar o acesso ao transporte.", "citacao": "assegurar o direito à mobilidade urbana dos moradores dessas regiões", "atribuicao": "Câmara Municipal de Sarandi · Indicação 223/2025", "fonte_id": "sarandi2025"}
+    {
+      "titulo": "Integração entre municípios",
+      "texto": "Em ofício de 2023, a Secretaria de Mobilidade Urbana de Maringá registra a integração metropolitana entre Maringá, Sarandi e Paiçandu e atribui sua gestão ao governo estadual.",
+      "citacao": "a integração metropolitana no transporte coletivo já ocorre entre as cidades de Maringá, Sarandi e Paiçandu",
+      "atribuicao": "Secretaria Municipal de Mobilidade Urbana de Maringá · Ofício 18/2023",
+      "fonte_id": "semob2023"
+    },
+    {
+      "titulo": "Demandas de acesso ao transporte",
+      "texto": "A Indicação 223/2025 da Câmara de Sarandi solicita linhas para o Jardim Aurora 4 e o Jardim dos Ipês com destino a Maringá. O registro documenta uma solicitação legislativa para ampliar o acesso ao transporte.",
+      "citacao": "assegurar o direito à mobilidade urbana dos moradores dessas regiões",
+      "atribuicao": "Câmara Municipal de Sarandi · Indicação 223/2025",
+      "fonte_id": "sarandi2025"
+    }
   ],
   "fontes": [
-    {"id": "der2026", "titulo": "DER/PR · Tabela Maringá–Sarandi (Jd. Independência)", "data_documento": "Vigência informada a partir de 15/03/2026", "url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-03/Maringa_Sarandi_JdIndependencia_L03_REG0511_Linha0010254410_150326.pdf"},
-    {"id": "semob2023", "titulo": "Prefeitura de Maringá · Ofício 18/2023/SECSEMOB", "data_documento": "10/03/2023 · assinado em 13/03/2023", "url": "https://sapl.cmm.pr.gov.br/media/sapl/public/documentoacessorio/2023/24786/req_173.pdf"},
-    {"id": "sarandi2025", "titulo": "Câmara de Sarandi · Indicação 223/2025", "data_documento": "2025", "url": "https://sapl.sarandi.pr.leg.br/materia/9891/acompanhar-materia/"}
+    {
+      "id": "der2026",
+      "titulo": "DER/PR · Tabela Maringá–Sarandi (Jd. Independência)",
+      "data_documento": "Vigência informada a partir de 15/03/2026",
+      "url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-03/Maringa_Sarandi_JdIndependencia_L03_REG0511_Linha0010254410_150326.pdf"
+    },
+    {
+      "id": "semob2023",
+      "titulo": "Prefeitura de Maringá · Ofício 18/2023/SECSEMOB",
+      "data_documento": "10/03/2023 · assinado em 13/03/2023",
+      "url": "https://sapl.cmm.pr.gov.br/media/sapl/public/documentoacessorio/2023/24786/req_173.pdf"
+    },
+    {
+      "id": "sarandi2025",
+      "titulo": "Câmara de Sarandi · Indicação 223/2025",
+      "data_documento": "2025",
+      "url": "https://sapl.sarandi.pr.leg.br/materia/9891/acompanhar-materia/"
+    }
   ],
-  "limite": "Retrato dos documentos citados. Consulte a operadora para confirmar a programação atual. O tempo programado de percurso não é uma previsão em tempo real. A análise de atrasos em CSV abaixo usa uma base sintética acadêmica independente."
+  "limite": "Os dados apresentados descrevem os documentos citados. Consulte a operadora para confirmar a programação atual. O tempo programado de percurso pode variar conforme as condições de trânsito."
 }

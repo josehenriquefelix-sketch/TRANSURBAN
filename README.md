@@ -1,12 +1,12 @@
 # Portal TRANSURBAN — atualização de novembro de 2026
 
-O portal completo fica em [avaliacao_integrada](avaliacao_integrada). Inclui login, início, dashboard com fontes oficiais, consulta de cidades e linhas, trajetos e horários, avaliações e passe demonstrativo.
+O portal completo fica em [avaliacao_integrada](avaliacao_integrada). O produto atende à população de Maringá e Sarandi com conta, informações de mobilidade, dashboard com fontes oficiais e consulta aos cadastros da rede.
 
 Para abrir no Windows, clone este repositório pelo VS Code, configure o arquivo privado `avaliacao_integrada/backend/.env` usando o `.env.example` e execute `INICIAR_TRANSURBAN.cmd` na raiz. O iniciador prepara o ambiente e abre o site em `http://127.0.0.1:8000/`.
 
 A API de DS fica em `/docs`. A API de Ciência de Dados fica em `/dados/docs`. O projeto Supabase da equipe já recebeu a migração do portal. Cada computador precisa de Python e de sua configuração privada do `.env`.
 
-Consulte as [instruções do portal](avaliacao_integrada/README.md) e o [roteiro da apresentação](avaliacao_integrada/docs/PORTAL_E_APRESENTACAO.md). Horários, avaliações de teste e recargas do módulo de apresentação usam dados de demonstração. O dashboard identifica os documentos oficiais por fonte e data.
+Consulte as [instruções do portal](avaliacao_integrada/README.md) e o [roteiro da apresentação](avaliacao_integrada/docs/PORTAL_E_APRESENTACAO.md). Os dados sintéticos e as operações de teste ficam na interface interna da equipe. A chegada em tempo real, as avaliações sobre veículos reais e a recarga efetiva dependem de integração e validação com a operadora. O dashboard identifica os documentos oficiais por fonte e data.
 
 ---
 

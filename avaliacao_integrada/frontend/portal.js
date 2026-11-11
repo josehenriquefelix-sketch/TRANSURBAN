@@ -8,8 +8,8 @@ let activePage = "";
 const pageTitles = {
   inicio: "Visão geral",
   dashboard: "Dashboard de mobilidade",
-  cidades: "Gestão de cidades",
-  linhas: "Gestão de linhas",
+  cidades: "Cidades cadastradas",
+  linhas: "Linhas cadastradas",
   trajetos: "Trajetos e horários",
   avaliacoes: "Avaliações",
   passe: "Meu passe"
@@ -72,6 +72,9 @@ async function renewSession() {
 
 function updatePermissions() {
   const admin = Boolean(currentUser?.administrador);
+  document.querySelectorAll("[data-internal]").forEach(node => {
+    node.hidden = !admin;
+  });
   document.querySelectorAll("[data-admin-form]").forEach(form => {
     form.hidden = !admin;
     form.querySelectorAll("input,select,button").forEach(node => {
@@ -147,14 +150,17 @@ async function changePage() {
     top: 0
   });
   activePage = page;
-  if (page === "dashboard") await Promise.all([refreshAnalysis(), loadOfficialContext()]);
+  if (page === "dashboard") {
+    await loadOfficialContext();
+    if (currentUser?.administrador) await refreshAnalysis();
+  }
   if (page === "cidades" || page === "linhas") await refreshAll();
-  if (page === "trajetos") await loadRoutes();
-  if (page === "avaliacoes") {
+  if (page === "trajetos" && currentUser?.administrador) await loadRoutes();
+  if (page === "avaliacoes" && currentUser?.administrador) {
     await loadRoutes();
     if (currentUser) await loadReviews();
   }
-  if (page === "passe" && currentUser) await loadWallet();
+  if (page === "passe" && currentUser?.administrador) await loadWallet();
 }
 async function loadOfficialContext() {
   const target = $("officialContext");
@@ -516,7 +522,9 @@ async function startPortal() {
   await changePage();
   await Promise.all([loadAccount(), checkService()]);
   if (currentUser && !window.location.hash) window.location.hash = "inicio";
-  if (currentUser && activePage === "passe") await loadWallet();
-  if (currentUser && activePage === "avaliacoes") await loadReviews();
+  if (currentUser?.administrador && activePage === "passe") await loadWallet();
+  if (currentUser?.administrador && activePage === "avaliacoes") await loadReviews();
+  if (currentUser?.administrador && activePage === "trajetos") await loadRoutes();
+  if (currentUser?.administrador && activePage === "dashboard") await refreshAnalysis();
 }
 startPortal().catch(error => toast(error.message));
