@@ -28,7 +28,7 @@ O primeiro início cria o ambiente Python e instala as dependências; pode levar
 ## Abrir e apresentar
 
 - A tela abre em `http://127.0.0.1:8000/`.
-- Na tela, clique em **Ver API (Swagger)** para abrir a documentação interativa. O endereço direto é `http://127.0.0.1:8000/docs`.
+- Na tela, clique em **API do sistema** para abrir a documentação interativa. O endereço direto é `http://127.0.0.1:8000/docs`.
 - Mantenha aberta a janela do servidor durante a apresentação.
 - Para iniciar novamente depois da primeira configuração, dê dois cliques em `iniciar_local.cmd`.
 

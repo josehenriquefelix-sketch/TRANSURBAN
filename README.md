@@ -1,107 +1,43 @@
-# Portal TRANSURBAN — atualização de novembro de 2026
+# TRANSURBAN — Mobilidade que conecta
 
-Para preparar o computador da Ficiências 2026, consulte o [guia do evento](avaliacao_integrada/docs/FICIENCIAS_2026.md). Depois de iniciar o sistema, execute `VERIFICAR_TRANSURBAN.cmd` na raiz para conferir o ambiente com consultas ao Supabase e à API local.
+Portal de transporte e participação cidadã entre Maringá e Sarandi, com áreas de **passageiro**, **motorista autorizado** e **gestão autorizada**.
 
-O portal completo fica em [avaliacao_integrada](avaliacao_integrada). O produto atende à população de Maringá e Sarandi com conta, informações de mobilidade, dashboard com fontes oficiais e consulta aos cadastros da rede.
+O projeto atual está na pasta [avaliacao_integrada](avaliacao_integrada). Site e API iniciam juntos em **http://127.0.0.1:8000/**.
 
-Para abrir no Windows, clone este repositório pelo VS Code, configure o arquivo privado `avaliacao_integrada/backend/.env` usando o `.env.example` e execute `INICIAR_TRANSURBAN.cmd` na raiz. O iniciador prepara o ambiente e abre o site em `http://127.0.0.1:8000/`.
+## Abrir pelo VS Code em outro computador
 
-A API de DS fica em `/docs`. A API de Ciência de Dados fica em `/dados/docs`. O projeto Supabase da equipe já recebeu a migração do portal. Cada computador precisa de Python e de sua configuração privada do `.env`.
+1. Instale Git e Python 3.10+; no Windows, marque **Add Python to PATH**.
+2. No VS Code, pressione **Ctrl+Shift+P → Git: Clone** e cole `https://github.com/josehenriquefelix-sketch/TRANSURBAN.git`.
+3. Abra o repositório. Copie `avaliacao_integrada/backend/.env.example` para `avaliacao_integrada/backend/.env` e preencha os dados privados do mesmo projeto Supabase. Esse arquivo não vem pelo GitHub.
+4. Na raiz, execute **INICIAR_TRANSURBAN.cmd**. Na primeira abertura ele prepara o ambiente e instala as dependências. Mantenha o servidor aberto.
+5. Acesse **http://127.0.0.1:8000/**. O menu **API do sistema** abre **http://127.0.0.1:8000/docs**.
+6. Execute **VERIFICAR_TRANSURBAN.cmd** para conferir dependências, tabelas, site e API.
 
-Consulte as [instruções do portal](avaliacao_integrada/README.md) e o [roteiro da apresentação](avaliacao_integrada/docs/PORTAL_E_APRESENTACAO.md). Os dados sintéticos e as operações de teste ficam na interface interna da equipe. A chegada em tempo real, as avaliações sobre veículos reais e a recarga efetiva dependem de integração e validação com a operadora. O dashboard identifica os documentos oficiais por fonte e data.
+Se já estiver clonado, atualize com `git pull` antes de iniciar, preservando suas alterações locais. O banco da equipe já recebeu as migrações 05 e 06; usar o mesmo Supabase em outro computador não exige reinstalar as tabelas.
 
----
+O endereço `127.0.0.1` é local a cada computador. Para acesso público ou por vários dispositivos, é necessário hospedar o sistema em HTTPS e configurar as URLs do Supabase.
 
-# TRANSURBAN — API
+## O que está implementado
 
-## Abrir o projeto de apresentação no VS Code (Windows)
+- Login por e-mail/CPF, sessão em cookies HttpOnly, cadastro, logout e fluxo de recuperação de senha.
+- Início, dashboard com documentos oficiais, cidades/linhas, horários e mapa, favoritas, avaliações e conta, com layout responsivo.
+- Perfil/veículo do motorista, notas vinculadas, início/encerramento de viagem e envio consentido da posição do dispositivo.
+- Central de manifestações com protocolo, filtros por escopo, atendimento e resposta ao cidadão.
+- CRUD acadêmico de cidade e linha com FK na API protegida. Ciência de Dados permanece separada em `/dados/docs`.
 
-1. No VS Code, pressione **Ctrl + Shift + P**, escolha **Git: Clone** e cole `https://github.com/josehenriquefelix-sketch/TRANSURBAN.git`.
-2. Escolha uma pasta e abra o repositório clonado.
-3. No VS Code, abra **Terminal → New Terminal** e execute:
+## Cobertura e dependências externas
 
-   `.\avaliacao_integrada\iniciar_local.cmd`
+O catálogo separa as 66 linhas municipais de Maringá publicadas no Na Hora das ligações que atendem Sarandi. Em Sarandi, são 22 atendimentos, incluindo variantes de bairro, documentados em 12 tabelas do DER/PR. Foram conferidas 1.064 partidas documentais, sem duplicar as variantes. Ao escolher a linha, o site abre os horários; em Maringá, oferece também a consulta pública oficial incorporada com pontos e itinerários. O serviço municipal interbairros de Sarandi está identificado separadamente, com confirmação de vigência pendente. Horários de saída não são previsões de passagem em todos os pontos. Não há API autorizada de telemetria nem integração de bilhetagem.
 
-4. Na primeira execução, configure `avaliacao_integrada/backend/.env` com a Project URL e a chave secreta do projeto Supabase. Salve e feche o Bloco de Notas.
-5. O site abre sozinho. Clique em **Ver API (Swagger)** para abrir a API. Mantenha a janela do servidor aberta.
+O código de Google OAuth está implementado, mas o provedor ainda precisa de credenciais/configuração no Supabase. Confirmação e recuperação por e-mail precisam de SMTP e teste de entrega real. O GPS do navegador requer permissão, contexto seguro e página aberta; as verificações automatizadas não comprovam um sensor GPS real.
 
-Requisitos: Git for Windows, Python 3.10 ou superior e internet na primeira instalação. Para um repositório já clonado, use **Source Control → … → Pull** antes de apresentar. O arquivo `.env` é local e não está no GitHub.
+O TRANSURBAN é independente. Não há adesão institucional confirmada de Prefeitura, DER/PR ou operadora. As manifestações ficam na central TRANSURBAN; seu encaminhamento institucional depende dessa adesão.
 
-- [Guia rápido para o computador do auditório](avaliacao_integrada/GUIA_RAPIDO_AUDITORIO.md)
-- [Instruções completas da integração DS + IA e da FK](avaliacao_integrada/README.md)
-- [Adaptação da atividade de chave estrangeira ao TRANSURBAN](avaliacao_integrada/docs/RELACIONAMENTO_FK_CIDADE_LINHA.md)
+## Instruções e testes
 
+- [Instalação completa, tecnologias e atividade escolar](avaliacao_integrada/README.md)
+- [Operação, papéis, Google, GPS e fontes](avaliacao_integrada/docs/MOBILIDADE_OPERACAO.md)
+- [Validação com Supabase real — 12/11/2026](avaliacao_integrada/docs/VALIDACAO_MOBILIDADE_20261112.json)
+- [Atividade de chave estrangeira](avaliacao_integrada/docs/RELACIONAMENTO_FK_CIDADE_LINHA.md)
 
-> **Aplicação integrada DS + IA:** abra [`avaliacao_integrada/README.md`](avaliacao_integrada/README.md). No Windows, execute `avaliacao_integrada/iniciar_local.cmd` para iniciar um único serviço e abrir o painel. Configure `avaliacao_integrada/backend/.env` em cada computador; esse arquivo privado não é enviado ao GitHub.
-
-Backend da avaliação, seguindo o caderno do estudante e o DER do TRANSURBAN.
-
-Cidade é a primeira tabela, com `id_cidade` como PK. Linha de ônibus é a segunda, com `id_linha` como PK e `id_cidade` como FK. O banco armazena o identificador da cidade; a API apresenta o nome da cidade nas consultas de linhas.
-
-## Executar no Windows
-
-Abra `TRANSURBAN.code-workspace` no VS Code e execute na pasta `backend`:
-
-```bat
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-Configure o arquivo local `.env` com a conexão PostgreSQL/Supabase:
-
-```dotenv
-DATABASE_URL=postgresql://USUARIO:SENHA@HOST:PORTA/BANCO
-DATABASE_SCHEMA=transurban_caderno
-```
-
-Nesta máquina, a conexão já está configurada no `.env`. Esse arquivo e a `.venv` ficam fora do Git.
-
-```bat
-python -m uvicorn main:app --port 8091
-```
-
-Esta revisão utiliza a porta 8091. Para desenvolvimento, a opção `--reload` pode ser acrescentada ao comando.
-
-Acesse a documentação em http://127.0.0.1:8091/docs. A execução anterior na porta 8090 não contém as últimas correções de documentação.
-
-## Demonstração na ordem do caderno
-
-1. Execute `GET /` para conferir a API.
-2. Execute `POST /cidades` com `{"nome":"Marialva"}`, cidade real confirmada no [IBGE](https://www.ibge.gov.br/cidades-e-estados/pr/marialva.html). Na revisão de 20/10, ela ainda não estava cadastrada. Paiçandu e sua linha já foram cadastradas no ensaio.
-3. Observe o `id_cidade` gerado e execute `GET /cidades`.
-4. Execute `POST /linhas` usando o identificador retornado no passo 2:
-
-```json
-{
-  "nome": "Maringá - Marialva",
-  "codigo": "001.0224-400",
-  "id_cidade": 1
-}
-```
-
-Substitua `1` pelo identificador realmente retornado antes de executar. Essa linha consta no [documento oficial do DER-PR](https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-02/Maringa_Marialva_REG0007_Linha0010224400_150226.pdf). Se repetir um cadastro já existente, a API responderá 409 com `Registro já cadastrado`.
-
-5. Execute `GET /linhas`. A resposta apresenta `cidade` com o nome, além de `id_linha`, `nome` e `codigo`.
-6. Faça outro `POST /linhas` com um `id_cidade` inexistente. A resposta esperada é HTTP 404 com `{"detail":"Cidade não encontrada"}`.
-7. Encerre o servidor com `Ctrl+C` e execute `deactivate`.
-
-## Arquivos
-
-| Arquivo | Função |
-|---|---|
-| `backend/database.py` | Carrega `.env`, cria o engine, as sessões e a Base |
-| `backend/models.py` | Mapeia as tabelas, PKs, FK e o relacionamento |
-| `backend/schemas.py` | Define os dados de entrada e saída |
-| `backend/main.py` | Cria a aplicação e as rotas POST e GET |
-| `backend/requirements.txt` | Registra as dependências instaladas |
-| `docs/DER.md` | DER do projeto autoral |
-| `docs/dicionario_dados.md` | Campos, tipos e regras do projeto |
-
-O recorte desta avaliação utiliza Cidade e Linha de Ônibus. Os demais relacionamentos do DER servem de contexto para o projeto e para o desafio de compreensão do caderno.
-
-Os dados iniciais e suas fontes oficiais estão em [docs/FONTES.md](docs/FONTES.md). O schema `transurban_caderno` já foi criado no Supabase desta máquina. Em outro banco, crie esse schema antes de iniciar ou deixe `DATABASE_SCHEMA` vazio para utilizar o schema padrão.
-
-Os [roteiros de apresentação](docs/ROTEIROS_APRESENTACAO.md) incluem falas, demonstração e perguntas frequentes. O [relatório de revisão](docs/REVISAO_FINAL.md) registra os testes e os ajustes feitos.
-
-Foram feitos dois ajustes de integração às regras do TRANSURBAN: seleção explícita do schema no mapeamento SQLAlchemy, pois a conexão do Supabase não aplicou o parâmetro da URL; e tratamento de duplicidades e limites de texto definidos no dicionário. As rotas e o percurso PK → FK seguem o caderno.
+Os arquivos de outras etapas permanecem no repositório como histórico. Para executar o portal atual, use **avaliacao_integrada** e a porta **8000**. Nunca publique `.env`, senhas, chaves secretas ou o ambiente virtual.

@@ -26,11 +26,11 @@ def executar(consulta):
         return consulta(get_supabase()).execute().data
     except APIError as erro:
         if erro.code in {"42P01", "PGRST205", "PGRST202"}:
-            raise HTTPException(503, "Módulo aguardando a migração database/05_portal.sql no Supabase.") from erro
+            raise HTTPException(503, "Módulo aguardando migrações do banco. Confira os scripts 05 e 06 da pasta database.") from erro
         if erro.code == "23505":
             raise HTTPException(409, "Este registro já existe.") from erro
         if erro.code == "P0001":
-            raise HTTPException(409, "Operação recusada. Confira o saldo, o limite e os dados da recarga.") from erro
+            raise HTTPException(409, "Operação recusada. Confira se o registro está ativo e se os dados atendem às regras da operação.") from erro
         raise
 
 

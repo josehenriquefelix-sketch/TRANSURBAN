@@ -1,0 +1,26 @@
+{
+  "data": "2026-11-12",
+  "tipo": "Verificacao no navegador do site local real",
+  "itens": [
+    "Pagina inicial aberta em http://127.0.0.1:8000/",
+    "66 opcoes de linhas municipais de Maringa mais placeholder",
+    "22 opcoes de atendimentos de Sarandi mais placeholder",
+    "Escolher Sarandi e variante Jardim Sao Paulo abriu horarios automaticamente no sentido Sarandi para Maringa",
+    "Busca Ouro Cola localizou a linha municipal 461",
+    "Quadro oficial incorporado abriu linha 461 e linha 460 com dias uteis, sabados, domingos e sentido",
+    "Consulta oficial de pontos e itinerarios validada na linha 460",
+    "Botao Buscar meu ponto carregou o quadro publico indicado pelo Na Hora",
+    "Mapa OpenStreetMap carregou apos correcao de Referrer-Policy",
+    "Login de motorista autorizado, salvamento de perfil/veiculo e logout conferidos com conta sintetica removida",
+    "Central de gestao aberta com conta da equipe autorizada",
+    "Largura de 390px conferida sem rolagem horizontal na pagina inicial",
+    "Nenhum erro JavaScript registrado nas telas verificadas"
+  ],
+  "nao_comprovado": [
+    "GPS fisico do dispositivo e continuidade em segundo plano",
+    "Entrega real de email e Google OAuth externo",
+    "Cobertura completa de todos os pontos e bairros municipais de Sarandi",
+    "ETA por ponto disponivel em todas as linhas ou horarios",
+    "Bilhetagem e pagamento reais"
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "data": "2026-11-12",
+  "linhas_municipais_maringa": 66,
+  "atendimentos_sarandi": 22,
+  "documentos_der": [
+    {
+      "documento_id": "der-00102544a0",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2023-06/Maringa_Sarandi_JdIndependencia_REG0511_Linha00102544A0_010723.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 1,
+        "sabado": 1,
+        "domingo_feriado": 0
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0010254410",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-03/Maringa_Sarandi_JdIndependencia_L03_REG0511_Linha0010254410_150326.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 131,
+        "sabado": 64,
+        "domingo_feriado": 46
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0010254420",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-02/Maringa_Sarandi_Pq_Alvamar_REG0511_Linha0010254420_010226.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 48,
+        "sabado": 28,
+        "domingo_feriado": 26
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0010254470",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-02/Maringa_Sarandi_Cj_Vale_Azul_REG0511_Linha0010254470_010226.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 47,
+        "sabado": 26,
+        "domingo_feriado": 24
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0020254400",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-01/Maringa_Sarandi_jdVerao_REG0511_Linha0020254400_150126.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 58,
+        "sabado": 30,
+        "domingo_feriado": 30
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0020254440",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2025-01/Maringa_Sarandi_JdTriangulo_REG0511_Linha0020254440_010125.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 2,
+        "sabado": 0,
+        "domingo_feriado": 0
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0020254470",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-04/Maringa_Sarandi_Monte_Rey_REG0511_Linha0020254470_150426.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 48,
+        "sabado": 26,
+        "domingo_feriado": 13
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0030254400",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-03/Maringa_Sarandi_JdEsperanca_L03_REG0511_Linha0030254400_010326.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 48,
+        "sabado": 27,
+        "domingo_feriado": 24
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0030254410",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-02/Maringa_Sarandi_Jd_Universal_Res_S%C3%A3o_Jose_Jd_Leblon_REG0511_Linha0030254410_150126.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 108,
+        "sabado": 59,
+        "domingo_feriado": 36
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0030254430",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-02/Maringa_Sarandi_Aeroporto_REG0511_Linha0030254430_010226.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 18,
+        "sabado": 4,
+        "domingo_feriado": 0
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0040254410",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2021-10/Maringa_Sarandi_Jd_Cometa_REG_0511_Linha_0040254_410_011121.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 23,
+        "sabado": 18,
+        "domingo_feriado": 16
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    },
+    {
+      "documento_id": "der-0050254410",
+      "fonte_url": "https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2022-08/Maringa_Sarandi_Nova_Alianca_REG_0511_Linha_0050254_410_010922.pdf",
+      "partidas_por_dia": {
+        "dias_uteis": 18,
+        "sabado": 8,
+        "domingo_feriado": 8
+      },
+      "conferencia": "Contagens da extração iguais às frequências diárias do cabeçalho do documento; variantes preservadas."
+    }
+  ],
+  "total_partidas_documentais_sem_duplicar_variantes": 1064,
+  "limite": "Conferência documental. Não confirma execução das viagens, serviço atual em cada ponto nem ETA em tempo real."
+}

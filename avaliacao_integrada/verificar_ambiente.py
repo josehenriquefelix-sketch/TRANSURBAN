@@ -46,6 +46,13 @@ def main():
             "tu_horario": "id",
             "tu_avaliacao": "id",
             "tu_recarga": "id",
+            "tu_acesso": "usuario_id",
+            "tu_motorista": "usuario_id",
+            "tu_favorito": "usuario_id",
+            "tu_viagem_operacional": "id",
+            "tu_posicao_atual": "viagem_id",
+            "tu_manifestacao": "id",
+            "tu_manifestacao_evento": "id",
         }
         for tabela, coluna in tabelas.items():
             try:
@@ -62,7 +69,7 @@ def main():
         resultado("Base de analise interna em UTF-8", False,
                   "Atualize o repositorio e confira data/atrasos_analise.csv.")
 
-    for rota in ("/", "/portal.css", "/portal.js", "/docs", "/dados/docs", "/portal/contexto"):
+    for rota in ("/", "/mobilidade.css", "/mobilidade.js", "/logo-mobilidade.svg", "/vendor/leaflet.js", "/docs", "/dados/docs", "/mobilidade/catalogo", "/mobilidade/viagens", "/portal/contexto"):
         try:
             with urlopen(f"http://127.0.0.1:8000{rota}", timeout=10) as resposta:
                 resultado(f"Site e API {rota}", resposta.status == 200)

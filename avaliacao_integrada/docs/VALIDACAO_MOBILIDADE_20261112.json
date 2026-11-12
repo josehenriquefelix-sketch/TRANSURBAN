@@ -1,0 +1,27 @@
+{
+  "data": "2026-11-12",
+  "ambiente": "FastAPI TestClient e Supabase real, contas sinteticas descartadas",
+  "verificacoes": [
+    "catalogo real sem cobertura completa",
+    "horarios documentais sem previsao ficticia",
+    "visitante bloqueado em dados privados",
+    "login e papel passageiro",
+    "login e papel motorista",
+    "login e papel gestor",
+    "isolamento de papeis no backend",
+    "favorito idempotente e privado",
+    "uma viagem ativa por motorista",
+    "perfil nao consentido permanece privado",
+    "posicao de teste recebida com carimbo do servidor",
+    "protocolo persistido na fila correta",
+    "avaliacao chega somente ao motorista vinculado",
+    "cidadao recebe resposta e historico privado",
+    "gestao municipal nao recebe competencia metropolitana",
+    "encerrar remove viagem publica e bloqueia novas posicoes",
+    "logout encerra sessao local",
+    "estado do Google informado sem segredos"
+  ],
+  "quantidade": 18,
+  "google_habilitado": false,
+  "gps": "Coordenadas sinteticas somente para teste de transporte de posicao. Nao valida sensor nem rastreamento de frota."
+}

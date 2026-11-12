@@ -3,13 +3,18 @@ import hashlib
 import os
 import re
 import time
+import secrets
+import base64
+from typing import Literal
 from collections import defaultdict, deque
 from threading import Lock
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 import httpx
 from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from pydantic import BaseModel, ConfigDict, Field, field_validator
+from fastapi.responses import RedirectResponse
+from postgrest.exceptions import APIError
 
 from backend.database import get_supabase
 
@@ -52,12 +57,21 @@ def validar_cpf(valor: str):
     return valor
 
 
+def validar_senha(valor: str):
+    if not (any(c.isupper() for c in valor) and any(c.islower() for c in valor)
+            and any(c.isdigit() for c in valor) and any(not c.isalnum() and not c.isspace() for c in valor)):
+        raise ValueError("Use uma letra maiúscula, uma minúscula, um número e um símbolo.")
+    return valor
+
+
 class Cadastro(BaseModel):
     model_config = ConfigDict(extra="forbid")
     nome: str = Field(min_length=2, max_length=100)
     email: str = Field(max_length=254)
     cpf: str
     senha: str = Field(min_length=8, max_length=72)
+
+    _senha_segura = field_validator("senha")(validar_senha)
 
     @field_validator("email")
     @classmethod
@@ -75,6 +89,7 @@ class Cadastro(BaseModel):
 class Login(BaseModel):
     identificador: str = Field(min_length=3, max_length=254)
     senha: str = Field(min_length=1, max_length=72)
+    tipo_acesso: Literal["passageiro", "motorista", "gestor"] = "passageiro"
 
 
 class Email(BaseModel):
@@ -83,6 +98,7 @@ class Email(BaseModel):
 
 class NovaSenha(BaseModel):
     senha: str = Field(min_length=8, max_length=72)
+    _senha_segura = field_validator("senha")(validar_senha)
 
 
 class Recuperacao(NovaSenha):
@@ -101,6 +117,13 @@ def auth_request(method, path, payload=None, token=None):
         raise HTTPException(503, "Serviço de contas indisponível. Tente novamente.") from erro
     data = result.json() if result.content else {}
     if result.is_error:
+        codigo = data.get("error_code") or data.get("code")
+        if codigo == "same_password":
+            raise HTTPException(422, "Escolha uma senha diferente da anterior.")
+        if codigo == "weak_password":
+            raise HTTPException(422, "A senha não atende aos requisitos de segurança.")
+        if codigo == "email_address_not_authorized":
+            raise HTTPException(503, "O envio de e-mail precisa ser configurado no Supabase. Contate a equipe TRANSURBAN.")
         if result.status_code == 429:
             raise HTTPException(429, "Limite de envio atingido. Aguarde antes de tentar novamente.")
         raise HTTPException(401 if result.status_code in (400, 401, 403, 422) else 503,
@@ -123,7 +146,33 @@ def usuario_atual(request: Request):
         raise HTTPException(401, "Entre na sua conta para continuar.")
     usuario = auth_request("GET", "user", token=token)
     return {"id": usuario["id"], "email": usuario.get("email"),
-            "nome": usuario.get("user_metadata", {}).get("nome", "Passageiro")}
+            "nome": usuario.get("user_metadata", {}).get("nome") or usuario.get("user_metadata", {}).get("full_name") or "Passageiro"}
+
+
+def papeis(usuario):
+    permitidos = ["passageiro"]
+    emails = {e.strip().lower() for e in os.getenv("ADMIN_EMAILS", "").split(",") if e.strip()}
+    if (usuario.get("email") or "").lower() in emails:
+        permitidos.append("gestor")
+    try:
+        acessos = get_supabase().table("tu_acesso").select("papel").eq("usuario_id", usuario["id"]).eq("ativo", True).execute().data
+        permitidos.extend(acesso["papel"] for acesso in acessos if acesso["papel"] not in permitidos)
+    except APIError as erro:
+        if erro.code not in {"42P01", "PGRST205"}:
+            raise
+    return permitidos
+
+
+def motorista_autorizado(usuario=Depends(usuario_atual)):
+    if "motorista" not in papeis(usuario):
+        raise HTTPException(403, "A área do motorista exige vínculo autorizado pela gestão.")
+    return usuario
+
+
+def gestor_autorizado(usuario=Depends(usuario_atual)):
+    if "gestor" not in papeis(usuario):
+        raise HTTPException(403, "Acesso restrito à gestão autorizada.")
+    return usuario
 
 
 def administrador(usuario=Depends(usuario_atual)):
@@ -157,6 +206,10 @@ def entrar(dados: Login, response: Response):
             raise HTTPException(401, "E-mail/CPF ou senha inválidos.")
         identificador = registros[0]["email"]
     data = auth_request("POST", "token?grant_type=password", {"email": identificador, "password": dados.senha})
+    if dados.tipo_acesso != "passageiro":
+        user = auth_request("GET", "user", token=data["access_token"])
+        if dados.tipo_acesso not in papeis({"id": user["id"], "email": user.get("email")}):
+            raise HTTPException(403, "Sua conta ainda não foi autorizada para este tipo de acesso.")
     cookies(response, data)
     return {"mensagem": "Login realizado."}
 
@@ -165,7 +218,57 @@ def entrar(dados: Login, response: Response):
 def minha_conta(response: Response, usuario=Depends(usuario_atual)):
     response.headers["Cache-Control"] = "no-store"
     emails = {e.strip().lower() for e in os.getenv("ADMIN_EMAILS", "").split(",") if e.strip()}
-    return {**usuario, "administrador": usuario["email"].lower() in emails}
+    return {**usuario, "administrador": usuario["email"].lower() in emails, "papeis": papeis(usuario)}
+
+
+@router.get("/configuracao")
+def configuracao_publica():
+    settings = auth_request("GET", "settings")
+    return {"google": bool(settings.get("external", {}).get("google"))}
+
+
+def limpar_oauth(response):
+    for key in ("tu_pkce", "tu_oauth_state", "tu_oauth_role"):
+        response.delete_cookie(key, path="/auth")
+    return response
+
+
+@router.get("/google")
+def entrar_google(tipo_acesso: Literal["passageiro", "motorista", "gestor"] = "passageiro"):
+    settings = auth_request("GET", "settings")
+    if not settings.get("external", {}).get("google"):
+        raise HTTPException(503, "Login com Google aguardando configuração do provedor no Supabase.")
+    verifier = secrets.token_urlsafe(48)
+    challenge = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).decode().rstrip("=")
+    state = secrets.token_urlsafe(24)
+    app_url = os.getenv("APP_URL", "http://127.0.0.1:8000").rstrip("/")
+    callback = f"{app_url}/auth/google/callback?flow={state}"
+    query = urlencode({"provider": "google", "redirect_to": callback, "code_challenge": challenge, "code_challenge_method": "s256"})
+    response = RedirectResponse(os.getenv("SUPABASE_URL", "").rstrip("/") + "/auth/v1/authorize?" + query)
+    secure = os.getenv("COOKIE_SECURE", "false").lower() == "true"
+    for key, value in {"tu_pkce": verifier, "tu_oauth_state": state, "tu_oauth_role": tipo_acesso}.items():
+        response.set_cookie(key, value, max_age=600, httponly=True, secure=secure, samesite="lax", path="/auth")
+    return response
+
+
+@router.get("/google/callback", include_in_schema=False)
+def google_callback(request: Request, code: str = "", flow: str = ""):
+    expected = request.cookies.get("tu_oauth_state", "")
+    verifier = request.cookies.get("tu_pkce", "")
+    if not code or not expected or not verifier or not secrets.compare_digest(flow, expected):
+        return limpar_oauth(RedirectResponse("/?erro=google_sessao_invalida#login"))
+    try:
+        data = auth_request("POST", "token?grant_type=pkce", {"auth_code": code, "code_verifier": verifier})
+        user = auth_request("GET", "user", token=data["access_token"])
+        role = request.cookies.get("tu_oauth_role", "passageiro")
+        if role not in papeis({"id": user["id"], "email": user.get("email")}):
+            return limpar_oauth(RedirectResponse("/?erro=acesso_nao_autorizado#login"))
+        destino = {"motorista": "motorista", "gestor": "gestao"}.get(role, "inicio")
+        response = RedirectResponse("/#" + destino)
+        cookies(response, data)
+    except HTTPException:
+        response = RedirectResponse("/?erro=google_indisponivel#login")
+    return limpar_oauth(response)
 
 
 @router.post("/refresh")

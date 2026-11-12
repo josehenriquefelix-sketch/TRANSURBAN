@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 HOST = "127.0.0.1"
 PORT = 8000
 URL = f"http://{HOST}:{PORT}/"
+VERSAO = "2026.11.12-rede"
 
 
 def porta_aberta() -> bool:
@@ -27,7 +28,8 @@ def porta_aberta() -> bool:
 def servico_transurban_ativo() -> bool:
     try:
         with urlopen(f"http://{HOST}:{PORT}/health", timeout=1) as resposta:
-            return json.load(resposta).get("projeto") == "TRANSURBAN"
+            estado = json.load(resposta)
+            return estado.get("projeto") == "TRANSURBAN" and estado.get("versao") == VERSAO
     except (OSError, ValueError):
         return False
 
@@ -52,7 +54,7 @@ def main() -> int:
             webbrowser.open(URL)
             print("TRANSURBAN ja estava ativo; a pagina foi aberta.")
             return 0
-        print(f"A porta {PORT} ja esta em uso por outro programa. Feche-o e tente novamente.")
+        print(f"A porta {PORT} esta ocupada por uma instancia antiga ou outro programa. Feche a janela antiga com Ctrl+C e tente novamente.")
         input("Pressione Enter para fechar...")
         return 1
 
@@ -86,4 +88,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -13,6 +13,10 @@ O TRANSURBAN é um sistema de mobilidade destinado à população de Maringá e 
 
 O computador precisa de internet para o Supabase e para preparar dependências na primeira execução. O endereço local é `http://127.0.0.1:8000/`. A API de DS está em `/docs`; a documentação de Ciência de Dados está em `/dados/docs`.
 
+## Versão atual — 12/11/2026
+
+O portal foi atualizado com áreas de passageiro, motorista autorizado e central de gestão. Maringá possui 66 linhas municipais conferidas no Na Hora; Sarandi possui 22 atendimentos, incluindo variantes documentadas em 12 tabelas DER/PR. A seleção abre os horários automaticamente. O quadro oficial incorporado permite consultar os pontos e itinerários de Maringá. Consulte [operação e fontes](MOBILIDADE_OPERACAO.md) e [conferência do catálogo](CONFERENCIA_CATALOGO_20261112.json). Google, SMTP, adesão institucional, previsão por ponto e bilhetagem têm dependências externas identificadas.
+
 ## Percurso da demonstração
 
 1. Apresente o problema de acesso à informação de transporte entre as duas cidades e a proposta do TRANSURBAN.
@@ -21,7 +25,7 @@ O computador precisa de internet para o Supabase e para preparar dependências n
 4. Mostre a consulta de cidades e linhas. Explique que passageiros e motoristas não alteram esses cadastros.
 5. Mostre o login e a separação entre acesso do público e acesso autorizado da equipe.
 6. Explique como o navegador chama o FastAPI e como o backend acessa o Supabase por HTTPS. Abra o Swagger para mostrar as rotas.
-7. Se utilizar a área interna para demonstrar os mecanismos de avaliação e carteira, identifique os registros e créditos como testes de desenvolvimento.
+7. Demonstre uma manifestação e sua resposta na central do escopo autorizado. Para o motorista, mostre perfil, veículo e controles de viagem. Use registros identificados como teste; não atribua avaliações ou posições sintéticas a profissionais reais. A recarga efetiva permanece pendente.
 8. Mostre no Supabase os relacionamentos entre as tabelas. As senhas são gerenciadas pelo Supabase Auth; a chave secreta permanece no backend.
 
 ## Estado dos serviços

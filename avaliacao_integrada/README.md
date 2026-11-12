@@ -4,45 +4,42 @@
 
 O [guia do evento](docs/FICIENCIAS_2026.md) descreve a preparação do computador e o percurso pelo sistema. Na raiz do repositório, `INICIAR_TRANSURBAN.cmd` abre a aplicação e `VERIFICAR_TRANSURBAN.cmd` confere dependências, configuração, tabelas, arquivos da interface e documentação. O verificador realiza somente consultas.
 
-## Portal de mobilidade — atualização de novembro de 2026
+## Portal de mobilidade — 12/11/2026
 
-O produto é destinado à população de Maringá e Sarandi. A interface pública apresenta informações de mobilidade com fonte e data. Os indicadores sintéticos e as operações de teste ficaram restritos à conta da equipe na interface. A consulta operacional de horários, o envio de avaliações sobre veículos reais e a recarga efetiva dependem de integração e validação com a operadora. Essas pendências são informadas nas respectivas telas. As atividades e evidências acadêmicas abaixo documentam o desenvolvimento do sistema.
+O TRANSURBAN é uma plataforma independente para passageiros, motoristas autorizados e gestão do transporte entre Maringá e Sarandi. A interface usa HTML, CSS e JavaScript; a API usa Python/FastAPI; os registros ficam no Supabase/PostgreSQL por HTTPS.
 
-O portal inclui telas de login por e-mail ou CPF, cadastro de conta, recuperação de senha, início, dashboard, cidades, linhas, trajetos/horários, avaliações e passe demonstrativo. A interface usa HTML, CSS e JavaScript. A API usa Python/FastAPI e o banco usa Supabase/PostgreSQL por HTTPS.
-
-- Site em `http://127.0.0.1:8000/`.
-- Swagger de Desenvolvimento de Sistemas em `/docs`. As totalizações de IA foram retiradas desse Swagger.
-- Swagger de Ciência de Dados em `/dados/docs`. Os endpoints `/ia/*` continuam disponíveis para a atividade acadêmica e o dashboard.
-- O dashboard apresenta documentos oficiais com links e datas, seguidos das quatro totalizações do CSV sintético.
-- Passageiros e motoristas consultam cidades e linhas cadastradas. Alterações exigem sessão e e-mail autorizado em `ADMIN_EMAILS` no `.env` do backend.
-- Contas e senhas são administradas pelo Supabase Auth. A sessão fica em cookies HttpOnly. O CPF é validado e seu resumo SHA-256 é gravado para a busca de login.
-- Avaliações e carteira são vinculadas ao usuário autenticado. Os endpoints filtram os dados pelo usuário validado pelo Supabase.
-- Os trajetos, horários, veículos e motoristas do módulo de consulta são demonstrativos. A recarga é fictícia, sem integração com pagamento ou bilhetagem da operadora. Cada operação usa uma chave única e uma transação no PostgreSQL para evitar duplicação.
-
-### Preparar o banco e as contas
-
-No projeto Supabase da equipe a migração `database/05_portal.sql` já foi aplicada. Ao usar esse mesmo projeto em outro computador, não é necessário executá-la novamente. Em um banco novo, prepare primeiro as tabelas de cidades e linhas e depois execute `05_portal.sql` no SQL Editor. O script é transacional e pode ser repetido.
-
-Em Authentication → URL Configuration, configure o Site URL como `http://127.0.0.1:8000` e autorize o retorno para `http://127.0.0.1:8000/**`. Essas URLs já foram configuradas no projeto da equipe. Para hospedagem, use a URL HTTPS do site, ajuste `APP_URL` e configure `COOKIE_SECURE=true`.
-
-O cadastro público solicita confirmação de e-mail conforme a configuração do Supabase. Entrega de mensagens depende da configuração e dos limites do serviço de e-mail do projeto. Valide o recebimento com o endereço real que será usado antes da apresentação. Para envio a público externo, configure o SMTP do projeto.
-
-Uma conta fictícia da equipe foi preparada para os testes de apresentação. Suas credenciais estão apenas no `.env` privado deste computador, nos campos `DEMO_EMAIL`, `DEMO_PASSWORD` e `DEMO_CPF`. Os e-mails com acesso aos cadastros ficam em `ADMIN_EMAILS`. Novas contas recebem acesso de passageiro. Credenciais de apresentação também devem ser transferidas por meio privado.
+- Passageiro: início, dashboard documental, cidades/linhas, horários e mapa, favoritas, manifestações com protocolo e resposta, conta e recuperação de senha.
+- Motorista autorizado: perfil e veículo, notas das próprias viagens, início/encerramento e compartilhamento consentido da localização do dispositivo. O perfil público é opcional.
+- Gestão autorizada: fila por competência, filtros, resposta ao cidadão e histórico persistido. Passageiros não recebem acesso profissional ao criar conta.
+- Site e API usam uma única origem: `http://127.0.0.1:8000/`. O menu contém o link **API do sistema** (`/docs`). Ciência de Dados fica separada em `/dados/docs`.
+- O catálogo contém as 66 linhas municipais de Maringá visíveis na consulta oficial Na Hora e 22 atendimentos de Sarandi, incluindo variantes, extraídos de 12 tabelas DER/PR. Foram conferidas 1.064 partidas documentais antes de separar variantes. Horários e pontos de Maringá são abertos na consulta oficial incorporada; o seletor de Maringá não mistura as ligações metropolitanas. O catálogo municipal interbairros completo de Sarandi não foi confirmado.
+- Horários documentais não são previsões de passagem. O mapa próprio TRANSURBAN só exibe posição quando um motorista autorizado inicia viagem e envia sua localização. A consulta oficial incorporada é um serviço externo distinto e pode oferecer recursos ao vivo conforme a disponibilidade do provedor. Não há integração de GPS/ETA da TCCC ou Mobilibus.
+- Recarga e pagamento dependem de adesão à bilhetagem e ao provedor de pagamentos. A tela informa essa pendência e não vende créditos fictícios.
+- Google está implementado com PKCE, mas depende de configuração do provedor. E-mails de confirmação/recuperação dependem de SMTP e da confirmação de entrega em caixa postal real.
 
 ### Abrir no computador da escola
 
-1. No VS Code, use Git → Clonar Repositório com o endereço deste repositório, ou execute `git pull` se o projeto já estiver clonado.
-2. Abra a pasta `avaliacao_integrada`.
-3. Configure `backend/.env` usando `backend/.env.example` como referência. Use o mesmo projeto Supabase e os e-mails autorizados da equipe. O arquivo privado não vem pelo GitHub.
-4. Execute `iniciar_local.cmd`. Ele prepara o ambiente e abre o site. O link da API está no menu do site.
+1. No VS Code, pressione `Ctrl+Shift+P`, escolha **Git: Clone** e cole `https://github.com/josehenriquefelix-sketch/TRANSURBAN.git`. Escolha uma pasta e abra o repositório. Se já estiver clonado, execute `git pull` no terminal, sem sobrescrever mudanças locais.
+2. Copie `avaliacao_integrada/backend/.env.example` para `avaliacao_integrada/backend/.env`. Preencha URL e chave privada do mesmo projeto Supabase, sem aspas extras. Transfira essas informações por meio privado. O `.env` fica fora do GitHub.
+3. Na raiz do repositório, execute `INICIAR_TRANSURBAN.cmd`. Na primeira vez ele cria o ambiente e instala as dependências. Mantenha a janela do servidor aberta.
+4. Abra `http://127.0.0.1:8000/`; o link da API está no menu. Use uma conta já confirmada. A conta profissional precisa ter vínculo previamente autorizado no banco.
+5. Execute `VERIFICAR_TRANSURBAN.cmd` para conferir a configuração antes do uso.
 
-O Windows precisa ter Python 3.10 ou superior disponível no PATH e acesso à internet para instalar dependências e consultar o Supabase. Mantenha o servidor aberto durante o uso. O endereço `127.0.0.1` representa o próprio computador.
+Windows: Python 3.10+ no PATH, Git e internet. Linux/macOS: entre em `avaliacao_integrada`, execute `python3 -m venv backend/.venv`, ative com `source backend/.venv/bin/activate`, instale `pip install -r backend/requirements.txt` e inicie `python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000`.
 
-### Verificação desta atualização
+`127.0.0.1` é o próprio computador. Para vários dispositivos acessarem o mesmo sistema, hospede a API/interface em um endereço **HTTPS**, configure `APP_URL`, `COOKIE_SECURE=true`, URLs de retorno do Supabase e proxy confiável. Celular acessando um IP de rede HTTP não tem a mesma garantia de acesso à geolocalização. O navegador precisa permanecer aberto; GPS contínuo em segundo plano exige aplicativo/solução específica.
 
-Os 12 testes automatizados, incluindo seis de regressão e seis de autenticação/permissão/documentação, passaram. Foram realizadas 42 verificações adicionais com FastAPI TestClient e Supabase real, registradas em `docs/EVIDENCIAS_PORTAL_20261110.json`, incluindo login por e-mail/CPF, sessão, logout, restrição de acesso, avaliação, CRUD/FK e recarga idempotente. As duas recargas de demonstração somam R$ 15 na conta fictícia. O teste pela interface também registrou uma avaliação de demonstração. Consulte `docs/EVIDENCIAS_INTERFACE_20261111.json`. O recebimento de e-mail em caixa postal real precisa de validação com o endereço da equipe.
+### Banco, papéis e integrações
 
-Consulte `docs/PORTAL_E_APRESENTACAO.md` para o roteiro e os limites da demonstração.
+No projeto Supabase da equipe, os scripts 05 e 06 foram aplicados. Ao usar **o mesmo banco**, não execute novamente a instalação. Em projeto novo, siga os scripts SQL da pasta `database` na ordem, incluindo `05_portal.sql` e `06_operacao_e_manifestacoes.sql`.
+
+Consulte [operação e integrações](docs/MOBILIDADE_OPERACAO.md) para autorizar vínculos, configurar Google e e-mail, entender os limites do mapa e consultar as fontes. A chave de serviço fica somente no backend. As tabelas novas têm RLS e não oferecem acesso direto a `anon`/`authenticated`; o backend verifica a sessão, o papel e o escopo em cada operação.
+
+A senha nova exige no mínimo 8 caracteres, maiúscula, minúscula, número e símbolo. O Supabase administra o hash das senhas; o backend converte a rejeição de senha igual à anterior em mensagem clara. A busca de login por CPF usa SHA-256 do CPF validado. Esse resumo ainda é dado pessoal e permanece protegido no backend/banco.
+
+### Evidências
+
+Os testes automatizados verificam CRUD/FK, CORS, documentação, cookies e permissões. A validação adicional com Supabase real está em `docs/VALIDACAO_MOBILIDADE_20261112.json`; as contas e os registros sintéticos usados nela são descartados ao final. Coordenadas sintéticas validam o envio/consulta e não provam GPS de aparelho ou localização de frota real. Evidências anteriores permanecem datadas e podem descrever versões anteriores da interface.
 
 Entrega acadêmica integrada com FastAPI, pandas, Supabase por HTTPS, HTML, CSS e JavaScript. A documentação cobre o CRUD, a base de Ciência de Dados, as quatro perguntas, o CORS e o roteiro de conferência.
 
@@ -53,7 +50,7 @@ Entrega acadêmica integrada com FastAPI, pandas, Supabase por HTTPS, HTML, CSS 
 - `backend/`: FastAPI, modelos Pydantic, CRUD de cidade e linha por Supabase Data API HTTPS, leitura/validação do CSV, quatro totalizações e configuração de CORS.
 - `database/`: consulta de auditoria e DDLs para uma instância vazia. O backend não cria nem modifica tabelas automaticamente.
 - `data/atrasos_analise.csv`: base de demonstração e `ORIGEM_DADOS.txt` com a procedência e os limites.
-- `frontend/`: painel web adaptável, CRUD de cidades e linhas, e visualização das totalizações da API.
+- `frontend/`: portal responsivo de mobilidade com áreas de passageiro, motorista e gestão. O CRUD acadêmico continua na API protegida.
 - `docs/`: explicação sobre linha da base e perguntas, resultados conferidos, verificação local e roteiro de apresentação.
 
 ## Escopo do CRUD

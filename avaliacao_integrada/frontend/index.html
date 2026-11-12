@@ -3,28 +3,29 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <meta content="TRANSURBAN — Mobilidade urbana entre Maringá e Sarandi. Trajetos, horários, passe e informações em um só lugar." name="description"/>
-  <meta content="#102a43" name="theme-color"/>
+  <meta content="#004d40" name="theme-color"/>
+  <meta content="TRANSURBAN — informações de transporte, participação cidadã e mobilidade entre Maringá e Sarandi." name="description"/>
   <title>
    TRANSURBAN | Mobilidade que conecta
   </title>
-  <link href="/logo.svg" rel="icon" type="image/svg+xml"/>
-  <link href="/portal.css?v=20261111publico" rel="stylesheet"/>
-  <script defer="" src="/app.js?v=20261111validacao">
+  <link href="/logo-mobilidade.svg" rel="icon"/>
+  <link href="/vendor/leaflet.css" rel="stylesheet"/>
+  <link href="/mobilidade.css?v=20261112-rede" rel="stylesheet"/>
+  <script defer="" src="/vendor/leaflet.js">
   </script>
-  <script defer="" src="/portal.js?v=20261111publico">
+  <script defer="" src="/mobilidade.js?v=20261112-rede">
   </script>
  </head>
  <body>
-  <a class="skip-link" href="#conteudo">
-   Pular para o conteúdo
+  <a class="skip" href="#conteudo">
+   Pular para conteúdo
   </a>
-  <section class="auth-screen" id="authScreen">
-   <div class="auth-story">
+  <section hidden="" id="auth">
+   <div class="auth-art">
     <a class="brand" href="#inicio">
-     <img alt="" height="43" src="/logo.svg" width="43"/>
+     <img alt="" height="42" src="/logo-mobilidade.svg" width="42"/>
      <span>
-      transurban
+      TRANSURBAN
       <small>
        Mobilidade que conecta.
       </small>
@@ -35,155 +36,143 @@
       MARINGÁ ↔ SARANDI
      </span>
      <h1>
-      Seu próximo destino
+      Seu caminho,
       <br/>
-      começa por aqui.
+      mais simples.
      </h1>
      <p>
-      Planeje o trajeto. Acompanhe sua mobilidade.
+      Informação para se mover.
       <br/>
-      Conecte-se a uma cidade mais acessível.
+      Conexões para ir além.
      </p>
-     <div class="auth-route">
-      <i>
-      </i>
-      <span>
-       Maringá
-      </span>
-      <b>
-       ───────── →
-      </b>
-      <i>
-      </i>
-      <span>
-       Sarandi
-      </span>
-     </div>
     </div>
     <small>
-     TRANSURBAN • Mobilidade urbana entre Maringá e Sarandi
+     Transporte, informação e participação.
     </small>
    </div>
-   <div class="auth-panel">
-    <a class="back-link" href="#inicio">
-     ← Explorar o projeto
+   <div class="auth-content">
+    <a class="back" href="#inicio">
+     ← Voltar ao início
     </a>
-    <form class="auth-form" id="loginForm">
-     <span class="eyebrow">
-      BEM-VINDO AO TRANSURBAN
+    <div aria-label="Tipo de acesso" class="auth-tabs" role="group">
+     <button class="active" data-login-role="passageiro" type="button">
+      Passageiro
+     </button>
+     <button data-login-role="motorista" type="button">
+      Motorista
+     </button>
+     <button data-login-role="gestor" type="button">
+      Gestão
+     </button>
+    </div>
+    <form id="loginForm">
+     <span class="eyebrow" id="loginEyebrow">
+      ÁREA DO PASSAGEIRO
      </span>
      <h2>
       Bom ter você aqui.
      </h2>
-     <p>
-      Acesse sua conta e siga seu caminho.
+     <p id="loginRoleInfo">
+      Entre para salvar suas linhas e acompanhar suas manifestações.
      </p>
      <label for="loginId">
       E-mail ou CPF
      </label>
-     <input autocomplete="username" id="loginId" maxlength="254" placeholder="Seu e-mail ou CPF" required=""/>
+     <input autocomplete="username" id="loginId" maxlength="254" required="" type="text"/>
      <label for="loginPassword">
       Senha
      </label>
-     <div class="password-field">
-      <input autocomplete="current-password" id="loginPassword" maxlength="72" placeholder="Sua senha" required="" type="password"/>
-      <button aria-label="Mostrar senha" class="show-password" data-for="loginPassword" type="button">
-       Ver
-      </button>
-     </div>
+     <input autocomplete="current-password" id="loginPassword" maxlength="72" required="" type="password"/>
      <a class="forgot" href="#esqueci-senha">
       Esqueci minha senha
      </a>
-     <button class="button button-primary wide">
+     <button class="btn primary wide">
       Entrar na minha conta →
      </button>
-     <p class="status" id="loginFeedback" role="status">
+     <button class="btn google wide" id="googleLogin" type="button">
+      <b>
+       G
+      </b>
+      Continuar com Google
+     </button>
+     <p class="status" id="loginStatus" role="status">
      </p>
-     <p class="auth-switch">
-      Primeira vez por aqui?
+     <p>
+      Ainda não tem conta?
       <a href="#cadastro">
        Criar conta
       </a>
      </p>
-     <a class="guest-link" href="#inicio">
-      Explorar como visitante →
-     </a>
     </form>
-    <form class="auth-form" hidden="" id="registerForm">
+    <form hidden="" id="signupForm">
      <span class="eyebrow">
-      UMA NOVA CONEXÃO
+      SUA CONTA TRANSURBAN
      </span>
      <h2>
       Crie sua conta.
      </h2>
      <p>
-      Seu passe e suas avaliações em um só lugar.
+      O cadastro público cria uma conta de passageiro. O acesso profissional exige autorização.
      </p>
-     <label for="registerName">
+     <label for="signupName">
       Nome completo
      </label>
-     <input autocomplete="name" id="registerName" maxlength="100" minlength="2" required=""/>
-     <label for="registerEmail">
+     <input autocomplete="name" id="signupName" maxlength="100" minlength="2" required="" type="text"/>
+     <label for="signupEmail">
       E-mail
      </label>
-     <input autocomplete="email" id="registerEmail" maxlength="254" required="" type="email"/>
-     <label for="registerCpf">
+     <input autocomplete="email" id="signupEmail" required="" type="email"/>
+     <label for="signupCpf">
       CPF
      </label>
-     <input id="registerCpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required=""/>
-     <small>
-      Usado para identificar sua conta. O sistema guarda um resumo criptográfico do CPF.
-     </small>
-     <label for="registerPassword">
+     <input id="signupCpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required="" type="text"/>
+     <label for="signupPassword">
       Senha
      </label>
-     <input autocomplete="new-password" id="registerPassword" maxlength="72" minlength="8" placeholder="Mínimo de 8 caracteres" required="" type="password"/>
-     <label for="registerConfirm">
+     <input autocomplete="new-password" id="signupPassword" maxlength="72" minlength="8" required="" type="password"/>
+     <label for="signupConfirm">
       Confirme a senha
      </label>
-     <input autocomplete="new-password" id="registerConfirm" maxlength="72" minlength="8" required="" type="password"/>
-     <button class="button button-primary wide">
-      Criar minha conta →
+     <input autocomplete="new-password" id="signupConfirm" maxlength="72" minlength="8" required="" type="password"/>
+     <p class="muted">
+      Use no mínimo 8 caracteres, com maiúscula, minúscula, número e símbolo.
+     </p>
+     <button class="btn primary wide">
+      Criar minha conta
      </button>
-     <p class="status" id="registerFeedback" role="status">
+     <p class="status" id="signupStatus" role="status">
      </p>
-     <p>
-      Já tem conta?
-      <a href="#login">
-       Entrar
-      </a>
-     </p>
+     <a href="#login">
+      Já tenho conta
+     </a>
     </form>
-    <form class="auth-form" hidden="" id="forgotForm">
-     <span class="eyebrow">
-      RECUPERE O ACESSO
-     </span>
+    <form hidden="" id="forgotForm">
      <h2>
       Esqueci minha senha
      </h2>
      <p>
-      Informe o e-mail da conta. Você receberá um link para criar uma nova senha.
+      Você receberá um link no e-mail cadastrado para escolher uma nova senha.
      </p>
      <label for="forgotEmail">
       E-mail cadastrado
      </label>
-     <input autocomplete="email" id="forgotEmail" maxlength="254" required="" type="email"/>
-     <button class="button button-primary wide">
-      Enviar link de recuperação →
+     <input autocomplete="email" id="forgotEmail" required="" type="email"/>
+     <button class="btn primary wide">
+      Enviar link de recuperação
      </button>
-     <p class="status" id="forgotFeedback" role="status">
+     <p class="status" id="forgotStatus" role="status">
      </p>
      <a href="#login">
-      ← Voltar para o login
+      Voltar para entrar
      </a>
     </form>
-    <form class="auth-form" hidden="" id="resetForm">
-     <span class="eyebrow">
-      REDEFINIR ACESSO
-     </span>
+    <form hidden="" id="resetForm">
      <h2>
       Crie uma nova senha.
      </h2>
+     <p>
+      Use uma senha diferente da anterior, com pelo menos 8 caracteres, maiúscula, minúscula, número e símbolo.
+     </p>
      <label for="newPassword">
       Nova senha
      </label>
@@ -192,23 +181,20 @@
       Confirme a nova senha
      </label>
      <input autocomplete="new-password" id="newConfirm" maxlength="72" minlength="8" required="" type="password"/>
-     <button class="button button-primary wide">
-      Salvar nova senha →
+     <button class="btn primary wide">
+      Salvar nova senha
      </button>
-     <p class="status" id="resetFeedback" role="status">
+     <p class="status" id="resetStatus" role="status">
      </p>
-     <a href="#login">
-      Voltar para entrar
-     </a>
     </form>
    </div>
   </section>
-  <div hidden="" id="appShell">
-   <aside class="sidebar">
+  <div id="shell">
+   <aside id="sidebar">
     <a class="brand" href="#inicio">
-     <img alt="" height="43" src="/logo.svg" width="43"/>
+     <img alt="" height="42" src="/logo-mobilidade.svg" width="42"/>
      <span>
-      transurban
+      TRANSURBAN
       <small>
        Mobilidade que conecta.
       </small>
@@ -218,105 +204,119 @@
      SEU CAMINHO
     </p>
     <nav aria-label="Navegação principal">
-     <a data-page="inicio" href="#inicio">
+     <a data-nav="inicio" href="#inicio">
       <span>
        ⌂
       </span>
       Início
      </a>
-     <a data-page="dashboard" href="#dashboard">
+     <a data-nav="dashboard" href="#dashboard">
       <span>
        ▥
       </span>
       Dashboard
      </a>
-     <a data-page="trajetos" href="#trajetos">
+     <a data-nav="cidades" href="#cidades">
       <span>
-       ↗
+       ▦
       </span>
-      Trajetos e horários
+      Cidades e linhas
      </a>
-     <a data-page="passe" href="#passe">
+     <a data-nav="horarios" href="#horarios">
+      <span>
+       ◷
+      </span>
+      Horários e mapa
+     </a>
+     <a data-nav="favoritos" href="#favoritos">
+      <span>
+       ☆
+      </span>
+      Minhas linhas
+     </a>
+     <a data-nav="passe" href="#passe">
       <span>
        ▣
       </span>
       Meu passe
      </a>
-     <a data-page="avaliacoes" href="#avaliacoes">
+     <a data-nav="avaliacoes" href="#avaliacoes">
       <span>
-       ☆
+       ☏
       </span>
       Avaliações
      </a>
-     <p class="nav-label">
-      EXPLORE A REDE
-     </p>
-     <a data-page="cidades" href="#cidades">
+     <a data-nav="sobre" href="#sobre">
       <span>
-       ▦
+       ⓘ
       </span>
-      Cidades cadastradas
+      Sobre o projeto
      </a>
-     <a data-page="linhas" href="#linhas">
+     <a data-nav="motorista" data-role="motorista" hidden="" href="#motorista">
       <span>
-       ⇄
+       ↗
       </span>
-      Linhas cadastradas
+      Área do motorista
+     </a>
+     <a data-nav="gestao" data-role="gestor" hidden="" href="#gestao">
+      <span>
+       ▤
+      </span>
+      Central de gestão
      </a>
     </nav>
-    <div class="sidebar-foot">
-     <div class="region-label">
-      <i>
-      </i>
-      Maringá ↔ Sarandi
-     </div>
-     <a href="/docs" rel="noopener" target="_blank">
-      Documentação da API ↗
+    <div class="sidebar-bottom">
+     <span>
+      ● Maringá ↔ Sarandi
+     </span>
+     <a href="#conta">
+      Minha conta
      </a>
-     <small>
-      Mobilidade urbana • Maringá e Sarandi
-     </small>
+     <button class="plain" data-logout="" hidden="">
+      Sair da conta ↪
+     </button>
+     <a href="/docs" rel="noopener" target="_blank">
+      API do sistema ↗
+     </a>
     </div>
    </aside>
    <div class="workspace">
-    <header class="topbar">
-     <div class="topbar-left">
-      <button aria-expanded="false" aria-label="Abrir menu" class="menu-toggle" id="menuToggle">
+    <header>
+     <div class="header-left">
+      <button aria-expanded="false" aria-label="Abrir menu" id="menuButton" type="button">
        ☰
       </button>
-      <span id="pageBreadcrumb">
+      <span id="breadcrumb">
        Visão geral
       </span>
      </div>
-     <div class="topbar-right">
-      <div class="service-status" id="serviceStatus" role="status">
+     <div class="header-account">
+      <span class="service">
        <i>
        </i>
-       <span>
-        Verificando serviço
+       <span id="serviceText">
+        TRANSURBAN
        </span>
-      </div>
-      <a class="account-link" href="#login" id="accountLink">
-       <span id="accountAvatar">
+      </span>
+      <a href="#login" id="userLink">
+       <span id="avatar">
         ↗
        </span>
-       <span id="accountLabel">
-        Entrar na conta
+       <span id="userName">
+        Entrar
        </span>
       </a>
-      <button class="logout" hidden="" id="logoutButton" type="button">
+      <button class="plain" data-logout="" hidden="">
        Sair ↪
       </button>
      </div>
     </header>
     <main id="conteudo" tabindex="-1">
-     <section class="page home-page" hidden="" id="inicio">
-      <div class="home-hero">
-       <div class="hero-text">
+     <section class="screen" id="inicio">
+      <div class="hero">
+       <div>
         <span class="pill">
-         <i>
-         </i>
-         MOBILIDADE URBANA • MARINGÁ &amp; SARANDI
+         MARINGÁ E SARANDI • SEU CAMINHO
         </span>
         <h1>
          Conectando cidades.
@@ -326,1097 +326,942 @@
          </em>
         </h1>
         <p>
-         Mais clareza para o seu caminho. Explore trajetos, consulte horários e tenha sua mobilidade em um só lugar.
+         Consulte informações de transporte, salve suas linhas e participe de uma mobilidade melhor.
         </p>
         <div class="hero-actions">
-         <a class="button button-mint" href="#trajetos">
-          Planejar meu trajeto
-          <span>
-           ↗
-          </span>
+         <a class="btn lime" href="#horarios">
+          Ver horários e mapa ↗
          </a>
-         <a class="button button-glass" href="#dashboard">
-          Conhecer o dashboard →
+         <a class="btn glass" href="#sobre">
+          Conhecer o TRANSURBAN
          </a>
         </div>
-        <div class="hero-proof">
+        <div class="hero-foot">
          <span>
-          <b>
-           02
-          </b>
-          cidades conectadas
+          Informação com fonte
          </span>
          <span>
-          <b>
-           01
-          </b>
-          experiência integrada
+          Participação cidadã
          </span>
         </div>
        </div>
-       <div aria-label="Ilustração conceitual de uma conexão entre Maringá e Sarandi" class="city-visual" role="img">
-        <div class="map-grid">
+       <div aria-label="Conexão conceitual entre as cidades" class="hero-network">
+        <div class="network-orbit">
         </div>
-        <svg aria-hidden="true" viewbox="0 0 560 400">
-         <g fill="#21435a" stroke="#385d6e" stroke-width="1">
-          <path d="M30 300V130h60v170M100 280V180h40v100M400 260V110h55v150M470 300V180h50v120">
-          </path>
-          <path d="M165 250V150l18-65 18 65v100M225 260V140h80v120">
-          </path>
-         </g>
-         <path d="M-20 340Q140 340 240 270T580 200" fill="none" stroke="#335f71" stroke-width="70">
-         </path>
-         <path d="M-20 340Q140 340 240 270T580 200" fill="none" stroke="#12d6a0" stroke-dasharray="8 12" stroke-width="3">
-         </path>
-         <circle cx="86" cy="330" fill="#12d6a0" r="12">
-         </circle>
-         <circle cx="467" cy="210" fill="#12d6a0" r="12">
-         </circle>
-         <g transform="translate(235 214)">
-          <rect fill="#e3f6ed" height="70" rx="14" width="148">
-          </rect>
-          <rect fill="#27556a" height="25" rx="5" width="110" x="9" y="9">
-          </rect>
-          <rect fill="#27556a" height="45" rx="3" width="15" x="125" y="9">
-          </rect>
-          <path d="M0 44h148" stroke="#12d6a0" stroke-width="8">
-          </path>
-          <circle cx="29" cy="69" fill="#102a43" r="11">
-          </circle>
-          <circle cx="113" cy="69" fill="#102a43" r="11">
-          </circle>
-          <circle cx="29" cy="69" fill="#89a6ad" r="5">
-          </circle>
-          <circle cx="113" cy="69" fill="#89a6ad" r="5">
-          </circle>
-         </g>
-        </svg>
-        <div class="map-city city-a">
-         <span>
-          ●
-         </span>
+        <span class="city-badge a">
          Maringá
          <small>
-          O começo de uma conexão.
+          Seu ponto de partida.
          </small>
-        </div>
-        <div class="map-city city-b">
-         <span>
-          ●
-         </span>
+        </span>
+        <span class="network-bus">
+         <img alt="" height="62" src="/logo-mobilidade.svg" width="62"/>
+        </span>
+        <span class="city-badge b">
          Sarandi
          <small>
-          Seu próximo destino.
+          Um novo destino.
          </small>
-        </div>
-        <div class="map-caption">
-         <i>
-         </i>
-         Conexão ilustrativa entre cidades
-        </div>
+        </span>
+        <svg aria-hidden="true" viewbox="0 0 460 320">
+         <path d="M30 260C150 260 100 130 260 160S360 60 440 70" fill="none" stroke="#b7f36b" stroke-linecap="round" stroke-width="6">
+         </path>
+         <circle cx="30" cy="260" fill="#b7f36b" r="10">
+         </circle>
+         <circle cx="440" cy="70" fill="#b7f36b" r="10">
+         </circle>
+        </svg>
        </div>
       </div>
-      <div class="quick-grid">
-       <a class="quick-card" href="#trajetos">
-        <span class="quick-icon">
-         ↗
-        </span>
-        <h3>
-         Seu caminho, planejado.
-        </h3>
-        <p>
-         Consulte o trajeto, as paradas e a programação de embarque e chegada.
-        </p>
-        <b>
-         Explorar trajetos →
-        </b>
-       </a>
-       <a class="quick-card" href="#passe">
-        <span class="quick-icon">
-         ▣
-        </span>
-        <h3>
-         Seu passe, organizado.
-        </h3>
-        <p>
-         Encontre informações sobre seu passe e os serviços de recarga.
-        </p>
-        <b>
-         Acessar meu passe →
-        </b>
-       </a>
-       <a class="quick-card" href="#avaliacoes">
-        <span class="quick-icon">
+      <form class="planner card" id="homePlanner">
+       <div>
+        <label for="homeCity">
+         Cidade
+        </label>
+        <select id="homeCity">
+         <option>
+          Maringá
+         </option>
+         <option>
+          Sarandi
+         </option>
+         <option value="metropolitano">
+          Maringá ↔ Sarandi
+         </option>
+        </select>
+       </div>
+       <div>
+        <label for="homeLine">
+         Linha
+        </label>
+        <select id="homeLine">
+         <option value="">
+          Selecione uma linha
+         </option>
+        </select>
+       </div>
+       <button class="btn primary">
+        Consultar minha linha →
+       </button>
+      </form>
+      <div class="three-cards">
+       <a class="feature card" href="#favoritos">
+        <span class="feature-icon">
          ☆
+        </span>
+        <h3>
+         Suas linhas, por perto.
+        </h3>
+        <p>
+         Salve as linhas que fazem parte da sua rotina e encontre as informações com facilidade.
+        </p>
+        <b>
+         Minhas linhas →
+        </b>
+       </a>
+       <a class="feature card" href="#avaliacoes">
+        <span class="feature-icon">
+         ☏
         </span>
         <h3>
          Sua experiência importa.
         </h3>
         <p>
-         Avalie o ônibus e o motorista. Ajude a construir uma mobilidade melhor.
+         Envie elogios, reclamações e sugestões e acompanhe a resposta pelo seu protocolo.
         </p>
         <b>
-         Enviar uma avaliação →
+         Enviar uma manifestação →
+        </b>
+       </a>
+       <a class="feature card" href="#dashboard">
+        <span class="feature-icon">
+         ▥
+        </span>
+        <h3>
+         Informação para decidir.
+        </h3>
+        <p>
+         Conheça os documentos públicos e as fontes usadas pelo TRANSURBAN.
+        </p>
+        <b>
+         Explorar o dashboard →
         </b>
        </a>
       </div>
-      <div class="project-strip">
-       <div>
-        <span class="eyebrow">
-         TECNOLOGIA COM PROPÓSITO
-        </span>
-        <h2>
-         Mobilidade começa com informação.
-        </h2>
-        <p>
-         Informações sobre transporte coletivo para ajudar você a se deslocar entre Maringá e Sarandi.
-        </p>
-       </div>
-       <a class="button button-outline" href="/docs" rel="noopener" target="_blank">
-        Explorar a API ↗
-       </a>
-      </div>
+      <p class="subtle">
+       Plataforma independente. O catálogo mostra a cobertura verificada e a origem de cada informação.
+      </p>
      </section>
-     <section class="page section" hidden="" id="dashboard">
-      <div class="official-context" id="officialContext">
+     <section class="screen" hidden="" id="cidades">
+      <div class="page-heading">
+       <span class="eyebrow">
+        EXPLORE A REDE
+       </span>
+       <h1>
+        Cidades e linhas
+       </h1>
        <p>
-        Consultando documentos públicos…
+        Escolha a cidade para consultar as linhas documentadas.
        </p>
       </div>
-      <div data-internal="" hidden="">
-       <div class="section-heading">
-        <div>
-         <p class="eyebrow eyebrow-dark">
-          01 / CIÊNCIA DE DADOS
-         </p>
-         <h2 id="summaryTitle">
-          O que as observações mostram
-         </h2>
-         <p class="section-intro">
-          Quatro perguntas transformam o CSV em um resumo claro. Os números são calculados pela API com pandas.
-         </p>
-        </div>
-        <a class="button button-outline" href="/dados/docs" rel="noopener" target="_blank">
-         API de Ciência de Dados ↗
-        </a>
-        <button class="button button-outline" id="reloadData" type="button">
-         <span aria-hidden="true">
-          ↻
-         </span>
-         Atualizar análise
-        </button>
-       </div>
-       <p aria-live="polite" class="status data-status" id="dataStatus" role="status">
-        Carregando as totalizações…
+      <div class="city-tabs" id="cityTabs">
+       <button class="active" data-city="Maringá">
+        Maringá
+       </button>
+       <button data-city="Sarandi">
+        Sarandi
+       </button>
+       <button data-city="metropolitano">
+        Maringá ↔ Sarandi
+       </button>
+      </div>
+      <div class="notice" id="coverage">
+      </div>
+      <div class="catalog-search">
+       <label for="lineSearch">
+        Buscar por linha, bairro ou destino
+       </label>
+       <input autocomplete="off" id="lineSearch" placeholder="Ex.: Olímpico, Ouro Cola, Alvamar…" type="search"/>
+      </div>
+      <div class="line-grid" id="lineCards">
+      </div>
+     </section>
+     <section class="screen" hidden="" id="horarios">
+      <div class="page-heading">
+       <span class="eyebrow">
+        PLANEJE SEU CAMINHO
+       </span>
+       <h1>
+        Horários e mapa
+       </h1>
+       <p>
+        Programação publicada e posições compartilhadas por motoristas autorizados.
        </p>
-       <div aria-label="Indicadores principais" class="metrics">
-        <article class="metric metric-featured">
-         <span aria-hidden="true" class="metric-icon">
-          ▤
-         </span>
-         <span class="metric-label">
-          Observações válidas
-         </span>
-         <strong id="metricObservations">
-          —
-         </strong>
-         <small>
-          registros usados na análise
-         </small>
-        </article>
-        <article class="metric">
-         <span aria-hidden="true" class="metric-icon metric-icon-orange">
-          ↗
-         </span>
-         <span class="metric-label">
-          Atraso somado*
-         </span>
-         <strong id="metricTotal">
-          —
-         </strong>
-         <small>
-          minutos por observação
-         </small>
-        </article>
-        <article class="metric">
-         <span aria-hidden="true" class="metric-icon metric-icon-blue">
-          ◷
-         </span>
-         <span class="metric-label">
-          Atraso médio*
-         </span>
-         <strong id="metricAverage">
-          —
-         </strong>
-         <small>
-          minutos por observação
-         </small>
-        </article>
-        <article class="metric">
-         <span aria-hidden="true" class="metric-icon metric-icon-green">
-          ◎
-         </span>
-         <span class="metric-label">
-          Cidades analisadas
-         </span>
-         <strong id="metricCities">
-          —
-         </strong>
-         <small>
-          presentes no conjunto
-         </small>
-        </article>
-       </div>
-       <div class="analysis-grid">
-        <article class="data-card">
-         <div class="card-heading">
-          <span class="question-number">
-           PERGUNTA 01
-          </span>
-          <h3>
-           Onde se concentram os atrasos?
-          </h3>
-          <p>
-           Comparação entre as cidades do conjunto.
-          </p>
-         </div>
-         <div class="table-wrap">
-          <table>
-           <thead>
-            <tr>
-             <th>
-              Grupo
-             </th>
-             <th>
-              Observações
-             </th>
-             <th>
-              Total (min)
-             </th>
-             <th>
-              Média (min)
-             </th>
-            </tr>
-           </thead>
-           <tbody id="byCity">
-            <tr>
-             <td colspan="4">
-              Carregando…
-             </td>
-            </tr>
-           </tbody>
-          </table>
-         </div>
-         <p class="table-caption">
-          Total e média de minutos registrados por cidade.
-         </p>
-        </article>
-        <article class="data-card">
-         <div class="card-heading">
-          <span class="question-number">
-           PERGUNTA 02
-          </span>
-          <h3>
-           Como os atrasos variam no dia?
-          </h3>
-          <p>
-           Distribuição conforme o período registrado.
-          </p>
-         </div>
-         <div class="table-wrap">
-          <table>
-           <thead>
-            <tr>
-             <th>
-              Grupo
-             </th>
-             <th>
-              Observações
-             </th>
-             <th>
-              Total (min)
-             </th>
-             <th>
-              Média (min)
-             </th>
-            </tr>
-           </thead>
-           <tbody id="byPeriod">
-            <tr>
-             <td colspan="4">
-              Carregando…
-             </td>
-            </tr>
-           </tbody>
-          </table>
-         </div>
-         <p class="table-caption">
-          Agrupamento por período; não é previsão de horário.
-         </p>
-        </article>
-        <article class="data-card">
-         <div class="card-heading">
-          <span class="question-number">
-           PERGUNTA 03
-          </span>
-          <h3>
-           Qual condição de trânsito acompanha os registros?
-          </h3>
-          <p>
-           Leitura descritiva por condição informada.
-          </p>
-         </div>
-         <div class="table-wrap">
-          <table>
-           <thead>
-            <tr>
-             <th>
-              Grupo
-             </th>
-             <th>
-              Observações
-             </th>
-             <th>
-              Total (min)
-             </th>
-             <th>
-              Média (min)
-             </th>
-            </tr>
-           </thead>
-           <tbody id="byTraffic">
-            <tr>
-             <td colspan="4">
-              Carregando…
-             </td>
-            </tr>
-           </tbody>
-          </table>
-         </div>
-         <p class="table-caption">
-          Associação observada, sem afirmar causa.
-         </p>
-        </article>
-        <article class="data-card">
-         <div class="card-heading">
-          <span class="question-number">
-           PERGUNTA 04
-          </span>
-          <h3>
-           Como o clima aparece nos atrasos?
-          </h3>
-          <p>
-           Comparação por condição climática registrada.
-          </p>
-         </div>
-         <div class="table-wrap">
-          <table>
-           <thead>
-            <tr>
-             <th>
-              Grupo
-             </th>
-             <th>
-              Observações
-             </th>
-             <th>
-              Total (min)
-             </th>
-             <th>
-              Média (min)
-             </th>
-            </tr>
-           </thead>
-           <tbody id="byWeather">
-            <tr>
-             <td colspan="4">
-              Carregando…
-             </td>
-            </tr>
-           </tbody>
-          </table>
-         </div>
-         <p class="table-caption">
-          Os grupos descrevem o CSV didático, não a operação real.
-         </p>
-        </article>
-       </div>
-       <aside class="interpretation-note">
-        <span aria-hidden="true" class="note-mark">
-         i
-        </span>
-        <div>
-         <strong>
-          Como interpretar estes números
-         </strong>
-         <p>
-          * A soma e a média contam minutos por observação. Uma observação não equivale a uma viagem completa, passageiro ou ônibus. A base é sintética e não representa telemetria real.
-         </p>
-        </div>
-       </aside>
       </div>
-     </section>
-     <section class="page section" hidden="" id="cidades">
-      <div class="notice admin-notice">
-       Os cadastros são gerenciados pela equipe. Entre com uma conta autorizada para cadastrar, editar ou excluir.
-      </div>
-      <div class="section-heading">
+      <form class="planner card" id="scheduleForm">
        <div>
-        <p class="eyebrow eyebrow-dark">
-         CONEXÕES DA REGIÃO
-        </p>
-        <h2 id="citiesTitle">
-         Cidades cadastradas
-        </h2>
-        <p class="section-intro">
-         Consulte as cidades que fazem parte da rede TRANSURBAN.
-        </p>
-       </div>
-      </div>
-      <div class="crud-layout">
-       <form class="form-card" data-admin-form="" id="cityForm">
-        <div class="form-card-kicker">
-         <span aria-hidden="true" class="form-card-icon">
-          ＋
-         </span>
-         <span>
-          REGISTRO DE CIDADE
-         </span>
-        </div>
-        <h3 id="formTitle">
-         Nova cidade
-        </h3>
-        <p id="formHelp">
-         O identificador será gerado automaticamente.
-        </p>
-        <label for="cityName">
-         Nome da cidade
+        <label for="scheduleCity">
+         Cidade
         </label>
-        <input autocomplete="off" id="cityName" maxlength="100" minlength="2" name="nome" placeholder="Ex.: Maringá" required=""/>
-        <div class="form-actions">
-         <button class="button button-primary" id="saveCity" type="submit">
-          Cadastrar cidade
-         </button>
-         <button class="button button-outline" id="clearCity" type="button">
-          Limpar
-         </button>
-         <button class="button button-outline hidden" id="cancelEdit" type="button">
-          Cancelar edição
-         </button>
-        </div>
-        <p aria-live="polite" class="status form-feedback" id="cityFeedback" role="status">
-        </p>
-        <div class="form-hint">
-         <span aria-hidden="true">
-          ✓
-         </span>
-         Validação dos campos antes de gravar.
-        </div>
-       </form>
-       <div class="data-card records-card">
-        <div class="list-toolbar">
-         <div>
-          <span class="list-kicker">
-           BANCO DE DADOS · SUPABASE
-          </span>
-          <h3>
-           Cidades cadastradas
-          </h3>
-          <p id="cityCount">
-           Consultando o Supabase…
-          </p>
-         </div>
-         <button class="button button-outline" id="reloadCities" type="button">
-          Recarregar
-         </button>
-        </div>
-        <form class="lookup-form" id="lookupForm">
-         <label for="lookupId">
-          Consultar pelo ID
-         </label>
-         <div>
-          <input id="lookupId" min="1" placeholder="ID da cidade" required="" step="1" type="number"/>
-          <button class="button button-secondary" type="submit">
-           Consultar
-          </button>
-         </div>
-         <p aria-live="polite" class="status" id="lookupFeedback" role="status">
-         </p>
-        </form>
-        <div class="table-wrap">
-         <table class="records-table">
-          <thead>
-           <tr>
-            <th>
-             ID
-            </th>
-            <th>
-             Cidade
-            </th>
-            <th>
-             Ações
-            </th>
-           </tr>
-          </thead>
-          <tbody id="cityRows">
-           <tr>
-            <td colspan="3">
-             Conectando…
-            </td>
-           </tr>
-          </tbody>
-         </table>
-        </div>
-       </div>
-      </div>
-     </section>
-     <section class="page section" hidden="" id="linhas">
-      <div class="notice admin-notice">
-       Os cadastros são gerenciados pela equipe. Entre com uma conta autorizada para cadastrar, editar ou excluir.
-      </div>
-      <div class="section-heading">
-       <div>
-        <p class="eyebrow eyebrow-dark">
-         TRANSPORTE COLETIVO
-        </p>
-        <h2 id="linesTitle">
-         Linhas de ônibus
-        </h2>
-        <p class="section-intro">
-         Encontre as linhas cadastradas e confira a cidade vinculada a cada uma.
-        </p>
-       </div>
-      </div>
-      <div class="crud-layout">
-       <form class="form-card" data-admin-form="" id="lineForm">
-        <div class="form-card-kicker">
-         <span aria-hidden="true" class="form-card-icon form-card-icon-orange">
-          ↗
-         </span>
-         <span>
-          REGISTRO RELACIONADO
-         </span>
-        </div>
-        <h3 id="lineFormTitle">
-         Nova linha
-        </h3>
-        <p id="lineFormHelp">
-         Escolha uma cidade para manter a chave estrangeira.
-        </p>
-        <label for="lineCity">
-         Cidade vinculada
-        </label>
-        <select id="lineCity" required="">
-         <option value="">
-          Carregando cidades…
+        <select id="scheduleCity">
+         <option>
+          Maringá
+         </option>
+         <option>
+          Sarandi
+         </option>
+         <option value="metropolitano">
+          Maringá ↔ Sarandi
          </option>
         </select>
-        <label for="lineCode">
-         Código da linha
-        </label>
-        <input autocomplete="off" id="lineCode" maxlength="20" placeholder="Ex.: 001" required=""/>
-        <label for="lineName">
-         Nome da linha
-        </label>
-        <input autocomplete="off" id="lineName" maxlength="120" minlength="2" placeholder="Ex.: Terminal · Universidade" required=""/>
-        <div class="form-actions">
-         <button class="button button-primary" id="saveLine" type="submit">
-          Cadastrar linha
-         </button>
-         <button class="button button-outline hidden" id="cancelLineEdit" type="button">
-          Cancelar edição
-         </button>
-        </div>
-        <p aria-live="polite" class="status form-feedback" id="lineFeedback" role="status">
-        </p>
-        <div class="form-hint">
-         <span aria-hidden="true">
-          ✓
-         </span>
-         A API valida a cidade antes de salvar.
-        </div>
-       </form>
-       <div class="data-card records-card">
-        <div class="list-toolbar">
-         <div>
-          <span class="list-kicker">
-           REGISTROS RELACIONADOS
-          </span>
-          <h3>
-           Linhas cadastradas
-          </h3>
-          <p id="lineCount">
-           Consultando a API…
-          </p>
-         </div>
-         <button class="button button-outline" id="reloadLines" type="button">
-          Recarregar
-         </button>
-        </div>
-        <form class="lookup-form" id="lookupLineForm">
-         <label for="lookupLineId">
-          Consultar pelo ID
-         </label>
-         <div>
-          <input id="lookupLineId" min="1" placeholder="ID da linha" required="" step="1" type="number"/>
-          <button class="button button-secondary" type="submit">
-           Consultar
-          </button>
-         </div>
-         <p aria-live="polite" class="status" id="lookupLineFeedback" role="status">
-         </p>
-        </form>
-        <div class="table-wrap">
-         <table class="records-table">
-          <thead>
-           <tr>
-            <th>
-             ID
-            </th>
-            <th>
-             Código
-            </th>
-            <th>
-             Linha
-            </th>
-            <th>
-             Cidade
-            </th>
-            <th>
-             Ações
-            </th>
-           </tr>
-          </thead>
-          <tbody id="lineRows">
-           <tr>
-            <td colspan="5">
-             Conectando…
-            </td>
-           </tr>
-          </tbody>
-         </table>
-        </div>
        </div>
-      </div>
-     </section>
-     <section class="page" hidden="" id="trajetos">
-      <div class="page-heading">
        <div>
-        <span class="eyebrow">
-         SEU PRÓXIMO DESTINO
-        </span>
-        <h1>
-         Trajetos e horários
-        </h1>
-        <p>
-         Encontre referências de trajetos e consulte a programação publicada.
-        </p>
+        <label for="scheduleLine">
+         Linha
+        </label>
+        <select id="scheduleLine">
+         <option value="">
+          Selecione
+         </option>
+        </select>
        </div>
-       <span class="tag">
-        Informações de transporte
-       </span>
-      </div>
-      <article class="card public-service">
-       <h2>
-        Consulte a programação publicada
-       </h2>
-       <p>
-        O DER/PR disponibiliza a tabela da linha Maringá–Sarandi (Jd. Independência), com os sentidos e as partidas previstos no documento.
-       </p>
-       <a class="button button-primary" href="https://www.der.pr.gov.br/sites/der/arquivos_restritos/files/documento/2026-03/Maringa_Sarandi_JdIndependencia_L03_REG0511_Linha0010254410_150326.pdf" rel="noopener" target="_blank">
-        Abrir tabela do DER/PR ↗
-       </a>
-       <p class="muted">
-        Documento com vigência informada em 15/03/2026. Confirme alterações e horários atuais com a operadora. O acompanhamento de chegada em tempo real depende da integração com os dados dos ônibus.
-       </p>
-      </article>
-      <div data-internal="" hidden="">
-       <div class="notice">
-        Os trajetos, motoristas e horários abaixo são sintéticos, preparados para a apresentação. A programação representa horários previstos e pode ser consultada por data.
+       <div id="scheduleDirectionField">
+        <label for="scheduleDirection">
+         Sentido
+        </label>
+        <select id="scheduleDirection">
+         <option>
+          Maringá → Sarandi
+         </option>
+         <option>
+          Sarandi → Maringá
+         </option>
+        </select>
        </div>
-       <form class="card journey-search" id="journeyForm">
+       <div id="scheduleDayField">
+        <label for="scheduleDay">
+         Dia de operação
+        </label>
+        <select id="scheduleDay">
+         <option value="dias_uteis">
+          Dias úteis
+         </option>
+         <option value="sabado">
+          Sábado
+         </option>
+         <option value="domingo_feriado">
+          Domingo / feriado
+         </option>
+        </select>
+       </div>
+       <button class="btn primary">
+        Consultar
+       </button>
+      </form>
+      <p class="status" id="scheduleStatus" role="status">
+      </p>
+      <article class="card official-card" hidden="" id="officialCard">
+       <div class="card-head">
         <div>
-         <label for="journeyRoute">
-          De onde para onde?
-         </label>
-         <select id="journeyRoute" required="">
-          <option value="">
-           Carregando trajetos…
-          </option>
-         </select>
-        </div>
-        <div>
-         <label for="journeyDate">
-          Data da viagem
-         </label>
-         <input id="journeyDate" required="" type="date"/>
-        </div>
-        <button class="button button-primary">
-         Consultar horários ↗
-        </button>
-       </form>
-       <p class="status" id="journeyFeedback" role="status">
-       </p>
-       <div class="journey-grid">
-        <article class="card">
          <span class="eyebrow">
-          O CAMINHO
-         </span>
-         <h2 id="routeName">
-          Selecione um trajeto
-         </h2>
-         <div class="timeline" id="routeStops">
-          <p>
-           As paradas aparecerão aqui.
-          </p>
-         </div>
-        </article>
-        <article class="card">
-         <span class="eyebrow">
-          PROGRAMAÇÃO DE EMBARQUE E CHEGADA
+          FONTE OFICIAL • NA HORA MARINGÁ
          </span>
          <h2>
-          Escolha seu horário
+          Horários, pontos e trajeto da sua linha
          </h2>
-         <div id="scheduleList">
-          <p>
-           Consulte a programação para ver os horários.
-          </p>
-         </div>
-        </article>
-       </div>
-      </div>
-     </section>
-     <section class="page" hidden="" id="avaliacoes">
-      <div class="page-heading">
-       <div>
-        <span class="eyebrow">
-         SUA VOZ CONECTA
-        </span>
-        <h1>
-         Como foi seu caminho?
-        </h1>
-        <p>
-         Sua experiência ajuda a melhorar o transporte coletivo.
-        </p>
-       </div>
-       <span class="tag">
-        Feedback do passageiro
-       </span>
-      </div>
-      <article class="card public-service">
-       <h2>
-        Avaliações vinculadas ao serviço
-       </h2>
-       <p>
-        O envio de avaliações será disponibilizado após a validação do cadastro de linhas, veículos e motoristas da operação. Assim, cada avaliação poderá ser associada ao serviço utilizado.
-       </p>
-       <p class="muted">
-        Você já pode criar sua conta no TRANSURBAN.
-       </p>
-       <a class="button button-outline" href="#cadastro">
-        Criar minha conta →
-       </a>
-      </article>
-      <div data-internal="" hidden="">
-       <div class="login-gate notice" data-private="">
-        Entre na sua conta para registrar e consultar suas avaliações.
-        <a href="#login">
-         Entrar →
+        </div>
+        <a class="btn quiet" id="officialExternal" rel="noopener" target="_blank">
+         Abrir consulta oficial ↗
         </a>
        </div>
-       <div class="journey-grid private-content">
-        <form class="card" id="reviewForm">
+       <p id="officialHelp">
+        Escolha o sentido e o dia no quadro abaixo. Na aba Pontos e trajeto, consulte as paradas publicadas pela operadora.
+       </p>
+       <div class="line-actions">
+        <button class="btn primary" id="officialScheduleButton" type="button">
+         Horários da linha
+        </button>
+        <button class="btn quiet" id="officialPointButton" type="button">
+         Buscar meu ponto / endereço
+        </button>
+       </div>
+       <p class="subtle">
+        Conteúdo público do Na Hora/Bus2, carregado diretamente do provedor. A disponibilidade de previsão por ponto depende do que ele publicar. Horários de saída não são horários de passagem em todos os pontos.
+       </p>
+       <iframe id="officialFrame" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" title="Consulta oficial da linha, horários e pontos de parada">
+       </iframe>
+      </article>
+      <div class="map-layout" id="transurbanTracking">
+       <article class="card map-card">
+        <div class="card-head">
+         <div>
+          <span class="eyebrow">
+           ACOMPANHAMENTO
+          </span>
+          <h2>
+           Compartilhamento TRANSURBAN
+          </h2>
+         </div>
+         <button class="btn quiet" id="favoriteCurrent">
+          ☆ Salvar linha
+         </button>
+        </div>
+        <div class="map" id="passengerMap">
+        </div>
+        <div class="map-footer">
+         <span id="gpsStatus">
+          Selecione uma linha para acompanhar.
+         </span>
+         <span>
+          © OpenStreetMap
+         </span>
+        </div>
+        <p class="subtle">
+         Este acompanhamento mostra posições compartilhadas pelo TRANSURBAN. O conteúdo da operadora, quando disponível, aparece separadamente na consulta oficial acima.
+        </p>
+       </article>
+       <aside class="stack">
+        <article class="card">
          <h2>
-          Conte sua experiência.
+          Seu ônibus e motorista
          </h2>
-         <p class="muted">
-          Os veículos e motoristas cadastrados são demonstrativos.
-         </p>
-         <label for="reviewRoute">
-          Trajeto
+         <div class="empty" id="busDetails">
+          As viagens ativas aparecerão aqui quando houver compartilhamento.
+         </div>
+        </article>
+        <article class="card">
+         <h2>
+          Origem da informação
+         </h2>
+         <div class="empty" id="scheduleSource">
+          Consulte uma linha.
+         </div>
+        </article>
+       </aside>
+      </div>
+      <article class="card" id="documentScheduleCard">
+       <div class="card-head">
+        <h2>
+         Partidas programadas
+        </h2>
+        <span class="tag">
+         Documento oficial
+        </span>
+       </div>
+       <p class="muted">
+        Selecione o tipo de dia considerando feriados e alterações da operadora.
+       </p>
+       <div class="table-wrap">
+        <table>
+         <thead>
+          <tr>
+           <th>
+            Saída
+           </th>
+           <th>
+            Sentido
+           </th>
+           <th>
+            Atendimento / observação
+           </th>
+           <th>
+            Chegada publicada*
+           </th>
+          </tr>
+         </thead>
+         <tbody id="scheduleRows">
+          <tr>
+           <td colspan="4">
+            Selecione uma linha.
+           </td>
+          </tr>
+         </tbody>
+        </table>
+       </div>
+       <p class="subtle">
+        * Exibida somente quando o documento publica um horário de chegada. As partidas são da origem indicada, não de todos os pontos do trajeto. A previsão no seu ponto depende de informação específica.
+       </p>
+      </article>
+     </section>
+     <section class="screen" hidden="" id="favoritos">
+      <div class="page-heading">
+       <span class="eyebrow">
+        SUA ROTINA, MAIS SIMPLES
+       </span>
+       <h1>
+        Minhas linhas
+       </h1>
+       <p>
+        Suas linhas favoritas ficam vinculadas à sua conta.
+       </p>
+      </div>
+      <div class="line-grid" id="favoritesList">
+      </div>
+     </section>
+     <section class="screen" hidden="" id="dashboard">
+      <div class="page-heading">
+       <span class="eyebrow">
+        INFORMAÇÃO COM ORIGEM
+       </span>
+       <h1>
+        Dashboard de mobilidade
+       </h1>
+       <p>
+        Dados documentais, cobertura do catálogo e informações da sua conta.
+       </p>
+      </div>
+      <div class="metrics" id="publicStats">
+      </div>
+      <div class="stack" id="officialInfo">
+      </div>
+     </section>
+     <section class="screen" hidden="" id="avaliacoes">
+      <div class="page-heading">
+       <span class="eyebrow">
+        PARTICIPE DA MOBILIDADE
+       </span>
+       <h1>
+        Sua experiência faz a diferença.
+       </h1>
+       <p>
+        Elogios, reclamações e sugestões chegam à central de atendimento TRANSURBAN.
+       </p>
+      </div>
+      <div class="notice">
+       Seu protocolo é da plataforma. A comunicação com Prefeitura, operadora ou órgão estadual depende de adesão institucional. A gestão acessa os registros pelo escopo autorizado.
+      </div>
+      <div class="two-columns">
+       <form class="card" id="reviewForm">
+        <h2>
+         Conte sua experiência.
+        </h2>
+        <label for="reviewCity">
+         Cidade
+        </label>
+        <select id="reviewCity">
+         <option>
+          Maringá
+         </option>
+         <option>
+          Sarandi
+         </option>
+        </select>
+        <label for="reviewLine">
+         Linha
+        </label>
+        <select id="reviewLine" required="">
+         <option value="">
+          Selecione uma linha
+         </option>
+        </select>
+        <label for="reviewTrip">
+         Viagem / ônibus identificado (opcional)
+        </label>
+        <select id="reviewTrip">
+         <option value="">
+          Não vincular uma viagem
+         </option>
+        </select>
+        <div class="two-fields">
+         <div>
+          <label for="reviewType">
+           Tipo
+          </label>
+          <select id="reviewType">
+           <option value="reclamacao">
+            Reclamação
+           </option>
+           <option value="elogio">
+            Elogio
+           </option>
+           <option value="sugestao">
+            Sugestão
+           </option>
+          </select>
+         </div>
+         <div>
+          <label for="reviewCategory">
+           Categoria
+          </label>
+          <select id="reviewCategory">
+           <option>
+            Pontualidade
+           </option>
+           <option>
+            Conforto
+           </option>
+           <option>
+            Acessibilidade
+           </option>
+           <option>
+            Atendimento
+           </option>
+           <option>
+            Segurança
+           </option>
+           <option>
+            Outros
+           </option>
+          </select>
+         </div>
+        </div>
+        <div class="two-fields">
+         <div>
+          <label for="busRating">
+           Nota do ônibus (opcional)
+          </label>
+          <select id="busRating">
+           <option value="">
+            Não avaliar
+           </option>
+           <option value="1">
+            1 ★
+           </option>
+           <option value="2">
+            2 ★
+           </option>
+           <option value="3">
+            3 ★
+           </option>
+           <option value="4">
+            4 ★
+           </option>
+           <option value="5">
+            5 ★
+           </option>
+          </select>
+         </div>
+         <div>
+          <label for="driverRating">
+           Nota do motorista (exige viagem)
+          </label>
+          <select id="driverRating">
+           <option value="">
+            Não avaliar
+           </option>
+           <option value="1">
+            1 ★
+           </option>
+           <option value="2">
+            2 ★
+           </option>
+           <option value="3">
+            3 ★
+           </option>
+           <option value="4">
+            4 ★
+           </option>
+           <option value="5">
+            5 ★
+           </option>
+          </select>
+         </div>
+        </div>
+        <label for="reviewText">
+         O que aconteceu?
+        </label>
+        <textarea id="reviewText" maxlength="2000" minlength="10" placeholder="Descreva a experiência com clareza." required="" rows="4"></textarea>
+        <p class="subtle">
+         Evite incluir documentos, dados pessoais de terceiros ou informações desnecessárias.
+        </p>
+        <button class="btn primary wide">
+         Enviar e gerar protocolo →
+        </button>
+        <p class="status" id="reviewStatus" role="status">
+        </p>
+       </form>
+       <article class="card">
+        <h2>
+         Minhas manifestações
+        </h2>
+        <div class="stack" id="reviewHistory">
+        </div>
+       </article>
+      </div>
+     </section>
+     <section class="screen" hidden="" id="passe">
+      <div class="page-heading">
+       <span class="eyebrow">
+        SEU CARTÃO DE TRANSPORTE
+       </span>
+       <h1>
+        Meu passe
+       </h1>
+       <p>
+        Informações sobre créditos e recarga.
+       </p>
+      </div>
+      <article class="card service-placeholder">
+       <span class="feature-icon">
+        ▣
+       </span>
+       <h2>
+        Recarga integrada ao transporte
+       </h2>
+       <p>
+        A recarga pelo TRANSURBAN depende de conexão autorizada com a bilhetagem da operadora e com o serviço de pagamento. Essa conexão ainda está pendente.
+       </p>
+       <p>
+        Utilize os canais autorizados da operadora para comprar e validar seus créditos.
+       </p>
+       <a class="btn quiet" href="https://bus2.mobilibus.com.br/app/voudeonibustccc/" rel="noopener" target="_blank">
+        Informações do canal oficial ↗
+       </a>
+      </article>
+     </section>
+     <section class="screen" hidden="" id="sobre">
+      <div class="page-heading">
+       <span class="eyebrow">
+        MOBILIDADE QUE CONECTA
+       </span>
+       <h1>
+        Sobre o TRANSURBAN
+       </h1>
+       <p>
+        Uma plataforma para aproximar cidadãos, motoristas e gestão do transporte.
+       </p>
+      </div>
+      <div class="two-columns">
+       <article class="card">
+        <h2>
+         O que queremos melhorar
+        </h2>
+        <p>
+         Reunir informações de linhas e horários, facilitar o acompanhamento das viagens e organizar a participação dos passageiros em um canal com histórico e resposta.
+        </p>
+        <h3>
+         Três áreas, uma conexão
+        </h3>
+        <p>
+         O passageiro consulta e participa. O motorista autorizado gerencia sua viagem e compartilha a posição do dispositivo. A gestão acompanha a operação e responde às manifestações do seu escopo.
+        </p>
+       </article>
+       <article class="card">
+        <h2>
+         Quem opera e quem acompanha
+        </h2>
+        <p>
+         Em Maringá, o transporte municipal é operado pela TCCC sob concessão municipal. A gestão e a fiscalização envolvem os órgãos municipais responsáveis.
+        </p>
+        <p>
+         As linhas metropolitanas verificadas entre Maringá e Sarandi são da Cidade Verde e têm tabelas publicadas pelo DER/PR. Os dados mantêm operador, fonte e vigência.
+        </p>
+        <p class="subtle">
+         O TRANSURBAN é independente. Os órgãos públicos ainda precisam aderir formalmente para utilizar seus acessos institucionais.
+        </p>
+        <a href="https://www.der.pr.gov.br/Pagina/Horarios-Vigentes" rel="noopener" target="_blank">
+         Catálogo de horários DER/PR ↗
+        </a>
+        <br/>
+        <a href="https://www.tce.pr.gov.br/noticias/tce-pr-orienta-maringa-para-melhorar-gestao-do-transporte-coletivo-municipal/12127/N.htm" rel="noopener" target="_blank">
+         Referência sobre a concessão municipal ↗
+        </a>
+       </article>
+      </div>
+     </section>
+     <section class="screen" hidden="" id="motorista">
+      <div class="page-heading">
+       <span class="eyebrow">
+        ÁREA DO MOTORISTA
+       </span>
+       <h1>
+        Minha viagem
+       </h1>
+       <p>
+        Configure o veículo parado e acompanhe o estado do compartilhamento.
+       </p>
+      </div>
+      <div class="metrics" id="driverStats">
+      </div>
+      <div class="driver-layout">
+       <div class="stack">
+        <form class="card" id="driverProfileForm">
+         <span class="eyebrow">
+          1 • PERFIL E VEÍCULO
+         </span>
+         <h2>
+          Meu ônibus e perfil
+         </h2>
+         <label for="driverName">
+          Nome para exibição
          </label>
-         <select id="reviewRoute" required="">
+         <input id="driverName" maxlength="100" minlength="2" required="" type="text"/>
+         <div class="two-fields">
+          <div>
+           <label for="busModel">
+            Modelo do ônibus
+           </label>
+           <input id="busModel" maxlength="100" minlength="2" required="" type="text"/>
+          </div>
+          <div>
+           <label for="busPrefix">
+            Prefixo / numeração
+           </label>
+           <input id="busPrefix" maxlength="30" required="" type="text"/>
+          </div>
+         </div>
+         <label for="driverBirth">
+          Ano de nascimento (opcional)
+         </label>
+         <input id="driverBirth" max="2100" min="1920" type="number"/>
+         <label for="driverBio">
+          Sobre mim / do que gosto (opcional)
+         </label>
+         <textarea id="driverBio" maxlength="240" rows="2"></textarea>
+         <label class="check">
+          <input id="publicDriverConsent" type="checkbox"/>
+          Autorizo a exibição deste perfil aos passageiros durante a viagem.
+         </label>
+         <button class="btn quiet wide">
+          Salvar perfil e veículo
+         </button>
+         <p class="status" id="driverProfileStatus" role="status">
+         </p>
+        </form>
+        <form class="card" id="tripForm">
+         <span class="eyebrow">
+          2 • LINHA E SENTIDO
+         </span>
+         <h2>
+          Preparar viagem
+         </h2>
+         <label for="driverLine">
+          Linha
+         </label>
+         <select id="driverLine" required="">
           <option value="">
            Selecione
           </option>
          </select>
-         <label for="reviewSchedule">
-          Horário, ônibus e motorista
+         <label for="driverDirection">
+          Sentido
          </label>
-         <select id="reviewSchedule" required="">
-          <option value="">
-           Escolha um trajeto primeiro
+         <select id="driverDirection">
+          <option>
+           Maringá → Sarandi
+          </option>
+          <option>
+           Sarandi → Maringá
           </option>
          </select>
-         <label for="reviewDate">
-          Data da experiência
+         <label class="check">
+          <input id="locationConsent" required="" type="checkbox"/>
+          Compartilhar a localização deste dispositivo com os passageiros durante esta viagem.
          </label>
-         <input id="reviewDate" required="" type="date"/>
-         <fieldset class="rating">
-          <legend>
-           Como você avalia o ônibus?
-          </legend>
-          <div class="stars">
-           <label>
-            <input name="busRating" required="" type="radio" value="1"/>
-            <span>
-             1 ★
-            </span>
-           </label>
-           <label>
-            <input name="busRating" required="" type="radio" value="2"/>
-            <span>
-             2 ★
-            </span>
-           </label>
-           <label>
-            <input name="busRating" required="" type="radio" value="3"/>
-            <span>
-             3 ★
-            </span>
-           </label>
-           <label>
-            <input name="busRating" required="" type="radio" value="4"/>
-            <span>
-             4 ★
-            </span>
-           </label>
-           <label>
-            <input name="busRating" required="" type="radio" value="5"/>
-            <span>
-             5 ★
-            </span>
-           </label>
-          </div>
-         </fieldset>
-         <fieldset class="rating">
-          <legend>
-           Como você avalia o motorista?
-          </legend>
-          <div class="stars">
-           <label>
-            <input name="driverRating" required="" type="radio" value="1"/>
-            <span>
-             1 ★
-            </span>
-           </label>
-           <label>
-            <input name="driverRating" required="" type="radio" value="2"/>
-            <span>
-             2 ★
-            </span>
-           </label>
-           <label>
-            <input name="driverRating" required="" type="radio" value="3"/>
-            <span>
-             3 ★
-            </span>
-           </label>
-           <label>
-            <input name="driverRating" required="" type="radio" value="4"/>
-            <span>
-             4 ★
-            </span>
-           </label>
-           <label>
-            <input name="driverRating" required="" type="radio" value="5"/>
-            <span>
-             5 ★
-            </span>
-           </label>
-          </div>
-         </fieldset>
-         <label for="reviewComment">
-          Quer acrescentar algo?
-          <small>
-           (opcional)
-          </small>
-         </label>
-         <textarea id="reviewComment" maxlength="1000" placeholder="Conforto, limpeza, atendimento…" rows="3"></textarea>
-         <small>
-          Evite incluir dados pessoais no comentário.
-         </small>
-         <button class="button button-primary wide">
-          Enviar avaliação →
+         <button class="btn primary wide" id="startTrip">
+          ▷ Iniciar trajeto
          </button>
-         <p class="status" id="reviewFeedback" role="status">
+         <button class="btn quiet wide" hidden="" id="resumeGps" type="button">
+          Retomar compartilhamento GPS
+         </button>
+         <button class="btn danger wide" hidden="" id="endTrip" type="button">
+          □ Encerrar trajeto
+         </button>
+         <p class="status" id="tripStatus" role="status">
          </p>
         </form>
+       </div>
+       <div class="stack">
+        <article class="card map-card">
+         <div class="card-head">
+          <h2>
+           Minha rota e posição
+          </h2>
+          <span class="tag" id="driverTripBadge">
+           Trajeto não iniciado
+          </span>
+         </div>
+         <div class="map driver-map" id="driverMap">
+         </div>
+         <div class="map-footer">
+          <span id="driverGpsStatus">
+           GPS não iniciado
+          </span>
+          <span>
+           © OpenStreetMap
+          </span>
+         </div>
+         <p class="subtle">
+          A linha desenhada da rota dependerá de uma geometria oficial validada. O marcador exibe a posição recebida do seu dispositivo.
+         </p>
+         <a class="btn quiet" href="https://www.waze.com/ul?q=Maring%C3%A1%20Paran%C3%A1" id="wazeLink" rel="noopener" target="_blank">
+          Abrir no Waze ↗
+         </a>
+         <p class="subtle">
+          Navegação externa. Siga o itinerário autorizado da linha.
+         </p>
+        </article>
         <article class="card">
-         <span class="eyebrow">
-          SUAS CONTRIBUIÇÕES
-         </span>
          <h2>
           Minhas avaliações
          </h2>
-         <div class="stack" id="reviewList">
-          <p>
-           Entre para consultar seu histórico.
-          </p>
+         <div class="stack" id="driverReviews">
          </div>
         </article>
        </div>
       </div>
      </section>
-     <section class="page" hidden="" id="passe">
+     <section class="screen" hidden="" id="gestao">
       <div class="page-heading">
-       <div>
-        <span class="eyebrow">
-         MAIS AUTONOMIA NO SEU CAMINHO
-        </span>
-        <h1>
-         Meu passe
-        </h1>
-        <p>
-         Informações para utilizar seu cartão de transporte.
-        </p>
-       </div>
-       <span class="tag">
-        Serviços do passe
+       <span class="eyebrow">
+        ACESSO AUTORIZADO
        </span>
-      </div>
-      <article class="card public-service">
-       <h2>
-        Recarga de passe
-       </h2>
+       <h1>
+        Central de mobilidade
+       </h1>
        <p>
-        A recarga pelo TRANSURBAN depende da integração com a bilhetagem da operadora e com um provedor de pagamento. Essa integração ainda está pendente.
+        Operação, participação e atendimento dentro do seu escopo.
        </p>
-       <p class="muted">
-        A compra e a validação de créditos devem ser realizadas pelos canais autorizados da sua operadora.
-       </p>
-      </article>
-      <div data-internal="" hidden="">
-       <div class="notice">
-        Ambiente acadêmico. O saldo é fictício e as recargas não geram cobrança nem créditos no cartão real de transporte.
-       </div>
-       <div class="login-gate notice" data-private="">
-        Entre para acessar a sua carteira.
-        <a href="#login">
-         Entrar →
-        </a>
-       </div>
-       <div class="journey-grid private-content">
-        <div>
-         <article class="transit-card">
-          <div>
-           <a class="brand" href="#inicio">
-            <img alt="" height="43" src="/logo.svg" width="43"/>
-            <span>
-             transurban
-             <small>
-              Mobilidade que conecta.
-             </small>
-            </span>
-           </a>
-           <span>
-            DEMO
-           </span>
-          </div>
-          <small>
-           SALDO DEMONSTRATIVO
-          </small>
-          <strong id="walletBalance">
-           R$ —
-          </strong>
-          <div class="card-bottom">
-           <span id="walletHolder">
-            Seu nome
-           </span>
-           <span id="walletNumber">
-            •••• ••••
-           </span>
-          </div>
-          <div class="card-orbit">
-          </div>
-         </article>
-         <div class="card recharge-card">
-          <h2>
-           Faça uma recarga de teste.
-          </h2>
-          <p class="muted">
-           Escolha um valor de R$ 5 a R$ 200. Limite de saldo demonstrativo de R$ 1.000.
-          </p>
-          <div class="amounts">
-           <button data-amount="10" type="button">
-            R$ 10
-           </button>
-           <button data-amount="20" type="button">
-            R$ 20
-           </button>
-           <button data-amount="50" type="button">
-            R$ 50
-           </button>
-           <button data-amount="100" type="button">
-            R$ 100
-           </button>
-          </div>
-          <form id="rechargeForm">
-           <label for="rechargeValue">
-            Valor da recarga (R$)
-           </label>
-           <input id="rechargeValue" max="200" min="5" required="" step="0.01" type="number" value="20"/>
-           <label class="check-label">
-            <input id="demoConsent" required="" type="checkbox"/>
-            Entendo que esta recarga usa saldo fictício para demonstração.
-           </label>
-           <button class="button button-primary wide">
-            Revisar recarga →
-           </button>
-           <p class="status" id="walletFeedback" role="status">
-           </p>
-          </form>
-         </div>
-        </div>
-        <article class="card">
-         <span class="eyebrow">
-          TUDO EM UM LUGAR
-         </span>
-         <h2>
-          Histórico de recargas
-         </h2>
-         <p class="muted">
-          As últimas 50 operações desta conta.
-         </p>
-         <div class="stack" id="walletHistory">
-          <p>
-           Entre para consultar suas recargas.
-          </p>
-         </div>
-        </article>
-       </div>
-       <dialog id="rechargeDialog">
-        <form method="dialog">
-         <button aria-label="Fechar" class="dialog-close">
-          ×
-         </button>
-        </form>
-        <span class="eyebrow">
-         CONFIRA SUA RECARGA
-        </span>
-        <h2 id="rechargeConfirmValue">
-        </h2>
-        <p>
-         O valor será adicionado à sua carteira demonstrativa. Esta operação usa créditos fictícios.
-        </p>
-        <button class="button button-primary wide" id="confirmRecharge" type="button">
-         Confirmar recarga de teste
-        </button>
-        <p class="status" id="rechargeDialogStatus" role="status">
-        </p>
-       </dialog>
       </div>
+      <div class="notice">
+       Ambiente de gestão TRANSURBAN. A adesão dos órgãos públicos e da operadora ainda está pendente. O protocolo exibido pertence à plataforma.
+      </div>
+      <div class="metrics" id="managerStats">
+      </div>
+      <div class="planner card">
+       <label for="managerStatus">
+        Filtrar status
+       </label>
+       <select id="managerStatus">
+        <option value="">
+         Todos
+        </option>
+        <option value="recebida">
+         Recebida
+        </option>
+        <option value="em_analise">
+         Em análise
+        </option>
+        <option value="respondida">
+         Respondida
+        </option>
+        <option value="encerrada">
+         Encerrada
+        </option>
+       </select>
+       <label for="managerType">
+        Filtrar tipo
+       </label>
+       <select id="managerType">
+        <option value="">
+         Todos
+        </option>
+        <option value="reclamacao">
+         Reclamações
+        </option>
+        <option value="elogio">
+         Elogios
+        </option>
+        <option value="sugestao">
+         Sugestões
+        </option>
+       </select>
+       <button class="btn quiet" id="refreshManager" type="button">
+        Atualizar fila
+       </button>
+      </div>
+      <div class="two-columns">
+       <article class="card">
+        <h2>
+         Fila de atendimento
+        </h2>
+        <p class="subtle">
+         Até 500 registros recentes, limitados ao seu escopo autorizado.
+        </p>
+        <div class="stack" id="managerQueue">
+        </div>
+       </article>
+       <article class="card">
+        <h2>
+         Detalhes e resposta
+        </h2>
+        <div class="empty" id="managerDetail">
+         Selecione uma manifestação para analisar.
+        </div>
+        <form hidden="" id="responseForm">
+         <label for="responseStatus">
+          Novo status
+         </label>
+         <select id="responseStatus">
+          <option value="em_analise">
+           Em análise
+          </option>
+          <option value="respondida">
+           Respondida
+          </option>
+          <option value="encerrada">
+           Encerrada
+          </option>
+         </select>
+         <label for="responseText">
+          Resposta ao cidadão
+         </label>
+         <textarea id="responseText" maxlength="2000" rows="5"></textarea>
+         <button class="btn primary wide">
+          Salvar atendimento
+         </button>
+         <p class="status" id="responseFeedback" role="status">
+         </p>
+        </form>
+       </article>
+      </div>
+     </section>
+     <section class="screen" hidden="" id="conta">
+      <div class="page-heading">
+       <span class="eyebrow">
+        SUA CONTA
+       </span>
+       <h1>
+        Meu perfil
+       </h1>
+       <p>
+        Acesso e informações da sua conta TRANSURBAN.
+       </p>
+      </div>
+      <article class="card" id="accountDetails">
+      </article>
      </section>
     </main>
-    <footer class="footer">
+    <footer>
      <span>
-      © 2026 TRANSURBAN · Mobilidade que conecta.
+      © 2026 TRANSURBAN • Mobilidade que conecta.
      </span>
      <span>
-      Maringá &amp; Sarandi • Mobilidade que conecta
+      Maringá e Sarandi
      </span>
     </footer>
+    <nav aria-label="Navegação móvel" class="bottom-nav">
+     <a href="#inicio">
+      ⌂
+      <span>
+       Início
+      </span>
+     </a>
+     <a href="#cidades">
+      ▦
+      <span>
+       Linhas
+      </span>
+     </a>
+     <a href="#horarios">
+      ↗
+      <span>
+       Mapa
+      </span>
+     </a>
+     <a href="#favoritos">
+      ☆
+      <span>
+       Favoritos
+      </span>
+     </a>
+     <a href="#conta">
+      ○
+      <span>
+       Conta
+      </span>
+     </a>
+    </nav>
    </div>
   </div>
   <div class="toast" hidden="" id="toast" role="status">
