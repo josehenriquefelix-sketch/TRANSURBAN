@@ -86,11 +86,27 @@ class MobilidadeTests(unittest.TestCase):
         with patch("backend.controller.mobilidade.executar", return_value=[{"motorista_id": "proprio", "linha_id": linha}]) as banco:
             resposta = self.client.post("/mobilidade/manifestacoes", json={
                 "linha_id": linha, "viagem_id": "00000000-0000-0000-0000-000000000001",
-                "cidade": "Sarandi", "tipo": "elogio", "categoria": "Atendimento",
+                "cidade": "Maringá", "tipo": "elogio", "categoria": "Atendimento",
                 "nota_motorista": 5, "relato": "Tentativa de avaliar a propria viagem."
             })
         self.assertEqual(resposta.status_code, 422)
         banco.assert_called_once()
+
+    def test_manifestacao_rejeita_cidade_que_nao_e_atendida_pela_linha(self):
+        app.dependency_overrides[usuario_atual] = lambda: {"id": "passageiro", "email": "teste@example.com"}
+        with patch("backend.controller.mobilidade.executar") as banco:
+            resposta = self.client.post("/mobilidade/manifestacoes", json={
+                "linha_id": "maringa-460", "cidade": "Sarandi", "tipo": "sugestao",
+                "categoria": "Atendimento", "relato": "Mensagem de teste para uma cidade incompativel."
+            })
+        self.assertEqual(resposta.status_code, 422)
+        banco.assert_not_called()
+
+    def test_horarios_ordenados_preservam_todas_as_partidas(self):
+        resultado = self.client.get("/mobilidade/horarios/der-0010254470?tipo_dia=sabado").json()
+        partidas = [horario["partida"] for horario in resultado["horarios"]]
+        self.assertTrue(partidas)
+        self.assertEqual(partidas, sorted(partidas))
 
 
 if __name__ == "__main__":

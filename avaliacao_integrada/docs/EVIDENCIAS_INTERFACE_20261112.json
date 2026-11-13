@@ -22,5 +22,16 @@
     "Cobertura completa de todos os pontos e bairros municipais de Sarandi",
     "ETA por ponto disponivel em todas as linhas ou horarios",
     "Bilhetagem e pagamento reais"
-  ]
+  ],
+  "revisao_consistencia": {
+    "testes_automatizados": 23,
+    "checks_navegador": [
+      "Mudar dias uteis para sabado atualiza a tabela sem clicar em Consultar",
+      "Trocar Sarandi para ligacao metropolitana limpa linha, horarios, fonte e quadro anterior",
+      "Avaliacoes permitem linhas metropolitanas que atendem a cidade selecionada",
+      "API rejeita linha municipal de Maringa enviada como atendimento em Sarandi",
+      "Nenhum erro JavaScript registrado nas telas desta revisao"
+    ],
+    "escopo": "Verificacao de interface e testes com dependencias simuladas; nao repete os testes anteriores de GPS fisico, Google ou e-mail."
+  }
 }

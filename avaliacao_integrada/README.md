@@ -39,6 +39,8 @@ A senha nova exige no mínimo 8 caracteres, maiúscula, minúscula, número e s�
 
 ### Evidências
 
+A revisão de consistência de 12/11/2026 passou em 23 testes automatizados. Trocar de cidade limpa os resultados anteriores; dia e sentido atualizam a consulta automaticamente; manifestações são validadas contra as cidades atendidas pela linha. Respostas antigas de consultas sobrepostas não substituem a seleção mais recente.
+
 Os testes automatizados verificam CRUD/FK, CORS, documentação, cookies e permissões. A validação adicional com Supabase real está em `docs/VALIDACAO_MOBILIDADE_20261112.json`; as contas e os registros sintéticos usados nela são descartados ao final. Coordenadas sintéticas validam o envio/consulta e não provam GPS de aparelho ou localização de frota real. Evidências anteriores permanecem datadas e podem descrever versões anteriores da interface.
 
 Entrega acadêmica integrada com FastAPI, pandas, Supabase por HTTPS, HTML, CSS e JavaScript. A documentação cobre o CRUD, a base de Ciência de Dados, as quatro perguntas, o CORS e o roteiro de conferência.

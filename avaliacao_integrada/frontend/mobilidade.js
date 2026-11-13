@@ -14,6 +14,7 @@ const state = {
     loginRole: "passageiro",
     page: "inicio"
 };
+let scheduleRequest = 0;
 let renewal = null,
     polling = null,
     watcher = null,
@@ -164,11 +165,12 @@ function linesFor(city) {
     return (state.catalog?.linhas || []).filter(line => city === "todas" || (city === "metropolitano" ? line.ambito === "metropolitano" : city === "Maringá" ? line.ambito === "maringa" : line.cidades.includes("Sarandi")));
 }
 
-function fillLines(id, city, placeholder = true) {
+function fillLines(id, city, placeholder = true, includeConnections = false) {
     const previous = $(id).value;
     $(id).replaceChildren();
     if (placeholder) $(id).add(new Option("Selecione uma linha", ""));
-    for (const line of linesFor(city)) $(id).add(new Option(`${line.codigo} · ${line.nome}`, line.id));
+    const lines = includeConnections ? (state.catalog?.linhas || []).filter(line => line.cidades.includes(city)) : linesFor(city);
+    for (const line of lines) $(id).add(new Option(`${line.codigo} · ${line.nome}`, line.id));
     if ([...$(id).options].some(option => option.value === previous)) $(id).value = previous;
 }
 
@@ -372,9 +374,27 @@ async function liveTrips() {
     $("gpsStatus").textContent = recent ? `${recent} veículo(s) com sinal recente. Atualização a cada 10 segundos.` : "Sem posição recente disponível. A previsão da operadora fica na consulta oficial, quando disponível.";
 }
 
+function clearSchedule(message = "Selecione uma linha para consultar.") {
+    scheduleRequest += 1;
+    state.line = null;
+    state.trips = [];
+    showOfficial(null);
+    $("scheduleRows").replaceChildren();
+    $("busDetails").replaceChildren(node("p", "Selecione uma linha."));
+    $("scheduleSource").replaceChildren(node("p", "Selecione uma linha."));
+    if (markers.passengerMap) markers.passengerMap.clearLayers();
+    $("gpsStatus").textContent = "Selecione uma linha.";
+    $("scheduleDirectionField").hidden = false;
+    $("scheduleDayField").hidden = false;
+    $("documentScheduleCard").hidden = false;
+    status("scheduleStatus", message);
+}
+
 async function schedules() {
     const id = $("scheduleLine").value;
     if (!id) return;
+    clearSchedule("Consultando a programação documentada…");
+    const request = scheduleRequest;
     state.line = id;
     const line = findLine(id),
         official = Boolean(line?.consulta_oficial_url);
@@ -385,7 +405,7 @@ async function schedules() {
     status("scheduleStatus", "Consultando a programação documentada…");
     try {
         const result = await api(`/mobilidade/horarios/${encodeURIComponent(id)}?tipo_dia=${$("scheduleDay").value}&sentido=${encodeURIComponent($("scheduleDirection").value)}`);
-        if ($("scheduleLine").value !== id) return;
+        if (request !== scheduleRequest || state.page !== "horarios" || $("scheduleLine").value !== id) return;
         $("scheduleRows").replaceChildren();
         for (const schedule of result.horarios) {
             const row = document.createElement("tr");
@@ -404,7 +424,7 @@ async function schedules() {
         mapFor("passengerMap");
         await liveTrips();
     } catch (error) {
-        status("scheduleStatus", error.message, true);
+        if (request === scheduleRequest && state.page === "horarios") status("scheduleStatus", error.message, true);
     }
 }
 async function loadReviewTrips() {
@@ -620,6 +640,9 @@ async function navigate() {
         }
         if (page === "avaliacoes") {
             if (state.reviewTrip) {
+                const line = findLine(state.reviewTrip.linha_id);
+                if (line && !line.cidades.includes($("reviewCity").value)) $("reviewCity").value = line.cidades[0];
+                fillLines("reviewLine", $("reviewCity").value, true, true);
                 $("reviewLine").value = state.reviewTrip.linha_id;
                 await loadReviewTrips();
             }
@@ -798,33 +821,21 @@ $("homePlanner").addEventListener("submit", event => {
 });
 $("scheduleCity").addEventListener("change", () => {
     fillLines("scheduleLine", $("scheduleCity").value);
+    $("scheduleLine").value = "";
     fillDirections(null, "scheduleDirection");
     $("scheduleDirection").value = $("scheduleCity").value === "Sarandi" ? "Sarandi → Maringá" : "Maringá → Sarandi";
-    state.line = null;
-    $("scheduleRows").replaceChildren();
-    $("busDetails").replaceChildren();
-    if (markers.passengerMap) markers.passengerMap.clearLayers();
-    $("gpsStatus").textContent = "Selecione uma linha.";
-    $("officialCard").hidden = true;
-    $("officialFrame").removeAttribute("src");
-    $("scheduleDirectionField").hidden = false;
-    $("scheduleDayField").hidden = false;
-    $("documentScheduleCard").hidden = false;
+    clearSchedule();
 });
 $("scheduleLine").addEventListener("change", () => {
     if (!$("scheduleLine").value) {
-        state.line = null;
-        showOfficial(null);
-        $("scheduleRows").replaceChildren();
-        $("busDetails").replaceChildren(node("p", "Selecione uma linha."));
-        $("scheduleSource").replaceChildren(node("p", "Selecione uma linha."));
-        if (markers.passengerMap) markers.passengerMap.clearLayers();
-        $("gpsStatus").textContent = "Selecione uma linha.";
-        status("scheduleStatus", "Selecione uma linha para consultar.");
+        clearSchedule();
         return;
     }
     fillDirections($("scheduleLine").value, "scheduleDirection");
     schedules();
+});
+for (const id of ["scheduleDay", "scheduleDirection"]) $(id).addEventListener("change", () => {
+    if ($("scheduleLine").value) schedules();
 });
 $("officialScheduleButton").addEventListener("click", () => showOfficial(findLine($("scheduleLine").value)));
 $("officialPointButton").addEventListener("click", () => showOfficial(findLine($("scheduleLine").value), true));
@@ -836,10 +847,14 @@ $("scheduleForm").addEventListener("submit", event => {
 });
 $("favoriteCurrent").addEventListener("click", () => toggleFavorite($("scheduleLine").value));
 $("reviewCity").addEventListener("change", () => {
-    fillLines("reviewLine", $("reviewCity").value);
+    state.reviewTrip = null;
+    fillLines("reviewLine", $("reviewCity").value, true, true);
     $("reviewTrip").replaceChildren(new Option("Não vincular uma viagem", ""));
 });
-$("reviewLine").addEventListener("change", () => loadReviewTrips().catch(error => status("reviewStatus", error.message, true)));
+$("reviewLine").addEventListener("change", () => {
+    state.reviewTrip = null;
+    loadReviewTrips().catch(error => status("reviewStatus", error.message, true));
+});
 $("reviewForm").addEventListener("submit", event => {
     event.preventDefault();
     action("reviewForm", "reviewStatus", async () => {
@@ -949,7 +964,7 @@ async function init() {
                 ["scheduleLine", $("scheduleCity").value],
                 ["reviewLine", $("reviewCity").value],
                 ["driverLine", "todas"]
-            ]) fillLines(id, city);
+            ]) fillLines(id, city, true, id === "reviewLine");
         $("serviceText").textContent = "API conectada";
     } catch (error) {
         $("serviceText").textContent = "Catálogo indisponível";

@@ -40,6 +40,7 @@ def consultar_horarios(linha_id: str, tipo_dia: Literal["dias_uteis", "sabado", 
     if sentido not in linha.get("sentidos", SENTIDOS):
         raise HTTPException(422, "Selecione um sentido válido.")
     horarios = [horario for horario in linha["horarios"] if horario["sentido"] == sentido and horario["tipo_dia"] == tipo_dia]
+    horarios.sort(key=lambda horario: horario["partida"])
     return {"linha": linha, "horarios": horarios, "previsao_ao_vivo": None,
             "aviso": "Partidas do documento oficial. Confirme feriados e alterações com a operadora. A previsão de chegada ao ponto depende de telemetria e rota validadas."}
 
@@ -191,6 +192,8 @@ class Manifestacao(BaseModel):
 @router.post("/manifestacoes", status_code=201)
 def enviar_manifestacao(dados: Manifestacao, usuario=Depends(usuario_atual)):
     linha = linha_validada(dados.linha_id)
+    if dados.cidade not in linha["cidades"]:
+        raise HTTPException(422, "A linha selecionada não atende à cidade informada.")
     motorista_id = None
     if dados.viagem_id:
         viagens = executar(lambda db: db.table("tu_viagem_operacional").select("motorista_id,linha_id").eq("id", str(dados.viagem_id)).limit(1))
