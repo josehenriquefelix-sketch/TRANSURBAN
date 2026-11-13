@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <script defer="" src="/vendor/leaflet.js">
+  </script>
+  <link href="/vendor/leaflet.css" rel="stylesheet"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="noindex,nofollow" name="robots"/>
+  <meta content="#0f6573" name="theme-color"/>
+  <title>
+   TRANSURBAN | Painel de gestão
+  </title>
+  <link href="/logo-gestao.svg" rel="icon"/>
+  <link href="/mobilidade.css?v=20261113-portais" rel="stylesheet"/>
+  <script defer="" src="/gestao.js?v=20261113-portais">
+  </script>
+  <script defer="" src="/operacao.js?v=20261113-portais">
+  </script>
+ </head>
+ <body data-area="gestao">
+  <section class="portal-login" id="managementLogin">
+   <div class="auth-art">
+    <a class="brand" href="/gestao/">
+     <img alt="" height="42" src="/logo-gestao.svg" width="42"/>
+     <span>
+      TRANSURBAN
+      <small>
+       Gestão da mobilidade.
+      </small>
+     </span>
+    </a>
+    <div>
+     <span class="pill">
+      PAINEL RESTRITO
+     </span>
+     <h1>
+      Informação para
+      <br/>
+      cuidar da mobilidade.
+     </h1>
+     <p>
+      Atendimento e acompanhamento
+      <br/>
+      em um ambiente próprio de gestão.
+     </p>
+    </div>
+    <small>
+     Somente para contas com vínculo autorizado.
+    </small>
+   </div>
+   <div class="auth-content">
+    <a class="back" href="/">
+     ← Ir para o portal público
+    </a>
+    <form id="managementLoginForm">
+     <span class="eyebrow">
+      ACESSO À GESTÃO
+     </span>
+     <h2>
+      Central de mobilidade
+     </h2>
+     <p>
+      Entre com a conta autorizada para atender às manifestações do seu escopo.
+     </p>
+     <label for="managementEmail">
+      E-mail da conta de gestão
+     </label>
+     <input autocomplete="username" id="managementEmail" maxlength="254" required="" type="email"/>
+     <label for="managementPassword">
+      Senha
+     </label>
+     <input autocomplete="current-password" id="managementPassword" maxlength="72" required="" type="password"/>
+     <button class="btn primary wide">
+      Entrar no painel de gestão →
+     </button>
+     <p class="status" id="managementStatus" role="status">
+     </p>
+     <a href="/#esqueci-senha">
+      Esqueci minha senha
+     </a>
+     <p class="subtle">
+      Novos vínculos são autorizados pela administração. Esta página não concede acesso a passageiros ou motoristas.
+     </p>
+    </form>
+    <details class="access-request">
+     <summary>
+      Solicitar vínculo de gestão
+     </summary>
+     <p>
+      Crie e confirme sua conta antes de solicitar o vínculo. A solicitação não libera acesso profissional.
+     </p>
+     <a href="/#cadastro">
+      Criar conta
+     </a>
+     <form class="requestAccessForm" data-papel="gestor">
+      <label>
+       E-mail ou CPF
+       <input autocomplete="username" name="identificador" required=""/>
+      </label>
+      <label>
+       Senha da sua conta
+       <input autocomplete="current-password" name="senha" required="" type="password"/>
+      </label>
+      <label>
+       Vínculo / empresa e motivo
+       <textarea maxlength="1000" minlength="10" name="justificativa" required=""></textarea>
+      </label>
+      <button class="btn quiet wide">
+       Solicitar aprovação
+      </button>
+      <p class="requestStatus status" role="status">
+      </p>
+     </form>
+    </details>
+   </div>
+  </section>
+  <div hidden="" id="managementShell">
+   <aside id="sidebar">
+    <a class="brand" href="/gestao/">
+     <img alt="" height="42" src="/logo-gestao.svg" width="42"/>
+     <span>
+      TRANSURBAN
+      <small>
+       Gestão da mobilidade.
+      </small>
+     </span>
+    </a>
+    <p class="nav-label">
+     PAINEL DE GESTÃO
+    </p>
+    <nav aria-label="Navegação da gestão">
+     <a class="active" href="#fila">
+      <span>
+       ▤
+      </span>
+      Central de atendimento
+     </a>
+     <a href="#operacaoGestao">
+      Mapa e suporte
+     </a>
+    </nav>
+    <div class="sidebar-bottom">
+     <p>
+      Ambiente de acesso autorizado
+     </p>
+     <a href="/">
+      Abrir portal público ↗
+     </a>
+    </div>
+   </aside>
+   <div class="workspace" id="workspace">
+    <header>
+     <button aria-expanded="false" aria-label="Abrir menu" class="plain" id="managementMenu">
+      ☰
+     </button>
+     <span>
+      Central de gestão
+     </span>
+     <div class="header-account">
+      <span id="managementName">
+      </span>
+      <button class="plain" id="managementLogout">
+       Sair da gestão ↪
+      </button>
+     </div>
+    </header>
+    <main>
+     <section id="operacaoGestao">
+      <div class="page-heading">
+       <span class="eyebrow">
+        OPERAÇÃO E ATENDIMENTO
+       </span>
+       <h1>
+        Central de gestão
+       </h1>
+       <p>
+        Ocorrências confirmadas, suporte de cidadãos e motoristas e atendimento por competência.
+       </p>
+      </div>
+      <article class="card map-card">
+       <div class="card-head">
+        <div>
+         <span class="eyebrow">
+          OCORRÊNCIAS CONFIRMADAS
+         </span>
+         <h2>
+          Mapa de mobilidade
+         </h2>
+        </div>
+        <button class="btn quiet" id="locateMe" type="button">
+         Minha localização
+        </button>
+       </div>
+       <p class="status" id="locationFeedback" role="status">
+        A localização depende da sua permissão e da precisão do aparelho.
+       </p>
+       <div class="map" id="opsMap">
+       </div>
+       <div class="map-legend">
+        <span class="red-dot">
+         ● Vermelho: bloqueio, obra ou desvio
+        </span>
+        <span class="yellow-dot">
+         ● Amarelo: atenção ou lentidão
+        </span>
+        <span class="green-dot">
+         ● Verde: condição tranquila informada
+        </span>
+       </div>
+       <p class="subtle">
+        Somente ocorrências publicadas pela gestão, com data e validade. Áreas sem marcação não significam trânsito livre.
+       </p>
+       <div class="stack" id="opsAlerts">
+       </div>
+      </article>
+      <div id="managementOperations">
+      </div>
+     </section>
+     <section class="" id="fila">
+      <div class="page-heading">
+       <span class="eyebrow">
+        ACESSO AUTORIZADO
+       </span>
+       <h1>
+        Central de mobilidade
+       </h1>
+       <p>
+        Operação, participação e atendimento dentro do seu escopo.
+       </p>
+      </div>
+      <div class="notice">
+       Ambiente de gestão TRANSURBAN. A adesão dos órgãos públicos e da operadora ainda está pendente. O protocolo exibido pertence à plataforma.
+      </div>
+      <div class="metrics" id="managerStats">
+      </div>
+      <div class="planner card">
+       <label for="managerStatus">
+        Filtrar status
+       </label>
+       <select id="managerStatus">
+        <option value="">
+         Todos
+        </option>
+        <option value="recebida">
+         Recebida
+        </option>
+        <option value="em_analise">
+         Em análise
+        </option>
+        <option value="respondida">
+         Respondida
+        </option>
+        <option value="encerrada">
+         Encerrada
+        </option>
+       </select>
+       <label for="managerType">
+        Filtrar tipo
+       </label>
+       <select id="managerType">
+        <option value="">
+         Todos
+        </option>
+        <option value="reclamacao">
+         Reclamações
+        </option>
+        <option value="elogio">
+         Elogios
+        </option>
+        <option value="sugestao">
+         Sugestões
+        </option>
+       </select>
+       <button class="btn quiet" id="refreshManager" type="button">
+        Atualizar fila
+       </button>
+      </div>
+      <div class="two-columns">
+       <article class="card">
+        <h2>
+         Fila de atendimento
+        </h2>
+        <p class="subtle">
+         Até 500 registros recentes, limitados ao seu escopo autorizado.
+        </p>
+        <div class="stack" id="managerQueue">
+        </div>
+       </article>
+       <article class="card">
+        <h2>
+         Detalhes e resposta
+        </h2>
+        <div class="empty" id="managerDetail">
+         Selecione uma manifestação para analisar.
+        </div>
+        <form hidden="" id="responseForm">
+         <label for="responseStatus">
+          Novo status
+         </label>
+         <select id="responseStatus">
+          <option value="em_analise">
+           Em análise
+          </option>
+          <option value="respondida">
+           Respondida
+          </option>
+          <option value="encerrada">
+           Encerrada
+          </option>
+         </select>
+         <label for="responseText">
+          Resposta ao cidadão
+         </label>
+         <textarea id="responseText" maxlength="2000" rows="5"></textarea>
+         <button class="btn primary wide">
+          Salvar atendimento
+         </button>
+         <p class="status" id="responseFeedback" role="status">
+         </p>
+        </form>
+       </article>
+      </div>
+     </section>
+    </main>
+    <footer>
+     TRANSURBAN • Painel de gestão • Acesso por competência
+    </footer>
+   </div>
+  </div>
+  <div class="toast" hidden="" id="toast" role="status">
+  </div>
+ </body>
+</html>

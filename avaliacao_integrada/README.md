@@ -4,25 +4,27 @@
 
 O [guia do evento](docs/FICIENCIAS_2026.md) descreve a preparação do computador e o percurso pelo sistema. Na raiz do repositório, `INICIAR_TRANSURBAN.cmd` abre a aplicação e `VERIFICAR_TRANSURBAN.cmd` confere dependências, configuração, tabelas, arquivos da interface e documentação. O verificador realiza somente consultas.
 
-## Portal de mobilidade — 12/11/2026
+## Portal de mobilidade — 13/11/2026
 
 O TRANSURBAN é uma plataforma independente para passageiros, motoristas autorizados e gestão do transporte entre Maringá e Sarandi. A interface usa HTML, CSS e JavaScript; a API usa Python/FastAPI; os registros ficam no Supabase/PostgreSQL por HTTPS.
 
-- Passageiro: início, dashboard documental, cidades/linhas, horários e mapa, favoritas, manifestações com protocolo e resposta, conta e recuperação de senha.
+- Passageiro: início, dashboard pessoal, cidades/linhas, horários e mapa, favoritas, manifestações com protocolo e resposta, conta e recuperação de senha.
 - Motorista autorizado: perfil e veículo, notas das próprias viagens, início/encerramento e compartilhamento consentido da localização do dispositivo. O perfil público é opcional.
 - Gestão autorizada: fila por competência, filtros, resposta ao cidadão e histórico persistido. Passageiros não recebem acesso profissional ao criar conta.
-- Site e API usam uma única origem: `http://127.0.0.1:8000/`. O menu contém o link **API do sistema** (`/docs`). Ciência de Dados fica separada em `/dados/docs`.
+- Site e API usam uma única origem: `http://127.0.0.1:8000/`. A documentação técnica está em `/docs`, sem link no portal público. Ciência de Dados fica separada em `/dados/docs`.
 - O catálogo contém as 66 linhas municipais de Maringá visíveis na consulta oficial Na Hora e 22 atendimentos de Sarandi, incluindo variantes, extraídos de 12 tabelas DER/PR. Foram conferidas 1.064 partidas documentais antes de separar variantes. Horários e pontos de Maringá são abertos na consulta oficial incorporada; o seletor de Maringá não mistura as ligações metropolitanas. O catálogo municipal interbairros completo de Sarandi não foi confirmado.
 - Horários documentais não são previsões de passagem. O mapa próprio TRANSURBAN só exibe posição quando um motorista autorizado inicia viagem e envia sua localização. A consulta oficial incorporada é um serviço externo distinto e pode oferecer recursos ao vivo conforme a disponibilidade do provedor. Não há integração de GPS/ETA da TCCC ou Mobilibus.
 - Recarga e pagamento dependem de adesão à bilhetagem e ao provedor de pagamentos. A tela informa essa pendência e não vende créditos fictícios.
 - Google está implementado com PKCE, mas depende de configuração do provedor. E-mails de confirmação/recuperação dependem de SMTP e da confirmação de entrega em caixa postal real.
+
+Os ambientes estão separados: passageiro em `/`, motorista em `/motorista/` e gestão em `/gestao/`. A gestão não aparece na navegação pública. Cada ambiente possui logo e paleta próprios. O suporte tem protocolo privado, resposta por escopo e histórico; os alertas no mapa são publicações manuais com validade, sem inferência automática do trânsito. Pedidos de acesso profissional ficam pendentes até a aprovação administrativa, com proibição de autoaprovação.
 
 ### Abrir no computador da escola
 
 1. No VS Code, pressione `Ctrl+Shift+P`, escolha **Git: Clone** e cole `https://github.com/josehenriquefelix-sketch/TRANSURBAN.git`. Escolha uma pasta e abra o repositório. Se já estiver clonado, execute `git pull` no terminal, sem sobrescrever mudanças locais.
 2. Copie `avaliacao_integrada/backend/.env.example` para `avaliacao_integrada/backend/.env`. Preencha URL e chave privada do mesmo projeto Supabase, sem aspas extras. Transfira essas informações por meio privado. O `.env` fica fora do GitHub.
 3. Na raiz do repositório, execute `INICIAR_TRANSURBAN.cmd`. Na primeira vez ele cria o ambiente e instala as dependências. Mantenha a janela do servidor aberta.
-4. Abra `http://127.0.0.1:8000/`; o link da API está no menu. Use uma conta já confirmada. A conta profissional precisa ter vínculo previamente autorizado no banco.
+4. Abra `http://127.0.0.1:8000/`; a documentação técnica é acessada diretamente em `/docs`. Use uma conta já confirmada. A conta profissional precisa ter vínculo previamente autorizado no banco.
 5. Execute `VERIFICAR_TRANSURBAN.cmd` para conferir a configuração antes do uso.
 
 Windows: Python 3.10+ no PATH, Git e internet. Linux/macOS: entre em `avaliacao_integrada`, execute `python3 -m venv backend/.venv`, ative com `source backend/.venv/bin/activate`, instale `pip install -r backend/requirements.txt` e inicie `python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000`.
@@ -31,7 +33,7 @@ Windows: Python 3.10+ no PATH, Git e internet. Linux/macOS: entre em `avaliacao_
 
 ### Banco, papéis e integrações
 
-No projeto Supabase da equipe, os scripts 05 e 06 foram aplicados. Ao usar **o mesmo banco**, não execute novamente a instalação. Em projeto novo, siga os scripts SQL da pasta `database` na ordem, incluindo `05_portal.sql` e `06_operacao_e_manifestacoes.sql`.
+No projeto Supabase da equipe, os scripts 05, 06 e 07 foram aplicados. Ao usar **o mesmo banco**, não execute novamente a instalação. Em projeto novo, siga os scripts SQL da pasta `database` na ordem, incluindo `05_portal.sql` `06_operacao_e_manifestacoes.sql` e `07_suporte_e_aprovacoes.sql`.
 
 Consulte [operação e integrações](docs/MOBILIDADE_OPERACAO.md) para autorizar vínculos, configurar Google e e-mail, entender os limites do mapa e consultar as fontes. A chave de serviço fica somente no backend. As tabelas novas têm RLS e não oferecem acesso direto a `anon`/`authenticated`; o backend verifica a sessão, o papel e o escopo em cada operação.
 
@@ -39,7 +41,7 @@ A senha nova exige no mínimo 8 caracteres, maiúscula, minúscula, número e s�
 
 ### Evidências
 
-A revisão de consistência de 12/11/2026 passou em 23 testes automatizados. Trocar de cidade limpa os resultados anteriores; dia e sentido atualizam a consulta automaticamente; manifestações são validadas contra as cidades atendidas pela linha. Respostas antigas de consultas sobrepostas não substituem a seleção mais recente.
+A revisão de 13/11/2026 passou em 31 testes automatizados. O suporte foi validado com Supabase real em `docs/VALIDACAO_SUPORTE_20261113.json`. Trocar de cidade limpa os resultados anteriores; dia e sentido atualizam a consulta automaticamente; manifestações são validadas contra as cidades atendidas pela linha. Respostas antigas de consultas sobrepostas não substituem a seleção mais recente.
 
 Os testes automatizados verificam CRUD/FK, CORS, documentação, cookies e permissões. A validação adicional com Supabase real está em `docs/VALIDACAO_MOBILIDADE_20261112.json`; as contas e os registros sintéticos usados nela são descartados ao final. Coordenadas sintéticas validam o envio/consulta e não provam GPS de aparelho ou localização de frota real. Evidências anteriores permanecem datadas e podem descrever versões anteriores da interface.
 

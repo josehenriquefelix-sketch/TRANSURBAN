@@ -8,12 +8,14 @@
   <title>
    TRANSURBAN | Mobilidade que conecta
   </title>
-  <link href="/logo-mobilidade.svg" rel="icon"/>
+  <link href="/logo-passageiro.svg" rel="icon"/>
   <link href="/vendor/leaflet.css" rel="stylesheet"/>
-  <link href="/mobilidade.css?v=20261112-rede2" rel="stylesheet"/>
+  <link href="/mobilidade.css?v=20261113-portais" rel="stylesheet"/>
   <script defer="" src="/vendor/leaflet.js">
   </script>
-  <script defer="" src="/mobilidade.js?v=20261112-rede2">
+  <script defer="" src="/mobilidade.js?v=20261113-portais">
+  </script>
+  <script defer="" src="/operacao.js?v=20261113-portais">
   </script>
  </head>
  <body>
@@ -23,7 +25,7 @@
   <section hidden="" id="auth">
    <div class="auth-art">
     <a class="brand" href="#inicio">
-     <img alt="" height="42" src="/logo-mobilidade.svg" width="42"/>
+     <img alt="" height="42" src="/logo-passageiro.svg" width="42"/>
      <span>
       TRANSURBAN
       <small>
@@ -54,17 +56,6 @@
     <a class="back" href="#inicio">
      ← Voltar ao início
     </a>
-    <div aria-label="Tipo de acesso" class="auth-tabs" role="group">
-     <button class="active" data-login-role="passageiro" type="button">
-      Passageiro
-     </button>
-     <button data-login-role="motorista" type="button">
-      Motorista
-     </button>
-     <button data-login-role="gestor" type="button">
-      Gestão
-     </button>
-    </div>
     <form id="loginForm">
      <span class="eyebrow" id="loginEyebrow">
       ÁREA DO PASSAGEIRO
@@ -90,19 +81,32 @@
       Entrar na minha conta →
      </button>
      <button class="btn google wide" id="googleLogin" type="button">
-      <b>
-       G
-      </b>
+      <svg aria-hidden="true" height="20" viewbox="0 0 48 48" width="20">
+       <path d="M43.6 24.5c0-1.5-.1-3-.4-4.5H24v8.5h11a9.4 9.4 0 0 1-4.1 6.1v5h6.7c3.9-3.6 6-8.9 6-15.1z" fill="#4285F4">
+       </path>
+       <path d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.7-5c-1.8 1.2-4.1 1.9-6.8 1.9-5.2 0-9.6-3.5-11.2-8.2H6v5.2A20 20 0 0 0 24 44z" fill="#34A853">
+       </path>
+       <path d="M12.8 27.8a12 12 0 0 1 0-7.6V15H6a20 20 0 0 0 0 18z" fill="#FBBC05">
+       </path>
+       <path d="M24 12c3 0 5.6 1 7.7 3l5.8-5.8A19.2 19.2 0 0 0 24 4 20 20 0 0 0 6 15l6.8 5.2C14.4 15.5 18.8 12 24 12z" fill="#EA4335">
+       </path>
+      </svg>
       Continuar com Google
      </button>
      <p class="status" id="loginStatus" role="status">
      </p>
+     <button class="btn quiet wide" id="resendConfirmation" type="button">
+      Reenviar confirmação de e-mail
+     </button>
      <p>
       Ainda não tem conta?
       <a href="#cadastro">
        Criar conta
       </a>
      </p>
+     <a class="back" href="/motorista/">
+      Acesso de motoristas →
+     </a>
     </form>
     <form hidden="" id="signupForm">
      <span class="eyebrow">
@@ -192,7 +196,7 @@
   <div id="shell">
    <aside id="sidebar">
     <a class="brand" href="#inicio">
-     <img alt="" height="42" src="/logo-mobilidade.svg" width="42"/>
+     <img alt="" height="42" src="/logo-passageiro.svg" width="42"/>
      <span>
       TRANSURBAN
       <small>
@@ -250,19 +254,10 @@
       <span>
        ⓘ
       </span>
-      Sobre o projeto
+      Sobre o TRANSURBAN
      </a>
-     <a data-nav="motorista" data-role="motorista" hidden="" href="#motorista">
-      <span>
-       ↗
-      </span>
-      Área do motorista
-     </a>
-     <a data-nav="gestao" data-role="gestor" hidden="" href="#gestao">
-      <span>
-       ▤
-      </span>
-      Central de gestão
+     <a data-nav="suporte" href="#suporte">
+      ◌ Suporte / Fale aqui
      </a>
     </nav>
     <div class="sidebar-bottom">
@@ -275,9 +270,6 @@
      <button class="plain" data-logout="" hidden="">
       Sair da conta ↪
      </button>
-     <a href="/docs" rel="noopener" target="_blank">
-      API do sistema ↗
-     </a>
     </div>
    </aside>
    <div class="workspace">
@@ -355,7 +347,7 @@
          </small>
         </span>
         <span class="network-bus">
-         <img alt="" height="62" src="/logo-mobilidade.svg" width="62"/>
+         <img alt="" height="62" src="/logo-passageiro.svg" width="62"/>
         </span>
         <span class="city-badge b">
          Sarandi
@@ -441,7 +433,7 @@
          Informação para decidir.
         </h3>
         <p>
-         Conheça os documentos públicos e as fontes usadas pelo TRANSURBAN.
+         Acompanhe suas linhas, suas solicitações e as ocorrências publicadas pela gestão.
         </p>
         <b>
          Explorar o dashboard →
@@ -701,13 +693,13 @@
      <section class="screen" hidden="" id="dashboard">
       <div class="page-heading">
        <span class="eyebrow">
-        INFORMAÇÃO COM ORIGEM
+        SUA MOBILIDADE
        </span>
        <h1>
         Dashboard de mobilidade
        </h1>
        <p>
-        Dados documentais, cobertura do catálogo e informações da sua conta.
+        Suas linhas, suas solicitações e as ocorrências publicadas pela gestão.
        </p>
       </div>
       <div class="metrics" id="publicStats">
@@ -918,291 +910,31 @@
         Sobre o TRANSURBAN
        </h1>
        <p>
-        Uma plataforma para aproximar cidadãos, motoristas e gestão do transporte.
+        Informação para quem se move entre Maringá e Sarandi.
        </p>
       </div>
       <div class="two-columns">
        <article class="card">
         <h2>
-         O que queremos melhorar
+         Seu caminho, mais simples.
         </h2>
         <p>
-         Reunir informações de linhas e horários, facilitar o acompanhamento das viagens e organizar a participação dos passageiros em um canal com histórico e resposta.
+         Consulte linhas e horários, salve seus trajetos favoritos e acompanhe ocorrências confirmadas. Compartilhe sua experiência e receba o atendimento da gestão pelo seu protocolo.
         </p>
-        <h3>
-         Três áreas, uma conexão
-        </h3>
-        <p>
-         O passageiro consulta e participa. O motorista autorizado gerencia sua viagem e compartilha a posição do dispositivo. A gestão acompanha a operação e responde às manifestações do seu escopo.
-        </p>
-       </article>
-       <article class="card">
-        <h2>
-         Quem opera e quem acompanha
-        </h2>
-        <p>
-         Em Maringá, o transporte municipal é operado pela TCCC sob concessão municipal. A gestão e a fiscalização envolvem os órgãos municipais responsáveis.
-        </p>
-        <p>
-         As linhas metropolitanas verificadas entre Maringá e Sarandi são da Cidade Verde e têm tabelas publicadas pelo DER/PR. Os dados mantêm operador, fonte e vigência.
-        </p>
-        <p class="subtle">
-         O TRANSURBAN é independente. Os órgãos públicos ainda precisam aderir formalmente para utilizar seus acessos institucionais.
-        </p>
-        <a href="https://www.der.pr.gov.br/Pagina/Horarios-Vigentes" rel="noopener" target="_blank">
-         Catálogo de horários DER/PR ↗
-        </a>
-        <br/>
-        <a href="https://www.tce.pr.gov.br/noticias/tce-pr-orienta-maringa-para-melhorar-gestao-do-transporte-coletivo-municipal/12127/N.htm" rel="noopener" target="_blank">
-         Referência sobre a concessão municipal ↗
+        <a class="btn primary" href="#suporte">
+         Fale com o TRANSURBAN
         </a>
        </article>
-      </div>
-     </section>
-     <section class="screen" hidden="" id="motorista">
-      <div class="page-heading">
-       <span class="eyebrow">
-        ÁREA DO MOTORISTA
-       </span>
-       <h1>
-        Minha viagem
-       </h1>
-       <p>
-        Configure o veículo parado e acompanhe o estado do compartilhamento.
-       </p>
-      </div>
-      <div class="metrics" id="driverStats">
-      </div>
-      <div class="driver-layout">
-       <div class="stack">
-        <form class="card" id="driverProfileForm">
-         <span class="eyebrow">
-          1 • PERFIL E VEÍCULO
-         </span>
-         <h2>
-          Meu ônibus e perfil
-         </h2>
-         <label for="driverName">
-          Nome para exibição
-         </label>
-         <input id="driverName" maxlength="100" minlength="2" required="" type="text"/>
-         <div class="two-fields">
-          <div>
-           <label for="busModel">
-            Modelo do ônibus
-           </label>
-           <input id="busModel" maxlength="100" minlength="2" required="" type="text"/>
-          </div>
-          <div>
-           <label for="busPrefix">
-            Prefixo / numeração
-           </label>
-           <input id="busPrefix" maxlength="30" required="" type="text"/>
-          </div>
-         </div>
-         <label for="driverBirth">
-          Ano de nascimento (opcional)
-         </label>
-         <input id="driverBirth" max="2100" min="1920" type="number"/>
-         <label for="driverBio">
-          Sobre mim / do que gosto (opcional)
-         </label>
-         <textarea id="driverBio" maxlength="240" rows="2"></textarea>
-         <label class="check">
-          <input id="publicDriverConsent" type="checkbox"/>
-          Autorizo a exibição deste perfil aos passageiros durante a viagem.
-         </label>
-         <button class="btn quiet wide">
-          Salvar perfil e veículo
-         </button>
-         <p class="status" id="driverProfileStatus" role="status">
-         </p>
-        </form>
-        <form class="card" id="tripForm">
-         <span class="eyebrow">
-          2 • LINHA E SENTIDO
-         </span>
-         <h2>
-          Preparar viagem
-         </h2>
-         <label for="driverLine">
-          Linha
-         </label>
-         <select id="driverLine" required="">
-          <option value="">
-           Selecione
-          </option>
-         </select>
-         <label for="driverDirection">
-          Sentido
-         </label>
-         <select id="driverDirection">
-          <option>
-           Maringá → Sarandi
-          </option>
-          <option>
-           Sarandi → Maringá
-          </option>
-         </select>
-         <label class="check">
-          <input id="locationConsent" required="" type="checkbox"/>
-          Compartilhar a localização deste dispositivo com os passageiros durante esta viagem.
-         </label>
-         <button class="btn primary wide" id="startTrip">
-          ▷ Iniciar trajeto
-         </button>
-         <button class="btn quiet wide" hidden="" id="resumeGps" type="button">
-          Retomar compartilhamento GPS
-         </button>
-         <button class="btn danger wide" hidden="" id="endTrip" type="button">
-          □ Encerrar trajeto
-         </button>
-         <p class="status" id="tripStatus" role="status">
-         </p>
-        </form>
-       </div>
-       <div class="stack">
-        <article class="card map-card">
-         <div class="card-head">
-          <h2>
-           Minha rota e posição
-          </h2>
-          <span class="tag" id="driverTripBadge">
-           Trajeto não iniciado
-          </span>
-         </div>
-         <div class="map driver-map" id="driverMap">
-         </div>
-         <div class="map-footer">
-          <span id="driverGpsStatus">
-           GPS não iniciado
-          </span>
-          <span>
-           © OpenStreetMap
-          </span>
-         </div>
-         <p class="subtle">
-          A linha desenhada da rota dependerá de uma geometria oficial validada. O marcador exibe a posição recebida do seu dispositivo.
-         </p>
-         <a class="btn quiet" href="https://www.waze.com/ul?q=Maring%C3%A1%20Paran%C3%A1" id="wazeLink" rel="noopener" target="_blank">
-          Abrir no Waze ↗
-         </a>
-         <p class="subtle">
-          Navegação externa. Siga o itinerário autorizado da linha.
-         </p>
-        </article>
-        <article class="card">
-         <h2>
-          Minhas avaliações
-         </h2>
-         <div class="stack" id="driverReviews">
-         </div>
-        </article>
-       </div>
-      </div>
-     </section>
-     <section class="screen" hidden="" id="gestao">
-      <div class="page-heading">
-       <span class="eyebrow">
-        ACESSO AUTORIZADO
-       </span>
-       <h1>
-        Central de mobilidade
-       </h1>
-       <p>
-        Operação, participação e atendimento dentro do seu escopo.
-       </p>
-      </div>
-      <div class="notice">
-       Ambiente de gestão TRANSURBAN. A adesão dos órgãos públicos e da operadora ainda está pendente. O protocolo exibido pertence à plataforma.
-      </div>
-      <div class="metrics" id="managerStats">
-      </div>
-      <div class="planner card">
-       <label for="managerStatus">
-        Filtrar status
-       </label>
-       <select id="managerStatus">
-        <option value="">
-         Todos
-        </option>
-        <option value="recebida">
-         Recebida
-        </option>
-        <option value="em_analise">
-         Em análise
-        </option>
-        <option value="respondida">
-         Respondida
-        </option>
-        <option value="encerrada">
-         Encerrada
-        </option>
-       </select>
-       <label for="managerType">
-        Filtrar tipo
-       </label>
-       <select id="managerType">
-        <option value="">
-         Todos
-        </option>
-        <option value="reclamacao">
-         Reclamações
-        </option>
-        <option value="elogio">
-         Elogios
-        </option>
-        <option value="sugestao">
-         Sugestões
-        </option>
-       </select>
-       <button class="btn quiet" id="refreshManager" type="button">
-        Atualizar fila
-       </button>
-      </div>
-      <div class="two-columns">
        <article class="card">
         <h2>
-         Fila de atendimento
+         Informação com responsabilidade
         </h2>
-        <p class="subtle">
-         Até 500 registros recentes, limitados ao seu escopo autorizado.
+        <p>
+         Os horários mantêm a referência da operadora ou do documento publicado. A localização depende da sua autorização e da precisão do dispositivo. As ocorrências no mapa são identificadas pela data e validade.
         </p>
-        <div class="stack" id="managerQueue">
-        </div>
-       </article>
-       <article class="card">
-        <h2>
-         Detalhes e resposta
-        </h2>
-        <div class="empty" id="managerDetail">
-         Selecione uma manifestação para analisar.
-        </div>
-        <form hidden="" id="responseForm">
-         <label for="responseStatus">
-          Novo status
-         </label>
-         <select id="responseStatus">
-          <option value="em_analise">
-           Em análise
-          </option>
-          <option value="respondida">
-           Respondida
-          </option>
-          <option value="encerrada">
-           Encerrada
-          </option>
-         </select>
-         <label for="responseText">
-          Resposta ao cidadão
-         </label>
-         <textarea id="responseText" maxlength="2000" rows="5"></textarea>
-         <button class="btn primary wide">
-          Salvar atendimento
-         </button>
-         <p class="status" id="responseFeedback" role="status">
-         </p>
-        </form>
+        <p>
+         O TRANSURBAN é uma plataforma independente. A operação oficial das linhas e a autorização de mudanças de itinerário pertencem aos responsáveis pelo transporte.
+        </p>
        </article>
       </div>
      </section>
@@ -1220,6 +952,144 @@
       </div>
       <article class="card" id="accountDetails">
       </article>
+     </section>
+     <section class="screen" hidden="" id="suporte">
+      <div class="page-heading">
+       <span class="eyebrow">
+        FALE COM A GESTÃO
+       </span>
+       <h1>
+        Suporte à sua mobilidade
+       </h1>
+       <p>
+        Conte o que precisa melhorar. Sua mensagem fica na sua conta e chega à gestão responsável no TRANSURBAN.
+       </p>
+      </div>
+      <article class="card map-card">
+       <div class="card-head">
+        <div>
+         <span class="eyebrow">
+          OCORRÊNCIAS CONFIRMADAS
+         </span>
+         <h2>
+          Mapa de mobilidade
+         </h2>
+        </div>
+        <button class="btn quiet" id="locateMe" type="button">
+         Minha localização
+        </button>
+       </div>
+       <p class="status" id="locationFeedback" role="status">
+        A localização depende da sua permissão e da precisão do aparelho.
+       </p>
+       <div class="map" id="opsMap">
+       </div>
+       <div class="map-legend">
+        <span class="red-dot">
+         ● Vermelho: bloqueio, obra ou desvio
+        </span>
+        <span class="yellow-dot">
+         ● Amarelo: atenção ou lentidão
+        </span>
+        <span class="green-dot">
+         ● Verde: condição tranquila informada
+        </span>
+       </div>
+       <p class="subtle">
+        Somente ocorrências publicadas pela gestão, com data e validade. Áreas sem marcação não significam trânsito livre.
+       </p>
+       <div class="stack" id="opsAlerts">
+       </div>
+      </article>
+      <div class="two-columns">
+       <form class="card" id="supportForm">
+        <h2>
+         Como podemos ajudar?
+        </h2>
+        <label for="supportCity">
+         Cidade
+        </label>
+        <select id="supportCity">
+         <option>
+          Maringá
+         </option>
+         <option>
+          Sarandi
+         </option>
+        </select>
+        <label for="supportLine">
+         Linha (opcional)
+        </label>
+        <select id="supportLine">
+         <option value="">
+          Sem linha específica
+         </option>
+        </select>
+        <label for="supportCategory">
+         Assunto principal
+        </label>
+        <select id="supportCategory">
+         <option>
+          Acessibilidade
+         </option>
+         <option>
+          Atendimento
+         </option>
+         <option>
+          Trânsito
+         </option>
+         <option>
+          Obras
+         </option>
+         <option>
+          Desvio
+         </option>
+         <option>
+          Segurança
+         </option>
+         <option>
+          Outros
+         </option>
+        </select>
+        <label for="supportSubject">
+         Título
+        </label>
+        <input id="supportSubject" maxlength="120" minlength="5" placeholder="Ex.: plataforma de embarque com defeito" required=""/>
+        <label for="supportMessage">
+         Descreva a situação
+        </label>
+        <textarea id="supportMessage" maxlength="2000" minlength="10" placeholder="Informe a linha, o local e o que aconteceu. Evite dados pessoais de terceiros." required="" rows="5"></textarea>
+        <p class="muted">
+         Local da ocorrência (opcional): clique no mapa para marcar. Sua localização atual não é enviada automaticamente.
+        </p>
+        <div class="two-fields">
+         <div>
+          <label for="supportLat">
+           Latitude
+          </label>
+          <input id="supportLat" max="90" min="-90" step="any" type="number"/>
+         </div>
+         <div>
+          <label for="supportLon">
+           Longitude
+          </label>
+          <input id="supportLon" max="180" min="-180" step="any" type="number"/>
+         </div>
+        </div>
+        <button class="btn primary wide">
+         Enviar para a gestão
+        </button>
+        <p class="status" id="supportStatus" role="status">
+        </p>
+       </form>
+       <article class="card">
+        <h2>
+         Meus chamados
+        </h2>
+        <div class="stack" id="supportHistory">
+        </div>
+       </article>
+      </div>
      </section>
     </main>
     <footer>

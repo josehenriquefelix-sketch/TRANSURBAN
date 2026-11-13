@@ -9,8 +9,6 @@ const state = {
     favorites: [],
     trips: [],
     driver: null,
-    queue: [],
-    selectedReport: null,
     loginRole: "passageiro",
     page: "inicio"
 };
@@ -31,9 +29,8 @@ const titles = {
     favoritos: "Minhas linhas",
     avaliacoes: "Avaliações",
     passe: "Meu passe",
-    sobre: "Sobre o projeto",
-    motorista: "Área do motorista",
-    gestao: "Central de gestão",
+    sobre: "Sobre o TRANSURBAN",
+    suporte: "Suporte / Fale aqui",
     conta: "Minha conta"
 };
 const authScreens = {
@@ -288,27 +285,14 @@ function metric(label, value, detail = "") {
     return card;
 }
 async function dashboard() {
-    $("publicStats").replaceChildren(metric("Cidades conectadas", "2"), metric("Linhas municipais de Maringá", linesFor("Maringá").length, "Catálogo público Na Hora"), metric("Linhas e variantes de Sarandi", linesFor("metropolitano").length, "12 tabelas DER/PR"), metric("Minhas linhas", state.user ? state.favorites.length : "—"));
-    const data = await api("/portal/contexto");
-    $("officialInfo").replaceChildren();
-    const information = node("article", "", "card");
-    information.append(node("span", "INFORMAÇÕES DOCUMENTAIS", "eyebrow"), node("h2", data.titulo), node("p", data.descricao));
-    for (const indicator of data.indicadores) information.append(node("p", `${indicator.valor} · ${indicator.rotulo} — ${indicator.contexto}`));
-    for (const source of data.fontes) information.append(sourceLink(`${source.titulo} ↗`, source.url), document.createElement("br"));
-    information.append(node("p", data.limite, "subtle"));
-    $("officialInfo").append(information);
-    for (const record of data.registros) {
-        const card = node("article", "", "card");
-        card.append(node("h3", record.titulo), node("p", record.texto));
-        if (record.citacao) {
-            const quote = node("blockquote", `“${record.citacao}”`);
-            quote.append(node("cite", record.atribuicao));
-            card.append(quote);
-        }
-        const source = data.fontes.find(source => source.id === record.fonte_id);
-        card.append(sourceLink("Consultar fonte ↗", source.url));
-        $("officialInfo").append(card);
-    }
+    const alerts = await api("/atendimento/alertas").catch(() => null);
+    const reports = state.user ? await api("/mobilidade/minhas-manifestacoes") : null;
+    const calls = state.user ? await api("/atendimento/meus-chamados").catch(() => null) : null;
+    $("publicStats").replaceChildren(metric("Minhas linhas", state.user ? state.favorites.length : "—"), metric("Minhas avaliações", reports?.length ?? "—"), metric("Meus chamados", calls?.length ?? "—"), metric("Ocorrências publicadas", alerts?.length ?? "—"));
+    $("officialInfo").replaceChildren(node("h2", "Seu dia, seu caminho"), node("p", state.user ? `Olá, ${state.user.nome}. Acompanhe suas linhas, seus chamados e suas avaliações.` : "Entre na sua conta para acompanhar suas informações e salvar suas linhas."));
+    const link = node("a", "Abrir mapa e falar com a gestão →", "btn primary");
+    link.href = "#suporte";
+    $("officialInfo").append(link);
 }
 
 function mapFor(id) {
@@ -449,148 +433,12 @@ async function reviewHistory() {
     }
     if (!records.length) $("reviewHistory").append(node("p", "Você ainda não enviou uma manifestação.", "empty"));
 }
-async function driverPanel() {
-    state.driver = await api("/mobilidade/motorista");
-    const data = state.driver;
-    $("driverStats").replaceChildren(metric("Minha avaliação", data.indicadores.avaliacao ? `${data.indicadores.avaliacao} ★` : "—", `${data.indicadores.quantidade_notas} notas vinculadas`), metric("Elogios", data.indicadores.elogios), metric("Reclamações", data.indicadores.reclamacoes), metric("Estado da viagem", data.viagem ? "Ativa" : "Preparação"));
-    const profile = data.perfil;
-    if (profile) {
-        $("driverName").value = profile.nome_publico;
-        $("busModel").value = profile.modelo;
-        $("busPrefix").value = profile.prefixo;
-        $("driverBirth").value = profile.ano_nascimento || "";
-        $("driverBio").value = profile.bio;
-        $("publicDriverConsent").checked = profile.exibir_perfil;
-    }
-    $("startTrip").hidden = Boolean(data.viagem);
-    $("endTrip").hidden = !data.viagem;
-    $("resumeGps").hidden = !data.viagem;
-    $("driverTripBadge").textContent = data.viagem ? "Trajeto iniciado" : "Trajeto não iniciado";
-    $("driverProfileForm").querySelectorAll("input,textarea,button").forEach(input => input.disabled = Boolean(data.viagem));
-    $("driverLine").disabled = Boolean(data.viagem);
-    $("driverDirection").disabled = Boolean(data.viagem);
-    $("locationConsent").disabled = Boolean(data.viagem);
-    if (data.viagem) {
-        $("driverLine").value = data.viagem.linha_id;
-        fillDirections(data.viagem.linha_id, "driverDirection");
-        $("driverDirection").value = data.viagem.sentido;
-        $("locationConsent").checked = true;
-    }
-    $("driverReviews").replaceChildren();
-    for (const review of data.avaliacoes) {
-        const card = node("article", "", "record");
-        card.append(node("h3", `${review.tipo} · ${review.categoria}`), node("p", review.relato), node("small", `${dateTime(review.criada_em)} · TU-${String(review.numero).padStart(6,"0")}`));
-        $("driverReviews").append(card);
-    }
-    if (!data.avaliacoes.length) $("driverReviews").append(node("p", "Ainda não há manifestações vinculadas às suas viagens.", "empty"));
-    $("wazeLink").href = "https://www.waze.com/ul?q=" + encodeURIComponent($("driverDirection").value.includes("→ Sarandi") ? "Sarandi Paraná" : "Maringá Paraná");
-    mapFor("driverMap");
-}
-
-function stopGps() {
-    if (watcher !== null) navigator.geolocation.clearWatch(watcher);
-    watcher = null;
-    $("driverGpsStatus").textContent = "Compartilhamento GPS pausado.";
-}
-
-function startGps() {
-    if (!state.driver?.viagem) {
-        toast("Inicie uma viagem antes de compartilhar a posição.");
-        return;
-    }
-    if (!navigator.geolocation) {
-        status("tripStatus", "O navegador não oferece acesso à localização.", true);
-        return;
-    }
-    stopGps();
-    lastPositionSent = 0;
-    $("driverGpsStatus").textContent = "Aguardando permissão e posição do dispositivo…";
-    const tripId = state.driver.viagem.id;
-    watcher = navigator.geolocation.watchPosition(async position => {
-        if (sendingPosition || Date.now() - lastPositionSent < 10000 || state.driver?.viagem?.id !== tripId) return;
-        const coords = position.coords;
-        if (coords.accuracy > 1000) {
-            $("driverGpsStatus").textContent = "Precisão insuficiente. Aguardando melhor sinal GPS.";
-            return;
-        }
-        sendingPosition = true;
-        try {
-            await api(`/mobilidade/motorista/viagens/${tripId}/posicao`, {
-                method: "POST",
-                body: JSON.stringify({
-                    latitude: coords.latitude,
-                    longitude: coords.longitude,
-                    precisao_m: coords.accuracy,
-                    direcao: Number.isFinite(coords.heading) ? coords.heading : null
-                })
-            });
-            if (watcher === null || state.driver?.viagem?.id !== tripId) return;
-            lastPositionSent = Date.now();
-            const map = mapFor("driverMap");
-            if (map) {
-                markers.driverMap.clearLayers();
-                plotBus("driverMap", {
-                    latitude: coords.latitude,
-                    longitude: coords.longitude
-                }, "Posição deste dispositivo");
-                map.setView([coords.latitude, coords.longitude], 15);
-            }
-            $("driverGpsStatus").textContent = `GPS compartilhado • ${new Date().toLocaleTimeString("pt-BR")} • precisão ${Math.round(coords.accuracy)} m`;
-        } catch (error) {
-            status("tripStatus", error.message, true);
-        } finally {
-            sendingPosition = false;
-        }
-    }, error => {
-        status("tripStatus", error.code === 1 ? "Localização não autorizada. Permita o GPS e toque em Retomar compartilhamento." : "Posição indisponível. Confira o GPS e tente retomar.", true);
-        $("driverGpsStatus").textContent = "Sem sinal GPS recente.";
-    }, {
-        enableHighAccuracy: true,
-        timeout: 20000,
-        maximumAge: 5000
-    });
-}
-async function endTrip() {
-    if (!state.driver?.viagem) return;
-    stopGps();
-    await api(`/mobilidade/motorista/viagens/${state.driver.viagem.id}/encerrar`, {
-        method: "POST"
-    });
-    await driverPanel();
-    status("tripStatus", "Trajeto encerrado e compartilhamento finalizado.");
-}
-
-function renderQueue() {
-    const records = state.queue.filter(record => (!$("managerStatus").value || record.status === $("managerStatus").value) && (!$("managerType").value || record.tipo === $("managerType").value));
-    $("managerQueue").replaceChildren();
-    for (const record of records) {
-        const button = node("button", "", "record plain");
-        button.type = "button";
-        button.append(node("span", `TU-${String(record.numero).padStart(6,"0")} · ${record.status.replaceAll("_"," ")}`, "tag"), node("h3", `${record.tipo} · ${record.categoria}`), node("p", `${record.cidade} · ${findLine(record.linha_id)?.codigo||record.linha_id}`), node("small", dateTime(record.criada_em)));
-        button.addEventListener("click", () => {
-            state.selectedReport = record;
-            $("managerDetail").replaceChildren(node("h3", `TU-${String(record.numero).padStart(6,"0")}`), node("p", `${record.tipo} · ${record.categoria} · competência ${record.competencia}`), node("p", record.relato), node("small", dateTime(record.criada_em)));
-            $("responseForm").hidden = record.status === "encerrada";
-            $("responseText").value = record.resposta || "";
-            $("responseStatus").value = record.status === "recebida" ? "em_analise" : record.status;
-            status("responseFeedback", "");
-            if (record.status === "encerrada") $("managerDetail").append(node("p", record.resposta));
-        });
-        $("managerQueue").append(button);
-    }
-    if (!records.length) $("managerQueue").append(node("p", "Nenhuma manifestação para esses filtros.", "empty"));
-}
-async function managerPanel() {
-    state.queue = await api("/mobilidade/gestao/manifestacoes");
-    state.selectedReport = null;
-    $("managerDetail").replaceChildren(node("p", "Selecione uma manifestação para analisar."));
-    $("responseForm").hidden = true;
-    $("managerStats").replaceChildren(metric("Recebidas", state.queue.filter(r => r.status === "recebida").length), metric("Em análise", state.queue.filter(r => r.status === "em_analise").length), metric("Respondidas", state.queue.filter(r => r.status === "respondida").length), metric("Encerradas", state.queue.filter(r => r.status === "encerrada").length));
-    renderQueue();
-}
 async function navigate() {
     let page = location.hash.slice(1) || "inicio";
-    if (!titles[page] && !authScreens[page]) page = "inicio";
+    if (!titles[page] && !authScreens[page]) {
+        page = "inicio";
+        history.replaceState(null, "", "/#inicio");
+    }
     clearInterval(polling);
     polling = null;
     if (page !== "horarios") $("officialFrame").removeAttribute("src");
@@ -602,24 +450,12 @@ async function navigate() {
     state.page = page;
     document.title = `TRANSURBAN | ${titles[page]||"Sua conta"}`;
     $("breadcrumb").textContent = titles[page] || "Conta";
-    document.body.dataset.area = page === "motorista" ? "motorista" : page === "gestao" ? "gestao" : "passageiro";
+    document.body.dataset.area = "passageiro";
     document.querySelectorAll("[data-nav],.bottom-nav a").forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + page));
     $("sidebar").classList.remove("open");
     $("menuButton").setAttribute("aria-expanded", "false");
     window.scrollTo(0, 0);
     if (!state.ready) return;
-    if (page === "motorista" && !hasRole("motorista")) {
-        location.hash = "login";
-        setLoginRole("motorista");
-        toast("Entre com uma conta de motorista autorizada.");
-        return;
-    }
-    if (page === "gestao" && !hasRole("gestor")) {
-        location.hash = "login";
-        setLoginRole("gestor");
-        toast("Entre com uma conta de gestão autorizada.");
-        return;
-    }
     try {
         if (page === "cidades") renderCatalog();
         if (page === "favoritos") await loadFavorites();
@@ -648,8 +484,6 @@ async function navigate() {
             }
             await reviewHistory();
         }
-        if (page === "motorista") await driverPanel();
-        if (page === "gestao") await managerPanel();
         if (page === "conta") {
             $("accountDetails").replaceChildren();
             if (!state.user) {
@@ -658,7 +492,7 @@ async function navigate() {
                 link.href = "#login";
                 $("accountDetails").append(link);
             } else {
-                $("accountDetails").append(node("h2", state.user.nome), node("p", state.user.email), node("p", `Acessos autorizados: ${state.user.papeis.join(", ")}`));
+                $("accountDetails").append(node("h2", state.user.nome), node("p", state.user.email), node("p", `Acesso ao portal: passageiro`));
                 const forgot = node("a", "Alterar ou recuperar minha senha", "btn quiet");
                 forgot.href = "#esqueci-senha";
                 $("accountDetails").append(forgot);
@@ -674,8 +508,7 @@ function setLoginRole(role) {
     document.querySelectorAll("[data-login-role]").forEach(button => button.classList.toggle("active", button.dataset.loginRole === role));
     $("loginEyebrow").textContent = {
         passageiro: "ÁREA DO PASSAGEIRO",
-        motorista: "ÁREA DO MOTORISTA",
-        gestor: "GESTÃO E FISCALIZAÇÃO"
+        motorista: "ÁREA DO MOTORISTA"
     } [role];
     $("loginRoleInfo").textContent = role === "passageiro" ? "Entre para salvar suas linhas e acompanhar suas manifestações." : "O acesso exige autorização da equipe responsável pelo seu vínculo.";
 }
@@ -691,17 +524,14 @@ $("loginForm").addEventListener("submit", event => {
             body: JSON.stringify({
                 identificador: $("loginId").value,
                 senha: $("loginPassword").value,
-                tipo_acesso: state.loginRole
+                tipo_acesso: "passageiro"
             })
         });
         $("loginPassword").value = "";
         status("loginStatus", "");
         await account();
         await loadFavorites();
-        location.hash = {
-            motorista: "motorista",
-            gestor: "gestao"
-        } [state.loginRole] || "inicio";
+        location.hash = "inicio";
     });
 });
 $("signupForm").addEventListener("submit", event => {
@@ -760,7 +590,7 @@ document.querySelectorAll("[data-login-role]").forEach(button => button.addEvent
 $("googleLogin").addEventListener("click", async () => {
     try {
         const config = await api("/auth/configuracao");
-        if (!config.google) throw new Error("Login com Google aguardando configuração do provedor no Supabase.");
+        if (!config.google) throw new Error("O acesso com Google está temporariamente indisponível. Entre com e-mail ou CPF.");
         location.href = `/auth/google?tipo_acesso=${state.loginRole}`;
     } catch (error) {
         status("loginStatus", error.message, true);
@@ -768,24 +598,15 @@ $("googleLogin").addEventListener("click", async () => {
 });
 document.querySelectorAll("[data-logout]").forEach(button => button.addEventListener("click", async () => {
     try {
-        if (state.driver?.viagem) {
-            if (!confirm("Encerrar o trajeto ativo e sair da conta?")) return;
-            await endTrip();
-        }
         await api("/auth/logout", {
             method: "POST"
         });
-        stopGps();
         state.user = null;
-        state.driver = null;
         state.favorites = [];
         state.reviewTrip = null;
         status("loginStatus", "");
         accountUI();
         $("reviewHistory").replaceChildren();
-        $("managerQueue").replaceChildren();
-        $("managerDetail").replaceChildren();
-        $("responseForm").hidden = true;
         location.hash = "login";
         toast("Você saiu da conta.");
     } catch (error) {
@@ -840,7 +661,6 @@ for (const id of ["scheduleDay", "scheduleDirection"]) $(id).addEventListener("c
 $("officialScheduleButton").addEventListener("click", () => showOfficial(findLine($("scheduleLine").value)));
 $("officialPointButton").addEventListener("click", () => showOfficial(findLine($("scheduleLine").value), true));
 $("lineSearch").addEventListener("input", renderCatalog);
-$("driverLine").addEventListener("change", () => fillDirections($("driverLine").value, "driverDirection"));
 $("scheduleForm").addEventListener("submit", event => {
     event.preventDefault();
     schedules();
@@ -877,66 +697,6 @@ $("reviewForm").addEventListener("submit", event => {
         await reviewHistory();
     });
 });
-$("driverProfileForm").addEventListener("submit", event => {
-    event.preventDefault();
-    action("driverProfileForm", "driverProfileStatus", async () => {
-        await api("/mobilidade/motorista/perfil", {
-            method: "PUT",
-            body: JSON.stringify({
-                nome_publico: $("driverName").value,
-                ano_nascimento: $("driverBirth").value ? Number($("driverBirth").value) : null,
-                bio: $("driverBio").value,
-                exibir_perfil: $("publicDriverConsent").checked,
-                modelo: $("busModel").value,
-                prefixo: $("busPrefix").value
-            })
-        });
-        status("driverProfileStatus", "Perfil e veículo salvos.");
-        await driverPanel();
-    });
-});
-$("tripForm").addEventListener("submit", event => {
-    event.preventDefault();
-    action("tripForm", "tripStatus", async () => {
-        if (!$("locationConsent").checked) throw new Error("Autorize o compartilhamento de localização para esta viagem.");
-        const trip = await api("/mobilidade/motorista/viagens", {
-            method: "POST",
-            body: JSON.stringify({
-                linha_id: $("driverLine").value,
-                sentido: $("driverDirection").value
-            })
-        });
-        state.driver.viagem = trip;
-        await driverPanel();
-        status("tripStatus", "Trajeto iniciado. Autorize o GPS no navegador para compartilhar sua posição.");
-        startGps();
-    });
-});
-$("resumeGps").addEventListener("click", startGps);
-$("endTrip").addEventListener("click", () => {
-    if (confirm("Encerrar este trajeto e parar o compartilhamento?")) endTrip().catch(error => status("tripStatus", error.message, true));
-});
-$("driverDirection").addEventListener("change", () => {
-    $("wazeLink").href = "https://www.waze.com/ul?q=" + encodeURIComponent($("driverDirection").value.includes("→ Sarandi") ? "Sarandi Paraná" : "Maringá Paraná");
-});
-$("managerStatus").addEventListener("change", renderQueue);
-$("managerType").addEventListener("change", renderQueue);
-$("refreshManager").addEventListener("click", () => managerPanel().catch(error => toast(error.message)));
-$("responseForm").addEventListener("submit", event => {
-    event.preventDefault();
-    action("responseForm", "responseFeedback", async () => {
-        if (!state.selectedReport) throw new Error("Selecione uma manifestação.");
-        await api(`/mobilidade/gestao/manifestacoes/${state.selectedReport.id}`, {
-            method: "PUT",
-            body: JSON.stringify({
-                status: $("responseStatus").value,
-                resposta: $("responseText").value
-            })
-        });
-        toast("Atendimento salvo. A resposta está disponível ao cidadão.");
-        await managerPanel();
-    });
-});
 async function init() {
     const fragment = new URLSearchParams(location.hash.slice(1)),
         params = new URLSearchParams(location.search);
@@ -963,9 +723,8 @@ async function init() {
                 ["homeLine", $("homeCity").value],
                 ["scheduleLine", $("scheduleCity").value],
                 ["reviewLine", $("reviewCity").value],
-                ["driverLine", "todas"]
             ]) fillLines(id, city, true, id === "reviewLine");
-        $("serviceText").textContent = "API conectada";
+        $("serviceText").textContent = "Serviço disponível";
     } catch (error) {
         $("serviceText").textContent = "Catálogo indisponível";
         toast(error.message);
@@ -975,5 +734,20 @@ async function init() {
     state.ready = true;
     await navigate();
 }
-window.addEventListener("pagehide", stopGps);
 init().catch(error => toast(error.message));
+
+$("resendConfirmation").addEventListener("click", async () => {
+    try {
+        const email = $("loginId").value.trim();
+        if (!email.includes("@")) throw new Error("Digite seu e-mail no campo de acesso para solicitar a confirmação.");
+        const r = await api("/auth/reenviar-confirmacao", {
+            method: "POST",
+            body: JSON.stringify({
+                email
+            })
+        });
+        status("loginStatus", r.mensagem);
+    } catch (e) {
+        status("loginStatus", e.message, true);
+    }
+});

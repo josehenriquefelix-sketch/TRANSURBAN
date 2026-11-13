@@ -1578,3 +1578,213 @@ cite {
         scroll-behavior: auto !important
     }
 }
+
+/* Paletas próprias dos três portais. */
+:root {
+    --green: #0b4638;
+    --accent: #244b68;
+    --ink: #102c45;
+    --soft: #edf5f1;
+    --text: #203c45;
+    --bg: #f4f7f6;
+}
+
+.hero {
+    background: linear-gradient(115deg, #0b4638, #102c45);
+}
+
+.hero em {
+    color: #a9d5c5;
+}
+
+.hero .lime {
+    background: #e6f1ec;
+    color: #0b4638;
+}
+
+#sidebar nav a.active {
+    background: #e1efe9;
+    color: #0b4638;
+}
+
+.bottom-nav a.active {
+    color: #c6dfd4;
+}
+
+body[data-area=motorista] {
+    --green: #945b13;
+    --accent: #de762f;
+    --ink: #352b22;
+    --soft: #fcf1df;
+    --text: #493927;
+    --muted: #77674f;
+    --bg: #faf6ee;
+    background: var(--bg);
+}
+
+body[data-area=motorista] #sidebar {
+    background: #3d2c1e;
+    color: #fff0da;
+}
+
+body[data-area=motorista] #sidebar nav a.active {
+    background: #dda347;
+    color: #302416;
+}
+
+body[data-area=motorista] .auth-art {
+    background: linear-gradient(145deg, #3d2c1e, #9e5f18);
+}
+
+body[data-area=motorista] .primary {
+    background: #a56312;
+    color: #fff;
+}
+
+body[data-area=motorista] .primary:hover {
+    background: #80490b;
+}
+
+body[data-area=motorista] .map-footer {
+    background: #fff2dc;
+}
+
+body[data-area=gestao] {
+    --green: #3b3e43;
+    --accent: #c8a65b;
+    --ink: #191b1f;
+    --soft: #f4f0e7;
+    --text: #303237;
+    --muted: #707174;
+    --bg: #f4f3f0;
+    background: var(--bg);
+}
+
+body[data-area=gestao] #sidebar {
+    background: #202226;
+    color: #e8e4dc;
+}
+
+body[data-area=gestao] #sidebar nav a.active {
+    background: #c8a65b;
+    color: #17191c;
+}
+
+body[data-area=gestao] .auth-art {
+    background: linear-gradient(140deg, #17191c, #3d3f43);
+}
+
+body[data-area=gestao] .auth-art p,
+body[data-area=gestao] .auth-art small {
+    color: #ded5bf;
+}
+
+body[data-area=gestao] .primary {
+    background: #27292d;
+    color: #e9cf96;
+}
+
+body[data-area=gestao] .primary:hover {
+    background: #121315;
+}
+
+body[data-area=gestao] .eyebrow {
+    color: #80652b;
+}
+
+body[data-area=gestao] .tag {
+    background: #f2ecde;
+    border-color: #d8c79f;
+    color: #5d4b27;
+}
+
+.portal-login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100dvh;
+}
+
+.access-request {
+    margin-top: 32px;
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+    font-size: 13px;
+}
+
+.access-request summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--green);
+}
+
+.map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 0;
+    font-size: 12px;
+}
+
+.red-dot {
+    color: #a63630;
+}
+
+.yellow-dot {
+    color: #8d6700;
+}
+
+.green-dot {
+    color: #246f4e;
+}
+
+.operations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.ops-marker {
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 7px #0005;
+}
+
+#opsMap {
+    min-height: 400px;
+    z-index: 1;
+}
+
+#supportHistory .record {
+    border-left: 3px solid var(--green);
+}
+
+#managementOperations {
+    margin: 24px 0;
+}
+
+@media(max-width:800px) {
+
+    .portal-login,
+    .operations-grid {
+        display: block;
+    }
+
+    .portal-login .auth-art {
+        min-height: auto;
+        padding: 24px;
+    }
+
+    .portal-login .auth-art>div,
+    .portal-login .auth-art>small {
+        display: none;
+    }
+
+    #opsMap {
+        min-height: 340px;
+    }
+
+    .operations-grid>.card {
+        margin-bottom: 20px;
+    }
+}

@@ -22,6 +22,7 @@ from backend.database import supabase_configurado
 from backend.auth import router as auth_router
 from backend.controller.portal import router as portal_router
 from backend.controller.mobilidade import router as mobilidade_router
+from backend.controller.suporte import router as suporte_router
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -79,6 +80,7 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(portal_router)
 app.include_router(mobilidade_router)
+app.include_router(suporte_router)
 app.include_router(cidades_router)
 app.include_router(linhas_router)
 app.include_router(analise_router)
@@ -120,7 +122,7 @@ async def proteger_solicitacoes(request: Request, call_next):
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     response.headers["X-Frame-Options"] = "DENY"
-    if request.url.path.startswith(("/auth", "/mobilidade", "/portal/passe", "/portal/avaliacoes", "/portal/recargas")):
+    if request.url.path.startswith(("/auth", "/mobilidade", "/atendimento", "/gestao", "/motorista", "/portal/passe", "/portal/avaliacoes", "/portal/recargas")):
         response.headers["Cache-Control"] = "no-store"
     return response
 
@@ -129,7 +131,7 @@ async def proteger_solicitacoes(request: Request, call_next):
 def health():
     return {
         "projeto": "TRANSURBAN",
-        "versao": "2026.11.12-rede",
+        "versao": "2026.11.13-portais",
         "supabase_configurado": supabase_configurado(),
         "interface": "/",
         "documentacao": "/docs",

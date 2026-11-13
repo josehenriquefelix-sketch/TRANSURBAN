@@ -1,0 +1,18 @@
+{
+  "data": "2026-11-13",
+  "ambiente": "FastAPI e Supabase real; contas e dados sintéticos descartados",
+  "quantidade": 11,
+  "verificacoes": [
+    "quatro sessões de teste autenticadas",
+    "suporte da gestão bloqueado a visitante, passageiro e motorista",
+    "protocolo de suporte gravado no Supabase",
+    "chamado visível apenas ao autor e à gestão competente",
+    "resposta e histórico persistidos",
+    "gestão de outra cidade não recebe o chamado",
+    "alerta público tem validade e não expõe o autor",
+    "retirada remove ocorrência do mapa público",
+    "pedido pendente não concede acesso profissional",
+    "aprovação administrativa atômica concede somente o papel solicitado",
+    "auditoria da aprovação identifica revisor e decisão"
+  ]
+}

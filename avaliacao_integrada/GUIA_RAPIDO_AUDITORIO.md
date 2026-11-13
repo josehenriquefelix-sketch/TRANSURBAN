@@ -28,7 +28,9 @@ O primeiro início cria o ambiente Python e instala as dependências; pode levar
 ## Abrir e apresentar
 
 - A tela abre em `http://127.0.0.1:8000/`.
-- Na tela, clique em **API do sistema** para abrir a documentação interativa. O endereço direto é `http://127.0.0.1:8000/docs`.
+- A documentação técnica fica em `http://127.0.0.1:8000/docs`, sem link no portal público.
+- Motorista: `http://127.0.0.1:8000/motorista/`; gestão: `http://127.0.0.1:8000/gestao/`. Esses acessos exigem autorização profissional.
+- Para entrar, use uma conta com e-mail confirmado. Se necessário, solicite o reenvio na tela de login.
 - Mantenha aberta a janela do servidor durante a apresentação.
 - Para iniciar novamente depois da primeira configuração, dê dois cliques em `iniciar_local.cmd`.
 

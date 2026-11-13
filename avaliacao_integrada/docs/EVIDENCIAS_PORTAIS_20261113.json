@@ -1,0 +1,24 @@
+{
+  "data": "2026-11-13",
+  "testes_unitarios": 31,
+  "integracao_suporte_real": 11,
+  "login_confirmado": [
+    "email",
+    "CPF"
+  ],
+  "interfaces": [
+    "passageiro sem gestão ou área operacional",
+    "motorista em portal próprio",
+    "gestão em portal próprio",
+    "mapa OSM carregado em gestão, motorista e suporte",
+    "22 cartões de atendimento Sarandi",
+    "sem erros JavaScript registrados nas páginas verificadas"
+  ],
+  "limites": [
+    "Google desativado; Client ID e Client Secret ausentes",
+    "e-mail da conta pessoal ainda não confirmado",
+    "entrega real de mensagens não comprovada",
+    "GPS da operadora e bilhetagem não integrados",
+    "cobertura municipal completa de Sarandi não confirmada"
+  ]
+}

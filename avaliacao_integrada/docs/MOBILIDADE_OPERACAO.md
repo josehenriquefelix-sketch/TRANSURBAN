@@ -71,3 +71,16 @@ Fontes:
 ## Verificação
 
 Execute `backend/.venv/Scripts/python.exe -m unittest discover -s tests -v` no Windows ou o equivalente no ambiente ativado. Execute também `verificar_ambiente.py` com a aplicação aberta. Os testes com Supabase real de 12/11/2026 usaram contas descartáveis e estão resumidos em `VALIDACAO_MOBILIDADE_20261112.json`. Testes com coordenadas sintéticas não comprovam o GPS de um aparelho real.
+
+
+## Atualização de 13/11/2026 — três ambientes
+
+O portal público não exibe a central de gestão nem a área operacional. Passageiro usa `/`, motorista usa `/motorista/`, gestão usa `/gestao/`. Compartilham a origem e a sessão; trocar de conta ou sair vale para todos os painéis desse navegador. O backend verifica papéis e competências em cada consulta, independentemente da página aberta.
+
+A migração `07_suporte_e_aprovacoes.sql` cria chamados privados, eventos de resposta, alertas operacionais com validade e solicitações de vínculo. A administração definida em `ADMIN_EMAILS` revisa os pedidos, confirma identidade e vínculo e justifica a decisão. A função transacional bloqueia autoaprovação e decisões repetidas; a criação de uma solicitação nunca concede papel.
+
+Relatos de acessibilidade, obras e trânsito chegam à gestão do escopo correspondente. O mapa público só apresenta informações que a gestão publicou manualmente; sem marcação significa sem informação. A orientação não modifica automaticamente itinerários oficiais. A localização do visitante só é solicitada após clique, mostra a precisão do dispositivo e não preenche nem envia silenciosamente sua posição. Marcar uma ocorrência no mapa é uma ação separada.
+
+O login distingue e-mail não confirmado de credencial inválida; há reenvio solicitado pelo usuário. Google foi conferido e permanece desativado, com Client ID e Client Secret vazios. Para ativar, o responsável configura uma aplicação OAuth no Google Cloud e preenche diretamente o Supabase; não publicar segredos no repositório. O callback do projeto é `https://lsnpvokfnvyjkvqzkvof.supabase.co/auth/v1/callback`.
+
+Validação: 31 testes automatizados; login de conta confirmada por e-mail e CPF; suporte, resposta, isolamento de escopo, retirada de alerta e aprovação com Supabase real em `VALIDACAO_SUPORTE_20261113.json`. As contas e os dados sintéticos foram descartados. Esses testes não confirmam entrega de e-mail, integração com GPS da operadora, pagamentos nem cobertura municipal completa de Sarandi.

@@ -13,14 +13,14 @@ O projeto atual está na pasta [avaliacao_integrada](avaliacao_integrada). Site 
 5. Acesse **http://127.0.0.1:8000/**. O menu **API do sistema** abre **http://127.0.0.1:8000/docs**.
 6. Execute **VERIFICAR_TRANSURBAN.cmd** para conferir dependências, tabelas, site e API.
 
-Se já estiver clonado, atualize com `git pull` antes de iniciar, preservando suas alterações locais. O banco da equipe já recebeu as migrações 05 e 06; usar o mesmo Supabase em outro computador não exige reinstalar as tabelas.
+Se já estiver clonado, atualize com `git pull` antes de iniciar, preservando suas alterações locais. O banco da equipe já recebeu as migrações 05, 06 e 07; usar o mesmo Supabase em outro computador não exige reinstalar as tabelas.
 
 O endereço `127.0.0.1` é local a cada computador. Para acesso público ou por vários dispositivos, é necessário hospedar o sistema em HTTPS e configurar as URLs do Supabase.
 
 ## O que está implementado
 
 - Login por e-mail/CPF, sessão em cookies HttpOnly, cadastro, logout e fluxo de recuperação de senha.
-- Início, dashboard com documentos oficiais, cidades/linhas, horários e mapa, favoritas, avaliações e conta, com layout responsivo.
+- Início, dashboard pessoal e suporte com protocolo, cidades/linhas, horários e mapa, favoritas, avaliações e conta, com layout responsivo.
 - Perfil/veículo do motorista, notas vinculadas, início/encerramento de viagem e envio consentido da posição do dispositivo.
 - Central de manifestações com protocolo, filtros por escopo, atendimento e resposta ao cidadão.
 - CRUD acadêmico de cidade e linha com FK na API protegida. Ciência de Dados permanece separada em `/dados/docs`.
@@ -41,3 +41,13 @@ O TRANSURBAN é independente. Não há adesão institucional confirmada de Prefe
 - [Atividade de chave estrangeira](avaliacao_integrada/docs/RELACIONAMENTO_FK_CIDADE_LINHA.md)
 
 Os arquivos de outras etapas permanecem no repositório como histórico. Para executar o portal atual, use **avaliacao_integrada** e a porta **8000**. Nunca publique `.env`, senhas, chaves secretas ou o ambiente virtual.
+
+## Portais separados — 13/11/2026
+
+- Passageiro: `http://127.0.0.1:8000/` (verde escuro e azul marinho).
+- Motorista: `http://127.0.0.1:8000/motorista/` (amarelo queimado e laranja).
+- Gestão: `http://127.0.0.1:8000/gestao/` (cinza, preto e dourado), ausente do portal público.
+
+Os papéis profissionais dependem de aprovação administrativa. Pedir acesso não concede permissão. O suporte persiste relatos e respostas privados; o mapa mostra ocorrências confirmadas, com validade, e localização solicitada pelo usuário. Sem marcação significa sem informação. A revisão passou em 31 testes automatizados e na [integração do suporte com Supabase](avaliacao_integrada/docs/VALIDACAO_SUPORTE_20261113.json).
+
+O login agora distingue e-mail não confirmado de credenciais inválidas e permite solicitar reenvio de confirmação. Google ainda requer Client ID e Client Secret no provedor Supabase; não está habilitado.
