@@ -34,3 +34,5 @@ Referências: https://render.com/docs/deploy-fastapi ; https://render.com/docs/f
 ## Publicação realizada — 13/11/2026
 
 O Render publicou o serviço Free em https://transurban-mobilidade.onrender.com. O health check retornou a versão `2026.11.13-portais` com Supabase configurado. O login Google foi concluído no endereço HTTPS; o portal mostrou sessão de passageiro. Site URL e retorno público foram cadastrados no Supabase, preservando os retornos locais. O cliente Google inclui a origem HTTPS. As páginas de privacidade e uso identificam o responsável e o contato que o usuário aprovou publicar.
+
+A versão de código `f330ad7` foi implantada, incluindo as páginas aprovadas de privacidade e uso. Depois disso, o Google confirmou o status **Em produção**. O logout HTTPS foi conferido: a sessão terminou e a rota privada de conta voltou a exigir autenticação. Atualizações posteriores somente nestes relatórios não exigem reinstalar o serviço.

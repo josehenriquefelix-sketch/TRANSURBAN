@@ -1,5 +1,8 @@
 # TRANSURBAN — Mobilidade que conecta
 
+**Acesse o site publicado:** https://transurban-mobilidade.onrender.com/ — não é necessário abrir o VS Code para usar o site.
+
+
 Portal de transporte e participação cidadã entre Maringá e Sarandi, com áreas de **passageiro**, **motorista autorizado** e **gestão autorizada**.
 
 O projeto atual está na pasta [avaliacao_integrada](avaliacao_integrada). Site e API iniciam juntos em **http://127.0.0.1:8000/**.
@@ -66,3 +69,5 @@ Passageiros e motoristas enviam relatos privados. A gestão recebe, analisa e re
 - API técnica: https://transurban-mobilidade.onrender.com/docs
 
 O login Google foi testado com retorno HTTPS e sessão de passageiro. A aplicação não exige abrir o VS Code para visitar esse endereço. O plano Free pode suspender por inatividade e demorar a iniciar novamente. A configuração de produção do aplicativo Google é administrada separadamente no Google Cloud. Veja [validação da publicação](avaliacao_integrada/docs/VALIDACAO_PUBLICACAO_20261113.json).
+
+O Google Cloud confirmou o aplicativo **Em produção** em 13/11/2026. O login e o logout foram testados em HTTPS. A marca OAuth não foi submetida à verificação de marca. Os acessos profissionais continuam exigindo autorização no TRANSURBAN. As páginas de [privacidade](https://transurban-mobilidade.onrender.com/privacidade.html) e [uso](https://transurban-mobilidade.onrender.com/termos.html) foram aprovadas pelo responsável e estão publicadas.

@@ -6,11 +6,15 @@
     "API /auth/configuracao retorna google=true",
     "autorizacao do Google limitada a nome, foto e e-mail",
     "retorno ao TRANSURBAN com sessao autenticada",
-    "Minha conta exibe papel de passageiro"
+    "Minha conta exibe papel de passageiro",
+    "login Google concluído no endereço HTTPS público",
+    "Google Cloud confirmou Em produção após autorização do responsável"
   ],
   "credenciais": "Client Secret armazenado somente no provedor Supabase; nao publicado no repositorio",
   "limites": [
-    "teste executado no endereco local",
-    "publicacao HTTPS e configuracao da origem publica ainda pendentes"
-  ]
+    "teste de login feito com a conta autorizada do responsável; contas de outras pessoas não foram usadas para testes",
+    "marca e logotipo do OAuth não foram submetidos a verificação de marca"
+  ],
+  "url_publica": "https://transurban-mobilidade.onrender.com",
+  "status_publicacao_google": "Em produção"
 }

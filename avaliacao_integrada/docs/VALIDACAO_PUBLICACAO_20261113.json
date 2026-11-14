@@ -13,13 +13,17 @@
     "seleção de linha encaminhou automaticamente aos horários",
     "mapa do suporte carregou 15 blocos OSM e consultou relatos privados",
     "nenhum erro JavaScript registrado na tela de suporte verificada",
-    "backend/.env retornou Not Found"
+    "backend/.env retornou Not Found",
+    "política de privacidade e condições de uso aprovadas pelo responsável e publicadas",
+    "logout HTTPS voltou à tela de login e /auth/me voltou a exigir autenticação",
+    "Google Cloud confirmou o aplicativo Em produção"
   ],
   "testes_automatizados": 32,
   "limites": [
     "plano Free pode suspender por inatividade e reiniciar com espera",
     "GPS da operadora e bilhetagem não integrados",
-    "cobertura municipal completa de Sarandi não confirmada",
-    "teste Google foi feito com a conta autorizada; liberação do aplicativo ao público depende das configurações do Google"
-  ]
+    "cobertura municipal completa de Sarandi não confirmada"
+  ],
+  "commit_codigo_publicado": "f330ad7817e22053252369f331ca29c73a16b9b9",
+  "google_publicacao": "Em produção"
 }
