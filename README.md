@@ -54,6 +54,15 @@ O login agora distingue e-mail não confirmado de credenciais inválidas e permi
 
 ## Preparação de link público
 
-O `render.yaml` na raiz prepara site e FastAPI juntos em HTTPS, preservando o banco Supabase. Consulte [publicação HTTPS](avaliacao_integrada/docs/PUBLICACAO_HTTPS.md). A criação do serviço e o preenchimento das variáveis privadas na hospedagem ainda precisam ser concluídos para existir um endereço público. O aplicativo reconhece a URL fornecida pelo Render; domínio próprio usa `APP_URL`. A revisão deste preparo passou em 32 testes automatizados.
+O `render.yaml` na raiz prepara site e FastAPI juntos em HTTPS, preservando o banco Supabase. Consulte [publicação HTTPS](avaliacao_integrada/docs/PUBLICACAO_HTTPS.md). O serviço foi publicado e validado em https://transurban-mobilidade.onrender.com. As variáveis privadas estão na hospedagem; o banco permanece no Supabase. O aplicativo reconhece a URL fornecida pelo Render; domínio próprio usa `APP_URL`. A revisão deste preparo passou em 32 testes automatizados.
 
 Passageiros e motoristas enviam relatos privados. A gestão recebe, analisa e responde; somente a equipe de gestão publica alertas confirmados no mapa público.
+
+## Endereço público funcionando
+
+- Site: https://transurban-mobilidade.onrender.com/
+- Motorista: https://transurban-mobilidade.onrender.com/motorista/
+- Gestão restrita: https://transurban-mobilidade.onrender.com/gestao/
+- API técnica: https://transurban-mobilidade.onrender.com/docs
+
+O login Google foi testado com retorno HTTPS e sessão de passageiro. A aplicação não exige abrir o VS Code para visitar esse endereço. O plano Free pode suspender por inatividade e demorar a iniciar novamente. A configuração de produção do aplicativo Google é administrada separadamente no Google Cloud. Veja [validação da publicação](avaliacao_integrada/docs/VALIDACAO_PUBLICACAO_20261113.json).

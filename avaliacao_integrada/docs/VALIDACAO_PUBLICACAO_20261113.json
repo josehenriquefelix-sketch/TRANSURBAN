@@ -1,0 +1,25 @@
+{
+  "data": "2026-11-13",
+  "url": "https://transurban-mobilidade.onrender.com",
+  "plano": "Render Free, US$ 0/mês",
+  "validacoes": [
+    "Render informou serviço live",
+    "health da API informa versão 2026.11.13-portais e Supabase configurado",
+    "Swagger DS carregou no endereço HTTPS",
+    "login Google retornou ao HTTPS com sessão de passageiro",
+    "portal do motorista abriu com autorização exigida",
+    "portal da gestão abriu restrito",
+    "escolher Sarandi mostrou 22 atendimentos e variantes verificados",
+    "seleção de linha encaminhou automaticamente aos horários",
+    "mapa do suporte carregou 15 blocos OSM e consultou relatos privados",
+    "nenhum erro JavaScript registrado na tela de suporte verificada",
+    "backend/.env retornou Not Found"
+  ],
+  "testes_automatizados": 32,
+  "limites": [
+    "plano Free pode suspender por inatividade e reiniciar com espera",
+    "GPS da operadora e bilhetagem não integrados",
+    "cobertura municipal completa de Sarandi não confirmada",
+    "teste Google foi feito com a conta autorizada; liberação do aplicativo ao público depende das configurações do Google"
+  ]
+}

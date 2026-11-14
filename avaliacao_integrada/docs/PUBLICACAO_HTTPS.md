@@ -30,3 +30,7 @@ O aplicativo usa `RENDER_EXTERNAL_URL` para os retornos de autenticação quando
 O Render informa que um serviço Free pode suspender após 15 minutos sem acesso e levar cerca de um minuto para voltar. Há limites de uso e a modalidade não é indicada pelo provedor para operação de produção. Não use artifícios para manter o serviço ativo. Antes de uso público contínuo, escolha um plano e uma capacidade adequados com autorização do responsável. Não foi contratado plano pago neste preparo.
 
 Referências: https://render.com/docs/deploy-fastapi ; https://render.com/docs/free ; https://render.com/docs/blueprint-spec ; https://supabase.com/docs/guides/auth/social-sign-in/auth-google .
+
+## Publicação realizada — 13/11/2026
+
+O Render publicou o serviço Free em https://transurban-mobilidade.onrender.com. O health check retornou a versão `2026.11.13-portais` com Supabase configurado. O login Google foi concluído no endereço HTTPS; o portal mostrou sessão de passageiro. Site URL e retorno público foram cadastrados no Supabase, preservando os retornos locais. O cliente Google inclui a origem HTTPS. As páginas de privacidade e uso identificam o responsável e o contato que o usuário aprovou publicar.
