@@ -1717,6 +1717,38 @@ body[data-area=gestao] .tag {
     color: var(--green);
 }
 
+.professional-access {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 36px;
+    background: #f7f8f7;
+    border-bottom: 1px solid var(--line);
+    font-size: 12px;
+}
+.professional-access > span { color: #52625f; margin-right: auto; font-weight: 600; }
+.professional-access a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.professional-driver { background: #f4e4bd; color: #634010; }
+.professional-access a:hover { filter: brightness(.95); }
+.professional-access a:focus-visible { outline: 3px solid #286ca1; outline-offset: 3px; }
+.professional-access-auth { padding: 12px 0; background: transparent; margin-bottom: 20px; }
+@media (max-width: 600px) {
+    .professional-access { padding: 10px 16px; gap: 8px; }
+    .professional-access > span { flex-basis: 100%; }
+    .professional-access a { flex: 1; padding: 10px 8px; }
+    .professional-access-auth { padding: 10px 0; }
+}
+
 .map-legend {
     display: flex;
     flex-wrap: wrap;
