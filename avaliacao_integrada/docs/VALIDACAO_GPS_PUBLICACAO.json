@@ -1,0 +1,38 @@
+{
+  "commit": "2ecbc9ab1c4bdbaa55ab1f2ff61fe43706a2420d",
+  "python_testes": 35,
+  "node_testes": 11,
+  "publicacao": {
+    "/health": {
+      "status": 200,
+      "versao": "2026.11.14-gps"
+    },
+    "/": {
+      "status": 200
+    },
+    "/motorista/": {
+      "status": 200
+    },
+    "/gestao/": {
+      "status": 200
+    },
+    "/localizacao.js": {
+      "status": 200
+    },
+    "/mobilidade/catalogo": {
+      "status": 200,
+      "linhas": 88
+    },
+    "/mobilidade/viagens": {
+      "status": 200
+    },
+    "/docs": {
+      "status": 200
+    },
+    "/dados/docs": {
+      "status": 200
+    }
+  },
+  "gps_sensor_fisico_confirmado": false,
+  "observacao": "Navegador de teste retornou sinal de localizacao indisponivel. Nao foram publicados veiculos ou coordenadas ficticias nesta verificacao."
+}
