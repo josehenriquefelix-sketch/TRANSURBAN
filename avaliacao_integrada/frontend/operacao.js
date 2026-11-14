@@ -139,12 +139,12 @@
             if (c.resposta) card.append(text("p", `Resposta: ${c.resposta}`));
             $("supportHistory").append(card);
         }
-        if (!calls.length) $("supportHistory").append(text("p", "Você ainda não enviou chamados."));
+        if (!calls.length) $("supportHistory").append(text("p", "Você ainda não enviou relatos."));
     }
 
     function managementForms() {
         if (!$("managementOperations")) return;
-        $("managementOperations").innerHTML = `<div class="operations-grid"><form id="alertForm" class="card"><h2>Confirmar ocorrência no mapa</h2><p class="muted">Publique somente informações conferidas pela equipe. Marque o local no mapa. Esta orientação não altera sozinha uma rota oficial.</p><label for="alertCity">Cidade</label><select id="alertCity"><option>Maringá</option><option>Sarandi</option></select><label for="alertLine">Linha (opcional)</label><select id="alertLine"></select><label for="alertLevel">Condição confirmada</label><select id="alertLevel"><option value="vermelho">Vermelho — bloqueio, obra ou desvio</option><option value="amarelo">Amarelo — atenção / lentidão</option><option value="verde">Verde — condição tranquila informada</option></select><label for="alertTitle">Título</label><input id="alertTitle" required minlength="5" maxlength="120"><label for="alertAdvice">Orientação à operação / usuários</label><textarea id="alertAdvice" required minlength="10" maxlength="1000"></textarea><div class="two-fields"><div><label for="alertLat">Latitude do local</label><input type="number" step="any" id="alertLat" required min="-90" max="90"></div><div><label for="alertLon">Longitude do local</label><input type="number" step="any" id="alertLon" required min="-180" max="180"></div></div><label for="alertValidity">Validade em horas</label><input type="number" id="alertValidity" value="2" min="1" max="24" required><button class="btn primary wide">Publicar ocorrência confirmada</button><p id="alertStatus" class="status" role="status"></p></form><article class="card"><h2>Suporte de cidadãos e motoristas</h2><button class="btn quiet" id="refreshSupport">Atualizar atendimento</button><div id="supportQueue" class="stack"></div></article></div><section class="card" id="approvalSection" hidden><h2>Aprovação de vínculos profissionais</h2><p>Confirme identidade, vínculo e competência antes de liberar o acesso. A solicitação não concede permissão.</p><div id="approvalQueue" class="stack"></div></section>`;
+        $("managementOperations").innerHTML = `<div class="operations-grid"><form id="alertForm" class="card"><h2>Confirmar ocorrência no mapa</h2><p class="muted">Publique somente informações conferidas pela equipe. Marque o local no mapa. Esta orientação não altera sozinha uma rota oficial.</p><label for="alertCity">Cidade</label><select id="alertCity"><option>Maringá</option><option>Sarandi</option></select><label for="alertLine">Linha (opcional)</label><select id="alertLine"></select><label for="alertLevel">Condição confirmada</label><select id="alertLevel"><option value="vermelho">Vermelho — bloqueio, obra ou desvio</option><option value="amarelo">Amarelo — atenção / lentidão</option><option value="verde">Verde — condição tranquila informada</option></select><label for="alertTitle">Título</label><input id="alertTitle" required minlength="5" maxlength="120"><label for="alertAdvice">Orientação à operação / usuários</label><textarea id="alertAdvice" required minlength="10" maxlength="1000"></textarea><div class="two-fields"><div><label for="alertLat">Latitude do local</label><input type="number" step="any" id="alertLat" required min="-90" max="90"></div><div><label for="alertLon">Longitude do local</label><input type="number" step="any" id="alertLon" required min="-180" max="180"></div></div><label for="alertValidity">Validade em horas</label><input type="number" id="alertValidity" value="2" min="1" max="24" required><button class="btn primary wide">Publicar ocorrência confirmada</button><p id="alertStatus" class="status" role="status"></p></form><article class="card"><h2>Ocorrências recebidas</h2><p class="muted">Relatos de passageiros e motoristas para análise da gestão. Receber um relato não o publica no mapa dos usuários. Confira a situação, responda ao solicitante e publique um alerta somente após a verificação.</p><button class="btn quiet" id="refreshSupport">Atualizar atendimento</button><div id="supportQueue" class="stack"></div></article></div><section class="card" id="approvalSection" hidden><h2>Aprovação de vínculos profissionais</h2><p>Confirme identidade, vínculo e competência antes de liberar o acesso. A solicitação não concede permissão.</p><div id="approvalQueue" class="stack"></div></section>`;
         options("Maringá", "alertLine");
         $("alertCity").onchange = () => options($("alertCity").value, "alertLine");
         $("alertForm").onsubmit = async e => {
@@ -186,7 +186,13 @@
                 const locate = text("button", "Ver local informado", "btn quiet");
                 locate.type = "button";
                 locate.onclick = () => {
-                    map?.setView([c.latitude, c.longitude], 16);
+                    if (map) {
+                        if (selectedMarker) selectedMarker.remove();
+                        const popup = text("div", "");
+                        popup.append(text("strong", "Local relatado • " + c.assunto), text("p", "Informação enviada pelo solicitante para análise. Este marcador é privado da gestão e não é um alerta confirmado."));
+                        selectedMarker = L.circleMarker([c.latitude, c.longitude], {radius: 10, color: "#fff", weight: 3, fillColor: "#62666b", fillOpacity: 1}).addTo(map).bindPopup(popup).openPopup();
+                        map.setView([c.latitude, c.longitude], 16);
+                    }
                     toast("Local informado no chamado. A posição não foi publicada como ocorrência.");
                 };
                 card.append(locate);
@@ -229,7 +235,7 @@
             }
             $("supportQueue").append(card);
         }
-        if (!calls.length) $("supportQueue").append(text("p", "Nenhum chamado recebido no seu escopo."));
+        if (!calls.length) $("supportQueue").append(text("p", "Nenhum relato recebido no seu escopo."));
     }
     async function approvals() {
         if (!activeUser?.administrador || !$("approvalSection")) return;
@@ -358,7 +364,7 @@
                     longitude: $("supportLon").value ? Number($("supportLon").value) : null
                 })
             });
-            feedback("supportStatus", `${result.protocolo} · Chamado enviado à gestão responsável.`);
+            feedback("supportStatus", `${result.protocolo} · Relato recebido pela gestão responsável. Acompanhe a análise e a resposta aqui.`);
             $("supportMessage").value = "";
             await history();
         } catch (error) {

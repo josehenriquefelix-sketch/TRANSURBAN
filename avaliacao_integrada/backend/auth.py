@@ -254,6 +254,11 @@ def limpar_oauth(response):
     return response
 
 
+def endereco_aplicacao():
+    """Usa o endereço HTTPS fornecido pela hospedagem, sem fixar localhost."""
+    return (os.getenv("APP_URL") or os.getenv("RENDER_EXTERNAL_URL") or "http://127.0.0.1:8000").rstrip("/")
+
+
 @router.get("/google")
 def entrar_google(tipo_acesso: Literal["passageiro", "motorista", "gestor"] = "passageiro"):
     settings = auth_request("GET", "settings")
@@ -262,7 +267,7 @@ def entrar_google(tipo_acesso: Literal["passageiro", "motorista", "gestor"] = "p
     verifier = secrets.token_urlsafe(48)
     challenge = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).decode().rstrip("=")
     state = secrets.token_urlsafe(24)
-    app_url = os.getenv("APP_URL", "http://127.0.0.1:8000").rstrip("/")
+    app_url = endereco_aplicacao()
     callback = f"{app_url}/auth/google/callback?flow={state}"
     query = urlencode({"provider": "google", "redirect_to": callback, "code_challenge": challenge, "code_challenge_method": "s256"})
     response = RedirectResponse(os.getenv("SUPABASE_URL", "").rstrip("/") + "/auth/v1/authorize?" + query)
@@ -317,7 +322,7 @@ def sair(request: Request, response: Response):
 
 @router.post("/esqueci-senha", dependencies=[Depends(limitar)])
 def esqueci_senha(dados: Email):
-    redirect = os.getenv("APP_URL", "http://127.0.0.1:8000").rstrip("/") + "/#nova-senha"
+    redirect = endereco_aplicacao() + "/#nova-senha"
     auth_request("POST", "recover?redirect_to=" + quote(redirect, safe=""), {"email": dados.email.strip().lower()})
     return {"mensagem": "Se o e-mail estiver cadastrado, você receberá um link para criar uma nova senha."}
 

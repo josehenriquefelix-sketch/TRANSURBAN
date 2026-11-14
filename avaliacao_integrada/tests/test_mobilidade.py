@@ -1,5 +1,6 @@
 """Proteções das áreas profissionais, senha e contrato do catálogo público."""
 import unittest
+import os
 from unittest.mock import patch
 
 import httpx
@@ -7,7 +8,7 @@ from fastapi import HTTPException
 from fastapi.testclient import TestClient
 from pydantic import ValidationError
 
-from backend.auth import NovaSenha, auth_request, usuario_atual
+from backend.auth import NovaSenha, auth_request, usuario_atual, endereco_aplicacao
 from backend.main import app
 
 
@@ -15,6 +16,12 @@ class MobilidadeTests(unittest.TestCase):
     def setUp(self):
         self.client = TestClient(app)
         self.addCleanup(app.dependency_overrides.clear)
+
+    def test_hospedagem_usa_url_publica_e_permite_dominio_proprio(self):
+        with patch.dict(os.environ, {"APP_URL": "", "RENDER_EXTERNAL_URL": "https://exemplo.onrender.com/"}):
+            self.assertEqual(endereco_aplicacao(), "https://exemplo.onrender.com")
+        with patch.dict(os.environ, {"APP_URL": "https://mobilidade.example.com/", "RENDER_EXTERNAL_URL": "https://exemplo.onrender.com"}):
+            self.assertEqual(endereco_aplicacao(), "https://mobilidade.example.com")
 
     def test_senha_exige_comprimento_e_quatro_classes(self):
         for senha in ("Ab1!", "abcdefgh1!", "ABCDEFGH1!", "Abcdefgh!!", "Abcdefgh12"):

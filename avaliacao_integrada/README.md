@@ -170,3 +170,9 @@ Repositório identificado no material local: [github.com/josehenriquefelix-sketc
 
 
 
+
+## Publicação HTTPS
+
+A configuração de hospedagem está no `render.yaml` da raiz do repositório. Veja [PUBLICACAO_HTTPS.md](docs/PUBLICACAO_HTTPS.md). O site e a API são servidos juntos; os registros continuam no Supabase. A revisão de preparação passou em 32 testes. Nenhum endereço público é anunciado antes de verificar o deploy real.
+
+No atendimento, cidadãos e motoristas relatam ocorrências à gestão. Relato recebido é informação para análise, visível somente ao autor e à gestão competente. O alerta público exige verificação e publicação separada pela gestão.

@@ -51,3 +51,9 @@ Os arquivos de outras etapas permanecem no repositório como histórico. Para ex
 Os papéis profissionais dependem de aprovação administrativa. Pedir acesso não concede permissão. O suporte persiste relatos e respostas privados; o mapa mostra ocorrências confirmadas, com validade, e localização solicitada pelo usuário. Sem marcação significa sem informação. A revisão passou em 31 testes automatizados e na [integração do suporte com Supabase](avaliacao_integrada/docs/VALIDACAO_SUPORTE_20261113.json).
 
 O login agora distingue e-mail não confirmado de credenciais inválidas e permite solicitar reenvio de confirmação. Google ainda requer Client ID e Client Secret no provedor Supabase; não está habilitado.
+
+## Preparação de link público
+
+O `render.yaml` na raiz prepara site e FastAPI juntos em HTTPS, preservando o banco Supabase. Consulte [publicação HTTPS](avaliacao_integrada/docs/PUBLICACAO_HTTPS.md). A criação do serviço e o preenchimento das variáveis privadas na hospedagem ainda precisam ser concluídos para existir um endereço público. O aplicativo reconhece a URL fornecida pelo Render; domínio próprio usa `APP_URL`. A revisão deste preparo passou em 32 testes automatizados.
+
+Passageiros e motoristas enviam relatos privados. A gestão recebe, analisa e responde; somente a equipe de gestão publica alertas confirmados no mapa público.
