@@ -1,0 +1,12 @@
+TRANSURBAN - ABRIR OS TRES PORTAIS
+
+No Windows: de dois cliques no atalho da area desejada.
+Nao precisa instalar VS Code ou copiar .env para usar os links publicos.
+Motorista e gestao precisam de contas previamente autorizadas.
+O primeiro acesso apos inatividade pode demorar na hospedagem gratuita.
+
+PASSAGEIRO.url: https://transurban-mobilidade.onrender.com/
+MOTORISTA.url: https://transurban-mobilidade.onrender.com/motorista/
+GESTAO.url: https://transurban-mobilidade.onrender.com/gestao/
+
+No Chrome, voce tambem pode abrir o link e pressionar Ctrl+D para salvar nos favoritos.

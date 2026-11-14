@@ -1,0 +1,226 @@
+{
+  "ambiente": "Navegador integrado disponível via ferramenta de controle; não equivale a executar Firefox, Safari, Chrome e Edge separadamente",
+  "testesPython": 35,
+  "testesNode": 11,
+  "telasComputador": [
+    {
+      "tela": "inicio",
+      "contentWidth": 1265,
+      "headings": [
+        "Conectando cidades.\n         \n         \n          Aproximando você."
+      ],
+      "title": "TRANSURBAN | Visão geral",
+      "width": 1265
+    },
+    {
+      "tela": "dashboard",
+      "contentWidth": 1280,
+      "headings": [
+        "Dashboard de mobilidade"
+      ],
+      "title": "TRANSURBAN | Dashboard de mobilidade",
+      "width": 1280
+    },
+    {
+      "tela": "cidades",
+      "contentWidth": 1265,
+      "headings": [
+        "Cidades e linhas"
+      ],
+      "title": "TRANSURBAN | Cidades e linhas",
+      "width": 1265
+    },
+    {
+      "tela": "horarios",
+      "contentWidth": 1265,
+      "headings": [
+        "Horários e mapa",
+        "Compartilhamento TRANSURBAN",
+        "Seu ônibus e motorista"
+      ],
+      "title": "TRANSURBAN | Horários e mapa",
+      "width": 1265
+    },
+    {
+      "tela": "favoritos",
+      "contentWidth": 1280,
+      "headings": [
+        "Minhas linhas"
+      ],
+      "title": "TRANSURBAN | Minhas linhas",
+      "width": 1280
+    },
+    {
+      "tela": "passe",
+      "contentWidth": 1280,
+      "headings": [
+        "Meu passe",
+        "Recarga integrada ao transporte"
+      ],
+      "title": "TRANSURBAN | Meu passe",
+      "width": 1280
+    },
+    {
+      "tela": "avaliacoes",
+      "contentWidth": 1265,
+      "headings": [
+        "Sua experiência faz a diferença.",
+        "Conte sua experiência.",
+        "Minhas manifestações"
+      ],
+      "title": "TRANSURBAN | Avaliações",
+      "width": 1265
+    },
+    {
+      "tela": "sobre",
+      "contentWidth": 1280,
+      "headings": [
+        "Sobre o TRANSURBAN",
+        "Seu caminho, mais simples.",
+        "Informação com responsabilidade"
+      ],
+      "title": "TRANSURBAN | Sobre o TRANSURBAN",
+      "width": 1280
+    },
+    {
+      "tela": "suporte",
+      "contentWidth": 1265,
+      "headings": [
+        "Suporte à sua mobilidade",
+        "Mapa de mobilidade",
+        "Relatar ocorrência ou pedir suporte"
+      ],
+      "title": "TRANSURBAN | Suporte / Fale aqui",
+      "width": 1265
+    },
+    {
+      "tela": "conta",
+      "contentWidth": 1280,
+      "headings": [
+        "Meu perfil"
+      ],
+      "title": "TRANSURBAN | Minha conta",
+      "width": 1280
+    },
+    {
+      "tela": "login",
+      "contentWidth": 1280,
+      "headings": [
+        "Seu caminho,\n      \n      mais simples.",
+        "Bom ter você aqui."
+      ],
+      "title": "TRANSURBAN | Sua conta",
+      "width": 1280
+    },
+    {
+      "tela": "cadastro",
+      "contentWidth": 1265,
+      "headings": [
+        "Seu caminho,\n      \n      mais simples.",
+        "Crie sua conta."
+      ],
+      "title": "TRANSURBAN | Sua conta",
+      "width": 1265
+    },
+    {
+      "tela": "esqueci-senha",
+      "contentWidth": 1280,
+      "headings": [
+        "Seu caminho,\n      \n      mais simples.",
+        "Esqueci minha senha"
+      ],
+      "title": "TRANSURBAN | Sua conta",
+      "width": 1280
+    }
+  ],
+  "telasCelular": [
+    {
+      "tela": "inicio",
+      "contentWidth": 375,
+      "width": 375
+    },
+    {
+      "tela": "dashboard",
+      "contentWidth": 390,
+      "width": 390
+    },
+    {
+      "tela": "cidades",
+      "contentWidth": 375,
+      "width": 375
+    },
+    {
+      "tela": "horarios",
+      "contentWidth": 375,
+      "width": 375
+    },
+    {
+      "tela": "favoritos",
+      "contentWidth": 390,
+      "width": 390
+    },
+    {
+      "tela": "passe",
+      "contentWidth": 390,
+      "width": 390
+    },
+    {
+      "tela": "avaliacoes",
+      "contentWidth": 375,
+      "width": 375
+    },
+    {
+      "tela": "sobre",
+      "contentWidth": 375,
+      "width": 375
+    },
+    {
+      "tela": "suporte",
+      "contentWidth": 375,
+      "width": 375
+    },
+    {
+      "tela": "conta",
+      "contentWidth": 390,
+      "width": 390
+    },
+    {
+      "tela": "login",
+      "contentWidth": 375,
+      "width": 375
+    },
+    {
+      "tela": "cadastro",
+      "contentWidth": 375,
+      "width": 375
+    },
+    {
+      "tela": "esqueci-senha",
+      "contentWidth": 375,
+      "width": 375
+    }
+  ],
+  "motoristaCelular": {
+    "contentWidth": 375,
+    "width": 375
+  },
+  "gestaoTamanhos": [
+    {
+      "contentWidth": 1280,
+      "width": 1280
+    },
+    {
+      "contentWidth": 375,
+      "width": 375
+    }
+  ],
+  "linhasMaringa": 66,
+  "atendimentosSarandi": 22,
+  "consoleErrosObservados": 0,
+  "limites": [
+    "Portais profissionais conferidos visualmente na entrada; autorização de papéis coberta por testes automatizados e conferências anteriores",
+    "GPS físico não confirmado neste aparelho",
+    "Recebimento de e-mail não testado nesta rodada",
+    "Navegadores independentes não executados nesta rodada"
+  ]
+}

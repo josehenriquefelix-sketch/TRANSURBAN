@@ -1,0 +1,203 @@
+{
+  "site": "https://transurban-mobilidade.onrender.com",
+  "tipo": "Leitura HTTPS pública, sem criar contas, viagens ou mensagens",
+  "verificacoes": [
+    {
+      "verificacao": "Portal /",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Portal sem link ao painel da hospedagem /",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Motorista somente no formulário de login",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Gestão fora da navegação pública",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Portal /motorista/",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Portal sem link ao painel da hospedagem /motorista/",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Portal /gestao/",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Portal sem link ao painel da hospedagem /gestao/",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Endereço sem barra final /motorista",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Endereço sem barra final /gestao",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /gestao.js?v=20261114-gps",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /localizacao.js?v=20261114-gps",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /logo-gestao.svg",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /logo-motorista.svg",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /logo-passageiro.svg",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /mobilidade.css?v=20261114-acessos",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /mobilidade.css?v=20261114-gps",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /mobilidade.js?v=20261114-gps",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /motorista.js?v=20261114-gps",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /operacao.js?v=20261114-gps",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /vendor/leaflet.css",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Arquivo necessário /vendor/leaflet.js",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "API/proteção /health",
+      "aprovado": true,
+      "detalhe": "200"
+    },
+    {
+      "verificacao": "Versão GPS publicada",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "API/proteção /docs",
+      "aprovado": true,
+      "detalhe": "200"
+    },
+    {
+      "verificacao": "API/proteção /dados/docs",
+      "aprovado": true,
+      "detalhe": "200"
+    },
+    {
+      "verificacao": "API/proteção /auth/me",
+      "aprovado": true,
+      "detalhe": "401"
+    },
+    {
+      "verificacao": "API/proteção /mobilidade/motorista",
+      "aprovado": true,
+      "detalhe": "401"
+    },
+    {
+      "verificacao": "API/proteção /mobilidade/gestao/manifestacoes",
+      "aprovado": true,
+      "detalhe": "401"
+    },
+    {
+      "verificacao": "API/proteção /mobilidade/favoritos",
+      "aprovado": true,
+      "detalhe": "401"
+    },
+    {
+      "verificacao": "API/proteção /mobilidade/minhas-manifestacoes",
+      "aprovado": true,
+      "detalhe": "401"
+    },
+    {
+      "verificacao": "API/proteção /backend/.env",
+      "aprovado": true,
+      "detalhe": "404"
+    },
+    {
+      "verificacao": "API/proteção /.env",
+      "aprovado": true,
+      "detalhe": "404"
+    },
+    {
+      "verificacao": "API/proteção /database/07_operacao.sql",
+      "aprovado": true,
+      "detalhe": "404"
+    },
+    {
+      "verificacao": "Catálogo municipal de Maringá",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Cobertura não confirmada não é anunciada como completa",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "Jardim Olímpico e Ouro Cola presentes",
+      "aprovado": true,
+      "detalhe": ""
+    },
+    {
+      "verificacao": "API DS separada de IA",
+      "aprovado": true,
+      "detalhe": ""
+    }
+  ],
+  "total": 38,
+  "aprovadas": 38,
+  "limites": [
+    "Não comprova GPS físico",
+    "Não comprova recebimento de e-mail",
+    "Não comprova compatibilidade com navegadores que não foram executados"
+  ]
+}
