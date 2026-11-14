@@ -176,3 +176,7 @@ Repositório identificado no material local: [github.com/josehenriquefelix-sketc
 A configuração de hospedagem está no `render.yaml` da raiz do repositório. Veja [PUBLICACAO_HTTPS.md](docs/PUBLICACAO_HTTPS.md). O site e a API são servidos juntos; os registros continuam no Supabase. A revisão de preparação passou em 32 testes. Nenhum endereço público é anunciado antes de verificar o deploy real.
 
 No atendimento, cidadãos e motoristas relatam ocorrências à gestão. Relato recebido é informação para análise, visível somente ao autor e à gestão competente. O alerta público exige verificação e publicação separada pela gestão.
+
+### Localização e operação
+
+O motorista pode informar o ônibus e iniciar a viagem em um fluxo: a permissão e o sinal GPS são verificados antes de salvar o veículo e criar a viagem. Os mapas possuem atualização automática e exibem a precisão disponível. Consulte [Localização e vínculo](docs/LOCALIZACAO_E_VINCULO.md) para os intervalos, privacidade e limites da integração.

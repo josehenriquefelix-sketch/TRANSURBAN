@@ -9,12 +9,13 @@
   </title>
   <link href="/logo-motorista.svg" rel="icon"/>
   <link href="/vendor/leaflet.css" rel="stylesheet"/>
-  <link href="/mobilidade.css?v=20261113-portais" rel="stylesheet"/>
+  <link href="/mobilidade.css?v=20261114-gps" rel="stylesheet"/>
   <script defer="" src="/vendor/leaflet.js">
   </script>
-  <script defer="" src="/motorista.js?v=20261113-portais">
+  <script defer="" src="/localizacao.js?v=20261114-gps"></script>
+  <script defer="" src="/motorista.js?v=20261114-gps">
   </script>
-  <script defer="" src="/operacao.js?v=20261113-portais">
+  <script defer="" src="/operacao.js?v=20261114-gps">
   </script>
  </head>
  <body data-area="motorista">
@@ -160,7 +161,7 @@
         Minha viagem
        </h1>
        <p>
-        Configure o veículo parado e acompanhe o estado do compartilhamento.
+        Informe o ônibus, escolha a linha e o sentido e inicie com o veículo parado. Os dados do veículo serão salvos na sua conta ao iniciar.
        </p>
       </div>
       <div class="metrics" id="driverStats">
@@ -217,6 +218,8 @@
          <h2>
           Preparar viagem
          </h2>
+         <label for="driverCity">Cidade / serviço</label>
+         <select id="driverCity"><option>Maringá</option><option>Sarandi</option><option value="metropolitano">Maringá ↔ Sarandi</option></select>
          <label for="driverLine">
           Linha
          </label>
@@ -236,6 +239,8 @@
            Sarandi → Maringá
           </option>
          </select>
+         <p class="subtle" id="driverRouteSummary">Selecione uma linha para vincular o ônibus à sua viagem.</p>
+         <a class="btn quiet wide" id="driverItinerary" target="_blank" rel="noopener noreferrer" hidden>Consultar itinerário e horários oficiais ↗</a>
          <label class="check">
           <input id="locationConsent" required="" type="checkbox"/>
           Compartilhar a localização deste dispositivo com os passageiros durante esta viagem.
@@ -338,6 +343,7 @@
        <p class="subtle">
         Somente ocorrências publicadas pela gestão, com data e validade. Áreas sem marcação não significam trânsito livre.
        </p>
+       <p class="status" id="opsSyncStatus" role="status">Atualização automática enquanto este mapa estiver aberto.</p>
        <div class="stack" id="opsAlerts">
        </div>
       </article>

@@ -7,7 +7,10 @@
         meMarker = null,
         accuracyCircle = null,
         selectedMarker = null,
-        activeUser = null;
+        activeUser = null,
+        fleetLayer = null,
+        updateTimer = null,
+        updating = false;
     const text = (tag, value, cls = "") => {
         const e = document.createElement(tag);
         e.textContent = value;
@@ -50,37 +53,7 @@
                 })
             }).addTo(map).bindPopup(text("span", "Local selecionado para o formulário")).openPopup();
         });
-        $("locateMe")?.addEventListener("click", () => {
-            if (!navigator.geolocation) {
-                feedback("locationFeedback", "Seu navegador não oferece localização.", true);
-                return;
-            }
-            feedback("locationFeedback", "Aguardando sua permissão de localização…");
-            navigator.geolocation.getCurrentPosition(position => {
-                const c = position.coords;
-                if (meMarker) meMarker.remove();
-                if (accuracyCircle) accuracyCircle.remove();
-                meMarker = L.circleMarker([c.latitude, c.longitude], {
-                    radius: 8,
-                    color: "#fff",
-                    weight: 3,
-                    fillColor: "#286ca1",
-                    fillOpacity: 1
-                }).addTo(map).bindPopup(text("span", `Sua localização • precisão informada de ${Math.round(c.accuracy)} m`));
-                accuracyCircle = L.circle([c.latitude, c.longitude], {
-                    radius: c.accuracy,
-                    color: "#286ca1",
-                    weight: 1,
-                    fillOpacity: .08
-                }).addTo(map);
-                map.setView([c.latitude, c.longitude], Math.min(17, c.accuracy > 300 ? 14 : 16));
-                feedback("locationFeedback", `Sua posição foi localizada. Precisão informada: ${Math.round(c.accuracy)} metros. O círculo mostra essa margem; o formulário não foi enviado.`);
-            }, error => feedback("locationFeedback", error.code === 1 ? "Localização não autorizada. Você pode marcar o local manualmente no mapa." : "Não foi possível obter a posição. Confira o GPS ou marque o local manualmente.", true), {
-                enableHighAccuracy: true,
-                timeout: 20000,
-                maximumAge: 0
-            });
-        });
+        window.TransurbanLocation?.attach(map, {buttonId: "locateMe", statusId: "locationFeedback"});
     }
     async function loadAlerts() {
         setupMap();
@@ -175,7 +148,8 @@
         };
         $("refreshSupport").onclick = () => managementCalls().catch(e => toast(e.message));
     }
-    async function managementCalls() {
+    async function managementCalls({background = false} = {}) {
+        if (background && $("supportQueue")?.contains(document.activeElement) && document.activeElement.matches("input,textarea,select")) return;
         if (!$("supportQueue")) return;
         const calls = await request("/atendimento/gestao/chamados");
         $("supportQueue").replaceChildren();
@@ -237,7 +211,8 @@
         }
         if (!calls.length) $("supportQueue").append(text("p", "Nenhum relato recebido no seu escopo."));
     }
-    async function approvals() {
+    async function approvals({background = false} = {}) {
+        if (background && $("approvalQueue")?.contains(document.activeElement) && document.activeElement.matches("input,textarea,select")) return;
         if (!activeUser?.administrador || !$("approvalSection")) return;
         $("approvalSection").hidden = false;
         const rows = await request("/atendimento/gestao/pedidos-acesso");
@@ -297,11 +272,67 @@
         }
         if (!rows.length) $("approvalQueue").append(text("p", "Nenhum pedido de vínculo recebido."));
     }
+    async function loadFleet() {
+        if (role !== "gestao" || !activeUser?.papeis?.includes("gestor") || !map) return;
+        const trips = await request("/mobilidade/viagens");
+        if (!fleetLayer) fleetLayer = L.layerGroup().addTo(map);
+        fleetLayer.clearLayers();
+        $("fleetList")?.replaceChildren();
+        let recent = 0;
+        for (const trip of trips) {
+            const line = state.catalog?.linhas.find(item => item.id === trip.linha_id);
+            const title = `Ônibus ${trip.prefixo} · ${trip.modelo} · ${line?.nome || trip.linha_id}`;
+            const card = text("article", "", "record");
+            card.append(text("strong", title), text("p", trip.sentido), text("small", trip.posicao ? `${trip.posicao.recente ? "Sinal recente" : "Sinal desatualizado"} · ${dateTime(trip.posicao.registrada_em)} · precisão ${Math.round(trip.posicao.precisao_m)} m` : "Aguardando GPS do motorista."));
+            $("fleetList")?.append(card);
+            if (!trip.posicao) continue;
+            if (trip.posicao.recente) recent++;
+            const popup = text("div", "");
+            popup.append(text("strong", title), text("p", trip.sentido), text("small", trip.posicao.recente ? "Posição compartilhada pelo motorista" : "Última posição recebida; sem sinal recente"));
+            L.marker([trip.posicao.latitude, trip.posicao.longitude], {icon: L.divIcon({className: "", html: `<span class="bus-marker ${trip.posicao.recente ? "" : "stale"}">▣</span>`, iconSize: [36,36], iconAnchor: [18,18]})}).bindPopup(popup).addTo(fleetLayer);
+        }
+        feedback("fleetStatus", `${trips.length} viagem(ns) ativa(s) · ${recent} ônibus com sinal recente. Atualização automática a cada 15 segundos.`);
+    }
+    function startUpdates() {
+        if (updateTimer) return;
+        updateTimer = setInterval(async () => {
+            if (document.hidden || updating || !$("opsMap")?.getClientRects().length) return;
+            if (role === "gestao" && !activeUser?.papeis?.includes("gestor")) return;
+            updating = true;
+            try {
+                await loadAlerts();
+                if (role === "gestao") {
+                    await managementCalls({background:true});
+                    await approvals({background:true});
+                    await loadFleet();
+                } else if (activeUser && (role === "motorista" || location.hash === "#suporte")) {
+                    if (!$("supportHistory")?.contains(document.activeElement)) await history();
+                }
+                feedback("opsSyncStatus", "Última consulta às " + new Date().toLocaleTimeString("pt-BR") + ". Atualização automática a cada 15 segundos.");
+            } catch (error) { feedback("opsSyncStatus", "A atualização está temporariamente indisponível. Tentaremos novamente automaticamente.", true); }
+            finally {updating = false;}
+        }, 15000);
+    }
+    window.addEventListener("transurban:logout", () => {
+        activeUser = null;
+        clearInterval(updateTimer);
+        updateTimer = null;
+        fleetLayer?.clearLayers();
+        $("supportHistory")?.replaceChildren();
+        $("supportQueue")?.replaceChildren();
+        $("approvalQueue")?.replaceChildren();
+        $("fleetList")?.replaceChildren();
+    });
+    window.addEventListener("pagehide", () => {clearInterval(updateTimer); updateTimer = null;});
+    window.addEventListener("pageshow", event => {if (event.persisted) refresh().catch(() => {});});
     async function refresh() {
         try {
             activeUser = await request("/auth/me", {}, false);
         } catch {
-            activeUser = null;
+            activeUser = null,
+        fleetLayer = null,
+        updateTimer = null,
+        updating = false;
         }
         if (!state.catalog) try {
             state.catalog = await request("/mobilidade/catalogo");
@@ -314,6 +345,8 @@
         }
         await loadAlerts();
         await history();
+        await loadFleet();
+        startUpdates();
         setTimeout(() => map?.invalidateSize(), 0);
     }
     document.querySelectorAll('.requestAccessForm').forEach(form => form.onsubmit = async e => {

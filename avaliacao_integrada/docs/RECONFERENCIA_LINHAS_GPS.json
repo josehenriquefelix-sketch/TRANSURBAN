@@ -1,0 +1,275 @@
+{
+  "origem": "https://bus2.info/reports/2you/43wpt",
+  "metodo": "Consulta pública renderizada no navegador; comparação por código e nome com o catálogo",
+  "linhas_maringa": 66,
+  "diferencas": [],
+  "sarandi_metropolitano": 22,
+  "documentos_der": 12,
+  "sarandi_municipal_completo_confirmado": false,
+  "linhas_maringa_conferidas": [
+    {
+      "codigo": "007",
+      "nome": "Interbairros Zona Norte"
+    },
+    {
+      "codigo": "008",
+      "nome": "Interbairros 1"
+    },
+    {
+      "codigo": "009",
+      "nome": "Interbairros 2"
+    },
+    {
+      "codigo": "010",
+      "nome": "Universidade"
+    },
+    {
+      "codigo": "011",
+      "nome": "Vila Esperança"
+    },
+    {
+      "codigo": "020",
+      "nome": "Av. São Domingos"
+    },
+    {
+      "codigo": "021",
+      "nome": "Av. Tuiuti"
+    },
+    {
+      "codigo": "022",
+      "nome": "Cj. Guaiapó"
+    },
+    {
+      "codigo": "023",
+      "nome": "Cj. Requião"
+    },
+    {
+      "codigo": "026",
+      "nome": "Jd. Paulista"
+    },
+    {
+      "codigo": "040",
+      "nome": "A.A.B.B."
+    },
+    {
+      "codigo": "041",
+      "nome": "Jd. Monções"
+    },
+    {
+      "codigo": "131",
+      "nome": "Jd. Vitória"
+    },
+    {
+      "codigo": "137",
+      "nome": "Cj. Hermann Moraes de Barros"
+    },
+    {
+      "codigo": "138",
+      "nome": "Miosótis"
+    },
+    {
+      "codigo": "141",
+      "nome": "Pq. Avenida - Via Portal das Torres"
+    },
+    {
+      "codigo": "152",
+      "nome": "Cj. João Paulino"
+    },
+    {
+      "codigo": "162",
+      "nome": "Cj. Léa Leal"
+    },
+    {
+      "codigo": "169",
+      "nome": "Jd. Alvorada"
+    },
+    {
+      "codigo": "175",
+      "nome": "Jd. Sumaré"
+    },
+    {
+      "codigo": "177",
+      "nome": "Pq. Itaipu / Jd. Ebenezer"
+    },
+    {
+      "codigo": "178",
+      "nome": "Floriano"
+    },
+    {
+      "codigo": "179",
+      "nome": "Jd. Andrade"
+    },
+    {
+      "codigo": "201",
+      "nome": "Iguatemi"
+    },
+    {
+      "codigo": "204",
+      "nome": "Jd. Licce"
+    },
+    {
+      "codigo": "205",
+      "nome": "Thermas"
+    },
+    {
+      "codigo": "219",
+      "nome": "Jd. Iguaçu"
+    },
+    {
+      "codigo": "220",
+      "nome": "Jd. São Clemente"
+    },
+    {
+      "codigo": "221",
+      "nome": "Jd. Montreal"
+    },
+    {
+      "codigo": "222",
+      "nome": "Pça. São Vicente / Higienópolis"
+    },
+    {
+      "codigo": "233",
+      "nome": "Guaiapó"
+    },
+    {
+      "codigo": "234",
+      "nome": "Cj. Champagnat"
+    },
+    {
+      "codigo": "235",
+      "nome": "Jd. Campos Elísios"
+    },
+    {
+      "codigo": "242",
+      "nome": "Jd. América"
+    },
+    {
+      "codigo": "243",
+      "nome": "Jd. Liberdade"
+    },
+    {
+      "codigo": "300",
+      "nome": "Eurogarden"
+    },
+    {
+      "codigo": "314",
+      "nome": "Vila Nova"
+    },
+    {
+      "codigo": "323",
+      "nome": "Jd. Bertioga"
+    },
+    {
+      "codigo": "324",
+      "nome": "Porto Seguro / Cj. Thais"
+    },
+    {
+      "codigo": "326",
+      "nome": "Cj. Europa"
+    },
+    {
+      "codigo": "334",
+      "nome": "Cj. Cidade Canção"
+    },
+    {
+      "codigo": "335",
+      "nome": "Vila Operária"
+    },
+    {
+      "codigo": "414",
+      "nome": "Hospital Municipal"
+    },
+    {
+      "codigo": "415",
+      "nome": "Cidade Alta"
+    },
+    {
+      "codigo": "416",
+      "nome": "Cidade Alta - Via Av. Brasil"
+    },
+    {
+      "codigo": "417",
+      "nome": "Jd. França"
+    },
+    {
+      "codigo": "427",
+      "nome": "Cerro Azul"
+    },
+    {
+      "codigo": "458",
+      "nome": "Jd. Universo - Via Cerro Azul"
+    },
+    {
+      "codigo": "459",
+      "nome": "Jd. Universo - Via Borba Gato"
+    },
+    {
+      "codigo": "460",
+      "nome": "Jd. Olímpico"
+    },
+    {
+      "codigo": "461",
+      "nome": "Jd. Ouro Cola"
+    },
+    {
+      "codigo": "466",
+      "nome": "Cj. Borba Gato"
+    },
+    {
+      "codigo": "469",
+      "nome": "Jd. Barcelona"
+    },
+    {
+      "codigo": "512",
+      "nome": "Cocamar"
+    },
+    {
+      "codigo": "528",
+      "nome": "Ceasa - Aeroporto / Jd. Oasis"
+    },
+    {
+      "codigo": "528A",
+      "nome": "Aeroporto"
+    },
+    {
+      "codigo": "531",
+      "nome": "Pq. Industrial / Copasa / ALL"
+    },
+    {
+      "codigo": "611",
+      "nome": "Bunge"
+    },
+    {
+      "codigo": "713",
+      "nome": "Pq. Hortência"
+    },
+    {
+      "codigo": "721",
+      "nome": "Atenas"
+    },
+    {
+      "codigo": "722",
+      "nome": "Cj. Ney Braga"
+    },
+    {
+      "codigo": "734",
+      "nome": "Pq. das Laranjeiras"
+    },
+    {
+      "codigo": "735",
+      "nome": "Jd. Rebouças"
+    },
+    {
+      "codigo": "736",
+      "nome": "Jd. Paris"
+    },
+    {
+      "codigo": "739",
+      "nome": "Jd. Munique"
+    },
+    {
+      "codigo": "UEM",
+      "nome": "Universidade"
+    }
+  ]
+}

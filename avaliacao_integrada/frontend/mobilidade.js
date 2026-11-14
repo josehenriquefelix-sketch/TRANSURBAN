@@ -116,6 +116,7 @@ async function api(path, options = {}, retry = true) {
         }
         throw new Error(typeof data.detail === "string" ? data.detail : "Não foi possível concluir esta operação.");
     }
+    if (path === "/auth/logout") window.dispatchEvent(new Event("transurban:logout"));
     return data;
 }
 async function action(formId, feedback, work) {
@@ -308,6 +309,7 @@ function mapFor(id) {
         }).addTo(maps[id]);
         markers[id] = L.layerGroup().addTo(maps[id]);
     }
+    if (id === "passengerMap") window.TransurbanLocation?.attach(maps[id], {buttonId: "locatePassenger", statusId: "passengerLocationFeedback"});
     requestAnimationFrame(() => maps[id].invalidateSize());
     return maps[id];
 }
@@ -472,7 +474,7 @@ async function navigate() {
                 fillDirections(state.line, "scheduleDirection");
             }
             if ($("scheduleLine").value) await schedules();
-            polling = setInterval(() => liveTrips().catch(error => status("scheduleStatus", error.message, true)), 10000);
+            polling = setInterval(() => {if (!document.hidden) liveTrips().catch(error => status("scheduleStatus", error.message, true));}, 10000);
         }
         if (page === "avaliacoes") {
             if (state.reviewTrip) {

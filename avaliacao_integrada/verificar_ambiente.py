@@ -73,7 +73,7 @@ def main():
         resultado("Base de analise interna em UTF-8", False,
                   "Atualize o repositorio e confira data/atrasos_analise.csv.")
 
-    for rota in ("/", "/mobilidade.css", "/mobilidade.js", "/logo-passageiro.svg", "/logo-motorista.svg", "/logo-gestao.svg", "/motorista/", "/gestao/", "/operacao.js", "/atendimento/alertas", "/vendor/leaflet.js", "/docs", "/dados/docs", "/mobilidade/catalogo", "/mobilidade/viagens", "/portal/contexto"):
+    for rota in ("/", "/mobilidade.css", "/mobilidade.js", "/localizacao.js", "/logo-passageiro.svg", "/logo-motorista.svg", "/logo-gestao.svg", "/motorista/", "/gestao/", "/operacao.js", "/atendimento/alertas", "/vendor/leaflet.js", "/docs", "/dados/docs", "/mobilidade/catalogo", "/mobilidade/viagens", "/portal/contexto"):
         try:
             with urlopen(f"http://127.0.0.1:8000{rota}", timeout=10) as resposta:
                 resultado(f"Site e API {rota}", resposta.status == 200)

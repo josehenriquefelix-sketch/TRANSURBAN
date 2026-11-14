@@ -131,7 +131,7 @@ async def proteger_solicitacoes(request: Request, call_next):
 def health():
     return {
         "projeto": "TRANSURBAN",
-        "versao": "2026.11.13-portais",
+        "versao": "2026.11.14-gps",
         "supabase_configurado": supabase_configurado(),
         "interface": "/",
         "documentacao": "/docs",

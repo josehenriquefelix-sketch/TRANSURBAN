@@ -10,12 +10,13 @@
   </title>
   <link href="/logo-passageiro.svg" rel="icon"/>
   <link href="/vendor/leaflet.css" rel="stylesheet"/>
-  <link href="/mobilidade.css?v=20261113-portais" rel="stylesheet"/>
+  <link href="/mobilidade.css?v=20261114-gps" rel="stylesheet"/>
   <script defer="" src="/vendor/leaflet.js">
   </script>
-  <script defer="" src="/mobilidade.js?v=20261113-portais">
+  <script defer="" src="/localizacao.js?v=20261114-gps"></script>
+  <script defer="" src="/mobilidade.js?v=20261114-gps">
   </script>
-  <script defer="" src="/operacao.js?v=20261113-portais">
+  <script defer="" src="/operacao.js?v=20261114-gps">
   </script>
  </head>
  <body>
@@ -600,6 +601,8 @@
           ☆ Salvar linha
          </button>
         </div>
+        <button class="btn quiet" id="locatePassenger" type="button">Minha localização</button>
+        <p class="status" id="passengerLocationFeedback" role="status">Permita a localização para ver sua posição atualizada automaticamente. Ela fica neste navegador.</p>
         <div class="map" id="passengerMap">
         </div>
         <div class="map-footer">
@@ -1000,6 +1003,7 @@
        <p class="subtle">
         Somente ocorrências publicadas pela gestão, com data e validade. Áreas sem marcação não significam trânsito livre.
        </p>
+       <p class="status" id="opsSyncStatus" role="status">Atualização automática enquanto este mapa estiver aberto.</p>
        <div class="stack" id="opsAlerts">
        </div>
       </article>

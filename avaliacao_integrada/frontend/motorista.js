@@ -8,7 +8,10 @@ const state = {
 let renewal = null,
     watcher = null,
     lastPositionSent = 0,
-    sendingPosition = false;
+    sendingPosition = false,
+    driverAccuracyCircle = null,
+    driverRefreshTimer = null,
+    driverRefreshing = false;
 const maps = {},
     markers = {};
 const dateTime = value => new Intl.DateTimeFormat("pt-BR", {
@@ -88,6 +91,7 @@ async function api(path, options = {}, retry = true) {
         }
         throw new Error(typeof data.detail === "string" ? data.detail : "Não foi possível concluir esta operação.");
     }
+    if (path === "/auth/logout") window.dispatchEvent(new Event("transurban:logout"));
     return data;
 }
 async function action(formId, feedback, work) {
@@ -142,12 +146,45 @@ function plotBus(id, position, label) {
     marker.bindPopup(node("span", label));
     marker.addTo(markers[id]);
 }
-async function driverPanel() {
+function fillDriverLines(selected = "") {
+    const city = $("driverCity").value;
+    const lines = (state.catalog?.linhas || []).filter(line => city === "Maringá" ? line.ambito === "maringa" : city === "metropolitano" ? line.ambito === "metropolitano" : line.cidades.includes("Sarandi"));
+    $("driverLine").replaceChildren(new Option("Selecione uma linha", ""), ...lines.map(line => new Option(`${line.codigo} · ${line.nome}`, line.id)));
+    if (lines.some(line => line.id === selected)) $("driverLine").value = selected;
+    fillDirections($("driverLine").value, "driverDirection");
+    updateRouteSummary();
+}
+function updateRouteSummary() {
+    const line = findLine($("driverLine").value);
+    const trip = state.driver?.viagem;
+    const prefix = trip?.prefixo || $("busPrefix").value.trim();
+    const model = trip?.modelo || $("busModel").value.trim();
+    $("driverRouteSummary").textContent = line ? `${prefix ? "Ônibus " + prefix : "Informe a numeração do ônibus"}${model ? " · " + model : ""} · ${line.codigo} · ${line.nome} · ${$("driverDirection").value}${trip ? " · viagem vinculada à sua conta" : ""}` : "Selecione uma linha para vincular o ônibus à sua viagem.";
+    $("driverItinerary").hidden = !line;
+    if (line) $("driverItinerary").href = line.consulta_oficial_url || line.fonte_url;
+}
+function profilePayload() {
+    return {nome_publico: $("driverName").value, ano_nascimento: $("driverBirth").value ? Number($("driverBirth").value) : null, bio: $("driverBio").value, exibir_perfil: $("publicDriverConsent").checked, modelo: $("busModel").value, prefixo: $("busPrefix").value};
+}
+function initialPosition() {
+    return new Promise((resolve, reject) => {
+        if (!navigator.geolocation) return reject(new Error("Este navegador não oferece localização."));
+        navigator.geolocation.getCurrentPosition(position => {
+            const c = position.coords;
+            if (![c.latitude,c.longitude,c.accuracy].every(Number.isFinite) || c.accuracy < 0 || c.accuracy > 1000) return reject(new Error("O sinal ainda não tem precisão suficiente. Confira o GPS e tente novamente com o ônibus parado."));
+            resolve(position);
+        }, error => reject(new Error(error.code === 1 ? "A viagem não foi iniciada: permita a localização para compartilhar o GPS." : "A viagem não foi iniciada: não foi possível obter o GPS. Tente novamente.")), {enableHighAccuracy:true,timeout:20000,maximumAge:0});
+    });
+}
+async function driverPanel({background = false} = {}) {
+    const previousTrip = state.driver?.viagem?.id;
     state.driver = await api("/mobilidade/motorista");
+    if (previousTrip && previousTrip !== state.driver.viagem?.id) stopGps();
     const data = state.driver;
     $("driverStats").replaceChildren(metric("Minha avaliação", data.indicadores.avaliacao ? `${data.indicadores.avaliacao} ★` : "—", `${data.indicadores.quantidade_notas} notas vinculadas`), metric("Elogios", data.indicadores.elogios), metric("Reclamações", data.indicadores.reclamacoes), metric("Estado da viagem", data.viagem ? "Ativa" : "Preparação"));
     const profile = data.perfil;
-    if (profile) {
+    if (!profile && !$("driverName").value) $("driverName").value = state.user?.nome || "";
+    if (profile && !background) {
         $("driverName").value = profile.nome_publico;
         $("busModel").value = profile.modelo;
         $("busPrefix").value = profile.prefixo;
@@ -160,10 +197,13 @@ async function driverPanel() {
     $("resumeGps").hidden = !data.viagem;
     $("driverTripBadge").textContent = data.viagem ? "Trajeto iniciado" : "Trajeto não iniciado";
     $("driverProfileForm").querySelectorAll("input,textarea,button").forEach(input => input.disabled = Boolean(data.viagem));
+    $("driverCity").disabled = Boolean(data.viagem);
     $("driverLine").disabled = Boolean(data.viagem);
     $("driverDirection").disabled = Boolean(data.viagem);
     $("locationConsent").disabled = Boolean(data.viagem);
     if (data.viagem) {
+        $("driverCity").value = findLine(data.viagem.linha_id)?.ambito === "maringa" ? "Maringá" : "metropolitano";
+        fillDriverLines(data.viagem.linha_id);
         $("driverLine").value = data.viagem.linha_id;
         fillDirections(data.viagem.linha_id, "driverDirection");
         $("driverDirection").value = data.viagem.sentido;
@@ -178,15 +218,19 @@ async function driverPanel() {
     if (!data.avaliacoes.length) $("driverReviews").append(node("p", "Ainda não há manifestações vinculadas às suas viagens.", "empty"));
     $("wazeLink").href = "https://www.waze.com/ul?q=" + encodeURIComponent($("driverDirection").value.includes("→ Sarandi") ? "Sarandi Paraná" : "Maringá Paraná");
     mapFor("driverMap");
+    updateRouteSummary();
 }
 
 function stopGps() {
     if (watcher !== null) navigator.geolocation.clearWatch(watcher);
     watcher = null;
+    markers.driverMap?.clearLayers();
+    driverAccuracyCircle?.remove();
+    driverAccuracyCircle = null;
     $("driverGpsStatus").textContent = "Compartilhamento GPS pausado.";
 }
 
-function startGps() {
+function startGps(firstPosition = null) {
     if (!state.driver?.viagem) {
         toast("Inicie uma viagem antes de compartilhar a posição.");
         return;
@@ -199,7 +243,7 @@ function startGps() {
     lastPositionSent = 0;
     $("driverGpsStatus").textContent = "Aguardando permissão e posição do dispositivo…";
     const tripId = state.driver.viagem.id;
-    watcher = navigator.geolocation.watchPosition(async position => {
+    const receivePosition = async position => {
         if (sendingPosition || Date.now() - lastPositionSent < 10000 || state.driver?.viagem?.id !== tripId) return;
         const coords = position.coords;
         if (coords.accuracy > 1000) {
@@ -226,6 +270,8 @@ function startGps() {
                     latitude: coords.latitude,
                     longitude: coords.longitude
                 }, "Posição deste dispositivo");
+                driverAccuracyCircle?.remove();
+                driverAccuracyCircle = L.circle([coords.latitude, coords.longitude], {radius:coords.accuracy,color:"#de762f",weight:1,fillOpacity:.08}).addTo(map);
                 map.setView([coords.latitude, coords.longitude], 15);
             }
             $("driverGpsStatus").textContent = `GPS compartilhado • ${new Date().toLocaleTimeString("pt-BR")} • precisão ${Math.round(coords.accuracy)} m`;
@@ -234,14 +280,16 @@ function startGps() {
         } finally {
             sendingPosition = false;
         }
-    }, error => {
+    };
+    watcher = navigator.geolocation.watchPosition(receivePosition, error => {
         status("tripStatus", error.code === 1 ? "Localização não autorizada. Permita o GPS e toque em Retomar compartilhamento." : "Posição indisponível. Confira o GPS e tente retomar.", true);
         $("driverGpsStatus").textContent = "Sem sinal GPS recente.";
     }, {
         enableHighAccuracy: true,
         timeout: 20000,
-        maximumAge: 5000
+        maximumAge: 3000
     });
+    if (firstPosition?.coords) receivePosition(firstPosition);
 }
 async function endTrip() {
     if (!state.driver?.viagem) return;
@@ -274,13 +322,20 @@ async function driverAccount() {
     if (!user.papeis?.includes("motorista")) throw new Error("Sua conta ainda não tem aprovação para motorista. Solicite o vínculo abaixo.");
     state.user = user;
     state.catalog = await api("/mobilidade/catalogo");
-    $("driverLine").replaceChildren(new Option("Selecione uma linha", ""), ...state.catalog.linhas.map(l => new Option(`${l.codigo} · ${l.nome}`, l.id)));
+    fillDriverLines();
     $("driverAccountName").textContent = user.nome;
     $("driverSessionName").textContent = user.nome;
     $("driverLogin").hidden = true;
     $("driverShell").hidden = false;
     await driverPanel();
     window.TransurbanOps?.refresh();
+    if (!driverRefreshTimer) driverRefreshTimer = setInterval(async () => {
+        if (document.hidden || $("driverShell").hidden || driverRefreshing) return;
+        driverRefreshing=true;
+        try { await driverPanel({background:true}); }
+        catch (error) { status("tripStatus", "Não foi possível atualizar a operação. O sistema tentará novamente.", true); }
+        finally { driverRefreshing=false; }
+    },15000);
 }
 $("driverLoginForm").addEventListener("submit", event => {
     event.preventDefault();
@@ -302,24 +357,25 @@ $("driverProfileForm").addEventListener("submit", event => {
     action("driverProfileForm", "driverProfileStatus", async () => {
         await api("/mobilidade/motorista/perfil", {
             method: "PUT",
-            body: JSON.stringify({
-                nome_publico: $("driverName").value,
-                ano_nascimento: $("driverBirth").value ? Number($("driverBirth").value) : null,
-                bio: $("driverBio").value,
-                exibir_perfil: $("publicDriverConsent").checked,
-                modelo: $("busModel").value,
-                prefixo: $("busPrefix").value
-            })
+            body: JSON.stringify(profilePayload())
         });
         status("driverProfileStatus", "Perfil salvo.");
         await driverPanel();
     });
 });
-$("driverLine").addEventListener("change", () => fillDirections($("driverLine").value, "driverDirection"));
+$("driverCity").addEventListener("change", () => fillDriverLines());
+$("driverLine").addEventListener("change", () => {fillDirections($("driverLine").value, "driverDirection"); updateRouteSummary();});
+$("driverDirection").addEventListener("change", updateRouteSummary);
+$("busModel").addEventListener("input", updateRouteSummary);
+$("busPrefix").addEventListener("input", updateRouteSummary);
 $("tripForm").addEventListener("submit", event => {
     event.preventDefault();
-    action("tripForm", "tripStatus", async () => {
+    return action("tripForm", "tripStatus", async () => {
         if (!$("locationConsent").checked) throw new Error("Autorize o compartilhamento durante esta viagem.");
+        if (!$("driverProfileForm").reportValidity()) throw new Error("Preencha os dados do ônibus e do perfil antes de iniciar.");
+        status("tripStatus", "Verificando a permissão e o sinal GPS antes de iniciar…");
+        const firstPosition = await initialPosition();
+        await api("/mobilidade/motorista/perfil", {method:"PUT", body:JSON.stringify(profilePayload())});
         state.driver.viagem = await api("/mobilidade/motorista/viagens", {
             method: "POST",
             body: JSON.stringify({
@@ -328,10 +384,11 @@ $("tripForm").addEventListener("submit", event => {
             })
         });
         await driverPanel();
-        startGps();
+        startGps(firstPosition);
+        status("tripStatus", "Viagem iniciada. O ônibus está vinculado à sua conta e à linha escolhida.");
     });
 });
-$("resumeGps").addEventListener("click", startGps);
+$("resumeGps").addEventListener("click", () => startGps());
 $("endTrip").addEventListener("click", () => {
     if (confirm("Encerrar o trajeto e parar o compartilhamento?")) endTrip().catch(e => status("tripStatus", e.message, true));
 });
@@ -351,5 +408,5 @@ $("driverLogout").addEventListener("click", async () => {
     }
 });
 $("driverMenu").addEventListener("click", () => $("sidebar").classList.toggle("open"));
-window.addEventListener("pagehide", stopGps);
+window.addEventListener("pagehide", () => {stopGps(); clearInterval(driverRefreshTimer); driverRefreshTimer=null;});
 driverAccount().catch(e => status("driverLoginStatus", e.message.includes("Entre") ? "" : e.message, true));

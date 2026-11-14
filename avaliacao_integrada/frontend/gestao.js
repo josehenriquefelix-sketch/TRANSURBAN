@@ -6,7 +6,7 @@ const state = {
     queue: [],
     selectedReport: null
 };
-let renewal = null;
+let renewal = null, managementTimer = null, managementUpdating = false, managementRequest = 0;
 const dateTime = value => new Intl.DateTimeFormat("pt-BR", {
     dateStyle: "short",
     timeStyle: "short",
@@ -84,6 +84,7 @@ async function api(path, options = {}, retry = true) {
         }
         throw new Error(typeof data.detail === "string" ? data.detail : "Não foi possível concluir esta operação.");
     }
+    if (path === "/auth/logout") window.dispatchEvent(new Event("transurban:logout"));
     return data;
 }
 async function action(formId, feedback, work) {
@@ -130,16 +131,34 @@ function renderQueue() {
     }
     if (!records.length) $("managerQueue").append(node("p", "Nenhuma manifestação para esses filtros.", "empty"));
 }
-async function managerPanel() {
-    state.queue = await api("/mobilidade/gestao/manifestacoes");
-    state.selectedReport = null;
-    $("managerDetail").replaceChildren(node("p", "Selecione uma manifestação para analisar."));
-    $("responseForm").hidden = true;
+async function managerPanel({background = false} = {}) {
+    const request = ++managementRequest;
+    const queue = await api("/mobilidade/gestao/manifestacoes");
+    if (request !== managementRequest) return;
+    state.queue = queue;
+    if (!background) {
+        state.selectedReport = null;
+        $("managerDetail").replaceChildren(node("p", "Selecione uma manifestação para analisar."));
+        $("responseForm").hidden = true;
+    }
     $("managerStats").replaceChildren(metric("Recebidas", state.queue.filter(r => r.status === "recebida").length), metric("Em análise", state.queue.filter(r => r.status === "em_analise").length), metric("Respondidas", state.queue.filter(r => r.status === "respondida").length), metric("Encerradas", state.queue.filter(r => r.status === "encerrada").length));
     renderQueue();
+    $("managerAutoStatus").textContent = "Fila sincronizada às " + new Date().toLocaleTimeString("pt-BR") + ". Atualização automática a cada 15 segundos; respostas em edição são preservadas.";
 }
+function startManagementRefresh() {
+    if (managementTimer) return;
+    managementTimer = setInterval(async () => {
+        if (document.hidden || !state.user || $("managementShell").hidden || managementUpdating) return;
+        managementUpdating = true;
+        try { await managerPanel({background:true}); }
+        catch (error) { if (/conta|restrito|autorizad/i.test(error.message)) showLogin(error.message); else $("managerAutoStatus").textContent = "Sincronização temporariamente indisponível. Nova tentativa automática em 15 segundos."; }
+        finally {managementUpdating=false;}
+    },15000);
+}
+window.addEventListener("pagehide", () => {clearInterval(managementTimer); managementTimer=null;});
 
 function showLogin(message = "") {
+    clearInterval(managementTimer); managementTimer=null; managementRequest++;
     state.user = null;
     state.queue = [];
     state.selectedReport = null;
@@ -171,6 +190,7 @@ async function openManagement() {
     $("managementName").textContent = user.nome;
     $("managementLogin").hidden = true;
     $("managementShell").hidden = false;
+    startManagementRefresh();
     window.TransurbanOps?.refresh();
 }
 $("managementLoginForm").addEventListener("submit", event => {

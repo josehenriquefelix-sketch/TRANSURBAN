@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 HOST = "127.0.0.1"
 PORT = 8000
 URL = f"http://{HOST}:{PORT}/"
-VERSAO = "2026.11.13-portais"
+VERSAO = "2026.11.14-gps"
 
 
 def porta_aberta() -> bool:

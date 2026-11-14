@@ -108,6 +108,7 @@ def atualizar_perfil(dados: PerfilMotorista, usuario=Depends(motorista_autorizad
 
 
 class InicioViagem(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     linha_id: str
     sentido: str = Field(min_length=1, max_length=100)
 
@@ -135,6 +136,7 @@ def encerrar_viagem(viagem_id: UUID, usuario=Depends(motorista_autorizado)):
 
 
 class Posicao(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     latitude: float = Field(ge=-90, le=90, allow_inf_nan=False)
     longitude: float = Field(ge=-180, le=180, allow_inf_nan=False)
     precisao_m: float = Field(ge=0, le=1000, allow_inf_nan=False)

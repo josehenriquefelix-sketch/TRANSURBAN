@@ -12,10 +12,11 @@
    TRANSURBAN | Painel de gestão
   </title>
   <link href="/logo-gestao.svg" rel="icon"/>
-  <link href="/mobilidade.css?v=20261113-portais" rel="stylesheet"/>
-  <script defer="" src="/gestao.js?v=20261113-portais">
+  <link href="/mobilidade.css?v=20261114-gps" rel="stylesheet"/>
+  <script defer="" src="/localizacao.js?v=20261114-gps"></script>
+  <script defer="" src="/gestao.js?v=20261114-gps">
   </script>
-  <script defer="" src="/operacao.js?v=20261113-portais">
+  <script defer="" src="/operacao.js?v=20261114-gps">
   </script>
  </head>
  <body data-area="gestao">
@@ -211,6 +212,9 @@
        <p class="subtle">
         Somente ocorrências publicadas pela gestão, com data e validade. Áreas sem marcação não significam trânsito livre.
        </p>
+       <p class="status" id="fleetStatus" role="status">Consultando ônibus em viagem…</p>
+       <div class="stack" id="fleetList"></div>
+       <p class="status" id="opsSyncStatus" role="status">Atualização automática enquanto este mapa estiver aberto.</p>
        <div class="stack" id="opsAlerts">
        </div>
       </article>
@@ -232,6 +236,7 @@
       <div class="notice">
        Ambiente de gestão TRANSURBAN. A adesão dos órgãos públicos e da operadora ainda está pendente. O protocolo exibido pertence à plataforma.
       </div>
+      <p class="status" id="managerAutoStatus" role="status">Sincronização automática da fila.</p>
       <div class="metrics" id="managerStats">
       </div>
       <div class="planner card">
