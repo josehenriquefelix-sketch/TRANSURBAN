@@ -84,3 +84,7 @@ Relatos de acessibilidade, obras e trânsito chegam à gestão do escopo corresp
 O login distingue e-mail não confirmado de credencial inválida; há reenvio solicitado pelo usuário. Google foi conferido e permanece desativado, com Client ID e Client Secret vazios. Para ativar, o responsável configura uma aplicação OAuth no Google Cloud e preenche diretamente o Supabase; não publicar segredos no repositório. O callback do projeto é `https://lsnpvokfnvyjkvqzkvof.supabase.co/auth/v1/callback`.
 
 Validação: 31 testes automatizados; login de conta confirmada por e-mail e CPF; suporte, resposta, isolamento de escopo, retirada de alerta e aprovação com Supabase real em `VALIDACAO_SUPORTE_20261113.json`. As contas e os dados sintéticos foram descartados. Esses testes não confirmam entrega de e-mail, integração com GPS da operadora, pagamentos nem cobertura municipal completa de Sarandi.
+
+### Login Google concluído em 13/11/2026
+
+Após o preparo inicial, o aplicativo OAuth foi criado no Google Cloud e as credenciais foram configuradas no provedor Google do Supabase. A API confirmou o provedor habilitado e o teste no navegador retornou ao portal com sessão de passageiro. A tentativa de acessar a fila da gestão com essa sessão foi bloqueada. O Client Secret permanece somente no Supabase; não está no GitHub nem nos arquivos distribuídos. A origem HTTPS pública ainda será configurada após a hospedagem. Veja `VALIDACAO_GOOGLE_20261113.json`.

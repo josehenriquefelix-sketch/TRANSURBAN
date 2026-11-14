@@ -1,0 +1,16 @@
+{
+  "data": "2026-11-13",
+  "provedor_google_habilitado": true,
+  "validacoes": [
+    "Supabase indica Google ENABLED",
+    "API /auth/configuracao retorna google=true",
+    "autorizacao do Google limitada a nome, foto e e-mail",
+    "retorno ao TRANSURBAN com sessao autenticada",
+    "Minha conta exibe papel de passageiro"
+  ],
+  "credenciais": "Client Secret armazenado somente no provedor Supabase; nao publicado no repositorio",
+  "limites": [
+    "teste executado no endereco local",
+    "publicacao HTTPS e configuracao da origem publica ainda pendentes"
+  ]
+}

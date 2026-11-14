@@ -29,7 +29,7 @@ O endereço `127.0.0.1` é local a cada computador. Para acesso público ou por 
 
 O catálogo separa as 66 linhas municipais de Maringá publicadas no Na Hora das ligações que atendem Sarandi. Em Sarandi, são 22 atendimentos, incluindo variantes de bairro, documentados em 12 tabelas do DER/PR. Foram conferidas 1.064 partidas documentais, sem duplicar as variantes. Ao escolher a linha, o site abre os horários; em Maringá, oferece também a consulta pública oficial incorporada com pontos e itinerários. O serviço municipal interbairros de Sarandi está identificado separadamente, com confirmação de vigência pendente. Horários de saída não são previsões de passagem em todos os pontos. Não há API autorizada de telemetria nem integração de bilhetagem.
 
-O código de Google OAuth está implementado, mas o provedor ainda precisa de credenciais/configuração no Supabase. Confirmação e recuperação por e-mail precisam de SMTP e teste de entrega real. O GPS do navegador requer permissão, contexto seguro e página aberta; as verificações automatizadas não comprovam um sensor GPS real.
+O login Google está configurado no Supabase e foi validado no navegador com criação de sessão no portal do passageiro em 13/11/2026. Confirmação e recuperação por e-mail precisam de SMTP e teste de entrega real. O GPS do navegador requer permissão, contexto seguro e página aberta; as verificações automatizadas não comprovam um sensor GPS real.
 
 O TRANSURBAN é independente. Não há adesão institucional confirmada de Prefeitura, DER/PR ou operadora. As manifestações ficam na central TRANSURBAN; seu encaminhamento institucional depende dessa adesão.
 
@@ -50,7 +50,7 @@ Os arquivos de outras etapas permanecem no repositório como histórico. Para ex
 
 Os papéis profissionais dependem de aprovação administrativa. Pedir acesso não concede permissão. O suporte persiste relatos e respostas privados; o mapa mostra ocorrências confirmadas, com validade, e localização solicitada pelo usuário. Sem marcação significa sem informação. A revisão passou em 31 testes automatizados e na [integração do suporte com Supabase](avaliacao_integrada/docs/VALIDACAO_SUPORTE_20261113.json).
 
-O login agora distingue e-mail não confirmado de credenciais inválidas e permite solicitar reenvio de confirmação. Google ainda requer Client ID e Client Secret no provedor Supabase; não está habilitado.
+O login agora distingue e-mail não confirmado de credenciais inválidas e permite solicitar reenvio de confirmação. Google foi configurado e validado no navegador em 13/11/2026; a sessão retorna ao portal com papel de passageiro. Nenhum segredo foi incluído no código.
 
 ## Preparação de link público
 
