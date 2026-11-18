@@ -179,7 +179,8 @@ function findLine(id) {
 function fillDirections(lineId, selectId) {
     const select = $(selectId),
         previous = select.value;
-    select.replaceChildren(...(findLine(lineId)?.sentidos || ["Maringá → Sarandi", "Sarandi → Maringá"]).map(value => new Option(value, value)));
+    // Os nomes são da interface; o valor original mantém a consulta correta na API.
+    select.replaceChildren(...(findLine(lineId)?.sentidos || ["Maringá → Sarandi", "Sarandi → Maringá"]).map((value, index) => new Option(index === 0 ? "Terminal / Bairro" : "Bairro / Terminal", value)));
     if ([...select.options].some(option => option.value === previous)) select.value = previous;
 }
 
@@ -384,7 +385,7 @@ async function schedules() {
     state.line = id;
     const line = findLine(id),
         official = Boolean(line?.consulta_oficial_url);
-    $("scheduleDirectionField").hidden = official;
+    $("scheduleDirectionField").hidden = false;
     $("scheduleDayField").hidden = official;
     $("documentScheduleCard").hidden = official;
     showOfficial(line);
