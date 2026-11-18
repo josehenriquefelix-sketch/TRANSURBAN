@@ -8,6 +8,7 @@
         accuracyCircle = null,
         selectedMarker = null,
         activeUser = null,
+        reportsLayer = null,
         fleetLayer = null,
         updateTimer = null,
         updating = false;
@@ -55,8 +56,32 @@
         });
         window.TransurbanLocation?.attach(map, {buttonId: "locateMe", statusId: "locationFeedback"});
     }
+
+    function paintReceivedReports(calls) {
+        if (role !== "gestao" || !activeUser?.papeis?.includes("gestor") || !map) return;
+        if (!reportsLayer) reportsLayer = L.layerGroup().addTo(map);
+        reportsLayer.clearLayers();
+        for (const call of calls) {
+            if (call.latitude == null || call.longitude == null || call.status === "encerrado") continue;
+            const popup = text("div", "");
+            popup.append(text("strong", call.assunto), text("p", `${call.cidade} · ${call.categoria}`), text("small", "Relato recebido para análise. Visível somente para a gestão."));
+            const open = text("button", "Analisar relato", "btn quiet");
+            open.type = "button";
+            open.onclick = () => {
+                location.hash = "relatosGestao";
+                window.TransurbanManagement?.show("relatosGestao");
+                const card = $("relato-" + call.id);
+                card?.scrollIntoView({block:"center",behavior:"smooth"});
+                card?.focus({preventScroll:true});
+            };
+            popup.append(open);
+            L.circleMarker([call.latitude, call.longitude], {radius:9,color:"white",weight:3,fillColor:"#62666b",fillOpacity:1}).bindPopup(popup).addTo(reportsLayer);
+        }
+    }
+
     async function loadAlerts() {
         setupMap();
+        if (role === "gestao") paintReceivedReports(state.calls || []);
         const alerts = await request("/atendimento/alertas");
         eventsLayer?.clearLayers();
         $("opsAlerts")?.replaceChildren();
@@ -117,7 +142,8 @@
 
     function managementForms() {
         if (!$("managementOperations")) return;
-        $("managementOperations").innerHTML = `<div class="operations-grid"><form id="alertForm" class="card"><h2>Confirmar ocorrência no mapa</h2><p class="muted">Publique somente informações conferidas pela equipe. Marque o local no mapa. Esta orientação não altera sozinha uma rota oficial.</p><label for="alertCity">Cidade</label><select id="alertCity"><option>Maringá</option><option>Sarandi</option></select><label for="alertLine">Linha (opcional)</label><select id="alertLine"></select><label for="alertLevel">Condição confirmada</label><select id="alertLevel"><option value="vermelho">Vermelho — bloqueio, obra ou desvio</option><option value="amarelo">Amarelo — atenção / lentidão</option><option value="verde">Verde — condição tranquila informada</option></select><label for="alertTitle">Título</label><input id="alertTitle" required minlength="5" maxlength="120"><label for="alertAdvice">Orientação à operação / usuários</label><textarea id="alertAdvice" required minlength="10" maxlength="1000"></textarea><div class="two-fields"><div><label for="alertLat">Latitude do local</label><input type="number" step="any" id="alertLat" required min="-90" max="90"></div><div><label for="alertLon">Longitude do local</label><input type="number" step="any" id="alertLon" required min="-180" max="180"></div></div><label for="alertValidity">Validade em horas</label><input type="number" id="alertValidity" value="2" min="1" max="24" required><button class="btn primary wide">Publicar ocorrência confirmada</button><p id="alertStatus" class="status" role="status"></p></form><article class="card"><h2>Ocorrências recebidas</h2><p class="muted">Relatos de passageiros e motoristas para análise da gestão. Receber um relato não o publica no mapa dos usuários. Confira a situação, responda ao solicitante e publique um alerta somente após a verificação.</p><button class="btn quiet" id="refreshSupport">Atualizar atendimento</button><div id="supportQueue" class="stack"></div></article></div><section class="card" id="approvalSection" hidden><h2>Aprovação de vínculos profissionais</h2><p>Confirme identidade, vínculo e competência antes de liberar o acesso. A solicitação não concede permissão.</p><div id="approvalQueue" class="stack"></div></section>`;
+        $("managementOperations").innerHTML = `<form id="alertForm" class="card" style="margin-top:20px"><h2>Publicar orientação aos usuários</h2><p>Confirme a situação antes de publicar. Clique no mapa para marcar o local. O alerta informa uma condição; não altera automaticamente uma rota oficial.</p><div class="two-fields"><div><label for="alertCity">Cidade</label><select id="alertCity"><option>Maringá</option><option>Sarandi</option></select></div><div><label for="alertLine">Linha (opcional)</label><select id="alertLine"></select></div></div><label for="alertLevel">Situação confirmada</label><select id="alertLevel"><option value="vermelho">Vermelho — bloqueio, obra ou desvio</option><option value="amarelo">Amarelo — atenção / lentidão</option><option value="verde">Verde — condição tranquila informada</option></select><label for="alertTitle">O que aconteceu?</label><input id="alertTitle" required minlength="5" maxlength="120"><label for="alertAdvice">Orientação para passageiros e motoristas</label><textarea id="alertAdvice" required minlength="10" maxlength="1000"></textarea><details><summary>Local marcado no mapa</summary><div class="two-fields"><div><label for="alertLat">Latitude</label><input type="number" step="any" id="alertLat" required min="-90" max="90"></div><div><label for="alertLon">Longitude</label><input type="number" step="any" id="alertLon" required min="-180" max="180"></div></div></details><label for="alertValidity">Por quantas horas este aviso fica visível?</label><input type="number" id="alertValidity" value="2" min="1" max="24" required><button class="btn primary wide">Publicar ocorrência confirmada</button><p id="alertStatus" class="status" role="status"></p></form>`;
+        $("professionalApprovals").innerHTML = `<section class="card" id="approvalSection" hidden><h2>Contas profissionais</h2><p>Analise os pedidos antes de autorizar motorista ou gestão.</p><div id="approvalQueue" class="stack"></div></section>`;
         options("Maringá", "alertLine");
         $("alertCity").onchange = () => options($("alertCity").value, "alertLine");
         $("alertForm").onsubmit = async e => {
@@ -151,21 +177,39 @@
     async function managementCalls({background = false} = {}) {
         if (background && $("supportQueue")?.contains(document.activeElement) && document.activeElement.matches("input,textarea,select")) return;
         if (!$("supportQueue")) return;
-        const calls = await request("/atendimento/gestao/chamados");
+        const received = await request("/atendimento/gestao/chamados");
+        state.calls = received;
+        paintReceivedReports(received);
+        window.dispatchEvent(new Event("transurban:operation-update"));
+        const calls = received.filter(c => (!$("callCityFilter").value || c.cidade === $("callCityFilter").value) && (!$("callStateFilter").value || c.status === $("callStateFilter").value));
+        feedback("receivedCallsStatus", `${calls.length} relato(s) nesta seleção. Atualização automática a cada 15 segundos.`);
         $("supportQueue").replaceChildren();
         for (const c of calls) {
             const card = text("article", "", "record");
+            card.id = "relato-" + c.id;
+            card.tabIndex = -1;
             card.append(text("h3", `SUP-${String(c.numero).padStart(6,"0")} · ${c.assunto}`), text("p", `${c.perfil} · ${c.cidade} · ${c.categoria}`), text("p", c.mensagem), text("small", `${c.status} · ${dateTime(c.criado_em)}`));
             if (c.latitude != null) {
                 const locate = text("button", "Ver local informado", "btn quiet");
                 locate.type = "button";
                 locate.onclick = () => {
+                    location.hash = "operacaoGestao";
+                    window.TransurbanManagement?.show("operacaoGestao");
+                    setupMap();
+                    paintReceivedReports(state.calls || []);
                     if (map) {
                         if (selectedMarker) selectedMarker.remove();
                         const popup = text("div", "");
                         popup.append(text("strong", "Local relatado • " + c.assunto), text("p", "Informação enviada pelo solicitante para análise. Este marcador é privado da gestão e não é um alerta confirmado."));
                         selectedMarker = L.circleMarker([c.latitude, c.longitude], {radius: 10, color: "#fff", weight: 3, fillColor: "#62666b", fillOpacity: 1}).addTo(map).bindPopup(popup).openPopup();
                         map.setView([c.latitude, c.longitude], 16);
+                        map.invalidateSize();
+                        $("alertLat").value = c.latitude;
+                        $("alertLon").value = c.longitude;
+                        $("alertTitle").value = c.assunto;
+                        $("alertCity").value = c.cidade;
+                        options(c.cidade, "alertLine");
+                        $("alertLine").value = c.linha_id || "";
                     }
                     toast("Local informado no chamado. A posição não foi publicada como ocorrência.");
                 };
@@ -209,7 +253,7 @@
             }
             $("supportQueue").append(card);
         }
-        if (!calls.length) $("supportQueue").append(text("p", "Nenhum relato recebido no seu escopo."));
+        if (!calls.length) $("supportQueue").append(text("p", "Nenhum relato recebido na sua área."));
     }
     async function approvals({background = false} = {}) {
         if (background && $("approvalQueue")?.contains(document.activeElement) && document.activeElement.matches("input,textarea,select")) return;
@@ -273,20 +317,22 @@
         if (!rows.length) $("approvalQueue").append(text("p", "Nenhum pedido de vínculo recebido."));
     }
     async function loadFleet() {
-        if (role !== "gestao" || !activeUser?.papeis?.includes("gestor") || !map) return;
-        const trips = await request("/mobilidade/viagens");
-        if (!fleetLayer) fleetLayer = L.layerGroup().addTo(map);
-        fleetLayer.clearLayers();
+        if (role !== "gestao" || !activeUser?.papeis?.includes("gestor")) return;
+        const trips = await request("/mobilidade/gestao/viagens");
+        state.fleet = trips;
+        window.dispatchEvent(new Event("transurban:operation-update"));
+        if (map && !fleetLayer) fleetLayer = L.layerGroup().addTo(map);
+        fleetLayer?.clearLayers();
         $("fleetList")?.replaceChildren();
         let recent = 0;
         for (const trip of trips) {
             const line = state.catalog?.linhas.find(item => item.id === trip.linha_id);
             const title = `Ônibus ${trip.prefixo} · ${trip.modelo} · ${line?.nome || trip.linha_id}`;
             const card = text("article", "", "record");
-            card.append(text("strong", title), text("p", trip.sentido), text("small", trip.posicao ? `${trip.posicao.recente ? "Sinal recente" : "Sinal desatualizado"} · ${dateTime(trip.posicao.registrada_em)} · precisão ${Math.round(trip.posicao.precisao_m)} m` : "Aguardando GPS do motorista."));
+            card.append(text("strong", title), text("p", `Motorista: ${trip.motorista?.nome || "Conta autorizada"} · ${trip.sentido}`), text("small", trip.posicao ? `${trip.posicao.recente ? "Sinal recente" : "Sinal desatualizado"} · ${dateTime(trip.posicao.registrada_em)} · precisão ${Math.round(trip.posicao.precisao_m)} m` : "Aguardando GPS do motorista."));
             $("fleetList")?.append(card);
-            if (!trip.posicao) continue;
-            if (trip.posicao.recente) recent++;
+            if (trip.posicao?.recente) recent++;
+            if (!trip.posicao || !fleetLayer) continue;
             const popup = text("div", "");
             popup.append(text("strong", title), text("p", trip.sentido), text("small", trip.posicao.recente ? "Posição compartilhada pelo motorista" : "Última posição recebida; sem sinal recente"));
             L.marker([trip.posicao.latitude, trip.posicao.longitude], {icon: L.divIcon({className: "", html: `<span class="bus-marker ${trip.posicao.recente ? "" : "stale"}">▣</span>`, iconSize: [36,36], iconAnchor: [18,18]})}).bindPopup(popup).addTo(fleetLayer);
@@ -296,19 +342,22 @@
     function startUpdates() {
         if (updateTimer) return;
         updateTimer = setInterval(async () => {
-            if (document.hidden || updating || !$("opsMap")?.getClientRects().length) return;
+            if (document.hidden || updating || (role !== "gestao" && !$("opsMap")?.getClientRects().length)) return;
             if (role === "gestao" && !activeUser?.papeis?.includes("gestor")) return;
             updating = true;
             try {
-                await loadAlerts();
+                const tasks = [loadAlerts()];
                 if (role === "gestao") {
-                    await managementCalls({background:true});
-                    await approvals({background:true});
-                    await loadFleet();
+                    tasks.push(managementCalls({background:true}), loadFleet());
+                    if (location.hash === "#autorizacoesGestao") tasks.push(approvals({background:true}));
                 } else if (activeUser && (role === "motorista" || location.hash === "#suporte")) {
-                    if (!$("supportHistory")?.contains(document.activeElement)) await history();
+                    if (!$("supportHistory")?.contains(document.activeElement)) tasks.push(history());
                 }
-                feedback("opsSyncStatus", "Última consulta às " + new Date().toLocaleTimeString("pt-BR") + ". Atualização automática a cada 15 segundos.");
+                const results = await Promise.allSettled(tasks);
+                const failed = results.some(r => r.status === "rejected");
+                const message = failed ? "Parte da operação está temporariamente indisponível. Nova tentativa automática em 15 segundos." : "Última consulta às " + new Date().toLocaleTimeString("pt-BR") + ". Atualização automática a cada 15 segundos.";
+                feedback("opsSyncStatus", message, failed);
+                feedback("operationFeedback", message, failed);
             } catch (error) { feedback("opsSyncStatus", "A atualização está temporariamente indisponível. Tentaremos novamente automaticamente.", true); }
             finally {updating = false;}
         }, 15000);
@@ -318,6 +367,7 @@
         clearInterval(updateTimer);
         updateTimer = null;
         fleetLayer?.clearLayers();
+        reportsLayer?.clearLayers();
         $("supportHistory")?.replaceChildren();
         $("supportQueue")?.replaceChildren();
         $("approvalQueue")?.replaceChildren();
@@ -327,7 +377,7 @@
     window.addEventListener("pageshow", event => {if (event.persisted) refresh().catch(() => {});});
     async function refresh() {
         try {
-            activeUser = await request("/auth/me", {}, false);
+            activeUser = state.user || await request("/auth/me", {}, false);
         } catch {
             activeUser = null,
         fleetLayer = null,
@@ -340,13 +390,13 @@
         if ($("supportLine")) options($("supportCity").value, "supportLine");
         if (role === "gestao" && activeUser?.papeis?.includes("gestor")) {
             if (!$("alertForm")) managementForms();
-            await managementCalls();
-            await approvals();
         }
-        await loadAlerts();
-        await history();
-        await loadFleet();
         startUpdates();
+        const tasks = [loadAlerts(), history(), loadFleet()];
+        if (role === "gestao" && activeUser?.papeis?.includes("gestor")) tasks.push(managementCalls(), approvals());
+        const results = await Promise.allSettled(tasks);
+        const failed = results.some(r => r.status === "rejected");
+        feedback("operationFeedback", failed ? "Alguns dados não puderam ser consultados. O sistema tentará novamente automaticamente." : "Operação sincronizada. Atualização automática a cada 15 segundos.", failed);
         setTimeout(() => map?.invalidateSize(), 0);
     }
     document.querySelectorAll('.requestAccessForm').forEach(form => form.onsubmit = async e => {
@@ -378,6 +428,7 @@
             button.disabled = false;
         }
     });
+    for (const id of ["callCityFilter", "callStateFilter"]) $(id)?.addEventListener("change", () => managementCalls().catch(e => toast(e.message)));
     $("supportCity")?.addEventListener("change", () => options($("supportCity").value, "supportLine"));
     $("supportForm")?.addEventListener("submit", async e => {
         e.preventDefault();
@@ -407,8 +458,12 @@
         }
     });
     window.addEventListener("hashchange", () => {
+        if (role === "gestao" && activeUser?.papeis?.includes("gestor")) {
+            setupMap();
+            paintReceivedReports(state.calls || []);
+        }
         setTimeout(() => map?.invalidateSize(), 0);
-        if (location.hash === "#suporte") refresh().catch(e => feedback("supportStatus", e.message, true));
+        if (location.hash === "#suporte" || (role === "gestao" && location.hash === "#operacaoGestao")) refresh().catch(e => feedback("supportStatus", e.message, true));
     });
     window.TransurbanOps = {
         refresh

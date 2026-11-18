@@ -32,7 +32,7 @@
         if (!form) continue;
         const info = document.createElement("p");
         info.className = "access-help";
-        info.textContent = "Já tem autorização? Entre acima com sua conta. Solicitar vínculo é apenas para o primeiro acesso de quem ainda não foi autorizado.";
+        info.textContent = "Entre com sua conta profissional já cadastrada. Se ainda não possui acesso autorizado, procure o responsável pelo TRANSURBAN.";
         form.append(info);
     }
 })();

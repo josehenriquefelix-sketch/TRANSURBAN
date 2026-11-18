@@ -9,15 +9,15 @@
   </title>
   <link href="/logo-motorista.svg" rel="icon"/>
   <link href="/vendor/leaflet.css" rel="stylesheet"/>
-  <link href="/mobilidade.css?v=20261118-acesso" rel="stylesheet"/>
+  <link href="/mobilidade.css?v=20261118-operacao2" rel="stylesheet"/>
   <script defer="" src="/vendor/leaflet.js">
   </script>
-  <script defer="" src="/localizacao.js?v=20261118-acesso"></script>
-  <script defer="" src="/motorista.js?v=20261118-acesso">
+  <script defer="" src="/localizacao.js?v=20261118-operacao2"></script>
+  <script defer="" src="/motorista.js?v=20261118-operacao2">
   </script>
-  <script defer="" src="/operacao.js?v=20261118-acesso">
+  <script defer="" src="/operacao.js?v=20261118-operacao2">
   </script>
-  <script defer src="/acesso.js?v=20261118-acesso"></script>
+  <script defer src="/acesso.js?v=20261118-operacao2"></script>
  </head>
  <body data-area="motorista">
   <section class="portal-login" id="driverLogin">
@@ -76,36 +76,7 @@
       Esqueci minha senha
      </a>
     </form>
-    <details class="access-request">
-     <summary>
-      Primeiro acesso? Solicitar autorização
-     </summary>
-     <p>
-      Crie e confirme sua conta antes de solicitar o vínculo. A solicitação não libera acesso profissional.
-     </p>
-     <a href="/#cadastro">
-      Criar conta
-     </a>
-     <form class="requestAccessForm" data-papel="motorista">
-      <label>
-       E-mail ou CPF
-       <input autocomplete="username" name="identificador" required=""/>
-      </label>
-      <label>
-       Senha da sua conta
-       <input autocomplete="current-password" name="senha" required="" type="password"/>
-      </label>
-      <label>
-       Vínculo / empresa e motivo
-       <textarea maxlength="1000" minlength="10" name="justificativa" required=""></textarea>
-      </label>
-      <button class="btn quiet wide">
-       Solicitar aprovação
-      </button>
-      <p class="requestStatus status" role="status">
-      </p>
-     </form>
-    </details>
+
    </div>
   </section>
   <div hidden="" id="driverShell">
@@ -162,7 +133,7 @@
         Minha viagem
        </h1>
        <p>
-        Informe o ônibus, escolha a linha e o sentido e inicie com o veículo parado. Os dados do veículo serão salvos na sua conta ao iniciar.
+        Escolha o ônibus, a linha / bairro e o sentido. Ao iniciar com o veículo parado, a viagem fica disponível para gestão e passageiros.
        </p>
       </div>
       <div class="metrics" id="driverStats">
@@ -171,15 +142,13 @@
        <div class="stack">
         <form class="card" id="driverProfileForm">
          <span class="eyebrow">
-          1 • PERFIL E VEÍCULO
+          1 • ÔNIBUS DESTA VIAGEM
          </span>
          <h2>
-          Meu ônibus e perfil
+          Qual ônibus você vai conduzir?
          </h2>
-         <label for="driverName">
-          Nome para exibição
-         </label>
-         <input id="driverName" maxlength="100" minlength="2" required="" type="text"/>
+         <p>Motorista: <strong id="driverReadyName">Conta autorizada</strong></p>
+         <input id="driverName" type="hidden"/>
          <div class="two-fields">
           <div>
            <label for="busModel">
@@ -189,32 +158,24 @@
           </div>
           <div>
            <label for="busPrefix">
-            Prefixo / numeração
+            Número do ônibus
            </label>
            <input id="busPrefix" maxlength="30" required="" type="text"/>
           </div>
          </div>
-         <label for="driverBirth">
-          Ano de nascimento (opcional)
-         </label>
-         <input id="driverBirth" max="2100" min="1920" type="number"/>
-         <label for="driverBio">
-          Sobre mim / do que gosto (opcional)
-         </label>
-         <textarea id="driverBio" maxlength="240" rows="2"></textarea>
+         <input id="driverBirth" type="hidden"/>
+         <input id="driverBio" type="hidden"/>
          <label class="check">
           <input id="publicDriverConsent" type="checkbox"/>
-          Autorizo a exibição deste perfil aos passageiros durante a viagem.
+          Mostrar meu nome aos passageiros durante esta viagem.
          </label>
-         <button class="btn quiet wide">
-          Salvar perfil e veículo
-         </button>
+         <p class="subtle">Os dados do ônibus serão salvos ao iniciar. Nas próximas entradas, o último veículo fica preenchido.</p>
          <p class="status" id="driverProfileStatus" role="status">
          </p>
         </form>
         <form class="card" id="tripForm">
          <span class="eyebrow">
-          2 • LINHA E SENTIDO
+          2 • LINHA / BAIRRO E TRAJETO
          </span>
          <h2>
           Preparar viagem
@@ -222,7 +183,7 @@
          <label for="driverCity">Cidade / serviço</label>
          <select id="driverCity"><option>Maringá</option><option>Sarandi</option><option value="metropolitano">Maringá ↔ Sarandi</option></select>
          <label for="driverLine">
-          Linha
+          Linha / bairro de atendimento
          </label>
          <select id="driverLine" required="">
           <option value="">

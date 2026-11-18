@@ -27,3 +27,12 @@ Abra `http://127.0.0.1:8000/acessos.html` para escolher uma área. A senha é da
 Para computador e celular na mesma rede, encerre a execução anterior e abra `ABRIR_NO_CELULAR.cmd`. O iniciador informa o IP do computador. Esse modo permite telas e login por senha; GPS no celular exige HTTPS válido. Veja [o passo a passo](docs/COMPUTADOR_E_CELULAR.md).
 
 A equipe tem um [roteiro curto de apresentação](docs/ROTEIRO_APRESENTACAO.md), com José, Bruno, Cauã, Gustavo e Ana Carolina, e uma [conferência dos acessos e do banco](docs/VALIDACAO_ACESSO_20261118.json).
+
+
+## Operação dos ônibus
+
+A Gestão agora tem Visão geral, Ônibus em viagem e mapa, Ocorrências recebidas e Avaliações. O motorista usa sua conta autorizada, informa ônibus e linha / bairro e inicia. A viagem fica disponível automaticamente para gestão e passageiros; relatos privados são analisados antes de virar avisos públicos.
+
+O banco real continua no Supabase. A consulta técnica local está em `ferramentas/estrutura_banco.html`. O exercício escolar de materiais fica isolado em `/estudo/materiais.html`, sem link nos três painéis.
+
+Abra os [slides da equipe](docs/APRESENTACAO_TRANSURBAN.html) e o [roteiro de falas](docs/ROTEIRO_APRESENTACAO.md). Os slides HTML podem ser abertos como arquivo no navegador, sem internet. A prévia do GitHub mostra o código: baixe o projeto para apresentar.

@@ -308,7 +308,7 @@ function findLine(id) {
 }
 
 function fillDirections(id, target) {
-    $(target).replaceChildren(...(findLine(id)?.sentidos || ["Ida", "Volta"]).map(s => new Option(s, s)));
+    $(target).replaceChildren(...(findLine(id)?.sentidos || ["Ida", "Volta"]).map((s, i) => new Option(i === 0 ? "Terminal / Bairro" : "Bairro / Terminal", s)));
 }
 async function driverAccount() {
     let user;
@@ -325,6 +325,7 @@ async function driverAccount() {
     state.catalog = await api("/mobilidade/catalogo");
     fillDriverLines();
     $("driverAccountName").textContent = user.nome;
+    $("driverReadyName").textContent = user.nome;
     $("driverSessionName").textContent = user.nome;
     $("driverLogin").hidden = true;
     $("driverShell").hidden = false;
@@ -333,7 +334,10 @@ async function driverAccount() {
     if (!driverRefreshTimer) driverRefreshTimer = setInterval(async () => {
         if (document.hidden || $("driverShell").hidden || driverRefreshing) return;
         driverRefreshing=true;
-        try { await driverPanel({background:true}); }
+        try {
+            await driverPanel({background:true});
+            if ($("tripStatus").textContent === "Não foi possível atualizar a operação. O sistema tentará novamente.") status("tripStatus", "Conexão restabelecida. Operação atualizada.");
+        }
         catch (error) { status("tripStatus", "Não foi possível atualizar a operação. O sistema tentará novamente.", true); }
         finally { driverRefreshing=false; }
     },15000);
@@ -353,17 +357,7 @@ $("driverLoginForm").addEventListener("submit", event => {
         await driverAccount();
     });
 });
-$("driverProfileForm").addEventListener("submit", event => {
-    event.preventDefault();
-    action("driverProfileForm", "driverProfileStatus", async () => {
-        await api("/mobilidade/motorista/perfil", {
-            method: "PUT",
-            body: JSON.stringify(profilePayload())
-        });
-        status("driverProfileStatus", "Perfil salvo.");
-        await driverPanel();
-    });
-});
+$("driverProfileForm").addEventListener("submit", event => event.preventDefault());
 $("driverCity").addEventListener("change", () => fillDriverLines());
 $("driverLine").addEventListener("change", () => {fillDirections($("driverLine").value, "driverDirection"); updateRouteSummary();});
 $("driverDirection").addEventListener("change", updateRouteSummary);

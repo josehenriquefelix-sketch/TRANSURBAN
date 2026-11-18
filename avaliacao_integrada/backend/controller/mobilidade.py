@@ -228,6 +228,34 @@ def escopos_gestao(usuario):
     return ["maringa", "sarandi", "metropolitano"] if "todos" in escopos else escopos
 
 
+@router.get("/gestao/viagens")
+def viagens_da_gestao(usuario=Depends(gestor_autorizado)):
+    """Operação autorizada: identifica o motorista sem expor dados da conta."""
+    escopos = escopos_gestao(usuario)
+    linhas = {linha["id"]: linha for linha in catalogo()["linhas"] if linha["ambito"] in escopos}
+    if not linhas:
+        return []
+    viagens = executar(lambda db: db.table("tu_viagem_operacional")
+                       .select("id,motorista_id,linha_id,sentido,prefixo,modelo,iniciada_em")
+                       .eq("status", "ativa").in_("linha_id", list(linhas)))
+    if not viagens:
+        return []
+    perfis = executar(lambda db: db.table("tu_motorista").select("usuario_id,nome_publico")
+                     .in_("usuario_id", list({v["motorista_id"] for v in viagens})))
+    posicoes = executar(lambda db: db.table("tu_posicao_atual").select("*")
+                       .in_("viagem_id", [v["id"] for v in viagens]))
+    nomes = {p["usuario_id"]: p["nome_publico"] for p in perfis}
+    por_viagem = {p["viagem_id"]: p for p in posicoes}
+    for viagem in viagens:
+        viagem["motorista"] = {"nome": nomes.get(viagem.pop("motorista_id"), "Motorista autorizado")}
+        posicao = por_viagem.get(viagem["id"])
+        if posicao:
+            instante = datetime.fromisoformat(posicao["registrada_em"].replace("Z", "+00:00"))
+            posicao["recente"] = (datetime.now(timezone.utc) - instante).total_seconds() < 90
+        viagem["posicao"] = posicao
+    return viagens
+
+
 @router.get("/gestao/manifestacoes")
 def fila_gestao(usuario=Depends(gestor_autorizado)):
     escopos = escopos_gestao(usuario)

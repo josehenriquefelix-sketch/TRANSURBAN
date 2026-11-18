@@ -1,49 +1,57 @@
-# TRANSURBAN — roteiro da equipe
+# TRANSURBAN — apresentação da equipe
 
-Tempo sugerido: 4 a 5 minutos. Cada pessoa fala e mostra sua parte. Ensaiem antes e usem apenas funções que conseguem demonstrar.
+Tempo sugerido: 4 a 5 minutos, incluindo a demonstração. José começa. Cada pessoa mostra uma tela depois da fala. Não mostrem senhas, chaves ou o `.env` ao público.
 
-## 1. José — abertura
+## 1. José — o projeto
 
-“Olá! Nós somos a equipe do TRANSURBAN. Nosso projeto tem como tema a mobilidade entre Maringá e Sarandi. A ideia é reunir informações de transporte e facilitar a comunicação entre passageiros, motoristas e gestão. Somos estudantes do primeiro ano de Desenvolvimento de Sistemas e usamos o que aprendemos para construir este sistema.”
+“Olá! Nós somos José, Bruno, Cauã, Gustavo e Ana Carolina. Nosso projeto é o TRANSURBAN, voltado à mobilidade entre Maringá e Sarandi. A proposta é reunir informações do transporte e melhorar a comunicação entre passageiros, motoristas e gestão. Criamos três áreas, cada uma com suas funções. Somos estudantes do primeiro ano de Desenvolvimento de Sistemas e estamos aplicando o que aprendemos.”
 
-**Mostrar:** página inicial do passageiro e as três áreas, sem exibir senhas.
+**Mostrar:** página inicial e explicar os três acessos. Passar a fala ao Bruno.
 
 ## 2. Bruno — passageiro
 
-“Na área do passageiro, a pessoa escolhe a cidade e consulta as linhas. Ela também pode salvar suas linhas favoritas e enviar uma manifestação. Organizamos a tela para funcionar no computador e no celular. As informações têm limites: um horário publicado não é uma previsão de GPS ao vivo.”
+“O passageiro escolhe a cidade, a linha e o sentido: Terminal / Bairro ou Bairro / Terminal. Ele consulta as informações disponíveis, salva favoritos e envia avaliações ou relatos. Se informar um local no mapa, a gestão recebe esse ponto para analisar. A tela se adapta ao computador e ao celular.”
 
-**Mostrar:** cidades, escolha de linha e um favorito na conta de teste.
+**Mostrar:** cidade, linha, sentido e suporte. Não envie uma reclamação inventada durante a apresentação. Passar ao Cauã.
 
 ## 3. Cauã — motorista
 
-“O motorista entra com uma conta autorizada. Ele informa o modelo e o número do ônibus, escolhe a linha e prepara a viagem. O compartilhamento da localização depende da permissão do aparelho. O mapa mostra a posição e a margem de precisão recebidas. Não temos integração com o GPS oficial da operadora.”
+“O motorista entra com uma conta já autorizada. O sistema reconhece quem ele é. Ele informa o ônibus, escolhe a linha ou bairro e o sentido, e inicia a viagem com o veículo parado. Com sua permissão, o aparelho envia a localização. Essa mesma viagem aparece para a gestão e para os passageiros. Ao encerrar, o compartilhamento termina.”
 
-**Mostrar:** entrada do motorista, campos do ônibus e escolha da linha. Só inicie uma viagem de teste se o ambiente de localização estiver funcionando; encerre ao terminar.
+**Mostrar:** conta autorizada, ônibus e linha. Só inicie uma viagem se o GPS estiver disponível e autorizado; encerre ao terminar. Passar ao Gustavo.
 
-## 4. Gustavo — gestão e banco
+## 4. Gustavo — gestão
 
-“A gestão tem um painel separado. Nele, a equipe autorizada acompanha manifestações e responde aos usuários. O banco PostgreSQL fica no Supabase. As tabelas usam códigos para identificar registros e chaves estrangeiras para relacioná-los. No módulo de materiais, uma ordem pode ter vários itens, e o fechamento confere o estoque antes de gravar as mudanças.”
+“A gestão acompanha os ônibus em viagem, os motoristas e os relatos recebidos. No mapa, os pontos cinza são relatos aguardando análise. Depois da confirmação, a gestão pode publicar orientações em vermelho, amarelo ou verde. Ela também responde aos usuários. O painel é voltado à operação dos ônibus; as ferramentas técnicas do banco ficam separadas.”
 
-**Mostrar:** fila da gestão, lista de tabelas e uma ordem de teste. Não mostre dados privados de pessoas.
+**Mostrar:** Visão geral, Ônibus em viagem e Ocorrências recebidas. Uma área sem marcação não significa trânsito livre. Passar à Ana Carolina.
 
-## 5. Ana Carolina — API, dados e encerramento
+## 5. Ana Carolina — API, banco e encerramento
 
-“Usamos HTML para a estrutura, CSS para as cores e os tamanhos e JavaScript para as ações da tela. A API foi feita com Python e FastAPI. Ela recebe os pedidos e conversa com o Supabase. Na parte de Ciência de Dados, o pandas calcula os resultados do CSV e o site mostra os gráficos. Essa base é de estudo. O projeto fica no GitHub e pode ser baixado para executar pelo VS Code.”
+“Usamos HTML para a estrutura, CSS para o visual e JavaScript para as ações das telas. A API foi feita com Python e FastAPI: ela recebe os pedidos, confere o acesso e conversa com o banco PostgreSQL do Supabase. O pandas calcula os resultados do nosso CSV de estudo. O código fica no GitHub e o sistema executa pelo VS Code.”
 
-“Fizemos testes para conferir acessos, consultas e operações do banco. Ainda existem integrações externas a configurar, como envio de e-mails e dados oficiais ao vivo. Nosso próximo passo é testar com usuários e continuar melhorando o sistema. Obrigada!”
+“Fizemos testes dos acessos, das consultas e das operações do banco. Ainda precisamos de integrações externas para dados oficiais ao vivo e envio de e-mails. Nosso próximo passo é testar com usuários e continuar melhorando o projeto. Obrigada!”
 
-**Mostrar:** `/docs`, `/dados/` e o repositório. No chat, o cálculo funciona sem Ollama; a explicação por IA é opcional e ainda depende de configuração.
+**Mostrar:** `/docs`, uma consulta GET e o repositório. Se houver tempo, mostrar `/dados/`. O CSV é de estudo; não representa passageiros reais.
 
-## Perguntas que podem aparecer
+## Respostas curtas para perguntas
 
-**O que é API?** É a parte que recebe os pedidos da tela e devolve os dados.
+- **O que é API?** É a parte que recebe os pedidos da tela e devolve os dados.
+- **O que é banco de dados?** É onde os registros ficam organizados em tabelas.
+- **O banco está no computador?** O código, os scripts SQL e a visualização técnica estão no computador. Os dados continuam no PostgreSQL do Supabase.
+- **O que é uma chave estrangeira?** É um campo que liga registros de tabelas diferentes, como uma linha ligada à sua cidade.
+- **Por que três áreas?** Cada pessoa vê e faz o que corresponde ao seu papel. Escolher outro endereço não dá permissão de gestão.
+- **A gestão precisa autorizar cada viagem?** O motorista precisa ter uma conta autorizada. Depois de iniciar, a viagem fica disponível automaticamente. Relatos são analisados antes de virar avisos públicos.
+- **Já é um serviço da prefeitura ou da TCCC?** Não. É um projeto escolar independente, sem adesão oficial confirmada.
+- **O GPS é exato?** Ele usa a posição e a margem de precisão do aparelho. No celular, precisa de HTTPS válido e permissão.
+- **Já envia e-mail ao Gmail?** O fluxo está preparado, mas o envio real ainda depende do SMTP.
+- **Por que não há banco e compras na Gestão?** A Gestão acompanha o transporte. O banco é consultado nas ferramentas do desenvolvedor; o exercício de materiais fica isolado.
 
-**O que é uma chave estrangeira?** É um campo que liga um registro a outro, como o código da cidade em uma linha.
+## Antes de apresentar
 
-**Está integrado à prefeitura ou à TCCC?** Não. É um projeto escolar independente; dados públicos e registros do nosso sistema não são uma integração oficial.
-
-**Já envia e-mail?** A configuração está preparada, mas a entrega real ainda depende do SMTP.
-
-**O GPS é exato?** Ele usa a posição e a precisão que o aparelho informa. Pode variar; no celular precisa de HTTPS válido.
-
-**Como foi feito?** Estudamos os materiais, adaptamos ao TRANSURBAN e usamos ferramentas de apoio. Cada integrante deve explicar o código que estudou e a parte em que trabalhou. Não atribuam contribuições que não fizeram.
+1. Baixar a versão atual do GitHub e configurar o `.env` em particular.
+2. Iniciar pelo VS Code e manter a API aberta.
+3. Entrar nas contas autorizadas antes de começar; não projetar a senha.
+4. Testar a rede e o celular no local. HTTP da rede permite telas e login por senha, mas não libera GPS no celular.
+5. Abrir os slides, os três painéis e a API. Não usar o endereço antigo do Render.
+6. Ensaiar e estudar o código. Cada integrante deve explicar a parte que acompanhou, sem atribuir contribuições que não fez.

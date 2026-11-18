@@ -1,0 +1,18 @@
+{
+  "data": "2026-11-18",
+  "verificacoes": [
+    "Motorista inicia uma viagem vinculada à conta",
+    "Passageiro recebe ônibus e posição da viagem de teste",
+    "Gestão recebe a mesma viagem e o motorista",
+    "Passageiro não acessa dados privados da operação",
+    "Gestão recebe os dois relatos e suas coordenadas",
+    "Passageiro consulta somente seus próprios chamados",
+    "Relatos não se tornam alertas públicos automaticamente",
+    "Resposta da gestão chega ao passageiro",
+    "Encerrar retira a viagem dos passageiros",
+    "Encerrar retira a viagem da operação da gestão"
+  ],
+  "quantidade": 10,
+  "registros_de_teste_removidos": true,
+  "tipo": "Integração com Supabase real e coordenadas sintéticas. Não comprova GPS físico nem percurso real."
+}

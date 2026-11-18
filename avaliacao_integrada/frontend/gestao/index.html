@@ -12,13 +12,13 @@
    TRANSURBAN | Painel de gestão
   </title>
   <link href="/logo-gestao.svg" rel="icon"/>
-  <link href="/mobilidade.css?v=20261118-acesso" rel="stylesheet"/>
-  <script defer="" src="/localizacao.js?v=20261118-acesso"></script>
-  <script defer="" src="/gestao.js?v=20261118-acesso">
+  <link href="/mobilidade.css?v=20261118-operacao2" rel="stylesheet"/>
+  <script defer="" src="/localizacao.js?v=20261118-operacao2"></script>
+  <script defer="" src="/gestao.js?v=20261118-operacao2">
   </script>
-  <script defer="" src="/operacao.js?v=20261118-acesso">
+  <script defer="" src="/operacao.js?v=20261118-operacao2">
   </script>
-  <script defer src="/acesso.js?v=20261118-acesso"></script>
+  <script defer src="/acesso.js?v=20261118-operacao2"></script>
  </head>
  <body data-area="gestao">
   <section class="portal-login" id="managementLogin">
@@ -85,36 +85,7 @@
       Novos vínculos são autorizados pela administração. Esta página não concede acesso a passageiros ou motoristas.
      </p>
     </form>
-    <details class="access-request">
-     <summary>
-      Solicitar vínculo de gestão
-     </summary>
-     <p>
-      Crie e confirme sua conta antes de solicitar o vínculo. A solicitação não libera acesso profissional.
-     </p>
-     <a href="/#cadastro">
-      Criar conta
-     </a>
-     <form class="requestAccessForm" data-papel="gestor">
-      <label>
-       E-mail ou CPF
-       <input autocomplete="username" name="identificador" required=""/>
-      </label>
-      <label>
-       Senha da sua conta
-       <input autocomplete="current-password" name="senha" required="" type="password"/>
-      </label>
-      <label>
-       Vínculo / empresa e motivo
-       <textarea maxlength="1000" minlength="10" name="justificativa" required=""></textarea>
-      </label>
-      <button class="btn quiet wide">
-       Solicitar aprovação
-      </button>
-      <p class="requestStatus status" role="status">
-      </p>
-     </form>
-    </details>
+
    </div>
   </section>
   <div hidden="" id="managementShell">
@@ -132,18 +103,11 @@
      PAINEL DE GESTÃO
     </p>
     <nav aria-label="Navegação da gestão">
-     <a class="active" href="#fila">
-      <span>
-       ▤
-      </span>
-      Central de atendimento
-     </a>
-     <a href="#operacaoGestao">
-      Mapa e suporte
-     </a>
-     <a href="/dados/">Estudo de mobilidade e chat</a>
-     <a href="/gestao/materiais.html" id="adminMaterials" hidden>Materiais e ordens</a>
-     <a href="/gestao/banco.html" id="adminDatabase" hidden>Estrutura do banco</a>
+     <a href="#dashboardGestao">Visão geral</a>
+     <a href="#operacaoGestao">Ônibus em viagem e mapa</a>
+     <a href="#relatosGestao">Ocorrências recebidas</a>
+     <a href="#fila">Avaliações e atendimento</a>
+     <a href="#autorizacoesGestao" id="approvalNav" hidden>Autorizar profissionais</a>
     </nav>
     <div class="sidebar-bottom">
      <p>
@@ -171,13 +135,34 @@
      </div>
     </header>
     <main>
-     <section id="operacaoGestao">
+     <section id="dashboardGestao" class="management-page">
+      <div class="page-heading"><span class="eyebrow">OPERAÇÃO DO TRANSPORTE</span><h1>Visão geral</h1><p>Ônibus, linhas e atendimento em um só lugar. Indicadores dos registros disponíveis para sua gestão.</p></div>
+      <div class="metrics" id="operationMetrics" aria-live="polite"></div>
+      <p id="operationFeedback" class="status" role="status">Sincronizando a operação…</p>
+      <div class="two-columns">
+       <article class="card"><h2>Ônibus em viagem</h2><p>Saiba quem está conduzindo, em qual linha e quando o GPS foi atualizado.</p><div id="overviewFleet" class="stack"></div><a class="btn primary" href="#operacaoGestao">Acompanhar no mapa</a></article>
+       <article class="card"><h2>Relatos que precisam de atenção</h2><div id="overviewCalls" class="stack"></div><a class="btn quiet" href="#relatosGestao">Analisar ocorrências recebidas</a></article>
+      </div>
+      <article class="card" style="margin-top:20px"><h2>Como a informação circula</h2><p>O motorista inicia a viagem → o sistema registra o ônibus e a linha → gestão e passageiros acompanham as posições compartilhadas.</p><p>Passageiros e motoristas enviam relatos → a gestão analisa e responde → somente ocorrências confirmadas são publicadas para os usuários.</p><p id="overviewSync" class="status" role="status">Consultando a operação…</p></article>
+     </section>
+     <section id="relatosGestao" class="management-page" hidden>
+      <div class="page-heading"><span class="eyebrow">PASSAGEIROS E MOTORISTAS</span><h1>Ocorrências recebidas</h1><p>Relatos sobre acessibilidade, pontos, trânsito, obras e atendimento. Locais informados são privados da gestão até a análise.</p></div>
+      <div class="planner card">
+       <div><label for="callCityFilter">Cidade</label><select id="callCityFilter"><option value="">Todas</option><option>Maringá</option><option>Sarandi</option></select></div>
+       <div><label for="callStateFilter">Situação</label><select id="callStateFilter"><option value="">Todas</option><option value="recebido">Recebido</option><option value="em_analise">Em análise</option><option value="respondido">Respondido</option><option value="encerrado">Encerrado</option></select></div>
+       <button class="btn quiet" id="refreshSupport" type="button">Atualizar relatos</button>
+      </div>
+      <p id="receivedCallsStatus" class="status" role="status"></p>
+      <div id="supportQueue" class="stack"></div>
+     </section>
+     <section id="autorizacoesGestao" class="management-page" hidden><div class="page-heading"><h1>Autorizar profissionais</h1><p>Área restrita ao responsável pelo sistema. As contas autorizadas entram diretamente com e-mail ou CPF e senha.</p></div><div id="professionalApprovals"></div></section>
+     <section id="operacaoGestao" class="management-page" hidden>
       <div class="page-heading">
        <span class="eyebrow">
         OPERAÇÃO E ATENDIMENTO
        </span>
        <h1>
-        Central de gestão
+        Ônibus em viagem e mapa
        </h1>
        <p>
         Ocorrências confirmadas, suporte de cidadãos e motoristas e atendimento por competência.
@@ -202,7 +187,7 @@
        </p>
        <div class="map" id="opsMap">
        </div>
-       <div class="map-legend">
+       <div class="map-legend"><span>● Cinza: relato recebido, ainda em análise (privado da gestão)</span>
         <span class="red-dot">
          ● Vermelho: bloqueio, obra ou desvio
         </span>
@@ -225,16 +210,16 @@
       <div id="managementOperations">
       </div>
      </section>
-     <section class="" id="fila">
+     <section class="management-page" id="fila" hidden>
       <div class="page-heading">
        <span class="eyebrow">
         ACESSO AUTORIZADO
        </span>
        <h1>
-        Central de mobilidade
+        Avaliações e atendimento
        </h1>
        <p>
-        Operação, participação e atendimento dentro do seu escopo.
+        Operação, participação e atendimento da sua área de atendimento.
        </p>
       </div>
       <div class="notice">
@@ -291,7 +276,7 @@
          Fila de atendimento
         </h2>
         <p class="subtle">
-         Até 500 registros recentes, limitados ao seu escopo autorizado.
+         Até 500 registros recentes, da sua área de atendimento.
         </p>
         <div class="stack" id="managerQueue">
         </div>

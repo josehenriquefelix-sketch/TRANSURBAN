@@ -45,7 +45,7 @@ Login Google no celular também depende de uma URL de retorno autorizada no Supa
 
 - Abra os três painéis e entre nas contas que vocês vão usar.
 - Abra `/docs` para a API de DS e `/dados/docs` para a API de Ciência de Dados.
-- Na gestão, o administrador pode abrir o banco e conferir as tabelas.
+- No computador do desenvolvedor, abra `ferramentas/estrutura_banco.html` para conferir as tabelas. O banco não faz parte do painel da Gestão.
 - Execute `VERIFICAR_TRANSURBAN.cmd`.
 - Teste o celular na rede do local antes de começar. O acesso físico desse aparelho precisa ser confirmado no local.
 - Não apresente dados de exercício como passageiros reais, nem horários documentais como GPS de uma operadora.
@@ -53,3 +53,12 @@ Login Google no celular também depende de uma URL de retorno autorizada no Supa
 ## Render
 
 O iniciador, o VS Code e o login usam o endereço local configurado em `APP_URL`. Não há dependência de Render para executar o projeto. Em 18/11/2026, o serviço antigo `transurban-mobilidade` foi suspenso no painel do Render. O painel confirmou “Suspended by you”. Ele não foi apagado. Para esta entrega, use a execução local.
+
+
+## Operação dos ônibus
+
+A Gestão agora tem Visão geral, Ônibus em viagem e mapa, Ocorrências recebidas e Avaliações. O motorista usa sua conta autorizada, informa ônibus e linha / bairro e inicia. A viagem fica disponível automaticamente para gestão e passageiros; relatos privados são analisados antes de virar avisos públicos.
+
+O banco real continua no Supabase. A consulta técnica local está em `ferramentas/estrutura_banco.html`. O exercício escolar de materiais fica isolado em `/estudo/materiais.html`, sem link nos três painéis.
+
+Abra os [slides da equipe](docs/APRESENTACAO_TRANSURBAN.html) e o [roteiro de falas](docs/ROTEIRO_APRESENTACAO.md). Os slides HTML podem ser abertos como arquivo no navegador, sem internet. A prévia do GitHub mostra o código: baixe o projeto para apresentar.

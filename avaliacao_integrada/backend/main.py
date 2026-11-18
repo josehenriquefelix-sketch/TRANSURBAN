@@ -29,6 +29,7 @@ from backend.controller.materiais import router as materiais_router
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
+logging.getLogger("httpx").setLevel(logging.WARNING)
 logger = logging.getLogger("uvicorn.error")
 
 FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
@@ -139,7 +140,7 @@ async def proteger_solicitacoes(request: Request, call_next):
 def health():
     return {
         "projeto": "TRANSURBAN",
-        "versao": "2026.11.17-escola",
+        "versao": "2026.11.18-operacao",
         "supabase_configurado": supabase_configurado(),
         "interface": "/",
         "documentacao": "/docs",

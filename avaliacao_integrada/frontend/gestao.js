@@ -4,7 +4,9 @@ const state = {
     user: null,
     catalog: null,
     queue: [],
-    selectedReport: null
+    selectedReport: null,
+    calls: null,
+    fleet: null
 };
 let renewal = null, managementTimer = null, managementUpdating = false, managementRequest = 0;
 const dateTime = value => new Intl.DateTimeFormat("pt-BR", {
@@ -143,6 +145,7 @@ async function managerPanel({background = false} = {}) {
     }
     $("managerStats").replaceChildren(metric("Recebidas", state.queue.filter(r => r.status === "recebida").length), metric("Em análise", state.queue.filter(r => r.status === "em_analise").length), metric("Respondidas", state.queue.filter(r => r.status === "respondida").length), metric("Encerradas", state.queue.filter(r => r.status === "encerrada").length));
     renderQueue();
+    renderOverview();
     $("managerAutoStatus").textContent = "Fila sincronizada às " + new Date().toLocaleTimeString("pt-BR") + ". Atualização automática a cada 15 segundos; respostas em edição são preservadas.";
 }
 function startManagementRefresh() {
@@ -185,13 +188,13 @@ async function openManagement() {
         return;
     }
     state.user = user;
-    $("adminMaterials").hidden = !user.administrador;
-    $("adminDatabase").hidden = !user.administrador;
+    $("approvalNav").hidden = !user.administrador;
     if (!state.catalog) state.catalog = await api("/mobilidade/catalogo");
     await managerPanel();
     $("managementName").textContent = user.nome;
     $("managementLogin").hidden = true;
     $("managementShell").hidden = false;
+    showManagementPage();
     startManagementRefresh();
     window.TransurbanOps?.refresh();
 }
@@ -258,4 +261,47 @@ document.addEventListener("keydown", event => {
         $("managementMenu").setAttribute("aria-expanded", "false");
     }
 });
+
+function renderOverview() {
+    const fleet = state.fleet, calls = state.calls;
+    const pending = calls?.filter(c => ["recebido", "em_analise"].includes(c.status));
+    $("operationMetrics").replaceChildren(
+        metric("Ônibus em viagem", fleet?.length, "Viagens ativas na sua área"),
+        metric("GPS recente", fleet?.filter(t => t.posicao?.recente).length, "Sinal recebido nos últimos 90 segundos"),
+        metric("Linhas em operação", fleet ? new Set(fleet.map(t => t.linha_id)).size : null),
+        metric("Relatos para analisar", pending?.length),
+        metric("Relatos com local", pending?.filter(c => c.latitude != null && c.longitude != null).length),
+        metric("Avaliações pendentes", state.queue.filter(r => ["recebida", "em_analise"].includes(r.status)).length)
+    );
+    $("overviewFleet").replaceChildren();
+    for (const trip of (fleet || []).slice(0, 3)) {
+        const row = node("div", "", "record");
+        row.append(node("strong", `Ônibus ${trip.prefixo} · ${findLine(trip.linha_id)?.nome || trip.linha_id}`), node("p", trip.motorista?.nome || "Motorista autorizado"), node("small", trip.posicao?.recente ? "Compartilhando posição" : "Aguardando sinal recente"));
+        $("overviewFleet").append(row);
+    }
+    if (!fleet?.length) $("overviewFleet").append(node("p", fleet ? "Nenhuma viagem ativa no momento." : "Consultando viagens…", "empty"));
+    $("overviewCalls").replaceChildren();
+    for (const call of (pending || []).slice(0, 3)) {
+        const row = node("div", "", "record");
+        row.append(node("strong", call.assunto), node("p", `${call.cidade} · ${call.categoria}`), node("small", call.latitude != null ? "Possui local informado para conferir no mapa" : "Local não informado pelo solicitante"));
+        $("overviewCalls").append(row);
+    }
+    if (!pending?.length) $("overviewCalls").append(node("p", calls ? "Não há relatos aguardando análise." : "Consultando relatos…", "empty"));
+    $("overviewSync").textContent = state.operationUpdatedAt ? "Último dado recebido às " + new Date(state.operationUpdatedAt).toLocaleTimeString("pt-BR") + ". Consulta automática a cada 15 segundos." : "Consultando a operação…";
+}
+
+function showManagementPage(requested) {
+    const pages = ["dashboardGestao", "operacaoGestao", "relatosGestao", "fila", "autorizacoesGestao"];
+    let id = requested || location.hash.slice(1) || "dashboardGestao";
+    if (!pages.includes(id) || (id === "autorizacoesGestao" && !state.user?.administrador)) id = "dashboardGestao";
+    for (const page of pages) $(page).hidden = page !== id;
+    document.querySelectorAll('#sidebar nav a').forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+    $("sidebar").classList.remove("open");
+    $("managementMenu").setAttribute("aria-expanded", "false");
+    renderOverview();
+}
+window.TransurbanManagement = {show: showManagementPage};
+window.addEventListener("hashchange", () => {if (state.user) showManagementPage();});
+window.addEventListener("transurban:operation-update", () => {state.operationUpdatedAt = Date.now(); renderOverview();});
+
 openManagement().catch(error => showLogin(error.message.includes("Entre") ? "" : error.message));
