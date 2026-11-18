@@ -84,7 +84,7 @@ def main():
                 resultado(f"Site e API {rota}", resposta.status == 200)
         except (OSError, URLError):
             resultado(f"Site e API {rota}", False,
-                      "Abra INICIAR_TRANSURBAN.cmd e mantenha a janela do servidor aberta.")
+                      "Abra iniciar_local.cmd e mantenha a janela do servidor aberta.")
     try:
         with urlopen("http://127.0.0.1:8000/openapi.json", timeout=10) as resposta:
             esquema = json.load(resposta)

@@ -18,3 +18,12 @@ Os atalhos iniciam ou reutilizam o servidor local. Mantenha a janela da API aber
 
 Se o projeto já está clonado, use **Git Pull** e reinicie o servidor para carregar o backend novo. Preserve as configurações privadas e as alterações locais da equipe.
 
+
+
+## Entrada e uso no celular
+
+Abra `http://127.0.0.1:8000/acessos.html` para escolher uma área. A senha é da conta pessoal; o banco confere a autorização de motorista e gestão. As credenciais privadas não acompanham o GitHub.
+
+Para computador e celular na mesma rede, encerre a execução anterior e abra `ABRIR_NO_CELULAR.cmd`. O iniciador informa o IP do computador. Esse modo permite telas e login por senha; GPS no celular exige HTTPS válido. Veja [o passo a passo](docs/COMPUTADOR_E_CELULAR.md).
+
+A equipe tem um [roteiro curto de apresentação](docs/ROTEIRO_APRESENTACAO.md), com José, Bruno, Cauã, Gustavo e Ana Carolina, e uma [conferência dos acessos e do banco](docs/VALIDACAO_ACESSO_20261118.json).

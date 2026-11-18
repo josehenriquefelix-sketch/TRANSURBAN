@@ -34,3 +34,12 @@ SMTP e chave/modelo Ollama ainda não foram fornecidos. Esses campos estão prep
 Veja o [README completo](avaliacao_integrada/README.md), a [explicação das etapas](avaliacao_integrada/docs/ETAPAS_ESCOLA_E_EXPLICACAO.md), a [estrutura do banco](avaliacao_integrada/docs/ESQUEMA_BANCO_ATUAL.json) e a [validação real de materiais](avaliacao_integrada/docs/VALIDACAO_MATERIAIS_ESCOLA.json).
 
 A área de gestão exige conta autorizada e não aparece na navegação do passageiro. A documentação de DS fica em `/docs`; a de Ciência de Dados e chat em `/dados/docs`.
+
+
+## Entrada e uso no celular
+
+Abra `http://127.0.0.1:8000/acessos.html` para escolher uma área. A senha é da conta pessoal; o banco confere a autorização de motorista e gestão. As credenciais privadas não acompanham o GitHub.
+
+Para computador e celular na mesma rede, encerre a execução anterior e abra `avaliacao_integrada/ABRIR_NO_CELULAR.cmd`. O iniciador informa o IP do computador. Esse modo permite telas e login por senha; GPS no celular exige HTTPS válido. Veja [o passo a passo](avaliacao_integrada/docs/COMPUTADOR_E_CELULAR.md).
+
+A equipe tem um [roteiro curto de apresentação](avaliacao_integrada/docs/ROTEIRO_APRESENTACAO.md), com José, Bruno, Cauã, Gustavo e Ana Carolina, e uma [conferência dos acessos e do banco](avaliacao_integrada/docs/VALIDACAO_ACESSO_20261118.json).

@@ -68,3 +68,12 @@ Node é usado apenas nos testes de comportamento; não é necessário para abrir
 O catálogo contém 66 linhas municipais de Maringá e 22 atendimentos/variantes metropolitanos de Sarandi documentados. A cobertura municipal completa de Sarandi não foi confirmada. Horários de terminal não são previsão de passagem em qualquer ponto. O mapa próprio só recebe veículos de motoristas autorizados compartilhando o dispositivo; não há integração autorizada ao GPS/ETA da operadora.
 
 Não há integração financeira com bilhetagem. Localização depende de permissão, sinal e precisão. SMTP e Ollama precisam de configuração autorizada. A leitura integral da turma DS-IA-Meca ainda não foi confirmada; os materiais estudados e a divergência de anexos estão registrados no documento das etapas.
+
+
+## Entrada e uso no celular
+
+Abra `http://127.0.0.1:8000/acessos.html` para escolher uma área. A senha é da conta pessoal; o banco confere a autorização de motorista e gestão. As credenciais privadas não acompanham o GitHub.
+
+Para computador e celular na mesma rede, encerre a execução anterior e abra `ABRIR_NO_CELULAR.cmd`. O iniciador informa o IP do computador. Esse modo permite telas e login por senha; GPS no celular exige HTTPS válido. Veja [o passo a passo](docs/COMPUTADOR_E_CELULAR.md).
+
+A equipe tem um [roteiro curto de apresentação](docs/ROTEIRO_APRESENTACAO.md), com José, Bruno, Cauã, Gustavo e Ana Carolina, e uma [conferência dos acessos e do banco](docs/VALIDACAO_ACESSO_20261118.json).

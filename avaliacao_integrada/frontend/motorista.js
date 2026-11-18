@@ -168,6 +168,7 @@ function profilePayload() {
 }
 function initialPosition() {
     return new Promise((resolve, reject) => {
+        if (window.isSecureContext === false) return reject(new Error("Para iniciar com GPS no celular, abra o sistema em HTTPS válido. O navegador bloqueia localização pelo endereço HTTP da rede."));
         if (!navigator.geolocation) return reject(new Error("Este navegador não oferece localização."));
         navigator.geolocation.getCurrentPosition(position => {
             const c = position.coords;

@@ -12,12 +12,13 @@
    TRANSURBAN | Painel de gestão
   </title>
   <link href="/logo-gestao.svg" rel="icon"/>
-  <link href="/mobilidade.css?v=20261117-escola" rel="stylesheet"/>
-  <script defer="" src="/localizacao.js?v=20261117-escola"></script>
-  <script defer="" src="/gestao.js?v=20261117-escola">
+  <link href="/mobilidade.css?v=20261118-acesso" rel="stylesheet"/>
+  <script defer="" src="/localizacao.js?v=20261118-acesso"></script>
+  <script defer="" src="/gestao.js?v=20261118-acesso">
   </script>
-  <script defer="" src="/operacao.js?v=20261117-escola">
+  <script defer="" src="/operacao.js?v=20261118-acesso">
   </script>
+  <script defer src="/acesso.js?v=20261118-acesso"></script>
  </head>
  <body data-area="gestao">
   <section class="portal-login" id="managementLogin">
@@ -65,9 +66,9 @@
       Entre com a conta autorizada para atender às manifestações do seu escopo.
      </p>
      <label for="managementEmail">
-      E-mail da conta de gestão
+      E-mail ou CPF da conta autorizada
      </label>
-     <input autocomplete="username" id="managementEmail" maxlength="254" required="" type="email"/>
+     <input autocomplete="username" id="managementEmail" maxlength="254" required="" type="text" autocapitalize="none" spellcheck="false"/>
      <label for="managementPassword">
       Senha
      </label>

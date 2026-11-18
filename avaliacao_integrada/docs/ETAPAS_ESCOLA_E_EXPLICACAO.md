@@ -67,3 +67,5 @@ Foram lidos os enunciados e guias acessíveis na turma **CEEP2026 – Projeto �
 Há divergência de anexos na turma lida: DS–Frontend de 15/11 descreve uma venda, mas anexa guias de chat; o dashboard de 08/11 anexa materiais de compras. A implementação separa os requisitos de cada enunciado e reaproveita os guias correspondentes, em vez de trocar o significado das telas.
 
 Referências: [guia de itens e finalização](https://docs.google.com/document/d/11TR0Ciyahppvi0tBwqLroWgCOBi3FKscmsxZFraxrqU/edit), [guia de chat com Ollama](https://docs.google.com/document/d/1hjuMvi7iV3cgogNI1s23MJ8GQefDKCcD2798HsTizDE/edit). Os documentos completos do professor não foram copiados ao repositório.
+
+Em 18/11, uma nova tentativa de abrir a turma DS-IA-Meca pediu a senha da conta escolar. Sem essa nova autenticação, não foi possível confirmar todos os anexos dessa turma. A revisão não inventa conteúdo que não foi lido.

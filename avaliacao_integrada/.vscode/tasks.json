@@ -1,9 +1,54 @@
 {
   "version": "2.0.0",
   "tasks": [
-    {"label":"TRANSURBAN: passageiro","type":"shell","command":".\\iniciar_local.cmd passageiro","options":{"cwd":"${workspaceFolder}"},"problemMatcher":[],"group":{"kind":"build","isDefault":true}},
-    {"label":"TRANSURBAN: motorista","type":"shell","command":".\\iniciar_local.cmd motorista","options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
-    {"label":"TRANSURBAN: gestao","type":"shell","command":".\\iniciar_local.cmd gestao","options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]},
-    {"label":"TRANSURBAN: dados e chat","type":"shell","command":".\\iniciar_local.cmd dados","options":{"cwd":"${workspaceFolder}"},"problemMatcher":[]}
+    {
+      "label": "TRANSURBAN: passageiro",
+      "type": "shell",
+      "command": ".\\iniciar_local.cmd passageiro",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "TRANSURBAN: motorista",
+      "type": "shell",
+      "command": ".\\iniciar_local.cmd motorista",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TRANSURBAN: gestao",
+      "type": "shell",
+      "command": ".\\iniciar_local.cmd gestao",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TRANSURBAN: dados e chat",
+      "type": "shell",
+      "command": ".\\iniciar_local.cmd dados",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "TRANSURBAN: computador e celular",
+      "type": "shell",
+      "command": ".\\ABRIR_NO_CELULAR.cmd",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
   ]
 }

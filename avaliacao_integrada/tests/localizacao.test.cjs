@@ -34,11 +34,12 @@ test('segundo plano interrompe localização e não reinicia silenciosamente',()
 test('sair do mapa ou da conta interrompe a localização',()=>{for(const event of ['hashchange','transurban:logout']){const h=locationHarness();h.button.listeners.click();h.hideMap();h.winEvents[event]();assert.equal(h.control.active,false);}});
 test('registrar o mesmo controle não duplica os observadores',()=>{const h=locationHarness();const again=h.context.window.TransurbanLocation.attach(h.map,{buttonId:'b',statusId:'s'});assert.equal(again,h.control);h.button.listeners.click();assert.equal(h.calls,1);});
 
-function driverHarness({valid=true,denied=false}={}) {
+function driverHarness({valid=true,denied=false,secure=true}={}) {
     const elements={}, order=[];
     const get=id=>elements[id]||(elements[id]=element());
     const context={console,Intl,Date,Number,JSON,Promise,AbortController,Event,setTimeout:()=>0,clearTimeout(){},requestAnimationFrame(){},fetch:()=>new Promise(()=>{}),confirm:()=>true,location:{reload(){}},window:{addEventListener(){},dispatchEvent(){}},document:{getElementById:get,addEventListener(){}},
         navigator:{geolocation:{getCurrentPosition(ok,err){order.push('gps');denied?err({code:1}):ok({coords:{latitude:-23.4,longitude:-51.9,accuracy:12}});}}}};
+    context.window.isSecureContext=secure;
     vm.createContext(context);vm.runInContext(fs.readFileSync(path.join(__dirname,'../frontend/motorista.js'),'utf8'),context);
     vm.runInContext('state.driver={viagem:null}; driverPanel=async()=>{}; startGps=()=>{};',context);
     context.api=async(url,options)=>{order.push(url);const payload=JSON.parse(options.body);if(url.endsWith('/perfil')){assert.equal(payload.prefixo,'TESTE-1');assert.equal(payload.modelo,'Veículo de teste');return payload;}assert.equal(payload.linha_id,'maringa-460');assert.equal(payload.sentido,'Ida');return {id:'teste'};};
@@ -48,3 +49,7 @@ function driverHarness({valid=true,denied=false}={}) {
 test('início valida GPS, salva ônibus e só então cria viagem da linha escolhida',async()=>{const h=driverHarness();await h.submit();assert.deepEqual(h.order,['gps','/mobilidade/motorista/perfil','/mobilidade/motorista/viagens']);assert.match(h.get('tripStatus').textContent,/Viagem iniciada/);});
 test('GPS negado impede criar viagem ou salvar dados',async()=>{const h=driverHarness({denied:true});await h.submit();assert.deepEqual(h.order,['gps']);assert.match(h.get('tripStatus').textContent,/não foi iniciada/);});
 test('dados incompletos do ônibus impedem pedir GPS ou iniciar viagem',async()=>{const h=driverHarness({valid:false});await h.submit();assert.deepEqual(h.order,[]);assert.match(h.get('tripStatus').textContent,/Preencha/);});
+
+test('HTTP sem contexto seguro informa o limite antes de criar a viagem',async()=>{const h=driverHarness({secure:false});await h.submit();assert.deepEqual(h.order,[]);assert.match(h.get('tripStatus').textContent,/HTTPS/);});
+
+test('mapa em HTTP de rede não inicia uma observação de localização',()=>{const h=locationHarness();h.context.window.isSecureContext=false;h.button.listeners.click();assert.equal(h.calls,0);assert.equal(h.control.active,false);assert.match(h.status.textContent,/HTTPS/);});

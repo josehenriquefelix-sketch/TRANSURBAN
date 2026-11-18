@@ -1872,3 +1872,8 @@ body[data-area="estudo"] h1{font-size:29px}
 
 body[data-area="estudo"] .dados-top{height:auto;min-height:80px}
 body[data-area="estudo"][data-theme="gestao"]{--green:#25272a;--navy:#25272a;--gold:#b99a51}
+
+/* Ajuda comum aos três formulários de entrada. */
+.password-toggle { justify-self:end; border:0; background:transparent; color:var(--primary, #075648); padding:8px 2px; font:inherit; font-size:.9rem; cursor:pointer; min-height:44px; text-decoration:underline; }
+.password-toggle:focus-visible { outline:2px solid currentColor; outline-offset:3px; }
+.access-help { font-size:.9rem; line-height:1.5; padding:12px; border:1px solid #d5dce0; border-radius:10px; background:#f6f8f9; color:#33434d; }

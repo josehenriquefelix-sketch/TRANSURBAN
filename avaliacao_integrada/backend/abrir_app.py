@@ -12,6 +12,7 @@ from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parent.parent
 HOST = "127.0.0.1"
+REDE = "--rede" in sys.argv
 PORT = 8000
 BASE_URL = f"http://{HOST}:{PORT}"
 CAMINHOS = {'passageiro':'/', 'motorista':'/motorista/', 'gestao':'/gestao/', 'dados':'/dados/'}
@@ -49,14 +50,52 @@ def aguardar_servidor(server: subprocess.Popen) -> int:
         return 0
 
 
+def mostrar_rede() -> None:
+    """Mostra os endereços IPv4 locais; não publica o computador na internet."""
+    try:
+        enderecos = sorted({ip for ip in socket.gethostbyname_ex(socket.gethostname())[2]
+                            if not ip.startswith("127.") and ":" not in ip})
+    except OSError:
+        enderecos = []
+    print("\nCELULAR: conecte no mesmo Wi-Fi do computador.", flush=True)
+    for ip in enderecos:
+        print(f"Abra no celular: http://{ip}:{PORT}/acessos.html", flush=True)
+    if not enderecos:
+        print("Não foi possível identificar o IP. Consulte o IPv4 da rede do computador.")
+    print("Não feche esta janela. A rede da escola pode bloquear a comunicação entre aparelhos.")
+    print("GPS e login Google no celular exigem endereço HTTPS válido; HTTP da rede serve para as telas e login por senha.\n", flush=True)
+
+
+def servidor_disponivel_na_rede() -> bool:
+    try:
+        enderecos = socket.gethostbyname_ex(socket.gethostname())[2]
+        for ip in enderecos:
+            if ip.startswith("127.") or ":" in ip:
+                continue
+            try:
+                with socket.create_connection((ip, PORT), timeout=0.5):
+                    return True
+            except OSError:
+                continue
+    except OSError:
+        pass
+    return False
+
+
 def main() -> int:
-    area = sys.argv[1] if len(sys.argv)>1 else 'passageiro'
+    argumentos = [valor for valor in sys.argv[1:] if valor != '--rede']
+    area = argumentos[0] if argumentos else 'passageiro'
     if area not in CAMINHOS:
         print('Escolha passageiro, motorista, gestao ou dados.')
         return 1
-    url = BASE_URL + CAMINHOS[area]
+    url = BASE_URL + ("/acessos.html" if REDE else CAMINHOS[area])
+    if REDE:
+        mostrar_rede()
     if porta_aberta():
         if servico_transurban_ativo():
+            if REDE and not servidor_disponivel_na_rede():
+                print("A API atual não está acessível na rede. Encerre a execução anterior e abra novamente ABRIR_NO_CELULAR.cmd.")
+                return 1
             webbrowser.open(url)
             print("TRANSURBAN ja estava ativo; a pagina foi aberta.")
             return 0
@@ -65,7 +104,7 @@ def main() -> int:
         return 1
 
     server = subprocess.Popen(
-        [sys.executable, "-m", "uvicorn", "backend.main:app", "--host", HOST, "--port", str(PORT)],
+        [sys.executable, "-m", "uvicorn", "backend.main:app", "--host", "0.0.0.0" if REDE else HOST, "--port", str(PORT)],
         cwd=ROOT,
     )
     deadline = time.monotonic() + 45

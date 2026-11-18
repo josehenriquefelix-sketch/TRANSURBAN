@@ -1,51 +1,49 @@
-# Roteiro de apresentação — TRANSURBAN
+# TRANSURBAN — roteiro da equipe
 
-## Preparação nos computadores da escola e do auditório
+Tempo sugerido: 4 a 5 minutos. Cada pessoa fala e mostra sua parte. Ensaiem antes e usem apenas funções que conseguem demonstrar.
 
-1. No GitHub, atualize ou clone o repositório `josehenriquefelix-sketch/TRANSURBAN` e abra a pasta `avaliacao_integrada` no VS Code.
-2. Confirme que o computador tem Python 3.10 ou superior e acesso à internet para instalar as dependências e acessar o Supabase.
-3. Na primeira execução, abra `iniciar_local.cmd`. Ele cria o ambiente, instala as dependências e, se detectar valores de exemplo, abre a configuração local. Preencha a URL e a chave privada do projeto Supabase nesse computador. Não coloque a chave no GitHub nem a mostre na apresentação.
-4. O iniciador sobe um único serviço e abre o painel. A interface fica em `http://127.0.0.1:8000/`; o Swagger fica em `http://127.0.0.1:8000/docs`. Mantenha a janela da API aberta.
-5. Antes de demonstrar alterações reais, use nomes fictícios e combine quem vai excluir cada registro de teste.
+## 1. José — abertura
 
-## Fala de abertura
+“Olá! Nós somos a equipe do TRANSURBAN. Nosso projeto tem como tema a mobilidade entre Maringá e Sarandi. A ideia é reunir informações de transporte e facilitar a comunicação entre passageiros, motoristas e gestão. Somos estudantes do primeiro ano de Desenvolvimento de Sistemas e usamos o que aprendemos para construir este sistema.”
 
-“Eu vou apresentar o TRANSURBAN, um projeto acadêmico sobre mobilidade em Maringá e Sarandi. A aplicação integra o painel de dados, o cadastro de cidades e linhas, uma API e o Supabase. A base de análise é sintética, então usamos seus resultados para demonstrar o funcionamento, não para descrever a operação real do transporte.”
+**Mostrar:** página inicial do passageiro e as três áreas, sem exibir senhas.
 
-> Personalize esta fala para explicar sua contribuição real no grupo. Não diga que escreveu uma parte que não consegue explicar.
+## 2. Bruno — passageiro
 
-## Demonstração do painel
+“Na área do passageiro, a pessoa escolhe a cidade e consulta as linhas. Ela também pode salvar suas linhas favoritas e enviar uma manifestação. Organizamos a tela para funcionar no computador e no celular. As informações têm limites: um horário publicado não é uma previsão de GPS ao vivo.”
 
-1. Mostre o cabeçalho, o indicador de conexão e o desenho conceitual da conexão urbana. Explique que a ilustração não é uma rota operacional.
-2. Abra **Ciência de Dados** e mostre os indicadores: observações válidas, soma e média do atraso por observação e cidades analisadas.
-3. Apresente as quatro perguntas: total e média por cidade, período, condição de trânsito e clima. Os resultados vêm da API e são organizados por pandas.
-4. Explique a unidade: cada linha do CSV é uma observação de atraso em um trecho, não necessariamente uma viagem completa. `codigo_linha` se repete; o par cidade + código identifica uma linha distinta. Sem `id_viagem`, não afirmamos contar viagens, ônibus ou passageiros únicos. Duplicatas exatas são verificadas.
-5. Reforce que o arquivo é uma base sintética didática. Os agrupamentos mostram associações dentro do CSV e não provam causas nem preveem horários.
+**Mostrar:** cidades, escolha de linha e um favorito na conta de teste.
 
-## Demonstração do CRUD
+## 3. Cauã — motorista
 
-1. Em **Cadastro de cidades**, mostre o campo obrigatório e a lista carregada do Supabase. Cadastre uma cidade fictícia e anote o ID.
-2. Consulte pelo ID, edite o nome, atualize a lista e exclua o registro de teste. Se uma linha estiver vinculada, a chave estrangeira pode impedir a exclusão.
-3. Em **Linhas de ônibus**, escolha uma cidade existente, cadastre código e nome, consulte e edite a linha. Exclua o registro de teste ao terminar.
-4. Explique a regra da avaliação: cidade é a tabela observada com PK e sem FK, por isso atende ao CRUD obrigatório da recuperação. Linhas têm FK e fazem parte do CRUD integrado.
-5. Se necessário, abra `/docs` e mostre as rotas. Campo inválido retorna 422, ID inexistente retorna 404 e conflito de integridade pode retornar 409.
-6. No Supabase Table Editor, confira os registros criados e removidos. Nunca mostre a chave privada.
+“O motorista entra com uma conta autorizada. Ele informa o modelo e o número do ônibus, escolhe a linha e prepara a viagem. O compartilhamento da localização depende da permissão do aparelho. O mapa mostra a posição e a margem de precisão recebidas. Não temos integração com o GPS oficial da operadora.”
 
-## Como explicar a tecnologia
+**Mostrar:** entrada do motorista, campos do ônibus e escolha da linha. Só inicie uma viagem de teste se o ambiente de localização estiver funcionando; encerre ao terminar.
 
-- **HTML:** estrutura as seções, formulários, indicadores e tabelas.
-- **CSS:** define cores, espaçamento, hierarquia visual e adaptação para telas menores.
-- **JavaScript:** consulta a API, envia JSON, atualiza listas e dá retorno para cadastrar, consultar, editar e excluir.
-- **Python e FastAPI:** validam as entradas, disponibilizam as rotas CRUD e de análise e servem os arquivos da interface pela mesma origem local.
-- **Pandas:** valida o CSV e calcula os agrupamentos.
-- **Supabase/PostgreSQL:** guarda os registros; o backend acessa a Data API por HTTPS com a chave mantida só localmente.
-- **CORS:** está configurado para desenvolvimento com frontend separado. No iniciador de apresentação, tela e API usam a mesma origem e não dependem de uma segunda janela de servidor.
+## 4. Gustavo — gestão e banco
 
-## Roteiro curto em primeira pessoa
+“A gestão tem um painel separado. Nele, a equipe autorizada acompanha manifestações e responde aos usuários. O banco PostgreSQL fica no Supabase. As tabelas usam códigos para identificar registros e chaves estrangeiras para relacioná-los. No módulo de materiais, uma ordem pode ter vários itens, e o fechamento confere o estoque antes de gravar as mudanças.”
 
-“Eu entendi o fluxo desta forma: a tela envia uma solicitação em JSON; a FastAPI valida os campos; para os cadastros, o backend acessa o Supabase por HTTPS e devolve o resultado. Para a parte de dados, a API lê o CSV com pandas, calcula as totalizações e envia os resultados para a tela. No computador de apresentação, a interface e a API são abertas pelo mesmo iniciador. A chave privada fica no arquivo local de configuração e nunca no navegador.”
+**Mostrar:** fila da gestão, lista de tabelas e uma ordem de teste. Não mostre dados privados de pessoas.
 
-## Encerramento
+## 5. Ana Carolina — API, dados e encerramento
 
-“Com o TRANSURBAN, apresentamos operações de cadastro integradas ao banco e quatro totalizações sobre uma base acadêmica. O CRUD de cidade atende à regra de tabela com PK sem FK; o CRUD de linhas demonstra o relacionamento com cidade. Os resultados são descritivos e sintéticos.”
+“Usamos HTML para a estrutura, CSS para as cores e os tamanhos e JavaScript para as ações da tela. A API foi feita com Python e FastAPI. Ela recebe os pedidos e conversa com o Supabase. Na parte de Ciência de Dados, o pandas calcula os resultados do CSV e o site mostra os gráficos. Essa base é de estudo. O projeto fica no GitHub e pode ser baixado para executar pelo VS Code.”
 
+“Fizemos testes para conferir acessos, consultas e operações do banco. Ainda existem integrações externas a configurar, como envio de e-mails e dados oficiais ao vivo. Nosso próximo passo é testar com usuários e continuar melhorando o sistema. Obrigada!”
+
+**Mostrar:** `/docs`, `/dados/` e o repositório. No chat, o cálculo funciona sem Ollama; a explicação por IA é opcional e ainda depende de configuração.
+
+## Perguntas que podem aparecer
+
+**O que é API?** É a parte que recebe os pedidos da tela e devolve os dados.
+
+**O que é uma chave estrangeira?** É um campo que liga um registro a outro, como o código da cidade em uma linha.
+
+**Está integrado à prefeitura ou à TCCC?** Não. É um projeto escolar independente; dados públicos e registros do nosso sistema não são uma integração oficial.
+
+**Já envia e-mail?** A configuração está preparada, mas a entrega real ainda depende do SMTP.
+
+**O GPS é exato?** Ele usa a posição e a precisão que o aparelho informa. Pode variar; no celular precisa de HTTPS válido.
+
+**Como foi feito?** Estudamos os materiais, adaptamos ao TRANSURBAN e usamos ferramentas de apoio. Cada integrante deve explicar o código que estudou e a parte em que trabalhou. Não atribuam contribuições que não fizeram.

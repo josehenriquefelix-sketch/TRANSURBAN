@@ -24,6 +24,7 @@
             message(note);
         }
         function start() {
+            if (window.isSecureContext === false) return message("Para usar GPS neste aparelho, abra o sistema em HTTPS válido. O endereço HTTP da rede local permite consultar as telas, mas o navegador bloqueia a localização.", true);
             if (!navigator.geolocation) return message("Este navegador não oferece localização.", true);
             first = true;
             const current = ++generation;
