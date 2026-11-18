@@ -1,0 +1,11 @@
+{
+  "commit": "fa80413cd5ea633c9dcddb622799a4ec6ac5f309",
+  "arquivos_conferidos": 60,
+  "render_yaml_removido": true,
+  "env_privado_ausente": true,
+  "verificacao": "Todos os 60 arquivos publicados coincidem com as fontes locais após leitura UTF-8.",
+  "testes_python_copia_limpa": 47,
+  "testes_localizacao": 11,
+  "verificacoes_materiais_banco_real": 14,
+  "verificacoes_aprovacao_banco_real": 8
+}
