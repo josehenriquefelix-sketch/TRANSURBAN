@@ -1,0 +1,29 @@
+{
+  "ambiente": "http://127.0.0.1:8000",
+  "verificacoes": [
+    "Servidor local atual",
+    "Arquivo local /",
+    "Arquivo local /motorista/",
+    "Arquivo local /gestao/",
+    "Arquivo local /dados/",
+    "Arquivo local /dados/chat.html",
+    "Arquivo local /gestao/materiais.html",
+    "Arquivo local /gestao/banco.html",
+    "Arquivo local /vendor/chart.umd.min.js",
+    "Google aponta para callback local sem Render",
+    "Login real e-mail",
+    "Sessão administrativa validada",
+    "Estrutura real visível à administração",
+    "Fila informa SMTP não configurado",
+    "Login real CPF",
+    "Sessão administrativa validada",
+    "Dados privados protegidos após logout",
+    "Chat sem IA mantém número e aviso",
+    "CORS permite POST da origem escolar",
+    "Arquivo privado não é servido"
+  ],
+  "quantidade": 20,
+  "email": "Sem SMTP, por escolha do responsável: não validado no Gmail",
+  "ollama": "Sem chave/modelo, por escolha do responsável: fallback validado",
+  "visual": "Novas telas não tiveram revisão visual completa nesta rodada por indisponibilidade do controle do navegador"
+}

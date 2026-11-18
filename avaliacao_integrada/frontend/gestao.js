@@ -185,6 +185,8 @@ async function openManagement() {
         return;
     }
     state.user = user;
+    $("adminMaterials").hidden = !user.administrador;
+    $("adminDatabase").hidden = !user.administrador;
     if (!state.catalog) state.catalog = await api("/mobilidade/catalogo");
     await managerPanel();
     $("managementName").textContent = user.nome;

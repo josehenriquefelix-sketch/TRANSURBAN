@@ -1,6 +1,7 @@
 """Quatro rotas GET de totalização do CSV de atrasos."""
 from fastapi import APIRouter, HTTPException
 from backend import analise as calculos
+from backend import analise_dashboard
 
 router = APIRouter(prefix="/ia", tags=["Ciência de Dados · Totalizações"])
 
@@ -43,3 +44,15 @@ def totalizar_por_transito():
 def totalizar_por_clima():
     dados, _ = _dados()
     return calculos.agrupar(dados, "clima")
+
+
+@router.get('/dashboard/observacoes-por-dia')
+def observacoes_por_dia():
+    _dados()
+    return analise_dashboard.observacoes_por_dia()
+
+
+@router.get('/dashboard/atraso-por-dia')
+def atraso_por_dia():
+    _dados()
+    return analise_dashboard.atraso_por_dia()

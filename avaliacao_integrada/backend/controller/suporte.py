@@ -2,6 +2,8 @@
 from datetime import datetime, timedelta, timezone
 from typing import Literal
 from uuid import UUID
+import os
+import logging
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -134,7 +136,22 @@ class Pedido(BaseModel):
 def pedir_acesso(dados: Pedido, usuario=Depends(usuario_atual)):
     # Inserção simples: um novo pedido nunca concede ou modifica papéis.
     registro = executar(lambda db: db.table("tu_pedido_acesso").insert({**dados.model_dump(), "usuario_id": usuario["id"]}))[0]
-    return {"id": registro["id"], "status": registro["status"], "mensagem": "Pedido recebido. O acesso profissional depende de análise e aprovação."}
+    revisores = [email.strip().lower() for email in os.getenv('EMAIL_APROVACOES','').split(',') if email.strip()]
+    if revisores:
+        try:
+            executar(lambda db: db.table('tu_email_acesso').upsert([
+                {'pedido_id':registro['id'],'destinatario':email,'evento':'revisar','papel':dados.papel}
+                for email in revisores],on_conflict='pedido_id,destinatario,evento'))
+        except Exception as erro:
+            logging.getLogger(__name__).warning('Aviso administrativo não enfileirado (%s); pedido preservado.',type(erro).__name__)
+    return {"id": registro["id"], "status": registro["status"], "mensagem": "Pedido recebido. O acesso profissional depende de análise e aprovação. A notificação por e-mail fica na fila de envio."}
+
+
+@router.get('/gestao/notificacoes')
+def notificacoes_acesso(usuario=Depends(administrador)):
+    from backend.notificacoes import smtp_configurado
+    filas = executar(lambda db: db.table('tu_email_acesso').select('id,pedido_id,evento,estado,tentativas,criado_em,enviado_em,erro').order('criado_em',desc=True).limit(100))
+    return {'smtp_configurado':smtp_configurado(),'notificacoes':filas}
 
 
 @router.get("/meus-pedidos")

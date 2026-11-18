@@ -36,7 +36,7 @@ if errorlevel 1 (
   if errorlevel 1 goto erro
 )
 
-backend\.venv\Scripts\python.exe backend\abrir_app.py
+backend\.venv\Scripts\python.exe backend\abrir_app.py %1
 if errorlevel 1 goto erro
 exit /b 0
 

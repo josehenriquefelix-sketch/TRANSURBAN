@@ -13,8 +13,9 @@ from urllib.request import urlopen
 ROOT = Path(__file__).resolve().parent.parent
 HOST = "127.0.0.1"
 PORT = 8000
-URL = f"http://{HOST}:{PORT}/"
-VERSAO = "2026.11.14-gps"
+BASE_URL = f"http://{HOST}:{PORT}"
+CAMINHOS = {'passageiro':'/', 'motorista':'/motorista/', 'gestao':'/gestao/', 'dados':'/dados/'}
+VERSAO = "2026.11.17-escola"
 
 
 def porta_aberta() -> bool:
@@ -49,9 +50,14 @@ def aguardar_servidor(server: subprocess.Popen) -> int:
 
 
 def main() -> int:
+    area = sys.argv[1] if len(sys.argv)>1 else 'passageiro'
+    if area not in CAMINHOS:
+        print('Escolha passageiro, motorista, gestao ou dados.')
+        return 1
+    url = BASE_URL + CAMINHOS[area]
     if porta_aberta():
         if servico_transurban_ativo():
-            webbrowser.open(URL)
+            webbrowser.open(url)
             print("TRANSURBAN ja estava ativo; a pagina foi aberta.")
             return 0
         print(f"A porta {PORT} esta ocupada por uma instancia antiga ou outro programa. Feche a janela antiga com Ctrl+C e tente novamente.")
@@ -69,8 +75,8 @@ def main() -> int:
             input("Pressione Enter para fechar...")
             return 1
         if servico_transurban_ativo():
-            webbrowser.open(URL)
-            print("TRANSURBAN aberto no navegador. Mantenha esta janela aberta durante a apresentação.")
+            webbrowser.open(url)
+            print("TRANSURBAN local aberto. Mantenha este servidor ativo enquanto usa os portais.")
             return aguardar_servidor(server)
         time.sleep(0.4)
 

@@ -19,8 +19,8 @@ class PortalSegurancaTests(unittest.TestCase):
         self.assertIn("/cidades", ds)
         self.assertIn("/portal/recargas", ds)
         self.assertFalse(any(path.startswith("/ia/") for path in ds))
-        self.assertEqual(len(dados), 5)
-        self.assertTrue(all(path.startswith("/ia/") for path in dados))
+        self.assertTrue({'/ia/resumo','/ia/totalizacao/cidade','/ia/totalizacao/periodo','/ia/totalizacao/transito','/ia/totalizacao/clima','/chat','/chat/perguntas'} <= set(dados))
+        self.assertTrue(all(path.startswith(("/ia/", "/chat")) for path in dados))
 
     def test_visitante_nao_acessa_dados_privados(self):
         for path in ("/auth/me", "/portal/passe", "/portal/avaliacoes"):

@@ -204,7 +204,8 @@ def cadastrar(dados: Cadastro, response: Response):
     existentes = get_supabase().table("tu_perfil").select("usuario_id").eq("cpf_hash", cpf_hash(dados.cpf)).limit(1).execute().data
     if existentes:
         raise HTTPException(409, "Não foi possível concluir o cadastro. Se já possui uma conta, entre ou recupere a senha.")
-    data = auth_request("POST", "signup", {"email": dados.email, "password": dados.senha,
+    destino = quote(endereco_aplicacao() + '/#login', safe='')
+    data = auth_request("POST", "signup?redirect_to=" + destino, {"email": dados.email, "password": dados.senha,
                         "data": {"nome": dados.nome, "cpf_hash": cpf_hash(dados.cpf)}})
     # O trigger SQL grava o vínculo CPF/conta sem expor o CPF original.
     if data.get("access_token"):
@@ -255,8 +256,8 @@ def limpar_oauth(response):
 
 
 def endereco_aplicacao():
-    """Usa o endereço HTTPS fornecido pela hospedagem, sem fixar localhost."""
-    return (os.getenv("APP_URL") or os.getenv("RENDER_EXTERNAL_URL") or "http://127.0.0.1:8000").rstrip("/")
+    """Execução local pelo VS Code; nenhuma dependência da hospedagem anterior."""
+    return (os.getenv("APP_URL") or "http://127.0.0.1:8000").rstrip("/")
 
 
 @router.get("/google")
@@ -329,7 +330,8 @@ def esqueci_senha(dados: Email):
 
 @router.post("/reenviar-confirmacao", dependencies=[Depends(limitar)])
 def reenviar_confirmacao(dados: Email):
-    auth_request("POST", "resend", {"type": "signup", "email": dados.email})
+    destino = quote(endereco_aplicacao() + '/#login', safe='')
+    auth_request("POST", "resend?redirect_to=" + destino, {"type": "signup", "email": dados.email})
     return {"mensagem": "Se a conta precisar de confirmação, você receberá uma nova mensagem. Confira também o spam."}
 
 

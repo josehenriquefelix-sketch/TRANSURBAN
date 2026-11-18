@@ -1,0 +1,1713 @@
+{
+  "tabelas": [
+    {
+      "nome": "cidade",
+      "chave_primaria": [
+        "id_cidade"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "id_cidade",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "nome",
+          "tipo": "character varying",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "faixa_exclusiva",
+      "chave_primaria": [
+        "id_faixa"
+      ],
+      "relacoes": [
+        {
+          "campo": "id_trecho",
+          "tabela": "trecho",
+          "coluna": "id_trecho"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id_faixa",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "id_trecho",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "trecho.id_trecho"
+        },
+        {
+          "nome": "tipo",
+          "tipo": "character varying",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "status",
+          "tipo": "character varying",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "linha_onibus",
+      "chave_primaria": [
+        "id_linha"
+      ],
+      "relacoes": [
+        {
+          "campo": "id_cidade",
+          "tabela": "cidade",
+          "coluna": "id_cidade"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id_linha",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "id_cidade",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "cidade.id_cidade"
+        },
+        {
+          "nome": "codigo",
+          "tipo": "character varying",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "nome",
+          "tipo": "character varying",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "linha_trecho",
+      "chave_primaria": [
+        "id_linha",
+        "id_trecho"
+      ],
+      "relacoes": [
+        {
+          "campo": "id_linha",
+          "tabela": "linha_onibus",
+          "coluna": "id_linha"
+        },
+        {
+          "campo": "id_trecho",
+          "tabela": "trecho",
+          "coluna": "id_trecho"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id_linha",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": "linha_onibus.id_linha"
+        },
+        {
+          "nome": "id_trecho",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": "trecho.id_trecho"
+        },
+        {
+          "nome": "ordem",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "registro_atraso",
+      "chave_primaria": [
+        "id_atraso"
+      ],
+      "relacoes": [
+        {
+          "campo": "id_linha",
+          "tabela": "linha_onibus",
+          "coluna": "id_linha"
+        },
+        {
+          "campo": "id_trecho",
+          "tabela": "trecho",
+          "coluna": "id_trecho"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id_atraso",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "id_linha",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "linha_onibus.id_linha"
+        },
+        {
+          "nome": "id_trecho",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "trecho.id_trecho"
+        },
+        {
+          "nome": "data_registro",
+          "tipo": "date",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "minutos_atraso",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "observacao",
+          "tipo": "character varying",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "trecho",
+      "chave_primaria": [
+        "id_trecho"
+      ],
+      "relacoes": [
+        {
+          "campo": "id_cidade_origem",
+          "tabela": "cidade",
+          "coluna": "id_cidade"
+        },
+        {
+          "campo": "id_cidade_destino",
+          "tabela": "cidade",
+          "coluna": "id_cidade"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id_trecho",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "id_cidade_origem",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "cidade.id_cidade"
+        },
+        {
+          "nome": "id_cidade_destino",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "cidade.id_cidade"
+        },
+        {
+          "nome": "nome",
+          "tipo": "character varying",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "distancia_km",
+          "tipo": "numeric",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_acesso",
+      "chave_primaria": [
+        "usuario_id",
+        "papel"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "usuario_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "papel",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "escopo",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "ativo",
+          "tipo": "boolean",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_alerta_operacional",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "autor_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "cidade",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "competencia",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "linha_id",
+          "tipo": "text",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "nivel",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "titulo",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "orientacao",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "latitude",
+          "tipo": "double precision",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "longitude",
+          "tipo": "double precision",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "ativo",
+          "tipo": "boolean",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "expira_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_avaliacao",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [
+        {
+          "campo": "horario_id",
+          "tabela": "tu_horario",
+          "coluna": "id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "usuario_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "horario_id",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "tu_horario.id"
+        },
+        {
+          "nome": "dia",
+          "tipo": "date",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "nota_onibus",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "nota_motorista",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "comentario",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_carteira",
+      "chave_primaria": [
+        "usuario_id"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "usuario_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "numero",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "saldo_centavos",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_chamado",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "numero",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "usuario_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "perfil",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "cidade",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "linha_id",
+          "tipo": "text",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "competencia",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "categoria",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "assunto",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "mensagem",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "latitude",
+          "tipo": "double precision",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "longitude",
+          "tipo": "double precision",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "status",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "resposta",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "atualizado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_email_acesso",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [
+        {
+          "campo": "pedido_id",
+          "tabela": "tu_pedido_acesso",
+          "coluna": "id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "pedido_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "tu_pedido_acesso.id"
+        },
+        {
+          "nome": "destinatario",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "evento",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "papel",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "estado",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "tentativas",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "enviado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "proxima_tentativa",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "reservado_ate",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "reserva",
+          "tipo": "uuid",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "erro",
+          "tipo": "text",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_favorito",
+      "chave_primaria": [
+        "usuario_id",
+        "linha_id"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "usuario_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "linha_id",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "criado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_horario",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [
+        {
+          "campo": "trajeto_id",
+          "tabela": "tu_trajeto",
+          "coluna": "id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "trajeto_id",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "tu_trajeto.id"
+        },
+        {
+          "nome": "partida",
+          "tipo": "time without time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "dias_semana",
+          "tipo": "integer[]",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "veiculo",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "motorista",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_item_material",
+      "chave_primaria": [
+        "ordem_id",
+        "material_id"
+      ],
+      "relacoes": [
+        {
+          "campo": "ordem_id",
+          "tabela": "tu_ordem_material",
+          "coluna": "id"
+        },
+        {
+          "campo": "material_id",
+          "tabela": "tu_material",
+          "coluna": "id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "ordem_id",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": "tu_ordem_material.id"
+        },
+        {
+          "nome": "material_id",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": "tu_material.id"
+        },
+        {
+          "nome": "valor_venda",
+          "tipo": "numeric",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "quantidade",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_manifestacao",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [
+        {
+          "campo": "viagem_id",
+          "tabela": "tu_viagem_operacional",
+          "coluna": "id"
+        },
+        {
+          "campo": "motorista_id",
+          "tabela": "tu_motorista",
+          "coluna": "usuario_id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "numero",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "usuario_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "viagem_id",
+          "tipo": "uuid",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": "tu_viagem_operacional.id"
+        },
+        {
+          "nome": "motorista_id",
+          "tipo": "uuid",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": "tu_motorista.usuario_id"
+        },
+        {
+          "nome": "linha_id",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "cidade",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "competencia",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "tipo",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "categoria",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "nota_onibus",
+          "tipo": "int32",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "nota_motorista",
+          "tipo": "int32",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "relato",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "status",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "resposta",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criada_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "atualizada_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_manifestacao_evento",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [
+        {
+          "campo": "manifestacao_id",
+          "tabela": "tu_manifestacao",
+          "coluna": "id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "manifestacao_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "tu_manifestacao.id"
+        },
+        {
+          "nome": "autor_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "status",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "resposta",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_material",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "nome",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "categoria",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "valor_unitario",
+          "tipo": "numeric",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "estoque",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_motorista",
+      "chave_primaria": [
+        "usuario_id"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "usuario_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "nome_publico",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "ano_nascimento",
+          "tipo": "int32",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "bio",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "exibir_perfil",
+          "tipo": "boolean",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "modelo",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "prefixo",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "atualizado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_ordem_material",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [
+        {
+          "campo": "unidade_id",
+          "tabela": "tu_unidade",
+          "coluna": "id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "unidade_id",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "tu_unidade.id"
+        },
+        {
+          "nome": "data_ordem",
+          "tipo": "date",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "prefixo",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "status",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "forma_pagamento",
+          "tipo": "text",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "valor_total",
+          "tipo": "numeric",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criada_por",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criada_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_pedido_acesso",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "usuario_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "papel",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "justificativa",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "status",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "decisao",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "escopo",
+          "tipo": "text",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "revisor_id",
+          "tipo": "uuid",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "decidido_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_perfil",
+      "chave_primaria": [
+        "usuario_id"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "usuario_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "nome",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "email",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "cpf_hash",
+          "tipo": "text",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_posicao_atual",
+      "chave_primaria": [
+        "viagem_id"
+      ],
+      "relacoes": [
+        {
+          "campo": "viagem_id",
+          "tabela": "tu_viagem_operacional",
+          "coluna": "id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "viagem_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": "tu_viagem_operacional.id"
+        },
+        {
+          "nome": "latitude",
+          "tipo": "double precision",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "longitude",
+          "tipo": "double precision",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "precisao_m",
+          "tipo": "double precision",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "direcao",
+          "tipo": "double precision",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "registrada_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_recarga",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [
+        {
+          "campo": "usuario_id",
+          "tabela": "tu_carteira",
+          "coluna": "usuario_id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "usuario_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "tu_carteira.usuario_id"
+        },
+        {
+          "nome": "valor_centavos",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "chave",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_suporte_evento",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [
+        {
+          "campo": "chamado_id",
+          "tabela": "tu_chamado",
+          "coluna": "id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "chamado_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "tu_chamado.id"
+        },
+        {
+          "nome": "autor_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "status",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "resposta",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "criado_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_trajeto",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "nome",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "origem",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "destino",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "duracao_min",
+          "tipo": "int32",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "paradas",
+          "tipo": "jsonb",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "fonte",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_unidade",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "int64",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "nome",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "limite",
+          "tipo": "numeric",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    },
+    {
+      "nome": "tu_viagem_operacional",
+      "chave_primaria": [
+        "id"
+      ],
+      "relacoes": [
+        {
+          "campo": "motorista_id",
+          "tabela": "tu_motorista",
+          "coluna": "usuario_id"
+        }
+      ],
+      "campos": [
+        {
+          "nome": "id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": true,
+          "fk": null
+        },
+        {
+          "nome": "motorista_id",
+          "tipo": "uuid",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": "tu_motorista.usuario_id"
+        },
+        {
+          "nome": "linha_id",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "sentido",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "prefixo",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "modelo",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "status",
+          "tipo": "text",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "iniciada_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": true,
+          "pk": false,
+          "fk": null
+        },
+        {
+          "nome": "encerrada_em",
+          "tipo": "timestamp with time zone",
+          "obrigatorio": false,
+          "pk": false,
+          "fk": null
+        }
+      ]
+    }
+  ],
+  "quantidade": 28,
+  "limite": "Metadados de public expostos pela Data API; não inclui dados das contas nem detalhes internos do esquema auth."
+}

@@ -1,0 +1,4 @@
+{
+  "version":"0.2.0",
+  "configurations":[{"name":"TRANSURBAN: depurar API local","type":"debugpy","request":"launch","module":"uvicorn","args":["backend.main:app","--host","127.0.0.1","--port","8000"],"cwd":"${workspaceFolder}","python":"${workspaceFolder}/backend/.venv/Scripts/python.exe","envFile":"${workspaceFolder}/backend/.env","console":"integratedTerminal","justMyCode":true}]
+}

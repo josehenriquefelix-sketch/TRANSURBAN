@@ -1,73 +1,36 @@
-# TRANSURBAN — Mobilidade que conecta
+# TRANSURBAN — projeto local para a escola
 
-**Acesse o site publicado:** https://transurban-mobilidade.onrender.com/ — não é necessário abrir o VS Code para usar o site.
+**Site e API executados no VS Code, sem dependência do Render.** O banco da equipe continua no Supabase.
 
+## Abrir no computador da informática
 
-Portal de transporte e participação cidadã entre Maringá e Sarandi, com áreas de **passageiro**, **motorista autorizado** e **gestão autorizada**.
+1. No VS Code: **Ctrl+Shift+P → Git: Clone**.
+2. Cole `https://github.com/josehenriquefelix-sketch/TRANSURBAN.git`, escolha uma pasta e abra a cópia.
+3. Abra `TRANSURBAN.code-workspace` da raiz como workspace.
+4. Pressione **Ctrl+Shift+B**. Na primeira vez, o iniciador prepara o ambiente e solicita a configuração privada em `avaliacao_integrada/backend/.env`.
+5. Use os comandos da pasta `avaliacao_integrada/ACESSOS`: `ABRIR_PASSAGEIRO.cmd`, `ABRIR_MOTORISTA.cmd` e `ABRIR_GESTAO.cmd`.
 
-O projeto atual está na pasta [avaliacao_integrada](avaliacao_integrada). Site e API iniciam juntos em **http://127.0.0.1:8000/**.
+Os atalhos iniciam ou reutilizam o servidor local. Mantenha a janela da API aberta. O `.env`, as senhas, as chaves e a `.venv` não vão para o GitHub.
 
-## Abrir pelo VS Code em outro computador
+| Portal | Link no computador que está rodando o projeto |
+|---|---|
+| Passageiro | http://127.0.0.1:8000/ |
+| Motorista | http://127.0.0.1:8000/motorista/ |
+| Gestão | http://127.0.0.1:8000/gestao/ |
 
-1. Instale Git e Python 3.10+; no Windows, marque **Add Python to PATH**.
-2. No VS Code, pressione **Ctrl+Shift+P → Git: Clone** e cole `https://github.com/josehenriquefelix-sketch/TRANSURBAN.git`.
-3. Abra o repositório. Copie `avaliacao_integrada/backend/.env.example` para `avaliacao_integrada/backend/.env` e preencha os dados privados do mesmo projeto Supabase. Esse arquivo não vem pelo GitHub.
-4. Na raiz, execute **INICIAR_TRANSURBAN.cmd**. Na primeira abertura ele prepara o ambiente e instala as dependências. Mantenha o servidor aberto.
-5. Acesse **http://127.0.0.1:8000/**. O menu **API do sistema** abre **http://127.0.0.1:8000/docs**.
-6. Execute **VERIFICAR_TRANSURBAN.cmd** para conferir dependências, tabelas, site e API.
+Se o projeto já está clonado, use **Git Pull** e reinicie o servidor para carregar o backend novo. Preserve as configurações privadas e as alterações locais da equipe.
 
-Se já estiver clonado, atualize com `git pull` antes de iniciar, preservando suas alterações locais. O banco da equipe já recebeu as migrações 05, 06 e 07; usar o mesmo Supabase em outro computador não exige reinstalar as tabelas.
+## O que foi acrescentado nesta etapa
 
-O endereço `127.0.0.1` é local a cada computador. Para acesso público ou por vários dispositivos, é necessário hospedar o sistema em HTTPS e configurar as URLs do Supabase.
+- Materiais da manutenção com unidade/oficina, itens de chave composta, total, estoque e limite transacionais.
+- Dashboard do CSV com gráficos Chart.js, tabela e consultas por dia.
+- Chat que calcula pelo CSV e mantém o resultado quando o Ollama não está configurado.
+- Fila privada de avisos de solicitação e decisão de acesso de motorista e gestão.
+- Visualização administrativa da estrutura real do banco.
+- Tarefas e ambiente Python configurados para o VS Code.
 
-## O que está implementado
+SMTP e chave/modelo Ollama ainda não foram fornecidos. Esses campos estão preparados, sem segredos fictícios funcionando. A equipe pode testar os cálculos sem IA; o Gmail só será validado após configurar o envio.
 
-- Login por e-mail/CPF, sessão em cookies HttpOnly, cadastro, logout e fluxo de recuperação de senha.
-- Início, dashboard pessoal e suporte com protocolo, cidades/linhas, horários e mapa, favoritas, avaliações e conta, com layout responsivo.
-- Perfil/veículo do motorista, notas vinculadas, início/encerramento de viagem e envio consentido da posição do dispositivo.
-- Central de manifestações com protocolo, filtros por escopo, atendimento e resposta ao cidadão.
-- CRUD acadêmico de cidade e linha com FK na API protegida. Ciência de Dados permanece separada em `/dados/docs`.
+Veja o [README completo](avaliacao_integrada/README.md), a [explicação das etapas](avaliacao_integrada/docs/ETAPAS_ESCOLA_E_EXPLICACAO.md), a [estrutura do banco](avaliacao_integrada/docs/ESQUEMA_BANCO_ATUAL.json) e a [validação real de materiais](avaliacao_integrada/docs/VALIDACAO_MATERIAIS_ESCOLA.json).
 
-## Cobertura e dependências externas
-
-O catálogo separa as 66 linhas municipais de Maringá publicadas no Na Hora das ligações que atendem Sarandi. Em Sarandi, são 22 atendimentos, incluindo variantes de bairro, documentados em 12 tabelas do DER/PR. Foram conferidas 1.064 partidas documentais, sem duplicar as variantes. Ao escolher a linha, o site abre os horários; em Maringá, oferece também a consulta pública oficial incorporada com pontos e itinerários. O serviço municipal interbairros de Sarandi está identificado separadamente, com confirmação de vigência pendente. Horários de saída não são previsões de passagem em todos os pontos. Não há API autorizada de telemetria nem integração de bilhetagem.
-
-O login Google está configurado no Supabase e foi validado no navegador com criação de sessão no portal do passageiro em 13/11/2026. Confirmação e recuperação por e-mail precisam de SMTP e teste de entrega real. O GPS do navegador requer permissão, contexto seguro e página aberta; as verificações automatizadas não comprovam um sensor GPS real.
-
-O TRANSURBAN é independente. Não há adesão institucional confirmada de Prefeitura, DER/PR ou operadora. As manifestações ficam na central TRANSURBAN; seu encaminhamento institucional depende dessa adesão.
-
-## Instruções e testes
-
-- [Instalação completa, tecnologias e atividade escolar](avaliacao_integrada/README.md)
-- [Operação, papéis, Google, GPS e fontes](avaliacao_integrada/docs/MOBILIDADE_OPERACAO.md)
-- [Validação com Supabase real — 12/11/2026](avaliacao_integrada/docs/VALIDACAO_MOBILIDADE_20261112.json)
-- [Atividade de chave estrangeira](avaliacao_integrada/docs/RELACIONAMENTO_FK_CIDADE_LINHA.md)
-
-Os arquivos de outras etapas permanecem no repositório como histórico. Para executar o portal atual, use **avaliacao_integrada** e a porta **8000**. Nunca publique `.env`, senhas, chaves secretas ou o ambiente virtual.
-
-## Portais separados — 13/11/2026
-
-- Passageiro: `http://127.0.0.1:8000/` (verde escuro e azul marinho).
-- Motorista: `http://127.0.0.1:8000/motorista/` (amarelo queimado e laranja).
-- Gestão: `http://127.0.0.1:8000/gestao/` (cinza, preto e dourado), ausente do portal público.
-
-Os papéis profissionais dependem de aprovação administrativa. Pedir acesso não concede permissão. O suporte persiste relatos e respostas privados; o mapa mostra ocorrências confirmadas, com validade, e localização solicitada pelo usuário. Sem marcação significa sem informação. A revisão passou em 31 testes automatizados e na [integração do suporte com Supabase](avaliacao_integrada/docs/VALIDACAO_SUPORTE_20261113.json).
-
-O login agora distingue e-mail não confirmado de credenciais inválidas e permite solicitar reenvio de confirmação. Google foi configurado e validado no navegador em 13/11/2026; a sessão retorna ao portal com papel de passageiro. Nenhum segredo foi incluído no código.
-
-## Preparação de link público
-
-O `render.yaml` na raiz prepara site e FastAPI juntos em HTTPS, preservando o banco Supabase. Consulte [publicação HTTPS](avaliacao_integrada/docs/PUBLICACAO_HTTPS.md). O serviço foi publicado e validado em https://transurban-mobilidade.onrender.com. As variáveis privadas estão na hospedagem; o banco permanece no Supabase. O aplicativo reconhece a URL fornecida pelo Render; domínio próprio usa `APP_URL`. A revisão deste preparo passou em 32 testes automatizados.
-
-Passageiros e motoristas enviam relatos privados. A gestão recebe, analisa e responde; somente a equipe de gestão publica alertas confirmados no mapa público.
-
-## Endereço público funcionando
-
-- Site: https://transurban-mobilidade.onrender.com/
-- Motorista: https://transurban-mobilidade.onrender.com/motorista/
-- Gestão restrita: https://transurban-mobilidade.onrender.com/gestao/
-- API técnica: https://transurban-mobilidade.onrender.com/docs
-
-O login Google foi testado com retorno HTTPS e sessão de passageiro. A aplicação não exige abrir o VS Code para visitar esse endereço. O plano Free pode suspender por inatividade e demorar a iniciar novamente. A configuração de produção do aplicativo Google é administrada separadamente no Google Cloud. Veja [validação da publicação](avaliacao_integrada/docs/VALIDACAO_PUBLICACAO_20261113.json).
-
-O Google Cloud confirmou o aplicativo **Em produção** em 13/11/2026. O login e o logout foram testados em HTTPS. A marca OAuth não foi submetida à verificação de marca. Os acessos profissionais continuam exigindo autorização no TRANSURBAN. As páginas de [privacidade](https://transurban-mobilidade.onrender.com/privacidade.html) e [uso](https://transurban-mobilidade.onrender.com/termos.html) foram aprovadas pelo responsável e estão publicadas.
+A área de gestão exige conta autorizada e não aparece na navegação do passageiro. A documentação de DS fica em `/docs`; a de Ciência de Dados e chat em `/dados/docs`.

@@ -1,12 +1,10 @@
-TRANSURBAN - ABRIR OS TRES PORTAIS
+TRANSURBAN LOCAL - SEM RENDER
 
-No Windows: de dois cliques no atalho da area desejada.
-Nao precisa instalar VS Code ou copiar .env para usar os links publicos.
-Motorista e gestao precisam de contas previamente autorizadas.
-O primeiro acesso apos inatividade pode demorar na hospedagem gratuita.
+Use ABRIR_PASSAGEIRO.cmd, ABRIR_MOTORISTA.cmd ou ABRIR_GESTAO.cmd.
+Cada comando prepara o ambiente e inicia o mesmo servidor local quando necessario.
+Mantenha a janela do servidor aberta. Os arquivos .url funcionam quando o servidor ja esta ativo.
 
-PASSAGEIRO.url: https://transurban-mobilidade.onrender.com/
-MOTORISTA.url: https://transurban-mobilidade.onrender.com/motorista/
-GESTAO.url: https://transurban-mobilidade.onrender.com/gestao/
-
-No Chrome, voce tambem pode abrir o link e pressionar Ctrl+D para salvar nos favoritos.
+No VS Code, abra TRANSURBAN.code-workspace. Ctrl+Shift+B inicia o passageiro.
+Em outro computador, baixe o repositorio completo e preencha backend/.env com os dados privados da equipe.
+Nao publique .env, chaves ou a pasta .venv.
+SMTP e Ollama sao opcionais para testar as contas existentes e os calculos; sao necessarios para e-mails e explicacoes reais.

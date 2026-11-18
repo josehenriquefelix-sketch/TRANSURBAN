@@ -23,6 +23,9 @@ from backend.auth import router as auth_router
 from backend.controller.portal import router as portal_router
 from backend.controller.mobilidade import router as mobilidade_router
 from backend.controller.suporte import router as suporte_router
+from backend.controller.chat import router as chat_router
+from backend.notificacoes import iniciar_entrega
+from backend.controller.materiais import router as materiais_router
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -48,9 +51,12 @@ async def manter_computador_ativo(_app):
                 logger.warning("Nao foi possivel solicitar que o Windows mantenha o sistema ativo.")
         except (AttributeError, OSError) as erro:
             logger.warning("Solicitacao temporaria de sistema ativo indisponivel: %s", type(erro).__name__)
+    parar_email, thread_email = iniciar_entrega()
     try:
         yield
     finally:
+        parar_email.set()
+        thread_email.join(timeout=2)
         if restaurar_estado is not None:
             restaurar_estado(0x80000000)
 
@@ -84,6 +90,8 @@ app.include_router(suporte_router)
 app.include_router(cidades_router)
 app.include_router(linhas_router)
 app.include_router(analise_router)
+app.include_router(chat_router)
+app.include_router(materiais_router)
 
 
 def esquema_ds():
@@ -91,7 +99,7 @@ def esquema_ds():
         app.openapi_schema = get_openapi(title=app.title, version=app.version,
                                          description=app.description, routes=app.routes)
         app.openapi_schema["paths"] = {path: value for path, value in app.openapi_schema["paths"].items()
-                                        if not path.startswith("/ia/")}
+                                        if not path.startswith(("/ia/", "/chat"))}
     return app.openapi_schema
 
 
@@ -102,7 +110,7 @@ app.openapi = esquema_ds
 def esquema_dados():
     schema = get_openapi(title="TRANSURBAN · API de Ciência de Dados", version=app.version,
                         description="Resumo e quatro totalizações do CSV acadêmico, calculados com pandas.", routes=app.routes)
-    schema["paths"] = {path: value for path, value in schema["paths"].items() if path.startswith("/ia/")}
+    schema["paths"] = {path: value for path, value in schema["paths"].items() if path.startswith(("/ia/", "/chat"))}
     return schema
 
 
@@ -131,7 +139,7 @@ async def proteger_solicitacoes(request: Request, call_next):
 def health():
     return {
         "projeto": "TRANSURBAN",
-        "versao": "2026.11.14-gps",
+        "versao": "2026.11.17-escola",
         "supabase_configurado": supabase_configurado(),
         "interface": "/",
         "documentacao": "/docs",

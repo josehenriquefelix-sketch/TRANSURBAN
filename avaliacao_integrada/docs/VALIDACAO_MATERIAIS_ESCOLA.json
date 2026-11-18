@@ -1,0 +1,22 @@
+{
+  "ambiente": "API local TestClient + Supabase PostgreSQL real",
+  "registros": "Massas exclusivas TESTE ESCOLA removidas ao terminar",
+  "verificacoes": [
+    "Conta administrativa confirmada; sem criação de privilégios",
+    "Chave composta e preços copiados",
+    "Par ordem/material repetido recusado",
+    "Alterar preço do catálogo não reescreve o item",
+    "Finalização totaliza R$15 com Decimal/PostgreSQL NUMERIC",
+    "Estoque e limite baixados juntos",
+    "Segunda baixa e exclusão de finalizada bloqueadas",
+    "FK preserva material com histórico",
+    "Limite insuficiente não altera estoque, limite ou estado",
+    "Não exclui o último item",
+    "Registro de Pix reduz estoque sem reduzir limite",
+    "Erro no item desfaz a criação inteira da ordem",
+    "Disputa simultânea da última unidade permite um único fechamento",
+    "Logout bloqueia o módulo privado"
+  ],
+  "quantidade": 14,
+  "pagamentos": "Somente registro didático; sem transação financeira"
+}

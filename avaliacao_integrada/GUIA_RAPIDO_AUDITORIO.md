@@ -1,42 +1,20 @@
-# Abrir o TRANSURBAN no VS Code do auditório (Windows)
+# Abrir na informática
 
-## Antes de começar
 
-- O computador precisa ter internet, Git for Windows e Python 3.10 ou superior.
-- A chave do Supabase fica somente no arquivo local `backend/.env`. Ela não está no GitHub.
 
-## Clonar pelo VS Code
+1. No VS Code: **Ctrl+Shift+P → Git: Clone**.
+2. Cole `https://github.com/josehenriquefelix-sketch/TRANSURBAN.git`, escolha uma pasta e abra a cópia.
+3. Abra `avaliacao_integrada/TRANSURBAN.code-workspace` como workspace.
+4. Pressione **Ctrl+Shift+B**. Na primeira vez, o iniciador prepara o ambiente e solicita a configuração privada em `avaliacao_integrada/backend/.env`.
+5. Use os comandos da pasta `avaliacao_integrada/ACESSOS`: `ABRIR_PASSAGEIRO.cmd`, `ABRIR_MOTORISTA.cmd` e `ABRIR_GESTAO.cmd`.
 
-1. Abra o VS Code e pressione `Ctrl + Shift + P`.
-2. Digite `Git: Clone` e escolha essa opção.
-3. Cole `https://github.com/josehenriquefelix-sketch/TRANSURBAN.git` e pressione Enter.
-4. Escolha uma pasta para salvar o repositório e clique em **Abrir**.
-5. Se aparecer a pergunta de confiança, escolha **Sim, confio nos autores**.
+Os atalhos iniciam ou reutilizam o servidor local. Mantenha a janela da API aberta. O `.env`, as senhas, as chaves e a `.venv` não vão para o GitHub.
 
-Se o repositório já estiver neste computador, abra-o no VS Code e use **Source Control → … → Pull** para buscar as atualizações.
+| Portal | Link no computador que está rodando o projeto |
+|---|---|
+| Passageiro | http://127.0.0.1:8000/ |
+| Motorista | http://127.0.0.1:8000/motorista/ |
+| Gestão | http://127.0.0.1:8000/gestao/ |
 
-## Configurar o Supabase neste computador
+Se o projeto já está clonado, use **Git Pull** e reinicie o servidor para carregar o backend novo. Preserve as configurações privadas e as alterações locais da equipe.
 
-1. Abra a pasta `avaliacao_integrada` no Explorador de Arquivos.
-2. Dê dois cliques em `iniciar_local.cmd`.
-3. Na primeira abertura, o iniciador cria `backend/.env` a partir do exemplo e abre o arquivo no Bloco de Notas.
-4. Preencha `SUPABASE_URL` com a Project URL do projeto da equipe e `SUPABASE_KEY` com a chave secreta desse mesmo projeto. Não use a senha do banco nem coloque a chave no GitHub.
-5. Salve com `Ctrl + S` e feche o Bloco de Notas. O iniciador prossegue.
-
-O primeiro início cria o ambiente Python e instala as dependências; pode levar alguns minutos e precisa de internet. Não execute os scripts SQL de criação se as tabelas já existirem no projeto Supabase.
-
-## Abrir e apresentar
-
-- A tela abre em `http://127.0.0.1:8000/`.
-- A documentação técnica fica em `http://127.0.0.1:8000/docs`, sem link no portal público.
-- Motorista: `http://127.0.0.1:8000/motorista/`; gestão: `http://127.0.0.1:8000/gestao/`. Esses acessos exigem autorização profissional.
-- Para entrar, use uma conta com e-mail confirmado. Se necessário, solicite o reenvio na tela de login.
-- Mantenha aberta a janela do servidor durante a apresentação.
-- Para iniciar novamente depois da primeira configuração, dê dois cliques em `iniciar_local.cmd`.
-
-## Se não abrir
-
-- Se o Windows disser que Python não foi encontrado, instale Python 3.10 ou superior, marque **Add Python to PATH** e abra o iniciador novamente.
-- Se a porta 8000 já estiver em uso, feche a janela antiga do TRANSURBAN com `Ctrl + C` e tente de novo.
-- Se a tela abrir, mas o CRUD não carregar, confira a Project URL, a chave secreta e a conexão com a internet no `backend/.env`.
-- Nunca compartilhe o `backend/.env`; cada computador precisa da própria cópia local.

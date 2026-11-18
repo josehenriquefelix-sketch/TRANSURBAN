@@ -17,9 +17,9 @@ class MobilidadeTests(unittest.TestCase):
         self.client = TestClient(app)
         self.addCleanup(app.dependency_overrides.clear)
 
-    def test_hospedagem_usa_url_publica_e_permite_dominio_proprio(self):
+    def test_execucao_local_nao_depende_do_render(self):
         with patch.dict(os.environ, {"APP_URL": "", "RENDER_EXTERNAL_URL": "https://exemplo.onrender.com/"}):
-            self.assertEqual(endereco_aplicacao(), "https://exemplo.onrender.com")
+            self.assertEqual(endereco_aplicacao(), "http://127.0.0.1:8000")
         with patch.dict(os.environ, {"APP_URL": "https://mobilidade.example.com/", "RENDER_EXTERNAL_URL": "https://exemplo.onrender.com"}):
             self.assertEqual(endereco_aplicacao(), "https://mobilidade.example.com")
 

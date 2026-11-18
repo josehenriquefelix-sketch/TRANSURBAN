@@ -1,3 +1,5 @@
+> Documento histórico da configuração anterior. A execução atual é local pelo VS Code; siga o README.
+
 # Publicar o TRANSURBAN com um link HTTPS
 
 O arquivo `render.yaml` na raiz do GitHub prepara um serviço Python que publica o site e a API na mesma origem. O banco existente continua no Supabase; nenhuma migração é reaplicada pelo deploy.

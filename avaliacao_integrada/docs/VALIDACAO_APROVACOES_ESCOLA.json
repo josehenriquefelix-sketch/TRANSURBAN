@@ -1,0 +1,16 @@
+{
+  "verificacoes": [
+    "Pedido motorista não concede acesso automático",
+    "Recebimento motorista gravado na fila sem envio",
+    "Decisão motorista aplica o papel autorizado",
+    "Aprovação motorista cria notificação pendente",
+    "Pedido gestor não concede acesso automático",
+    "Recebimento gestor gravado na fila sem envio",
+    "Decisão gestor aplica o papel autorizado",
+    "Aprovação gestor cria notificação pendente"
+  ],
+  "quantidade": 8,
+  "ambiente": "Supabase real, conta sintética descartada",
+  "smtp": "Ausente por escolha do responsável. Não houve envio de mensagens.",
+  "seguranca": "Nenhum usuário real recebeu novo papel durante o teste."
+}
