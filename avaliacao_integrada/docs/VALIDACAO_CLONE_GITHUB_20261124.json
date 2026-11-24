@@ -1,0 +1,17 @@
+{
+  "data": "2026-11-24",
+  "commit_testado": "0294a73f33e7fba08d9b487c23e107732b9efdf1",
+  "resultado": "OK",
+  "verificacoes": [
+    "Clone remoto no mesmo commit publicado",
+    "54 testes Python na cópia limpa",
+    "13 testes JavaScript na cópia limpa",
+    "Três painéis, APIs, apresentação e banner respondem na cópia",
+    "API da cópia retorna duas cidades e 88 linhas catalogadas",
+    "Configuração privada ignorada pelo Git e não servida",
+    "Login real na cópia: passageiro",
+    "Login real na cópia: motorista",
+    "Login real na cópia: gestor"
+  ],
+  "limites": "Instalação das dependências já realizada em ambiente novo neste Windows com o mesmo requirements. Não testa a rede ou as permissões físicas da escola."
+}
