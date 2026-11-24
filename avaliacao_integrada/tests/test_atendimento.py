@@ -26,6 +26,7 @@ class AtendimentoTests(unittest.TestCase):
             self.assertEqual(resposta.status_code, 200)
             self.assertIn(f'/logo-{logo}.svg', resposta.text)
 
+    @patch.dict('os.environ', {'SUPABASE_URL': 'https://teste.supabase.co', 'SUPABASE_KEY': 'chave_ficticia_apenas_para_mock'})
     def test_erro_de_login_distingue_confirmacao_e_credenciais(self):
         for codigo, status, trecho in [('email_not_confirmed', 403, 'Confirme'), ('invalid_credentials', 401, 'senha inválidos')]:
             with self.subTest(codigo=codigo), patch('backend.auth.httpx.request', return_value=httpx.Response(400, json={'error_code': codigo})):

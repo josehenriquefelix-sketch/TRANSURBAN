@@ -29,6 +29,7 @@ class MobilidadeTests(unittest.TestCase):
                 NovaSenha(senha=senha)
         self.assertEqual(NovaSenha(senha="Exemplo1!").senha, "Exemplo1!")
 
+    @patch.dict('os.environ', {'SUPABASE_URL': 'https://teste.supabase.co', 'SUPABASE_KEY': 'chave_ficticia_apenas_para_mock'})
     def test_senha_anterior_tem_mensagem_especifica(self):
         resposta = httpx.Response(422, json={"error_code": "same_password"})
         with patch("backend.auth.httpx.request", return_value=resposta):
