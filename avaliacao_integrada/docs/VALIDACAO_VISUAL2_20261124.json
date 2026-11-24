@@ -1,0 +1,23 @@
+{
+  "data": "2026-11-24",
+  "verificacoes": [
+    {
+      "painel": "passageiro",
+      "largura": 390,
+      "sem_excesso": true
+    },
+    {
+      "painel": "motorista",
+      "largura": 390,
+      "sem_excesso": true
+    },
+    {
+      "painel": "gestao",
+      "largura": 390,
+      "sem_excesso": true,
+      "tela": "painel autenticado",
+      "observacao": "Acesso renovado com sucesso após falha temporária de conexão."
+    }
+  ],
+  "escopo": "Revisão visual; sem mudanças de banco ou autenticação."
+}
