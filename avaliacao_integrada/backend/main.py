@@ -25,7 +25,6 @@ from backend.controller.mobilidade import router as mobilidade_router
 from backend.controller.suporte import router as suporte_router
 from backend.controller.chat import router as chat_router
 from backend.notificacoes import iniciar_entrega
-from backend.controller.materiais import router as materiais_router
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
@@ -64,7 +63,7 @@ async def manter_computador_ativo(_app):
 app = FastAPI(
     title="TRANSURBAN · API de Desenvolvimento de Sistemas",
     description=(
-        "Contas, cidades, linhas, trajetos, avaliações e passe demonstrativo. "
+        "Contas, cidades, linhas, viagens, avaliações e atendimento. "
         "Integração com Supabase por HTTPS."
     ),
     version="2.0.0",
@@ -92,7 +91,6 @@ app.include_router(cidades_router)
 app.include_router(linhas_router)
 app.include_router(analise_router)
 app.include_router(chat_router)
-app.include_router(materiais_router)
 
 
 def esquema_ds():
@@ -140,7 +138,7 @@ async def proteger_solicitacoes(request: Request, call_next):
 def health():
     return {
         "projeto": "TRANSURBAN",
-        "versao": "2026.11.18-operacao",
+        "versao": "2026.11.24-essencial",
         "supabase_configurado": supabase_configurado(),
         "interface": "/",
         "documentacao": "/docs",
@@ -189,6 +187,17 @@ async def erro_rede(_request: Request, erro: RequestError):
         },
     )
 
+
+
+@app.get("/equipe/apresentacao", include_in_schema=False)
+def apresentacao_equipe():
+    return FileResponse(FRONTEND_DIR.parent / "docs" / "APRESENTACAO_TRANSURBAN.html")
+
+
+@app.get("/equipe/banner.pdf", include_in_schema=False)
+def banner_equipe():
+    return FileResponse(FRONTEND_DIR.parent / "docs" / "BANNER_TRANSURBAN_20261124.pdf",
+                        media_type="application/pdf")
 
 
 # Serve interface and API from one origin, so the project starts with one local service.

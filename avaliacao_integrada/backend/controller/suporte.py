@@ -139,9 +139,8 @@ def pedir_acesso(dados: Pedido, usuario=Depends(usuario_atual)):
     revisores = [email.strip().lower() for email in os.getenv('EMAIL_APROVACOES','').split(',') if email.strip()]
     if revisores:
         try:
-            executar(lambda db: db.table('tu_email_acesso').upsert([
-                {'pedido_id':registro['id'],'destinatario':email,'evento':'revisar','papel':dados.papel}
-                for email in revisores],on_conflict='pedido_id,destinatario,evento'))
+            executar(lambda db: db.rpc('tu_enfileirar_revisores', {
+                'p_pedido':registro['id'], 'p_emails':revisores}))
         except Exception as erro:
             logging.getLogger(__name__).warning('Aviso administrativo não enfileirado (%s); pedido preservado.',type(erro).__name__)
     return {"id": registro["id"], "status": registro["status"], "mensagem": "Pedido recebido. O acesso profissional depende de análise e aprovação. A notificação por e-mail fica na fila de envio."}
@@ -150,7 +149,7 @@ def pedir_acesso(dados: Pedido, usuario=Depends(usuario_atual)):
 @router.get('/gestao/notificacoes')
 def notificacoes_acesso(usuario=Depends(administrador)):
     from backend.notificacoes import smtp_configurado
-    filas = executar(lambda db: db.table('tu_email_acesso').select('id,pedido_id,evento,estado,tentativas,criado_em,enviado_em,erro').order('criado_em',desc=True).limit(100))
+    filas = executar(lambda db: db.rpc('tu_listar_emails', {}))
     return {'smtp_configurado':smtp_configurado(),'notificacoes':filas}
 
 

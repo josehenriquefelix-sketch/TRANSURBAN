@@ -66,7 +66,8 @@ def processar_um():
         atualizacao={'estado':'falha' if registro['tentativas']>=5 else 'pendente',
                      'proxima_tentativa':(agora+timedelta(minutes=min(60,2**min(registro['tentativas'],6)))).isoformat(),
                      'erro':type(erro).__name__,'reserva':None,'reservado_ate':None}
-    db.table('tu_email_acesso').update(atualizacao).eq('id',registro['id']).eq('reserva',registro['reserva']).execute()
+    db.rpc('tu_concluir_email', {'p_pedido':registro['pedido_id'], 'p_id':registro['id'],
+           'p_reserva':registro['reserva'], 'p_dados':atualizacao}).execute()
     return True
 
 

@@ -37,32 +37,7 @@ def main():
     resultado("Configuracao privada do Supabase", configurado,
               "Preencha backend/.env com a URL e a chave do projeto da equipe.")
     if configurado:
-        tabelas = {
-            "cidade": "id_cidade",
-            "linha_onibus": "id_linha",
-            "tu_perfil": "usuario_id",
-            "tu_carteira": "numero",
-            "tu_trajeto": "id",
-            "tu_horario": "id",
-            "tu_avaliacao": "id",
-            "tu_recarga": "id",
-            "tu_acesso": "usuario_id",
-            "tu_motorista": "usuario_id",
-            "tu_favorito": "usuario_id",
-            "tu_viagem_operacional": "id",
-            "tu_posicao_atual": "viagem_id",
-            "tu_manifestacao": "id",
-            "tu_manifestacao_evento": "id",
-            "tu_chamado": "id",
-            "tu_alerta_operacional": "id",
-            "tu_pedido_acesso": "id",
-            "tu_suporte_evento": "id",
-            "tu_email_acesso": "id",
-            "tu_unidade": "id",
-            "tu_material": "id",
-            "tu_ordem_material": "id",
-            "tu_item_material": "ordem_id",
-        }
+        tabelas = {'cidade': 'id_cidade', 'linha_onibus': 'id_linha', 'tu_perfil': 'usuario_id', 'tu_acesso': 'usuario_id', 'tu_motorista': 'usuario_id', 'tu_favorito': 'usuario_id', 'tu_viagem_operacional': 'id', 'tu_posicao_atual': 'viagem_id', 'tu_manifestacao': 'id', 'tu_chamado': 'id', 'tu_alerta_operacional': 'id', 'tu_pedido_acesso': 'id'}
         for tabela, coluna in tabelas.items():
             try:
                 get_supabase().table(tabela).select(coluna).limit(1).execute()
@@ -78,7 +53,7 @@ def main():
         resultado("Base de analise interna em UTF-8", False,
                   "Atualize o repositorio e confira data/atrasos_analise.csv.")
 
-    for rota in ("/", "/mobilidade.css", "/mobilidade.js", "/localizacao.js", "/logo-passageiro.svg", "/logo-motorista.svg", "/logo-gestao.svg", "/motorista/", "/gestao/", "/estudo/materiais.html",  "/dados/", "/dados/chat.html", "/chat/perguntas", "/ia/dashboard/observacoes-por-dia", "/ia/dashboard/atraso-por-dia", "/operacao.js", "/atendimento/alertas", "/vendor/leaflet.js", "/vendor/chart.umd.min.js", "/docs", "/dados/docs", "/mobilidade/catalogo", "/mobilidade/viagens", "/portal/contexto"):
+    for rota in ("/", "/mobilidade.css", "/mobilidade.js", "/localizacao.js", "/logo-passageiro.svg", "/logo-motorista.svg", "/logo-gestao.svg", "/motorista/", "/gestao/", "/refinamento.css", "/ergonomia.js",  "/dados/", "/dados/chat.html", "/chat/perguntas", "/ia/dashboard/observacoes-por-dia", "/ia/dashboard/atraso-por-dia", "/operacao.js", "/atendimento/alertas", "/vendor/leaflet.js", "/vendor/chart.umd.min.js", "/docs", "/dados/docs", "/mobilidade/catalogo", "/mobilidade/viagens", "/portal/contexto"):
         try:
             with urlopen(f"http://127.0.0.1:8000{rota}", timeout=10) as resposta:
                 resultado(f"Site e API {rota}", resposta.status == 200)

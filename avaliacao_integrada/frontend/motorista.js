@@ -320,7 +320,7 @@ async function driverAccount() {
         }, false);
         user = await api("/auth/me", {}, false);
     }
-    if (!user.papeis?.includes("motorista")) throw new Error("Sua conta ainda não tem aprovação para motorista. Solicite o vínculo abaixo.");
+    if (!user.papeis?.includes("motorista")) throw new Error("Sua conta ainda não tem aprovação para motorista. Procure o responsável pelo TRANSURBAN para solicitar o vínculo.");
     state.user = user;
     state.catalog = await api("/mobilidade/catalogo");
     fillDriverLines();

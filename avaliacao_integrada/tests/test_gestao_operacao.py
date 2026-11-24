@@ -48,4 +48,4 @@ class GestaoOperacaoTests(unittest.TestCase):
             self.assertNotIn(path, page)
             self.assertEqual(self.client.get(path).status_code, 404)
         self.assertIn('Ocorrências recebidas', page)
-        self.assertEqual(self.client.get('/estudo/materiais.html').status_code, 200)
+        self.assertEqual(self.client.get('/estudo/materiais.html').status_code, 404)

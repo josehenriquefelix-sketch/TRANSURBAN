@@ -1,0 +1,23 @@
+{
+  "data": "2026-11-24",
+  "versao": "2026.11.24-essencial",
+  "testes_python": {"executados": 54, "falhas": 0},
+  "testes_javascript": {"executados": 13, "falhas": 0},
+  "verificacoes_reais": {"executadas": 34, "falhas": 0, "relatorio": "VALIDACAO_ENTREGA_20261124.json"},
+  "verificador_ambiente": "Todas as verificações deste computador passaram",
+  "banco": {"tabelas_ativas": 12, "tabelas_com_pk": 12, "rls_habilitada": 12, "historico_preservado_fora_da_api": true},
+  "cadastros": {"cidades": 2, "linhas_maringa": 66, "servicos_variantes_metropolitanos_sarandi": 22, "reconciliados_com_catalogo_documentado": true},
+  "fila_email": "Teste SQL com ROLLBACK passou; nenhuma mensagem enviada",
+  "navegador": "Três painéis conferidos no Chromium, 1280px e 390px; menu de toque/teclado e ausência de rolagem horizontal nas páginas testadas",
+  "swagger": "GET /cidades executado pelo Swagger: HTTP 200, Maringá e Sarandi",
+  "banner": "PDF de uma página A4 exportado do Canva, renderizado e conferido visualmente",
+  "segredos": "Arquivo .env ignorado; valores privados de chave/senha/token não encontrados nos arquivos publicáveis",
+  "limites": [
+    "Não é garantia de ausência de todos os erros ou compatibilidade com todos os navegadores",
+    "GPS físico e rede do celular na escola não foram testados",
+    "Sem SMTP configurado: recebimento de e-mail no Gmail não foi confirmado",
+    "Sem integração oficial de GPS ou pagamento da operadora",
+    "Formato exato de impressão exigido pela escola não pôde ser confirmado no Classroom",
+    "Instalação em Supabase totalmente novo não foi recriada nesta rodada; a escola utiliza o banco existente"
+  ]
+}

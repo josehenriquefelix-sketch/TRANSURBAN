@@ -1,0 +1,24 @@
+{
+  "data": "2026-11-24",
+  "verificacoes": [
+    {
+      "painel": "passageiro",
+      "largura": 390,
+      "menu": "abriu e fechou por Escape",
+      "sem_excesso_horizontal": true
+    },
+    {
+      "painel": "motorista",
+      "largura": 390,
+      "menu": "toque navega e fecha",
+      "sem_excesso_horizontal": true
+    },
+    {
+      "painel": "gestao",
+      "largura": 390,
+      "menu": "ocorrências recebidas acessível por toque",
+      "sem_excesso_horizontal": true
+    }
+  ],
+  "limite": "Emulação de viewport Chromium; não substitui GPS físico nem teste em outros navegadores."
+}

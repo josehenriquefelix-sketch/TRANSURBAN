@@ -17,13 +17,13 @@ class PortalSegurancaTests(unittest.TestCase):
         ds = self.client.get("/openapi.json").json()["paths"]
         dados = self.client.get("/dados/openapi.json").json()["paths"]
         self.assertIn("/cidades", ds)
-        self.assertIn("/portal/recargas", ds)
+        self.assertNotIn("/portal/recargas", ds)
         self.assertFalse(any(path.startswith("/ia/") for path in ds))
         self.assertTrue({'/ia/resumo','/ia/totalizacao/cidade','/ia/totalizacao/periodo','/ia/totalizacao/transito','/ia/totalizacao/clima','/chat','/chat/perguntas'} <= set(dados))
         self.assertTrue(all(path.startswith(("/ia/", "/chat")) for path in dados))
 
     def test_visitante_nao_acessa_dados_privados(self):
-        for path in ("/auth/me", "/portal/passe", "/portal/avaliacoes"):
+        for path in ("/auth/me", "/mobilidade/minhas-manifestacoes", "/atendimento/meus-chamados"):
             self.assertEqual(self.client.get(path).status_code, 401)
         self.assertEqual(self.client.post("/cidades", json={"nome": "Teste"}).status_code, 401)
 

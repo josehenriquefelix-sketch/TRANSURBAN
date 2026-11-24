@@ -16,7 +16,7 @@ REDE = "--rede" in sys.argv
 PORT = 8000
 BASE_URL = f"http://{HOST}:{PORT}"
 CAMINHOS = {'passageiro':'/', 'motorista':'/motorista/', 'gestao':'/gestao/', 'dados':'/dados/'}
-VERSAO = "2026.11.18-operacao"
+VERSAO = "2026.11.24-essencial"
 
 
 def porta_aberta() -> bool:

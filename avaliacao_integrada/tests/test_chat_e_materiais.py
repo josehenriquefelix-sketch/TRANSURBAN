@@ -52,7 +52,7 @@ class MaterialEscolarTests(unittest.TestCase):
         self.assertEqual(r.status_code,503)
 
     def test_estoque_exige_conta_administrativa(self):
-        self.assertEqual(self.client.get('/gestao/estoque/materiais').status_code,401)
+        self.assertEqual(self.client.get('/gestao/estoque/materiais').status_code,404)
 
     def test_material_e_item_nao_aceitam_valores_invalidos(self):
         for preco in ['0','-1','1.123','NaN','Infinity']:

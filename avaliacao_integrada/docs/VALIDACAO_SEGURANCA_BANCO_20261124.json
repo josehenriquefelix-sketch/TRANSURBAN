@@ -1,0 +1,16 @@
+{
+  "data": "2026-11-24",
+  "fonte": "Consulta SQL no painel Supabase",
+  "tabelas_ativas": 12,
+  "tabelas_com_pk": 12,
+  "rls_ativas": 12,
+  "arquivo_sem_acesso_anon": true,
+  "rpc_reserva_sem_acesso_anon": true,
+  "tabelas_arquivadas": 18,
+  "fila_sql": "Pedido, deduplicação, reserva e conclusão passaram em transação revertida, sem envio SMTP.",
+  "catalogo": {
+    "Maringá": 66,
+    "Sarandi_servicos_variantes_metropolitanos": 22
+  },
+  "limite": "Não representa auditoria integral de todas as políticas e objetos internos."
+}
