@@ -4,7 +4,8 @@ from functools import lru_cache
 from pathlib import Path
 
 from dotenv import load_dotenv
-from supabase import Client, create_client
+import httpx
+from supabase import Client, ClientOptions, create_client
 
 load_dotenv(Path(__file__).with_name(".env"), override=False)
 
@@ -31,5 +32,8 @@ def get_supabase() -> Client:
         raise RuntimeError("SUPABASE_URL deve ser a URL HTTPS real do projeto Supabase.")
     if "EXEMPLO_FICTICIO" in key:
         raise RuntimeError("Substitua SUPABASE_KEY de exemplo pela chave privada do projeto.")
-    return create_client(url, key)
+    # Mantém HTTPS e a verificação de certificados. HTTP/1.1 evita compartilhar
+    # streams HTTP/2 que falharam nas consultas simultâneas dos painéis.
+    conexao = httpx.Client(http2=False, timeout=20)
+    return create_client(url, key, options=ClientOptions(httpx_client=conexao))
 

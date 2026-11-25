@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 595.276 841.89">
+<rect x="0" y="0" width="595.276" height="841.89" rx="0" fill="#f2f6f8"/>
+<rect x="0" y="0" width="595.276" height="121" rx="0" fill="#132d48"/>
+<text x="27" y="58" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#ffffff">TRANSURBAN</text>
+<text x="28" y="85" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#b7e6cf">Mobilidade urbana entre Maringá e Sarandi</text>
+<text x="28" y="107" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#e3eef3">PROJETO ESCOLAR INDEPENDENTE</text>
+<rect x="25" y="138" width="545" height="87" rx="10" fill="#ffffff"/>
+<text x="39" y="159" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#08735c">EQUIPE</text>
+<text x="39" y="176" font-family="Arial,sans-serif" font-size="11" font-weight="400" fill="#132d48">José Henrique · Bruno · Cauã · Ana Carolina · Gustavo</text>
+<text x="39" y="198" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">Orientador: Erinaldo Sanches Nascimento</text>
+<text x="39" y="215" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">CEEP Padre Joseir Sversutti · Desenvolvimento de Sistemas</text>
+<text x="28" y="254" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#08735c">INTRODUÇÃO</text>
+<text x="28" y="274" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">O projeto reúne consulta de linhas, avaliações e relatos</text>
+<text x="28" y="288" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">de mobilidade em três áreas de acesso. Seu foco é o</text>
+<text x="28" y="302" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">transporte coletivo em Maringá e Sarandi, com</text>
+<text x="28" y="316" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">informações identificadas por fonte.</text>
+<text x="309" y="254" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#08735c">METODOLOGIA</text>
+<text x="309" y="274" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">Telas em HTML, CSS e JavaScript. API em Python e</text>
+<text x="309" y="288" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">FastAPI. Banco PostgreSQL no Supabase, com</text>
+<text x="309" y="302" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">permissões por função. Pandas é usado na análise de</text>
+<text x="309" y="316" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">um CSV sintético, separado da operação.</text>
+<text x="28" y="365" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#08735c">TRÊS ÁREAS DO SISTEMA</text>
+<rect x="28" y="376" width="171" height="107" rx="9" fill="#ffffff"/>
+<rect x="28" y="376" width="171" height="4" rx="0" fill="#08735c"/>
+<text x="40" y="403" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#08735c">PASSAGEIRO</text>
+<text x="40" y="424.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">Consulta de linhas e fontes de</text>
+<text x="40" y="437.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">horários, favoritos, avaliações e</text>
+<text x="40" y="450.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">relatos.</text>
+<rect x="212" y="376" width="171" height="107" rx="9" fill="#ffffff"/>
+<rect x="212" y="376" width="171" height="4" rx="0" fill="#a65311"/>
+<text x="224" y="403" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#a65311">MOTORISTA</text>
+<text x="224" y="424.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">Identificação do ônibus, seleção</text>
+<text x="224" y="437.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">de linha e viagem com posição do</text>
+<text x="224" y="450.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">dispositivo autorizado.</text>
+<rect x="396" y="376" width="171" height="107" rx="9" fill="#ffffff"/>
+<rect x="396" y="376" width="171" height="4" rx="0" fill="#8c6b2d"/>
+<text x="408" y="403" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#8c6b2d">GESTÃO</text>
+<text x="408" y="424.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">Acompanhamento de viagens,</text>
+<text x="408" y="437.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">análise de relatos, respostas e</text>
+<text x="408" y="450.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">aprovação de vínculos.</text>
+<text x="28" y="514" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#08735c">RESULTADOS VERIFICADOS EM 25 DE NOVEMBRO DE 2026</text>
+<rect x="28" y="526" width="171" height="67" rx="9" fill="#e7f1ec"/>
+<text x="40" y="561" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#08735c">12</text>
+<text x="40" y="580.5" font-family="Arial,sans-serif" font-size="8.5" font-weight="400" fill="#132d48">tabelas ativas</text>
+<rect x="212" y="526" width="171" height="67" rx="9" fill="#e7f1ec"/>
+<text x="224" y="561" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#08735c">3</text>
+<text x="224" y="580.5" font-family="Arial,sans-serif" font-size="8.5" font-weight="400" fill="#132d48">painéis com acesso por papel</text>
+<rect x="396" y="526" width="171" height="67" rx="9" fill="#e7f1ec"/>
+<text x="408" y="561" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#08735c">34</text>
+<text x="408" y="580.5" font-family="Arial,sans-serif" font-size="8.5" font-weight="400" fill="#132d48">verificações reais aprovadas</text>
+<text x="28" y="616" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">Também passaram 54 testes Python e 27 testes JavaScript. Um chamado privado de teste foi gravado, respondido e</text>
+<text x="28" y="630" font-family="Arial,sans-serif" font-size="10" font-weight="400" fill="#132d48">conferido no banco; somente esse registro temporário foi removido.</text>
+<text x="28" y="678" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#08735c">CONCLUSÃO E LIMITES</text>
+<text x="28" y="696.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">O protótipo conecta interface, API e banco. GPS depende do aparelho, permissão e contexto seguro. SMTP e entrega real de</text>
+<text x="28" y="709.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">e-mail ainda precisam ser configurados e testados. Não há integração oficial com telemetria ou bilhetagem. A cobertura</text>
+<text x="28" y="722.5" font-family="Arial,sans-serif" font-size="9.5" font-weight="400" fill="#132d48">municipal completa de Sarandi não foi confirmada.</text>
+<text x="28" y="770" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#08735c">FONTES</text>
+<text x="28" y="785.5" font-family="Arial,sans-serif" font-size="7.5" font-weight="400" fill="#132d48">Relatórios do projeto: VALIDACAO_ENTREGA_20261125 e VALIDACAO_LOGINS_20261125.</text>
+<text x="28" y="798.5" font-family="Arial,sans-serif" font-size="7.5" font-weight="400" fill="#132d48">Catálogo documentado em 12/11/2026: Na Hora Maringá e DER/PR. Dados de estudo: CSV sintético.</text>
+<text x="28" y="811.5" font-family="Arial,sans-serif" font-size="7.5" font-weight="400" fill="#132d48">Documentação técnica: fastapi.tiangolo.com · supabase.com/docs · pandas.pydata.org/docs</text>
+</svg>

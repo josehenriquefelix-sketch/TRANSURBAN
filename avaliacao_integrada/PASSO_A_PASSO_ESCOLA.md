@@ -5,7 +5,7 @@
 - Link do GitHub: `https://github.com/josehenriquefelix-sketch/TRANSURBAN.git`.
 - Arquivo privado `backend/.env`, levado separadamente em um pendrive ou outro meio privado.
 - E-mail e senha da conta autorizada, guardados em particular.
-- Slides em `docs/APRESENTACAO_TRANSURBAN.html` e falas em `docs/ROTEIRO_APRESENTACAO.md`.
+- Roteiro sem slides em `docs/ROTEIRO_TRANSURBAN_SEM_SLIDES.docx`; mostrar os sites e a API durante as falas.
 
 O GitHub não contém o `.env` nem as senhas. Copiar as credenciais privadas é uma etapa necessária para usar o mesmo Supabase da equipe.
 

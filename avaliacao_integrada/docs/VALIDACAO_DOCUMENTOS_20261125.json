@@ -1,0 +1,18 @@
+{
+  "data": "2026-11-25",
+  "resultado": "OK",
+  "ajuste": "Cliente HTTPS do Supabase usa HTTP/1.1, preservando TLS e validação de certificados, após falha HTTP/2 registrada no servidor. Não há reenvio automático de gravações.",
+  "concorrencia": {
+    "consultas": 16,
+    "simultaneas": 4,
+    "falhas": 0
+  },
+  "arquivos_servidos": {
+    "/equipe/banner.pdf": "BANNER_TRANSURBAN_REVISADO_20261125.pdf",
+    "/equipe/roteiro.docx": "ROTEIRO_TRANSURBAN_SEM_SLIDES.docx",
+    "/equipe/conferencia.docx": "CONFERENCIA_E_ACESSOS_TRANSURBAN.docx"
+  },
+  "banner": "PDF revisado local A4 e SVG editável; original preservado; Canva sem permissão pelo conector",
+  "documentos": "Dois DOCX abertos no Word; prova de impressão pelo Microsoft Print to PDF renderizada em PNG e inspecionada. Renderer LibreOffice indisponível neste Windows.",
+  "limites": "Teste curto de concorrência não comprova ausência de falhas em qualquer carga ou rede. SMTP, GPS físico e Chrome externo mantêm os limites anteriores."
+}

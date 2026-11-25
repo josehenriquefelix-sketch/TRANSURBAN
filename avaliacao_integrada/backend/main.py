@@ -196,8 +196,22 @@ def apresentacao_equipe():
 
 @app.get("/equipe/banner.pdf", include_in_schema=False)
 def banner_equipe():
-    return FileResponse(FRONTEND_DIR.parent / "docs" / "BANNER_TRANSURBAN_20261124.pdf",
+    return FileResponse(FRONTEND_DIR.parent / "docs" / "BANNER_TRANSURBAN_REVISADO_20261125.pdf",
                         media_type="application/pdf")
+
+
+@app.get("/equipe/roteiro.docx", include_in_schema=False)
+def roteiro_equipe():
+    return FileResponse(FRONTEND_DIR.parent / "docs" / "ROTEIRO_TRANSURBAN_SEM_SLIDES.docx",
+                        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        filename="ROTEIRO_TRANSURBAN_SEM_SLIDES.docx")
+
+
+@app.get("/equipe/conferencia.docx", include_in_schema=False)
+def conferencia_equipe():
+    return FileResponse(FRONTEND_DIR.parent / "docs" / "CONFERENCIA_E_ACESSOS_TRANSURBAN.docx",
+                        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        filename="CONFERENCIA_E_ACESSOS_TRANSURBAN.docx")
 
 
 # Serve interface and API from one origin, so the project starts with one local service.
