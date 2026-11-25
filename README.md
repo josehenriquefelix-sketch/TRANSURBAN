@@ -46,7 +46,7 @@ Motorista e gestão exigem conta autorizada. As senhas e chaves não são public
 
 ## Apresentação e banner
 
-- [Falas: José → Bruno → Cauã → Ana Carolina → Gustavo](avaliacao_integrada/docs/ROTEIRO_APRESENTACAO.md).
+- [Falas: José → Bruno → kauan → Ana Carolina → Gustavo](avaliacao_integrada/docs/ROTEIRO_APRESENTACAO.md).
 - [Slides HTML para abrir no navegador](avaliacao_integrada/docs/APRESENTACAO_TRANSURBAN.html): baixe o projeto e abra o arquivo; a página do GitHub mostra seu código.
 - [Banner editável no Canva](https://www.canva.com/design/DAHaDq9Tc8I/oFhhzQ4O4VNY-gSqSoUNbg/edit).
 - [PDF do banner revisado](avaliacao_integrada/docs/BANNER_TRANSURBAN_20261124.pdf), exportado e conferido visualmente. Mantém A4 do arquivo original; o tamanho exigido pela escola precisa ser confirmado.
