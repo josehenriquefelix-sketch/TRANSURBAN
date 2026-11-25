@@ -1,0 +1,18 @@
+{
+  "data": "2026-11-25",
+  "testes_python": {"executados": 54, "falhas": 0},
+  "testes_javascript": {"executados": 33, "falhas": 0, "novos_testes_de_cadastro": 6},
+  "navegador": {
+    "formularios": ["passageiro", "motorista", "gestao"],
+    "verificado": "Abertura, campos, retorno ao login profissional e layout em viewport de 390x844; sem transbordamento horizontal.",
+    "contas_reais_criadas": 0
+  },
+  "http": {"/": 200, "/motorista/": 200, "/gestao/": 200, "/cadastro.js": 200, "/docs": 200},
+  "arquivos": "git diff --check aprovado; recursos HTML existentes; nenhuma correspondência das credenciais privadas nos arquivos publicáveis conferidos.",
+  "limites": [
+    "Testes do novo fluxo de cadastro e pedido de acesso usam respostas simuladas.",
+    "Cadastro com novo CPF real, entrega de confirmação e recuperação por e-mail não foram comprovados nesta rodada.",
+    "SMTP autorizado continua pendente de configuração e teste.",
+    "O formulário profissional solicita análise de vínculo; não concede papel de motorista ou gestor."
+  ]
+}

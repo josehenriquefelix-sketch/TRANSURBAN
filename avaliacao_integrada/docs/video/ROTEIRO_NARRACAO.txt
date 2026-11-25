@@ -1,0 +1,19 @@
+Este é o Transurban, um projeto escolar independente sobre mobilidade em Maringá e Sarandi. Neste guia, você vai conhecer os três painéis e entender como o site, a API e o banco trabalham juntos. As imagens são capturas reais do projeto.
+
+No passageiro, a pessoa escolhe a cidade ou o serviço e pesquisa a linha pelo bairro ou pelo código. Jardim Olímpico, por exemplo, aparece como linha quatrocentos e sessenta de Maringá. As ligações metropolitanas ficam separadas das linhas municipais. Os horários disponíveis usam as fontes indicadas no sistema. Partida de terminal não é previsão de chegada em qualquer ponto.
+
+Os três acessos têm uma opção de criar conta, com nome, CPF, e-mail, senha e confirmação. A senha precisa de pelo menos oito caracteres, com maiúscula, minúscula, número e símbolo. Cada pessoa usa os próprios dados. O cadastro não dá permissão administrativa. Para motorista e gestão, o vínculo profissional passa pela aprovação do responsável. A confirmação e a recuperação por e-mail ainda dependem do envio configurado e testado.
+
+O motorista autorizado informa o modelo e o número do ônibus, escolhe a linha e o sentido e prepara a viagem. Para compartilhar a posição, precisa permitir o GPS do dispositivo. Ao encerrar a viagem, o compartilhamento termina. A posição tem a precisão informada pelo aparelho. Não é o GPS oficial da operadora.
+
+A gestão tem um painel separado. Ela acompanha viagens, avaliações e relatos de passageiros e motoristas. Os indicadores mostram os registros disponíveis, por isso uma fila vazia não deve ser preenchida com ocorrências inventadas. A gestão analisa o relato antes de publicar uma orientação. Vermelho, amarelo e verde representam condições informadas. Um local sem marcação não significa trânsito livre.
+
+A API é a parte que recebe os pedidos das telas, confere as permissões e consulta os registros. Ela foi feita em Python com Fast API. No Swagger, a consulta de cidades retornou Maringá e Sarandi em JSON, com resposta duzentos. Esse formato permite que as telas e o servidor troquem informações.
+
+O banco PostgreSQL está no Supabase. A aplicação usa doze tabelas ativas. Há tabelas para cidades, linhas, perfis, acessos, viagens, posições, favoritos e atendimento. As chaves relacionam os registros. Por exemplo, uma linha pertence a uma cidade. A senha é gerenciada pelo serviço de autenticação. Esta visualização técnica mostra a estrutura, sem expor os dados das pessoas.
+
+O GitHub guarda o código, os scripts do banco e as instruções. Para usar em outro computador, a equipe baixa o projeto pelo Git e abre no VS Code. O arquivo privado de configuração é levado separadamente. Depois, inicia o servidor local. É necessário ter Python, Git e internet. Nunca publique o arquivo de segredos ou mostre senhas na apresentação.
+
+O grupo também tem um roteiro sem slides, para mostrar os próprios sites, e o banner com o layout original, em noventa por cento e vinte centímetros. A parte de Ciência de Dados usa uma base sintética de estudo. Ela não representa viagens nem passageiros reais.
+
+Apresentem o que está comprovado. A lista municipal completa de Sarandi ainda precisa de confirmação. O recebimento real de e-mails e o GPS físico não foram comprovados nesta rodada. O projeto não possui integração oficial de telemetria ou bilhetagem. Com esses limites claros, cada integrante consegue explicar sua parte e demonstrar a proposta com segurança.

@@ -1,0 +1,114 @@
+{
+  "duration_seconds": 223.13696145124717,
+  "voice": "HeyGen Lucilene Clear & Trustworthy, pt-BR, voz sintética",
+  "voice_id": "e808da2329754929803c8bd98dc36857",
+  "captions": "Palavras e tempos retornados pelo serviço; sem acelerar ou esticar a fala.",
+  "captures": "Telas reais do projeto; Supabase capturado em 24/11/2026, demais em 25/11/2026.",
+  "timeline": [
+    {
+      "start": 0,
+      "asset": "passageiro.jpg",
+      "chapter": "TRANSURBAN • conheça o sistema"
+    },
+    {
+      "start": 15.745,
+      "asset": "passageiro.jpg",
+      "chapter": "Passageiro • cidade, bairro e linha"
+    },
+    {
+      "start": 31.165000000000003,
+      "asset": "horarios.jpg",
+      "chapter": "Horários • programação e fontes"
+    },
+    {
+      "start": 38.402,
+      "asset": "cadastro_passageiro.jpg",
+      "chapter": "Criar conta • passageiro"
+    },
+    {
+      "start": 45.357,
+      "asset": "cadastro_motorista.jpg",
+      "chapter": "Criar conta • motorista"
+    },
+    {
+      "start": 57.487,
+      "asset": "cadastro_gestao.jpg",
+      "chapter": "Criar conta • gestão e aprovação"
+    },
+    {
+      "start": 68.127,
+      "asset": "motorista.jpg",
+      "chapter": "Motorista • ônibus, linha e sentido"
+    },
+    {
+      "start": 74.74,
+      "asset": "motorista.jpg",
+      "chapter": "Viagem • GPS do dispositivo autorizado"
+    },
+    {
+      "start": 87.3,
+      "asset": "gestao.jpg",
+      "chapter": "Gestão • viagens e atendimento"
+    },
+    {
+      "start": 101.98599999999999,
+      "asset": "gestao_mapa.jpg",
+      "chapter": "Gestão • análise de ocorrências"
+    },
+    {
+      "start": 113.68299999999999,
+      "asset": "api.jpg",
+      "chapter": "API • Python e FastAPI"
+    },
+    {
+      "start": 122.407,
+      "asset": "api_cidades.jpg",
+      "chapter": "Consulta real • GET /cidades retornou 200"
+    },
+    {
+      "start": 133.225,
+      "asset": "supabase.jpg",
+      "chapter": "Supabase • captura de 24/11/2026"
+    },
+    {
+      "start": 138.98499999999999,
+      "asset": "tabelas.jpg",
+      "chapter": "Banco • estrutura das 12 tabelas ativas"
+    },
+    {
+      "start": 147.197,
+      "asset": "tabelas.jpg",
+      "chapter": "Banco • relações e autenticação"
+    },
+    {
+      "start": 160.53,
+      "asset": "github.jpg",
+      "chapter": "GitHub • código e instruções"
+    },
+    {
+      "start": 165.036,
+      "asset": "github.jpg",
+      "chapter": "Na escola • Git, VS Code e servidor local"
+    },
+    {
+      "start": 184.37699999999998,
+      "asset": "banner.png",
+      "chapter": "Equipe • roteiro sem slides e banner original"
+    },
+    {
+      "start": 193.488,
+      "asset": "passageiro.jpg",
+      "chapter": "Ciência de Dados • base sintética de estudo"
+    },
+    {
+      "start": 200.144,
+      "asset": "passageiro.jpg",
+      "chapter": "Limites • explique apenas o que foi comprovado"
+    }
+  ],
+  "limits": [
+    "Não é gravação ao vivo.",
+    "Cadastro com provedor/e-mail não foi testado com nova conta real nesta rodada. SMTP pendente.",
+    "Sem comprovação de GPS físico ou integração oficial de telemetria/bilhetagem."
+  ]
+}

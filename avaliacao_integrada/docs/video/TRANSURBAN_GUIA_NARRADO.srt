@@ -1,0 +1,155 @@
+1
+00:00:00,299 --> 00:00:05,760
+Este é o Transurban um projeto escolar independente sobre mobilidade em Maringá e Sarandi
+
+2
+00:00:06,060 --> 00:00:11,734
+Neste guia você vai conhecer os três painéis e entender como o site a API e o banco
+
+3
+00:00:11,777 --> 00:00:17,516
+trabalham juntos As imagens são capturas reais do projeto No passageiro a pessoa escolhe
+
+4
+00:00:17,559 --> 00:00:23,020
+a cidade ou o serviço e pesquisa a linha pelo bairro ou pelo código Jardim Olímpico
+
+5
+00:00:23,191 --> 00:00:28,670
+por exemplo aparece como linha quatrocentos e sessenta de Maringá As ligações metropolitanas
+
+6
+00:00:28,712 --> 00:00:34,430
+ficam separadas das linhas municipais Os horários disponíveis usam as fontes indicadas no sistema
+
+7
+00:00:34,942 --> 00:00:40,600
+Partida de terminal não é previsão de chegada em qualquer ponto Os três acessos têm uma opção de criar
+
+8
+00:00:40,685 --> 00:00:46,146
+conta com nome CPF e mail senha e confirmação A senha
+
+9
+00:00:46,189 --> 00:00:51,565
+precisa de pelo menos oito caracteres com maiúscula minúscula número e símbolo
+
+10
+00:00:52,090 --> 00:00:56,954
+Cada pessoa usa os próprios dados O cadastro não dá permissão administrativa
+
+11
+00:00:57,637 --> 00:01:03,588
+Para motorista e gestão o vínculo profissional passa pela aprovação do responsável A confirmação
+
+12
+00:01:03,630 --> 00:01:09,514
+e a recuperação por e mail ainda dependem do envio configurado e testado O motorista autorizado
+
+13
+00:01:09,557 --> 00:01:15,061
+informa o modelo e o número do ônibus escolhe a linha e o sentido e prepara a viagem Para
+
+14
+00:01:15,104 --> 00:01:20,623
+compartilhar a posição precisa permitir o GPS do dispositivo Ao encerrar a viagem o
+
+15
+00:01:20,666 --> 00:01:26,511
+compartilhamento termina A posição tem a precisão informada pelo aparelho Não é o GPS oficial
+
+16
+00:01:26,596 --> 00:01:32,031
+da operadora A gestão tem um painel separado Ela acompanha viagens avaliações
+
+17
+00:01:32,159 --> 00:01:37,486
+e relatos de passageiros e motoristas Os indicadores mostram os registros disponíveis
+
+18
+00:01:37,870 --> 00:01:43,374
+por isso uma fila vazia não deve ser preenchida com ocorrências inventadas A gestão analisa o
+
+19
+00:01:43,416 --> 00:01:49,366
+relato antes de publicar uma orientação Vermelho amarelo e verde representam condições
+
+20
+00:01:49,408 --> 00:01:55,070
+informadas Um local sem marcação não significa trânsito livre A API é a parte
+
+21
+00:01:55,156 --> 00:02:00,660
+que recebe os pedidos das telas confere as permissões e consulta os registros Ela foi feita
+
+22
+00:02:00,703 --> 00:02:06,099
+em Python com Fast API No Swagger a consulta de cidades retornou Maringá e Sarandi
+
+23
+00:02:06,227 --> 00:02:11,603
+em JSON com resposta duzentos Esse formato permite que as telas e o servidor
+
+24
+00:02:11,731 --> 00:02:17,514
+troquem informações O banco PostgreSQL está no Supabase A aplicação usa doze
+
+25
+00:02:17,642 --> 00:02:23,146
+tabelas ativas Há tabelas para cidades linhas perfis acessos
+
+26
+00:02:23,402 --> 00:02:29,395
+viagens posições favoritos e atendimento As chaves relacionam os registros
+
+27
+00:02:29,736 --> 00:02:35,326
+Por exemplo uma linha pertence a uma cidade A senha é gerenciada pelo serviço de autenticação
+
+28
+00:02:35,858 --> 00:02:41,362
+Esta visualização técnica mostra a estrutura sem expor os dados das pessoas O GitHub
+
+29
+00:02:41,448 --> 00:02:46,978
+guarda o código os scripts do banco e as instruções Para usar em outro computador a
+
+30
+00:02:47,021 --> 00:02:52,525
+equipe baixa o projeto pelo Git e abre no VS Code O arquivo privado de configuração
+
+31
+00:02:52,568 --> 00:02:58,178
+é levado separadamente Depois inicia o servidor local É necessário ter Python
+
+32
+00:02:58,349 --> 00:03:04,066
+Git e internet Nunca publique o arquivo de segredos ou mostre senhas na apresentação
+
+33
+00:03:04,527 --> 00:03:09,775
+O grupo também tem um roteiro sem slides para mostrar os próprios sites e o banner com o layout
+
+34
+00:03:09,903 --> 00:03:15,516
+original em noventa por cento e vinte centímetros A parte de Ciência de Dados usa uma
+
+35
+00:03:15,558 --> 00:03:20,934
+base sintética de estudo Ela não representa viagens nem passageiros reais Apresentem
+
+36
+00:03:21,062 --> 00:03:26,160
+o que está comprovado A lista municipal completa de Sarandi ainda precisa de confirmação
+
+37
+00:03:26,672 --> 00:03:31,920
+O recebimento real de e mails e o GPS físico não foram comprovados nesta rodada
+
+38
+00:03:32,282 --> 00:03:37,957
+O projeto não possui integração oficial de telemetria ou bilhetagem Com esses limites claros
+
+39
+00:03:38,298 --> 00:03:42,693
+cada integrante consegue explicar sua parte e demonstrar a proposta com segurança

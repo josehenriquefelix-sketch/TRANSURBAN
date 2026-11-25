@@ -1,0 +1,13 @@
+{
+  "resultado": "OK",
+  "arquivo": "TRANSURBAN_GUIA_NARRADO.mp4",
+  "duracao_segundos": 223.13696145124717,
+  "dimensoes": "1280x720",
+  "video": "H.264 yuv420p, 24 fps",
+  "audio": "AAC, voz sintética pt-BR",
+  "audio_volume_medio_dB": -16.8,
+  "decodificacao_integral": "aprovada",
+  "frames_extraidos": 20,
+  "tamanho_bytes": 6129060,
+  "limite": "Conferência por quadros e decodificação integral; não equivale à reprodução contínua ou teste de conta real."
+}

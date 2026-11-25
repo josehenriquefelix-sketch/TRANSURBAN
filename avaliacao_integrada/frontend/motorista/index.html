@@ -23,8 +23,9 @@
   <script defer src="/ergonomia.js?v=20261125-uso3"></script>
   <script defer src="/busca-linhas.js?v=20261125-uso3"></script>
   <script defer src="/conexao.js?v=20261125-uso3"></script>
- <link rel="stylesheet" href="/desktop.css?v=20261125-desktop1"/>
+ <link rel="stylesheet" href="/desktop.css?v=20261125-contas1"/>
   <script defer src="/atalhos.js?v=20261125-desktop1"></script>
+ <script defer src="/cadastro.js?v=20261125-contas1"></script>
  </head>
  <body data-area="motorista">
   <section class="portal-login" id="driverLogin">
@@ -82,6 +83,33 @@
      <a href="/#esqueci-senha">
       Esqueci minha senha
      </a>
+    </form>
+    <div class="registration-choice" data-registration-choice>
+     <p>Ainda não tem conta?</p>
+     <button class="btn quiet wide" type="button" data-open-signup>Criar conta de motorista</button>
+    </div>
+    <form class="professionalSignupForm" data-papel="motorista" data-login-id="driverLoginForm" hidden>
+     <span class="eyebrow">PRIMEIRO ACESSO</span>
+     <h2>Cadastro de motorista</h2>
+     <p>Crie sua conta com seus próprios dados. O acesso profissional exige aprovação do responsável.</p>
+     <label for="newProfessionalName">Nome completo</label>
+     <input id="newProfessionalName" name="nome" autocomplete="name" type="text" minlength="2" maxlength="100" required/>
+     <label for="newProfessionalCpf">CPF</label>
+     <input id="newProfessionalCpf" name="cpf" data-cpf inputmode="numeric" type="text" maxlength="14" placeholder="000.000.000-00" required/>
+     <label for="newProfessionalEmail">E-mail</label>
+     <input id="newProfessionalEmail" name="email" autocomplete="email" type="email" maxlength="254" required/>
+     <label for="newProfessionalPassword">Senha</label>
+     <input id="newProfessionalPassword" name="senha" autocomplete="new-password" type="password" minlength="8" maxlength="72" required/>
+     <label for="newProfessionalConfirm">Confirme a senha</label>
+     <input id="newProfessionalConfirm" name="confirmacao" autocomplete="new-password" type="password" minlength="8" maxlength="72" required/>
+     <p class="subtle">No mínimo 8 caracteres, com maiúscula, minúscula, número e símbolo.</p>
+     <label for="newProfessionalReason">Vínculo profissional</label>
+     <textarea id="newProfessionalReason" name="justificativa" minlength="10" maxlength="1000" placeholder="Explique seu vínculo para análise. Não envie documentos ou senhas." required></textarea>
+     <button class="btn primary wide" type="submit">Criar minha conta</button>
+     <p class="status" role="status" aria-live="polite"></p>
+     <button class="btn quiet wide" type="button" data-request-next hidden>Continuar para solicitar autorização</button>
+     <button class="plain registration-back" type="button" data-back-login>Já tenho conta. Voltar para entrar</button>
+     <p class="privacy-links"><a href="/privacidade.html">Privacidade</a> · <a href="/termos.html">Condições de uso</a></p>
     </form>
     <details class="professional-request">
      <summary>Primeiro acesso? Solicitar autorização de motorista</summary>

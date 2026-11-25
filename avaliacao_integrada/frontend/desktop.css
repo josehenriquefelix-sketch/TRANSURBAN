@@ -1,4 +1,8 @@
 /* Espaço de trabalho: a mesma aplicação, organizada para telas grandes e toque. */
+.registration-choice{max-width:440px;margin:22px auto 0;padding-top:16px;border-top:1px solid var(--line);font-size:14px}
+.registration-choice p{margin:0 0 10px}.registration-back{display:block;margin:16px 0;color:var(--green);font-size:14px;text-align:left}
+.professionalSignupForm[hidden],.registration-choice[hidden],.professional-request[hidden],[data-request-next][hidden]{display:none!important}
+.professionalSignupForm textarea{width:100%;min-height:100px}
 .professional-request{width:100%;max-width:440px;margin:24px auto 0;border-top:1px solid var(--line);padding-top:20px;font-size:14px;line-height:1.65}
 .professional-request summary{cursor:pointer;font-weight:700;color:var(--green);padding:8px 0}
 .professional-request p{margin:14px 0}.professional-request form{margin-top:16px}
