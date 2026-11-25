@@ -196,7 +196,7 @@ def apresentacao_equipe():
 
 @app.get("/equipe/banner.pdf", include_in_schema=False)
 def banner_equipe():
-    return FileResponse(FRONTEND_DIR.parent / "docs" / "BANNER_TRANSURBAN_REVISADO_20261125.pdf",
+    return FileResponse(FRONTEND_DIR.parent / "docs" / "BANNER_TRANSURBAN_ORIGINAL_90x120cm.pdf",
                         media_type="application/pdf")
 
 

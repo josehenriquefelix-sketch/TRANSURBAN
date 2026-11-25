@@ -42,13 +42,13 @@ O CSV da atividade de Ciência de Dados é sintético. As quatro totalizações 
 
 SMTP está preparado, mas não configurado. Não há entrega no Gmail confirmada. Login Google depende do provedor e dos endereços permitidos no Supabase. GPS em celular precisa de HTTPS e permissão, além de rede adequada; veja [o guia](docs/COMPUTADOR_E_CELULAR.md).
 
-O banner local foi revisado em 25/11/2026 em PDF e SVG editável. A versão original foi preservada. O conector não teve permissão para atualizar o design do Canva nesta rodada. O arquivo local é A4; o enunciado integral do banner não estava acessível, portanto tamanho de impressão e conformidade exata com a rubrica da escola ainda precisam ser confirmados. Os exercícios de materiais e a carteira demonstrativa foram retirados da API por solicitação de manter apenas o essencial em 12 tabelas; suas fontes estão em `historico/`.
+O banner escolhido pelo usuário preserva integralmente o layout anterior, com cores, logotipos, imagens e seções. A cópia de impressão tem 90 cm de largura por 120 cm de altura, com escala proporcional; `/equipe/banner.pdf` aponta para essa versão. O conector não teve permissão para atualizar o Canva. O enunciado integral não estava acessível para conferir cada item da rubrica da escola. Os exercícios de materiais e a carteira demonstrativa foram retirados da API por solicitação de manter apenas o essencial em 12 tabelas; suas fontes estão em `historico/`.
 
 ## Arquivos para compartilhar com a equipe
 
 - [Roteiro em Word sem slides](docs/ROTEIRO_TRANSURBAN_SEM_SLIDES.docx): cinco falas e indicação do que demonstrar nos sites.
 - [Tabela de conferência e guia de acessos](docs/CONFERENCIA_E_ACESSOS_TRANSURBAN.docx): resultados, limites e passos para cadastro e autorização, sem senhas compartilhadas.
-- [Banner revisado em PDF](docs/BANNER_TRANSURBAN_REVISADO_20261125.pdf) e [fonte SVG editável](docs/BANNER_TRANSURBAN_REVISADO_EDITAVEL.svg).
+- [Banner com o layout original em 90 × 120 cm](docs/BANNER_TRANSURBAN_ORIGINAL_90x120cm.pdf): versão de impressão solicitada, preservando cores, imagens, logotipos, textos e seções da cópia anterior. O original A4 permanece em `docs/BANNER_TRANSURBAN_20261124.pdf`. As alternativas redesenhadas foram preservadas, mas não são a versão escolhida pelo usuário.
 - Com o servidor iniciado, os downloads ficam em `/equipe/roteiro.docx`, `/equipe/conferencia.docx` e `/equipe/banner.pdf`.
 
 Os DOCX foram abertos no Word e suas provas de impressão foram renderizadas e inspecionadas. Na mesma rodada, uma falha registrada de streams HTTP/2 foi mitigada configurando o cliente do Supabase para HTTPS com HTTP/1.1. Passaram 16 consultas com quatro acessos simultâneos; isso não comprova ausência de falhas em qualquer carga. Veja [a conferência dos documentos e da conexão](docs/VALIDACAO_DOCUMENTOS_20261125.json).
