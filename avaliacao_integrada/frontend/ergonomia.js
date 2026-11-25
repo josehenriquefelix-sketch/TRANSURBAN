@@ -46,4 +46,16 @@
         window.addEventListener("hashchange",navigate);
         navigate();
     }
+    // Indica a página ativa também para leitores de tela.
+    const links = [...document.querySelectorAll("#sidebar nav a,.bottom-nav a")];
+    const updateCurrent = () => links.forEach(link => {
+        if (link.classList.contains("active")) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+    });
+    links.forEach(link => new MutationObserver(updateCurrent).observe(link, {attributes:true, attributeFilter:["class"]}));
+    updateCurrent();
+    window.addEventListener("hashchange", () => requestAnimationFrame(() => {
+        const title = [...document.querySelectorAll("main h1")].find(element => element.getClientRects().length);
+        if (title) {title.tabIndex = -1; title.focus({preventScroll:true});}
+    }));
 })();

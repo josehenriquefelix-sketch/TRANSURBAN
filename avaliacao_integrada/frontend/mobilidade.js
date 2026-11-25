@@ -732,9 +732,11 @@ async function init() {
         $("serviceText").textContent = "Catálogo indisponível";
         toast(error.message);
     }
+    // A consulta pública não depende da disponibilidade do serviço de contas.
+    state.ready = true;
+    await navigate();
     await account();
     if (state.user) await loadFavorites().catch(error => toast(error.message));
-    state.ready = true;
     await navigate();
 }
 init().catch(error => toast(error.message));

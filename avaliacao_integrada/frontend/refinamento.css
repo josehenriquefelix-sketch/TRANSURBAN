@@ -58,6 +58,13 @@ body[data-area=motorista] #driverStats:empty { display:none; }
 }
 
 /* Identidade visual dos portais: navegação escura, conteúdo claro e cor por função. */
+.line-quick-search{margin-bottom:10px;min-width:0}
+.line-quick-search input{width:100%;background:#f3f7fa!important;border-style:dashed}
+.line-search-help{display:block;font-size:11px;line-height:1.5;color:#526b79;margin:6px 0 0}
+.network-message{position:fixed;inset:0 0 auto;z-index:2000;padding:12px 20px;text-align:center;background:#fff0cc;color:#60410c;border-bottom:1px solid #d3ae56;font-size:14px;box-shadow:0 3px 15px #00000015}
+.network-message[hidden],.reconnect-button[hidden]{display:none!important}
+.reconnect-button{margin:0 0 18px}
+main h1:focus{outline:none}
 :root{--green:#08735c;--ink:#132d48;--accent:#b7e6cf;--soft:#eaf5f0;--text:#253b4c;--muted:#637582;--line:#dce5e9;--bg:#f2f6f8;font-family:Manrope,'Segoe UI',Arial,sans-serif;font-size:16px}
 body{background:var(--bg);color:var(--text)}
 h1,h2,h3{color:var(--ink)}

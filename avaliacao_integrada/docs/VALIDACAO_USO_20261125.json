@@ -1,0 +1,32 @@
+{
+  "data_referencia": "2026-11-25",
+  "escopo": "Busca de linhas, conexão, navegação e conferência responsiva dos três painéis",
+  "testes": {
+    "python_unittest": {"aprovados": 54, "falhas": 0},
+    "javascript_node": {"aprovados": 22, "falhas": 0},
+    "verificar_ambiente": "aprovado: páginas, arquivos públicos, separação DS/IA, bloqueio de .env e consultas às 12 tabelas ativas"
+  },
+  "navegador": [
+    "Passageiro: busca olimpico selecionou maringa-460 e abriu #horarios",
+    "Troca para Sarandi carregou 22 sugestões de serviços/variantes do catálogo verificado",
+    "Busca ambígua Sarandi não escolheu uma linha automaticamente",
+    "Código 001.0254-410 selecionou Jardim Independência e preservou o sentido Sarandi → Maringá",
+    "Motorista: sessão autorizada abriu o painel; busca ouro cola selecionou maringa-461",
+    "Gestão: sessão autorizada abriu o painel; indicadores carregaram e informaram sincronização",
+    "Largura de 390 px: passageiro, motorista e gestão com largura de documento de 375 px, sem transbordamento horizontal"
+  ],
+  "alteracoes": [
+    "Busca por bairro ou código mantendo o seletor nativo",
+    "Botão de reconexão profissional que reaproveita a sessão e mantém a validação de papel na API",
+    "Aviso de falta de conexão sem reenvio automático de formulários",
+    "Indicação acessível da página ativa e foco no título ao navegar",
+    "Consulta pública disponível antes de terminar a verificação da sessão"
+  ],
+  "limites": [
+    "Não foi validada nesta rodada a entrega real de e-mails: SMTP autorizado ainda não foi fornecido",
+    "Precisão física de GPS depende do aparelho, da permissão e de contexto seguro; não foi simulada como medição real",
+    "Catálogo existente não comprova cobertura de todas as linhas municipais de Sarandi",
+    "Não há integração autorizada com telemetria ou bilhetagem da operadora",
+    "Não foram criadas viagens ou ocorrências fictícias para preencher indicadores"
+  ]
+}
