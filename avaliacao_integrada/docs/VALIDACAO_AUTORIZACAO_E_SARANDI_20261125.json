@@ -1,0 +1,21 @@
+{
+  "data": "2026-11-25",
+  "javascript": {"testes": 39, "falhas": 0},
+  "python": {"testes": 54, "falhas": 0},
+  "verificacoes_no_navegador": [
+    "Consulta de autorização: credenciais incorretas foram recusadas; conta de teste autorizada foi reconhecida, sem novo pedido.",
+    "Central Autorizar profissionais abriu com a conta de teste administradora e informou nenhum pedido recebido.",
+    "Aba Sarandi apresentou 22 cartões de linhas ou variantes documentadas.",
+    "O início apresentou 22 opções de linhas ao selecionar Sarandi.",
+    "Selecionar Conjunto Vale Azul na aba Sarandi preservou cidade Sarandi e abriu horários no sentido Sarandi → Maringá.",
+    "O painel autorizado do motorista apresentou 22 opções com identificação Metropolitana ao selecionar Sarandi."
+  ],
+  "login_real": "Conta de teste existente: passageiro, motorista e gestor retornaram HTTP 200; consulta à fila administrativa retornou HTTP 200. Não são três pessoas diferentes.",
+  "privacidade": "Nenhuma conta ou permissão real nova foi criada ou aprovada nesta revisão. Credenciais mantidas fora do GitHub.",
+  "banco": "Nenhuma migração necessária: permanecem as 12 tabelas ativas da aplicação.",
+  "limites": [
+    "Não foi concluída aprovação real de uma nova pessoa durante os testes.",
+    "SMTP, entrega real de e-mails e GPS físico continuam sem comprovação nesta rodada.",
+    "Catálogo municipal completo de Sarandi não foi confirmado. As 22 entradas apresentadas são metropolitanas documentadas e mantêm suas fontes e datas."
+  ]
+}

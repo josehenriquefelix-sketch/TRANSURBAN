@@ -1,0 +1,16 @@
+{
+  "resultado": "OK",
+  "arquivo": "TRANSURBAN_VIDEO_EQUIPE.mp4",
+  "duracao_segundos": 333.08662131519276,
+  "dimensoes": "1280x720",
+  "video": "H.264 yuv420p, 24 fps",
+  "audio": "AAC, voz sintética pt-BR",
+  "audio_volume_medio_dB": -16.7,
+  "decodificacao_integral": "aprovada",
+  "frames_extraidos": 29,
+  "tamanho_bytes": 9317189,
+  "limites": [
+    "Revisão por quadros extraídos e decodificação completa; reprodução e escuta contínuas não observadas nesta etapa.",
+    "Temas no vídeo são uma proposta de divisão da demonstração, não comprovação de autoria individual."
+  ]
+}

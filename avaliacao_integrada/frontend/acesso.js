@@ -32,7 +32,7 @@
         if (!form) continue;
         const info = document.createElement("p");
         info.className = "access-help";
-        info.textContent = "Entre com sua conta profissional já cadastrada. Se ainda não possui acesso autorizado, procure o responsável pelo TRANSURBAN.";
+        info.textContent = "Já foi aprovado? Entre acima. Para solicitar ou consultar seu vínculo, abra Primeiro acesso abaixo. A autorização é registrada no sistema; o aviso por e-mail não é necessário para entrar após a aprovação.";
         form.append(info);
     }
 })();

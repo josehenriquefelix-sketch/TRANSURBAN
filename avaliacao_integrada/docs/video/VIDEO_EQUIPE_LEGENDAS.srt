@@ -1,0 +1,241 @@
+1
+00:00:00,299 --> 00:00:05,931
+José começa apresentando o projeto. Seu tema é o que é o Transurban, qual problema
+
+2
+00:00:06,016 --> 00:00:11,816
+ele procura resolver e quem utiliza a solução. O Transurban é um projeto escolar independente
+
+3
+00:00:11,944 --> 00:00:17,608
+de mobilidade entre Maringá e Sarandi. A proposta é reunir a consulta de transporte e a comunicação
+
+4
+00:00:17,651 --> 00:00:23,155
+entre passageiros, motoristas e gestão em três áreas diferentes. O site se adapta
+
+5
+00:00:23,198 --> 00:00:29,020
+ao computador e ao celular. O projeto não é o sistema oficial da prefeitura nem da empresa de ônibus.
+
+6
+00:00:29,532 --> 00:00:35,036
+Bruno apresenta a área do passageiro. Seu tema é mostrar cidades, linhas, horários,
+
+7
+00:00:35,249 --> 00:00:41,161
+favoritos e atendimento. Ao escolher Maringá, a pessoa encontra as linhas municipais documentadas
+
+8
+00:00:41,204 --> 00:00:46,781
+no catálogo. Jardim Olímpico, por exemplo, é a linha quatrocentos e sessenta. Ao
+
+9
+00:00:46,824 --> 00:00:52,285
+escolher Sarandi, agora aparecem também as linhas documentadas que atendem a cidade, incluindo as
+
+10
+00:00:52,328 --> 00:00:57,813
+ligações com Maringá. Elas continuam identificadas como metropolitanas. Isso evita uma
+
+11
+00:00:57,856 --> 00:01:03,403
+lista vazia sem transformar uma ligação entre cidades em linha municipal. A opção Maringá
+
+12
+00:01:03,488 --> 00:01:09,566
+e Sarandi reúne essas ligações. Os documentos consultados incluem atendimento ao Jardim Independência,
+
+13
+00:01:09,737 --> 00:01:15,319
+ao Jardim Universal e ao Conjunto Vale Azul. O catálogo pode ter variantes da mesma linha;
+
+14
+00:01:15,533 --> 00:01:21,288
+ele não comprova todos os bairros nem todos os pontos. Depois de escolher a linha e o sentido,
+
+15
+00:01:21,501 --> 00:01:26,962
+a pessoa consulta a programação disponível e sua fonte. Horário de saída do terminal não
+
+16
+00:01:27,005 --> 00:01:32,580
+é previsão de chegada em qualquer ponto. Favoritos, avaliações e suporte usam a conta
+
+17
+00:01:32,623 --> 00:01:37,956
+do passageiro.
+
+Cauã apresenta a área do motorista. Seu tema é identificação do ônibus,
+
+18
+00:01:38,169 --> 00:01:43,774
+escolha da linha, início e encerramento da viagem. O motorista entra com a própria conta
+
+19
+00:01:43,817 --> 00:01:49,108
+já autorizada. Informa o modelo e o número do ônibus, escolhe a cidade ou serviço,
+
+20
+00:01:49,321 --> 00:01:54,976
+a linha e o sentido. Para compartilhar a posição, precisa permitir o uso da localização
+
+21
+00:01:55,018 --> 00:02:00,608
+do dispositivo. O sistema registra o ônibus e a viagem vinculados à conta. Ao encerrar
+
+22
+00:02:00,650 --> 00:02:06,217
+o trajeto, termina o compartilhamento. O mapa depende da permissão, da conexão e
+
+23
+00:02:06,260 --> 00:02:11,977
+da precisão informada pelo aparelho. Não é o GPS oficial da operadora, nem uma garantia
+
+24
+00:02:12,020 --> 00:02:17,378
+de posição exata. O motorista também pode comunicar um problema à gestão. Durante a condução,
+
+25
+00:02:17,634 --> 00:02:23,508
+não deve operar os formulários.
+
+Ana Carolina apresenta a gestão. Seu tema é acompanhar viagens,
+
+26
+00:02:23,850 --> 00:02:29,439
+receber ocorrências, analisar avaliações e autorizar profissionais. O painel da gestão
+
+27
+00:02:29,482 --> 00:02:35,058
+é separado do portal público. Ele reúne os registros disponíveis, sem preencher espaços
+
+28
+00:02:35,101 --> 00:02:40,636
+com relatos inventados. Passageiros e motoristas enviam informações; a gestão analisa o
+
+29
+00:02:40,679 --> 00:02:46,225
+relato antes de publicar uma orientação no mapa. Vermelho, amarelo e verde representam
+
+30
+00:02:46,353 --> 00:02:52,310
+condições informadas. Uma área sem marcação não significa trânsito livre. Na autorização,
+
+31
+00:02:52,524 --> 00:02:58,097
+a pessoa cria a conta e solicita o vínculo. O responsável acessa Autorizar profissionais,
+
+32
+00:02:58,567 --> 00:03:04,583
+confere o pedido e registra a decisão. A pessoa pode consultar se está pendente, recusado
+
+33
+00:03:04,668 --> 00:03:10,320
+ou autorizado. Depois da aprovação, entra com a mesma conta. O aviso por e-mail não
+
+34
+00:03:10,363 --> 00:03:15,979
+é necessário para liberar um vínculo já aprovado. A entrega real das mensagens ainda depende
+
+35
+00:03:16,064 --> 00:03:21,722
+da configuração e do teste do envio.
+
+Gustavo apresenta como as partes se conectam. Seu
+
+36
+00:03:21,764 --> 00:03:26,842
+tema é a API, o banco de dados, o GitHub e como executar o projeto.
+
+37
+00:03:27,311 --> 00:03:32,968
+A tela é a parte que a pessoa usa. A API é a parte do servidor que recebe os pedidos,
+
+38
+00:03:33,310 --> 00:03:38,962
+valida os dados e confere as permissões. Ela foi feita em Python com Fast API. Por exemplo:
+
+39
+00:03:39,218 --> 00:03:44,381
+quando a tela pede as cidades, a rota de consulta responde Maringá e Sarandi em JSON.
+
+40
+00:03:44,807 --> 00:03:50,465
+JSON é um formato de dados que o JavaScript consegue ler para preencher a interface. A resposta
+
+41
+00:03:50,550 --> 00:03:56,310
+duzentos indica que aquela consulta foi atendida. O catálogo de transporte vem dos arquivos verificados
+
+42
+00:03:56,353 --> 00:04:02,019
+do projeto. Contas, vínculos, viagens e atendimento têm seus registros no Supabase.
+
+43
+00:04:02,489 --> 00:04:07,950
+O banco usa PostgreSQL e doze tabelas ativas da aplicação. As chaves
+
+44
+00:04:08,035 --> 00:04:13,765
+relacionam dados, como uma linha e sua cidade. O serviço de autenticação gerencia as senhas.
+
+45
+00:04:14,107 --> 00:04:19,867
+Informações técnicas do banco ficam fora dos painéis dos usuários.
+
+Ainda com Gustavo, mostrem
+
+46
+00:04:19,909 --> 00:04:25,432
+o GitHub e as instruções de execução. O repositório guarda o código, os scripts e a
+
+47
+00:04:25,475 --> 00:04:31,064
+documentação. Em outro computador, a equipe baixa o projeto pelo Git, abre no VS Code
+
+48
+00:04:31,192 --> 00:04:36,626
+e configura o arquivo privado de ambiente separadamente. Depois inicia o servidor local.
+
+49
+00:04:37,223 --> 00:04:43,062
+São necessários Python, Git e internet. O endereço local abre no computador que está executando
+
+50
+00:04:43,147 --> 00:04:48,779
+o servidor; no celular, é preciso o acesso de rede preparado, e a localização exige um contexto
+
+51
+00:04:48,864 --> 00:04:54,356
+seguro. Não publiquem senhas nem o arquivo de segredos. O trabalho usa execução local
+
+52
+00:04:54,697 --> 00:05:00,201
+e não depende do Render.
+
+A ordem da apresentação é José, Bruno, Cauã, Ana
+
+53
+00:05:00,329 --> 00:05:05,806
+Carolina e Gustavo. Cada um mostra sua parte no próprio sistema, sem slides e sem
+
+54
+00:05:05,849 --> 00:05:11,438
+decorar um texto inteiro. O vídeo indica os temas, não substitui a demonstração. O banner
+
+55
+00:05:11,524 --> 00:05:16,879
+mantém o layout original. Apresentem somente o que está comprovado: a lista municipal completa de
+
+56
+00:05:16,922 --> 00:05:22,255
+Sarandi ainda não foi confirmada, as mensagens por e-mail e o GPS físico precisam de teste
+
+57
+00:05:22,426 --> 00:05:28,207
+real, e não existe integração oficial de telemetria ou bilhetagem. A análise de Ciência
+
+58
+00:05:28,250 --> 00:05:32,517
+de Dados usa uma base sintética de estudo, sem representar passageiros reais.

@@ -11,6 +11,14 @@ Os formulários pedem nome, CPF, e-mail, senha e confirmação. Use seus própri
 
 Criar conta não concede acesso profissional. No motorista e na gestão, informe também o vínculo para análise. Se o Supabase retornar uma sessão confirmada, o site envia um pedido de vínculo pendente. Se exigir confirmação por e-mail, confirme primeiro, volte e clique em Continuar para solicitar autorização. Entre com a conta e envie o pedido. O responsável analisa no painel restrito; o solicitante não aprova o próprio pedido.
 
+## Consultar e autorizar
+
+Na entrada do motorista ou da gestão, abra **Primeiro acesso? Solicitar ou consultar autorização**. Informe e-mail ou CPF e senha. O botão **Consultar minha autorização** consulta a situação sem exigir uma nova justificativa e sem criar outro pedido. Se já estiver autorizado, volte ao formulário principal e entre com a mesma conta.
+
+O responsável configurado como administrador entra em `/gestao/#autorizacoesGestao`, abre **Autorizar profissionais**, confere o vínculo, escolhe o escopo e registra uma justificativa para aprovar ou recusar. Contas comuns de gestão não podem conceder permissões. Não compartilhe a conta do responsável.
+
+O vínculo aprovado é conferido diretamente pela API. A pessoa não precisa receber um e-mail de aprovação para entrar depois da decisão. A confirmação inicial da conta pelo provedor, quando exigida, é uma etapa diferente e continua necessária. Os testes reais de 25/11/2026 confirmaram entrada da conta de teste já autorizada nos três perfis e consulta à fila administrativa; não houve aprovação de uma nova pessoa durante essa conferência.
+
 Não compartilhe contas, senhas, CPF ou documentos pelo chat de suporte. Senhas são tratadas pelo Supabase Auth; o projeto não cria uma tabela de senhas.
 
 ## Limitação ainda pendente
@@ -19,4 +27,4 @@ O SMTP autorizado ainda precisa ser configurado e a entrega real de confirmaçã
 
 ## Vídeo atualizado
 
-Arquivo: `docs/video/TRANSURBAN_GUIA_NARRADO.mp4`. Narração sintética em português do Brasil, acompanhando capturas reais das telas. O arquivo SRT contém as legendas com tempos retornados pelo serviço de voz. A versão anterior, sem áudio, foi preservada.
+Arquivo mais recente: `docs/video/TRANSURBAN_VIDEO_EQUIPE.mp4`. Narração sintética em português do Brasil, acompanhando capturas reais das telas e indicando o tema de cada integrante. O arquivo `VIDEO_EQUIPE_LEGENDAS.srt` contém as legendas com tempos retornados pelo serviço de voz. As versões anteriores foram preservadas.

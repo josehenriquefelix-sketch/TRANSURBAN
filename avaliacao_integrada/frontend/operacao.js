@@ -400,35 +400,6 @@
         feedback("operationFeedback", failed ? "Alguns dados não puderam ser consultados. O sistema tentará novamente automaticamente." : "Operação sincronizada. Atualização automática a cada 15 segundos.", failed);
         setTimeout(() => map?.invalidateSize(), 0);
     }
-    document.querySelectorAll('.requestAccessForm').forEach(form => form.onsubmit = async e => {
-        e.preventDefault();
-        const target = form.querySelector('.requestStatus'),
-            button = form.querySelector('button');
-        button.disabled = true;
-        try {
-            await request('/auth/login', {
-                method: 'POST',
-                body: JSON.stringify({
-                    identificador: form.elements.identificador.value,
-                    senha: form.elements.senha.value,
-                    tipo_acesso: 'passageiro'
-                })
-            });
-            form.elements.senha.value = '';
-            const result = await request('/atendimento/pedidos-acesso', {
-                method: 'POST',
-                body: JSON.stringify({
-                    papel: form.dataset.papel,
-                    justificativa: form.elements.justificativa.value
-                })
-            });
-            target.textContent = result.mensagem;
-        } catch (error) {
-            target.textContent = error.message;
-        } finally {
-            button.disabled = false;
-        }
-    });
     for (const id of ["callCityFilter", "callStateFilter"]) $(id)?.addEventListener("change", () => managementCalls().catch(e => toast(e.message)));
     $("supportCity")?.addEventListener("change", () => options($("supportCity").value, "supportLine"));
     $("supportForm")?.addEventListener("submit", async e => {

@@ -150,8 +150,8 @@ function plotBus(id, position, label) {
 function fillDriverLines(selected = "") {
     const city = $("driverCity").value;
     const scope = {"Maringá":"maringa", "Sarandi":"sarandi", "metropolitano":"metropolitano"}[city];
-    const lines = (state.catalog?.linhas || []).filter(line => !!scope && line.ambito === scope);
-    $("driverLine").replaceChildren(new Option(!lines.length && city === "Sarandi" ? "Municipais de Sarandi: confirmação pendente" : "Selecione uma linha", ""), ...lines.map(line => new Option(`${line.codigo} · ${line.nome}`, line.id)));
+    const lines = (state.catalog?.linhas || []).filter(line => city === "Sarandi" ? line.cidades?.includes("Sarandi") : !!scope && line.ambito === scope);
+    $("driverLine").replaceChildren(new Option("Selecione uma linha", ""), ...lines.map(line => new Option(`${line.codigo} · ${line.nome}${line.ambito === "metropolitano" ? " · Metropolitana" : ""}`, line.id)));
     if (lines.some(line => line.id === selected)) $("driverLine").value = selected;
     fillDirections($("driverLine").value, "driverDirection");
     updateRouteSummary();

@@ -161,7 +161,7 @@ async function account() {
 
 function linesFor(city) {
     const scope = {"Maringá":"maringa", "Sarandi":"sarandi", "metropolitano":"metropolitano"}[city];
-    return (state.catalog?.linhas || []).filter(line => city === "todas" || (!!scope && line.ambito === scope));
+    return (state.catalog?.linhas || []).filter(line => city === "todas" || (city === "Sarandi" ? line.cidades?.includes("Sarandi") : !!scope && line.ambito === scope));
 }
 
 function fillLines(id, city, placeholder = true, includeConnections = false) {
@@ -169,8 +169,8 @@ function fillLines(id, city, placeholder = true, includeConnections = false) {
     $(id).replaceChildren();
     if (placeholder) $(id).add(new Option("Selecione uma linha", ""));
     const lines = includeConnections ? (state.catalog?.linhas || []).filter(line => line.cidades.includes(city)) : linesFor(city);
-    for (const line of lines) $(id).add(new Option(`${line.codigo} · ${line.nome}`, line.id));
-    if (!lines.length && placeholder) $(id).options[0].text = city === "Sarandi" ? "Municipais de Sarandi: confirmação pendente" : "Nenhuma linha disponível";
+    for (const line of lines) $(id).add(new Option(`${line.codigo} · ${line.nome}${line.ambito === "metropolitano" ? " · Metropolitana" : ""}`, line.id));
+    if (!lines.length && placeholder) $(id).options[0].text = "Nenhuma linha documentada nesta seleção";
     if ([...$(id).options].some(option => option.value === previous)) $(id).value = previous;
 }
 
@@ -221,7 +221,7 @@ function sourceLink(text, url) {
 
 function lineCard(line) {
     const card = node("article", "", "card line-card");
-    card.append(node("span", line.codigo, "code"), node("h3", line.nome), node("span", line.tipo_servico === "municipal" ? "Municipal • Maringá" : "Metropolitana • Sarandi ↔ Maringá", "tag"), node("p", line.operador), node("small", `Fonte ${line.fonte} • ${line.vigencia ? "Vigência " + line.vigencia.split("-").reverse().join("/") : "Consulta em 12/11/2026"}`));
+    card.append(node("span", line.codigo, "code"), node("h3", line.nome), node("span", line.tipo_servico === "municipal" ? `Municipal • ${line.ambito === "sarandi" ? "Sarandi" : "Maringá"}` : "Metropolitana • Sarandi ↔ Maringá", "tag"), node("p", line.operador), node("small", `Fonte ${line.fonte} • ${line.vigencia ? "Vigência " + line.vigencia.split("-").reverse().join("/") : "Consulta em 12/11/2026"}`));
     if (line.variante_codigo) card.append(node("small", `Atendimento ${line.variante_codigo} da tabela ${line.documento_id.replace("der-", "")}; variante identificada no documento.`));
     if (line.bairros_atendidos?.length > 1) card.append(node("p", "Atendimentos documentados: " + line.bairros_atendidos.join(" · "), "muted"));
     const actions = node("div", "", "line-actions"),
@@ -230,7 +230,7 @@ function lineCard(line) {
     open.type = "button";
     favorite.type = "button";
     open.addEventListener("click", () => {
-        openLine(line.id);
+        openLine(line.id, state.page === "cidades" ? state.city : undefined);
     });
     favorite.addEventListener("click", () => toggleFavorite(line.id));
     actions.append(open, favorite, sourceLink("Fonte oficial ↗", line.fonte_url));
@@ -240,7 +240,7 @@ function lineCard(line) {
 
 function renderCatalog() {
     const cityLines = linesFor(state.city);
-    const message = state.city === "Maringá" ? `${cityLines.length} linhas municipais publicadas na consulta oficial Na Hora Maringá. As ligações com Sarandi estão na aba Maringá ↔ Sarandi. Os nomes abaixo identificam as linhas; bairros intermediários e pontos constam no itinerário de cada viagem.` : state.city === "Sarandi" ? "Transporte municipal de Sarandi. A relação atual de linhas municipais e bairros ainda precisa de confirmação. As linhas que ligam Sarandi a Maringá ficam exclusivamente em Maringá ↔ Sarandi." : "Ligações metropolitanas Maringá ↔ Sarandi, operadas pela Cidade Verde e documentadas pelo DER/PR. Elas atendem as duas cidades e não são linhas municipais de Maringá.";
+    const message = state.city === "Maringá" ? `${cityLines.length} linhas municipais publicadas na consulta oficial Na Hora Maringá. As ligações com Sarandi estão na aba Maringá ↔ Sarandi. Os nomes abaixo identificam as linhas; bairros intermediários e pontos constam no itinerário de cada viagem.` : state.city === "Sarandi" ? `${cityLines.length} linhas e variantes documentadas que atendem Sarandi. As ligações com Maringá aparecem identificadas como metropolitanas. Consulte o itinerário para conferir seu bairro e ponto; os registros não representam uma lista municipal completa nem garantem a vigência atual de cada horário.` : "Ligações metropolitanas Maringá ↔ Sarandi, operadas pela Cidade Verde e documentadas pelo DER/PR. Elas atendem as duas cidades e não são linhas municipais de Maringá.";
     $("coverage").replaceChildren(node("p", message));
     if (state.city === "Sarandi") $("coverage").append(sourceLink("Consultar interbairros Alvamar ↔ Conjunto Floresta na Prefeitura; confirme a vigência ↗", "https://sarandi.pr.gov.br/web/index.php/servicos/horarios-transporte-publico"));
     const query = $("lineSearch").value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();

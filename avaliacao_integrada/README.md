@@ -12,7 +12,7 @@ Consulte primeiro o [passo a passo da escola](PASSO_A_PASSO_ESCOLA.md) e o [resu
 
 Os atalhos em `ACESSOS/` também abrem as áreas. O cadastro público é de passageiro. Motorista e gestão usam contas com vínculo autorizado, sem uma senha coletiva no código.
 
-As três entradas têm opção de criar conta com nome, CPF, e-mail e senha. O acesso profissional depende de aprovação. Consulte o [guia de cadastro e suas pendências](docs/CADASTRO_NOS_TRES_PAINEIS.md). O [vídeo narrado para a equipe](docs/video/TRANSURBAN_GUIA_NARRADO.mp4) explica os painéis, a API e o banco com capturas reais e voz sintética em português.
+As três entradas têm opção de criar conta com nome, CPF, e-mail e senha. O acesso profissional depende de aprovação. Consulte o [guia de cadastro e suas pendências](docs/CADASTRO_NOS_TRES_PAINEIS.md). O [vídeo com os temas de cada integrante](docs/video/TRANSURBAN_VIDEO_EQUIPE.mp4) explica os painéis, a API e o banco com capturas reais e voz sintética em português. A [divisão dos temas](docs/TEMAS_DA_EQUIPE.md) segue José, Bruno, Cauã, Ana Carolina e Gustavo. A [cobertura de Sarandi](docs/SARANDI_COBERTURA_20261125.md) explica por que suas ligações metropolitanas também aparecem ao escolher a cidade.
 
 ## Banco
 
@@ -27,7 +27,7 @@ Da pasta deste README:
 ```powershell
 .\VERIFICAR_TRANSURBAN.cmd
 .\backend\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_*.py"
-node --test tests/localizacao.test.cjs tests/uso.test.cjs tests/catalogo_regiao.test.cjs tests/cadastro.test.cjs
+node --test tests/localizacao.test.cjs tests/uso.test.cjs tests/catalogo_regiao.test.cjs tests/cadastro.test.cjs tests/autorizacao.test.cjs
 ```
 
 Node serve apenas para testes; não é necessário para executar o site. A conferência real opcional `ferramentas/validar_entrega.py` exige a conta privada de teste configurada no `.env`; cria e remove somente um chamado explicitamente descartável. Não projete as credenciais.

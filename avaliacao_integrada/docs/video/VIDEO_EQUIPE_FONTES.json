@@ -1,0 +1,159 @@
+{
+  "duration_seconds": 333.08662131519276,
+  "voice": "HeyGen Lucilene Clear & Trustworthy, pt-BR, voz sintética",
+  "voice_id": "e808da2329754929803c8bd98dc36857",
+  "captions": "Tempos retornados pelo serviço e pontuação dos caracteres originais; sem acelerar ou esticar a fala.",
+  "captures": "Telas reais do projeto; Supabase capturado em 24/11/2026, demais em 25/11/2026.",
+  "timeline": [
+    {
+      "start": 0,
+      "asset": "passageiro.jpg",
+      "chapter": "José • apresentação do TRANSURBAN"
+    },
+    {
+      "start": 14.258,
+      "asset": "passageiro.jpg",
+      "chapter": "José • problema, proposta e público"
+    },
+    {
+      "start": 29.382,
+      "asset": "passageiro.jpg",
+      "chapter": "Bruno • cidades, linhas e horários"
+    },
+    {
+      "start": 37.044000000000004,
+      "asset": "horarios.jpg",
+      "chapter": "Bruno • linhas municipais de Maringá"
+    },
+    {
+      "start": 46.418,
+      "asset": "sarandi.jpg",
+      "chapter": "Bruno • linhas que atendem Sarandi"
+    },
+    {
+      "start": 62.229,
+      "asset": "sarandi_inicio.jpg",
+      "chapter": "Bruno • atendimento e ligações metropolitanas"
+    },
+    {
+      "start": 79.047,
+      "asset": "sarandi_horarios.jpg",
+      "chapter": "Bruno • linha, sentido e programação"
+    },
+    {
+      "start": 93.625,
+      "asset": "motorista.jpg",
+      "chapter": "Cauã • ônibus, linha e viagem"
+    },
+    {
+      "start": 104.99,
+      "asset": "motorista.jpg",
+      "chapter": "Cauã • modelo e número do ônibus"
+    },
+    {
+      "start": 111.071,
+      "asset": "motorista.jpg",
+      "chapter": "Cauã • início e encerramento da viagem"
+    },
+    {
+      "start": 123.038,
+      "asset": "motorista.jpg",
+      "chapter": "Cauã • permissão e precisão do GPS"
+    },
+    {
+      "start": 139.361,
+      "asset": "gestao.jpg",
+      "chapter": "Ana Carolina • gestão de transporte"
+    },
+    {
+      "start": 156.774,
+      "asset": "gestao_mapa.jpg",
+      "chapter": "Ana Carolina • relatos e ocorrências"
+    },
+    {
+      "start": 171.26399999999998,
+      "asset": "cadastro_gestao.jpg",
+      "chapter": "Ana Carolina • cadastro e aprovação"
+    },
+    {
+      "start": 175.302,
+      "asset": "autorizacoes.jpg",
+      "chapter": "Ana Carolina • autorizar profissionais"
+    },
+    {
+      "start": 188.719,
+      "asset": "autorizacoes.jpg",
+      "chapter": "Ana Carolina • vínculo e aviso por e-mail"
+    },
+    {
+      "start": 198.38899999999998,
+      "asset": "api.jpg",
+      "chapter": "Gustavo • API e comunicação entre as partes"
+    },
+    {
+      "start": 218.215,
+      "asset": "api_cidades.jpg",
+      "chapter": "Gustavo • exemplo de consulta e JSON"
+    },
+    {
+      "start": 233.429,
+      "asset": "sarandi.jpg",
+      "chapter": "Gustavo • origem do catálogo de transporte"
+    },
+    {
+      "start": 237.347,
+      "asset": "supabase.jpg",
+      "chapter": "Gustavo • Supabase e PostgreSQL (captura de 24/11)"
+    },
+    {
+      "start": 242.339,
+      "asset": "tabelas.jpg",
+      "chapter": "Gustavo • 12 tabelas e relações"
+    },
+    {
+      "start": 251.09799999999998,
+      "asset": "tabelas.jpg",
+      "chapter": "Gustavo • autenticação e estrutura técnica"
+    },
+    {
+      "start": 258.053,
+      "asset": "github.jpg",
+      "chapter": "Gustavo • GitHub e execução no VS Code"
+    },
+    {
+      "start": 266.47700000000003,
+      "asset": "github.jpg",
+      "chapter": "Gustavo • configuração no computador da escola"
+    },
+    {
+      "start": 280.13800000000003,
+      "asset": "passageiro.jpg",
+      "chapter": "Gustavo • acesso local, celular e limites"
+    },
+    {
+      "start": 296.29600000000005,
+      "asset": "passageiro.jpg",
+      "chapter": "Ordem • José, Bruno, Cauã, Ana Carolina e Gustavo"
+    },
+    {
+      "start": 310.648,
+      "asset": "banner.png",
+      "chapter": "Equipe • banner original e demonstração sem slides"
+    },
+    {
+      "start": 313.103,
+      "asset": "sarandi.jpg",
+      "chapter": "Equipe • informações verificadas e pendências"
+    },
+    {
+      "start": 326.99100000000004,
+      "asset": "passageiro.jpg",
+      "chapter": "Equipe • base sintética de estudo"
+    }
+  ],
+  "limits": [
+    "Não é gravação ao vivo.",
+    "Cadastro com provedor/e-mail não foi testado com nova conta real nesta rodada. SMTP pendente.",
+    "Sem comprovação de GPS físico ou integração oficial de telemetria/bilhetagem."
+  ]
+}
