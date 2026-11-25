@@ -25,7 +25,7 @@ Da pasta deste README:
 ```powershell
 .\VERIFICAR_TRANSURBAN.cmd
 .\backend\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_*.py"
-node --test tests/localizacao.test.cjs tests/uso.test.cjs
+node --test tests/localizacao.test.cjs tests/uso.test.cjs tests/catalogo_regiao.test.cjs
 ```
 
 Node serve apenas para testes; não é necessário para executar o site. A conferência real opcional `ferramentas/validar_entrega.py` exige a conta privada de teste configurada no `.env`; cria e remove somente um chamado explicitamente descartável. Não projete as credenciais.

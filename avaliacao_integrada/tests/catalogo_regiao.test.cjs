@@ -1,0 +1,13 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
+const source=fs.readFileSync(path.join(__dirname,'../frontend/mobilidade.js'),'utf8');
+const catalog=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/catalogo_publico_verificado.json'),'utf8'));
+const scope={state:{catalog}};vm.createContext(scope);
+vm.runInContext(source.slice(source.indexOf('function linesFor('),source.indexOf('function fillLines(')),scope);
+test('Maringá contém apenas linhas municipais e mantém Jardim Olímpico e Ouro Cola',()=>{const lines=scope.linesFor('Maringá');assert.equal(lines.length,66);assert.ok(lines.every(l=>l.ambito==='maringa'));assert.ok(lines.some(l=>l.id==='maringa-460'));assert.ok(lines.some(l=>l.id==='maringa-461'));});
+test('ligações entre cidades não aparecem como linhas municipais de Sarandi',()=>{const lines=scope.linesFor('metropolitano');assert.equal(lines.length,22);assert.ok(lines.every(l=>l.ambito==='metropolitano'));assert.equal(scope.linesFor('Sarandi').length,0);assert.equal(scope.linesFor('cidade desconhecida').length,0);});
+test('uma futura linha municipal confirmada de Sarandi permanece separada das metropolitanas',()=>{const original=scope.state.catalog;scope.state.catalog={linhas:[{id:'municipal-teste',ambito:'sarandi'},{id:'ligacao-teste',ambito:'metropolitano',cidades:['Maringá','Sarandi']}]};try{assert.deepEqual(Array.from(scope.linesFor('Sarandi'),l=>l.id),['municipal-teste']);assert.deepEqual(Array.from(scope.linesFor('metropolitano'),l=>l.id),['ligacao-teste']);}finally{scope.state.catalog=original;}});
+test('enquadramento regional reconhece posições sem alterar suas coordenadas',()=>{const context={window:{}};vm.createContext(context);vm.runInContext(fs.readFileSync(path.join(__dirname,'../frontend/regiao.js'),'utf8'),context);const contains=context.window.TransurbanRegion.contains;assert.equal(contains(-23.427,-51.937),true);assert.equal(contains(-23.444,-51.876),true);assert.equal(contains(-25.4,-49.2),false);assert.equal(contains(NaN,-51.9),false);});

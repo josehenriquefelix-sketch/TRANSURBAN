@@ -42,7 +42,7 @@
             suggestions.replaceChildren(...options().filter(option => option.value).map(option => new Option(option.text, option.text)));
             input.value = "";
             input.disabled = select.disabled || !suggestions.children.length;
-            help.textContent = suggestions.children.length ? "Digite para buscar ou escolha na lista abaixo." : "Selecione a cidade para carregar as linhas disponíveis.";
+            help.textContent = suggestions.children.length ? "Digite para buscar ou escolha na lista abaixo." : "Não há linhas confirmadas nesta seleção. Para ligações entre as cidades, escolha Maringá ↔ Sarandi.";
         }
         function choose(option) {
             if (!option || select.disabled) return;

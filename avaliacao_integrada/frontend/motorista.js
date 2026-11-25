@@ -121,6 +121,7 @@ function mapFor(id) {
     }
     if (!maps[id]) {
         maps[id] = L.map(id).setView([-23.427, -51.902], 12);
+        window.TransurbanRegion?.apply(maps[id]);
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -148,8 +149,9 @@ function plotBus(id, position, label) {
 }
 function fillDriverLines(selected = "") {
     const city = $("driverCity").value;
-    const lines = (state.catalog?.linhas || []).filter(line => city === "Maringá" ? line.ambito === "maringa" : city === "metropolitano" ? line.ambito === "metropolitano" : line.cidades.includes("Sarandi"));
-    $("driverLine").replaceChildren(new Option("Selecione uma linha", ""), ...lines.map(line => new Option(`${line.codigo} · ${line.nome}`, line.id)));
+    const scope = {"Maringá":"maringa", "Sarandi":"sarandi", "metropolitano":"metropolitano"}[city];
+    const lines = (state.catalog?.linhas || []).filter(line => !!scope && line.ambito === scope);
+    $("driverLine").replaceChildren(new Option(!lines.length && city === "Sarandi" ? "Municipais de Sarandi: confirmação pendente" : "Selecione uma linha", ""), ...lines.map(line => new Option(`${line.codigo} · ${line.nome}`, line.id)));
     if (lines.some(line => line.id === selected)) $("driverLine").value = selected;
     fillDirections($("driverLine").value, "driverDirection");
     updateRouteSummary();

@@ -1,0 +1,32 @@
+{
+  "data": "2026-11-25",
+  "alteracoes": [
+    "Acabamento para computador nos três painéis, com identidade visual por função",
+    "Busca de funções por texto, Ctrl+K, fechamento com Escape e retorno de foco",
+    "Mapa com enquadramento regional, limites de navegação e botão Ver região",
+    "Separação de linhas municipais de Maringá, municipais de Sarandi e ligações metropolitanas",
+    "Posição de visitante fora da área não é substituída por marcador fictício"
+  ],
+  "validacoes": {
+    "javascript": "27 testes aprovados, 0 falhas",
+    "sintaxe": "node --check aprovado nos novos scripts e mobilidade.js",
+    "ambiente": "verificar_ambiente.py aprovado: páginas, assets, 12 tabelas, separação de Swagger e bloqueio de .env",
+    "desktop": "1440 px: três painéis sem transbordamento horizontal; sessões profissionais carregaram",
+    "celular": "390 px: três painéis com documento de 375 px, sem transbordamento horizontal",
+    "busca": "horarios abriu Horários e mapa; ocorrencias encontrou Ocorrências recebidas na gestão; gestão não é oferecida ao passageiro",
+    "teclado": "Escape fechou o diálogo de busca no teste final",
+    "catalogo": "Maringá: 66 municipais; Maringá–Sarandi: 22 serviços/variantes metropolitanos; Sarandi municipal: confirmação pendente"
+  },
+  "fontes": [
+    {"arquivo": "data/catalogo_publico_verificado.json", "consulta_original": "2026-11-12", "uso": "Classificação e nomes existentes; nenhum serviço foi inventado"},
+    {"url": "https://sarandi.pr.gov.br/web/index.php/servicos/horarios-transporte-publico", "reconsulta": "2026-11-25", "uso": "Consulta municipal de Sarandi separada das ligações metropolitanas; vigência atual não comprovada"},
+    {"url": "https://www.openstreetmap.org/copyright", "uso": "Mapa-base já utilizado, com atribuição preservada"}
+  ],
+  "limites": [
+    "O retângulo do mapa define navegação na área urbana; não são divisas municipais oficiais. O mapa-base pode mostrar localidades vizinhas nas bordas.",
+    "Linhas são serviços de transporte; seus nomes não comprovam uma lista completa de bairros e pontos.",
+    "Nenhuma tabela, credencial ou permissão foi alterada nesta etapa.",
+    "Não há nova comprovação de SMTP, bilhetagem ou telemetria oficial nesta rodada.",
+    "Não foi atribuída avaliação comercial comprovada ao produto."
+  ]
+}

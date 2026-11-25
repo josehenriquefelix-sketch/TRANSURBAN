@@ -34,6 +34,7 @@
     function setupMap() {
         if (map || !$("opsMap") || !window.L || !$("opsMap").getClientRects().length) return;
         map = L.map("opsMap").setView([-23.432, -51.9], 12);
+        window.TransurbanRegion?.apply(map);
         L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
             maxZoom: 19,
             attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'

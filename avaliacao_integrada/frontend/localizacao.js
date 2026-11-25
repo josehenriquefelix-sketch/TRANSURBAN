@@ -38,6 +38,13 @@
                     message("O aparelho não forneceu uma posição válida. Aguardando novo sinal…", true);
                     return;
                 }
+                if (window.TransurbanRegion && !window.TransurbanRegion.contains(latitude, longitude)) {
+                    if (marker) marker.remove();
+                    if (circle) circle.remove();
+                    marker = circle = null;
+                    message("Sua posição está fora da área de navegação de Maringá e Sarandi. O mapa permanece na região atendida; nenhum ponto aproximado foi colocado.", true);
+                    return;
+                }
                 if (!marker) {
                     marker = L.circleMarker([latitude, longitude], {radius: 8, color: "#fff", weight: 3, fillColor: "#286ca1", fillOpacity: 1}).addTo(map);
                     circle = L.circle([latitude, longitude], {radius: accuracy, color: "#286ca1", weight: 1, fillOpacity: .08}).addTo(map);
