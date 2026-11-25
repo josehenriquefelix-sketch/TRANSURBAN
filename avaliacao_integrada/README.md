@@ -46,6 +46,7 @@ O banner escolhido pelo usuário preserva integralmente o layout anterior, com c
 
 ## Arquivos para compartilhar com a equipe
 
+- [Vídeo guia da equipe em MP4](docs/video/TRANSURBAN_GUIA_PARA_EQUIPE.mp4): 3 minutos e 11 segundos, 720p, com capturas reais e legendas explicativas, sem narração. Mostra os três painéis, API, Supabase, estrutura das tabelas, GitHub e banner. É um guia visual, não uma gravação de todos os fluxos ao vivo. A captura do Supabase é de 24/11/2026; as demais fontes e limites estão em `docs/video/VIDEO_GUIA_FONTES_E_CENAS.json`.
 - [Roteiro em Word sem slides](docs/ROTEIRO_TRANSURBAN_SEM_SLIDES.docx): cinco falas e indicação do que demonstrar nos sites.
 - [Tabela de conferência e guia de acessos](docs/CONFERENCIA_E_ACESSOS_TRANSURBAN.docx): resultados, limites e passos para cadastro e autorização, sem senhas compartilhadas.
 - [Banner com o layout original em 90 × 120 cm](docs/BANNER_TRANSURBAN_ORIGINAL_90x120cm.pdf): versão de impressão solicitada, preservando cores, imagens, logotipos, textos e seções da cópia anterior. O original A4 permanece em `docs/BANNER_TRANSURBAN_20261124.pdf`. As alternativas redesenhadas foram preservadas, mas não são a versão escolhida pelo usuário.

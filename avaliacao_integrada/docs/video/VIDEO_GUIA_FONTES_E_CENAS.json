@@ -1,0 +1,241 @@
+{
+  "title": "TRANSURBAN guia visual para equipe",
+  "duration_seconds": 191,
+  "dimensions": [
+    1280,
+    720
+  ],
+  "fps": 24,
+  "audio": "sem narração e sem música",
+  "method": "Capturas reais com vistas de detalhes e legendas explicativas; sem cliques simulados ou afirmação de gravação ao vivo.",
+  "timeline": [
+    {
+      "asset": "passageiro.jpg",
+      "chapter": "TRANSURBAN e a proposta",
+      "start": 0,
+      "end": 9,
+      "source_crop_y": [
+        0,
+        0
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "passageiro.jpg",
+      "chapter": "Passageiro e consulta de linhas",
+      "start": 9,
+      "end": 19,
+      "source_crop_y": [
+        470,
+        600
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "horarios.jpg",
+      "chapter": "Horários e fonte da informação",
+      "start": 19,
+      "end": 29,
+      "source_crop_y": [
+        0,
+        70
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "login.jpg",
+      "chapter": "Login e autorização profissional",
+      "start": 29,
+      "end": 41,
+      "source_crop_y": [
+        0,
+        0
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "motorista.jpg",
+      "chapter": "Motorista e identificação do ônibus",
+      "start": 41,
+      "end": 51,
+      "source_crop_y": [
+        0,
+        100
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "motorista.jpg",
+      "chapter": "Preparar e encerrar a viagem",
+      "start": 51,
+      "end": 63,
+      "source_crop_y": [
+        950,
+        1100
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "gestao.jpg",
+      "chapter": "Gestão e acompanhamento",
+      "start": 63,
+      "end": 73,
+      "source_crop_y": [
+        0,
+        170
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "gestao_mapa.jpg",
+      "chapter": "Ocorrências e mapa da gestão",
+      "start": 73,
+      "end": 85,
+      "source_crop_y": [
+        130,
+        310
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "api.jpg",
+      "chapter": "API em Python e FastAPI",
+      "start": 85,
+      "end": 94,
+      "source_crop_y": [
+        0,
+        20
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "api_cidades.jpg",
+      "chapter": "Exemplo real de resposta JSON",
+      "start": 94,
+      "end": 105,
+      "source_crop_y": [
+        150,
+        190
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "supabase.jpg",
+      "chapter": "Supabase e PostgreSQL",
+      "start": 105,
+      "end": 115,
+      "source_crop_y": [
+        0,
+        0
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "24/11/2026"
+    },
+    {
+      "asset": "tabelas.jpg",
+      "chapter": "Tabelas de cidades linhas e permissões",
+      "start": 115,
+      "end": 125,
+      "source_crop_y": [
+        0,
+        180
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "tabelas.jpg",
+      "chapter": "Tabelas de atendimento e avaliações",
+      "start": 125,
+      "end": 135,
+      "source_crop_y": [
+        780,
+        1080
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "tabelas.jpg",
+      "chapter": "Contas viagens e posições",
+      "start": 135,
+      "end": 147,
+      "source_crop_y": [
+        1720,
+        2020
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "github.jpg",
+      "chapter": "GitHub e organização do código",
+      "start": 147,
+      "end": 157,
+      "source_crop_y": [
+        0,
+        280
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "github.jpg",
+      "chapter": "Abrir o projeto em outro computador",
+      "start": 157,
+      "end": 169,
+      "source_crop_y": [
+        1240,
+        1450
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "banner.png",
+      "chapter": "Banner original para impressão",
+      "start": 169,
+      "end": 177,
+      "source_crop_y": [
+        0,
+        0
+      ],
+      "fit": "contain",
+      "capture": "25/11/2026"
+    },
+    {
+      "asset": "passageiro.jpg",
+      "chapter": "O que apresentar com precisão",
+      "start": 177,
+      "end": 191,
+      "source_crop_y": [
+        0,
+        0
+      ],
+      "fit": "uniform_scale_and_detail_view",
+      "capture": "25/11/2026"
+    }
+  ],
+  "limits": [
+    "Captura do Supabase é de 24/11/2026. Estrutura e catálogo foram conferidos nos testes reais de 25/11/2026.",
+    "Sem exposição intencional de senhas, tokens, CPFs ou registros pessoais.",
+    "O vídeo não substitui o teste de uso na rede da escola."
+  ],
+  "render_command": "Python com Pillow e imageio-ffmpeg; gerar_tour.py",
+  "sources": [
+    "Capturas do projeto neste chat",
+    "docs/VALIDACAO_ENTREGA_20261125.json",
+    "docs/VALIDACAO_LOGINS_20261125.json",
+    "ferramentas/estrutura_banco.html"
+  ]
+}

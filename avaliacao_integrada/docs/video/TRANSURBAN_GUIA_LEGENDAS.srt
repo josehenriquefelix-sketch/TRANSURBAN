@@ -1,0 +1,143 @@
+1
+00:00:00,000 --> 00:00:04,500
+Este guia mostra as telas reais do TRANSURBAN, um projeto escolar de mobilidade em Maringá e Sarandi.
+
+2
+00:00:04,500 --> 00:00:09,000
+São três áreas: passageiro, motorista e gestão. O vídeo usa capturas do sistema, não uma gravação ao vivo.
+
+3
+00:00:09,000 --> 00:00:14,000
+No início, o passageiro escolhe o serviço e pesquisa uma linha pelo bairro ou código.
+
+4
+00:00:14,000 --> 00:00:19,000
+Favoritos, avaliações e suporte usam a conta da pessoa. Consultar uma linha não cria uma viagem.
+
+5
+00:00:19,000 --> 00:00:24,000
+A busca por olimpico selecionou a linha 460. O sentido pode ser Terminal / Bairro ou Bairro / Terminal.
+
+6
+00:00:24,000 --> 00:00:29,000
+O catálogo e os horários citam fontes. Uma partida de terminal não é previsão de chegada a qualquer ponto.
+
+7
+00:00:29,000 --> 00:00:35,000
+A pessoa entra com e-mail ou CPF e senha. Cada usuário deve ter sua própria conta.
+
+8
+00:00:35,000 --> 00:00:41,000
+Motorista e gestão exigem autorização. Confirmação e recuperação por e-mail ainda dependem de SMTP configurado e testado.
+
+9
+00:00:41,000 --> 00:00:46,000
+No painel autorizado, o motorista informa o modelo e o número do ônibus que vai conduzir.
+
+10
+00:00:46,000 --> 00:00:51,000
+A tela também reúne os indicadores do seu perfil. Não foram inventadas notas para preencher o painel.
+
+11
+00:00:51,000 --> 00:00:57,000
+Depois escolhe a linha e o sentido. O início da viagem exige os dados e a permissão solicitada.
+
+12
+00:00:57,000 --> 00:01:03,000
+As posições compartilhadas vêm do dispositivo autorizado. Ao encerrar a viagem, o compartilhamento termina.
+
+13
+00:01:03,000 --> 00:01:08,000
+A gestão possui um painel separado para acompanhar viagens, avaliações e relatos.
+
+14
+00:01:08,000 --> 00:01:13,000
+Os indicadores refletem os registros disponíveis. Zero viagens significa que não havia viagem ativa nessa captura.
+
+15
+00:01:13,000 --> 00:01:19,000
+Passageiros e motoristas enviam relatos. A gestão analisa antes de publicar uma orientação.
+
+16
+00:01:19,000 --> 00:01:25,000
+Vermelho, amarelo e verde representam condições informadas. Uma área sem marcação não significa trânsito livre.
+
+17
+00:01:25,000 --> 00:01:29,500
+A API recebe os pedidos das telas, confere o acesso e consulta o banco.
+
+18
+00:01:29,500 --> 00:01:34,000
+O Swagger reúne as rotas. GET consulta; outras operações podem cadastrar, atualizar ou excluir conforme a permissão.
+
+19
+00:01:34,000 --> 00:01:39,500
+Aqui foi executado GET /cidades. A resposta foi HTTP 200 e retornou Maringá e Sarandi.
+
+20
+00:01:39,500 --> 00:01:45,000
+JSON é o formato usado para trocar dados entre as telas e a API. Esta é uma resposta capturada em 25/11/2026.
+
+21
+00:01:45,000 --> 00:01:50,000
+O PostgreSQL do projeto está no Supabase. Esta imagem é um registro da conferência de 24/11/2026.
+
+22
+00:01:50,000 --> 00:01:55,000
+O sistema usa 12 tabelas ativas. A estrutura foi conferida novamente pelos testes reais de 25/11.
+
+23
+00:01:55,000 --> 00:02:00,000
+Esta é a visualização técnica do banco, sem registros pessoais. Ela fica fora dos painéis dos usuários.
+
+24
+00:02:00,000 --> 00:02:05,000
+cidade guarda as cidades; linha_onibus guarda os cadastros; tu_acesso define os vínculos profissionais e seus escopos.
+
+25
+00:02:05,000 --> 00:02:10,000
+tu_chamado organiza suporte e relatos. tu_manifestacao guarda avaliações, elogios, reclamações e respostas.
+
+26
+00:02:10,000 --> 00:02:15,000
+tu_favorito liga usuários às linhas salvas. As chaves evitam duplicações e relacionam os registros.
+
+27
+00:02:15,000 --> 00:02:21,000
+tu_perfil e tu_motorista representam contas e perfis. tu_pedido_acesso registra a análise dos vínculos.
+
+28
+00:02:21,000 --> 00:02:27,000
+tu_viagem_operacional e tu_posicao_atual guardam viagens e posições. tu_alerta_operacional registra avisos confirmados.
+
+29
+00:02:27,000 --> 00:02:32,000
+O GitHub guarda o código e o histórico. backend, frontend, database, data, docs e tests organizam o projeto.
+
+30
+00:02:32,000 --> 00:02:37,000
+HTML, CSS e JavaScript fazem as telas. Python e FastAPI fazem a API; pandas atende a parte de estudo de dados.
+
+31
+00:02:37,000 --> 00:02:43,000
+Na escola, baixe pelo Git, abra no VS Code e coloque o .env privado em backend. Depois execute o iniciador local.
+
+32
+00:02:43,000 --> 00:02:49,000
+Python, Git e internet precisam estar disponíveis. O .env e as senhas são levados separadamente; não ficam no GitHub.
+
+33
+00:02:49,000 --> 00:02:53,000
+O banner preserva o layout original. O PDF de impressão tem 90 centímetros de largura por 120 de altura.
+
+34
+00:02:53,000 --> 00:02:57,000
+O roteiro da equipe é sem slides: cada integrante explica sua parte mostrando os sites e a API.
+
+35
+00:02:57,000 --> 00:03:04,000
+São 66 linhas municipais de Maringá e 22 serviços ou variantes metropolitanos documentados. A lista municipal completa de Sarandi não foi confirmada.
+
+36
+00:03:04,000 --> 00:03:11,000
+GPS físico e entrega de e-mail não foram comprovados nesta rodada. Não há integração oficial de telemetria ou bilhetagem. O projeto é independente.

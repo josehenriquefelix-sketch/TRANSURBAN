@@ -1,0 +1,71 @@
+0.0s — Este guia mostra as telas reais do TRANSURBAN, um projeto escolar de mobilidade em Maringá e Sarandi.
+
+4.5s — São três áreas: passageiro, motorista e gestão. O vídeo usa capturas do sistema, não uma gravação ao vivo.
+
+9.0s — No início, o passageiro escolhe o serviço e pesquisa uma linha pelo bairro ou código.
+
+14.0s — Favoritos, avaliações e suporte usam a conta da pessoa. Consultar uma linha não cria uma viagem.
+
+19.0s — A busca por olimpico selecionou a linha 460. O sentido pode ser Terminal / Bairro ou Bairro / Terminal.
+
+24.0s — O catálogo e os horários citam fontes. Uma partida de terminal não é previsão de chegada a qualquer ponto.
+
+29.0s — A pessoa entra com e-mail ou CPF e senha. Cada usuário deve ter sua própria conta.
+
+35.0s — Motorista e gestão exigem autorização. Confirmação e recuperação por e-mail ainda dependem de SMTP configurado e testado.
+
+41.0s — No painel autorizado, o motorista informa o modelo e o número do ônibus que vai conduzir.
+
+46.0s — A tela também reúne os indicadores do seu perfil. Não foram inventadas notas para preencher o painel.
+
+51.0s — Depois escolhe a linha e o sentido. O início da viagem exige os dados e a permissão solicitada.
+
+57.0s — As posições compartilhadas vêm do dispositivo autorizado. Ao encerrar a viagem, o compartilhamento termina.
+
+63.0s — A gestão possui um painel separado para acompanhar viagens, avaliações e relatos.
+
+68.0s — Os indicadores refletem os registros disponíveis. Zero viagens significa que não havia viagem ativa nessa captura.
+
+73.0s — Passageiros e motoristas enviam relatos. A gestão analisa antes de publicar uma orientação.
+
+79.0s — Vermelho, amarelo e verde representam condições informadas. Uma área sem marcação não significa trânsito livre.
+
+85.0s — A API recebe os pedidos das telas, confere o acesso e consulta o banco.
+
+89.5s — O Swagger reúne as rotas. GET consulta; outras operações podem cadastrar, atualizar ou excluir conforme a permissão.
+
+94.0s — Aqui foi executado GET /cidades. A resposta foi HTTP 200 e retornou Maringá e Sarandi.
+
+99.5s — JSON é o formato usado para trocar dados entre as telas e a API. Esta é uma resposta capturada em 25/11/2026.
+
+105.0s — O PostgreSQL do projeto está no Supabase. Esta imagem é um registro da conferência de 24/11/2026.
+
+110.0s — O sistema usa 12 tabelas ativas. A estrutura foi conferida novamente pelos testes reais de 25/11.
+
+115.0s — Esta é a visualização técnica do banco, sem registros pessoais. Ela fica fora dos painéis dos usuários.
+
+120.0s — cidade guarda as cidades; linha_onibus guarda os cadastros; tu_acesso define os vínculos profissionais e seus escopos.
+
+125.0s — tu_chamado organiza suporte e relatos. tu_manifestacao guarda avaliações, elogios, reclamações e respostas.
+
+130.0s — tu_favorito liga usuários às linhas salvas. As chaves evitam duplicações e relacionam os registros.
+
+135.0s — tu_perfil e tu_motorista representam contas e perfis. tu_pedido_acesso registra a análise dos vínculos.
+
+141.0s — tu_viagem_operacional e tu_posicao_atual guardam viagens e posições. tu_alerta_operacional registra avisos confirmados.
+
+147.0s — O GitHub guarda o código e o histórico. backend, frontend, database, data, docs e tests organizam o projeto.
+
+152.0s — HTML, CSS e JavaScript fazem as telas. Python e FastAPI fazem a API; pandas atende a parte de estudo de dados.
+
+157.0s — Na escola, baixe pelo Git, abra no VS Code e coloque o .env privado em backend. Depois execute o iniciador local.
+
+163.0s — Python, Git e internet precisam estar disponíveis. O .env e as senhas são levados separadamente; não ficam no GitHub.
+
+169.0s — O banner preserva o layout original. O PDF de impressão tem 90 centímetros de largura por 120 de altura.
+
+173.0s — O roteiro da equipe é sem slides: cada integrante explica sua parte mostrando os sites e a API.
+
+177.0s — São 66 linhas municipais de Maringá e 22 serviços ou variantes metropolitanos documentados. A lista municipal completa de Sarandi não foi confirmada.
+
+184.0s — GPS físico e entrega de e-mail não foram comprovados nesta rodada. Não há integração oficial de telemetria ou bilhetagem. O projeto é independente.

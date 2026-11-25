@@ -1,0 +1,13 @@
+{
+  "resultado": "OK",
+  "arquivo": "TRANSURBAN_GUIA_PARA_EQUIPE.mp4",
+  "duracao_segundos": 191,
+  "dimensoes": "1280x720",
+  "fps": 24,
+  "codec": "H.264 yuv420p",
+  "audio": "sem áudio, intencional",
+  "decodificacao_integral": "aprovada",
+  "frames_extraidos_para_revisao": 17,
+  "tamanho_bytes": 3549485,
+  "limite": "Revisão por quadros extraídos e decodificação integral, sem reprodução contínua observada nesta etapa."
+}
