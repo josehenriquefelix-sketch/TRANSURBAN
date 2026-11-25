@@ -4,6 +4,8 @@ import logging
 import sys
 from pathlib import Path
 from uuid import UUID
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 BASE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(BASE))
@@ -15,6 +17,7 @@ from backend.esquema import consultar
 from backend.database import get_supabase
 
 checks = []
+data_referencia = datetime.now(ZoneInfo('America/Sao_Paulo')).date().isoformat()
 def check(name, condition):
     if not condition:
         raise AssertionError(name)
@@ -40,7 +43,7 @@ catalog=json.loads((BASE/'data/catalogo_publico_verificado.json').read_text(enco
 actual={(city_names[l['id_cidade']],l['codigo'],l['nome']) for l in lines}
 documented={(l['cidade_principal'],l['codigo'],l['nome']) for l in catalog['linhas']}
 check('88 linhas e variantes reconciliadas com o catálogo documentado',actual==documented and len(lines)==88)
-schema['conferido_em'] = '2026-11-24'
+schema['conferido_em'] = data_referencia
 (BASE/'docs/ESQUEMA_BANCO_ATUAL.json').write_text(json.dumps(schema,ensure_ascii=False,indent=2),encoding='utf-8')
 
 with TestClient(app) as client:
@@ -76,9 +79,9 @@ with TestClient(app) as client:
         client.post('/auth/logout')
     check('Registro temporário removido',not db.table('tu_chamado').select('id').eq('id',call_id).execute().data)
 
-report = {'data':'2026-11-24','resultado':'OK','quantidade':len(checks),'verificacoes':checks,
+report = {'data':data_referencia,'resultado':'OK','quantidade':len(checks),'verificacoes':checks,
           'tabelas_ativas':12,'historico':'Tabelas anteriores preservadas em schema privado; fora da API.',
           'limites':['Não comprova GPS físico, entrega de e-mail sem SMTP ou operação oficial da frota.',
                      'Não substitui testar a rede e as permissões do computador da escola.']}
-(BASE/'docs/VALIDACAO_ENTREGA_20261124.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+(BASE/'docs'/f'VALIDACAO_ENTREGA_{data_referencia.replace("-", "")}.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
 print(json.dumps({'resultado':'OK','verificacoes':len(checks),'tabelas':12}),flush=True)

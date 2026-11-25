@@ -91,6 +91,21 @@
       Novos vínculos são autorizados pela administração. Esta página não concede acesso a passageiros ou motoristas.
      </p>
     </form>
+    <details class="professional-request">
+     <summary>Primeiro acesso? Solicitar autorização de gestão</summary>
+     <p>Primeiro, <a href="/#cadastro">crie sua conta de passageiro</a> e confirme seu e-mail, se solicitado. Depois envie este pedido. Somente a administração pode aprovar o vínculo.</p>
+     <form class="requestAccessForm" data-papel="gestor">
+      <label for="requestId">E-mail ou CPF da sua conta</label>
+      <input id="requestId" name="identificador" autocomplete="username" autocapitalize="none" spellcheck="false" required maxlength="254"/>
+      <label for="requestPassword">Senha da sua conta</label>
+      <input id="requestPassword" name="senha" type="password" autocomplete="current-password" required maxlength="72"/>
+      <label for="requestReason">Por que você precisa deste acesso?</label>
+      <textarea id="requestReason" name="justificativa" minlength="10" maxlength="1000" required placeholder="Informe seu vínculo profissional, sem enviar documentos ou senhas."></textarea>
+      <button class="btn quiet wide" type="submit">Enviar pedido de autorização</button>
+      <p class="requestStatus status" role="status"></p>
+     </form>
+     <p class="subtle">O envio não libera o painel. Após a aprovação, entre pelo formulário principal acima, com sua própria conta.</p>
+    </details>
 
    </div>
   </section>

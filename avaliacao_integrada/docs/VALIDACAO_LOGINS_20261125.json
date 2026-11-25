@@ -1,0 +1,32 @@
+{
+  "data": "2026-11-25",
+  "metodo": "HTTP pela API local, não Google Chrome",
+  "logins": [
+    {
+      "acesso": "passageiro",
+      "login_http": 200,
+      "sessao_http": 200,
+      "administrador": true
+    },
+    {
+      "acesso": "motorista",
+      "login_http": 200,
+      "sessao_http": 200,
+      "administrador": true
+    },
+    {
+      "acesso": "gestor",
+      "login_http": 200,
+      "sessao_http": 200,
+      "administrador": true
+    }
+  ],
+  "logout": "3 saídas com sessão removida e /auth/me retornando 401",
+  "consultas": "Favoritos, chamados, motorista, viagens da gestão, pedidos e notificações: HTTP 200",
+  "limites": [
+    "Sem cadastro real novo ou alteração de vínculos de pessoas",
+    "Sem teste de recebimento de e-mail: SMTP não configurado",
+    "Sem teste de GPS físico",
+    "Chrome não disponível para controle nesta sessão"
+  ]
+}

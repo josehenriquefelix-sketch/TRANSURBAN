@@ -32,6 +32,8 @@ Node serve apenas para testes; não é necessário para executar o site. A confe
 
 Em 24/11/2026, passaram 54 testes Python, 13 testes JavaScript e 34 verificações reais de login, leitura e atendimento. Os testes de fila no SQL usaram ROLLBACK e não enviaram e-mail. O [relatório atual](docs/VALIDACAO_ENTREGA_20261124.json) distingue resultados e limites.
 
+Em 25/11/2026, passaram novamente 54 testes Python, agora 27 testes JavaScript e 34 verificações reais da API e do banco. Veja o [relatório da conferência real](docs/VALIDACAO_ENTREGA_20261125.json), o [teste de login e logout](docs/VALIDACAO_LOGINS_20261125.json), o [guia de cadastro e aprovação](docs/EMAIL_E_CONTAS_LOCAL.md) e o [roteiro resumido da equipe](docs/ROTEIRO_APRESENTACAO.md). O controle do Google Chrome externo não esteve disponível; esses resultados não são uma comprovação de teste visual completo nele.
+
 ## Informações e limites
 
 O catálogo é um snapshot documentado em 12/11/2026; o índice DER foi revisto em 24/11. Não significa todas as linhas municipais de Sarandi. Partida de terminal não é previsão em qualquer ponto. A posição do ônibus depende do motorista autorizado compartilhando o dispositivo e da precisão recebida; não existe integração oficial à frota da operadora.
