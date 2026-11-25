@@ -9,6 +9,8 @@ Revisão: 25/11/2026.
 
 Os formulários pedem nome, CPF, e-mail, senha e confirmação. Use seus próprios dados. A senha precisa ter de 8 a 72 caracteres, com maiúscula, minúscula, número e símbolo. O CPF passa por conferência dos dígitos verificadores no navegador e na API. Essa conferência não verifica a identidade da pessoa na Receita Federal.
 
+Também há **Continuar com Google** no login e no cadastro das áreas profissionais. A conta Google usa a identidade do provedor, sem fornecer CPF ou criar senha local. Após conectar, a pessoa pode pedir ou consultar o vínculo sem digitar a senha do Google no site. Consulte o [guia do Google nos três acessos](GOOGLE_NOS_TRES_ACESSOS.md).
+
 Criar conta não concede acesso profissional. No motorista e na gestão, informe também o vínculo para análise. Se o Supabase retornar uma sessão confirmada, o site envia um pedido de vínculo pendente. Se exigir confirmação por e-mail, confirme primeiro, volte e clique em Continuar para solicitar autorização. Entre com a conta e envie o pedido. O responsável analisa no painel restrito; o solicitante não aprova o próprio pedido.
 
 ## Consultar e autorizar

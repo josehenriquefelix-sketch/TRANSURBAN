@@ -28,7 +28,7 @@
         const show=visible=>{
             form.hidden=!visible;login.hidden=visible;
             if(choice)choice.hidden=visible;if(request)request.hidden=visible;
-            if(visible)form.querySelector('input').focus();
+            if(visible){const title=form.querySelector('h2');if(title){title.tabIndex=-1;title.focus();}else form.querySelector('input').focus();}
             else {form.elements.senha.value='';form.elements.confirmacao.value='';login.querySelector('input').focus();}
         };
         document.querySelector('[data-open-signup]')?.addEventListener('click',()=>show(true));

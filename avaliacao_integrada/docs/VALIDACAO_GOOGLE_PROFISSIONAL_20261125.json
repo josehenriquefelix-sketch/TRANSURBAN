@@ -1,0 +1,19 @@
+{
+  "data": "2026-11-25",
+  "python": {"testes": 59, "falhas": 0},
+  "javascript": {"testes": 40, "falhas": 0},
+  "provedor_google": "Ativo, confirmado pela configuração pública da API local.",
+  "navegador_real": [
+    "Botão de motorista redirecionou para seleção de conta no Google.",
+    "Conta Google existente voltou para /motorista/?acesso=pendente, com sessão válida e painel restrito protegido.",
+    "Consultar minha autorização funcionou com a sessão Google sem senha local; informou ausência de pedido.",
+    "Saída da sessão Google e novo login pela gestão voltaram para /gestao/?acesso=pendente."
+  ],
+  "permissoes": "Nenhuma permissão profissional nova foi concedida e nenhum pedido real foi enviado para produzir estes testes.",
+  "testes_simulados": "Retorno de conta autorizada em cada painel, conta sem vínculo, papel adulterado e estado inválido.",
+  "limites": [
+    "Criação de nova identidade Google não foi realizada; foi usada uma conta existente.",
+    "Os links de privacidade e termos da marca no Google Cloud ainda usam o endereço histórico; o retorno autenticado testado foi local.",
+    "SMTP e entrega real de confirmação/recuperação por e-mail continuam pendentes."
+  ]
+}

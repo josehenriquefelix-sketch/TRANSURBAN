@@ -280,21 +280,26 @@ def entrar_google(tipo_acesso: Literal["passageiro", "motorista", "gestor"] = "p
 
 @router.get("/google/callback", include_in_schema=False)
 def google_callback(request: Request, code: str = "", flow: str = ""):
+    role = request.cookies.get("tu_oauth_role", "passageiro")
+    role = role if role in {"passageiro", "motorista", "gestor"} else "passageiro"
+    entrada = {"motorista": "/motorista/", "gestor": "/gestao/"}.get(role, "/")
     expected = request.cookies.get("tu_oauth_state", "")
     verifier = request.cookies.get("tu_pkce", "")
     if not code or not expected or not verifier or not secrets.compare_digest(flow, expected):
-        return limpar_oauth(RedirectResponse("/?erro=google_sessao_invalida#login"))
+        return limpar_oauth(RedirectResponse(entrada + "?erro=google_sessao_invalida#login"))
     try:
         data = auth_request("POST", "token?grant_type=pkce", {"auth_code": code, "code_verifier": verifier})
         user = auth_request("GET", "user", token=data["access_token"])
-        role = request.cookies.get("tu_oauth_role", "passageiro")
         if role not in papeis({"id": user["id"], "email": user.get("email")}):
-            return limpar_oauth(RedirectResponse("/?erro=acesso_nao_autorizado#login"))
-        destino = {"motorista": "/motorista/", "gestor": "/gestao/"}.get(role, "/#inicio")
+            # Autenticar uma identidade não concede vínculo profissional.
+            # A sessão permite somente solicitar/consultar o próprio pedido.
+            destino = entrada + "?acesso=pendente"
+        else:
+            destino = {"motorista": "/motorista/", "gestor": "/gestao/"}.get(role, "/#inicio")
         response = RedirectResponse(destino)
         cookies(response, data)
     except HTTPException:
-        response = RedirectResponse("/?erro=google_indisponivel#login")
+        response = RedirectResponse(entrada + "?erro=google_indisponivel#login")
     return limpar_oauth(response)
 
 

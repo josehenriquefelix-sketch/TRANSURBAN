@@ -14,6 +14,8 @@ Os atalhos em `ACESSOS/` também abrem as áreas. O cadastro público é de pass
 
 As três entradas têm opção de criar conta com nome, CPF, e-mail e senha. O acesso profissional depende de aprovação. Consulte o [guia de cadastro e suas pendências](docs/CADASTRO_NOS_TRES_PAINEIS.md). O [vídeo com os temas de cada integrante](docs/video/TRANSURBAN_VIDEO_EQUIPE.mp4) explica os painéis, a API e o banco com capturas reais e voz sintética em português. A [divisão dos temas](docs/TEMAS_DA_EQUIPE.md) segue José, Bruno, Cauã, Ana Carolina e Gustavo. A [cobertura de Sarandi](docs/SARANDI_COBERTURA_20261125.md) explica por que suas ligações metropolitanas também aparecem ao escolher a cidade.
 
+O botão **Continuar com Google** também está disponível no login e no cadastro de motorista e gestão. A sessão Google permite solicitar o vínculo sem senha local; ela não concede aprovação automática. Veja os [passos e a validação do Google](docs/GOOGLE_NOS_TRES_ACESSOS.md).
+
 ## Banco
 
 O banco atual da equipe já está migrado. Ao baixar o código em outro computador, configure a conexão; não execute SQL de criação novamente. As [instruções SQL](database/README.md) distinguem banco novo, migração e teste. A [estrutura conferida](docs/BANCO_CONFERIDO.md) e o arquivo local `ferramentas/estrutura_banco.html` mostram as 12 tabelas. O banco não aparece no painel da gestão.
