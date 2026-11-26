@@ -1,5 +1,7 @@
 # TRANSURBAN — site e API locais
 
+Para a apresentação de 27/11, use o [guia direto da escola](../COMECE_AQUI_ESCOLA.txt), a [conferência da instalação nova de 26/11](docs/ENTREGA_ESCOLA_20261126.md) e o [roteiro em Word sem slides](docs/ROTEIRO_TRANSURBAN_SEM_SLIDES.docx). O [banner original com Kauan Celso](docs/BANNER_TRANSURBAN_ORIGINAL_90x120cm_KAUAN_CELSO.pdf) está pronto em 90 × 120 cm.
+
 Consulte primeiro o [passo a passo da escola](PASSO_A_PASSO_ESCOLA.md) e o [resumo da revisão atual](docs/REVISAO_20261124.md). Os três painéis usam o mesmo FastAPI e o mesmo Supabase, com permissões diferentes. O modelo ativo tem 12 tabelas.
 
 ## Executar no VS Code
@@ -12,7 +14,7 @@ Consulte primeiro o [passo a passo da escola](PASSO_A_PASSO_ESCOLA.md) e o [resu
 
 Os atalhos em `ACESSOS/` também abrem as áreas. O cadastro público é de passageiro. Motorista e gestão usam contas com vínculo autorizado, sem uma senha coletiva no código.
 
-As três entradas têm opção de criar conta com nome, CPF, e-mail e senha. O acesso profissional depende de aprovação. Consulte o [guia de cadastro e suas pendências](docs/CADASTRO_NOS_TRES_PAINEIS.md). O [vídeo com os temas de cada integrante](docs/video/TRANSURBAN_VIDEO_EQUIPE.mp4) explica os painéis, a API e o banco com capturas reais e voz sintética em português. A [divisão dos temas](docs/TEMAS_DA_EQUIPE.md) segue José, Bruno, Cauã, Ana Carolina e Gustavo. A [cobertura de Sarandi](docs/SARANDI_COBERTURA_20261125.md) explica por que suas ligações metropolitanas também aparecem ao escolher a cidade.
+As três entradas têm opção de criar conta com nome, CPF, e-mail e senha. O acesso profissional depende de aprovação. Consulte o [guia de cadastro e suas pendências](docs/CADASTRO_NOS_TRES_PAINEIS.md). O [vídeo com os temas de cada integrante](docs/video/TRANSURBAN_VIDEO_EQUIPE.mp4) explica os painéis, a API e o banco com capturas reais e voz sintética em português. A [divisão dos temas](docs/TEMAS_DA_EQUIPE.md) segue José, Bruno, Kauan Celso, Ana Carolina e Gustavo. A [cobertura de Sarandi](docs/SARANDI_COBERTURA_20261125.md) explica por que suas ligações metropolitanas também aparecem ao escolher a cidade.
 
 O botão **Continuar com Google** também está disponível no login e no cadastro de motorista e gestão. A sessão Google permite solicitar o vínculo sem senha local; ela não concede aprovação automática. Veja os [passos e a validação do Google](docs/GOOGLE_NOS_TRES_ACESSOS.md).
 

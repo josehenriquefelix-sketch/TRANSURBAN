@@ -1,0 +1,44 @@
+{
+  "data": "2026-11-26",
+  "commit_codigo_testado": "017295e06761252d5dc639977b7cd16a2b651211",
+  "python_testes": 62,
+  "javascript_testes": 47,
+  "instalacao_nova": "requirements instalado em venv novo no Windows Python 3.13",
+  "rotas": {
+    "/": 200,
+    "/motorista/": 200,
+    "/gestao/": 200,
+    "/docs": 200,
+    "/dados/docs": 200,
+    "/recuperar-senha?area=gestor": 200,
+    "/mobilidade/catalogo": 200,
+    "/equipe/banner.pdf": 200
+  },
+  "login": {
+    "passageiro": 200,
+    "motorista": 200,
+    "gestor": 200
+  },
+  "tabelas": {
+    "cidade": 200,
+    "linha_onibus": 200,
+    "tu_acesso": 200,
+    "tu_alerta_operacional": 200,
+    "tu_chamado": 200,
+    "tu_favorito": 200,
+    "tu_manifestacao": 200,
+    "tu_motorista": 200,
+    "tu_pedido_acesso": 200,
+    "tu_perfil": 200,
+    "tu_posicao_atual": 200,
+    "tu_viagem_operacional": 200
+  },
+  "env_protegido_http": true,
+  "resultado": "OK",
+  "env_temporario_removido": true,
+  "limites": [
+    "Não testa as permissões nem a rede física da escola.",
+    "Não troca senhas pessoais, não envia novos e-mails e não inicia viagens reais.",
+    "As tabelas foram consultadas sem retornar registros pessoais."
+  ]
+}

@@ -1,8 +1,8 @@
 # TRANSURBAN — falas resumidas e demonstração
 
-Revisão de fatos: **25/11/2026**. Preparação para o ensaio de sexta-feira, **27/11/2026**.
+Revisão de fatos: **26/11/2026**. Preparação para sexta-feira, **27/11/2026**.
 
-Ordem: **José → Bruno → Cauã → Ana Carolina → Gustavo**.
+Ordem: **José → Bruno → Kauan Celso → Ana Carolina → Gustavo**.
 
 Os textos são curtos. Depois de cada fala, mostrem a tela indicada. A demonstração pode ocupar mais tempo que a leitura. Não projetem senhas ou o `.env`.
 
@@ -16,9 +16,9 @@ Os textos são curtos. Depois de cada fala, mostrem a tela indicada. A demonstra
 
 “No passageiro, a pessoa consulta as linhas e pode buscar pelo bairro ou código. Separamos as linhas municipais de Maringá das ligações entre Maringá e Sarandi. Os horários usam as fontes disponíveis, incluindo a consulta oficial. Com uma conta, a pessoa salva favoritos e envia avaliações ou relatos para a gestão. O site se adapta ao computador e ao celular.”
 
-**Mostrar:** cidade, linha, sentido e suporte. Não envie uma ocorrência inventada como se fosse real. Chamar o Cauã.
+**Mostrar:** cidade, linha, sentido e suporte. Não envie uma ocorrência inventada como se fosse real. Chamar o Kauan Celso.
 
-## 3. Cauã — motorista
+## 3. Kauan Celso — motorista
 
 “O motorista entra com uma conta autorizada. Ele informa o modelo e o número do ônibus, escolhe a linha e o sentido e prepara a viagem. Para compartilhar a posição, precisa permitir o GPS do aparelho. A gestão e os passageiros podem acompanhar as posições recebidas. Ao encerrar a viagem, o compartilhamento termina. Essa posição vem do dispositivo autorizado; não é o GPS oficial da operadora.”
 
@@ -46,8 +46,8 @@ Os textos são curtos. Depois de cada fala, mostrem a tela indicada. A demonstra
 - **É oficial da prefeitura ou da TCCC?** Não. É um projeto escolar independente, sem adesão oficial confirmada.
 - **Tem GPS da operadora?** Não. O acompanhamento usa posições compartilhadas por motoristas autorizados do TRANSURBAN.
 - **O GPS é exato?** O sistema mostra a posição e a margem de precisão do aparelho. No celular, precisa de HTTPS válido e permissão.
-- **O Gmail já recebe mensagens?** O fluxo está preparado; a entrega real ainda depende da configuração do SMTP.
-- **O que vocês testaram?** Em 25/11, passaram 54 testes Python, 27 testes JavaScript e 34 verificações reais da API e do banco. As verificações reais incluíram login e logout nos três papéis e um chamado privado descartável com resposta e histórico. GPS físico e recebimento real de e-mail não foram comprovados nesta rodada.
+- **O Gmail já recebe mensagens?** O recebimento de recuperação foi relatado pelo usuário. O Supabase usa os modelos padrão; não foi configurado SMTP próprio. Os avisos de aprovação por e-mail continuam dependendo dessa configuração. A troca final com um link novo e uma senha pessoal precisa ser concluída pelo titular.
+- **O que vocês testaram?** O relatório de 26/11 registra 62 testes Python, 47 testes JavaScript e acesso de leitura às 12 tabelas. Também foram conferidos os formulários de recuperação das três áreas com links de teste. GPS físico e troca de senha pessoal por um link real não foram comprovados nessa rodada.
 - **Todas as linhas de Sarandi estão cadastradas?** Não. As 22 opções metropolitanas documentadas estão na ligação Maringá–Sarandi. A lista municipal atual completa de Sarandi continua pendente de confirmação. As 66 municipais de Maringá são do catálogo consultado em 12/11/2026.
 - **Os três painéis estão no Chrome?** Os links podem ser abertos pelo usuário no Chrome. A automação do Chrome externo não ficou disponível nesta rodada; os testes HTTP não devem ser descritos como testes visuais no Chrome.
 - **O projeto já vale um preço específico?** Não houve avaliação comercial comprovada. O grupo pode apresentar a proposta e o produto atual sem afirmar um valor certificado.
@@ -64,7 +64,7 @@ Os textos são curtos. Depois de cada fala, mostrem a tela indicada. A demonstra
 
 1. José abre `/` e apresenta objetivo e as três áreas.
 2. Bruno pesquisa `olimpico`, mostra a linha selecionada e o sentido. Mostra a aba Maringá ↔ Sarandi e explica a separação. Não transforma uma partida de terminal em previsão de chegada a qualquer ponto.
-3. Cauã abre `/motorista/` com conta autorizada e mostra os campos do ônibus e da viagem. Não inicia uma viagem como se fosse um ônibus real da operadora. Um teste com aparelho só deve ser feito se identificado como teste, com GPS e permissão disponíveis; encerrar ao terminar.
+3. Kauan Celso abre `/motorista/` com conta autorizada e mostra os campos do ônibus e da viagem. Não inicia uma viagem como se fosse um ônibus real da operadora. Um teste com aparelho só deve ser feito se identificado como teste, com GPS e permissão disponíveis; encerrar ao terminar.
 4. Ana Carolina abre `/gestao/`, mostra visão geral e ocorrências recebidas. Se a fila estiver vazia, explicar que não há registros naquele momento. Não inventar reclamações para preencher os indicadores.
 5. Gustavo abre `/docs`, usa **GET /cidades → Try it out → Execute** e mostra o JSON. No Supabase, mostra o esquema e os nomes das tabelas, sem projetar e-mails, perfis, chaves ou outros dados pessoais. Finaliza com o GitHub.
 

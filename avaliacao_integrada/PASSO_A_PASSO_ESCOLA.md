@@ -106,11 +106,11 @@ Para ver o banco atual e seus registros, entre no projeto da equipe pelo Supabas
 
 O banco continua no Supabase. A visualização local não substitui o banco nem executa migrações. Para usar o mesmo projeto já configurado, basta levar o `.env` correto; não é necessário recriar as tabelas a cada clone.
 
-## 9. Abrir os slides
+## 9. Apresentar sem slides
 
-Abra `docs/APRESENTACAO_TRANSURBAN.html` no Chrome ou Edge. Esse arquivo tem as imagens incluídas e funciona offline. Use as setas ou os botões para navegar e **Mostrar fala de apoio** para ler o texto de cada integrante.
+Abra os três painéis e a API no navegador. As falas curtas estão em `docs/ROTEIRO_TRANSURBAN_SEM_SLIDES.docx` e `docs/ROTEIRO_APRESENTACAO.md`.
 
-Ordem: **José, Bruno, Cauã, Ana Carolina e Gustavo**. As falas também estão em `docs/ROTEIRO_APRESENTACAO.md`.
+Ordem: **José, Bruno, Kauan Celso, Ana Carolina e Gustavo**. Entrem nas contas antes de projetar a tela e mantenham o servidor aberto.
 
 ## 10. Se quiser mostrar no celular
 
@@ -136,4 +136,4 @@ Se uma cópia antiga já estiver correta e sem alterações de código, você po
 
 ## Limites da conferência
 
-O projeto pode ser testado por clone e instalação novos neste computador. O funcionamento na escola também depende do Python, do Git, da internet, das permissões da máquina e da configuração privada. E-mails reais dependem de SMTP; telemetria oficial da operadora, pagamento e bilhetagem não estão integrados. Os testes de coordenadas sintéticas não comprovam GPS físico no aparelho.
+O projeto pode ser testado por clone e instalação novos neste computador. O funcionamento na escola também depende do Python, do Git, da internet, das permissões da máquina e da configuração privada. Avisos de aprovação por e-mail dependem do SMTP próprio; o recebimento de recuperação do Supabase foi relatado pelo usuário; telemetria oficial da operadora, pagamento e bilhetagem não estão integrados. Os testes de coordenadas sintéticas não comprovam GPS físico no aparelho.
