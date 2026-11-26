@@ -456,7 +456,9 @@ async function navigate() {
     state.page = page;
     document.title = `TRANSURBAN | ${titles[page]||"Sua conta"}`;
     $("breadcrumb").textContent = titles[page] || "Conta";
-    document.body.dataset.area = auth && ['esqueci-senha','nova-senha'].includes(page) ? (recoveryArea==='gestor'?'gestao':recoveryArea) : "passageiro";
+    // A recuperação compartilha o formulário público, sem inicializar a operação profissional.
+    document.body.dataset.area = "passageiro";
+    document.body.dataset.recoveryArea = auth && ['esqueci-senha','nova-senha'].includes(page) ? recoveryArea : '';
     document.querySelectorAll("[data-nav],.bottom-nav a").forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + page));
     $("sidebar").classList.remove("open");
     $("menuButton").setAttribute("aria-expanded", "false");

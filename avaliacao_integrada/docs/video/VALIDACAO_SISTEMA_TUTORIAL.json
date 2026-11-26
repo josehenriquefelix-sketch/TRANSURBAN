@@ -1,0 +1,29 @@
+{
+  "data": "2026-11-25",
+  "metodo": "HTTP real, conta de teste existente; não usa a sessão aberta no Chrome",
+  "perfis": [
+    {
+      "perfil": "passageiro",
+      "entrada": 200,
+      "consulta": 200,
+      "apos_sair": 401
+    },
+    {
+      "perfil": "motorista",
+      "entrada": 200,
+      "consulta": 200,
+      "apos_sair": 401
+    },
+    {
+      "perfil": "gestor",
+      "entrada": 200,
+      "consulta": 200,
+      "apos_sair": 401
+    }
+  ],
+  "consultas_publicas": 7,
+  "limites": [
+    "Sem criação de conta nova ou aprovação real de vínculo.",
+    "Sem envio de e-mail ou GPS físico."
+  ]
+}

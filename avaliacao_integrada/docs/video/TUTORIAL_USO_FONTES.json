@@ -1,0 +1,125 @@
+{
+  "duration_seconds": 228.58775510204083,
+  "voice": "HeyGen Lucilene Clear & Trustworthy, pt-BR, voz sintética",
+  "voice_id": "e808da2329754929803c8bd98dc36857",
+  "captions": "Tempos retornados pelo serviço e pontuação dos caracteres originais; sem acelerar ou esticar a fala.",
+  "captures": "Capturas reais do TRANSURBAN em 25/11/2026. A central vazia foi capturada antes da chegada dos pedidos atuais; os logins foram capturados sem credenciais.",
+  "timeline": [
+    {
+      "start": 0,
+      "asset": "passageiro.jpg",
+      "chapter": "Como usar • passageiro, motorista e gestão"
+    },
+    {
+      "start": 17.009,
+      "asset": "passageiro_login.jpg",
+      "chapter": "1 • e-mail ou CPF, senha e Entrar"
+    },
+    {
+      "start": 29.053,
+      "asset": "passageiro_login.jpg",
+      "chapter": "Um identificador por vez • e-mail ou CPF"
+    },
+    {
+      "start": 35.112,
+      "asset": "passageiro_login.jpg",
+      "chapter": "Confira os dados • recuperação por e-mail"
+    },
+    {
+      "start": 44.352000000000004,
+      "asset": "gestao_login.jpg",
+      "chapter": "2 • entrar com a conta responsável"
+    },
+    {
+      "start": 54.568000000000005,
+      "asset": "gestao_login.jpg",
+      "chapter": "Gestão • preencha os dois campos e entre"
+    },
+    {
+      "start": 62.737,
+      "asset": "gestao_login.jpg",
+      "chapter": "Conta conectada não significa vínculo aprovado"
+    },
+    {
+      "start": 75.341,
+      "asset": "autorizacoes.jpg",
+      "chapter": "3 • Autorizar profissionais no menu da gestão"
+    },
+    {
+      "start": 80.503,
+      "asset": "autorizacoes.jpg",
+      "chapter": "Confira o pedido antes de decidir"
+    },
+    {
+      "start": 85.05199999999999,
+      "asset": "autorizacoes.jpg",
+      "chapter": "Escopo → justificativa → aprovar ou recusar"
+    },
+    {
+      "start": 107.15899999999999,
+      "asset": "motorista_login.jpg",
+      "chapter": "4 • entrar ou criar conta de motorista"
+    },
+    {
+      "start": 114.22699999999999,
+      "asset": "motorista.jpg",
+      "chapter": "Motorista • modelo, número, linha e sentido"
+    },
+    {
+      "start": 122.41,
+      "asset": "motorista.jpg",
+      "chapter": "Motorista • iniciar e encerrar a viagem"
+    },
+    {
+      "start": 137.077,
+      "asset": "sarandi_inicio.jpg",
+      "chapter": "5 • escolher cidade e linha"
+    },
+    {
+      "start": 144.815,
+      "asset": "sarandi.jpg",
+      "chapter": "Sarandi • ligações documentadas e identificadas"
+    },
+    {
+      "start": 151.428,
+      "asset": "sarandi_horarios.jpg",
+      "chapter": "Passageiro • sentido e dia de operação"
+    },
+    {
+      "start": 165.12,
+      "asset": "cadastro_gestao.jpg",
+      "chapter": "6 • cadastro com CPF, e-mail e senha"
+    },
+    {
+      "start": 171.819,
+      "asset": "cadastro_gestao.jpg",
+      "chapter": "Senha • maiúscula, minúscula, número e símbolo"
+    },
+    {
+      "start": 181.396,
+      "asset": "cadastro_gestao.jpg",
+      "chapter": "Google • escolha sua conta na página do Google"
+    },
+    {
+      "start": 189.86499999999998,
+      "asset": "autorizacoes.jpg",
+      "chapter": "Solicite ou consulte seu vínculo • sem senha Google"
+    },
+    {
+      "start": 198.589,
+      "asset": "passageiro.jpg",
+      "chapter": "7 • sair da conta e usar em outro dispositivo"
+    },
+    {
+      "start": 214.61599999999999,
+      "asset": "passageiro.jpg",
+      "chapter": "Dados privados ficam fora do vídeo e da apresentação"
+    }
+  ],
+  "limits": [
+    "Não é gravação ao vivo. A central sem pedidos é uma captura anterior à chegada dos pedidos atuais.",
+    "Cadastro com provedor/e-mail não foi testado com nova conta real nesta rodada. SMTP pendente.",
+    "Sem comprovação de GPS físico ou integração oficial de telemetria/bilhetagem."
+  ],
+  "motion": "Pan suave, transições, títulos de etapas e destaques editoriais nos campos. Logo do passageiro adaptado como indicador de progresso; não representa GPS ou ônibus ao vivo."
+}

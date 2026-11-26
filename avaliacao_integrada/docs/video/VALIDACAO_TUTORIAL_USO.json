@@ -1,0 +1,16 @@
+{
+  "resultado": "OK",
+  "arquivo": "TRANSURBAN_COMO_ENTRAR_E_USAR.mp4",
+  "duracao_segundos": 228.58775510204083,
+  "dimensoes": "1280x720",
+  "video": "H.264 yuv420p, 24 fps",
+  "audio": "AAC, voz sintética pt-BR",
+  "audio_volume_medio_dB": -16.6,
+  "decodificacao_integral": "aprovada",
+  "frames_extraidos": 22,
+  "tamanho_bytes": 7871120,
+  "limites": [
+    "Revisão por quadros extraídos e decodificação completa; reprodução e escuta contínuas não observadas nesta etapa.",
+    "Animações são instruções editoriais, sem simular aprovação de contas ou viagens reais."
+  ]
+}

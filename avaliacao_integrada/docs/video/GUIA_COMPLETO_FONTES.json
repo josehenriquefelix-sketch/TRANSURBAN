@@ -1,0 +1,39 @@
+{
+  "data": "2026-11-26",
+  "arquivo": "TRANSURBAN_GUIA_COMPLETO_20261126.mp4",
+  "duracao_prevista_segundos": 339.36,
+  "partes": [
+    {
+      "fonte": "TRANSURBAN_COMO_ENTRAR_E_USAR.mp4",
+      "inicio": 0,
+      "fim": 39.35
+    },
+    {
+      "fonte": "recuperacao_visual.mp4",
+      "inicio": 0,
+      "fim": 25
+    },
+    {
+      "fonte": "TRANSURBAN_COMO_ENTRAR_E_USAR.mp4",
+      "inicio": 44.35,
+      "fim": 221.45
+    },
+    {
+      "fonte": "TRANSURBAN_VIDEO_EQUIPE.mp4",
+      "inicio": 198.39,
+      "fim": 296.3
+    }
+  ],
+  "voz": "Narrações HeyGen pt-BR previamente geradas, reutilizadas a 1x. Nova geração recusada por insuficiência de saldo gratuito.",
+  "limites": [
+    "Seção de recuperação é visual, sem nova narração.",
+    "Sem escuta contínua verificada nesta etapa.",
+    "Nenhuma senha real foi alterada nos testes.",
+    "Captura da central vazia precede os pedidos atuais."
+  ],
+  "testes": {
+    "api": 62,
+    "javascript": 47,
+    "tabelas_supabase_http200": 12
+  }
+}

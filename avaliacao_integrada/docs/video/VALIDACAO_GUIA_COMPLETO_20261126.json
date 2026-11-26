@@ -1,0 +1,13 @@
+{
+  "data": "2026-11-26",
+  "arquivo": "TRANSURBAN_GUIA_COMPLETO_20261126.mp4",
+  "duracao_segundos": 339.39,
+  "bytes": 14434282,
+  "decodificacao_integral": "OK",
+  "quadros_para_revisao": 18,
+  "limites": [
+    "Revisão técnica e por quadros; sem reprodução e escuta contínuas observadas.",
+    "Recuperação tem trecho visual sem nova narração; reutilização das vozes aprovadas devido ao limite gratuito do provedor.",
+    "Teste de nova senha real depende da ação do usuário."
+  ]
+}

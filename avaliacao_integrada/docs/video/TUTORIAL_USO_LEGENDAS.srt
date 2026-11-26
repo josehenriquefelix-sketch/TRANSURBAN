@@ -1,0 +1,169 @@
+1
+00:00:00,299 --> 00:00:05,845
+Para usar o Transurban, primeiro mantenha o servidor local aberto no computador. O site tem três
+
+2
+00:00:05,931 --> 00:00:11,570
+entradas: passageiro, motorista e gestão. Este tutorial usa capturas reais das
+
+3
+00:00:11,613 --> 00:00:16,519
+telas e explica os passos sem mostrar senhas, CPF ou chaves privadas.
+
+4
+00:00:17,159 --> 00:00:22,694
+Comece pelo login. No campo E-mail ou CPF, informe o identificador da
+
+5
+00:00:22,737 --> 00:00:28,625
+sua própria conta. No campo Senha, informe a senha cadastrada e clique no botão de entrar.
+
+6
+00:00:29,203 --> 00:00:34,536
+O campo aceita um e-mail ou um CPF vinculado à conta; não é necessário preencher os dois.
+
+7
+00:00:35,262 --> 00:00:40,748
+Se a senha estiver errada, confira os dados ou use Esqueci minha senha. A entrega das mensagens
+
+8
+00:00:40,790 --> 00:00:46,252
+de recuperação ainda precisa ser configurada e testada.
+
+Para entrar na gestão e autorizar
+
+9
+00:00:46,294 --> 00:00:51,944
+profissionais, use a conta responsável já configurada para o projeto. Os dados privados
+
+10
+00:00:51,987 --> 00:00:57,448
+foram entregues separadamente ao responsável. Digite o e-mail dessa conta no campo E-mail ou
+
+11
+00:00:57,491 --> 00:01:03,101
+CPF e a senha no campo Senha. Depois clique em Entrar no painel de gestão. Uma
+
+12
+00:01:03,143 --> 00:01:08,896
+Conta Google pessoal pode não ter as mesmas permissões. Se aparecer Sua conta já está conectada,
+
+13
+00:01:09,322 --> 00:01:14,912
+mas somente a solicitação de vínculo estiver visível, use Sair desta conta para trocar o acesso.
+
+14
+00:01:15,491 --> 00:01:21,123
+Depois que a conta responsável entrar, abra Autorizar profissionais no menu lateral. Quando houver
+
+15
+00:01:21,165 --> 00:01:26,738
+um pedido, confira quem está solicitando e qual é o vínculo. Escolha o escopo de atendimento,
+
+16
+00:01:27,036 --> 00:01:32,370
+escreva a justificativa da decisão e clique em Aprovar vínculo ou Recusar pedido.
+
+17
+00:01:32,882 --> 00:01:38,581
+Esse passo deve ser feito pelo responsável, após conferir os dados. Criar uma conta ou entrar
+
+18
+00:01:38,624 --> 00:01:44,213
+pelo Google não concede autorização automaticamente. Após a aprovação, a pessoa atualiza
+
+19
+00:01:44,341 --> 00:01:49,912
+a página ou entra novamente com a mesma conta.
+
+Na entrada do motorista, há login com e-mail
+
+20
+00:01:50,168 --> 00:01:55,487
+ou CPF e senha, criação de conta e Continuar com Google. Depois de autorizado,
+
+21
+00:01:55,700 --> 00:02:01,204
+o motorista informa o modelo e o número do ônibus, escolhe a cidade ou serviço, a linha
+
+22
+00:02:01,289 --> 00:02:06,826
+e o sentido. Com o veículo parado, confere os dados e permite a localização para iniciar
+
+23
+00:02:06,869 --> 00:02:12,406
+a viagem. Ao encerrar o trajeto, o compartilhamento termina. O mapa depende da precisão
+
+24
+00:02:12,448 --> 00:02:17,867
+do aparelho e não representa uma integração com o GPS oficial da operadora.
+
+No passageiro,
+
+25
+00:02:18,123 --> 00:02:23,685
+escolha a cidade e a linha pelo bairro ou pelo código. Maringá mostra as linhas municipais
+
+26
+00:02:23,770 --> 00:02:29,829
+documentadas. Sarandi também mostra as ligações documentadas que atendem a cidade, identificadas
+
+27
+00:02:29,872 --> 00:02:35,392
+como metropolitanas. Selecione a linha e abra os horários. Confira o sentido e
+
+28
+00:02:35,434 --> 00:02:41,024
+o dia de operação. Horário de saída do terminal não é uma previsão de chegada a qualquer ponto. A
+
+29
+00:02:41,066 --> 00:02:46,977
+conta também permite usar favoritos, avaliações e suporte.
+
+Para criar conta com o formulário,
+
+30
+00:02:47,147 --> 00:02:52,651
+informe nome, CPF, e-mail, senha e confirmação. Use pelo menos
+
+31
+00:02:52,694 --> 00:02:58,687
+oito caracteres, com maiúscula, minúscula, número e símbolo. Nos acessos profissionais,
+
+32
+00:02:59,071 --> 00:03:04,533
+informe também o vínculo para análise. Se preferir, clique em Continuar com Google e escolha
+
+33
+00:03:04,575 --> 00:03:10,143
+sua conta na página do Google. Não digite a senha do Google no formulário do Transurban. Se
+
+34
+00:03:10,185 --> 00:03:15,903
+faltar autorização profissional, o sistema permite solicitar ou consultar o vínculo usando a conta
+
+35
+00:03:15,945 --> 00:03:21,427
+conectada, sem exigir uma senha local.
+
+Por fim, use Sair da conta quando terminar,
+
+36
+00:03:21,853 --> 00:03:27,400
+principalmente em computador compartilhado. O endereço local funciona no computador que está executando
+
+37
+00:03:27,485 --> 00:03:33,025
+o servidor. Para usar no celular, prepare o acesso de rede; a localização precisa
+
+38
+00:03:33,068 --> 00:03:38,777
+de um contexto seguro. Na apresentação, mostrem as telas com dados de teste identificados
+
+39
+00:03:38,862 --> 00:03:44,480
+e preservem as informações privadas. A lista municipal completa de Sarandi, a entrega
+
+40
+00:03:44,608 --> 00:03:48,149
+dos e-mails e o teste físico do GPS continuam pendentes.
