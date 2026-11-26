@@ -15,7 +15,8 @@
   </script>
   <script defer src="/regiao.js?v=20261125-desktop1"></script>
   <script defer="" src="/localizacao.js?v=20261125-desktop1"></script>
-  <script defer="" src="/mobilidade.js?v=20261125-sarandi2">
+  <script defer src="/recuperacao.js?v=20261126-reset1"></script>
+  <script defer="" src="/mobilidade.js?v=20261126-reset1">
   </script>
   <script defer="" src="/operacao.js?v=20261125-vinculo1">
   </script>
@@ -179,11 +180,12 @@
      </button>
      <p class="status" id="forgotStatus" role="status">
      </p>
-     <a href="#login">
+     <a href="#login" id="forgotBackLink">
       Voltar para entrar
      </a>
     </form>
     <form hidden="" id="resetForm">
+     <p class="eyebrow" id="recoveryAreaLabel">Recuperação de acesso</p>
      <h2>
       Crie uma nova senha.
      </h2>
@@ -203,6 +205,8 @@
      </button>
      <p class="status" id="resetStatus" role="status">
      </p>
+     <a id="resetLoginLink" href="#login" hidden>Voltar para entrar na minha área</a>
+     <p><a href="#esqueci-senha">Solicitar outro link de recuperação</a></p>
     </form>
    </div>
   </section>

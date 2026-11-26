@@ -1,0 +1,55 @@
+{
+  "data": "2026-11-26",
+  "metodo": "Leitura HTTPS com limite zero, sem expor registros e sem alterar SQL ou dados",
+  "tabelas": [
+    {
+      "tabela": "cidade",
+      "http": 200
+    },
+    {
+      "tabela": "linha_onibus",
+      "http": 200
+    },
+    {
+      "tabela": "tu_acesso",
+      "http": 200
+    },
+    {
+      "tabela": "tu_alerta_operacional",
+      "http": 200
+    },
+    {
+      "tabela": "tu_chamado",
+      "http": 200
+    },
+    {
+      "tabela": "tu_favorito",
+      "http": 200
+    },
+    {
+      "tabela": "tu_manifestacao",
+      "http": 200
+    },
+    {
+      "tabela": "tu_motorista",
+      "http": 200
+    },
+    {
+      "tabela": "tu_pedido_acesso",
+      "http": 200
+    },
+    {
+      "tabela": "tu_perfil",
+      "http": 200
+    },
+    {
+      "tabela": "tu_posicao_atual",
+      "http": 200
+    },
+    {
+      "tabela": "tu_viagem_operacional",
+      "http": 200
+    }
+  ],
+  "ok": true
+}

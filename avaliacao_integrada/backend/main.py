@@ -146,6 +146,7 @@ def health():
 
 
 @app.get("/", tags=["Sistema"], include_in_schema=False)
+@app.get("/recuperar-senha", include_in_schema=False)
 def inicio():
     return FileResponse(FRONTEND_DIR / "index.html")
 

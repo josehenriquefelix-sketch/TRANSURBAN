@@ -56,7 +56,7 @@ test('consulta pública fica disponível enquanto a sessão ainda é verificada'
     const state={ready:false,user:null},navigations=[];
     let releaseSession;
     const pendingSession=new Promise(resolve=>{releaseSession=resolve;});
-    const context={URLSearchParams,location:{hash:'',search:''},history:{replaceState(){}},window:{addEventListener(){}},state,
+    const context={URLSearchParams,location:{hash:'',search:''},history:{replaceState(){}},window:{addEventListener(){},TransurbanRecovery:{entrada:()=>'/#login'}},processRecoveryLink:()=>false,recoveryArea:'passageiro',state,
         $:()=>({value:'Maringá',textContent:''}),accountUI(){},navigate:async()=>{navigations.push(state.ready);},
         api:async()=>({linhas:[]}),fillLines(){},account:()=>pendingSession,loadFavorites:async()=>{},toast(){},status(){}};
     vm.createContext(context);vm.runInContext(initSource,context);

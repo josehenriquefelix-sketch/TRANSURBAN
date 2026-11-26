@@ -1,0 +1,20 @@
+{
+  "data": "2026-11-26",
+  "python": {"testes": 62, "falhas": 0},
+  "javascript": {"testes": 47, "falhas": 0},
+  "supabase_configuracao": {
+    "site_url_antes": "http://127.0.0.1:8091",
+    "site_url_salvo": "http://127.0.0.1:8000",
+    "retorno_adicionado": "http://127.0.0.1:8000/**",
+    "retorno_anterior_preservado": true,
+    "templates": "Padrões do Supabase, sem SMTP próprio configurado no painel consultado."
+  },
+  "navegador": "Formulário de nova senha visível em passageiro, motorista e gestão com token fictício, e no formato legado com dois fragmentos; tokens removidos da URL após leitura.",
+  "banner": {"arquivo": "BANNER_TRANSURBAN_ORIGINAL_90x120cm.pdf", "paginas": 1, "largura_cm": 90, "altura_cm": 120},
+  "senhas_reais_alteradas": 0,
+  "limites": [
+    "Recebimento de e-mail foi relatado pelo usuário; não foi acessada a caixa pessoal.",
+    "A mudança com um novo link real e uma nova senha pessoal deve ser concluída pelo usuário.",
+    "A conferência das 12 tabelas foi por leitura HTTPS sem registros e não constitui auditoria completa de dados pessoais ou regras operacionais."
+  ]
+}

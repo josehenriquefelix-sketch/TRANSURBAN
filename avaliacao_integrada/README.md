@@ -16,6 +16,10 @@ As três entradas têm opção de criar conta com nome, CPF, e-mail e senha. O a
 
 O botão **Continuar com Google** também está disponível no login e no cadastro de motorista e gestão. A sessão Google permite solicitar o vínculo sem senha local; ela não concede aprovação automática. Veja os [passos e a validação do Google](docs/GOOGLE_NOS_TRES_ACESSOS.md).
 
+Para aprender a entrar e usar os painéis, assista ao [tutorial animado de acesso e uso](docs/video/TRANSURBAN_COMO_ENTRAR_E_USAR.mp4), com capturas reais, destaques e narração sintética em português. O vídeo não contém as credenciais privadas da equipe.
+
+A revisão de 26/11 corrigiu o retorno da recuperação de senha e a porta permitida no Supabase. Consulte o [procedimento atualizado e os testes](docs/RECUPERACAO_CORRIGIDA_20261126.md) e o [guia completo com API e banco](docs/video/TRANSURBAN_GUIA_COMPLETO_20261126.mp4). Use um novo e-mail de recuperação após essa correção.
+
 ## Banco
 
 O banco atual da equipe já está migrado. Ao baixar o código em outro computador, configure a conexão; não execute SQL de criação novamente. As [instruções SQL](database/README.md) distinguem banco novo, migração e teste. A [estrutura conferida](docs/BANCO_CONFERIDO.md) e o arquivo local `ferramentas/estrutura_banco.html` mostram as 12 tabelas. O banco não aparece no painel da gestão.
@@ -29,7 +33,7 @@ Da pasta deste README:
 ```powershell
 .\VERIFICAR_TRANSURBAN.cmd
 .\backend\.venv\Scripts\python.exe -m unittest discover -s tests -p "test_*.py"
-node --test tests/localizacao.test.cjs tests/uso.test.cjs tests/catalogo_regiao.test.cjs tests/cadastro.test.cjs tests/autorizacao.test.cjs
+node --test tests/localizacao.test.cjs tests/uso.test.cjs tests/catalogo_regiao.test.cjs tests/cadastro.test.cjs tests/autorizacao.test.cjs tests/recuperacao.test.cjs
 ```
 
 Node serve apenas para testes; não é necessário para executar o site. A conferência real opcional `ferramentas/validar_entrega.py` exige a conta privada de teste configurada no `.env`; cria e remove somente um chamado explicitamente descartável. Não projete as credenciais.

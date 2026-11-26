@@ -456,7 +456,7 @@ async function navigate() {
     state.page = page;
     document.title = `TRANSURBAN | ${titles[page]||"Sua conta"}`;
     $("breadcrumb").textContent = titles[page] || "Conta";
-    document.body.dataset.area = "passageiro";
+    document.body.dataset.area = auth && ['esqueci-senha','nova-senha'].includes(page) ? (recoveryArea==='gestor'?'gestao':recoveryArea) : "passageiro";
     document.querySelectorAll("[data-nav],.bottom-nav a").forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + page));
     $("sidebar").classList.remove("open");
     $("menuButton").setAttribute("aria-expanded", "false");
@@ -569,6 +569,7 @@ $("forgotForm").addEventListener("submit", event => {
             method: "POST",
             body: JSON.stringify({
                 email: $("forgotEmail").value
+                ,area: recoveryArea
             })
         });
         status("forgotStatus", result.mensagem);
@@ -590,6 +591,8 @@ $("resetForm").addEventListener("submit", event => {
         recoveryToken = null;
         $("resetForm").reset();
         status("resetStatus", result.mensagem);
+        $("resetForm").querySelector('button').hidden=true;
+        $("resetLoginLink").hidden=false;
     });
 });
 document.querySelectorAll("[data-login-role]").forEach(button => button.addEventListener("click", () => setLoginRole(button.dataset.loginRole)));
@@ -703,12 +706,26 @@ $("reviewForm").addEventListener("submit", event => {
         await reviewHistory();
     });
 });
+let recoveryArea = ['passageiro','motorista','gestor'].includes(new URLSearchParams(location.search).get('area')) ? new URLSearchParams(location.search).get('area') : 'passageiro';
+function processRecoveryLink(){
+    const link=window.TransurbanRecovery.read(location);
+    if(!link.active)return false;
+    recoveryArea=link.area;
+    if(link.token){recoveryToken=link.token;$('resetForm').querySelector('button').hidden=false;$('resetLoginLink').hidden=true;status('resetStatus','');}
+    if(link.failed)recoveryToken=null;
+    history.replaceState(null,'','/?area='+recoveryArea+(link.failed?'#esqueci-senha':'#nova-senha'));
+    if(link.failed)status('forgotStatus','O link expirou ou já foi usado. Solicite outro.',true);
+    else if(!recoveryToken)status('resetStatus','Abra o link mais recente recebido no e-mail. Se não funcionar, solicite outro. Não é necessário entrar no dashboard.',true);
+    $('resetLoginLink').href=window.TransurbanRecovery.entrada(recoveryArea);
+    $('forgotBackLink').href=window.TransurbanRecovery.entrada(recoveryArea);
+    $('recoveryAreaLabel').textContent='Recuperação de acesso · '+({passageiro:'Passageiro',motorista:'Motorista',gestor:'Gestão'}[recoveryArea]);
+    return true;
+}
 async function init() {
     const fragment = new URLSearchParams(location.hash.slice(1)),
         params = new URLSearchParams(location.search);
-    if (fragment.get("type") === "recovery" && fragment.get("access_token")) {
-        recoveryToken = fragment.get("access_token");
-        history.replaceState(null, "", "/#nova-senha");
+    if (processRecoveryLink()) {
+        // A tela de recuperação tem prioridade mesmo com outra sessão aberta.
     } else if (fragment.get("access_token")) {
         history.replaceState(null, "", "/#login");
         status("loginStatus", "E-mail confirmado. Entre com sua senha.");
@@ -720,7 +737,9 @@ async function init() {
         status("loginStatus", "Não foi possível concluir o acesso com Google. Confira o provedor, a sessão e as permissões do perfil.", true);
         history.replaceState(null, "", "/#login");
     }
-    window.addEventListener("hashchange", () => navigate().catch(error => toast(error.message)));
+    $('forgotBackLink').href=window.TransurbanRecovery.entrada(recoveryArea);
+    $('resetLoginLink').href=window.TransurbanRecovery.entrada(recoveryArea);
+    window.addEventListener("hashchange", () => {processRecoveryLink();navigate().catch(error => toast(error.message));});
     accountUI();
     await navigate();
     try {

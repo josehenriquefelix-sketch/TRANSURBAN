@@ -105,6 +105,10 @@ class Email(BaseModel):
         return valor
 
 
+class EmailRecuperacao(Email):
+    area: Literal["passageiro", "motorista", "gestor"] = "passageiro"
+
+
 class NovaSenha(BaseModel):
     senha: str = Field(min_length=8, max_length=72)
     _senha_segura = field_validator("senha")(validar_senha)
@@ -327,8 +331,9 @@ def sair(request: Request, response: Response):
 
 
 @router.post("/esqueci-senha", dependencies=[Depends(limitar)])
-def esqueci_senha(dados: Email):
-    redirect = endereco_aplicacao() + "/#nova-senha"
+def esqueci_senha(dados: EmailRecuperacao):
+    # Sem fragmento: o provedor acrescenta seu próprio #access_token ao retornar.
+    redirect = endereco_aplicacao() + "/recuperar-senha?area=" + dados.area
     auth_request("POST", "recover?redirect_to=" + quote(redirect, safe=""), {"email": dados.email.strip().lower()})
     return {"mensagem": "Se o e-mail estiver cadastrado, você receberá um link para criar uma nova senha."}
 
