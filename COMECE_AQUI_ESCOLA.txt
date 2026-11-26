@@ -1,0 +1,62 @@
+TRANSURBAN - ABRIR NA ESCOLA SEM ASSISTENTE
+
+ANTES DE SAIR DE CASA
+1. Leve o arquivo privado avaliacao_integrada/backend/.env em um pendrive.
+2. Leve em particular o email e a senha das contas ja testadas e autorizadas.
+3. Nao copie .venv. Nao envie .env ou senhas para o GitHub.
+
+NO COMPUTADOR DA ESCOLA
+Precisa ter VS Code, Git, Python 3.10 ou superior e internet.
+
+1. Abra o VS Code. Pressione Ctrl+Shift+P e escolha Git: Clone.
+2. Cole:
+https://github.com/josehenriquefelix-sketch/TRANSURBAN.git
+3. Escolha uma pasta vazia para baixar e clique em Abrir ao terminar.
+   Se ja houver uma copia antiga, baixe em outro local. Nao apague a anterior.
+4. Copie o .env do pendrive para avaliacao_integrada/backend/.env.
+   O nome deve ser .env, sem .txt. Nao use os valores ficticios de .env.example.
+5. No VS Code, escolha Arquivo > Abrir Pasta e abra avaliacao_integrada.
+6. Escolha Terminal > Novo Terminal. Digite:
+
+.\iniciar_local.cmd
+
+7. Aguarde a preparacao e a instalacao das dependencias terminarem.
+   O navegador deve abrir. Mantenha esse terminal aberto durante o uso.
+8. Abra os enderecos:
+
+Passageiro: http://127.0.0.1:8000/
+Motorista:  http://127.0.0.1:8000/motorista/
+Gestao:     http://127.0.0.1:8000/gestao/
+API:        http://127.0.0.1:8000/docs
+
+9. Entre com as contas ja autorizadas. Uma conta nova nao ganha papel
+   de motorista ou gestao automaticamente.
+10. Abra um SEGUNDO terminal no VS Code, na mesma pasta. Digite:
+
+.\VERIFICAR_TRANSURBAN.cmd
+
+11. Confira o resultado e teste pessoalmente os tres logins.
+    O resultado esperado do verificador e:
+    As verificacoes deste computador passaram.
+
+SE ALGO FALHAR
+- Python ou Git nao reconhecido: peca ao responsavel do laboratorio para
+  disponibilizar o programa. Depois reabra o VS Code.
+- Bloco de Notas abriu: o iniciador encontrou configuracao incompleta ou
+  ficticia. Confira se colocou o .env real na pasta backend.
+- Site nao abre: confira se o terminal do servidor continua aberto e sem erro.
+- Porta 8000 ocupada: encerre a execucao antiga do TRANSURBAN com Ctrl+C
+  no terminal dela e execute novamente o iniciador.
+- Instalacao falhou: confira internet e permissao para gravar nessa pasta.
+- Banco nao conecta: confira o .env real e o acesso a internet; reinicie o servidor.
+- Login falhou: confira conta, senha, confirmacao de email e autorizacao.
+- Interface antiga: confirme a copia nova e pressione Ctrl+F5 no navegador.
+
+IMPORTANTE
+O banco ja esta no Supabase: nao recrie tabelas e nao rode migracoes para
+abrir a copia da escola. Nao precisa de Render nem de Live Server.
+127.0.0.1 funciona no computador em que o servidor esta rodando.
+Ao sair de um computador compartilhado, encerre o servidor, saia das contas
+no navegador e remova a copia local do .env e suas credenciais privadas.
+O funcionamento no local depende dos programas, da internet e das permissoes
+da escola. GPS e recebimento de email exigem verificacao real no local.
